@@ -13,6 +13,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityNote;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
@@ -65,7 +67,29 @@ public class ItemWandCopyPaste  extends Item
 		entityPlayer.swingItem();
 	 
 		world.markBlockForUpdate(sign.getPos());//so update is refreshed on client side
- 
+
+		entityPlayer.swingItem();
+	}
+
+	public static void copyNote(World world, EntityPlayer entityPlayer,TileEntityNote noteblock, ItemStack held) 
+	{
+		
+
+		if(held.getTagCompound() == null) held.setTagCompound(new NBTTagCompound());
+		
+		held.getTagCompound().setByte("note", noteblock.note);
+		
+	}
+
+	public static void pasteNote(World world, EntityPlayer entityPlayer,TileEntityNote noteblock, ItemStack held) 
+	{
+
+		if(held.getTagCompound() == null)  {return;}//nothing ot paste
+		
+		noteblock.note = held.getTagCompound().getByte("note");
+		world.markBlockForUpdate(noteblock.getPos());//so update is refreshed on client side
+
+		entityPlayer.swingItem();
 	}
  
 	 

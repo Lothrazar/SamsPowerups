@@ -24,6 +24,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.network.play.server.S42PacketCombatEvent.Event;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntityNote;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -147,21 +148,35 @@ public class HandlerWand
 				ItemWandFire.castExtinguish(event.world,event.entityPlayer,held); 
 			} 
 		}
-		else if(held.getItem() == ItemRegistry.wandCopy &&  
-				(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign ) && 
+		else if(held.getItem() == ItemRegistry.wandCopy &&   
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{   
-			TileEntitySign sign = (TileEntitySign)event.world.getTileEntity(event.pos);
-			
-
-			if(event.entityPlayer.isSneaking())
-			{ 
-				ItemWandCopyPaste.copySign(event.world,event.entityPlayer,sign,held); 
-			}
-			else
+			if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
 			{
-				ItemWandCopyPaste.pasteSign(event.world,event.entityPlayer,sign,held); 
-			} 
+				TileEntitySign sign = (TileEntitySign)event.world.getTileEntity(event.pos);
+				 
+				if(event.entityPlayer.isSneaking())
+				{ 
+					ItemWandCopyPaste.copySign(event.world,event.entityPlayer,sign,held); 
+				}
+				else
+				{
+					ItemWandCopyPaste.pasteSign(event.world,event.entityPlayer,sign,held); 
+				} 
+			}
+			if(blockClicked == Blocks.noteblock)
+			{
+				TileEntityNote noteblock = (TileEntityNote)event.world.getTileEntity(event.pos);
+				 
+				if(event.entityPlayer.isSneaking())
+				{ 
+					ItemWandCopyPaste.copyNote(event.world,event.entityPlayer,noteblock,held); 
+				}
+				else
+				{
+					ItemWandCopyPaste.pasteNote(event.world,event.entityPlayer,noteblock,held); 
+				} 
+			}
 			//TODO: copy or paste if shift or not
 		//	ItemWandCopyPaste.castExtinguish(event.world,event.entityPlayer,held); 
 			
