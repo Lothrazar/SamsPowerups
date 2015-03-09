@@ -42,26 +42,30 @@ public class ItemWandCopyPaste  extends Item
 	}
 
 	public static void copySign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 
-	{ 
+	{  
 		SamsUtilities.setItemStackNBT(held, "sign_0", sign.signText[0].getUnformattedText());
 		SamsUtilities.setItemStackNBT(held, "sign_1", sign.signText[1].getUnformattedText());
 		SamsUtilities.setItemStackNBT(held, "sign_2", sign.signText[2].getUnformattedText());
 		SamsUtilities.setItemStackNBT(held, "sign_3", sign.signText[3].getUnformattedText());
 
 		entityPlayer.swingItem();
+		 
 	}
 
 	public static void pasteSign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 
-	{
-
+	{ 
+ 
+		//sign.setPlayer(entityPlayer);
 		sign.signText[0] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_0"));
 		sign.signText[1] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_1"));
 		sign.signText[2] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_2"));
 		sign.signText[3] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_3"));
 
+		//sign.setEditable(false);
 		entityPlayer.swingItem();
 	 
-		
+		world.markBlockForUpdate(sign.getPos());//so update is refreshed on client side
+ 
 	}
  
 	 
