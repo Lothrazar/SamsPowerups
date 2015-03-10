@@ -20,7 +20,6 @@ public class HandlerPlayerHarvest
 	public static ArrayList<Block> blocksOnlyShovel = new ArrayList<Block> (); 
 	public static ArrayList<Block> blocksOnlyAxe    = new ArrayList<Block> ();
 
-
 	public static void setShovelFromCSV(String csv)
 	{
 		blocksOnlyShovel = SamsUtilities.getBlockListFromCSV(csv);

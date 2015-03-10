@@ -120,7 +120,8 @@ public class ModLoader
 		ItemRegistry.registerItems();
 		
 		BlockRegistry.registerBlocks();
-		
+
+		BlockHardnessRegistry.registerChanges();
 		/*
 		 * Fluid flows in the world and gets placed but is invisible& transparent
 		

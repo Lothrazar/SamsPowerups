@@ -19,7 +19,6 @@ public class HandlerPlayerFallTheEnd
 
 		EntityPlayer player = event.player;
 		  
-		
 		if(player.dimension == Reference.Dimension.end && //hence the name of the class
 				 player.posY < -50 && 
 				 player.worldObj.isRemote  == false && 

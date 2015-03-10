@@ -20,10 +20,7 @@ public class HandlerLivingDrops
 	{
 		if(ModLoader.configSettings.removeZombieCarrotPotato 
 		  && event.entity instanceof EntityZombie)
-		{ 
-
-			System.out.println("EntityZombieDEATH");
-			
+		{  
 			for(int i = 0; i < event.drops.size(); i++) 
 			{
 				EntityItem item = event.drops.get(i);
@@ -33,10 +30,6 @@ public class HandlerLivingDrops
 					event.drops.remove(i);
 				}
 			}
-		}
-		
-		
-		
-		
+		} 
 	}
 }
