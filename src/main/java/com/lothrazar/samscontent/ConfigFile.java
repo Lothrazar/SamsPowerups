@@ -110,7 +110,11 @@ public class ConfigFile
 	public boolean fragileTorches;
 	public boolean removeZombieCarrotPotato;
 	public boolean petNametagChat;
-	public boolean playerDeathCoordinates; 
+	public boolean playerDeathCoordinates;
+	public int obsidianHardness; 
+	public int diamondOreHardness;
+	public int emeraldOreHardness;
+	public int spawnerHardness; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -133,7 +137,8 @@ public class ConfigFile
 		convenience();
 
 		 builderswand(); 
-		  
+		 
+  
 		 HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
 	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
 			 
@@ -212,6 +217,19 @@ public class ConfigFile
 	{
 		category = "tools_armor";
 		
+
+		 obsidianHardness  = instance.getInt("obsidianHardness",category, 10,1,50,
+	    			"Hardness level of Obsidian (vanilla is 50).");
+
+		 diamondOreHardness  = instance.getInt("diamondOreHardness",category, 10,1,50,
+	    			"Hardness level of Obsidian (vanilla is 3).");
+		 
+		 emeraldOreHardness  = instance.getInt("emeraldOreHardness",category, 10,1,50,
+	    			"Hardness level of Obsidian (vanilla is 3).");
+		 
+		 spawnerHardness  = instance.getInt("spawnerHardness",category, 50,1,50,
+	    			"Hardness level of Obsidian (vanilla is 5).");
+		 
 		fragileTorches = instance.getBoolean("fragileTorches",category, true,
 				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
 		
