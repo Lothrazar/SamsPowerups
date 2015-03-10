@@ -114,7 +114,14 @@ public class ConfigFile
 	public int obsidianHardness; 
 	public int diamondOreHardness;
 	public int emeraldOreHardness;
-	public int spawnerHardness; 
+	public int spawnerHardness;
+	public boolean wandFire;
+	public boolean wandChest;
+	public boolean wandCopy;
+	public boolean wandHarvest;
+	public boolean wandLivestock;
+	public boolean wandTransform;
+	public boolean wandProspect; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -138,6 +145,7 @@ public class ConfigFile
 
 		 builderswand(); 
 		 
+		 wands();
   
 		 HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
 	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
@@ -151,6 +159,26 @@ public class ConfigFile
 		//category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
 		if(instance.hasChanged()){ instance.save(); }
+	}
+
+	private void wands() 
+	{
+
+		wandFire = instance.getBoolean("wandFire",category, true,
+    			" .");
+		wandChest = instance.getBoolean("wandChest",category, true,
+    			" .");
+		wandCopy = instance.getBoolean("wandCopy",category, true,
+    			" .");
+		wandHarvest = instance.getBoolean("wandHarvest",category, true,
+    			" .");
+		wandLivestock = instance.getBoolean("wandLivestock",category, true,
+    			" .");
+		wandTransform = instance.getBoolean("wandTransform",category, true,
+    			" .");
+		wandProspect = instance.getBoolean("wandProspect",category, true,
+    			" ."); 
+		
 	}
 
 	private void convenience() 

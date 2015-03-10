@@ -62,24 +62,17 @@ public class ItemWandChest extends ItemTool
 	
 	public static void onInit() 
 	{  
-	//	if(!ModLoader.settings.masterWand){return;}
+		if(!ModLoader.configSettings.wandChest){return;}
 
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		SamsRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 		
 		ItemRegistry.wandChest = new ItemWandChest(); 
-		SamsRegistry.registerItem(ItemRegistry.wandChest, "wand_chest");/*
-		GameRegistry.addRecipe(new ItemStack(itemWand)
-			,"bdb"
-			," b "
-			," b "
-			, 'd', Blocks.emerald_block 
-			, 'b', Items.blaze_rod  );
-		
-		if(ModLoader.settings.uncraftGeneral) 
-			GameRegistry.addSmelting(itemWand, new ItemStack(Blocks.emerald_block,1,0),0);	//recycling	 
-*/
+		SamsRegistry.registerItem(ItemRegistry.wandChest, "wand_chest");
  
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandChest),
+			ItemRegistry.baseWand, 
+			Blocks.trapped_chest  );  
 	}
 
 	public void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)

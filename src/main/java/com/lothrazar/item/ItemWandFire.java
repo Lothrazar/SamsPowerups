@@ -31,16 +31,19 @@ public class ItemWandFire  extends Item
  
 	public static void init()
 	{
-		//if(!ModLoader.settings.enderBook) {return;}//TODO: config
+		if(!ModLoader.configSettings.wandFire) {return;} 
+		
 		ModLoader.changelog.log("ItemWandFire registered");
 		ItemRegistry.wandFire = new ItemWandFire();
 
 		SamsRegistry.registerItem(ItemRegistry.wandFire, "wand_fire");
  
- /*
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.lava_bucket,9), 
-				itemLava);
-				*/
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandFire),
+			ItemRegistry.baseWand, 
+			Items.flint_and_steel  );
+	
+		//if(ModLoader.configSettings.uncraftGeneral)
+			//GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);	
 	}
 
 	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 

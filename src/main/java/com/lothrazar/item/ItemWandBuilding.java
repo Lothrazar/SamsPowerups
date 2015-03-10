@@ -52,16 +52,11 @@ public class ItemWandBuilding extends ItemTool
 		if(!ModLoader.configSettings.buildingWand){return;}
 		 
 		ItemRegistry.wandBuilding = new ItemWandBuilding(); 
-		SamsRegistry.registerItem(ItemRegistry.wandBuilding, "wand_building" );   
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandBuilding)
-			,"bdb"
-			," b "
-			," b "
-			, 'd', Blocks.diamond_block
-			, 'b', Items.blaze_rod  );
-		
-		if(ModLoader.configSettings.uncraftGeneral)
-			GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Blocks.diamond_block,1,0),0);	//recycling	 
+		SamsRegistry.registerItem(ItemRegistry.wandBuilding, "wand_building" );  
+		 
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandBuilding),
+			ItemRegistry.baseWand, 
+			Items.diamond  ); 
 	}
 	 
 	private static void setCompoundIfNull(ItemStack held)

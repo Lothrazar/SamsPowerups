@@ -1,17 +1,6 @@
 package com.lothrazar.samscontent;
 
-import com.lothrazar.item.ItemBucketStorage;
-import com.lothrazar.item.ItemChestSack;
-import com.lothrazar.item.ItemEnderBook;
-import com.lothrazar.item.ItemFoodAppleMagic;
-import com.lothrazar.item.ItemWandBuilding;
-import com.lothrazar.item.ItemWandChest;
-import com.lothrazar.item.ItemWandCopyPaste;
-import com.lothrazar.item.ItemWandFire;
-import com.lothrazar.item.ItemWandHarvest;
-import com.lothrazar.item.ItemWandLivestock;
-import com.lothrazar.item.ItemWandProspect;
-import com.lothrazar.item.ItemWandTransform;
+import com.lothrazar.item.*; 
 
 public class ItemRegistry 
 {
@@ -36,9 +25,11 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_nether_star;
 	public static ItemWandFire wandFire;
 	public static ItemWandCopyPaste wandCopy;
+	public static ItemBaseWand baseWand;
 	 
 	public static void registerItems()
 	{
+		ItemBaseWand.Init();
 		ItemWandFire.init();
 		ItemWandCopyPaste.init();
 		

@@ -59,22 +59,16 @@ public class ItemWandLivestock extends ItemTool
  
 	public static void onInit() 
 	{  
-		//if(!ModLoader.settings.masterWand){return;}
+		if(!ModLoader.configSettings.wandLivestock){return;}
 			
 		ItemRegistry.wandLivestock = new ItemWandLivestock();
   
-		SamsRegistry.registerItem(ItemRegistry.wandLivestock, "wand_livestock");/*
-		GameRegistry.addRecipe(new ItemStack(itemWand)
-			,"bdb"
-			," b "
-			," b "
-			, 'd', Blocks.emerald_block 
-			, 'b', Items.blaze_rod  );
-		
-		if(ModLoader.settings.uncraftGeneral) 
-			GameRegistry.addSmelting(itemWand, new ItemStack(Blocks.emerald_block,1,0),0);	//recycling	 
+		SamsRegistry.registerItem(ItemRegistry.wandLivestock, "wand_livestock");
 
-*/
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandLivestock),
+			ItemRegistry.baseWand, 
+			Items.porkchop  );  
 	}
 
 	public void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 

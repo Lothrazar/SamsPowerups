@@ -68,22 +68,15 @@ public class ItemWandTransform extends ItemTool
 	
 	public static void onInit() 
 	{  
-	//	if(!ModLoader.settings.masterWand){return;}
-//TODO: config/recipe
+		if(!ModLoader.configSettings.wandTransform){return;} 
 	 
 		ItemRegistry.wandTransform = new ItemWandTransform(); 
 		SamsRegistry.registerItem(ItemRegistry.wandTransform, "wand_transform");
-		/*
-		GameRegistry.addRecipe(new ItemStack(itemWand)
-			,"bdb"
-			," b "
-			," b "
-			, 'd', Blocks.emerald_block 
-			, 'b', Items.blaze_rod  );
-		
-		if(ModLoader.settings.uncraftGeneral) 
-			GameRegistry.addSmelting(itemWand, new ItemStack(Blocks.emerald_block,1,0),0);	//recycling	 
-*/
+
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandProspect),
+			ItemRegistry.baseWand, 
+			Blocks.end_stone  );  
  
 	}
  

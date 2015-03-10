@@ -38,6 +38,19 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandHarvest extends ItemTool
 {
+	public static void onInit() 
+	{  
+		if(!ModLoader.configSettings.wandHarvest){return;}
+			
+		ItemRegistry.wandHarvest = new ItemWandHarvest();
+  
+		SamsRegistry.registerItem(ItemRegistry.wandHarvest, "wand_harvest");
+
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandHarvest),
+			ItemRegistry.baseWand, 
+			Blocks.hay_block  );  
+	}
 	private static int RADIUS = 128;
 	private static int DURABILITY = 80;
 	public static boolean drainsHunger = true;
@@ -123,25 +136,7 @@ public class ItemWandHarvest extends ItemTool
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
  
-	public static void onInit() 
-	{  
-		//if(!ModLoader.settings.masterWand){return;}
-			
-		ItemRegistry.wandHarvest = new ItemWandHarvest();
-  
-		SamsRegistry.registerItem(ItemRegistry.wandHarvest, "wand_harvest");/*
-		GameRegistry.addRecipe(new ItemStack(itemWand)
-			,"bdb"
-			," b "
-			," b "
-			, 'd', Blocks.emerald_block 
-			, 'b', Items.blaze_rod  );
-		
-		if(ModLoader.settings.uncraftGeneral) 
-			GameRegistry.addSmelting(itemWand, new ItemStack(Blocks.emerald_block,1,0),0);	//recycling	 
-
-*/
-	}
+	
 
 	 
 }

@@ -36,11 +36,14 @@ public class ItemWandCopyPaste  extends Item
  
 	public static void init()
 	{
-		//if(!ModLoader.configSettings.wandCopy) {return;}//TODO: config
+		if(!ModLoader.configSettings.wandCopy) {return;}
 		ItemRegistry.wandCopy = new ItemWandCopyPaste();
 
 		SamsRegistry.registerItem(ItemRegistry.wandCopy, "wand_copy");
-  
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandCopy),
+			ItemRegistry.baseWand, 
+			Items.paper  );  
 	}
 
 	public static void copySign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 

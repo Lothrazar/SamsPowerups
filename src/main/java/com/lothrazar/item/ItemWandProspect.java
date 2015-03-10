@@ -99,21 +99,15 @@ public class ItemWandProspect extends ItemTool
 	 
 	public static void onInit() 
 	{  
-		//if(!ModLoader.settings.masterWand){return;}
+		if(!ModLoader.configSettings.wandProspect){return;}
 			
 		ItemRegistry.wandProspect = new ItemWandProspect();
   
-		SamsRegistry.registerItem(ItemRegistry.wandProspect, "wand_prospect");/*
-		GameRegistry.addRecipe(new ItemStack(itemWand)
-			,"bdb"
-			," b "
-			," b "
-			, 'd', Blocks.emerald_block 
-			, 'b', Items.blaze_rod  );
-		
-		if(ModLoader.settings.uncraftGeneral) 
-			GameRegistry.addSmelting(itemWand, new ItemStack(Blocks.emerald_block,1,0),0);	//recycling	 
-*/
+		SamsRegistry.registerItem(ItemRegistry.wandProspect, "wand_prospect");
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandProspect),
+			ItemRegistry.baseWand, 
+			Items.redstone  );  
  
 	}
 

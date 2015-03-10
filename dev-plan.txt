@@ -14,6 +14,7 @@
 //1 beetroot gives one rose red. it breeds pigs and gets follow like carrot  
 //TREES ONLY GROLW && GET UN-PLANTED IF NOT IN THEIR HOME BIOMES!?!?!?
 //TODO: mirror of rabit stew with other meats
+//numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
 //[march09]: Wands of fire and  on use will add or extinguish fire in large area around the player. and/or in a straight line.
 //TODO: do we want to add foodstuffs? i like idea of chocolate (milk bottle+sugar+cocoa), and berry bushes
 //TODO: milk as liquid in the world just like water/lava. use forge . If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
