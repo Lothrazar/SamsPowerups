@@ -1,10 +1,8 @@
 package com.lothrazar.samscontent;
 
-import java.util.ArrayList;
-
+import java.util.ArrayList; 
 import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger; 
-
+import org.apache.logging.log4j.Logger;  
 import com.lothrazar.block.*; 
 import com.lothrazar.command.*; 
 import com.lothrazar.event.*; 
@@ -13,8 +11,7 @@ import com.lothrazar.samscontent.proxy.ClientProxy;
 import com.lothrazar.samscontent.proxy.CommonProxy;
 import com.lothrazar.samskeyslider.MessageKeyPressed;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsRegistry;
-
+import com.lothrazar.util.SamsRegistry; 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFence;
@@ -77,17 +74,18 @@ public class ModLoader
 	@Instance(value = Reference.MODID)
 	public static ModLoader instance;
 	@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
-	public static CommonProxy proxy;  
+	public static CommonProxy proxy;   
 	
-	public static Logger logger;
-	
+	public static Logger logger; 
 	public static ConfigFile configSettings;
 	public static SimpleNetworkWrapper network; 
+	public static RuntimeChangelog changelog;
 	
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
 	{ 
 		@Override
-		public Item getTabIconItem() { 
+		public Item getTabIconItem() 
+		{ 
 			return ItemRegistry.apple_chocolate;
 		}
 	};
@@ -107,7 +105,8 @@ public class ModLoader
 	public void onPreInit(FMLPreInitializationEvent event)
 	{ 
 		logger = event.getModLog(); 
-
+		changelog = new RuntimeChangelog();
+		
 		initModInfo(event.getModMetadata());
 		
 		configSettings = new ConfigFile(new Configuration(event.getSuggestedConfigurationFile()));
@@ -122,7 +121,8 @@ public class ModLoader
 		BlockRegistry.registerBlocks();
 
 		BlockHardnessRegistry.registerChanges();
-		/*
+		
+		/*//TODO: fluid registry
 		 * Fluid flows in the world and gets placed but is invisible& transparent
 		
 		//http://www.minecraftforge.net/wiki/Create_a_Fluid
@@ -169,8 +169,6 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
   		*/ 
 	}
 	
-	
-
 	@EventHandler 
 	public void onPostInit(FMLPostInitializationEvent event)
 	{ 

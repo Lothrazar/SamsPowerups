@@ -32,6 +32,7 @@ public class ItemWandFire  extends Item
 	public static void init()
 	{
 		//if(!ModLoader.settings.enderBook) {return;}//TODO: config
+		ModLoader.changelog.log("ItemWandFire registered");
 		ItemRegistry.wandFire = new ItemWandFire();
 
 		SamsRegistry.registerItem(ItemRegistry.wandFire, "wand_fire");
