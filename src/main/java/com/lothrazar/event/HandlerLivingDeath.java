@@ -18,9 +18,7 @@ public class HandlerLivingDeath
 	public void onLivingDeathEvent(LivingDeathEvent event)
 	{
 		if(event.entity instanceof EntityPlayer == false){return;} 
-
-		System.out.println("PLAYERDEATH");
-		
+ 
 		EntityPlayer player = (EntityPlayer)event.entity;
 		
 		if(ModLoader.configSettings.dropPlayerSkullOnDeath)
@@ -29,15 +27,12 @@ public class HandlerLivingDeath
 			if(skull.getTagCompound() == null) skull.setTagCompound(new NBTTagCompound()); 
 			skull.getTagCompound().setString("SkullOwner",player.getDisplayNameString());
 			
-			//EntityItem ei = new EntityItem(event.entity.worldObj, player.posX, player.posY, player.posZ,skull);
-			//event.drops.add(ei);   
-			 
 			SamsUtilities.dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);
 		}
 		
 		if(ModLoader.configSettings.playerDeathCoordinates)
 		{
-			String coordsStr = "["+ player.getPosition().getX() + ", "+player.getPosition().getY()+", "+player.getPosition().getZ()+"]";
+			String coordsStr = SamsUtilities.posToString(player.getPosition()); 
 			SamsUtilities.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
 		}
 	}

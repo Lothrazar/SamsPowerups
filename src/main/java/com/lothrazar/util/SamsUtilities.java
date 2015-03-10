@@ -336,4 +336,8 @@ public class SamsUtilities
 	{ 
 		 Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(string); 
 	}
+	public static String posToString(BlockPos position) 
+	{ 
+		return "["+ position.getX() + ", "+position.getY()+", "+position.getZ()+"]";
+	}
 }
