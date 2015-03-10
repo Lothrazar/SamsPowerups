@@ -1,21 +1,28 @@
 package com.lothrazar.event;
 
 import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.util.Reference;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerMobDrops
+public class HandlerLivingDrops
 { 
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)
 	{
-		if(ModLoader.configSettings.removeZombieCarrotPotato)
-		if(event.entity instanceof EntityZombie)
+		if(ModLoader.configSettings.removeZombieCarrotPotato 
+		  && event.entity instanceof EntityZombie)
 		{ 
+
+			System.out.println("EntityZombieDEATH");
 			
 			for(int i = 0; i < event.drops.size(); i++) 
 			{
@@ -27,5 +34,9 @@ public class HandlerMobDrops
 				}
 			}
 		}
+		
+		
+		
+		
 	}
 }

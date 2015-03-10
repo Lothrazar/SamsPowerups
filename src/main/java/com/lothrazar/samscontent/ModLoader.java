@@ -85,8 +85,7 @@ public class ModLoader
 	public static SimpleNetworkWrapper network; 
 	
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
-	{
-
+	{ 
 		@Override
 		public Item getTabIconItem() { 
 			return ItemRegistry.apple_chocolate;
@@ -213,7 +212,7 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
      	Object[] handlers = new Object[]
      	{
      		 new HandlerBonemealUse()
-     		,new HandlerMobDrops()
+     		,new HandlerLivingDrops()
      		,new HandlerTorchCollide()
      		,new HandlerBucketFill()
      		,new HandlerBucketStorage()
@@ -222,8 +221,8 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()
-      		,new HandlerWand()
-       		,new HandlerPlayerDeath()
+      		,new HandlerWand() 
+     		,new HandlerLivingDeath()
      		,new HandlerWandBuilding()
       		,new HandlerRichAnimals()
       		,new HandlerScreenText()

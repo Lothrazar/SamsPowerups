@@ -109,7 +109,8 @@ public class ConfigFile
 	public boolean gravelToClay;
 	public boolean fragileTorches;
 	public boolean removeZombieCarrotPotato;
-	public boolean petNametagChat; 
+	public boolean petNametagChat;
+	public boolean playerDeathCoordinates; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -165,7 +166,10 @@ public class ConfigFile
 		
 		spawnerCreativeInventory = instance.getBoolean("spawnerCreativeInventory",category, true,
     			"Add spawner into creative inventory.");
-    			
+    	
+		playerDeathCoordinates = instance.getBoolean("playerDeathCoordinates",category, true,
+    			"Players will have their death point coordinates broadcast in chat.");
+		
 		dropPlayerSkullOnDeath = instance.getBoolean("dropPlayerSkullOnDeath",category, true,
     			"Players will drop their skull when they die.");
  		

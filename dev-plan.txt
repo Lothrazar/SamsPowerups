@@ -6,23 +6,20 @@
  //[march08]: wand transform: rotate logs, pistons , hoppers droppers etc,  anything else  that has rotation
 ///referencefood https://bitbucket.org/Zuxelus/usefulfood/src/f74eea7793c5a95e8ecf4d7344f3e5182884942c/main/java/mods/usefulfood/?at=master
 //beetroots can be eaten to restore 1 (Half Heart.svg) health.//soup restores (8)?? seeds from tilling grass 1/15 chance
-//TODO: IF we get sign copy/paste working, try the same with noteblocks
-//TODO: find what food was nerfed in 1.8 such as carrot and restore it to previous
-//TODO: make pigs drop double loo\t from other animals
+//[march09]: IF we get sign copy/paste working, try the same with noteblocks
+//[march09]: make pigs drop double loo\t from other animals
+ //TODO: config option to display coordinates of where you died
 //six beetroot like a sign above a bowl -> one bt soup. fills 
-//1 beetroot gives one rose red. it breeds pigs and gets follow like carrot
-//TODO: is it worthwhile/easy to turn the appleflying/nbt stuff into an actual potion effect?
-//TODO: a way to place signs quick by skipping interface (leaving them blank)
-//TODO: copy and paste between signs
-//TODO: edit existing signs. copy and paste between signs, and also open plain existing editor
+//1 beetroot gives one rose red. it breeds pigs and gets follow like carrot  
 //TREES ONLY GROLW && GET UN-PLANTED IF NOT IN THEIR HOME BIOMES!?!?!?
 //TODO: mirror of rabit stew with other meats
-//TODO: Wands of fire and (not ice but anit fire) on use will add or extinguish fire in large area around the player. and/or in a straight line.
+//[march09]: Wands of fire and  on use will add or extinguish fire in large area around the player. and/or in a straight line.
 //TODO: do we want to add foodstuffs? i like idea of chocolate (milk bottle+sugar+cocoa), and berry bushes
 //TODO: milk as liquid in the world just like water/lava. use forge . If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
-//TODO: worldgen clay in gravel in ocean AND/OR: mixing gravel/water/coarse dirt into Clay Balls. maybe 4 gravel, 4 coarse dirt, 1 water
- //TODO: wand dungeon and porspect as SINGLE USE?? to solve lang
+//TODO: worldgen clay in gravel in ocean   
 //TODO:quiver:simplestorage blockfor arrows?
+//TODO: is it worthwhile/easy to turn the appleflying/nbt stuff into an actual potion effect?
+//TODO: a way to place signs quick by skipping interface (leaving them blank)
  //OR: actually better idea: Write search string result to NBT thats written !
  //TODO: revisit/balance obsidian crafting//mass production methods/smelting stuff.
 //TODO: maybe: apple hearts and flying persist on death? perhaps minus 1
@@ -34,7 +31,7 @@
  //TODO: smart potion button
  //TODO: smart torch button
  //TODO: can we catch the middcle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
- //TODO: config option to display coordinates of where you died
+
  //TODO: death messages for named mobs: to start with try pets and players first. include name/coords
  //TODO: far reach place hotkey. use player look vectors and trickery
  //TODO: Split milk bucket into bottles,  get drinking/crafting working from that. add chocolate milk 
