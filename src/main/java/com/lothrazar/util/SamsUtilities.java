@@ -339,5 +339,14 @@ public class SamsUtilities
 	public static String posToString(BlockPos position) 
 	{ 
 		return "["+ position.getX() + ", "+position.getY()+", "+position.getZ()+"]";
+	} 
+	public static boolean isNighttime(World worldObj)
+	{
+		return !isDaytime(worldObj);
+	}
+	public static boolean isDaytime(World worldObj) 
+	{ 
+		long time = worldObj.getWorldTime(); 
+		return time < 12300 || time > 23850;
 	}
 }

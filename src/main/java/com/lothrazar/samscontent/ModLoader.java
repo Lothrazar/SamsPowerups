@@ -211,9 +211,10 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
      	Object[] handlers = new Object[]
      	{
      		 new HandlerBonemealUse()
+     		,new HandlerPlayerSleep()
      		,new HandlerLivingDrops()
      		,new HandlerTorchCollide()
-     		,new HandlerBucketFill()
+     		,new HandlerBucketFill() 
      		,new HandlerBucketStorage()
       		,new HandlerPlayerHarvest()
      		,new HandlerEnderBookClick()
@@ -235,6 +236,7 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
      	
      	for(Object o : handlers)
      	{
+     		System.out.println(o.getClass().toString());
     		MinecraftForge.EVENT_BUS.register(o);
     		FMLCommonHandler.instance().bus().register(o);
      	}
