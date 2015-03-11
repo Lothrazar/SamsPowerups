@@ -122,36 +122,17 @@ public class ModLoader
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, 0, Side.SERVER);
-     
-		registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
 
-
+		PotionRegistry.registerPotionEffects();
 		
-		
-		Potion[] potionTypes = null;
-		//Potion.potionTypes
-	  //  public static final Potion[] potionTypes = new Potion[32];
-	    for (Field f : Potion.class.getDeclaredFields()) {
-	        f.setAccessible(true);
-	        try {
-	        	// field_76425_a
-	            if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a")) {
-	                Field modfield = Field.class.getDeclaredField("modifiers");
-	                modfield.setAccessible(true);
-	                modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
+		this.registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
 
-	                potionTypes = (Potion[])f.get(null);
-	                final Potion[] newPotionTypes = new Potion[256];
-	               
-	                System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
-	                f.set(null, newPotionTypes);
-	                
-	            }
-	        } catch (Exception e) {
-	            System.err.println("Severe error, please report this to the mod author:");
-	            System.err.println(e);
-	        }
-	    }
+		ItemRegistry.registerItems();
+		
+		BlockRegistry.registerBlocks();
+
+		BlockHardnessRegistry.registerChanges();
+		
 	
 		//.setIconIndex(0, 0);
 		/*//TODO: fluid registry
@@ -166,14 +147,7 @@ public class ModLoader
 		  
 FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new ItemStack(Items.milk_bucket), new ItemStack(Items.bucket));
 */
-	    customPotion = (new PotionTired(40,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
-		
-
-		ItemRegistry.registerItems();
-		
-		BlockRegistry.registerBlocks();
-
-		BlockHardnessRegistry.registerChanges();
+	    
 	}
 	//public static BlockFluidMilk blockMilk;
 	//public Fluid fluidMilk;
