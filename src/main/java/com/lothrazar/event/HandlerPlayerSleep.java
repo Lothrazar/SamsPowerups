@@ -23,6 +23,23 @@ public class HandlerPlayerSleep
 		food.add(Items.cooked_mutton);
 		food.add(Items.cooked_porkchop);
 		food.add(Items.cooked_rabbit);
+		food.add(Items.baked_potato);
+		food.add(Items.beef);
+		food.add(Items.chicken);
+		food.add(Items.cookie);
+		food.add(Items.fish);
+		food.add(Items.golden_apple);
+		food.add(Items.golden_carrot);
+		food.add(Items.mushroom_stew);
+		food.add(Items.rabbit_stew);
+		food.add(Items.melon);
+		food.add(Items.mutton);
+		food.add(Items.porkchop);
+		food.add(Items.potato);
+		food.add(Items.spider_eye);
+		food.add(Items.rotten_flesh);
+		food.add(Items.pumpkin_pie);
+		food.add(Items.rabbit);
 		
 		//TODO: add some from config CSV< include this mods apples
 	}
@@ -32,6 +49,7 @@ public class HandlerPlayerSleep
 		if(event.entity.worldObj.isRemote == false)
 		{  
 			Item item = event.item.getItem();
+			
 			if(food.contains(item))
 			{
 				String iname = item.getUnlocalizedName();

@@ -1,8 +1,12 @@
 package com.lothrazar.samscontent;
 
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList; 
+
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;  
+
 import com.lothrazar.block.*; 
 import com.lothrazar.command.*; 
 import com.lothrazar.event.*; 
@@ -12,6 +16,7 @@ import com.lothrazar.samscontent.proxy.CommonProxy;
 import com.lothrazar.samskeyslider.MessageKeyPressed;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry; 
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFence;
@@ -35,7 +40,9 @@ import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
@@ -81,6 +88,8 @@ public class ModLoader
 	public static SimpleNetworkWrapper network; 
 	public static RuntimeChangelog changelog;
 	
+	public static Potion customPotion;//http://www.minecraftforge.net/wiki/Potion_Tutorial
+	
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
 	{ 
 		@Override
@@ -116,12 +125,35 @@ public class ModLoader
      
 		registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
 
-		ItemRegistry.registerItems();
-		
-		BlockRegistry.registerBlocks();
 
-		BlockHardnessRegistry.registerChanges();
 		
+		
+		Potion[] potionTypes = null;
+		//Potion.potionTypes
+	  //  public static final Potion[] potionTypes = new Potion[32];
+	    for (Field f : Potion.class.getDeclaredFields()) {
+	        f.setAccessible(true);
+	        try {
+	        	// field_76425_a
+	            if (f.getName().equals("potionTypes") || f.getName().equals("field_76425_a")) {
+	                Field modfield = Field.class.getDeclaredField("modifiers");
+	                modfield.setAccessible(true);
+	                modfield.setInt(f, f.getModifiers() & ~Modifier.FINAL);
+
+	                potionTypes = (Potion[])f.get(null);
+	                final Potion[] newPotionTypes = new Potion[256];
+	               
+	                System.arraycopy(potionTypes, 0, newPotionTypes, 0, potionTypes.length);
+	                f.set(null, newPotionTypes);
+	                
+	            }
+	        } catch (Exception e) {
+	            System.err.println("Severe error, please report this to the mod author:");
+	            System.err.println(e);
+	        }
+	    }
+	
+		//.setIconIndex(0, 0);
 		/*//TODO: fluid registry
 		 * Fluid flows in the world and gets placed but is invisible& transparent
 		
@@ -134,12 +166,21 @@ public class ModLoader
 		  
 FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new ItemStack(Items.milk_bucket), new ItemStack(Items.bucket));
 */
+	    customPotion = (new PotionTired(40,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
+		
+
+		ItemRegistry.registerItems();
+		
+		BlockRegistry.registerBlocks();
+
+		BlockHardnessRegistry.registerChanges();
 	}
 	//public static BlockFluidMilk blockMilk;
 	//public Fluid fluidMilk;
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{     
+		
 		CreativeTweaks.registerTabImprovements();
 	
 		MobSpawningRegistry.registerSpawns();

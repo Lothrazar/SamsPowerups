@@ -18,6 +18,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
@@ -166,10 +167,11 @@ public class ItemFoodAppleMagic extends ItemFood
 	}
  
 	public static void initEmerald()
-	{  
+	{   
 		if(!ModLoader.configSettings.appleEmerald) {return;}
 		ItemRegistry.apple_emerald = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, false);
-		ItemRegistry.apple_emerald.addEffect(Reference.potion_absorption, timeShort, V); 
+		ItemRegistry.apple_emerald.addEffect(Potion.absorption.id, timeShort, V); 
+		ItemRegistry.apple_emerald.addEffect(ModLoader.customPotion.id, timeShort, I); 
 		SamsRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_emerald)
 				, "lll","lal","lll"  
