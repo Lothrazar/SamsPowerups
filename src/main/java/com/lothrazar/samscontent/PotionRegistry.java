@@ -21,11 +21,11 @@ public class PotionRegistry
 		
 		ModLoader.potionTired = (new PotionTired(ModLoader.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
 		
-		ModLoader.potionWaterwalk = (new PotionTired(ModLoader.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.tired");
+		ModLoader.potionWaterwalk = (new PotionTired(ModLoader.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		ModLoader.potionSlowfall = (new PotionTired(ModLoader.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.tired");
+		ModLoader.potionSlowfall = (new PotionTired(ModLoader.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		
-		ModLoader.potionFlying = (new PotionTired(ModLoader.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.tired");
+		ModLoader.potionFlying = (new PotionTired(ModLoader.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
 		 
 		
 		
