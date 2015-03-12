@@ -121,7 +121,11 @@ public class ConfigFile
 	public boolean wandHarvest;
 	public boolean wandLivestock;
 	public boolean wandTransform;
-	public boolean wandProspect; 
+	public boolean wandProspect;
+	public int potionIdTired;
+	public int potionIdWaterwalk;
+	public int potionIdSlowfall;
+	public int potionIdFlying; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -146,6 +150,8 @@ public class ConfigFile
 		 builderswand(); 
 		 
 		 wands();
+		 
+		 potions();
   
 		 HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
 	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
@@ -159,6 +165,23 @@ public class ConfigFile
 		//category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
 		if(instance.hasChanged()){ instance.save(); }
+	}
+
+	private void potions() {
+
+		category = "potion_ids";
+		
+		potionIdWaterwalk = instance.getInt("potionIdWaterwalk",category, 40,33,200,
+    			"ID is only exposed to avoid conflicts with other mods");
+		 
+		potionIdTired = instance.getInt("potionIdTired",category, 41,33,200,
+    			"ID is only exposed to avoid conflicts with other mods");
+		  
+		potionIdSlowfall = instance.getInt("potionIdSlowfall",category, 42,33,200,
+    			"ID is only exposed to avoid conflicts with other mods");
+		  
+		potionIdFlying = instance.getInt("potionIdSlowfall",category, 43,33,200,
+    			"ID is only exposed to avoid conflicts with other mods");
 	}
 
 	private void wands() 
