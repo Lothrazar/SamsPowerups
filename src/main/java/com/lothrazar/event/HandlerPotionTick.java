@@ -59,8 +59,7 @@ public class HandlerPotionTick
         	 }  
 	     }
 	     else
-	     {
-	    	 System.out.println("DISABLEflying");
+	     { 
 	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote  )
 	    	 {
 	    		 if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 

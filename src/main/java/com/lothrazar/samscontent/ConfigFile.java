@@ -182,7 +182,7 @@ public class ConfigFile
     			"ID is only exposed to avoid conflicts with other mods");
 		  
 		potionIdFlying = instance.getInt("potionIdFlying",category, 43,33,200,
-    			"ID is only exposed to avoid conflicts with other mods");
+    			"ID is only exposed to avoid conflicts with other mods.  THIS IS INTENDED FOR USE ONLY IN SINGLE PLAYER.");
 		
 		
 		slowfallSpeed = instance.getFloat("slowfallSpeed",category, 0.41F,0.1F,1F,
