@@ -170,8 +170,7 @@ public class ItemFoodAppleMagic extends ItemFood
 	{   
 		if(!ModLoader.configSettings.appleEmerald) {return;}
 		ItemRegistry.apple_emerald = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, false);
-		ItemRegistry.apple_emerald.addEffect(Potion.absorption.id, timeShort, V); 
-		ItemRegistry.apple_emerald.addEffect(ModLoader.potionSlowfall.id, timeShort, I); 
+		ItemRegistry.apple_emerald.addEffect(Potion.absorption.id, timeShort, V);  
 		SamsRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_emerald)
 				, "lll","lal","lll"  

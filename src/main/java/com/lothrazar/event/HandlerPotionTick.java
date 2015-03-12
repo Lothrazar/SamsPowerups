@@ -12,7 +12,7 @@ public class HandlerPotionTick
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{ 
-		 
+		 System.out.println("slowfallid_"+ModLoader.potionSlowfall.id);
 		     if(event.entityLiving.isPotionActive(ModLoader.potionTired)) 
 		     { 
 		    	if(event.entityLiving.worldObj.rand.nextInt(Reference.TICKS_PER_SEC) == 0) //pick out one random tick from each second
@@ -46,19 +46,12 @@ public class HandlerPotionTick
 		     { 
 		    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078
 		    	 //https://github.com/OpenMods/OpenBlocks/blob/bfc6edd31e43982b434bcabcc21081c7e1fa6bc2/src/main/java/openblocks/common/entity/EntityHangGlider.java
-		    	
-		    		//  double horizontalSpeed;
-		    		 
+		    
 		    	 if(event.entityLiving.motionY < 0)
 		    	 {
 		    		 System.out.println("Reduce motion "+event.entityLiving.motionY);
-					 
-					 
-						//horizontalSpeed = 0.03;
-						//verticalSpeed = 0.4;
-					 
-
-						event.entityLiving.motionY *= ModLoader.configSettings.slowfallSpeed;
+					  
+					event.entityLiving.motionY *= ModLoader.configSettings.slowfallSpeed;
 					  
 					event.entityLiving.fallDistance = 0f; //for no fall damage
 		    	 }
