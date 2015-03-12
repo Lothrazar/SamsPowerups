@@ -14,10 +14,40 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.item.ItemExpireEvent;
 import net.minecraftforge.event.entity.player.PlayerDropsEvent;
+import net.minecraftforge.event.terraingen.SaplingGrowTreeEvent;
+import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HandlerAutoPlantExpire
 { 
+	
+	@SubscribeEvent
+	public void onSaplingGrowTreeEvent(SaplingGrowTreeEvent event)
+	{
+		System.out.println("SaplingGrowTreeEvent "+event.hasResult());
+
+		System.out.println("b    "+event.world.getBiomeGenForCoords(event.pos).biomeName
+				+"   "+event.isCancelable());
+		
+		event.setResult(Result.DENY);
+		
+		Block b = event.world.getBlockState(event.pos).getBlock();
+		
+		if(b == Blocks.sapling)
+		{
+			int meta = Blocks.sapling.getMetaFromState(event.world.getBlockState(event.pos));
+
+			int biomeID = event.world.getBiomeGenForCoords(event.pos).biomeID;
+			
+			System.out.println("GROW "+ b.getUnlocalizedName()+"   META   "+meta + " " 	+"   "+event.isCancelable());
+			
+			
+			
+			
+			
+		}
+	}
+	
 	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent event)
 	{ 
