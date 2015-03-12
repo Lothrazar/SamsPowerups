@@ -84,11 +84,19 @@ public class FurnaceFuel    implements IFuelHandler
 		{
 			return FurnaceBurnTime.Sticks;
 		} 
-
+		if(fuel.getItem().equals(Items.arrow))
+		{
+			return FurnaceBurnTime.Sticks;
+		} 
+		if(fuel.getItem().equals(Items.bow))
+		{
+			return FurnaceBurnTime.Sticks;
+		}  
 		if(fuel.getItem().equals(Items.paper))
 		{
 			return FurnaceBurnTime.Sticks;
 		}
+		
 		return 0;
 	}	
 	
