@@ -77,11 +77,11 @@ public class ItemFoodAppleMagic extends ItemFood
   		} 
   		else if(MagicType.Flying == this.type) 
   		{  
-
+/*
   			PlayerPowerups props = PlayerPowerups.get(par3EntityPlayer);
 
   			props.incrementCurrentFly(FLYING_COUNT_PER_EAT);
-  		 
+  */		 
   			//SamsUtilities.incrementPlayerIntegerNBT(par3EntityPlayer, Reference.MODID + MagicType.Flying.toString(),FLYING_COUNT_PER_EAT);
   		}
   		else if(MagicType.Hearts == this.type)

@@ -40,23 +40,38 @@ public class HandlerPotionTick
 	    	  } 
          } 
 	      
+	    
 	     if(event.entityLiving.isPotionActive(ModLoader.potionFlying)) 
 	     { 
-	    	 if(event.entityLiving instanceof EntityPlayer)
-        	 {
+	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote)
+        	 { 
 	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
 	    		 
-        		 if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
-        				Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
-				 { 
+        		// if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
+        		//	 Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
+				// { 
 				 	 player.capabilities.allowFlying = true;
+				 	//Minecraft.getMinecraft().thePlayer.capabilities.allowFlying=true;
 	 
 					 if (player.capabilities.isFlying)
 					 { 
 						 player.fallDistance = 0F;
 					 }
-				 } 
+				// } 
         	 }  
+	     }
+	     else
+	     {
+	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote  )
+	    	 {
+	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
+
+	    		 if (player.capabilities.isFlying)
+				 { 
+					 player.fallDistance = 0F;
+				 	 player.capabilities.allowFlying = false;//when it times out, OR milk hits
+				 }
+	    	 }
 	     }
 	  
 	     if(event.entityLiving.isPotionActive(ModLoader.potionSlowfall)) 

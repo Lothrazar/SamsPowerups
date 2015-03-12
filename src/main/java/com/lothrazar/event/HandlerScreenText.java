@@ -75,9 +75,10 @@ public class HandlerScreenText
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		
 		PlayerPowerups props = PlayerPowerups.get(player); 
+		/*
 		int countAppleTicks = props.getCurrentFly();
 		if(countAppleTicks > 0){event.left.add("Can Fly");}
-		
+		*/
 		
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
   

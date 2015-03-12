@@ -100,7 +100,7 @@ public class HandlerPlayerTickApplesEaten
 		else //isRemote == true //tickFlying if used in isRemote==false will not work at all
 		{ 	   
 			//client side
-			tickFlying(event.player);  //affects game modes 0,2 (survival,adventure) 
+			//tickFlying(event.player);  //affects game modes 0,2 (survival,adventure) 
 		}   
 	}
 
@@ -116,7 +116,7 @@ public class HandlerPlayerTickApplesEaten
 
 		
 		//whenever we eat a nether apple, we are given a bunch of 'flying  ticks' that add up
-		int countAppleTicks = props.getCurrentFly();
+		int countAppleTicks = 0;//props.getCurrentFly();
  
 		//SamsUtilities.getPlayerIntegerNBT(player, Reference.MODID + MagicType.Flying.toString());
  
