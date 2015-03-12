@@ -229,6 +229,7 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
      	Object[] handlers = new Object[]
      	{
      		 new HandlerBonemealUse()
+     		,new HandlerPotionTick()
      		,new HandlerPlayerSleep()
      		,new HandlerLivingDrops()
      		,new HandlerTorchCollide()
