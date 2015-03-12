@@ -228,7 +228,9 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
     	//they are just Objects, because i have not yet found a reason to add an interface/superclass 
      	Object[] handlers = new Object[]
      	{
+     		//TODO: dont put every one in every bus, make three lists one day. WARNING that will cause bugs
      		 new HandlerBonemealUse()
+      		,new HandlerAutoPlantExpire()//this is only one needs terrain gen buff, plus one of the regular ones
      		,new HandlerPotionTick()
      		,new HandlerPlayerSleep()
      		,new HandlerLivingDrops()
@@ -249,14 +251,15 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
        		,new HandlerPlayerTickApplesEaten()
         	,new HandlerPlayerFallTheEnd()
       		,new HandlerSwiftDeposit()
-     		,new HandlerAutoPlantExpire()
      		,instance
      	};
      	
      	for(Object o : handlers)
      	{ 
     		MinecraftForge.EVENT_BUS.register(o);
-    		FMLCommonHandler.instance().bus().register(o);
+    		MinecraftForge.TERRAIN_GEN_BUS.register(o);
+    		MinecraftForge.ORE_GEN_BUS.register(o); 
+    		FMLCommonHandler.instance().bus().register(o); 
      	}
 	}
 }

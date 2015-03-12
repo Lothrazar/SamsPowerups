@@ -24,12 +24,13 @@ public class HandlerAutoPlantExpire
 	@SubscribeEvent
 	public void onSaplingGrowTreeEvent(SaplingGrowTreeEvent event)
 	{
-		System.out.println("SaplingGrowTreeEvent "+event.hasResult());
+		System.out.println("SaplingGrowTreeEvent ");
+		System.out.println(event.hasResult());
 
 		System.out.println("b    "+event.world.getBiomeGenForCoords(event.pos).biomeName
 				+"   "+event.isCancelable());
 		
-		event.setResult(Result.DENY);
+		//event.setResult(Result.DENY);
 		
 		Block b = event.world.getBlockState(event.pos).getBlock();
 		
@@ -51,6 +52,8 @@ public class HandlerAutoPlantExpire
 	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent event)
 	{ 
+		System.out.println("onItemExpireEvent " );
+		
 		 if(ModLoader.configSettings.plantDespawningSaplings == false) {return;}
 		 
 		 ItemStack is = event.entityItem.getEntityItem();
