@@ -3,9 +3,11 @@ package com.lothrazar.event;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -37,13 +39,26 @@ public class HandlerPotionTick
 	        	 } 
 	    	  } 
          } 
+	      
 	     if(event.entityLiving.isPotionActive(ModLoader.potionFlying)) 
 	     { 
-	    	 //TODO: importthe existing flying feature
-	    	 
-	    	 
-	    	 
+	    	 if(event.entityLiving instanceof EntityPlayer)
+        	 {
+	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
+	    		 
+        		 if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
+        				Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
+				 { 
+				 	 player.capabilities.allowFlying = true;
+	 
+					 if (player.capabilities.isFlying)
+					 { 
+						 player.fallDistance = 0F;
+					 }
+				 } 
+        	 }  
 	     }
+	  
 	     if(event.entityLiving.isPotionActive(ModLoader.potionSlowfall)) 
 	     { 
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078

@@ -254,8 +254,7 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
      	};
      	
      	for(Object o : handlers)
-     	{
-     		System.out.println(o.getClass().toString());
+     	{ 
     		MinecraftForge.EVENT_BUS.register(o);
     		FMLCommonHandler.instance().bus().register(o);
      	}
