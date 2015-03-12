@@ -47,9 +47,7 @@ public class HandlerPotionTick
         	 { 
 	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
 	    		 
-        		// if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
-        		//	 Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
-				// { 
+        		
 				 	 player.capabilities.allowFlying = true;
 				 	//Minecraft.getMinecraft().thePlayer.capabilities.allowFlying=true;
 	 
@@ -62,14 +60,20 @@ public class HandlerPotionTick
 	     }
 	     else
 	     {
+	    	 System.out.println("DISABLEflying");
 	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote  )
 	    	 {
-	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
-
-	    		 if (player.capabilities.isFlying)
+	    		 if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
+	        		 Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
 				 { 
-					 player.fallDistance = 0F;
-				 	 player.capabilities.allowFlying = false;//when it times out, OR milk hits
+		    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
+	
+		    		 if (player.capabilities.isFlying)
+					 { 
+						 player.fallDistance = 0F;
+					 	 player.capabilities.allowFlying = false;//when it times out, OR milk hits
+					 	 player.capabilities.isFlying = false;
+					 }
 				 }
 	    	 }
 	     }
