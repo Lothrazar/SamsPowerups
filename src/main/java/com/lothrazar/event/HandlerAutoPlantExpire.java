@@ -50,15 +50,20 @@ public class HandlerAutoPlantExpire
 			
 			System.out.println(biome.biomeName + " tree_type   "+tree_type  );
 			
+			//IDS: http://www.minecraftforum.net/forums/minecraft-discussion/recent-updates-and-snapshots/381405-full-list-of-biome-ids-as-of-13w36b
+			//as of 12 march 2015, it seems biome id 168 does not exist, so 167 is highest used (vanilla minecraft)
 			switch(tree_type)
 			{
 			case Reference.sapling_acacia:
 				
-				treeAllowedToGrow = (biome == BiomeGenBase.mesa)  || 
-					(biome == BiomeGenBase.savanna) ||
+				treeAllowedToGrow = (biome == BiomeGenBase.savanna) ||
 					(biome == BiomeGenBase.savannaPlateau) || 
-					(biome == BiomeGenBase.mesaPlateau) || 
-					(biome == BiomeGenBase.mesaPlateau_F);
+					(biome == BiomeGenBase.getBiome(163)) || // Savanna M
+					(biome == BiomeGenBase.getBiome(164)) || // Savanna Plateau M
+					(biome == BiomeGenBase.mesaPlateau_F)
+					//(biome == BiomeGenBase.mesaPlateau) || 
+					//(biome == BiomeGenBase.mesa) || 
+					;
 		
 				break;
 			case Reference.sapling_spruce:
@@ -66,7 +71,8 @@ public class HandlerAutoPlantExpire
 				treeAllowedToGrow = (biome == BiomeGenBase.taiga) ||
 					(biome == BiomeGenBase.taigaHills) ||
 					(biome == BiomeGenBase.megaTaiga) ||
-					(biome == BiomeGenBase.getBiome(160)) ||//megasprucetaiga?
+					(biome == BiomeGenBase.getBiome(160)) ||//megasprucetaiga
+					(biome == BiomeGenBase.getBiome(161)) ||//megasprucetaiga M
 					(biome == BiomeGenBase.megaTaigaHills) || 
 					(biome == BiomeGenBase.coldTaiga) ||
 					(biome == BiomeGenBase.coldTaigaHills) || 
@@ -83,6 +89,9 @@ public class HandlerAutoPlantExpire
 				treeAllowedToGrow = (biome == BiomeGenBase.forest) ||
 					(biome == BiomeGenBase.forestHills) ||
 					(biome == BiomeGenBase.getBiome(132)) ||//Flower Forest
+					(biome == BiomeGenBase.mesaPlateau) || //the only mesa with oak trees, not others
+					(biome == BiomeGenBase.getBiome(166)) ||//mesa plateau F M 
+					(biome == BiomeGenBase.getBiome(167)) ||//mesa plateau M 
 					(biome == BiomeGenBase.jungle) ||
 					(biome == BiomeGenBase.jungleEdge) ||
 					(biome == BiomeGenBase.getBiome(151)) ||//jungle edge M
@@ -134,9 +143,17 @@ public class HandlerAutoPlantExpire
 				//mooshroom island shore (15)
 				//desert (2)
 				//desert M (130)
-				//
+				//mesa (37)
+				// mesa bryce (165)
+				// plateaus (36 38 39)
 				
 			}
+			
+			//TODO: can we prevent cactus growth
+			//TODO: can we prevent reeds growth
+			//TODO: can we prevent vine growth
+			//TODO: can we increase vine growth on swampland trees
+			//TODO: can we generate mushroom/flower/lilypad growth
 			 
 			if(treeAllowedToGrow == false)
 			{

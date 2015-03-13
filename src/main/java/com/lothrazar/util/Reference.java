@@ -435,4 +435,122 @@ I DID NOT INCLUDE HORSE (TOO MANY SOUNDS) (149) :SSSS:
 -------------------------------------------------
 172 - tile.piston.in
 173 - tile.piston.out*/
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//BIOMES
+	
+	/*
+PASTEBIN  |  #1 paste tool since 2002
+create new pastetoolsapiarchivefaq
+PASTEBIN	 Search...
+ create new paste      trending pastes
+sign uploginmy alertsmy settingsmy profile
+Want more features on Pastebin? Sign Up, it's FREE!
+Public Pastes
+Untitled
+9 sec ago
+Untitled
+9 sec ago
+making out
+9 sec ago
+4
+16 sec ago
+Untitled
+13 sec ago
+Untitled
+20 sec ago
+Untitled
+37 sec ago
+Untitled
+41 sec ago
+
+0
+0
+Guest
+Biome List as of 13w36b
+BY: A GUEST ON SEP 7TH, 2013  |  SYNTAX: NONE  |  SIZE: 0.98 KB  |  VIEWS: 1,158  |  EXPIRES: NEVER
+DOWNLOAD  |  RAW  |  EMBED  |  REPORT ABUSE  |  PRINT
+
+    
+0       Ocean
+1       Plains
+2       Desert
+3       Extreme Hills
+4       Forest
+5       Taiga
+6       Swampland
+7       River
+8       Hell
+9       Sky
+10      Frozen Ocean
+11      Frozen River
+12      Ice Plains
+13      Ice Mountains
+14      Mushroom Island
+15      Mushroom Island Shore
+16      Beach
+17      Desert Hills
+18      Forest Hills
+19      Tiaga Hills
+20      Extreme Hills Edge
+21      Jungle
+22      Jungle Hills
+23      Jungle Edge
+24      Deep Ocean
+25      Stone Beach
+26      Cold Beach
+27      Birch Forest
+28      Birch Forest Hills
+29      Roofed Forest
+30      Cold Tiaga
+31      Cold Tiaga Hills
+32      Mega Tiaga
+33      Mega Tiaga Hills
+34      Extreme Hills+
+35      Savanna
+36      Savanna Plateau
+37      Mesa
+38      Mesa Plateau F
+39      Mesa Plateau
+129     Sunflower Plains
+130     Desert M
+131     Extreme Hills M
+132     Flower Forest
+133     Tiaga M
+134     Swampland M
+140     Ice Plains Spikes
+149     Jungle M
+155     Birch Forest M
+156     Birch Forest Hills M
+157     Roofed Forest M
+158     Cold Tiaga M
+160     Mega Spruce Tiaga
+161     Mega Spruce Tiaga
+162     Extreme Hills+ M
+163     Savanna M
+164     Savanna Plateau M
+165     Mesa (Bryce)
+166     Mesa Plateau F M
+167     Mesa Plateau M
+clone this paste RAW Paste Data
+
+
+Pastebin.com Tools & Applications
+iPhone/iPad  Windows  Firefox  Chrome  WebOS  Android  Mac  Opera  Click.to  UNIX  WinPhone
+create new paste  |  api  |  trends  |  syntax languages  |  faq  |  tools  |  privacy  |  cookies  |  contact  |  dmca  |  advertise on pastebin  |  go pro 
+Follow us: pastebin on facebook  |  pastebin on twitter  |  pastebin in the news 
+Dedicated Server Hosting by Steadfast
+Pastebin v3.11 rendered in: 0.022 seconds  
+//  SOURCE
+12 mar 2015
+//http://pastebin.com/NHPpAsF8
+ http://www.minecraftforum.net/forums/minecraft-discussion/recent-updates-and-snapshots/381405-full-list-of-biome-ids-as-of-13w36b
+*/
 }//ends class reference
