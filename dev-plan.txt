@@ -16,7 +16,7 @@
  //[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
 //TODO: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
 //TODO: find a way that you need food variety to live.
-//TODO: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
+//[march12]: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
 //TODO: add beetroot.six beetroot like a sign above a bowl -> one bt soup. fills //1 beetroot gives one rose red. it breeds pigs and gets follow like carrot  
         ///referencefood https://bitbucket.org/Zuxelus/usefulfood/src/f74eea7793c5a95e8ecf4d7344f3e5182884942c/main/java/mods/usefulfood/?at=master
         //beetroots can be eaten to restore 1 (Half Heart.svg) health.//soup restores (8)?? seeds from tilling grass 1/15 chance

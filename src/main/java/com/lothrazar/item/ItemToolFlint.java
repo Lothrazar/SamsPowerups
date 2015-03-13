@@ -36,7 +36,8 @@ public class ItemToolFlint extends ItemTool
 		
 		Set harvests = new HashSet<Block>();
 		harvests.add(Blocks.leaves);
-		harvests.add(Blocks.leaves2);
+		harvests.add(Blocks.leaves2); 
+		harvests.add(Blocks.grass); 
 		ItemRegistry.flintTool = new ItemToolFlint(1,ToolMaterial.EMERALD, harvests);
  
 		SamsRegistry.registerItem(ItemRegistry.flintTool, "flint_tool");
