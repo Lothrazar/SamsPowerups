@@ -3,9 +3,9 @@ package com.lothrazar.samscontent;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
 
-public class PotionTired extends Potion
+public class PotionCustom extends Potion
 { 
-	protected PotionTired(int potionID, ResourceLocation location,	boolean badEffect, int potionColor) 
+	protected PotionCustom(int potionID, ResourceLocation location,	boolean badEffect, int potionColor) 
 	{
 		super(potionID, location, badEffect, potionColor); 
 	}
