@@ -26,10 +26,12 @@ public class ItemRegistry
 	public static ItemWandFire wandFire;
 	public static ItemWandCopyPaste wandCopy;
 	public static ItemBaseWand baseWand;
+	public static ItemToolFlint flintTool;
 	 
 	public static void registerItems()
 	{
 		ItemBaseWand.Init();
+		ItemToolFlint.init();
 		ItemWandFire.init();
 		ItemWandCopyPaste.init();
 		
