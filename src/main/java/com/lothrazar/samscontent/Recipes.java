@@ -69,21 +69,31 @@ public class Recipes
 	    }
 	}
 	
+	public static void netherwartPurple()
+	{
+		if(!ModLoader.configSettings.netherwartPurpleDye)  {return;}
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,2,Reference.dye_purple)
+			,Items.nether_wart
+			,new ItemStack(Items.dye,1,Reference.dye_bonemeal));
+		
+		ModLoader.changelog.log("Recipe: Purple Dye Netherwart");
+	}
 
 	public static void gravelToClay()
 	{
 		if(!ModLoader.configSettings.gravelToClay)  {return;}
 
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.clay, 4)
-				 ,Items.water_bucket
-				 ,Blocks.gravel
-				 ,Blocks.gravel
-				 ,Blocks.gravel
-				 ,Blocks.gravel
-				 ,Blocks.dirt
-				 ,Blocks.dirt
-				 ,Blocks.dirt
-				 ,Blocks.dirt);
+			 ,Items.water_bucket
+			 ,Blocks.gravel
+			 ,Blocks.gravel
+			 ,Blocks.gravel
+			 ,Blocks.gravel
+			 ,Blocks.dirt
+			 ,Blocks.dirt
+			 ,Blocks.dirt
+			 ,Blocks.dirt);
 	}
 	
 	
@@ -99,6 +109,7 @@ public class Recipes
 				"mm",
 				"mm",
 				'm', Blocks.brown_mushroom);
+		 
 		
 	//	http://minecraft.gamepedia.com/Mushroom_%28block%29#Block_state
 		/*
@@ -1030,6 +1041,8 @@ public class Recipes
 	}
 	public static void registerRecipes() 
 	{ 
+		Recipes.netherwartPurple();
+		
 		Recipes.bookNoLeather(); 
 		  
 		Recipes.mushroomBlocks(); 

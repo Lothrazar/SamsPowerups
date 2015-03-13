@@ -9,5 +9,6 @@ public class RuntimeChangelog
 	public void log(String change)
 	{
 		lines.add(change);
+		System.out.println(change);
 	}
 }

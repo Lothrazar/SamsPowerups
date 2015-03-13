@@ -125,7 +125,8 @@ public class ConfigFile
 	public int potionIdFlying;
 	public float slowfallSpeed;
 	public boolean flintTool;
-	public int potionIdLavawalk; 
+	public int potionIdLavawalk;
+	public boolean netherwartPurpleDye; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -436,9 +437,13 @@ public class ConfigFile
 	private void crafting() 
 	{
 		category = "morecrafting";
+		
 		gravelToClay = instance.getBoolean( "gravelToClay",category,true,
 				"Since clay in oceans has been replaced by pure gravel, this recipe lets you turn 4 clay, 4 dirt, and one bucket worth of water into Clay Blocks");
- 
+		
+		netherwartPurpleDye = instance.getBoolean( "netherwartPurpleDye",category,true,
+				"Craft bonemeal and netherwart into purple dye.");
+		
 		simpleDispenser = instance.getBoolean( "simpleDispenser",category,true,
 				"Craft a dispenser with string in the center instead of a bow.  (Since string is stackable, this makes crafting tons of them much faster and cheaper).");
 		 
