@@ -4,6 +4,7 @@ import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.PotionRegistry;
 import com.lothrazar.util.Reference;
 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -17,7 +18,109 @@ public class HandlerPotionTick
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
-	     if(event.entityLiving.isPotionActive(PotionRegistry.potionTired)) 
+	     tickTired(event); 
+	        
+	     tickFlying(event);
+	  
+	     tickSlowfall(event);
+	     
+	     tickWaterwalk(event);
+	     
+	     tickLavawalk(event);
+  
+         /*//TODO: do we even need this
+         if (event.entityLiving.getActivePotionEffect(ModLoader.potionSlowfall).getDuration() == 0) 
+         {
+                 event.entityLiving.removePotionEffect(ModLoader.potionSlowfall.id);
+                 return;
+         }
+         */
+	}
+
+	private void tickLavawalk(LivingUpdateEvent event) 
+	{
+		if(event.entityLiving.isPotionActive(PotionRegistry.potionLavawalk)) 
+	    {
+			tickLiquidWalk(event,Blocks.lava);
+	    }
+	}
+
+	private void tickWaterwalk(LivingUpdateEvent event) 
+	{
+		if(event.entityLiving.isPotionActive(PotionRegistry.potionWaterwalk)) 
+	    {
+			tickLiquidWalk(event,Blocks.water);
+	    }
+	}
+ 
+	private void tickLiquidWalk(LivingUpdateEvent event, Block liquid)
+	{
+		//TODO: forge fluid dictionary? one potion effect for all liquid maybe?
+    	 World world = event.entityLiving.worldObj;
+    	 
+    	 if(world.getBlockState(event.entityLiving.getPosition().down()).getBlock() == liquid && 
+    			 world.isAirBlock(event.entityLiving.getPosition()) && 
+    			 event.entityLiving.motionY < 0)
+    	 {
+    		 event.entityLiving.motionY  = 0;//stop falling
+    		 event.entityLiving.onGround = true; //act as if on solid ground
+    		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
+    	 }  
+	}
+	
+	private void tickSlowfall(LivingUpdateEvent event) 
+	{
+		 if(event.entityLiving.isPotionActive(PotionRegistry.potionSlowfall)) 
+	     { 
+	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
+	    	 if(event.entityLiving.motionY < 0)
+	    	 { 
+				event.entityLiving.motionY *= ModLoader.configSettings.slowfallSpeed;
+				  
+				event.entityLiving.fallDistance = 0f; //for no fall damage
+	    	 } 
+	     }
+	}
+
+	private void tickFlying(LivingUpdateEvent event) 
+	{
+		 if(event.entityLiving.isPotionActive(PotionRegistry.potionFlying)) 
+	     { 
+	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote)
+        	 { 
+	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
+	    		  
+			 	 player.capabilities.allowFlying = true; 
+			 	 
+				 if (player.capabilities.isFlying)
+				 { 
+					 player.fallDistance = 0F;
+				 } 
+        	 }  
+	     }
+	     else
+	     { 
+	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote  )
+	    	 {
+	    		 if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
+	        		 Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
+				 { 
+		    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
+	
+		    		 if (player.capabilities.isFlying)
+					 { 
+						 player.fallDistance = 0F;
+					 	 player.capabilities.allowFlying = false;//when it times out, OR milk hits
+					 	 player.capabilities.isFlying = false;
+					 }
+				 }
+	    	 }
+	     }
+	}
+
+	private void tickTired(LivingUpdateEvent event) 
+	{
+		 if(event.entityLiving.isPotionActive(PotionRegistry.potionTired)) 
 	     { 
 	    	 if(event.entityLiving.worldObj.rand.nextInt(Reference.TICKS_PER_SEC) == 0) //pick out one random tick from each second
 	    	 {
@@ -39,89 +142,6 @@ public class HandlerPotionTick
 	        		 }
 	        	 } 
 	    	  } 
-         } 
-	        
-	     if(event.entityLiving.isPotionActive(PotionRegistry.potionFlying)) 
-	     { 
-	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote)
-        	 { 
-	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
-	    		 
-        		
-				 	 player.capabilities.allowFlying = true;
-				 	//Minecraft.getMinecraft().thePlayer.capabilities.allowFlying=true;
-	 
-					 if (player.capabilities.isFlying)
-					 { 
-						 player.fallDistance = 0F;
-					 }
-				// } 
-        	 }  
-	     }
-	     else
-	     { 
-	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote  )
-	    	 {
-	    		 if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
-	        		 Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
-				 { 
-		    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
-	
-		    		 if (player.capabilities.isFlying)
-					 { 
-						 player.fallDistance = 0F;
-					 	 player.capabilities.allowFlying = false;//when it times out, OR milk hits
-					 	 player.capabilities.isFlying = false;
-					 }
-				 }
-	    	 }
-	     }
-	  
-	     if(event.entityLiving.isPotionActive(PotionRegistry.potionSlowfall)) 
-	     { 
-	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078
-	    	 //https://github.com/OpenMods/OpenBlocks/blob/bfc6edd31e43982b434bcabcc21081c7e1fa6bc2/src/main/java/openblocks/common/entity/EntityHangGlider.java
-	    
-	    	 if(event.entityLiving.motionY < 0)
-	    	 { 
-				event.entityLiving.motionY *= ModLoader.configSettings.slowfallSpeed;
-				  
-				event.entityLiving.fallDistance = 0f; //for no fall damage
-	    	 } 
-	     }
-	     if(event.entityLiving.isPotionActive(PotionRegistry.potionWaterwalk)) 
-	     { 
-	    	 World world = event.entityLiving.worldObj;
-	    	 
-	    	 if(world.getBlockState(event.entityLiving.getPosition().down()).getBlock() == Blocks.water && 
-	    			 world.isAirBlock(event.entityLiving.getPosition()) && 
-	    			 event.entityLiving.motionY < 0)
-	    	 {
-	    		 event.entityLiving.motionY  = 0;//stop falling
-	    		 event.entityLiving.onGround = true; //act as if on solid ground
-	    		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
-	    	 }  
-	     }
-	     if(event.entityLiving.isPotionActive(PotionRegistry.potionLavawalk))//literally a copypaste of waterwalk 
-	     { 
-	    	 World world = event.entityLiving.worldObj;
-	    	 
-	    	 if(world.getBlockState(event.entityLiving.getPosition().down()).getBlock() == Blocks.lava && 
-	    			 world.isAirBlock(event.entityLiving.getPosition()) && 
-	    			 event.entityLiving.motionY < 0)
-	    	 {
-	    		 event.entityLiving.motionY  = 0;//stop falling
-	    		 event.entityLiving.onGround = true; //act as if on solid ground
-	    		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
-	    	 }  
-	     }
-  
-         /*//TODO: do we even need this
-         if (event.entityLiving.getActivePotionEffect(ModLoader.potionSlowfall).getDuration() == 0) 
-         {
-                 event.entityLiving.removePotionEffect(ModLoader.potionSlowfall.id);
-                 return;
          }
-         */
 	}
 }
