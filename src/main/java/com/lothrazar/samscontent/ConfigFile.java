@@ -126,7 +126,8 @@ public class ConfigFile
 	public int potionIdWaterwalk;
 	public int potionIdSlowfall;
 	public int potionIdFlying;
-	public float slowfallSpeed; 
+	public float slowfallSpeed;
+	public boolean flintTool; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -384,7 +385,10 @@ public class ConfigFile
 	private void new_blocks_items() 
 	{
 		category = "new_blocks_items";
-
+		
+		flintTool = instance.getBoolean( "flintTool",category,true,
+				"Flint Tool: Harvest leaves the same speed as shears, the difference is you get normal drops instead of leaf blocks.  " );  
+		
 		appleChocolate = instance.getBoolean( "appleChocolate",category,true,
 			"An apple surrounded by either chocolate or cookies gives a short buff of Haste when eaten.  " );  
 		

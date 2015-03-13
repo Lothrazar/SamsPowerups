@@ -29,7 +29,7 @@ public class ItemToolFlint extends ItemTool
 	}
 	public static void init()
 	{
-		//TODO: inconfig
+		if(ModLoader.configSettings.flintTool == false) {return;} 
 		//TODO: redo texture higher res
 		
 		//its like shears for leaves in the speed it goes, but does not give leaf blocks
