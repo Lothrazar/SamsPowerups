@@ -30,7 +30,14 @@ public class ItemToolFlint extends ItemTool
 	public static void init()
 	{
 		//TODO: inconfig
-		ItemRegistry.flintTool = new ItemToolFlint(1,ToolMaterial.WOOD,new HashSet<Block>());
+		//TODO: redo texture higher res
+		
+		//its like shears for leaves in the speed it goes, but does not give leaf blocks
+		
+		Set harvests = new HashSet<Block>();
+		harvests.add(Blocks.leaves);
+		harvests.add(Blocks.leaves2);
+		ItemRegistry.flintTool = new ItemToolFlint(1,ToolMaterial.EMERALD, harvests);
  
 		SamsRegistry.registerItem(ItemRegistry.flintTool, "flint_tool");
 
