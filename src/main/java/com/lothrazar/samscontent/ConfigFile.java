@@ -27,8 +27,7 @@ public class ConfigFile
 	//to go between main and sub levels nested in the json style cfg file
 	private static String LevelSep = ".";
 	String category = "";
-	
-	//public boolean moreFutureTrades = true; 
+	 
 	public boolean swiftDeposit;
 	public boolean smartEnderchest;
 	public boolean increasedStackSizes;
@@ -36,11 +35,9 @@ public class ConfigFile
 	public boolean skullSignNames; 
 	public boolean craftableTransmuteRecords;    
 	public boolean craftableBonemealColouredWool;   
-	public boolean craftBooksWithoutLeather;
-	//public boolean craftableMobHeads;
+	public boolean craftBooksWithoutLeather; 
 	public boolean betterBonemeal;
-	public boolean decorativeBlocks; 
- 
+	public boolean decorativeBlocks;  
 	public boolean uncraftGeneral; 
 	public boolean fishingNetBlock;
 	public boolean xRayBlock; 
@@ -155,7 +152,9 @@ public class ConfigFile
 		 wands();
 		 
 		 potions();
-  
+		 
+		category = "tweaks";//these are the misc. changes i made that have no clear category yet
+			
 		 HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
 	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
 			 
@@ -164,24 +163,22 @@ public class ConfigFile
  
 		 petNametagChat  = instance.getBoolean("nametagDeathMessages",category, true,
 	    			"Non player entities that are named with a Name Tag send a chat death message when they die.");
-		 
-		//category = "tweaks";//these are the misc. changes i made that have no clear category yet
-		
+		  
 		if(instance.hasChanged()){ instance.save(); }
 	}
 
-	private void potions() {
-
-		category = "potion_ids";
+	private void potions() 
+	{ 
+		category = "potions";
 		
 		potionIdWaterwalk = instance.getInt("potionIdWaterwalk",category, 40,33,200,
-    			"ID is only exposed to avoid conflicts with other mods");
+    			"ID is only exposed to avoid conflicts with other mods.");
 		 
 		potionIdTired = instance.getInt("potionIdTired",category, 41,33,200,
-    			"ID is only exposed to avoid conflicts with other mods");
+    			"ID is only exposed to avoid conflicts with other mods.");
 		  
 		potionIdSlowfall = instance.getInt("potionIdSlowfall",category, 42,33,200,
-    			"ID is only exposed to avoid conflicts with other mods");
+    			"ID is only exposed to avoid conflicts with other mods.");
 		  
 		potionIdFlying = instance.getInt("potionIdFlying",category, 43,33,200,
     			"ID is only exposed to avoid conflicts with other mods.  THIS IS INTENDED FOR USE ONLY IN SINGLE PLAYER.");
@@ -191,12 +188,11 @@ public class ConfigFile
 		
 		
 		slowfallSpeed = instance.getFloat("slowfallSpeed",category, 0.41F,0.1F,1F,
-    			"ID is only exposed to avoid conflicts with other mods");
+    			"ID is only exposed to avoid conflicts with other mods.");
 	}
 
 	private void wands() 
-	{
-
+	{ 
 		wandFire = instance.getBoolean("wandFire",category, true,
     			" .");
 		wandChest = instance.getBoolean("wandChest",category, true,
@@ -210,8 +206,7 @@ public class ConfigFile
 		wandTransform = instance.getBoolean("wandTransform",category, true,
     			" .");
 		wandProspect = instance.getBoolean("wandProspect",category, true,
-    			" ."); 
-		
+    			" .");  
 	}
 
 	private void convenience() 
@@ -238,12 +233,10 @@ public class ConfigFile
 		
 		dropPlayerSkullOnDeath = instance.getBoolean("dropPlayerSkullOnDeath",category, true,
     			"Players will drop their skull when they die.");
- 		
-		//numbers are Default, Min, Max
-		chanceReturnEnderPearl = instance.getInt("noDamageEnderPearl",category, 50,0,100,
+ 		 
+		chanceReturnEnderPearl = instance.getInt("noDamageEnderPearl",category, 50,0,100,//numbers are Default, Min, Max
     			"No damage taken from an ender pearl throw");
-				
-				
+				 
 		noDamageEnderPearl = instance.getBoolean("noDamageEnderPearl",category, true,
     			"No damage taken from an ender pearl throw");
 
@@ -277,8 +270,7 @@ public class ConfigFile
 	private void toolChanges() 
 	{
 		category = "tools_armor";
-		
-
+		 
 		 obsidianHardness  = instance.getInt("obsidianHardness",category, 10,1,50,
 	    			"Hardness level of Obsidian (vanilla is 50).");
 
@@ -316,8 +308,10 @@ public class ConfigFile
 	private void spawning() 
 	{
 		category = "spawning";
+		
 		removeZombieCarrotPotato = instance.getBoolean("removeZombieCarrotPotato",category, true,
     			"Disable these zombie drops."); 
+		
 		spawnBlazeDesertHills = instance.getBoolean("spawn.BlazeDesertHills",category, true,
     			"Blazes spawn naturally in Desert Hills."); 
     		
@@ -437,12 +431,6 @@ public class ConfigFile
 		
 		gameruleBlockMobgrief = instance.getBoolean( "gameruleBlock.Mobgrief",category,true,
 				"Craft blocks that toggle '/gamerule doMobGriefing' on redstone signal.  (Can never be opened or edited like a regular command block).");
-	
-	
-		//TODO: config for each wand
-	
-	
-	
 	}
 	
 	private void crafting() 
@@ -450,11 +438,7 @@ public class ConfigFile
 		category = "morecrafting";
 		gravelToClay = instance.getBoolean( "gravelToClay",category,true,
 				"Since clay in oceans has been replaced by pure gravel, this recipe lets you turn 4 clay, 4 dirt, and one bucket worth of water into Clay Blocks");
-		 
-		/*
-		craftObsidian = instance.getBoolean( "craftObsidian",category,true,
-				"Create obsidian with lava bucket and ice.  Create a lava bucket with obsidian, a fire charge, and an empty bucket.");
-	 */
+ 
 		simpleDispenser = instance.getBoolean( "simpleDispenser",category,true,
 				"Craft a dispenser with string in the center instead of a bow.  (Since string is stackable, this makes crafting tons of them much faster and cheaper).");
 		 
@@ -463,17 +447,10 @@ public class ConfigFile
 		
 		craftableTransmuteRecords = instance.getBoolean( "transmuteRecords",category,true,
 			"This allows you to surround any record in emeralds to transmute it into a different record.");
-   
-	//	craftableFlatDoubleSlab = instance.getBoolean( "craftableFlatDoubleSlab",category,true,
-		//	"Craft the stone and sandstone hidden double slabs - 43:8 and 43:9, by making a 'door' shape with the regular stone slabs."		);
-
+    
 		craftableBonemealColouredWool =  instance.getBoolean( "craftableBonemealColouredWool",category,true
 				,"Allows you to dye coloured wool back to white using bonemeal"			); 
-  /*
-		craftableMobHeads =  instance.getBoolean( "craftableMobHeads",category,true
-				,"Allows you to craft all mob heads out of wither skulls.  Surround the skull with "+
-				"TNT, flesh, cake, or bones. "		);  
- */
+  
 		uncraftGeneral = instance.getBoolean( "uncrafting",category,true,
 				"uncrafting: craft or smelt blocks back into their ingredients.  Often it is not a perfect trade.  " +
 				"Example: Craft stairs back into blocks using a 4x4 pattern."	); 
@@ -525,8 +502,7 @@ public class ConfigFile
 		
 		CommandSearchItem.REQUIRES_OP = instance.getBoolean("searchitem_needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
- 
-		 
+  
 		enderchest = instance.getBoolean("enderchest",category, true,
     			"Players can open their enderchest with a command, no item needed."    		); 
 		

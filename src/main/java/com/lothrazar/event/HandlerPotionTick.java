@@ -40,8 +40,7 @@ public class HandlerPotionTick
 	        	 } 
 	    	  } 
          } 
-	      
-	    
+	        
 	     if(event.entityLiving.isPotionActive(PotionRegistry.potionFlying)) 
 	     { 
 	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote)
