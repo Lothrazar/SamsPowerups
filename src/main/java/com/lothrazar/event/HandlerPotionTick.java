@@ -1,6 +1,7 @@
 package com.lothrazar.event;
 
 import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.PotionRegistry;
 import com.lothrazar.util.Reference;
 
 import net.minecraft.client.Minecraft;
@@ -16,7 +17,7 @@ public class HandlerPotionTick
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
-	     if(event.entityLiving.isPotionActive(ModLoader.potionTired)) 
+	     if(event.entityLiving.isPotionActive(PotionRegistry.potionTired)) 
 	     { 
 	    	 if(event.entityLiving.worldObj.rand.nextInt(Reference.TICKS_PER_SEC) == 0) //pick out one random tick from each second
 	    	 {
@@ -41,7 +42,7 @@ public class HandlerPotionTick
          } 
 	      
 	    
-	     if(event.entityLiving.isPotionActive(ModLoader.potionFlying)) 
+	     if(event.entityLiving.isPotionActive(PotionRegistry.potionFlying)) 
 	     { 
 	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote)
         	 { 
@@ -77,7 +78,7 @@ public class HandlerPotionTick
 	    	 }
 	     }
 	  
-	     if(event.entityLiving.isPotionActive(ModLoader.potionSlowfall)) 
+	     if(event.entityLiving.isPotionActive(PotionRegistry.potionSlowfall)) 
 	     { 
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078
 	    	 //https://github.com/OpenMods/OpenBlocks/blob/bfc6edd31e43982b434bcabcc21081c7e1fa6bc2/src/main/java/openblocks/common/entity/EntityHangGlider.java
@@ -89,11 +90,24 @@ public class HandlerPotionTick
 				event.entityLiving.fallDistance = 0f; //for no fall damage
 	    	 } 
 	     }
-	     if(event.entityLiving.isPotionActive(ModLoader.potionWaterwalk)) 
+	     if(event.entityLiving.isPotionActive(PotionRegistry.potionWaterwalk)) 
 	     { 
 	    	 World world = event.entityLiving.worldObj;
 	    	 
 	    	 if(world.getBlockState(event.entityLiving.getPosition().down()).getBlock() == Blocks.water && 
+	    			 world.isAirBlock(event.entityLiving.getPosition()) && 
+	    			 event.entityLiving.motionY < 0)
+	    	 {
+	    		 event.entityLiving.motionY  = 0;//stop falling
+	    		 event.entityLiving.onGround = true; //act as if on solid ground
+	    		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
+	    	 }  
+	     }
+	     if(event.entityLiving.isPotionActive(PotionRegistry.potionLavawalk))//literally a copypaste of waterwalk 
+	     { 
+	    	 World world = event.entityLiving.worldObj;
+	    	 
+	    	 if(world.getBlockState(event.entityLiving.getPosition().down()).getBlock() == Blocks.lava && 
 	    			 world.isAirBlock(event.entityLiving.getPosition()) && 
 	    			 event.entityLiving.motionY < 0)
 	    	 {

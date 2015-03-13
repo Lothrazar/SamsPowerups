@@ -127,7 +127,8 @@ public class ConfigFile
 	public int potionIdSlowfall;
 	public int potionIdFlying;
 	public float slowfallSpeed;
-	public boolean flintTool; 
+	public boolean flintTool;
+	public int potionIdLavawalk; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -184,6 +185,9 @@ public class ConfigFile
 		  
 		potionIdFlying = instance.getInt("potionIdFlying",category, 43,33,200,
     			"ID is only exposed to avoid conflicts with other mods.  THIS IS INTENDED FOR USE ONLY IN SINGLE PLAYER.");
+		
+		potionIdLavawalk  = instance.getInt("potionIdLavawalk",category, 44,33,200,
+    			"ID is only exposed to avoid conflicts with other mods.");
 		
 		
 		slowfallSpeed = instance.getFloat("slowfallSpeed",category, 0.41F,0.1F,1F,

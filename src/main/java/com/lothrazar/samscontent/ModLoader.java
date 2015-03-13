@@ -88,7 +88,6 @@ public class ModLoader
 	public static SimpleNetworkWrapper network; 
 	public static RuntimeChangelog changelog;
 	
-	public static Potion potionTired;//http://www.minecraftforge.net/wiki/Potion_Tutorial
 	
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
 	{ 
@@ -98,9 +97,6 @@ public class ModLoader
 			return ItemRegistry.apple_chocolate;
 		}
 	};
-	public static Potion potionWaterwalk;
-	public static Potion potionSlowfall;
-	public static Potion potionFlying;
 		
 	private void initModInfo(ModMetadata mcinfo)
 	{ 
