@@ -42,7 +42,9 @@ public class ItemToolFlint extends ItemTool
  
 		SamsRegistry.registerItem(ItemRegistry.flintTool, "flint_tool");
 
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.flint), 
-				Items.stick);
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.flintTool), 
+				Items.flint,
+				Items.stick,
+				Items.string);
 	}
 }
