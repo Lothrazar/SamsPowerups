@@ -65,8 +65,15 @@ public class HandlerAutoPlantExpire
 
 				treeAllowedToGrow = (biome == BiomeGenBase.taiga) ||
 					(biome == BiomeGenBase.taigaHills) ||
+					(biome == BiomeGenBase.megaTaiga) ||
+					(biome == BiomeGenBase.getBiome(160)) ||//megasprucetaiga?
+					(biome == BiomeGenBase.megaTaigaHills) || 
 					(biome == BiomeGenBase.coldTaiga) ||
-					(biome == BiomeGenBase.coldTaigaHills) ||
+					(biome == BiomeGenBase.coldTaigaHills) || 
+					(biome == BiomeGenBase.getBiome(158)) || //?cold tagia M, 158?
+					(biome == BiomeGenBase.extremeHills) || 
+					(biome == BiomeGenBase.extremeHillsEdge) || 
+					(biome == BiomeGenBase.extremeHillsPlus) || 
 					(biome == BiomeGenBase.jungle) ||
 					(biome == BiomeGenBase.icePlains) ||
 					(biome == BiomeGenBase.iceMountains);
@@ -75,35 +82,60 @@ public class HandlerAutoPlantExpire
 
 				treeAllowedToGrow = (biome == BiomeGenBase.forest) ||
 					(biome == BiomeGenBase.forestHills) ||
+					(biome == BiomeGenBase.getBiome(132)) ||//Flower Forest
 					(biome == BiomeGenBase.jungle) ||
 					(biome == BiomeGenBase.jungleEdge) ||
+					(biome == BiomeGenBase.getBiome(151)) ||//jungle edge M
+					(biome == BiomeGenBase.getBiome(149)) ||//jungle M
 					(biome == BiomeGenBase.jungleHills) ||
-					(biome == BiomeGenBase.swampland);
+					(biome == BiomeGenBase.swampland) ||
+					(biome == BiomeGenBase.getBiome(134)) ||//Swampland M
+					(biome == BiomeGenBase.extremeHills) || 
+					(biome == BiomeGenBase.extremeHillsEdge) || 
+					(biome == BiomeGenBase.extremeHillsPlus) || 
+					(biome == BiomeGenBase.icePlains);
 				break;
 			case Reference.sapling_birch:
 
 				treeAllowedToGrow = (biome == BiomeGenBase.birchForest)  || 
 					(biome == BiomeGenBase.birchForestHills) || 
+					(biome == BiomeGenBase.getBiome(155)) || //Birch forest M
+					(biome == BiomeGenBase.getBiome(156)) || //Birch forest hills M
 					(biome == BiomeGenBase.forest) ||
-					(biome == BiomeGenBase.forestHills);
+					(biome == BiomeGenBase.forestHills) ||
+					(biome == BiomeGenBase.getBiome(132));//Flower Forest;
 				
 				break;
 			case Reference.sapling_darkoak:
 
-				treeAllowedToGrow = (biome == BiomeGenBase.roofedForest);
+				treeAllowedToGrow = (biome == BiomeGenBase.roofedForest) || 
+						(biome == BiomeGenBase.getBiome(157)); // Roofed Forest M
 				break;
 			case Reference.sapling_jungle:
 
 				treeAllowedToGrow = (biome == BiomeGenBase.jungle) ||
 					(biome == BiomeGenBase.jungleEdge) ||
+					(biome == BiomeGenBase.getBiome(151)) ||//jungle edge M
+					(biome == BiomeGenBase.getBiome(149)) ||//jungle M
 					(biome == BiomeGenBase.jungleHills);
 				break;
 				
 				//no saplings for:
-				//frozen river
-				//ice plains spikes
+				//frozen river 
+				//ice plains spikes 
 				//cold beach
+				//stone beach
+				//the end
+				//plains
+				//sunflower plains
+				//river
+				//beach
+				//mooshroom island (14)
+				//mooshroom island shore (15)
+				//desert (2)
+				//desert M (130)
 				//
+				
 			}
 			 
 			if(treeAllowedToGrow == false)
