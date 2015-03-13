@@ -48,9 +48,7 @@ public class HandlerAutoPlantExpire
 			//and we know that it is always maxed out at ready to grow 8 since it is turning into a tree.
 			
 			int tree_type = meta - growth_data;
-			
-			System.out.println(biome.biomeName + " tree_type   "+tree_type  );
-			
+			 
 			//IDS: http://www.minecraftforum.net/forums/minecraft-discussion/recent-updates-and-snapshots/381405-full-list-of-biome-ids-as-of-13w36b
 			//as of 12 march 2015, it seems biome id 168 does not exist, so 167 is highest used (vanilla minecraft)
 			switch(tree_type)
@@ -147,6 +145,14 @@ public class HandlerAutoPlantExpire
 				//mesa (37)
 				// mesa bryce (165)
 				// plateaus (36 38 39)
+				//nether
+				//sky (the end)
+				//ocean
+				//deepocean
+				//frozen ocean(10N  
+				
+				
+				//TODO: config file to add option for nether/the end trees, even if we DONT open up every biome on its own
 				
 			}
 			
@@ -159,14 +165,12 @@ public class HandlerAutoPlantExpire
 			if(treeAllowedToGrow == false)
 			{
 				event.setResult(Result.DENY);
-				System.out.println("treeAllowedToGrow DENY");
-				
+				 
 				//overwrite the sapling. - we could set to Air first, but dont see much reason to
 				event.world.setBlockState(event.pos, Blocks.deadbush.getDefaultState());
 				
 				SamsUtilities.dropItemStackInWorld(event.world, event.pos, new ItemStack(Blocks.sapling,1,tree_type));
-			} 
-			
+			}  
 		}//else a tree grew that was added by some mod
 	}
 	
