@@ -201,7 +201,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(!ModLoader.configSettings.appleNetherStar) {return;}
 		
 		ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);  
-		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.flying.id, timeLong, I); 
+		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.flying.id, timeShort, I); 
 		//no potion effect, this just gives flying
 		SamsRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		
@@ -210,8 +210,8 @@ public class ItemFoodAppleMagic extends ItemFood
 			"lnl",
 			"lll", 
 			'l', Items.apple,
-			'n', Items.nether_star); 
+			'n', Items.nether_wart); 
 		if(ModLoader.configSettings.uncraftGeneral) 
-			GameRegistry.addSmelting(ItemRegistry.apple_nether_star, new ItemStack(Items.nether_star, 1),	0); 
+			GameRegistry.addSmelting(ItemRegistry.apple_nether_star, new ItemStack(Items.nether_wart, 1),	0); 
 	} 
 }
