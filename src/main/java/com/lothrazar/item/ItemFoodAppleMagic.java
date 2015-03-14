@@ -150,7 +150,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		ItemRegistry.apple_lapis_rich = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);
 		ItemRegistry.apple_lapis_rich.addEffect(PotionRegistry.lavawalk.id, timeLong, I); 
 		SamsRegistry.registerItem(ItemRegistry.apple_lapis_rich, "apple_lapis_rich");
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_lapis_rich)
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.apple_lapis_rich)
 				  
 				, Blocks.lapis_block
 				, Items.apple); 
@@ -205,7 +205,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(!ModLoader.configSettings.appleNetherStar) {return;}
 		
 		ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);  
-		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.flying.id, timeShort, I);  
+		//ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.flying.id, timeShort, I);  //TODO: why null
 		
 		SamsRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		
