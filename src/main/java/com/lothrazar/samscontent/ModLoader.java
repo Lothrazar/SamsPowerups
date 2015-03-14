@@ -5,10 +5,7 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList; 
 
 import org.apache.logging.log4j.Level;
-import org.apache.logging.log4j.Logger;  
-
-import com.lothrazar.beetroot.BeetrootBlock;
-import com.lothrazar.beetroot.BeetrootSeedItem;
+import org.apache.logging.log4j.Logger;   
 import com.lothrazar.block.*; 
 import com.lothrazar.command.*; 
 import com.lothrazar.event.*; 
@@ -134,8 +131,7 @@ public class ModLoader
 
 		BlockHardnessRegistry.registerChanges();
 		
-		
-		
+		/*
 		Block beetrootCrop = new BeetrootBlock();
 
 		SamsRegistry.registerBlock(beetrootCrop, "beetroot");
@@ -144,7 +140,7 @@ public class ModLoader
 		Item beetroot_seet = new BeetrootSeedItem(1,0.3F,false,beetrootCrop);
 		
 		SamsRegistry.registerItem(beetroot_seet, "beetroot_seed");
-  
+  */
 	}
 
 	@EventHandler
