@@ -33,7 +33,7 @@ public class PotionRegistry
 		
 		PotionRegistry.waterwalk = (new PotionCustom(ModLoader.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		PotionRegistry.lavawalk = (new PotionCustom(ModLoader.configSettings.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.waterwalk");
+		PotionRegistry.lavawalk = (new PotionCustom(ModLoader.configSettings.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModLoader.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		
