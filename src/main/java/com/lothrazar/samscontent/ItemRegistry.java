@@ -1,5 +1,7 @@
 package com.lothrazar.samscontent;
 
+import net.minecraft.block.Block;
+
 import com.lothrazar.item.*; 
 
 public class ItemRegistry 
@@ -27,6 +29,7 @@ public class ItemRegistry
 	public static ItemWandCopyPaste wandCopy;
 	public static ItemBaseWand baseWand;
 	public static ItemToolFlint flintTool;
+	public static ItemFoodAppleMagic apple_diamond_rich;
 	 
 	public static void registerItems()
 	{

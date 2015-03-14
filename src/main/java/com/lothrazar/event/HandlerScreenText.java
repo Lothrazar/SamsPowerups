@@ -11,18 +11,14 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random; 
-
 import org.apache.logging.log4j.Logger; 
-
 import com.lothrazar.command.CommandSimpleWaypoints;
 import com.lothrazar.command.CommandTodoList;
-import com.lothrazar.item.ItemFoodAppleMagic.MagicType;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.PlayerPowerups;
 import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
-
 import net.minecraft.client.Minecraft;
 //import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;

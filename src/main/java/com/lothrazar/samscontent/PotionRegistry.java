@@ -14,6 +14,12 @@ public class PotionRegistry
 	public static Potion flying;
 	public static Potion lavawalk;
 	
+	public final static int I = 0; 
+	public final static int II = 1;
+	public final static int III = 2;
+	public final static int IV = 3;
+	public final static int V = 4;
+	
 	public static void registerPotionEffects()
 	{ 
 		initPotionTypesReflection();

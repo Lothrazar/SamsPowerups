@@ -37,6 +37,8 @@
 //TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
 //TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
 //TODO: a way to place signs quick by skipping interface (leaving them blank) 
+chocolate block copy texture
+charcoal block copy texture
 //TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
 //TODO: cherst uncrafting only gives one stick should be more
 //TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
