@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.PlayerPowerups;
+import com.lothrazar.samscontent.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
@@ -29,7 +30,7 @@ public class ItemFoodAppleMagic extends ItemFood
 {  
 	public static enum MagicType
 	{
-		Potion, Flying, Hearts 
+		Potion, Hearts 
 	}
 	private boolean hasEffect = false;
 	private static int FLYING_COUNT_PER_EAT = 1;//num of ticks
@@ -74,16 +75,7 @@ public class ItemFoodAppleMagic extends ItemFood
 	  		{ 
 	  			par3EntityPlayer.addPotionEffect(new PotionEffect(potionIds.get(i) ,potionDurations.get(i),potionAmplifiers.get(i)));
 	  		} 
-  		} 
-  		else if(MagicType.Flying == this.type) 
-  		{  
-/*
-  			PlayerPowerups props = PlayerPowerups.get(par3EntityPlayer);
-
-  			props.incrementCurrentFly(FLYING_COUNT_PER_EAT);
-  */		 
-  			//SamsUtilities.incrementPlayerIntegerNBT(par3EntityPlayer, Reference.MODID + MagicType.Flying.toString(),FLYING_COUNT_PER_EAT);
-  		}
+  		}  
   		else if(MagicType.Hearts == this.type)
   		{
   			par3EntityPlayer.removePotionEffectClient(Reference.potion_HEALTH_BOOST);//reset it so it gets reapplied 
@@ -143,8 +135,9 @@ public class ItemFoodAppleMagic extends ItemFood
 	}
 
 	public static void initLapis()
-	{  
+	{   
 		if(!ModLoader.configSettings.appleLapis){return;}
+		
 		ItemRegistry.apple_lapis = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, false);
 		ItemRegistry.apple_lapis.addEffect(Reference.potion_RESISTANCE, timeShort, II); 
 		SamsRegistry.registerItem(ItemRegistry.apple_lapis, "apple_lapis");
@@ -169,6 +162,7 @@ public class ItemFoodAppleMagic extends ItemFood
 	public static void initEmerald()
 	{   
 		if(!ModLoader.configSettings.appleEmerald) {return;}
+		
 		ItemRegistry.apple_emerald = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, false);
 		ItemRegistry.apple_emerald.addEffect(Potion.absorption.id, timeShort, V);  
 		SamsRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
@@ -193,6 +187,7 @@ public class ItemFoodAppleMagic extends ItemFood
 	public static void initDiamond()
 	{ 
 		if(!ModLoader.configSettings.appleDiamond) {return;}
+		
 		ItemRegistry.apple_diamond = new ItemFoodAppleMagic(MagicType.Hearts,hungerSmall, true);  
 		//no potion effect, this just does heath boost + 1
 		SamsRegistry.registerItem(ItemRegistry.apple_diamond, "apple_diamond");
@@ -207,7 +202,9 @@ public class ItemFoodAppleMagic extends ItemFood
 	public static void initNether()
 	{  
 		if(!ModLoader.configSettings.appleNetherStar) {return;}
-		ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(MagicType.Flying,hungerSmall, true);  
+		
+		ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);  
+		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.potionFlying.id, timeLong, I); 
 		//no potion effect, this just gives flying
 		SamsRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		
