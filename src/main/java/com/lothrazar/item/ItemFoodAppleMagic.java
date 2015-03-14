@@ -118,7 +118,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(!ModLoader.configSettings.appleChocolate){return;}
 
 		ItemRegistry.apple_chocolate = new ItemFoodAppleMagic(MagicType.Potion,hungerLarge, false); // 4 is the hunger 
-		ItemRegistry.apple_chocolate.addEffect(Reference.potion_HASTE, timeShort, II); 
+		ItemRegistry.apple_chocolate.addEffect(PotionRegistry.potionSlowfall.id, timeShort, II); 
 		SamsRegistry.registerItem(ItemRegistry.apple_chocolate, "apple_chocolate");
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_chocolate)
 				, "eee", "eae",	"eee"
@@ -133,18 +133,17 @@ public class ItemFoodAppleMagic extends ItemFood
 				, 'e', new ItemStack(Items.cookie)  
 				, 'a', Items.apple);
 	}
-
+ 
 	public static void initLapis()
 	{   
 		if(!ModLoader.configSettings.appleLapis){return;}
 		
 		ItemRegistry.apple_lapis = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, false);
-		ItemRegistry.apple_lapis.addEffect(Reference.potion_RESISTANCE, timeShort, II); 
+		ItemRegistry.apple_lapis.addEffect(PotionRegistry.potionWaterwalk.id, timeShort, I); 
 		SamsRegistry.registerItem(ItemRegistry.apple_lapis, "apple_lapis");
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_lapis)
-				, "lll","lal","lll"  
-				,'l', new ItemStack(Items.dye, 1, Reference.dye_lapis)  
-				,'a', Items.apple); 
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.apple_lapis)
+				, new ItemStack(Items.dye, 1, Reference.dye_lapis)  
+				,Items.apple); 
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(ItemRegistry.apple_lapis, new ItemStack(Items.dye, 8, Reference.dye_lapis), 0);// uncraft
 	
