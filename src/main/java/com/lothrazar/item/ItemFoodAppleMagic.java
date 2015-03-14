@@ -176,6 +176,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		 
 		ItemRegistry.apple_diamond = new ItemFoodAppleMagic(hungerSmall, false);
 		ItemRegistry.apple_diamond.addEffect(diamondPotion, timeShort, PotionRegistry.I);  
+		ItemRegistry.apple_diamond.addEffect(diamondPotion2, timeShort, PotionRegistry.I);  
 		SamsRegistry.registerItem(ItemRegistry.apple_diamond, "apple_diamond");
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_diamond)
 				,"lll","lal","lll"  
@@ -186,6 +187,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		 
 		ItemRegistry.apple_diamond_rich = new ItemFoodAppleMagic(hungerSmall, true);
 		ItemRegistry.apple_diamond_rich.addEffect(diamondPotion, timeLong, PotionRegistry.I); 
+		ItemRegistry.apple_diamond_rich.addEffect(diamondPotion2, timeLong, PotionRegistry.I); 
 		SamsRegistry.registerItem(ItemRegistry.apple_diamond_rich, "apple_diamond_rich");
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_diamond_rich)
 				,"lll","lal","lll"  
