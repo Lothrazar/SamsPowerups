@@ -14,12 +14,13 @@
 //[march11]: is it worthwhile/easy to turn the appleflying/nbt stuff into an actual potion effect?
 //[march12]: TREES ONLY GROLW && GET UN-PLANTED IF NOT IN THEIR HOME BIOMES 
 //[march11]: Lack of sleep potion effect
- //[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
+//[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
 //[march12]: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
- //TODO: parachute item and/or slowfall ability
- //TODO: sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
+//[march13]: worldgen clay Replacing gravel in ocean    
+//TODO: parachute item and/or slowfall ability
+//TODO: sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
 //TODO: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
- //TODO: wand lightning   
+//TODO: wand lightning   
     //using public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     //blocks that do things to players/mobs . such as
     //TODO: SPIKE BLOCK: 
@@ -28,7 +29,7 @@
     //TODO: MILKER ITEM: recipe uses tons of iron. each use pulls milk from a cow, drops the actual bucket.
     //durability/number of uses is related to how many buckets it makes
     //so its not 'free buckets'. its just transformed iron
- //TODO: can we shear multiple sheep with one click/wanduse
+//TODO: can we shear multiple sheep with one click/wanduse
 //TODO: find a way that you need food variety to live.
 //TODO: add beetroot.six beetroot like a sign above a bowl -> one bt soup. fills //1 beetroot gives one rose red. it breeds pigs and gets follow like carrot  
         ///referencefood https://bitbucket.org/Zuxelus/usefulfood/src/f74eea7793c5a95e8ecf4d7344f3e5182884942c/main/java/mods/usefulfood/?at=master
@@ -36,33 +37,32 @@
 //TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
 //TODO: do we want to add foodstuffs? i like idea of chocolate (milk bottle+sugar+cocoa), and berry bushes.
 //TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
-//TODO: worldgen clay Replacing gravel in ocean    
 //TODO: a way to place signs quick by skipping interface (leaving them blank) 
 //TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
- //TODO: cherst uncrafting only gives one stick should be more
- //TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
- //TODO: hotkey to search through inventory and use enderpearl ingoring all else
- //TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
- //TODO: smart potion button
- //TODO: smart torch button
- //TODO: is there a nice forge friendly way of adding potion brewing recipes
- //TODO: can we catch the middle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
- //TODO: far reach place hotkey. use player look vectors and trickery 
- //TODO: wand of chest transportation: make it also work with dispensers/droppers/trapped chests/ etc. set extra flag to identify
- //TODO: log/stone boat: exact copy of existing boat, but unbreakable.  
- //TODO:  using a flintnsteel on pumpkin makes it into jack lantern
- //TODO: option to stop zombie/skel taking SUNLIGHT damage
- //TODO: option to stop enderman taking Water damage (but dont stop TP?)
- //TODO: for the home/worldhome. add consumable items that do this (ender cookie, ender apple, etc)
- //TODO: add achievements for my custom items and stuff
- //TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
+//TODO: cherst uncrafting only gives one stick should be more
+//TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
+//TODO: hotkey to search through inventory and use enderpearl ingoring all else
+//TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
+//TODO: smart potion button
+//TODO: smart torch button
+//TODO: is there a nice forge friendly way of adding potion brewing recipes
+//TODO: can we catch the middle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
+//TODO: far reach place hotkey. use player look vectors and trickery 
+//TODO: wand of chest transportation: make it also work with dispensers/droppers/trapped chests/ etc. set extra flag to identify
+//TODO: log/stone boat: exact copy of existing boat, but unbreakable.  
+//TODO:  using a flintnsteel on pumpkin makes it into jack lantern
+//TODO: option to stop zombie/skel taking SUNLIGHT damage
+//TODO: option to stop enderman taking Water damage (but dont stop TP?)
+//TODO: for the home/worldhome. add consumable items that do this (ender cookie, ender apple, etc)
+//TODO: add achievements for my custom items and stuff
+//TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
 //TODO: sort gamerules in f3.
- //TODO: it should have disabled making a furnace without coal. should require it
+//TODO: it should have disabled making a furnace without coal. should require it
 //TODO: collission with bat causes blindness? or poison or some random effect? maybe?  
 //TODO: idea: fossils: just like buttons but spawn on ground in caves. breaking it gives bones? 
 //TODO: is it posible to disable sleeping? maybe just remove from bed if in bed?
     //todo?? shape/conic/circle drawing in game//http://i.imgur.com/t3N1U8p.png
-    //TODO: CommandSearch (and others?) set boolean showCoords = true;      //else it does directoins
+//TODO: CommandSearch (and others?) set boolean showCoords = true;      //else it does directoins
 //TODO: can we spawn zombie horse? 
      //Magic wand to turn horses to zombie/skeleton?
                 //yeah i think we can in the sapwn event and roll a dice and check the biome
@@ -82,55 +82,4 @@
     // : achievement finder , check if dragonslayer//or at least check something to gain a power    
     
             //??((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new S39PacketPlayerAbilities(player.capabilities));
-       
-       
-       
-       
-       //RECIPES TO KEEP BUCKET IDEAS
-       
-       
-       
-       /*
-    @SubscribeEvent
-    public void onCraft(ItemCraftedEvent event)
-    {
-        //PlayerEvent.ItemCraftedEvent
-        ItemStack craftedItem = event.crafting;
-                
-        if (event.crafting.getItem() == Items.bucket)
-        {
-
-            System.out.println("Desired item has been crafted.");
-            for (int i=0; i< event.player.inventory.mainInventory.length; i++){
-                System.out.println(event.player.inventory.mainInventory[i]);
-                //Prints each slot out on a line.
-            }
-            
-            if (event.player.inventory.hasItem(Items.bucket)){
-                System.out.println("Player has Item. Cleared to remove it");
-            }
-        }
-        
-        /*
-*This onCrafting Handle is for Sword and Coconut Recipe
-* 0-1-2
-* 3-4-5
-* 6-7-8
- 
-ItemStack shouldBeSword = craftMatrix.getStackInSlot(1);
-ItemStack shouldBeCoconut = craftMatrix.getStackInSlot(4);
-
-if(shouldBeSword != null && shouldBeCoconut != null
-&& (shouldBeSword.getItem() == Item.swordWood || shouldBeSword.getItem() == Item.swordStone || shouldBeSword.getItem() == Item.swordSteel
-|| shouldBeSword.getItem() == Item.swordGold || shouldBeSword.getItem() == Item.swordDiamond)
-&& shouldBeCoconut.getItem() == mod_ProjectZulu.coconutItem){
-//Put Sword Back
-ItemStack tempItem1 = new ItemStack(shouldBeSword.getItem(), 2);
-craftMatrix.setInventorySlotContents(1, tempItem1);
-//Place Coconut Milk
-ItemStack tempItem2 = new ItemStack(mod_ProjectZulu.coconutMilkFragment, 2);
-craftMatrix.setInventorySlotContents(3, tempItem2);
-//Place Coconut Shell
-ItemStack tempItem3 = new ItemStack(mod_ProjectZulu.coconutShell, 2);
-craftMatrix.setInventorySlotContents(5, tempItem3);
-    }*/     
+   
