@@ -144,23 +144,9 @@ public class ModLoader
 		Item beetroot_seet = new BeetrootSeedItem(1,0.3F,false,beetrootCrop);
 		
 		SamsRegistry.registerItem(beetroot_seet, "beetroot_seed");
-		//.setIconIndex(0, 0);
-		/*//TODO: fluid registry
-		 * Fluid flows in the world and gets placed but is invisible& transparent
-		
-		//http://www.minecraftforge.net/wiki/Create_a_Fluid
-		fluidMilk = new Fluid("fluid_milk");
-		FluidRegistry.registerFluid(fluidMilk);
-
-		ModLoader.blockMilk = new BlockFluidMilk(fluidMilk,Material.water); 
-		SamsRegistry.registerBlock(ModLoader.blockMilk, "fluid_milk");
-		  
-FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new ItemStack(Items.milk_bucket), new ItemStack(Items.bucket));
-*/
-	    
+  
 	}
-	//public static BlockFluidMilk blockMilk;
-	//public Fluid fluidMilk;
+
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{      

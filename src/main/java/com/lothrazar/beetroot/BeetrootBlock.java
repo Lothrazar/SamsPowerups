@@ -5,6 +5,7 @@ import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
@@ -13,13 +14,12 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
-public class BeetrootBlock extends BlockBush implements IGrowable
+public class BeetrootBlock extends Block//extends BlockBush// implements IGrowable
 {
-	protected int maxGrowthStage = 7;
 	public BeetrootBlock()
-    {
-     // Basic block setup
-        setTickRandomly(true);
+    { 
+		super(Material.sponge);
+        //setTickRandomly(true);//needed for updateTick event for IGrowable
         float f = 0.5F;
         setBlockBounds(0.5F - f, 0.0F, 0.5F - f, 0.5F + f, 0.25F, 0.5F + f); 
         setHardness(0.0F);
@@ -27,6 +27,8 @@ public class BeetrootBlock extends BlockBush implements IGrowable
         disableStats();
     }
 
+	/******************IGROWABLE
+	protected int maxGrowthStage = 7;
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state,	boolean isClient) 
 	{ 
@@ -57,7 +59,8 @@ public class BeetrootBlock extends BlockBush implements IGrowable
 	    incrementGrow(parWorld, pos, state);
 	}
 
-	private void incrementGrow(World parWorld, BlockPos pos, IBlockState state) {
+	private void incrementGrow(World parWorld, BlockPos pos, IBlockState state) 
+	{
 		int growStage = this.getMetaFromState(state) + 1;
 
 	    if (growStage > 7)
@@ -67,12 +70,16 @@ public class BeetrootBlock extends BlockBush implements IGrowable
 
 	    parWorld.setBlockState(pos, this.getStateFromMeta(growStage), 2);
 	}
- 
+ */
+	
+	/*
+	 *BLOCKBUSH
 	@Override
     protected boolean canPlaceBlockOn(Block parBlock)
     {
         return parBlock == Blocks.farmland;
     }
+    */
     @Override
     public Item getItemDropped(IBlockState i, Random parRand, int parFortune)
     { 

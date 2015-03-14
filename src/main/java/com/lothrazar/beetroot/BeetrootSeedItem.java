@@ -22,70 +22,53 @@ public class BeetrootSeedItem extends ItemFood implements IPlantable
 		theBlockPlant = plant; 
 	
 	}
-	
-	
-	
-	
-	
-	
+	 
 	
 	//thanks to http://jabelarminecraft.blogspot.ca/p/minecraft-forge-172-creating-custom.html
 	
-	  @Override
-	  public boolean onItemUse(ItemStack parItemStack, EntityPlayer parPlayer, 
+	@Override
+	public boolean onItemUse(ItemStack parItemStack, EntityPlayer parPlayer, 
 	          World parWorld, BlockPos pos, EnumFacing side, float hitX, 
 	          float hitY, float hitZ)
+	{ 
+	    if (side != EnumFacing.UP) //up is side==1
+	    {
+	        return false;
+	    }
+	    // check if player has capability to edit
+	    else if (parPlayer.canPlayerEdit(pos.up(), side, parItemStack))
 	    { 
-	        if (side != EnumFacing.UP) //up is side==1
+	        // check that the soil block can sustain the plant
+	        // and that block above is air so there is room for plant to grow
+	    	 
+	        if (parWorld.getBlockState(pos).getBlock().canSustainPlant(parWorld, pos, side, this)
+	        		&& parWorld.isAirBlock(pos.up()))
 	        {
-	            return false;
-	        }
-	        // check if player has capability to edit
-	        else if (parPlayer.canPlayerEdit(pos.up(), side, parItemStack))
-	        { 
-	            // check that the soil block can sustain the plant
-	            // and that block above is air so there is room for plant to grow
-	        	
-	        	
-	        	
-	            if (parWorld.getBlockState(pos).getBlock().canSustainPlant(parWorld, pos, side, this)
-	            		&& parWorld.isAirBlock(pos.up()))
-	            {
-	             // place the plant block
-	                parWorld.setBlockState(pos.up(), theBlockPlant.getDefaultState());
-	                // decrement the stack of seed items
-	                --parItemStack.stackSize;
-	                return true;
-	            }
-	            else
-	            {
-	                return false;
-	            }
+	         // place the plant block
+	            parWorld.setBlockState(pos.up(), getPlant(parWorld,pos));
+	            // decrement the stack of seed items
+	            --parItemStack.stackSize;
+	            return true;
 	        }
 	        else
 	        {
 	            return false;
 	        }
 	    }
-	
-	
-	
+	    else
+	    {
+	        return false;
+	    }
+	}
+	 
 	@Override
 	public EnumPlantType getPlantType(IBlockAccess world, BlockPos pos) 
-	{ 
-		/*Reeds check if its a reed, or if its sand/dirt/grass and adjacent to water
-Cacti checks if its a cacti, or if its sand
-Nether types check for soul sand
-Crops check for tilled soil
-Caves check if it's a solid surface
-Plains check if its grass or dirt
-Water check if its still water*/
+	{  
 		return net.minecraftforge.common.EnumPlantType.Crop;
 	}
 	@Override
 	public IBlockState getPlant(IBlockAccess world, BlockPos pos) 
 	{ 
 		return theBlockPlant.getDefaultState();
-	}
-
+	} 
 }

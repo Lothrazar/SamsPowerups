@@ -64,8 +64,7 @@ public class ItemFoodAppleMagic extends ItemFood
 	  		for(int i = 0; i < potionIds.size(); i++)  
 	  		{ 
 	  			par3EntityPlayer.addPotionEffect(new PotionEffect(potionIds.get(i) ,potionDurations.get(i),potionAmplifiers.get(i)));
-	  		} 
-
+	  		}  
     }
 	
 	@Override
@@ -96,7 +95,10 @@ public class ItemFoodAppleMagic extends ItemFood
 	public static int emeraldPotion = Potion.healthBoost.id; // V //replaces that MagicType.Hearts thing
 	public static int diamondPotion = PotionRegistry.lavawalk.id;
 	public static int diamondPotion2 = Potion.resistance.id; 
-	//TODO: we removed absorop and resistance already, do we want them back?
+
+	//TODO: do we want a haste potion?-maybe redstone
+	//TODO: resistance?
+	
 	 
 	public static void initChocolate()
 	{
