@@ -1,6 +1,7 @@
 itemGroup.tabSamsContent=Sam's Content
 item.flint_tool.name=Flint Tool
 item.apple_nether_star.name=Nether Apple
+item.apple_diamond_rich.name=Diamond Apple
 tile.block_xray.name=Cave Finder
 potion.tired=Lack of Sleep
 potion.slowfall=Slowfall

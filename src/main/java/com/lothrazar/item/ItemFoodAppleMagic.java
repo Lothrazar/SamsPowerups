@@ -85,8 +85,6 @@ public class ItemFoodAppleMagic extends ItemFood
 	} 
 	
 	
-	
-	
 	public static int timeShort = 90; // 1:30
 	public static int timeLong = 8 * 60;// 8:00
 
