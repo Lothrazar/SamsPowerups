@@ -7,6 +7,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;  
 
+import com.lothrazar.beetroot.BeetrootBlock;
+import com.lothrazar.beetroot.BeetrootSeedItem;
 import com.lothrazar.block.*; 
 import com.lothrazar.command.*; 
 import com.lothrazar.event.*; 
@@ -132,7 +134,16 @@ public class ModLoader
 
 		BlockHardnessRegistry.registerChanges();
 		
+		
+		
+		Block beetrootCrop = new BeetrootBlock();
+
+		SamsRegistry.registerBlock(beetrootCrop, "beetroot");
+		
 	
+		Item beetroot_seet = new BeetrootSeedItem(1,0.3F,false,beetrootCrop);
+		
+		SamsRegistry.registerItem(beetroot_seet, "");
 		//.setIconIndex(0, 0);
 		/*//TODO: fluid registry
 		 * Fluid flows in the world and gets placed but is invisible& transparent

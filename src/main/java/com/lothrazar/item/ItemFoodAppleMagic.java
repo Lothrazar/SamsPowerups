@@ -99,6 +99,8 @@ public class ItemFoodAppleMagic extends ItemFood
 			 return EnumRarity.RARE;
 	} 
 	
+	//TODO: we removed absorop and resistance already, do we want them back?
+	
 	static int I = 0;//TODO: REFERENCE POTION
 	static int II = 1;
 	static int III = 2;
@@ -146,12 +148,13 @@ public class ItemFoodAppleMagic extends ItemFood
 			GameRegistry.addSmelting(ItemRegistry.apple_lapis, new ItemStack(Items.dye, 8, Reference.dye_lapis), 0);// uncraft
 	
 		ItemRegistry.apple_lapis_rich = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);
-		ItemRegistry.apple_lapis_rich.addEffect(Reference.potion_RESISTANCE, timeLong, I); 
+		ItemRegistry.apple_lapis_rich.addEffect(PotionRegistry.lavawalk.id, timeLong, I); 
 		SamsRegistry.registerItem(ItemRegistry.apple_lapis_rich, "apple_lapis_rich");
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_lapis_rich)
-				, "lll","lal","lll"  
-				,'l', Blocks.lapis_block
-				,'a', Items.apple); 
+				  
+				, Blocks.lapis_block
+				, Items.apple); 
+		
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(ItemRegistry.apple_lapis_rich, new ItemStack(Blocks.lapis_block), 0);// uncraft 
 	}
@@ -169,7 +172,7 @@ public class ItemFoodAppleMagic extends ItemFood
 				,'a', Items.apple);
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(ItemRegistry.apple_emerald, new ItemStack(Items.emerald, 8),	0);
-		 
+		 /*
 		ItemRegistry.apple_emerald_rich = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);
 		ItemRegistry.apple_emerald_rich.addEffect(Reference.potion_absorption, timeLong, V); 
 		SamsRegistry.registerItem(ItemRegistry.apple_emerald_rich, "apple_emerald_rich");
@@ -179,6 +182,7 @@ public class ItemFoodAppleMagic extends ItemFood
 				,'a', Items.apple);
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(ItemRegistry.apple_emerald_rich, new ItemStack(Blocks.emerald_block, 8),	0);
+			*/
 	} 
 
 	public static void initDiamond()
@@ -201,8 +205,8 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(!ModLoader.configSettings.appleNetherStar) {return;}
 		
 		ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);  
-		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.flying.id, timeShort, I); 
-		//no potion effect, this just gives flying
+		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.flying.id, timeShort, I);  
+		
 		SamsRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_nether_star),

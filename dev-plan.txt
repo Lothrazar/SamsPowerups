@@ -7,7 +7,7 @@
 //[march08]: wand transform: rotate logs, pistons , hoppers droppers etc,  anything else  that has rotation
 //[march09]: IF we get sign copy/paste working, try the same with noteblocks
 //[march09]: make pigs drop double loo\t from other animals
- //[march10]: walking through a torch has a chance to break it. like boats do to lily pads. make sure to have sound
+//[march10]: walking through a torch has a chance to break it. like boats do to lily pads. make sure to have sound
 //[march08]: death messages for named mobs: to start with try pets and players first. include name/coords
 //[march09: config option to display coordinates of where you died
 //[march09]: Wands of fire and  on use will add or extinguish fire in large area around the player. and/or in a straight line.
@@ -35,7 +35,6 @@
         ///referencefood https://bitbucket.org/Zuxelus/usefulfood/src/f74eea7793c5a95e8ecf4d7344f3e5182884942c/main/java/mods/usefulfood/?at=master
         //beetroots can be eaten to restore 1 (Half Heart.svg) health.//soup restores (8)?? seeds from tilling grass 1/15 chance
 //TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
-//TODO: do we want to add foodstuffs? i like idea of chocolate (milk bottle+sugar+cocoa), and berry bushes.
 //TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
 //TODO: a way to place signs quick by skipping interface (leaving them blank) 
 //TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
