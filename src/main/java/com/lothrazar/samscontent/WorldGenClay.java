@@ -3,6 +3,7 @@ package com.lothrazar.samscontent;
 import java.util.Random;
 
 import com.lothrazar.util.Reference;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockHelper;
@@ -18,15 +19,17 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 public class WorldGenClay implements IWorldGenerator
 {
 	//i used http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
-	private WorldGenerator  genClay;  
+	private WorldGenerator genClay;  
 
-	private int clayChance = 20;
-	private int clayMinHeight = 20; 
-	private int clayMaxHeight = 80;
+	private int clayChance = 60;
+	private int clayNumBlocks = 12;
+	private int clayMinHeight = 30; 
+	private int clayMaxHeight = 64;
 	
 	public WorldGenClay() 
 	{ 
-	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), 8,BlockHelper.forBlock(Blocks.gravel));
+    	System.out.println("Clay WorldGenClay init" );
+	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	}
 	 
 	@Override
@@ -35,6 +38,7 @@ public class WorldGenClay implements IWorldGenerator
 		if(world.provider.getDimensionId() == Reference.Dimension.overworld) 
 		{
 			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, clayChance, clayMinHeight, clayMaxHeight);
+
 		} 
 	}
 	
@@ -42,21 +46,17 @@ public class WorldGenClay implements IWorldGenerator
 	{
 	    if (minHeight < 0 || maxHeight > 256 || minHeight > maxHeight)
 	        throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
-
-	    //TODO: find & restrict biome
-	    
-	   
-	    
+ 
 	    int heightDiff = maxHeight - minHeight;
 	    
 	    BlockPos pos;
 	    BiomeGenBase biome;
 	    
 	    for (int i = 0; i < chancesToSpawn; i ++) 
-	    {
-	        int x = chunk_X * Reference.CHUNK_SIZE + rand.nextInt(Reference.CHUNK_SIZE);
+	    { 
+	        int x = chunk_X + rand.nextInt(Reference.CHUNK_SIZE);
 	        int y = minHeight + rand.nextInt(heightDiff);
-	        int z = chunk_Z * Reference.CHUNK_SIZE + rand.nextInt(Reference.CHUNK_SIZE);
+	        int z = chunk_Z + rand.nextInt(Reference.CHUNK_SIZE);
 	        
 	        pos = new BlockPos(x, y, z);
 	        biome = world.getBiomeGenForCoords(pos);
@@ -65,6 +65,7 @@ public class WorldGenClay implements IWorldGenerator
 	        	biome == BiomeGenBase.deepOcean)
 	        { 
 	        	generator.generate(world, rand, pos); 
+	        	System.out.println("Clay at "+SamsUtilities.posToString(pos));
 	        }
 	    }
 	} 
