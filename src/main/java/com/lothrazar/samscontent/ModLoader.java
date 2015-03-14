@@ -152,7 +152,7 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
 	//public Fluid fluidMilk;
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
-	{     
+	{      
 		
 		CreativeTweaks.registerTabImprovements();
 	
@@ -168,7 +168,12 @@ FluidContainerRegistry.registerFluidContainer(new FluidStack(fluidMilk,1), new I
   		{
   			GameRegistry.registerFuelHandler(new FurnaceFuel()); 
   		}
-  			
+  		
+  		if(ModLoader.configSettings.worldGenClayOceans)
+		{ 
+			GameRegistry.registerWorldGenerator(new WorldGenClay(), 0); //zero is Weight of generator
+		}
+
 		proxy.registerRenderers();
 		 
 		//this worked in 1.7, adding trades to villagers

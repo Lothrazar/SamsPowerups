@@ -126,7 +126,8 @@ public class ConfigFile
 	public float slowfallSpeed;
 	public boolean flintTool;
 	public int potionIdLavawalk;
-	public boolean netherwartPurpleDye; 
+	public boolean netherwartPurpleDye;
+	public boolean worldGenClayOceans; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -156,13 +157,19 @@ public class ConfigFile
 		 
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 			
-		 HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
+		
+		worldGenClayOceans = instance.getBoolean("worldGenClayOceans",category, true,
+    			"Clay can generate in oceans just like it used to in the old days..");
+		 
+		
+		
+		HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
 	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
 			 
-		 petNametagDrops = instance.getBoolean("petNametagDrops",category, true,
+		petNametagDrops = instance.getBoolean("petNametagDrops",category, true,
 	    			"Pets (Wolf, ocelot, villager, bat, rabbit, horse) that are named drop a name tag when they die.");
  
-		 petNametagChat  = instance.getBoolean("nametagDeathMessages",category, true,
+		petNametagChat  = instance.getBoolean("nametagDeathMessages",category, true,
 	    			"Non player entities that are named with a Name Tag send a chat death message when they die.");
 		  
 		if(instance.hasChanged()){ instance.save(); }

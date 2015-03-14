@@ -23,6 +23,7 @@ public class Reference
 	public static final String keyCategory = "key.categories.inventory";
 	
 	public static final int TICKS_PER_SEC = 20;
+	public static final int CHUNK_SIZE = 16;
 	public static long ticksPerDay = 24000 ;
 	 
 	public static final int face_bottom = 0;	
