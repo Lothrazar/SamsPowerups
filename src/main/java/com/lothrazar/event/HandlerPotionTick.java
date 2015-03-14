@@ -39,7 +39,7 @@ public class HandlerPotionTick
 
 	private void tickLavawalk(LivingUpdateEvent event) 
 	{
-		if(event.entityLiving.isPotionActive(PotionRegistry.potionLavawalk)) 
+		if(event.entityLiving.isPotionActive(PotionRegistry.lavawalk)) 
 	    {
 			tickLiquidWalk(event,Blocks.lava);
 	    }
@@ -47,7 +47,7 @@ public class HandlerPotionTick
 
 	private void tickWaterwalk(LivingUpdateEvent event) 
 	{
-		if(event.entityLiving.isPotionActive(PotionRegistry.potionWaterwalk)) 
+		if(event.entityLiving.isPotionActive(PotionRegistry.waterwalk)) 
 	    {
 			tickLiquidWalk(event,Blocks.water);
 	    }
@@ -70,7 +70,7 @@ public class HandlerPotionTick
 	
 	private void tickSlowfall(LivingUpdateEvent event) 
 	{
-		 if(event.entityLiving.isPotionActive(PotionRegistry.potionSlowfall)) 
+		 if(event.entityLiving.isPotionActive(PotionRegistry.slowfall)) 
 	     { 
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
 	    	 if(event.entityLiving.motionY < 0)
@@ -84,7 +84,7 @@ public class HandlerPotionTick
 
 	private void tickFlying(LivingUpdateEvent event) 
 	{
-		 if(event.entityLiving.isPotionActive(PotionRegistry.potionFlying)) 
+		 if(event.entityLiving.isPotionActive(PotionRegistry.flying)) 
 	     { 
 	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote)
         	 { 
@@ -120,7 +120,7 @@ public class HandlerPotionTick
 
 	private void tickTired(LivingUpdateEvent event) 
 	{
-		 if(event.entityLiving.isPotionActive(PotionRegistry.potionTired)) 
+		 if(event.entityLiving.isPotionActive(PotionRegistry.tired)) 
 	     { 
 	    	 if(event.entityLiving.worldObj.rand.nextInt(Reference.TICKS_PER_SEC) == 0) //pick out one random tick from each second
 	    	 {

@@ -110,15 +110,13 @@ public class ItemFoodAppleMagic extends ItemFood
 
 	static int hungerSmall = 1;
 	static int hungerLarge = 4; //how much it fills us up
-	 
-	//static int id_horse = -1;
-	 
+	  
 	public static void initChocolate()
 	{
 		if(!ModLoader.configSettings.appleChocolate){return;}
 
 		ItemRegistry.apple_chocolate = new ItemFoodAppleMagic(MagicType.Potion,hungerLarge, false); // 4 is the hunger 
-		ItemRegistry.apple_chocolate.addEffect(PotionRegistry.potionSlowfall.id, timeShort, II); 
+		ItemRegistry.apple_chocolate.addEffect(PotionRegistry.slowfall.id, timeShort, II); 
 		SamsRegistry.registerItem(ItemRegistry.apple_chocolate, "apple_chocolate");
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_chocolate)
 				, "eee", "eae",	"eee"
@@ -139,7 +137,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(!ModLoader.configSettings.appleLapis){return;}
 		
 		ItemRegistry.apple_lapis = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, false);
-		ItemRegistry.apple_lapis.addEffect(PotionRegistry.potionWaterwalk.id, timeShort, I); 
+		ItemRegistry.apple_lapis.addEffect(PotionRegistry.waterwalk.id, timeShort, I); 
 		SamsRegistry.registerItem(ItemRegistry.apple_lapis, "apple_lapis");
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.apple_lapis)
 				, new ItemStack(Items.dye, 1, Reference.dye_lapis)  
@@ -203,7 +201,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(!ModLoader.configSettings.appleNetherStar) {return;}
 		
 		ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(MagicType.Potion,hungerSmall, true);  
-		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.potionFlying.id, timeLong, I); 
+		ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.flying.id, timeLong, I); 
 		//no potion effect, this just gives flying
 		SamsRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		

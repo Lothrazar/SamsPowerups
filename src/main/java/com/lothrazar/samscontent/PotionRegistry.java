@@ -8,11 +8,11 @@ import net.minecraft.util.ResourceLocation;
 
 public class PotionRegistry 
 { 
-	public static Potion potionTired;//http://www.minecraftforge.net/wiki/Potion_Tutorial
-	public static Potion potionWaterwalk;
-	public static Potion potionSlowfall;
-	public static Potion potionFlying;
-	public static Potion potionLavawalk;
+	public static Potion tired;//http://www.minecraftforge.net/wiki/Potion_Tutorial
+	public static Potion waterwalk;
+	public static Potion slowfall;
+	public static Potion flying;
+	public static Potion lavawalk;
 	
 	public static void registerPotionEffects()
 	{ 
@@ -23,15 +23,15 @@ public class PotionRegistry
  
 	private static void registerNewPotionEffects() 
 	{ 
-		PotionRegistry.potionTired = (new PotionCustom(ModLoader.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
+		PotionRegistry.tired = (new PotionCustom(ModLoader.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
 		
-		PotionRegistry.potionWaterwalk = (new PotionCustom(ModLoader.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
+		PotionRegistry.waterwalk = (new PotionCustom(ModLoader.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		PotionRegistry.potionLavawalk = (new PotionCustom(ModLoader.configSettings.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.waterwalk");
+		PotionRegistry.lavawalk = (new PotionCustom(ModLoader.configSettings.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		PotionRegistry.potionSlowfall = (new PotionCustom(ModLoader.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModLoader.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		
-		PotionRegistry.potionFlying = (new PotionCustom(ModLoader.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
+		PotionRegistry.flying = (new PotionCustom(ModLoader.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
 		  
 	}
 
