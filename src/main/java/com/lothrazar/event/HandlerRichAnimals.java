@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HandlerRichAnimals 
 {  
-	public static int LivestockLootScaleFactor = 4; //if livestock is killed by player, buff the loot by this factor
+	public static int livestockLootScaleFactor = 4; //if livestock is killed by player, buff the loot by this factor
 
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDropsEvent event)
@@ -67,7 +67,7 @@ public class HandlerRichAnimals
 		{ 
 			if(event.source.getSourceOfDamage() != null 
 					&& event.source.getSourceOfDamage() instanceof EntityPlayer 
-					&& LivestockLootScaleFactor > 0) 
+					&& livestockLootScaleFactor > 0) 
 			{ 
 				//if livestock is killed by a palyer, then multiply the loot by the scale factor
 				for(EntityItem ei : event.drops)
@@ -76,9 +76,9 @@ public class HandlerRichAnimals
 					//so we just get and set the stack with a new size
 					
 					//double it again for pigs
-					int factor = (event.entity instanceof EntityPig) ? 2 * LivestockLootScaleFactor : LivestockLootScaleFactor;
+					int factor = (event.entity instanceof EntityPig) ? 2 * livestockLootScaleFactor : livestockLootScaleFactor;
 					
-					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(),ei.getEntityItem().stackSize * LivestockLootScaleFactor,ei.getEntityItem().getItemDamage()));
+					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(),ei.getEntityItem().stackSize * livestockLootScaleFactor,ei.getEntityItem().getItemDamage()));
 				}
 			}
 			else
