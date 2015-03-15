@@ -37,6 +37,8 @@ public class ConfigFile
 		blocks();
 		
 	    recipes_new();  
+	    
+		recipes_changes();
 		 
 		creative();
 		 
@@ -52,7 +54,6 @@ public class ConfigFile
 		 
 		spawning(); 
 		
-		crafting_changes_removals();
 		  
 		wands();
 		 
@@ -239,9 +240,9 @@ public class ConfigFile
     			"Add spawner into creative inventory.");
 	}
 
-	private void crafting_changes_removals() 
+	private void recipes_changes() 
 	{
-		category = "crafting_changes_removals";
+		category = "recipes_changes";
 		
 		furnaceNeedsCoal = instance.getBoolean("furnaceNeedsCoal",category, true,
 				"If true, you cannot craft a furnace with only 8 cobblestone, it will also require one coal in the center.");  
