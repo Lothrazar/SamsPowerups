@@ -152,14 +152,38 @@ public class ConfigFile
 		 
 		convenience();
 
-		 builderswand(); 
+		builderswand(); 
 		 
-		 wands();
+		wands();
 		 
-		 potions();
+		potions();
 		 
-		category = "tweaks";//these are the misc. changes i made that have no clear category yet
-			
+		world();
+
+		animals();
+		
+		//category = "tweaks";//these are the misc. changes i made that have no clear category yet
+
+		if(instance.hasChanged()){ instance.save(); }
+	}
+
+	private void animals() 
+	{
+		category = "animals";
+		
+		HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
+	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
+			 
+		petNametagDrops = instance.getBoolean("petNametagDrops",category, true,
+	    			"Pets (Wolf, ocelot, villager, bat, rabbit, horse) that are named drop a name tag when they die.");
+ 
+		petNametagChat  = instance.getBoolean("nametagDeathMessages",category, true,
+	    			"Non player entities that are named with a Name Tag send a chat death message when they die.");
+	}
+
+	private void world() 
+	{
+		category = "world";
 		
 		saplingGrowthRestricted = instance.getBoolean("saplingGrowthRestricted",category, true,
     			"Sapling growth is restricted to only their native biomes (for example, birch trees will not grow in roofed forests).");
@@ -172,19 +196,6 @@ public class ConfigFile
 		 
 		worldGenClayOceans = instance.getBoolean("worldGenClayOceans",category, true,
     			"Clay can generate in oceans just like it used to in the old days..");
-		 
-		
-		
-		HandlerRichAnimals.LivestockLootScaleFactor  = instance.getInt("LivestockLootScaleFactor",category, 5,0,32,
-	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
-			 
-		petNametagDrops = instance.getBoolean("petNametagDrops",category, true,
-	    			"Pets (Wolf, ocelot, villager, bat, rabbit, horse) that are named drop a name tag when they die.");
- 
-		petNametagChat  = instance.getBoolean("nametagDeathMessages",category, true,
-	    			"Non player entities that are named with a Name Tag send a chat death message when they die.");
-		  
-		if(instance.hasChanged()){ instance.save(); }
 	}
 
 	private void potions() 
