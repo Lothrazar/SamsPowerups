@@ -242,19 +242,19 @@ public class ConfigFile
 	private void wands() 
 	{ 
 		wandFire = instance.getBoolean("wandFire",category, true,
-    			" .");
+    			"Craft a wand that can either create fire in a line, or extinguish fire all around you.");
 		wandChest = instance.getBoolean("wandChest",category, true,
-    			" .");
+    			"Craft a wand that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
 		wandCopy = instance.getBoolean("wandCopy",category, true,
-    			" .");
+    			"Craft a wand that can copy and paste note blocks and signs.");
 		wandHarvest = instance.getBoolean("wandHarvest",category, true,
-    			" .");
+    			"Craft a wand that will harvest the crops in the area around you.");
 		wandLivestock = instance.getBoolean("wandLivestock",category, true,
-    			" .");
+    			"Craft a wand that will transform livestock animals into spawn eggs.");
 		wandTransform = instance.getBoolean("wandTransform",category, true,
-    			" .");
+    			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
 		wandProspect = instance.getBoolean("wandProspect",category, true,
-    			" .");  
+    			"Craft a wand that will prospect the nearby area for diamonds.");  
 		
 		wandBuilding = instance.getBoolean( "wandBuilding",category,true,
 				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
