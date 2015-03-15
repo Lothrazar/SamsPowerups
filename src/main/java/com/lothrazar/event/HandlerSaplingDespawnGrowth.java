@@ -1,5 +1,8 @@
 package com.lothrazar.event;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
@@ -21,10 +24,44 @@ import net.minecraftforge.event.terraingen.SaplingGrowTreeEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerAutoPlantExpire
-{ 
+public class HandlerSaplingDespawnGrowth
+{  
+	public List<Integer> oakBiomes = new ArrayList<Integer>();
+	public List<Integer> spruceBiomes = new ArrayList<Integer>();
+	public List<Integer> birchBiomes = new ArrayList<Integer>();
+	public List<Integer> jungleBiomes = new ArrayList<Integer>();
+	public List<Integer> darkoakBiomes = new ArrayList<Integer>();
+	public List<Integer> acaciaBiomes = new ArrayList<Integer>();
 	
-	//for each biome, have list of saplings allowed
+	
+	public HandlerSaplingDespawnGrowth()
+	{
+		oakBiomes.add(BiomeGenBase.forest.biomeID);
+		oakBiomes.add(BiomeGenBase.forestHills.biomeID);
+		oakBiomes.add(132);  //Flower Forest
+		oakBiomes.add(BiomeGenBase.mesaPlateau.biomeID); //no trees in regular mesa, only plateaus 
+		oakBiomes.add(BiomeGenBase.getBiome(166).biomeID) ;//mesa plateau F M 
+		oakBiomes.add(BiomeGenBase.getBiome(167).biomeID) ;//mesa plateau M 
+		oakBiomes.add(BiomeGenBase.jungle.biomeID);
+		oakBiomes.add(BiomeGenBase.jungleEdge.biomeID) ;
+		oakBiomes.add(BiomeGenBase.getBiome(151).biomeID) ;//jungle edge M
+		oakBiomes.add(BiomeGenBase.getBiome(149).biomeID);//jungle M
+		oakBiomes.add(BiomeGenBase.jungleHills.biomeID) ;
+		oakBiomes.add(BiomeGenBase.swampland.biomeID) ;
+		oakBiomes.add(BiomeGenBase.getBiome(134).biomeID) ;//Swampland M
+		oakBiomes.add(BiomeGenBase.extremeHills.biomeID) ; 
+		oakBiomes.add(BiomeGenBase.extremeHillsEdge.biomeID) ;
+		oakBiomes.add(BiomeGenBase.extremeHillsPlus.biomeID) ;
+		oakBiomes.add(BiomeGenBase.icePlains.biomeID); 
+		
+		acaciaBiomes.add(BiomeGenBase.savanna.biomeID);
+		acaciaBiomes.add(BiomeGenBase.savannaPlateau.biomeID);
+		acaciaBiomes.add(BiomeGenBase.mesaPlateau_F.biomeID);
+		acaciaBiomes.add(BiomeGenBase.getBiome(163).biomeID); // Savanna M
+		acaciaBiomes.add(BiomeGenBase.getBiome(164).biomeID);  // Savanna Plateau M
+	  
+			 
+	}
 	
 	@SubscribeEvent
 	public void onSaplingGrowTreeEvent(SaplingGrowTreeEvent event)
@@ -55,14 +92,7 @@ public class HandlerAutoPlantExpire
 			{
 			case Reference.sapling_acacia:
 				
-				treeAllowedToGrow = (biome == BiomeGenBase.savanna) ||
-					(biome == BiomeGenBase.savannaPlateau) || 
-					(biome == BiomeGenBase.getBiome(163)) || // Savanna M
-					(biome == BiomeGenBase.getBiome(164)) || // Savanna Plateau M
-					(biome == BiomeGenBase.mesaPlateau_F)
-					//(biome == BiomeGenBase.mesaPlateau) || 
-					//(biome == BiomeGenBase.mesa) || 
-					;
+				treeAllowedToGrow = acaciaBiomes.contains(biome);
 		
 				break;
 			case Reference.sapling_spruce:
@@ -85,7 +115,8 @@ public class HandlerAutoPlantExpire
 				break; 
 			case Reference.sapling_oak:
 
-				treeAllowedToGrow = (biome == BiomeGenBase.forest) ||
+				treeAllowedToGrow = (oakBiomes.contains(biome));
+				/*(biome == BiomeGenBase.forest) ||
 					(biome == BiomeGenBase.forestHills) ||
 					(biome == BiomeGenBase.getBiome(132)) ||//Flower Forest
 					(biome == BiomeGenBase.mesaPlateau) || //the only mesa with oak trees, not others
@@ -101,7 +132,7 @@ public class HandlerAutoPlantExpire
 					(biome == BiomeGenBase.extremeHills) || 
 					(biome == BiomeGenBase.extremeHillsEdge) || 
 					(biome == BiomeGenBase.extremeHillsPlus) || 
-					(biome == BiomeGenBase.icePlains);
+					(biome == BiomeGenBase.icePlains);*/
 				break;
 			case Reference.sapling_birch:
 

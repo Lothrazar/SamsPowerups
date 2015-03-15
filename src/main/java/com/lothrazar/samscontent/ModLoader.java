@@ -47,11 +47,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fluids.Fluid;
-import net.minecraftforge.fluids.FluidContainerRegistry;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -224,12 +220,11 @@ public class ModLoader
      	{
      		//TODO: dont put every one in every bus, make three lists one day. WARNING that will cause bugs
      		 new HandlerBonemealUse()
-      		,new HandlerAutoPlantExpire()//this is only one needs terrain gen buff, plus one of the regular ones
+      		,new HandlerSaplingDespawnGrowth()//this is only one needs terrain gen buff, plus one of the regular ones
      		,new HandlerPotionTick()
      		,new HandlerPlayerSleep()
      		,new HandlerLivingDrops()
-     		,new HandlerTorchCollide()
-     		,new HandlerBucketFill() 
+     		,new HandlerTorchCollide() 
      		,new HandlerBucketStorage()
       		,new HandlerPlayerHarvest()
      		,new HandlerEnderBookClick()
