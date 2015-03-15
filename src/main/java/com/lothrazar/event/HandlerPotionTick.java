@@ -27,7 +27,8 @@ public class HandlerPotionTick
 	     tickWaterwalk(event);
 	     
 	     tickLavawalk(event);
-  
+
+	     tickEnder(event);
          /*//TODO: do we even need this
          if (event.entityLiving.getActivePotionEffect(ModLoader.potionSlowfall).getDuration() == 0) 
          {
@@ -35,6 +36,14 @@ public class HandlerPotionTick
                  return;
          }
          */
+	}
+
+	private void tickEnder(LivingUpdateEvent event) 
+	{
+		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
+	    { 
+			//TODO: give powerups
+	    } 
 	}
 
 	private void tickLavawalk(LivingUpdateEvent event) 
