@@ -69,12 +69,17 @@ public class ConfigFile
 		betterBonemeal = instance.getBoolean("betterBonemeal",category, true,
     			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
  		 
+		/*
 		chanceReturnEnderPearl = instance.getInt("chanceReturnEnderPearl",category, 50,0,100,//numbers are Default, Min, Max
     			"Chance that your ender pearl is returned to you and not destroyed on use (so just set to zero for vanilla)");
 				 
 		noDamageEnderPearl = instance.getBoolean("noDamageEnderPearl",category, true,
     			"No damage taken from an ender pearl throw");
+    			
+		theEndSafeFall = instance.getBoolean("theEndSafeFall",category, true,
+			"Falling off the world in the end will instead teleport you to the top, making a falling loop.");
 
+*/
 		increasedStackSizes = instance.getBoolean("increasedStackSizes",category, true,
 			"While true, many items and blocks (not tools/armor/potions) have their max stack size increased to 64.  " +
 			"Included are: ender pearl, egg, snowball, cookie, mushroom stew, boat, all minecarts, all doors, cake, saddle, " +
@@ -102,9 +107,7 @@ public class ConfigFile
 		dropPlayerSkullOnDeath = instance.getBoolean("dropPlayerSkullOnDeath",category, true,
     			"Players will drop their skull when they die.");
 
-		theEndSafeFall = instance.getBoolean("theEndSafeFall",category, true,
-    			"Falling off the world in the end will instead teleport you to the top, making a falling loop.");
-
+		
 		fragileTorches = instance.getBoolean("fragileTorches",category, true,
 				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
 		
@@ -561,15 +564,12 @@ public class ConfigFile
 	public boolean appleNetherStar;
 	public boolean smoothstoneToolsRequired;
 	public boolean tieredArmor;
-	public boolean furnaceNeedsCoal; 
-	public boolean theEndSafeFall;
-	public boolean plantDespawningSaplings;
-	public boolean noDamageEnderPearl;
+	public boolean furnaceNeedsCoal;  
+	public boolean plantDespawningSaplings; 
 	public boolean wandBuilding;
 	public boolean simpleDispenser; 
 	public boolean dropPlayerSkullOnDeath;
-	public boolean searchspawner;
-	public int chanceReturnEnderPearl;
+	public boolean searchspawner; 
 	public boolean mushroomBlocksCreativeInventory;
 	public boolean barrierCreativeInventory;
 	public boolean dragonEggCreativeInventory;

@@ -28,21 +28,14 @@ public class HandlerPotionTick
 	     
 	     tickLavawalk(event);
 
-	     tickEnder(event);
-         /*//TODO: do we even need this
-         if (event.entityLiving.getActivePotionEffect(ModLoader.potionSlowfall).getDuration() == 0) 
-         {
-                 event.entityLiving.removePotionEffect(ModLoader.potionSlowfall.id);
-                 return;
-         }
-         */
+	     tickEnder(event); 
 	}
 
 	private void tickEnder(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
 	    { 
-			//TODO: give powerups
+			//does nothing here, exactly.  see HandlerEnderpearlTeleport, and handlerPlayerFall
 	    } 
 	}
 
@@ -150,7 +143,7 @@ public class HandlerPotionTick
 	        			 player.getFoodStats().addStats(-2, 0F);
 	        		 }
 	        	 } 
-	    	  } 
+	    	 } 
          }
 	}
 }

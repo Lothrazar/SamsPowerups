@@ -8,6 +8,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.PotionRegistry;
 
 public class HandlerEnderpearlTeleport 
 { 
@@ -16,21 +17,27 @@ public class HandlerEnderpearlTeleport
 	{  
 		if(event.entity instanceof EntityPlayer)
 		{
-			if(ModLoader.configSettings.noDamageEnderPearl)
-			{
-				 //starts 5.0 which is 2.5hearts
-				event.attackDamage = 0;//TODO: from a powerup/maybe apple. 
-			}
-			 
-			int rawChance = ModLoader.configSettings.chanceReturnEnderPearl;
-			double pct = ((double)rawChance)/100.0;//TODO: percent chance of dropping enddr pearl item from config file.
+			EntityPlayer p = (EntityPlayer)event.entity;
 			
-			//so event.entity.pos is their position BEFORE teleport
-			if(event.entity.worldObj.rand.nextDouble() < pct)
-			{ 
-				EntityItem ei = new EntityItem(event.entity.worldObj, event.targetX, event.targetY, event.targetZ, new ItemStack(Items.ender_pearl));
-				event.entity.worldObj.spawnEntityInWorld(ei);
-			} 
+			if(p.isPotionActive(PotionRegistry.ender))
+			{
+				//FIRST: remove damage
+				 //starts 5.0 which is 2.5hearts
+				event.attackDamage = 0; 
+			 
+				//SECOND: get pearl back
+				
+				int rawChance = 50;//ModLoader.configSettings.chanceReturnEnderPearl;
+				
+				double pct = ((double)rawChance)/100.0; 
+				
+				//so event.entity.pos is their position BEFORE teleport
+				if(p.worldObj.rand.nextDouble() < pct)
+				{ 
+					EntityItem ei = new EntityItem(p.worldObj, event.targetX, event.targetY, event.targetZ, new ItemStack(Items.ender_pearl));
+					p.worldObj.spawnEntityInWorld(ei);
+				} 
+			}
 		}
 	} 
 }
