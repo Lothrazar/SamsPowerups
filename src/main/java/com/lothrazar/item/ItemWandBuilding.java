@@ -49,7 +49,7 @@ public class ItemWandBuilding extends ItemTool
 	 
 	public static void Init()
 	{  
-		if(!ModLoader.configSettings.buildingWand){return;}
+		if(!ModLoader.configSettings.wandBuilding){return;}
 		 
 		ItemRegistry.wandBuilding = new ItemWandBuilding(); 
 		SamsRegistry.registerItem(ItemRegistry.wandBuilding, "wand_building" );  

@@ -93,7 +93,7 @@ public class ConfigFile
 	public boolean theEndSafeFall;
 	public boolean plantDespawningSaplings;
 	public boolean noDamageEnderPearl;
-	public boolean buildingWand;
+	public boolean wandBuilding;
 	public boolean simpleDispenser; 
 	public boolean dropPlayerSkullOnDeath;
 	public boolean searchspawner;
@@ -153,8 +153,7 @@ public class ConfigFile
 		toolChanges();
 		 
 		convenience();
-
-		builderswand(); 
+ 
 		 
 		wands();
 		 
@@ -256,6 +255,22 @@ public class ConfigFile
     			" .");
 		wandProspect = instance.getBoolean("wandProspect",category, true,
     			" .");  
+		
+		wandBuilding = instance.getBoolean( "wandBuilding",category,true,
+				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
+		
+		ItemWandBuilding.replaceBedrock = instance.getBoolean(category, "wandBuilding.replaceBedrock",true,
+			"Set true to allow the building wand to affect bedrock.  "
+		);
+		
+		ItemWandBuilding.replaceObsidian = instance.getBoolean(category, "wandBuilding.replaceObsidian",true,
+			 "Set true to allow the building wand to affect obsidian.  "
+		);
+		 
+		ItemWandBuilding.replaceTileEntities = instance.getBoolean(category, "wandBuilding.replaceTileEntities",true,
+			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
+			 "(such as chest or dispenser).   "
+		); 
 	}
 
 	private void convenience() 
@@ -567,24 +582,5 @@ public class ConfigFile
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 	}
 	
-	public void builderswand( )
-	{ 
-		String category = "builders_wand";
-
-		buildingWand = instance.getBoolean( "enabled",category,true,
-				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
-		
-		ItemWandBuilding.replaceBedrock = instance.getBoolean(category, "replaceBedrock",true,
-			"Set true to allow the building wand to affect bedrock.  "
-		);
-		
-		ItemWandBuilding.replaceObsidian = instance.getBoolean(category, "replaceObsidian",true,
-			 "Set true to allow the building wand to affect obsidian.  "
-		);
-		 
-		ItemWandBuilding.replaceTileEntities = instance.getBoolean(category, "replaceTileEntities",true,
-			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
-			 "(such as chest or dispenser).   "
-		);
-	}
+	 
 }
