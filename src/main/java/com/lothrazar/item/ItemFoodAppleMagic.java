@@ -205,7 +205,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(!ModLoader.configSettings.appleNetherStar) {return;}
 		
 		ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(hungerSmall, true);  
-		ItemRegistry.apple_emerald_rich.addEffect(netherwartApplePotion, timeLong, netherwartAppleLevel);  
+		ItemRegistry.apple_nether_star.addEffect(netherwartApplePotion, timeLong, netherwartAppleLevel);  
 
 		SamsRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		
@@ -214,6 +214,25 @@ public class ItemFoodAppleMagic extends ItemFood
 			,'l', Items.nether_wart
 			,'a', Items.apple); 
 		if(ModLoader.configSettings.uncraftGeneral) 
-			GameRegistry.addSmelting(ItemRegistry.apple_nether_star, new ItemStack(Items.nether_wart, 1),	0); 
+			GameRegistry.addSmelting(ItemRegistry.apple_nether_star, new ItemStack(Items.nether_wart, 8),	0); 
+	}
+	 
+	public static void initEnder()
+	{  
+		if(!ModLoader.configSettings.appleNetherStar) {return;}
+		
+		ItemRegistry.apple_ender = new ItemFoodAppleMagic(hungerLarge, false);  
+		//TODO: ender potion
+		//ItemRegistry.apple_ender.addEffect(netherwartApplePotion, timeLong, netherwartAppleLevel);  
+
+		SamsRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
+		
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ender)
+			,"lll","lal","lll"  
+			,'l', Items.ender_pearl
+			,'a', Items.apple); 
+		
+		if(ModLoader.configSettings.uncraftGeneral) 
+			GameRegistry.addSmelting(ItemRegistry.apple_ender, new ItemStack(Items.ender_pearl, 8),	0); 
 	}
 }
