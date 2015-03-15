@@ -25,10 +25,10 @@
             //TODO: can we prevent vine growth
             //TODO: can we increase vine growth on swampland trees
             //TODO: can we generate mushroom/flower/lilypad growth
- //TODO: merge the end safefall along with nodamageEnderPearl, and maybe even pearlReturns into ender apple. nice 30min timer?
+ //[march15]: merge the end safefall along with nodamageEnderPearl, and maybe even pearlReturns into ender apple. nice 30min timer?
  
-//TODO: sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
-//TODO: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
+//TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
+//[march15]: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
 //TODO: wand lightning   
     //using public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     //blocks that do things to players/mobs . such as

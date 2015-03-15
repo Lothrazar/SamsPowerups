@@ -126,7 +126,7 @@ public class HandlerPotionTick
 	     { 
 	    	 if(event.entityLiving.worldObj.rand.nextInt(Reference.TICKS_PER_SEC) == 0) //pick out one random tick from each second
 	    	 {
-	        	 System.out.println("potionTired potion hit");
+	        	 //System.out.println("potionTired potion hit");
 	        	 
 	        	 //need drawbacks ... food cannot be full?
 	        	 
