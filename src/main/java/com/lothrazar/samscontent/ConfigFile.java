@@ -140,6 +140,8 @@ public class ConfigFile
 		
 	    crafting();  
 		 
+		creative();
+		 
 		new_blocks_items(); 
 
 		loot_chests();
@@ -184,7 +186,20 @@ public class ConfigFile
 	private void world() 
 	{
 		category = "world";
+
+
+		playerDeathCoordinates = instance.getBoolean("playerDeathCoordinates",category, true,
+    			"Players will have their death point coordinates broadcast in chat.");
 		
+		dropPlayerSkullOnDeath = instance.getBoolean("dropPlayerSkullOnDeath",category, true,
+    			"Players will drop their skull when they die.");
+		
+		plantDespawningSaplings = instance.getBoolean("plantDespawningSaplings",category, true,
+    			"When a sapling (or mushroom) despawns while sitting on grass or dirt, it will instead attempt to plant itself.");
+
+		theEndSafeFall = instance.getBoolean("theEndSafeFall",category, true,
+    			"Falling off the world in the end will instead teleport you to the top, making a falling loop.");
+
 		saplingGrowthRestricted = instance.getBoolean("saplingGrowthRestricted",category, true,
     			"Sapling growth is restricted to only their native biomes (for example, birch trees will not grow in roofed forests).");
 		 
@@ -195,7 +210,10 @@ public class ConfigFile
     			"Sapling growth restrictions are lifted in the end.");
 		 
 		worldGenClayOceans = instance.getBoolean("worldGenClayOceans",category, true,
-    			"Clay can generate in oceans just like it used to in the old days..");
+    			"Clay can generate in oceans just like it used to in the old days.");
+
+		betterBonemeal = instance.getBoolean("betterBonemeal",category, true,
+    			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
 	}
 
 	private void potions() 
@@ -241,41 +259,15 @@ public class ConfigFile
 	}
 
 	private void convenience() 
-	{
-		category = "convenience"; 	
-		 
-		mushroomBlocksCreativeInventory = instance.getBoolean("mushroomBlocksCreativeInventory",category, true,
-    			"Add the (missing) mushroom blocks into creative inventory where they should be.");
-
-		barrierCreativeInventory = instance.getBoolean("barrierCreativeInventory",category, true,
-    			"Add barrier into creative inventory.");
+	{ 
+		category = "convenience"; 
 		
-		dragonEggCreativeInventory = instance.getBoolean("dragonEggCreativeInventory",category, true,
-    			"Add dragon egg into creative inventory.");
-		
-		farmlandCreativeInventory = instance.getBoolean("farmlandCreativeInventory",category, true,
-    			"Add farmland into creative inventory.");
-		
-		spawnerCreativeInventory = instance.getBoolean("spawnerCreativeInventory",category, true,
-    			"Add spawner into creative inventory.");
-    	
-		playerDeathCoordinates = instance.getBoolean("playerDeathCoordinates",category, true,
-    			"Players will have their death point coordinates broadcast in chat.");
-		
-		dropPlayerSkullOnDeath = instance.getBoolean("dropPlayerSkullOnDeath",category, true,
-    			"Players will drop their skull when they die.");
  		 
 		chanceReturnEnderPearl = instance.getInt("noDamageEnderPearl",category, 50,0,100,//numbers are Default, Min, Max
     			"No damage taken from an ender pearl throw");
 				 
 		noDamageEnderPearl = instance.getBoolean("noDamageEnderPearl",category, true,
     			"No damage taken from an ender pearl throw");
-
-		plantDespawningSaplings = instance.getBoolean("plantDespawningSaplings",category, true,
-    			"When a sapling (or mushroom) despawns while sitting on grass or dirt, it will instead attempt to plant itself.");
-
-		theEndSafeFall = instance.getBoolean("theEndSafeFall",category, true,
-    			"Falling off the world in the end will instead teleport you to the top, making a falling loop.");
 
 		increasedStackSizes = instance.getBoolean("increasedStackSizes",category, true,
 			"While true, many items and blocks (not tools/armor/potions) have their max stack size increased to 64.  " +
@@ -294,8 +286,26 @@ public class ConfigFile
 		skullSignNames = instance.getBoolean("skullSignNames",category, true,
     			"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
 		 
-		betterBonemeal = instance.getBoolean("betterBonemeal",category, true,
-    			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
+	}
+
+	private void creative() 
+	{
+		category = "creative";
+		
+		mushroomBlocksCreativeInventory = instance.getBoolean("mushroomBlocksCreativeInventory",category, true,
+    			"Add the (missing) mushroom blocks into creative inventory where they should be.");
+
+		barrierCreativeInventory = instance.getBoolean("barrierCreativeInventory",category, true,
+    			"Add barrier into creative inventory.");
+		
+		dragonEggCreativeInventory = instance.getBoolean("dragonEggCreativeInventory",category, true,
+    			"Add dragon egg into creative inventory.");
+		
+		farmlandCreativeInventory = instance.getBoolean("farmlandCreativeInventory",category, true,
+    			"Add farmland into creative inventory.");
+		
+		spawnerCreativeInventory = instance.getBoolean("spawnerCreativeInventory",category, true,
+    			"Add spawner into creative inventory.");
 	}
 
 	private void toolChanges() 
