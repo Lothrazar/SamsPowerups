@@ -13,6 +13,7 @@ public class PotionRegistry
 	public static Potion slowfall;
 	public static Potion flying;
 	public static Potion lavawalk;
+	public static Potion ender;
 	
 	public final static int I = 0; 
 	public final static int II = 1;
@@ -38,7 +39,8 @@ public class PotionRegistry
 		PotionRegistry.slowfall = (new PotionCustom(ModLoader.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		
 		PotionRegistry.flying = (new PotionCustom(ModLoader.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
-		  
+		
+		PotionRegistry.ender = (new PotionCustom(ModLoader.configSettings.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 	}
 
 	private static void initPotionTypesReflection() 

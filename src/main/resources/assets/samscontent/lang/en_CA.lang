@@ -4,6 +4,7 @@ potion.slowfall=Slowfall
 potion.flying=Flying
 potion.waterwalk=Waterwalking
 potion.lavawalk=Lavawalking
+potion.ender=Ender Aura
 item.flint_tool.name=Flint Tool
 item.book_ender.name=Ender Book
 item.chest_sack.name=Sack of Holding

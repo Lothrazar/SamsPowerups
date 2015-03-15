@@ -216,14 +216,16 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(ItemRegistry.apple_nether_star, new ItemStack(Items.nether_wart, 8),	0); 
 	}
-	 
+
+	public static int enderPotion = PotionRegistry.ender.id;
+	public static int enderLevel = PotionRegistry.I;
 	public static void initEnder()
 	{  
 		if(!ModLoader.configSettings.appleNetherStar) {return;}
 		
 		ItemRegistry.apple_ender = new ItemFoodAppleMagic(hungerLarge, false);  
 		//TODO: ender potion
-		//ItemRegistry.apple_ender.addEffect(netherwartApplePotion, timeLong, netherwartAppleLevel);  
+		ItemRegistry.apple_ender.addEffect(enderPotion, timeLong, enderLevel);  
 
 		SamsRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
 		

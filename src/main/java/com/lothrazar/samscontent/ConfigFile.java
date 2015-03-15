@@ -170,6 +170,9 @@ public class ConfigFile
 		potionIdLavawalk  = instance.getInt("potionIdLavawalk",category, 44,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		
+		potionIdEnder  = instance.getInt("potionIdLavawalk",category, 45,33,200,
+    			"ID is only exposed to avoid conflicts with other mods.");
+		
 		slowfallSpeed = instance.getFloat("slowfallSpeed",category, 0.41F,0.1F,1F,
     			"ID is only exposed to avoid conflicts with other mods.");
 	}
@@ -599,5 +602,6 @@ public class ConfigFile
 	public boolean worldGenClayOceans;
 	public boolean saplingGrowthRestricted;
 	public boolean saplingAllNether;
-	public boolean saplingAllEnd; 
+	public boolean saplingAllEnd;
+	public int potionIdEnder; 
 }
