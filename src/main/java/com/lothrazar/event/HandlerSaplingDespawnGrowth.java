@@ -33,9 +33,9 @@ public class HandlerSaplingDespawnGrowth
 	public List<Integer> darkoakBiomes = new ArrayList<Integer>();
 	public List<Integer> acaciaBiomes = new ArrayList<Integer>();
 	
-	
 	public HandlerSaplingDespawnGrowth()
 	{
+			
 		oakBiomes.add(BiomeGenBase.forest.biomeID);
 		oakBiomes.add(BiomeGenBase.forestHills.biomeID);
 		oakBiomes.add(132);  //Flower Forest
@@ -115,18 +115,33 @@ public class HandlerSaplingDespawnGrowth
 		//ocean
 		//deepocean
 		//frozen ocean(10N  
+		 
+		if(ModLoader.configSettings.saplingAllNether)
+		{
+			acaciaBiomes.add(BiomeGenBase.hell.biomeID);
+			oakBiomes.add(BiomeGenBase.hell.biomeID);
+			birchBiomes.add(BiomeGenBase.hell.biomeID);
+			spruceBiomes.add(BiomeGenBase.hell.biomeID);
+			darkoakBiomes.add(BiomeGenBase.hell.biomeID);
+			jungleBiomes.add(BiomeGenBase.hell.biomeID);
+		}
 		
-		
-		//TODO: config file to add option for nether/the end trees, even if we DONT open up every biome on its own
-		
+		if(ModLoader.configSettings.saplingAllEnd)
+		{ 
+			acaciaBiomes.add(BiomeGenBase.sky.biomeID);
+			oakBiomes.add(BiomeGenBase.sky.biomeID);
+			birchBiomes.add(BiomeGenBase.sky.biomeID);
+			spruceBiomes.add(BiomeGenBase.sky.biomeID);
+			darkoakBiomes.add(BiomeGenBase.sky.biomeID);
+			jungleBiomes.add(BiomeGenBase.sky.biomeID);
+		}  
 	}
 	
 	@SubscribeEvent
 	public void onSaplingGrowTreeEvent(SaplingGrowTreeEvent event)
-	{ 
-		//IDEA: we could put biome/sapling pairs in config file and use 		BiomeGenBase.getBiome(int)
-		//AND OR: put field for saplings/biomes added by other mods
-		 
+	{  
+		if(ModLoader.configSettings.saplingGrowthRestricted == false) {return;}
+		
 		Block b = event.world.getBlockState(event.pos).getBlock();
 		
 		boolean treeAllowedToGrow = false;
@@ -185,29 +200,26 @@ public class HandlerSaplingDespawnGrowth
 		 if(ModLoader.configSettings.plantDespawningSaplings == false) {return;}
 		 
 		 ItemStack is = event.entityItem.getEntityItem();
-		 if(is != null )
-		 { 
-			 Block blockhere = event.entity.worldObj.getBlockState(event.entityItem.getPosition()).getBlock(); 
-			 Block blockdown = event.entity.worldObj.getBlockState(event.entityItem.getPosition().down()).getBlock();
-			   
-			if(blockhere == Blocks.air && 
-				blockdown == Blocks.dirt || //includes podzol and such
-				blockdown == Blocks.grass 
-				)
-			{
-				//plant the sapling, replacing the air and on top of dirt/plantable
-				
-				if(Block.getBlockFromItem(is.getItem()) == Blocks.sapling)
-					event.entity.worldObj.setBlockState(event.entityItem.getPosition(), Blocks.sapling.getStateFromMeta(is.getItemDamage()));
-				else if(Block.getBlockFromItem(is.getItem()) == Blocks.red_mushroom)	
-					event.entity.worldObj.setBlockState(event.entityItem.getPosition(), Blocks.red_mushroom.getDefaultState());
-				else if(Block.getBlockFromItem(is.getItem()) == Blocks.brown_mushroom)	
-					event.entity.worldObj.setBlockState(event.entityItem.getPosition(), Blocks.brown_mushroom.getDefaultState());
-				
-					
-						
+		 if(is == null ) {return;}//has not happened in the wild, yet
+		 
+		 
+		 Block blockhere = event.entity.worldObj.getBlockState(event.entityItem.getPosition()).getBlock(); 
+		 Block blockdown = event.entity.worldObj.getBlockState(event.entityItem.getPosition().down()).getBlock();
+		   
+		 if(blockhere == Blocks.air && 
+			blockdown == Blocks.dirt || //includes podzol and such
+			blockdown == Blocks.grass 
+			)
+		 {
+			//plant the sapling, replacing the air and on top of dirt/plantable
 			
-			}
-		 }
+			 if(Block.getBlockFromItem(is.getItem()) == Blocks.sapling)
+				event.entity.worldObj.setBlockState(event.entityItem.getPosition(), Blocks.sapling.getStateFromMeta(is.getItemDamage()));
+			 else if(Block.getBlockFromItem(is.getItem()) == Blocks.red_mushroom)	
+				event.entity.worldObj.setBlockState(event.entityItem.getPosition(), Blocks.red_mushroom.getDefaultState());
+			 else if(Block.getBlockFromItem(is.getItem()) == Blocks.brown_mushroom)	
+				event.entity.worldObj.setBlockState(event.entityItem.getPosition(), Blocks.brown_mushroom.getDefaultState());
+			 
+		 } 
 	} 
 }

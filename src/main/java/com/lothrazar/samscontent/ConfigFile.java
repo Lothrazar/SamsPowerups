@@ -127,7 +127,10 @@ public class ConfigFile
 	public boolean flintTool;
 	public int potionIdLavawalk;
 	public boolean netherwartPurpleDye;
-	public boolean worldGenClayOceans; 
+	public boolean worldGenClayOceans;
+	public boolean saplingGrowthRestricted;
+	public boolean saplingAllNether;
+	public boolean saplingAllEnd; 
 	
 	public ConfigFile(Configuration c)
 	{
@@ -158,6 +161,15 @@ public class ConfigFile
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 			
 		
+		saplingGrowthRestricted = instance.getBoolean("saplingGrowthRestricted",category, true,
+    			"Sapling growth is restricted to only their native biomes (for example, birch trees will not grow in roofed forests).");
+		 
+		saplingAllNether = instance.getBoolean("saplingAllNether",category, false,
+    			"Sapling growth restrictions are lifted in the nether.");
+		
+		saplingAllEnd = instance.getBoolean("saplingAllEnd",category, false,
+    			"Sapling growth restrictions are lifted in the end.");
+		 
 		worldGenClayOceans = instance.getBoolean("worldGenClayOceans",category, true,
     			"Clay can generate in oceans just like it used to in the old days..");
 		 
