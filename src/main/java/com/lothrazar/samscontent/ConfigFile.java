@@ -48,7 +48,7 @@ public class ConfigFile
 		
 		terrain_generation();
 		
-		loot_chests();
+		dungeon_chests();
 		 
 		debug_info();
 		 
@@ -336,7 +336,7 @@ public class ConfigFile
     			"It will show info on any village you are standing in.");
 	}
 	
-	private void loot_chests() 
+	private void dungeon_chests() 
 	{
 		category = "dungeon_chests";
  
