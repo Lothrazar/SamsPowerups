@@ -206,16 +206,18 @@ public class ConfigFile
 		wandProspect = instance.getBoolean("wandProspect",category, true,
     			"Craft a wand that will prospect the nearby area for diamonds."); 
 		
-		wandBuilding = instance.getBoolean( "wandBuilding",category,true,
+		category = category+".wandBuilding";//sub catgeory
+		
+		wandBuilding = instance.getBoolean( "wandBuilding", category,true,
 				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
 		
-		ItemWandBuilding.replaceBedrock = instance.getBoolean(category, "wandBuilding.replaceBedrock",true,
+		ItemWandBuilding.replaceBedrock = instance.getBoolean("replaceBedrock", category ,true,
 			"Set true to allow the building wand to affect bedrock.  "	);
 		
-		ItemWandBuilding.replaceObsidian = instance.getBoolean(category, "wandBuilding.replaceObsidian",true,
+		ItemWandBuilding.replaceObsidian = instance.getBoolean("replaceObsidian", category ,true,
 			 "Set true to allow the building wand to affect obsidian.  "	);
 		 
-		ItemWandBuilding.replaceTileEntities = instance.getBoolean(category, "wandBuilding.replaceTileEntities",true,
+		ItemWandBuilding.replaceTileEntities = instance.getBoolean("replaceTileEntities", category ,true,
 			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
 			 "(such as chest or dispenser).   "	); 
 	}
