@@ -178,7 +178,7 @@ public class ConfigFile
     			"ID is only exposed to avoid conflicts with other mods.");
 		
 		slowfallSpeed = instance.getFloat("slowfallSpeed",category, 0.41F,0.1F,1F,
-    			"ID is only exposed to avoid conflicts with other mods.");
+    			"This factor affects how much the slowfall potion slows down the entity.");
 	}
 
 	private void wands() 
