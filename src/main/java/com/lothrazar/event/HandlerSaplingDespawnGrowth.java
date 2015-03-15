@@ -60,7 +60,65 @@ public class HandlerSaplingDespawnGrowth
 		acaciaBiomes.add(BiomeGenBase.getBiome(163).biomeID); // Savanna M
 		acaciaBiomes.add(BiomeGenBase.getBiome(164).biomeID);  // Savanna Plateau M
 	  
-			 
+		spruceBiomes.add(BiomeGenBase.taiga.biomeID);
+		spruceBiomes.add(BiomeGenBase.taigaHills.biomeID);
+		spruceBiomes.add(BiomeGenBase.megaTaiga.biomeID);
+		spruceBiomes.add(BiomeGenBase.getBiome(160).biomeID);//megasprucetaiga 
+		spruceBiomes.add(BiomeGenBase.getBiome(161).biomeID);//megasprucetaiga M);
+		spruceBiomes.add(BiomeGenBase.megaTaigaHills.biomeID);
+		spruceBiomes.add(BiomeGenBase.coldTaiga.biomeID);
+		spruceBiomes.add(BiomeGenBase.coldTaigaHills.biomeID);
+		spruceBiomes.add(BiomeGenBase.getBiome(158).biomeID);//Cold Tagia M
+		spruceBiomes.add(BiomeGenBase.extremeHills.biomeID);
+		spruceBiomes.add(BiomeGenBase.extremeHillsEdge.biomeID);
+		spruceBiomes.add(BiomeGenBase.extremeHillsPlus.biomeID);
+		spruceBiomes.add(BiomeGenBase.jungle.biomeID);
+		spruceBiomes.add(BiomeGenBase.icePlains.biomeID);
+		spruceBiomes.add(BiomeGenBase.iceMountains.biomeID);
+
+		birchBiomes.add(BiomeGenBase.birchForest.biomeID);
+		birchBiomes.add(BiomeGenBase.birchForestHills.biomeID);
+		birchBiomes.add(BiomeGenBase.getBiome(155).biomeID); //Birch forest M
+		birchBiomes.add(BiomeGenBase.getBiome(156).biomeID);//Birch forest hills M
+		birchBiomes.add(BiomeGenBase.forest.biomeID);
+		birchBiomes.add(BiomeGenBase.forestHills.biomeID);
+		birchBiomes.add(BiomeGenBase.getBiome(132).biomeID);//Flower Forest;
+ 
+		darkoakBiomes.add(BiomeGenBase.roofedForest.biomeID);
+		darkoakBiomes.add(BiomeGenBase.getBiome(157).biomeID); // Roofed Forest M 
+		
+		jungleBiomes.add(BiomeGenBase.jungle.biomeID);
+		jungleBiomes.add(BiomeGenBase.jungleEdge.biomeID);
+		jungleBiomes.add(BiomeGenBase.jungleHills.biomeID);
+		jungleBiomes.add(BiomeGenBase.getBiome(149).biomeID);//jungle edge M
+		jungleBiomes.add(BiomeGenBase.getBiome(151).biomeID);//jungle M
+
+		//no saplings for:
+		//frozen river 
+		//ice plains spikes 
+		//cold beach
+		//stone beach
+		//the end
+		//plains
+		//sunflower plains
+		//river
+		//beach
+		//mooshroom island (14)
+		//mooshroom island shore (15)
+		//desert (2)
+		//desert M (130)
+		//mesa (37)
+		// mesa bryce (165)
+		// plateaus (36 38 39)
+		//nether
+		//sky (the end)
+		//ocean
+		//deepocean
+		//frozen ocean(10N  
+		
+		
+		//TODO: config file to add option for nether/the end trees, even if we DONT open up every biome on its own
+		
 	}
 	
 	@SubscribeEvent
@@ -68,8 +126,6 @@ public class HandlerSaplingDespawnGrowth
 	{ 
 		//IDEA: we could put biome/sapling pairs in config file and use 		BiomeGenBase.getBiome(int)
 		//AND OR: put field for saplings/biomes added by other mods
-		
-		BiomeGenBase biome = event.world.getBiomeGenForCoords(event.pos);
 		 
 		Block b = event.world.getBlockState(event.pos).getBlock();
 		
@@ -78,9 +134,9 @@ public class HandlerSaplingDespawnGrowth
 		if(b == Blocks.sapling)//this may not always be true: such as trees added by Mods, so not a vanilla tree, but throwing same event
 		{
 			int meta = Blocks.sapling.getMetaFromState(event.world.getBlockState(event.pos));
-
-			int biomeID = event.world.getBiomeGenForCoords(event.pos).biomeID;
 			
+			int biomeID = event.world.getBiomeGenForCoords(event.pos).biomeID;
+
 			int growth_data = 8;//0-5 is the type, then it adds on a 0x8  
 			//and we know that it is always maxed out at ready to grow 8 since it is turning into a tree.
 			
@@ -90,109 +146,27 @@ public class HandlerSaplingDespawnGrowth
 			//as of 12 march 2015, it seems biome id 168 does not exist, so 167 is highest used (vanilla minecraft)
 			switch(tree_type)
 			{
-			case Reference.sapling_acacia:
-				
-				treeAllowedToGrow = acaciaBiomes.contains(biome);
-		
+			case Reference.sapling_acacia: 
+				treeAllowedToGrow = acaciaBiomes.contains(biomeID); 
 				break;
-			case Reference.sapling_spruce:
-
-				treeAllowedToGrow = (biome == BiomeGenBase.taiga) ||
-					(biome == BiomeGenBase.taigaHills) ||
-					(biome == BiomeGenBase.megaTaiga) ||
-					(biome == BiomeGenBase.getBiome(160)) ||//megasprucetaiga
-					(biome == BiomeGenBase.getBiome(161)) ||//megasprucetaiga M
-					(biome == BiomeGenBase.megaTaigaHills) || 
-					(biome == BiomeGenBase.coldTaiga) ||
-					(biome == BiomeGenBase.coldTaigaHills) || 
-					(biome == BiomeGenBase.getBiome(158)) || //?cold tagia M, 158?
-					(biome == BiomeGenBase.extremeHills) || 
-					(biome == BiomeGenBase.extremeHillsEdge) || 
-					(biome == BiomeGenBase.extremeHillsPlus) || 
-					(biome == BiomeGenBase.jungle) ||
-					(biome == BiomeGenBase.icePlains) ||
-					(biome == BiomeGenBase.iceMountains);
+			case Reference.sapling_spruce: 
+				treeAllowedToGrow = spruceBiomes.contains(biomeID); 
 				break; 
-			case Reference.sapling_oak:
-
-				treeAllowedToGrow = (oakBiomes.contains(biome));
-				/*(biome == BiomeGenBase.forest) ||
-					(biome == BiomeGenBase.forestHills) ||
-					(biome == BiomeGenBase.getBiome(132)) ||//Flower Forest
-					(biome == BiomeGenBase.mesaPlateau) || //the only mesa with oak trees, not others
-					(biome == BiomeGenBase.getBiome(166)) ||//mesa plateau F M 
-					(biome == BiomeGenBase.getBiome(167)) ||//mesa plateau M 
-					(biome == BiomeGenBase.jungle) ||
-					(biome == BiomeGenBase.jungleEdge) ||
-					(biome == BiomeGenBase.getBiome(151)) ||//jungle edge M
-					(biome == BiomeGenBase.getBiome(149)) ||//jungle M
-					(biome == BiomeGenBase.jungleHills) ||
-					(biome == BiomeGenBase.swampland) ||
-					(biome == BiomeGenBase.getBiome(134)) ||//Swampland M
-					(biome == BiomeGenBase.extremeHills) || 
-					(biome == BiomeGenBase.extremeHillsEdge) || 
-					(biome == BiomeGenBase.extremeHillsPlus) || 
-					(biome == BiomeGenBase.icePlains);*/
+			case Reference.sapling_oak: 
+				treeAllowedToGrow = oakBiomes.contains(biomeID);  
 				break;
-			case Reference.sapling_birch:
-
-				treeAllowedToGrow = (biome == BiomeGenBase.birchForest)  || 
-					(biome == BiomeGenBase.birchForestHills) || 
-					(biome == BiomeGenBase.getBiome(155)) || //Birch forest M
-					(biome == BiomeGenBase.getBiome(156)) || //Birch forest hills M
-					(biome == BiomeGenBase.forest) ||
-					(biome == BiomeGenBase.forestHills) ||
-					(biome == BiomeGenBase.getBiome(132));//Flower Forest;
-				
+			case Reference.sapling_birch: 
+				treeAllowedToGrow = birchBiomes.contains(biomeID); 
 				break;
-			case Reference.sapling_darkoak:
-
-				treeAllowedToGrow = (biome == BiomeGenBase.roofedForest) || 
-						(biome == BiomeGenBase.getBiome(157)); // Roofed Forest M
+			case Reference.sapling_darkoak: 
+				treeAllowedToGrow = darkoakBiomes.contains(biomeID);
 				break;
-			case Reference.sapling_jungle:
-
-				treeAllowedToGrow = (biome == BiomeGenBase.jungle) ||
-					(biome == BiomeGenBase.jungleEdge) ||
-					(biome == BiomeGenBase.getBiome(151)) ||//jungle edge M
-					(biome == BiomeGenBase.getBiome(149)) ||//jungle M
-					(biome == BiomeGenBase.jungleHills);
+			case Reference.sapling_jungle: 
+				treeAllowedToGrow = jungleBiomes.contains(biomeID);
 				break;
-				
-				//no saplings for:
-				//frozen river 
-				//ice plains spikes 
-				//cold beach
-				//stone beach
-				//the end
-				//plains
-				//sunflower plains
-				//river
-				//beach
-				//mooshroom island (14)
-				//mooshroom island shore (15)
-				//desert (2)
-				//desert M (130)
-				//mesa (37)
-				// mesa bryce (165)
-				// plateaus (36 38 39)
-				//nether
-				//sky (the end)
-				//ocean
-				//deepocean
-				//frozen ocean(10N  
-				
-				
-				//TODO: config file to add option for nether/the end trees, even if we DONT open up every biome on its own
 				
 			}
 			
-			//TODO: can we prevent cactus growth
-			//TODO: can we prevent reeds growth
-			//TODO: can we prevent vine growth
-			//TODO: can we increase vine growth on swampland trees
-			//TODO: can we generate mushroom/flower/lilypad growth
-			 
 			if(treeAllowedToGrow == false)
 			{
 				event.setResult(Result.DENY);
