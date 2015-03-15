@@ -17,7 +17,7 @@
 //[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
 //[march12]: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
 //[march13]: worldgen clay Replacing gravel in ocean    
-//TODO: parachute item and/or slowfall ability
+//[march14]: parachute item and/or slowfall ability
 //TODO: sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
 //TODO: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
 //TODO: wand lightning   
