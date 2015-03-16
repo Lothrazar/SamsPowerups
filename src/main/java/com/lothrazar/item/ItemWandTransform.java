@@ -11,6 +11,7 @@ import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -58,6 +59,24 @@ public class ItemWandTransform extends ItemTool
 	}
 	  
 	
+	
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+  	{      
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held == null) { return; }//empty hand so do nothing
+		  
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		   
+		if(held.getItem() == ItemRegistry.wandTransform && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{
+
+			transformBlock(event.entityPlayer, event.world, held, event.pos);
+			
+		}
+  	}
+	
 	@Override
     public boolean hasEffect(ItemStack par1ItemStack)
     {
@@ -81,7 +100,7 @@ public class ItemWandTransform extends ItemTool
 	}
  
 	private static int INVALID = -1;
-	public static void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
+	public void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
 	{
 		IBlockState blockState = player.worldObj.getBlockState(pos);
 		Block block = blockState.getBlock();

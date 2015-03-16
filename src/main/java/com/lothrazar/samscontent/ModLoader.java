@@ -6,6 +6,7 @@ import java.util.ArrayList;
 
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;   
+
 import com.lothrazar.block.*; 
 import com.lothrazar.command.*; 
 import com.lothrazar.event.*; 
@@ -227,7 +228,8 @@ public class ModLoader
      		,new HandlerTorchCollide() 
      		,new HandlerBucketStorage()
       		,new HandlerPlayerHarvest()
-     		,ItemRegistry.itemEnderBook//new ItemEnderBook()
+     		,ItemRegistry.itemEnderBook 
+     		,ItemRegistry.wandTransform 
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()

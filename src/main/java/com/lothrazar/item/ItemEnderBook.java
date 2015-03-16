@@ -35,7 +35,7 @@ public class ItemEnderBook extends ItemTool
 	public static String KEY_LOC = "location"; 
 	private static int DURABILITY = 50;
 	
-	public ItemEnderBook( )
+	public ItemEnderBook()
 	{  
 		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
     	this.setMaxDamage(DURABILITY);
@@ -120,10 +120,7 @@ public class ItemEnderBook extends ItemTool
 		}
 		
 		event.entityPlayer.swingItem();
-	 
 	}  
-	
-	
 	
 	public void teleport(EntityPlayer entityPlayer, ItemStack enderBookInstance) 
 	{ 

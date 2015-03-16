@@ -57,13 +57,13 @@ public class HandlerWand
 		  
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		   
-		if(held.getItem() == ItemRegistry.wandTransform && 
+		/*if(held.getItem() == ItemRegistry.wandTransform && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{
 
 			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos);
 			
-		}
+		}*/
 
 		if(event.world.isRemote){ return ;}//server side only!
 
