@@ -9,6 +9,7 @@ import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;
 
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
@@ -94,16 +95,45 @@ public class ItemEnderBook extends ItemTool
     	itemStack.getTagCompound().setString(KEY, loc.toCSV());		
 	} 
 	
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+	{
+		ItemStack itemStack = event.entityPlayer.getCurrentEquippedItem();
+
+		if (itemStack == null || 
+			itemStack.getItem() == null || 
+			ItemRegistry.itemEnderBook == null) 
+		{ 
+			return; 
+		}
+
+		//left or right click with the book does the corresponding action
+		if (itemStack.getItem() == ItemRegistry.itemEnderBook)
+		{
+			if (event.action.LEFT_CLICK_BLOCK == event.action)
+			{ 			 
+				ItemEnderBook.teleport(event.entityPlayer, itemStack);			 
+			} 
+			else
+			{ 
+				ItemRegistry.itemEnderBook.saveCurrentLocation( event.entityPlayer, itemStack);
+			}
+			
+			event.entityPlayer.swingItem();
+		}
+	}  
+	
+	
+	
 	public static void teleport(EntityPlayer entityPlayer, ItemStack enderBookInstance) 
 	{ 
-		int slot = entityPlayer.inventory.currentItem+1;
+		int slot = entityPlayer.inventory.currentItem + 1;
     	String KEY = ItemEnderBook.KEY_LOC + "_" + slot;
     	
 		String csv = enderBookInstance.getTagCompound().getString(KEY);
 		
 		if(csv == null || csv.isEmpty()) 
-		{
-			//Relay.addChatMessage(event.entityPlayer, "No location saved at "+KEY);
+		{ 
 			return;
 		}
 		
@@ -111,11 +141,11 @@ public class ItemEnderBook extends ItemTool
 		 
 		if(loc.dimension == Reference.Dimension.end) 
 		{
-			entityPlayer.setFire(4);
+			entityPlayer.setFire(4);//TODO: config file
 		} 
 		else if(loc.dimension == Reference.Dimension.nether) 
 		{
-			entityPlayer.heal(-15);
+			entityPlayer.heal(-15);//TODO: config file
 		}
 		
 		if(entityPlayer.dimension != Reference.Dimension.overworld) 

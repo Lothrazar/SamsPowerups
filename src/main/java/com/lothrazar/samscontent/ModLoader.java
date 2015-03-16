@@ -119,12 +119,12 @@ public class ModLoader
 
 		PotionRegistry.registerPotionEffects();
 		
-		this.registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
-
 		ItemRegistry.registerItems();
 		
 		BlockRegistry.registerBlocks();
 
+		this.registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
+		
 		BlockHardnessRegistry.registerChanges();
 		
 		/*
@@ -227,7 +227,7 @@ public class ModLoader
      		,new HandlerTorchCollide() 
      		,new HandlerBucketStorage()
       		,new HandlerPlayerHarvest()
-     		,new HandlerEnderBookClick()
+     		,ItemRegistry.itemEnderBook//new ItemEnderBook()
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()
