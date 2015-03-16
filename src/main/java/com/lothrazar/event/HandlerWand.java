@@ -59,21 +59,7 @@ public class HandlerWand
 		  
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
-		if(held.getItem() == ItemRegistry.wandChest && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			if(blockClicked == null || blockClicked == Blocks.air ){return;}
-			
-			if(blockClicked instanceof BlockChest)// && event.entityPlayer.isSneaking()
-			{   
-				TileEntity container = event.world.getTileEntity(event.pos);
-				if(container instanceof TileEntityChest)
-				{
-					ItemRegistry.wandChest.convertChestToSack(event.entityPlayer,held,(TileEntityChest)container,event.pos);  
-				}
-			} 
-		}
-		else if(held.getItem() == ItemRegistry.wandHarvest && 
+		if(held.getItem() == ItemRegistry.wandHarvest && 
 				event.action.RIGHT_CLICK_BLOCK == event.action && 
 		    (blockClicked == Blocks.wheat || blockClicked == Blocks.carrots || blockClicked == Blocks.potatoes))
 		{ 

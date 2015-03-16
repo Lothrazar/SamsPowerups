@@ -9,6 +9,7 @@ import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -152,4 +153,31 @@ public class ItemWandChest extends ItemTool
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
  
+	
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+  	{      
+		if(event.world.isRemote){ return; }//server side only!
+		
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held == null) { return; }//empty hand so do nothing
+		  
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		
+		if(held.getItem() == ItemRegistry.wandChest && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			if(blockClicked == null || blockClicked == Blocks.air ){return;}
+			
+			if(blockClicked instanceof BlockChest)// && event.entityPlayer.isSneaking()
+			{   
+				TileEntity container = event.world.getTileEntity(event.pos);
+				
+				if(container instanceof TileEntityChest)
+				{
+					ItemRegistry.wandChest.convertChestToSack(event.entityPlayer,held,(TileEntityChest)container,event.pos);  
+				}
+			} 
+		}
+  	}
 }
