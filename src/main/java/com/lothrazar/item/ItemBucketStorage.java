@@ -28,7 +28,8 @@ public class ItemBucketStorage  extends Item
 	
 	public static void initLava()
 	{
-		//if(!ModLoader.settings.enderBook) {return;}//TODO: config
+		if(!ModLoader.configSettings.lavaStorage) {return;}//TODO: config
+		
 		ItemRegistry.itemLava = new ItemBucketStorage();
 
 		SamsRegistry.registerItem(ItemRegistry.itemLava, "bucket_storage_lava");
@@ -45,7 +46,8 @@ public class ItemBucketStorage  extends Item
 	
 	public static void initWater()
 	{
-		//if(!ModLoader.settings.enderBook) {return;}//TODO: config
+		if(!ModLoader.configSettings.waterStorage) {return;}//TODO: config
+		
 		ItemRegistry.itemWater = new ItemBucketStorage();
 
 		SamsRegistry.registerItem(ItemRegistry.itemWater, "bucket_storage_water");
@@ -59,33 +61,7 @@ public class ItemBucketStorage  extends Item
 				itemWater);
 				*/
 	}
-	/*
-	public static ItemBucketStorage itemMilk;
-	public static void initMilk()
-	{
-		//if(!ModLoader.settings.enderBook) {return;}//TODO: config
-		itemMilk = new ItemBucketStorage();
-
-		SamsRegistry.registerItem(itemMilk, "bucket_storage_milk");
- 
-		GameRegistry.addShapelessRecipe(new ItemStack(itemMilk), 
-				Items.milk_bucket, Items.milk_bucket, Items.milk_bucket,
-				Items.milk_bucket, Items.milk_bucket, Items.milk_bucket,
-				Items.milk_bucket, Items.milk_bucket, Items.milk_bucket);
-		 
-
-		GameRegistry.addRecipe(new ItemStack(Blocks.cake, 3), 
-				"sws",
-				"eee",
-				"sms",
-				's', Items.sugar,
-				'e', Items.egg,
-				'w', Blocks.wheat,
-				'm', itemMilk);
-		
-		
-	}*/
-	
+	  
 	public static void placeLiquid(EntityPlayer player, ItemStack held,BlockPos pos) 
 	{ 
 		player.swingItem();

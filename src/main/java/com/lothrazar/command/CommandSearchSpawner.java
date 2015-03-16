@@ -57,7 +57,7 @@ public class CommandSearchSpawner implements ICommand
 			radius = Integer.parseInt(args[0]);
 		}
 		
-		if(radius > 128) { radius = 128; }//Maximum //TODO:? these max/default numbers from config file
+		if(radius > 128) { radius = 128; }//Maximum // 
 		if(radius <= 0 ) { radius = 64;  }//default
 		
 		BlockPos found = SamsUtilities.findClosestBlock((EntityPlayer)sender, Blocks.mob_spawner, radius);

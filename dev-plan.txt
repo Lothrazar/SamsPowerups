@@ -17,7 +17,7 @@
 //[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
 //[march12]: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
 //[march13]: worldgen clay Replacing gravel in ocean    
-//[march14]: parachute item and/or slowfall ability
+//[march14]:  item and/or slowfall ability
 
         //sapling/biome feature expansion:
             //TODO: can we prevent cactus growth

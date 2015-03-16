@@ -786,28 +786,7 @@ public class Recipes
 		GameRegistry.addSmelting(Items.skull ,new ItemStack(Items.skull,1,Reference.skull_wither), 0);
 	}
 */
-	
-	
- 
-    //TODO: obsidian from lava bucket and ice, but in a way that keeps the bucket alive
-    //TODO: obsidian back into lava bucket by crafting Obs + bucket + <redstone or flint?>  
-	/*
-	public static void obsidianIceWater()
-	{
-		if(!ModLoader.settings.craftObsidian)  {return;}
-		
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.lava_bucket)
-			,new ItemStack(Blocks.obsidian)
-			,new ItemStack(Items.fire_charge)
-			,new ItemStack(Items.bucket)  	);  
-		 
-		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.obsidian)
-			,new ItemStack(Items.lava_bucket) //deletes the bucket, but thats okay
-			,new ItemStack(Blocks.ice)	);  
-	}
-	 */
-	
+	  
 	public static void bookNoLeather()
 	{ 
 		if(!ModLoader.configSettings.craftBooksWithoutLeather)  {return;}

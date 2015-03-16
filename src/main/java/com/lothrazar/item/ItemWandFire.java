@@ -48,11 +48,11 @@ public class ItemWandFire  extends Item
 		//if(ModLoader.configSettings.uncraftGeneral)
 			//GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);	
 	}
+	
+	public static int range = 9;//TODO: range in config
 
 	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
-	{
-		int range = 9;//TODO: range in config
-		
+	{ 
 		for(int i = 2; i < range; i++)
 		{
 
@@ -68,18 +68,13 @@ public class ItemWandFire  extends Item
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 	}
 
-	public static void castExtinguish(World world, EntityPlayer entityPlayer,	ItemStack held) 
-	{
-		int radius = 8;
-		//TODO: radius in config?
+	public int radius = 8;//TODO: radius in config 
+	public void castExtinguish(World world, EntityPlayer entityPlayer,	ItemStack held) 
+	{ 
 		ArrayList<BlockPos> fires = SamsUtilities.findBlocks(entityPlayer, Blocks.fire, radius);
 		
 		for(BlockPos p : fires)
-		{
-			//System.out.println("extinguishFire "+p.getX()+"    "+p.getZ());
-			//event.world.extinguishFire(event.entityPlayer, p, EnumFacing.DOWN);
-			
-			
+		{ 
 			world.extinguishFire(entityPlayer, p.down(), EnumFacing.UP);//from above
 			SamsUtilities.spawnParticle(world, EnumParticleTypes.DRIP_WATER, p);
 		}
@@ -87,11 +82,9 @@ public class ItemWandFire  extends Item
 		if(fires.size() > 0)
 		{
 			SamsUtilities.playSoundAt(entityPlayer, "liquid.water");
-		}
-		
+		} 
 	}
-	 
-	 
+	  
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
@@ -111,7 +104,7 @@ public class ItemWandFire  extends Item
 			}
 			else
 			{
-				ItemWandFire.castExtinguish(event.world,event.entityPlayer,held); 
+				castExtinguish(event.world,event.entityPlayer,held); 
 			} 
 		}
   	}

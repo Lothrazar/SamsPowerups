@@ -16,17 +16,17 @@ import net.minecraft.item.ItemTool;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemToolFlint extends ItemTool
-{
-
-//	private Set blocks = {Bocks.leaves;};
+{ 
+	public static int durability = 100;
  
 	protected ItemToolFlint(float attackDamage, ToolMaterial material,	Set effectiveBlocks) 
 	{ 
 		super(attackDamage, material,effectiveBlocks);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ModLoader.tabSamsContent);
-		this.setMaxDamage(100);//TODO: config 
+		this.setMaxDamage(durability);//TODO: config 
 	}
+	
 	public static void init()
 	{
 		if(ModLoader.configSettings.flintTool == false) {return;} 
