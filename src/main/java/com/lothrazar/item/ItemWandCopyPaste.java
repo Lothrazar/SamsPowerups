@@ -7,6 +7,7 @@ import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
 
+import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -22,6 +23,8 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandCopyPaste  extends Item
@@ -88,4 +91,50 @@ public class ItemWandCopyPaste  extends Item
 
 		entityPlayer.swingItem();
 	} 
+	
+	
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+  	{      
+		if(event.world.isRemote){ return ;}//server side only!
+		
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held == null) { return; }//empty hand so do nothing
+		  
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		
+		if(held.getItem() == ItemRegistry.wandCopy &&   
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{   
+			if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
+			{
+				TileEntitySign sign = (TileEntitySign)event.world.getTileEntity(event.pos);
+				 
+				if(event.entityPlayer.isSneaking())
+				{ 
+					ItemWandCopyPaste.copySign(event.world,event.entityPlayer,sign,held); 
+				}
+				else
+				{
+					ItemWandCopyPaste.pasteSign(event.world,event.entityPlayer,sign,held); 
+				} 
+			}
+			if(blockClicked == Blocks.noteblock)
+			{
+				TileEntityNote noteblock = (TileEntityNote)event.world.getTileEntity(event.pos);
+				 
+				if(event.entityPlayer.isSneaking())
+				{ 
+					ItemWandCopyPaste.copyNote(event.world,event.entityPlayer,noteblock,held); 
+				}
+				else
+				{
+					ItemWandCopyPaste.pasteNote(event.world,event.entityPlayer,noteblock,held); 
+				} 
+			}
+			//TODO: copy or paste if shift or not
+		//	ItemWandCopyPaste.castExtinguish(event.world,event.entityPlayer,held); 
+			
+		}
+  	}
 }

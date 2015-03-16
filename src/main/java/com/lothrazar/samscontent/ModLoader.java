@@ -231,11 +231,17 @@ public class ModLoader
      		,ItemRegistry.itemEnderBook 
      		,ItemRegistry.wandTransform 
      		,ItemRegistry.itemChestSack
+     		,ItemRegistry.wandBuilding
      		,ItemRegistry.wandChest
+     		,ItemRegistry.wandCopy
+     		,ItemRegistry.wandFire
+     		,ItemRegistry.wandHarvest
+     		,ItemRegistry.wandLivestock
+     		,ItemRegistry.wandProspect
+     		,ItemRegistry.wandTransform
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()
-      		,new HandlerWand() 
      		,new HandlerLivingDeath()
      		,new HandlerWandBuilding()
       		,new HandlerRichAnimals()

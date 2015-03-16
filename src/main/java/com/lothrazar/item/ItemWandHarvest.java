@@ -1,7 +1,6 @@
 package com.lothrazar.item;
 
-import com.google.common.collect.Sets; 
-import com.lothrazar.event.HandlerWand;
+import com.google.common.collect.Sets;  
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
@@ -9,6 +8,7 @@ import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -96,33 +96,28 @@ public class ItemWandHarvest extends ItemTool
 			{
 				IBlockState bs = entityPlayer.worldObj.getBlockState(new BlockPos(xLoop, eventy, zLoop));
 				Block blockCheck = bs.getBlock(); 
-				//int blockDamage = -1;
-				//int blockDamage = entityPlayer.worldObj.getBlockMetadata(xLoop,eventy,zLoop);
-				
-				//if(blockDamage == isFullyGrown)
-				//{
-					//everything always drops 1 thing. which in a way is 2 things
-					//because we replant for free, so a full grown carrot becomes a fresh planted carrot but also drops one
-					if(blockCheck == Blocks.wheat && Blocks.wheat.getMetaFromState(bs) == isFullyGrown)
-					{ 
-					//	blockDamage = ;
-						entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop),Blocks.wheat.getDefaultState());//this plants a seed. it is not 'hay_block'
-						 
-						entityPlayer.dropItem(Items.wheat, 1); //no seeds, they got replanted
-					}
-					if( blockCheck == Blocks.carrots && Blocks.carrots.getMetaFromState(bs) == isFullyGrown)
-					{
-						entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop), Blocks.carrots.getDefaultState());
-						 
-						entityPlayer.dropItem(Items.carrot, 1); 
-					}
-					if( blockCheck == Blocks.potatoes && Blocks.potatoes.getMetaFromState(bs) == isFullyGrown)
-					{
-						entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop), Blocks.potatoes.getDefaultState());
-						 
-						entityPlayer.dropItem(Items.potato, 1); 
-					}
-				//} 
+		 
+				//everything always drops 1 thing. which in a way is 2 things
+				//because we replant for free, so a full grown carrot becomes a fresh planted carrot but also drops one
+				if(blockCheck == Blocks.wheat && Blocks.wheat.getMetaFromState(bs) == isFullyGrown)
+				{ 
+				//	blockDamage = ;
+					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop),Blocks.wheat.getDefaultState());//this plants a seed. it is not 'hay_block'
+					 
+					entityPlayer.dropItem(Items.wheat, 1); //no seeds, they got replanted
+				}
+				if( blockCheck == Blocks.carrots && Blocks.carrots.getMetaFromState(bs) == isFullyGrown)
+				{
+					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop), Blocks.carrots.getDefaultState());
+					 
+					entityPlayer.dropItem(Items.carrot, 1); 
+				}
+				if( blockCheck == Blocks.potatoes && Blocks.potatoes.getMetaFromState(bs) == isFullyGrown)
+				{
+					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop), Blocks.potatoes.getDefaultState());
+					 
+					entityPlayer.dropItem(Items.potato, 1); 
+				} 
 			}  
 		} //end of the outer loop
 		
@@ -135,8 +130,22 @@ public class ItemWandHarvest extends ItemTool
 		
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
- 
 	
-
-	 
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+  	{      
+		if(event.world.isRemote){ return; }//server side only!
+		
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held == null) { return; }//empty hand so do nothing
+		  
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		
+		if(held.getItem() == ItemRegistry.wandHarvest && 
+				event.action.RIGHT_CLICK_BLOCK == event.action && 
+		    (blockClicked == Blocks.wheat || blockClicked == Blocks.carrots || blockClicked == Blocks.potatoes))
+		{ 
+			ItemRegistry.wandHarvest.replantField(event.entityPlayer,held,event.pos); 
+		}
+  	}
 }

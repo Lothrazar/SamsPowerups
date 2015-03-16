@@ -1,7 +1,6 @@
 package com.lothrazar.item;
 
-import com.google.common.collect.Sets; 
-import com.lothrazar.event.HandlerWand;
+import com.google.common.collect.Sets;  
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
@@ -9,6 +8,7 @@ import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -34,6 +34,7 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandLivestock extends ItemTool
@@ -120,4 +121,16 @@ public class ItemWandLivestock extends ItemTool
 			SamsUtilities.damageOrBreakHeld(entityPlayer);
 		} 
 	}
+	
+	
+  
+	@SubscribeEvent
+	public void onEntityInteractEvent(EntityInteractEvent event)
+  	{
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem(); 
+		if(held == null || held.getItem() != ItemRegistry.wandLivestock ){ return;}
+		if(event.entityPlayer.worldObj.isRemote ){ return;}//so do nothing on client side
+     
+		ItemRegistry.wandLivestock.entitySpawnEgg(event.entityPlayer, event.target); 
+  	} 
 }

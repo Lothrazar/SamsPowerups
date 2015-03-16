@@ -1,7 +1,6 @@
 package com.lothrazar.item;
 
-import com.google.common.collect.Sets; 
-import com.lothrazar.event.HandlerWand;
+import com.google.common.collect.Sets;  
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
@@ -9,6 +8,7 @@ import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -112,4 +112,20 @@ public class ItemWandProspect extends ItemTool
 	}
 
  
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+  	{      
+		if(event.world.isRemote){ return ;}//server side only!
+		
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held == null) { return; }//empty hand so do nothing
+		  
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		
+		if(held.getItem() == ItemRegistry.wandProspect && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			ItemRegistry.wandProspect.searchProspect(event.entityPlayer,held,event.pos);   
+		}
+  	}
 }
