@@ -52,66 +52,14 @@ public class HandlerWand
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
+		if(event.world.isRemote){ return ;}//server side only!
+		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
 		  
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		   
-		/*if(held.getItem() == ItemRegistry.wandTransform && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{
-
-			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos);
-			
-		}*/
-
-		if(event.world.isRemote){ return ;}//server side only!
-
 		
-		if(held.getItem() == ItemRegistry.itemChestSack && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			if(blockClicked == Blocks.chest)
-			{ 
-				TileEntityChest chest = (TileEntityChest)event.entityPlayer.worldObj.getTileEntity(event.pos.up()); 
-					  
-				//TODO: make a shared Utility function that finds adjacent chest
-				TileEntityChest teAdjacent = null; 
-		  	  	if(chest.adjacentChestXNeg != null)
-		  	  	{
-		  	  		teAdjacent = chest.adjacentChestXNeg; 
-		  	  	}
-		  		if(chest.adjacentChestXPos != null)
-		  	  	{
-		  	  		teAdjacent = chest.adjacentChestXPos; 
-		  	  	}
-		  		if(chest.adjacentChestZNeg != null)
-		  	  	{
-		  	  		teAdjacent = chest.adjacentChestZNeg ; 
-		  	  	}
-		  		if(chest.adjacentChestZPos != null)
-		  	  	{
-		  	  		teAdjacent = chest.adjacentChestZPos; 
-		  	  	}
-		  		 
-		  		ItemRegistry.itemChestSack.sortFromSackToChestEntity(chest,held,event);
-		  		
-		  		if(teAdjacent != null)
-		  		{
-		  			ItemRegistry.itemChestSack.sortFromSackToChestEntity(teAdjacent,held,event); 
-		  		} 	
-			}
-			else
-			{
-	 
-				//if the up one is air, then build a chest at this spot 
-				if(event.entityPlayer.worldObj.isAirBlock(event.pos.up()))
-				{
-					ItemRegistry.itemChestSack.createAndFillChest(event.entityPlayer,held,  event.pos.up());
-				} 
-			}
-		}  
-		else if(held.getItem() == ItemRegistry.wandChest && 
+		if(held.getItem() == ItemRegistry.wandChest && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
 			if(blockClicked == null || blockClicked == Blocks.air ){return;}

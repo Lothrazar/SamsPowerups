@@ -230,6 +230,7 @@ public class ModLoader
       		,new HandlerPlayerHarvest()
      		,ItemRegistry.itemEnderBook 
      		,ItemRegistry.wandTransform 
+     		,ItemRegistry.itemChestSack 
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()

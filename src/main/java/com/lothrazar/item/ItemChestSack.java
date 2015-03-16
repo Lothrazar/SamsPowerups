@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
 
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -207,4 +209,58 @@ public class ItemChestSack extends Item
 		//make the player slot empty
 		entityPlayer.inventory.setInventorySlotContents(entityPlayer.inventory.currentItem,null); 
   	} 
+	
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+  	{      
+		if(event.world.isRemote){ return ;}//server side only!
+		
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held == null) { return; }//empty hand so do nothing
+		  
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		     
+		if(held.getItem() == ItemRegistry.itemChestSack && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			if(blockClicked == Blocks.chest)
+			{ 
+				TileEntityChest chest = (TileEntityChest)event.entityPlayer.worldObj.getTileEntity(event.pos.up()); 
+					  
+				//TODO: make a shared Utility function that finds adjacent chest
+				TileEntityChest teAdjacent = null; 
+		  	  	if(chest.adjacentChestXNeg != null)
+		  	  	{
+		  	  		teAdjacent = chest.adjacentChestXNeg; 
+		  	  	}
+		  		if(chest.adjacentChestXPos != null)
+		  	  	{
+		  	  		teAdjacent = chest.adjacentChestXPos; 
+		  	  	}
+		  		if(chest.adjacentChestZNeg != null)
+		  	  	{
+		  	  		teAdjacent = chest.adjacentChestZNeg ; 
+		  	  	}
+		  		if(chest.adjacentChestZPos != null)
+		  	  	{
+		  	  		teAdjacent = chest.adjacentChestZPos; 
+		  	  	}
+		  		 
+		  		ItemRegistry.itemChestSack.sortFromSackToChestEntity(chest,held,event);
+		  		
+		  		if(teAdjacent != null)
+		  		{
+		  			ItemRegistry.itemChestSack.sortFromSackToChestEntity(teAdjacent,held,event); 
+		  		} 	
+			}
+			else
+			{
+				//if the up one is air, then build a chest at this spot 
+				if(event.entityPlayer.worldObj.isAirBlock(event.pos.up()))
+				{
+					ItemRegistry.itemChestSack.createAndFillChest(event.entityPlayer,held,  event.pos.up());
+				} 
+			}
+		}  
+  	}
 }
