@@ -10,23 +10,18 @@ import com.lothrazar.item.ItemBucketStorage;
 import com.lothrazar.item.ItemWandTransform;
 
 public class HandlerBucketStorage 
-{
-
+{ 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-	 
+  	{       
 		if(event.world.isRemote){ return ;}//server side only!
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
-		  
-		//Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		   
 		if(held.getItem() instanceof ItemBucketStorage && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{
 			ItemBucketStorage.placeLiquid(event.entityPlayer, held, event.pos.offset(event.face));
-		}
-	
+		} 
   	}
 }

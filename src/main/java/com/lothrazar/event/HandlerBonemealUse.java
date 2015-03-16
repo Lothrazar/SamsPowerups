@@ -22,8 +22,7 @@ public class HandlerBonemealUse
 		
 		if(heldItem == null){return false;}
 	 
-		return (heldItem.equals(Items.dye)  && held.getItemDamage() == Reference.dye_bonemeal);
-	 
+		return (heldItem.equals(Items.dye)  && held.getItemDamage() == Reference.dye_bonemeal); 
 	}
 	 
   	@SubscribeEvent
@@ -40,8 +39,7 @@ public class HandlerBonemealUse
 		if(isUsingBonemeal(held)  ) 
 		{   
 			Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-			
-			//if(blockClicked != Blocks.yellow_flower && blockClicked != Blocks.red_flower) {return;}
+			 
 			if(blockClicked == null || blockClicked == Blocks.air ){return;}
 			
 			boolean showParticles = false;

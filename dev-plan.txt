@@ -26,9 +26,20 @@
             //TODO: can we increase vine growth on swampland trees
             //TODO: can we generate mushroom/flower/lilypad growth
  //[march15]: merge the end safefall along with nodamageEnderPearl, and maybe even pearlReturns into ender apple. nice 30min timer?
+ //TODO: durability of each wand in config file
  
 //TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
 //[march15]: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
+//TODO: remote workbench??? @Override
+public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPlayer player)
+{
+     if(world.isRemote)
+     {
+          player.displayGUIWorkbench((int)player.posX, (int)player.posY, (int)player.posZ);
+          setDamage(par1ItemStack, par1ItemStack.getItemDamage() + 1);
+     }
+     return par1ItemStack;
+}
 //TODO: wand lightning   
     //using public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     //blocks that do things to players/mobs . such as
