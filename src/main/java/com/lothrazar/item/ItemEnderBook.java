@@ -102,30 +102,30 @@ public class ItemEnderBook extends ItemTool
 
 		if (itemStack == null || 
 			itemStack.getItem() == null || 
-			ItemRegistry.itemEnderBook == null) 
+			ItemRegistry.itemEnderBook == null ||
+			itemStack.getItem() != ItemRegistry.itemEnderBook )
 		{ 
 			return; 
 		}
 
-		//left or right click with the book does the corresponding action
-		if (itemStack.getItem() == ItemRegistry.itemEnderBook)
-		{
-			if (event.action.LEFT_CLICK_BLOCK == event.action)
-			{ 			 
-				ItemEnderBook.teleport(event.entityPlayer, itemStack);			 
-			} 
-			else
-			{ 
-				ItemRegistry.itemEnderBook.saveCurrentLocation( event.entityPlayer, itemStack);
-			}
-			
-			event.entityPlayer.swingItem();
+		//left or right click with THIS book does the corresponding action
+		 
+		if (event.action.LEFT_CLICK_BLOCK == event.action)
+		{ 			 
+			teleport(event.entityPlayer, itemStack);			 
+		} 
+		else
+		{ 
+			saveCurrentLocation( event.entityPlayer, itemStack);
 		}
+		
+		event.entityPlayer.swingItem();
+	 
 	}  
 	
 	
 	
-	public static void teleport(EntityPlayer entityPlayer, ItemStack enderBookInstance) 
+	public void teleport(EntityPlayer entityPlayer, ItemStack enderBookInstance) 
 	{ 
 		int slot = entityPlayer.inventory.currentItem + 1;
     	String KEY = ItemEnderBook.KEY_LOC + "_" + slot;
