@@ -24,42 +24,24 @@ public class ItemBucketStorage  extends Item
 	}
 
 	
-	//TODO: Place a 9x9 square of lava on click, IF we click on the top of a block only (CHeck face)
-	
-	public static void initLava()
+ 
+
+
+	public static void addRecipeLava() 
 	{
-		if(!ModLoader.configSettings.lavaStorage) {return;}//TODO: config
-		
-		ItemRegistry.itemLava = new ItemBucketStorage();
-
-		SamsRegistry.registerItem(ItemRegistry.itemLava, "bucket_storage_lava");
-
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemLava), 
 				Items.lava_bucket, Items.lava_bucket, Items.lava_bucket,
 				Items.lava_bucket, Items.lava_bucket, Items.lava_bucket,
-				Items.lava_bucket, Items.lava_bucket, Items.lava_bucket);
- /*
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.lava_bucket,9), 
-				itemLava);
-				*/
+				Items.lava_bucket, Items.lava_bucket, Items.lava_bucket); 
 	}
-	
-	public static void initWater()
+	 
+
+	public static void addRecipeWater() 
 	{
-		if(!ModLoader.configSettings.waterStorage) {return;}//TODO: config
-		
-		ItemRegistry.itemWater = new ItemBucketStorage();
-
-		SamsRegistry.registerItem(ItemRegistry.itemWater, "bucket_storage_water");
-
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemWater), 
 				Items.water_bucket, Items.water_bucket, Items.water_bucket,
 				Items.water_bucket, Items.water_bucket, Items.water_bucket,
-				Items.water_bucket, Items.water_bucket, Items.water_bucket);
- /*
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.water_bucket,9), 
-				itemWater);
-				*/
+				Items.water_bucket, Items.water_bucket, Items.water_bucket); 
 	}
 	  
 	public static void placeLiquid(EntityPlayer player, ItemStack held,BlockPos pos) 

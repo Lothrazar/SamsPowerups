@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 
 import com.lothrazar.item.*; 
+import com.lothrazar.util.SamsRegistry;
 
 public class ItemRegistry 
 {
@@ -40,9 +41,25 @@ public class ItemRegistry
 		ItemWandFire.init();
 		ItemWandCopyPaste.init();
 		
-		ItemBucketStorage.initLava();
 		
-		ItemBucketStorage.initWater();
+		if(ModLoader.configSettings.lavaStorage)
+		{ 
+			ItemRegistry.itemLava = new ItemBucketStorage();
+
+			SamsRegistry.registerItem(ItemRegistry.itemLava, "bucket_storage_lava");
+	 
+			ItemBucketStorage.addRecipeLava();
+		}
+
+		
+		if(ModLoader.configSettings.waterStorage)
+		{ 
+			ItemRegistry.itemWater = new ItemBucketStorage();
+
+			SamsRegistry.registerItem(ItemRegistry.itemWater, "bucket_storage_water");
+
+			ItemBucketStorage.addRecipeWater();
+		}
 		//ItemBucketStorage.initMilk();
 		ItemWandBuilding.Init();
 		 
