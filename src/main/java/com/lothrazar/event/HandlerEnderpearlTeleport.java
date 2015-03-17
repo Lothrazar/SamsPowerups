@@ -8,7 +8,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.PotionRegistry;
+import com.lothrazar.samscontent.potion.PotionRegistry;
 
 public class HandlerEnderpearlTeleport 
 { 

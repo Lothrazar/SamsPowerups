@@ -1,7 +1,7 @@
 package com.lothrazar.event;
 
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.PotionRegistry;
+import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 
 import net.minecraft.block.Block;

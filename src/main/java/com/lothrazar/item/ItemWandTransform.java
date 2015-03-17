@@ -3,7 +3,6 @@ package com.lothrazar.item;
 import java.util.List;
 
 import com.google.common.collect.Sets;  
-import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;

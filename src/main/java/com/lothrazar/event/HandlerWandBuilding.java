@@ -1,7 +1,7 @@
 package com.lothrazar.event;
 
+import com.lothrazar.item.ItemRegistry;
 import com.lothrazar.item.ItemWandBuilding; 
-import com.lothrazar.samscontent.ItemRegistry;
 
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;

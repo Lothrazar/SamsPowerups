@@ -5,7 +5,6 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
-import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
 

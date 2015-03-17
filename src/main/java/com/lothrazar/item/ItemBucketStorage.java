@@ -1,6 +1,5 @@
 package com.lothrazar.item;
 
-import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 
@@ -22,11 +21,7 @@ public class ItemBucketStorage  extends Item
     	this.setMaxDamage(9); 
 		this.setMaxStackSize(1);
 	}
-
-	
  
-
-
 	public static void addRecipeLava() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemLava), 
@@ -34,8 +29,7 @@ public class ItemBucketStorage  extends Item
 				Items.lava_bucket, Items.lava_bucket, Items.lava_bucket,
 				Items.lava_bucket, Items.lava_bucket, Items.lava_bucket); 
 	}
-	 
-
+	  
 	public static void addRecipeWater() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemWater), 

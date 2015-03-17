@@ -1,4 +1,6 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.block;
+
+import com.lothrazar.samscontent.ModLoader;
 
 import net.minecraft.init.Blocks;
 

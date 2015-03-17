@@ -3,7 +3,6 @@ package com.lothrazar.block;
 import java.util.ArrayList;
 import java.util.Random; 
 
-import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 

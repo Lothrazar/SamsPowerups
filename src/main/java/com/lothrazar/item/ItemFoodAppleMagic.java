@@ -1,11 +1,8 @@
 package com.lothrazar.item;
 
 import java.util.ArrayList; 
-
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.PlayerPowerups;
-import com.lothrazar.samscontent.PotionRegistry;
+import com.lothrazar.samscontent.potion.PotionRegistry;
+import com.lothrazar.samscontent.ModLoader; 
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;
@@ -90,7 +87,7 @@ public class ItemFoodAppleMagic extends ItemFood
 	public static int hungerLarge = 4; //how much it fills us up
   
 	public static int chocolatePotion = Potion.digSpeed.id;//Haste
-	public static int chocolateLevel = PotionRegistry.I;
+	public static int chocolateLevel = com.lothrazar.samscontent.potion.PotionRegistry.I;
 	public static void initChocolate()
 	{
 		if(!ModLoader.configSettings.appleChocolate){return;}

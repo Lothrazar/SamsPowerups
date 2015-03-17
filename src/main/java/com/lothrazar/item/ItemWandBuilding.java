@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random; 
 
 import com.google.common.collect.Sets; 
-import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 

@@ -2,7 +2,6 @@ package com.lothrazar.item;
 
 import java.util.ArrayList;
 
-import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 import com.lothrazar.util.SamsUtilities;

@@ -1,7 +1,9 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samscontent.potion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
+
+import com.lothrazar.samscontent.ModLoader;
 
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;

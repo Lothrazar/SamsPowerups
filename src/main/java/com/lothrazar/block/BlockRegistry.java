@@ -1,8 +1,6 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.block;
 
-import com.lothrazar.block.BlockCommandBlockCraftable;
-import com.lothrazar.block.BlockFishing;
-import com.lothrazar.block.BlockXRay;
+import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 
 public class BlockRegistry 
@@ -13,8 +11,7 @@ public class BlockRegistry
 	public static BlockCommandBlockCraftable command_block_daycycle;
 	public static BlockCommandBlockCraftable command_block_weather ;
 	public static BlockCommandBlockCraftable command_block_tpspawn;
-	public static BlockCommandBlockCraftable command_block_tpbed;
-
+	public static BlockCommandBlockCraftable command_block_tpbed; 
 	public static BlockFishing block_fishing ;
 	public static BlockXRay block_xray ;
 	

@@ -11,6 +11,7 @@ import com.lothrazar.block.*;
 import com.lothrazar.command.*; 
 import com.lothrazar.event.*; 
 import com.lothrazar.item.*;   
+import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.proxy.ClientProxy;
 import com.lothrazar.samscontent.proxy.CommonProxy;
 import com.lothrazar.samskeyslider.MessageKeyPressed;

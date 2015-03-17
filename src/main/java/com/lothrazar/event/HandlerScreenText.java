@@ -15,7 +15,7 @@ import org.apache.logging.log4j.Logger;
 import com.lothrazar.command.CommandSimpleWaypoints;
 import com.lothrazar.command.CommandTodoList;
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.PlayerPowerups;
+import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
@@ -70,7 +70,7 @@ public class HandlerScreenText
 		
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		
-		PlayerPowerups props = PlayerPowerups.get(player); 
+		//PlayerPowerups props = PlayerPowerups.get(player); 
 	  
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
   

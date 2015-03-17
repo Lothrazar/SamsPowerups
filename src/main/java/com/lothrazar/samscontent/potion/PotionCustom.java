@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samscontent.potion;
 
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
