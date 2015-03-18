@@ -94,17 +94,11 @@ public class ItemWandProspect extends ItemTool
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
 	  
-	public static void onInit() 
-	{  
-		if(!ModLoader.configSettings.wandProspect){return;}
-			
-		ItemRegistry.wandProspect = new ItemWandProspect();
-  
-		SamsRegistry.registerItem(ItemRegistry.wandProspect, "wand_prospect");
-
+	public static void addRecipe() 
+	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandProspect),
 			ItemRegistry.baseWand, 
-			Items.redstone  );  
+			Items.redstone  );
 	}
  
 	@SubscribeEvent

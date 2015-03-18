@@ -82,19 +82,12 @@ public class ItemWandTransform extends ItemTool
     }
 	  
 	 
-	
-	public static void onInit() 
-	{  
-		if(!ModLoader.configSettings.wandTransform){return;} 
-	 
-		ItemRegistry.wandTransform = new ItemWandTransform(); 
-		SamsRegistry.registerItem(ItemRegistry.wandTransform, "wand_transform");
 
-
+	public static void addRecipe() 
+	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandProspect),
 			ItemRegistry.baseWand, 
-			Blocks.end_stone  );  
- 
+			Blocks.end_stone  );
 	}
  
 	private static int INVALID = -1;

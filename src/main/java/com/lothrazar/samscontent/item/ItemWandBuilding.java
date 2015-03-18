@@ -46,16 +46,11 @@ public class ItemWandBuilding extends ItemTool
 	public static boolean replaceObsidian = false;
 	public static boolean replaceTileEntities = false;
 	 
-	public static void Init()
-	{  
-		if(!ModLoader.configSettings.wandBuilding){return;}
-		 
-		ItemRegistry.wandBuilding = new ItemWandBuilding(); 
-		SamsRegistry.registerItem(ItemRegistry.wandBuilding, "wand_building" );  
-		 
+	public static void addRecipe() 
+	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandBuilding),
 			ItemRegistry.baseWand, 
-			Items.diamond  ); 
+			Items.diamond  );
 	}
 	 
 	private static void setCompoundIfNull(ItemStack held)

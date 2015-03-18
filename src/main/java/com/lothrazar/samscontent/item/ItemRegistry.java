@@ -18,8 +18,7 @@ public class ItemRegistry
 	public static ItemWandHarvest wandHarvest;
 	public static ItemWandTransform wandTransform; 
 	public static ItemWandLivestock wandLivestock;
-	public static ItemWandProspect wandProspect; 
-	 
+	public static ItemWandProspect wandProspect;  
 	public static ItemFoodAppleMagic apple_emerald;
 	public static ItemFoodAppleMagic apple_emerald_rich;
 	public static ItemFoodAppleMagic apple_diamond; 
@@ -60,19 +59,67 @@ public class ItemRegistry
 			ItemBucketStorage.addRecipeWater();
 		}
 
-		ItemWandBuilding.Init();
+		if(ModLoader.configSettings.wandBuilding)
+		{ 
+			ItemRegistry.wandBuilding = new ItemWandBuilding(); 
+			SamsRegistry.registerItem(ItemRegistry.wandBuilding, "wand_building" );  
+			 
+			ItemWandBuilding.addRecipe(); 
+		}
 		 
-		ItemWandChest.onInit();
+		if(ModLoader.configSettings.wandChest)
+		{   
+			ItemRegistry.itemChestSack = new ItemChestSack();   
+			SamsRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
+			
+			ItemRegistry.wandChest = new ItemWandChest(); 
+			SamsRegistry.registerItem(ItemRegistry.wandChest, "wand_chest");
+	 
+			ItemWandChest.addRecipe();  
+		}
 
-		ItemWandTransform.onInit();
+		if(ModLoader.configSettings.wandTransform)
+		{   
+			ItemRegistry.wandTransform = new ItemWandTransform(); 
+			SamsRegistry.registerItem(ItemRegistry.wandTransform, "wand_transform");
 
-		ItemWandHarvest.onInit();
+			ItemWandTransform.addRecipe();  
+		}
+
+		if(ModLoader.configSettings.wandHarvest)
+		{   
+			ItemRegistry.wandHarvest = new ItemWandHarvest();
+			SamsRegistry.registerItem(ItemRegistry.wandHarvest, "wand_harvest");
+
+			ItemWandHarvest.addRecipe();  
+		}
 		
-		ItemWandLivestock.onInit();
+		if(ModLoader.configSettings.wandLivestock)
+		{   
+			ItemRegistry.wandLivestock = new ItemWandLivestock();
+	  
+			SamsRegistry.registerItem(ItemRegistry.wandLivestock, "wand_livestock");
 
-		ItemWandProspect.onInit();
-		
-		ItemEnderBook.initEnderbook();
+			ItemWandLivestock.addRecipe();  
+		}
+
+		if(ModLoader.configSettings.wandProspect)
+		{   
+			ItemRegistry.wandProspect = new ItemWandProspect();
+	  
+			SamsRegistry.registerItem(ItemRegistry.wandProspect, "wand_prospect");
+
+			ItemWandProspect.addRecipe();  
+		}
+
+		if(ModLoader.configSettings.enderBook)
+		{ 
+			ItemRegistry.itemEnderBook = new ItemEnderBook();
+
+			SamsRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender");
+
+			ItemEnderBook.addRecipe();
+		}
 		
 		ItemFoodAppleMagic.initEmerald();
 

@@ -57,18 +57,12 @@ public class ItemWandLivestock extends ItemTool
     	return true; //give it shimmer
     }
  
-	public static void onInit() 
-	{  
-		if(!ModLoader.configSettings.wandLivestock){return;}
-			
-		ItemRegistry.wandLivestock = new ItemWandLivestock();
-  
-		SamsRegistry.registerItem(ItemRegistry.wandLivestock, "wand_livestock");
 
-
+	public static void addRecipe() 
+	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandLivestock),
 			ItemRegistry.baseWand, 
-			Items.porkchop  );  
+			Items.porkchop  );
 	}
 
 	public void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 

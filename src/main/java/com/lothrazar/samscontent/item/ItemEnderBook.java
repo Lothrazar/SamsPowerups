@@ -153,14 +153,9 @@ public class ItemEnderBook extends ItemTool
 
 		entityPlayer.getCurrentEquippedItem().damageItem(1, entityPlayer);
 	}
-	 
-	public static void initEnderbook()
+
+	public static void addRecipe() 
 	{
-		if(!ModLoader.configSettings.enderBook) {return;}
-		ItemRegistry.itemEnderBook = new ItemEnderBook();
-
-		SamsRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender");
-
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.itemEnderBook), "eee", "ebe",
 				"eee", 'e', Items.ender_pearl, 'b', Items.book);
 

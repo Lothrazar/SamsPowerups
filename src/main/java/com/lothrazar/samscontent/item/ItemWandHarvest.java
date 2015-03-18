@@ -37,18 +37,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandHarvest extends ItemTool
 {
-	public static void onInit() 
-	{  
-		if(!ModLoader.configSettings.wandHarvest){return;}
-			
-		ItemRegistry.wandHarvest = new ItemWandHarvest();
-  
-		SamsRegistry.registerItem(ItemRegistry.wandHarvest, "wand_harvest");
-
-
+	public static void addRecipe() 
+	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandHarvest),
 			ItemRegistry.baseWand, 
-			Blocks.hay_block  );  
+			Blocks.hay_block  );
 	}
 	private static int RADIUS = 128;
 	private static int DURABILITY = 80;
