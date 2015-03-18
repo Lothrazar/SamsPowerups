@@ -1,11 +1,10 @@
 package com.lothrazar.samscontent.event;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent;
-
+import net.minecraftforge.fml.common.gameevent.InputEvent;  
+import com.lothrazar.samscontent.MessageKeyPressed;
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.proxy.ClientProxy;
-import com.lothrazar.samskeyslider.MessageKeyPressed;
+import com.lothrazar.samscontent.proxy.ClientProxy; 
 
 public class HandlerKeyInput 
 { 

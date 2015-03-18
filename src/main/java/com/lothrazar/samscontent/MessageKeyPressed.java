@@ -1,4 +1,4 @@
-package com.lothrazar.samskeyslider;
+package com.lothrazar.samscontent;
   
 import com.lothrazar.samscontent.proxy.ClientProxy;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
