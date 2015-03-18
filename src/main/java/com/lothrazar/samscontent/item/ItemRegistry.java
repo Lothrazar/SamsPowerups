@@ -66,7 +66,6 @@ public class ItemRegistry
 			ItemToolFlint.addRecipe();
 		}
 	 
-		
 		if(ModLoader.configSettings.wandFire)
 		{ 
 			ModLoader.changelog.log("ItemWandFire registered");

@@ -12,9 +12,8 @@ import com.lothrazar.util.SamsRegistry;
 
 public class ItemBaseWand extends Item
 {
-	
-
-	public static void addRecipe() {
+	public static void addRecipe() 
+	{
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.baseWand)
 			,"beb"
 			," b "

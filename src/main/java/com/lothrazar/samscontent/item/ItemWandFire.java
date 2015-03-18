@@ -31,8 +31,8 @@ public class ItemWandFire  extends Item
 		this.setMaxStackSize(1);
 	}
  
-
-	public static void addRecipe() {
+	public static void addRecipe() 
+	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandFire),
 			ItemRegistry.baseWand, 
 			Items.flint_and_steel  );
@@ -44,9 +44,7 @@ public class ItemWandFire  extends Item
 	{ 
 		for(int i = 2; i < range; i++)
 		{
-
 			BlockPos fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), i);
-			
 			
 			if(world.isAirBlock(fr))
 			{

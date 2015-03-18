@@ -141,106 +141,105 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 		return true;
     }
 	 
-	private static BlockCommandBlockCraftable _command(String rule, String textureid, ItemStack rec)
-	{
-		BlockCommandBlockCraftable c = new BlockCommandBlockCraftable(CommandType.Gamerule, rule);
-		 
-		SamsRegistry.registerBlock(c, textureid);
-		
-		GameRegistry.addRecipe(new ItemStack(c)
-				, "rcr"
-				, "tet"
-				, "rcr"              ,
-				'c', Items.comparator, 
-				'e', Blocks.diamond_block, 
-				'r', Items.ghast_tear, 
-				't', rec
-		);		
-		
-		if(ModLoader.configSettings.uncraftGeneral) 
-			GameRegistry.addSmelting(c, rec , 0); 
-	
-		return c;
-	}
- 
-
 	public static void initDaylight()
 	{ 
-		if(!ModLoader.configSettings.gameruleBlockDaylight){return;}
-		BlockRegistry.command_block_daycycle = _command(Reference.gamerule.doDaylightCycle, "command_block_daycycle",new ItemStack( Blocks.glowstone) );
+		if(ModLoader.configSettings.gameruleBlockDaylight)
+		{
+			BlockRegistry.command_block_daycycle = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doDaylightCycle);
+			 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_daycycle, "command_block_daycycle");
+			
+			addRecipe(BlockRegistry.command_block_daycycle,new ItemStack( Blocks.glowstone) ); 
+		}
 	}
 
 	public static void initFiretick()
 	{
-		if(!ModLoader.configSettings.gameruleBlockFiretick){return;}
-		BlockRegistry.command_block_firetick = _command(Reference.gamerule.doFireTick, "command_block_firetick",new ItemStack( Items.lava_bucket) );
+		if(ModLoader.configSettings.gameruleBlockFiretick)
+		{ 
+			BlockRegistry.command_block_firetick = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doFireTick);
+ 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_firetick, "command_block_firetick");
+
+			addRecipe(BlockRegistry.command_block_firetick,new ItemStack( Items.lava_bucket) ); 
+		}
 	}
 
 	public static void initMobgrief()
 	{
-		if(!ModLoader.configSettings.gameruleBlockMobgrief){return;}
-		BlockRegistry.command_block_mobgrief = _command(Reference.gamerule.mobGriefing, "command_block_mobgrief",new ItemStack( Blocks.tnt) );
+		if(ModLoader.configSettings.gameruleBlockMobgrief)
+		{ 
+			BlockRegistry.command_block_mobgrief = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.mobGriefing);
+ 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_mobgrief, "command_block_mobgrief");
+			addRecipe(BlockRegistry.command_block_mobgrief,new ItemStack( Blocks.tnt) );  
+		}
 	}
 
 	public static void initRegen()
 	{
-		if(!ModLoader.configSettings.gameruleBlockRegen){return;}
-		
-		BlockRegistry.command_block_regen = _command(Reference.gamerule.naturalRegeneration, "command_block_regen",new ItemStack(Items.golden_apple) );
-	}
+		if(ModLoader.configSettings.gameruleBlockRegen)
+		{ 
+			BlockRegistry.command_block_regen = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.naturalRegeneration);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_regen, "command_block_regen");
+			addRecipe(BlockRegistry.command_block_regen,new ItemStack(Items.golden_apple) );  
 	
+		}
+	}
+		
 	public static void initWeatherBlock()
 	{ 
-		if(!ModLoader.configSettings.weatherBlock) {return;}
-		BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
- 
-		SamsRegistry.registerBlock(BlockRegistry.command_block_weather,"command_block_weather");
+		if(ModLoader.configSettings.weatherBlock) 
+		{
+			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_weather,"command_block_weather");
+	
+			addRecipe(BlockRegistry.command_block_weather,new ItemStack(Items.water_bucket));
+		}
+	}
 
+	public static void addRecipe(BlockCommandBlockCraftable block, ItemStack flavor) 
+	{
+		GameRegistry.addRecipe(new ItemStack(BlockRegistry.command_block_weather), 
+				"rcr", 
+				"cec",
+				"rcr", 
+				'c', Items.comparator, 
+				'e', Items.water_bucket, 
+				'r', Blocks.redstone_block
+				);
+			
 		if(ModLoader.configSettings.uncraftGeneral) 
-			GameRegistry.addRecipe(new ItemStack(BlockRegistry.command_block_weather), 
-					"rcr", 
-					"tet",
-					"rcr", 
-					'c', Items.comparator, 
-					'e', Items.water_bucket, 
-					'r', Blocks.redstone_block, 
-					't', Items.ghast_tear);
+			GameRegistry.addSmelting(BlockRegistry.command_block_weather, new ItemStack(Blocks.redstone_block, 5), 0);
 	} 
 	
 	public static void initTeleportBlock()
 	{ 
-		if(!ModLoader.configSettings.teleportSpawnBlock) {return;}
-		BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
- 
-		SamsRegistry.registerBlock(BlockRegistry.command_block_tpspawn,"command_block_tpspawn");
-
-		if(ModLoader.configSettings.uncraftGeneral) 
-			GameRegistry.addRecipe(new ItemStack(BlockRegistry.command_block_tpspawn), 
-					"rcr", 
-					"tet",
-					"rcr", 
-					'c', Items.comparator, 
-					'e', Items.ender_eye, 
-					'r', Blocks.redstone_block, 
-					't', Items.ghast_tear);
+		if(ModLoader.configSettings.teleportSpawnBlock) 
+		{ 
+			BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_tpspawn,"command_block_tpspawn");
+	
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpspawn,new ItemStack(Items.ender_eye));
+			
+		}
 	}
 	 
 	public static void initTeleportBedBlock()
 	{ 
-		if(!ModLoader.configSettings.teleportBedBlock) {return;}
-		BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
- 
-		SamsRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
+		if(ModLoader.configSettings.teleportBedBlock) 
+		{
+			 
+			BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
+			
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
 
-		if(ModLoader.configSettings.uncraftGeneral) 
-			GameRegistry.addRecipe(new ItemStack(BlockRegistry.command_block_tpbed), 
-					"rcr", 
-					"tet",
-					"rcr", 
-					'c', Items.comparator, 
-					'e', Items.ender_pearl, 
-					'r', Blocks.redstone_block, 
-					't', Items.ghast_tear);
+		}
 	}
 	 
 }
