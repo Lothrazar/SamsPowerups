@@ -1,6 +1,12 @@
 package com.lothrazar.samscontent.block;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+
 import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;
 
 public class BlockRegistry 
@@ -26,20 +32,75 @@ public class BlockRegistry
 			BlockFishing.addRecipe();
 		}
   
-		BlockCommandBlockCraftable.initWeatherBlock();
-		
-		BlockCommandBlockCraftable.initTeleportBlock();
+		if(ModLoader.configSettings.weatherBlock) 
+		{
+			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_weather,"command_block_weather");
+	
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_weather,new ItemStack(Items.water_bucket));
+		}
+		 
+		if(ModLoader.configSettings.teleportSpawnBlock) 
+		{ 
+			BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_tpspawn,"command_block_tpspawn");
+	
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpspawn,new ItemStack(Items.ender_eye));
+		}
 
-		BlockCommandBlockCraftable.initTeleportBedBlock();
+		if(ModLoader.configSettings.teleportBedBlock) 
+		{ 
+			BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
+			
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
+		}
 		
-		BlockCommandBlockCraftable.initRegen(); 
+		if(ModLoader.configSettings.gameruleBlockRegen)
+		{ 
+			BlockRegistry.command_block_regen = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.naturalRegeneration);
+	 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_regen, "command_block_regen");
+			
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_regen,new ItemStack(Items.golden_apple) );  
+		} 
 		
-		BlockCommandBlockCraftable.initDaylight();
+		if(ModLoader.configSettings.gameruleBlockDaylight)
+		{
+			BlockRegistry.command_block_daycycle = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doDaylightCycle);
+			 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_daycycle, "command_block_daycycle");
+			
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_daycycle,new ItemStack( Blocks.glowstone) ); 
+		}
 		
-		BlockCommandBlockCraftable.initFiretick();
-		
-		BlockCommandBlockCraftable.initMobgrief();
+		if(ModLoader.configSettings.gameruleBlockFiretick)
+		{ 
+			BlockRegistry.command_block_firetick = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doFireTick);
  
-		BlockXRay.initXray();
+			SamsRegistry.registerBlock(BlockRegistry.command_block_firetick, "command_block_firetick");
+
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_firetick,new ItemStack( Items.lava_bucket) ); 
+		}
+		
+		if(ModLoader.configSettings.gameruleBlockMobgrief)
+		{ 
+			BlockRegistry.command_block_mobgrief = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.mobGriefing);
+ 
+			SamsRegistry.registerBlock(BlockRegistry.command_block_mobgrief, "command_block_mobgrief");
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_mobgrief,new ItemStack( Blocks.tnt) );  
+		}
+ 
+		if(ModLoader.configSettings.xRayBlock)
+		{ 
+			BlockRegistry.block_xray = new BlockXRay(); 
+			
+			SamsRegistry.registerBlock(BlockRegistry.block_xray,"block_xray");
+ 
+			BlockXRay.addRecipe();
+		}
 	}
 }

@@ -58,14 +58,9 @@ public class BlockXRay extends Block
     {
         return EnumWorldBlockLayer.CUTOUT; // transparency
     }
-	
-	public static void initXray()
+	 
+	public static void addRecipe() 
 	{
-		if(!ModLoader.configSettings.xRayBlock){return;}
-		
-		BlockRegistry.block_xray = new BlockXRay(); 
-		SamsRegistry.registerBlock(BlockRegistry.block_xray,"block_xray");
-
 		GameRegistry.addRecipe(new ItemStack(BlockRegistry.block_xray), 
 				"owo", 
 				"wgw", 

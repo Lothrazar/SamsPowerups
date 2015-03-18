@@ -116,16 +116,14 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 	  
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumFacing side, float hitX, float hitY, float hitZ)
-    { 
-		 //disables the player from opening the edit screen to alter the command
-		return false;
+    {  
+		return false;//disables the player from opening the edit screen to alter the command
     }
 	
 	@Override 
 	public int quantityDropped(Random p_149745_1_)
-    {
-		//change from 0 to 1 so it is harvestable
-        return 1;
+    { 
+        return 1;//change from 0 to 1 so it is harvestable
     }
 	
 	@Override
@@ -140,66 +138,7 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 		this.canSilkHarvest(world, pos, state, player);
 		return true;
     }
-	 
-	public static void initDaylight()
-	{ 
-		if(ModLoader.configSettings.gameruleBlockDaylight)
-		{
-			BlockRegistry.command_block_daycycle = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doDaylightCycle);
-			 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_daycycle, "command_block_daycycle");
-			
-			addRecipe(BlockRegistry.command_block_daycycle,new ItemStack( Blocks.glowstone) ); 
-		}
-	}
-
-	public static void initFiretick()
-	{
-		if(ModLoader.configSettings.gameruleBlockFiretick)
-		{ 
-			BlockRegistry.command_block_firetick = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doFireTick);
- 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_firetick, "command_block_firetick");
-
-			addRecipe(BlockRegistry.command_block_firetick,new ItemStack( Items.lava_bucket) ); 
-		}
-	}
-
-	public static void initMobgrief()
-	{
-		if(ModLoader.configSettings.gameruleBlockMobgrief)
-		{ 
-			BlockRegistry.command_block_mobgrief = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.mobGriefing);
- 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_mobgrief, "command_block_mobgrief");
-			addRecipe(BlockRegistry.command_block_mobgrief,new ItemStack( Blocks.tnt) );  
-		}
-	}
-
-	public static void initRegen()
-	{
-		if(ModLoader.configSettings.gameruleBlockRegen)
-		{ 
-			BlockRegistry.command_block_regen = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.naturalRegeneration);
-	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_regen, "command_block_regen");
-			addRecipe(BlockRegistry.command_block_regen,new ItemStack(Items.golden_apple) );  
-	
-		}
-	}
-		
-	public static void initWeatherBlock()
-	{ 
-		if(ModLoader.configSettings.weatherBlock) 
-		{
-			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
-	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_weather,"command_block_weather");
-	
-			addRecipe(BlockRegistry.command_block_weather,new ItemStack(Items.water_bucket));
-		}
-	}
-
+	  
 	public static void addRecipe(BlockCommandBlockCraftable block, ItemStack flavor) 
 	{
 		GameRegistry.addRecipe(new ItemStack(BlockRegistry.command_block_weather), 
@@ -213,33 +152,5 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 			
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(BlockRegistry.command_block_weather, new ItemStack(Blocks.redstone_block, 5), 0);
-	} 
-	
-	public static void initTeleportBlock()
-	{ 
-		if(ModLoader.configSettings.teleportSpawnBlock) 
-		{ 
-			BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
-	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_tpspawn,"command_block_tpspawn");
-	
-			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpspawn,new ItemStack(Items.ender_eye));
-			
-		}
-	}
-	 
-	public static void initTeleportBedBlock()
-	{ 
-		if(ModLoader.configSettings.teleportBedBlock) 
-		{
-			 
-			BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
-	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
-			
-			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
-
-		}
-	}
-	 
+	}  
 }
