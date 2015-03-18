@@ -84,6 +84,7 @@ public class ItemWandWater  extends Item
 			SamsUtilities.playSoundAt(event.entityPlayer, "liquid.water");
 			
 			SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
+			 
 		}
   	}
 }
