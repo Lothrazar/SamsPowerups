@@ -40,6 +40,7 @@ public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPl
      }
      return par1ItemStack;
 }
+//TODO: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
 //TODO: wand lightning   
     //using public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     //blocks that do things to players/mobs . such as
