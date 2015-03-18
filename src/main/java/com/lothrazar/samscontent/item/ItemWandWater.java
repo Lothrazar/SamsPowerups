@@ -50,40 +50,39 @@ public class ItemWandWater  extends Item
 		if(ModLoader.configSettings.wandWater == false ) {return;}
 		if(held.getItem() != ItemRegistry.wandWater ) {return;}
 		
-		//System.out.println("CLICKED WATER");
-		//System.out.println(event.world.getBlockState(event.pos).getBlock() == Blocks.water);
-		
+		if(event.face == null){return;}//n o idea why this is null sometimes but it is
+		 
+		boolean success = false;
+		BlockPos offset = event.pos.offset(event.face);
 		
 		if( event.action.RIGHT_CLICK_BLOCK == event.action )
 		{   
 			if(event.entityPlayer.isSneaking())
-			{
-				if(event.world.getBlockState(event.pos).getBlock() == Blocks.water)
-				{ 
-					System.out.println("REMNOVE.water");
-					//remove if water
-					if(event.world.getBlockState(event.pos).getBlock() == Blocks.water)
-					{
-						event.world.setBlockToAir(event.pos);
-					}
-				}
+			{ 
+				if(event.world.getBlockState(offset).getBlock() == Blocks.water)
+				{
+					event.world.setBlockToAir(offset);
+					
+					success = true;
+				} 
 			}
 			else //not sneaking, regular item use
 			{
-				if(event.face == null)//n o idea why this is null sometimes but it is
-				{
-					System.out.println("event.face null");
-					return;
-				}
-				
-				BlockPos offset = event.pos.offset(event.face);
 				if(event.world.isAirBlock(offset) )
-				event.world.setBlockState(offset,  Blocks.water.getDefaultState()); 
-			}
-			
-			System.out.println("liquid.water");
-			
+				{ 
+					event.world.setBlockState(offset,  Blocks.water.getDefaultState()); 
+					
+					success = true;
+				}
+			} 
+		}
+		
+
+		if(success)
+		{ 
+			SamsUtilities.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, event.pos);
 			SamsUtilities.playSoundAt(event.entityPlayer, "liquid.water");
+			
 			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
 		}
   	}
