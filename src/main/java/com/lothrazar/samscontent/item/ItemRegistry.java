@@ -42,6 +42,7 @@ public class ItemRegistry
 	public static ItemToolFlint flintTool;
 	public static ItemFoodAppleMagic apple_diamond_rich;
 	public static ItemFoodAppleMagic apple_ender;
+	public static ItemWandWater wandWater;
 	 
 	public static void registerItems()
 	{
@@ -74,6 +75,14 @@ public class ItemRegistry
 			SamsRegistry.registerItem(ItemRegistry.wandFire, "wand_fire");
 	 
 			ItemWandFire.addRecipe();		 
+		}
+		if(ModLoader.configSettings.wandWater)
+		{  
+			ItemRegistry.wandWater = new ItemWandWater();
+
+			SamsRegistry.registerItem(ItemRegistry.wandWater, "wand_water");
+	 
+			ItemWandWater.addRecipe();		 
 		}
 
 		if(ModLoader.configSettings.wandCopy)
