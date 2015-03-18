@@ -83,7 +83,7 @@ public class ItemWandWater  extends Item
 			SamsUtilities.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, event.pos);
 			SamsUtilities.playSoundAt(event.entityPlayer, "liquid.water");
 			
-			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+			SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
 		}
   	}
 }

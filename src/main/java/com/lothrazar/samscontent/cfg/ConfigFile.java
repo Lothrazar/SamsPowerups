@@ -268,8 +268,9 @@ public class ConfigFile
 		String csvaxe = instance.getString("harvestOnlyAxe",category, "minecraft:log,minecraft:log2",
     			"If these blocks are not harvested by an axe, they will break but have no drops."); 
 		HandlerPlayerHarvest.seAxeFromCSV(csvaxe);
-		
-//category = "block_hardness";
+		 
+		harvestGlassPickaxe  = instance.getBoolean("harvestGlassPickaxe",category, true,
+    			"Sets the pickaxe as the correct tool to harvest glass (by default there is no correct glass tool)."); 
 		
 		obsidianHardness  = instance.getInt("obsidianHardness",category, 10,1,50,
 	    			"Hardness level of Obsidian (vanilla is 50).");
@@ -616,5 +617,6 @@ public class ConfigFile
 	public int potionIdEnder;
 	public boolean lavaStorage;
 	public boolean waterStorage;
-	public boolean wandWater; 
+	public boolean wandWater;
+	public boolean harvestGlassPickaxe; 
 }

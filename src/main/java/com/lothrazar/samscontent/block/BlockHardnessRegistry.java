@@ -12,5 +12,11 @@ public class BlockHardnessRegistry
 		Blocks.diamond_ore.setHardness(ModLoader.configSettings.diamondOreHardness);//v=3
 		Blocks.emerald_ore.setHardness(ModLoader.configSettings.emeraldOreHardness); //v=3
 		Blocks.mob_spawner.setHardness(ModLoader.configSettings.spawnerHardness);//v=5
+		
+		
+		if(ModLoader.configSettings.harvestGlassPickaxe)
+		{ 
+			Blocks.glass.setHarvestLevel("pickaxe", 3);
+		}
 	}
 }
