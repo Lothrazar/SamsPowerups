@@ -26,21 +26,8 @@ public class ItemToolFlint extends ItemTool
 		this.setMaxDamage(durability);//TODO: config 
 	}
 	
-	public static void init()
+	public static void addRecipe() 
 	{
-		if(ModLoader.configSettings.flintTool == false) {return;} 
-		//TODO: redo texture higher res
-		
-		//its like shears for leaves in the speed it goes, but does not give leaf blocks
-		
-		Set harvests = new HashSet<Block>();
-		harvests.add(Blocks.leaves);
-		harvests.add(Blocks.leaves2); 
-		harvests.add(Blocks.tallgrass); //ferns and grass
-		ItemRegistry.flintTool = new ItemToolFlint(1,ToolMaterial.EMERALD, harvests);
- 
-		SamsRegistry.registerItem(ItemRegistry.flintTool, "flint_tool");
-
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.flintTool), 
 				Items.flint,
 				Items.stick,

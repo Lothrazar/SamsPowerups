@@ -12,10 +12,9 @@ import com.lothrazar.util.SamsRegistry;
 
 public class ItemBaseWand extends Item
 {
-	public static void Init()
-	{   
-		ItemRegistry.baseWand = new ItemBaseWand(); 
-		SamsRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
+	
+
+	public static void addRecipe() {
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.baseWand)
 			,"beb"
 			," b "
@@ -24,7 +23,7 @@ public class ItemBaseWand extends Item
 			, 'b', Items.blaze_rod  );
 		
 		if(ModLoader.configSettings.uncraftGeneral)
-			GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);	  
+			GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);
 	}
 
 }

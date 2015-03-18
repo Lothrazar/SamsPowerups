@@ -31,21 +31,11 @@ public class ItemWandFire  extends Item
 		this.setMaxStackSize(1);
 	}
  
-	public static void init()
-	{
-		if(!ModLoader.configSettings.wandFire) {return;} 
-		
-		ModLoader.changelog.log("ItemWandFire registered");
-		ItemRegistry.wandFire = new ItemWandFire();
 
-		SamsRegistry.registerItem(ItemRegistry.wandFire, "wand_fire");
- 
+	public static void addRecipe() {
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandFire),
 			ItemRegistry.baseWand, 
 			Items.flint_and_steel  );
-	
-		//if(ModLoader.configSettings.uncraftGeneral)
-			//GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);	
 	}
 	
 	public static int range = 9;//TODO: range in config

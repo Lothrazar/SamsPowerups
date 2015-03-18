@@ -36,16 +36,12 @@ public class ItemWandCopyPaste  extends Item
 		this.setMaxStackSize(1);
 	}
  
-	public static void init()
-	{
-		if(!ModLoader.configSettings.wandCopy) {return;}
-		ItemRegistry.wandCopy = new ItemWandCopyPaste();
+	
 
-		SamsRegistry.registerItem(ItemRegistry.wandCopy, "wand_copy");
-
+	public static void addRecipe() {
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandCopy),
 			ItemRegistry.baseWand, 
-			Items.paper  );  
+			Items.paper  );
 	}
 
 	public static void copySign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 
