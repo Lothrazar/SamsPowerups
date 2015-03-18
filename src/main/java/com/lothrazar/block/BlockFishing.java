@@ -115,13 +115,10 @@ public class BlockFishing extends Block
         return EnumWorldBlockLayer.CUTOUT;
     }
 	
-	public static void initFishing()
-	{
-		if(!ModLoader.configSettings.fishingNetBlock){return;}
-		
-		BlockRegistry.block_fishing = new BlockFishing(); 
-		SamsRegistry.registerBlock(BlockRegistry.block_fishing,"block_fishing");
+	public static final String name = "block_fishing";
 
+	public static void addRecipe() 
+	{
 		GameRegistry.addRecipe(new ItemStack(BlockRegistry.block_fishing), 
 				"pwp", 
 				"wfw", 

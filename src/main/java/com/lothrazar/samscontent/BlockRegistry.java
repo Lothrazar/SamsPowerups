@@ -3,6 +3,7 @@ package com.lothrazar.samscontent;
 import com.lothrazar.block.BlockCommandBlockCraftable;
 import com.lothrazar.block.BlockFishing;
 import com.lothrazar.block.BlockXRay;
+import com.lothrazar.util.SamsRegistry;
 
 public class BlockRegistry 
 { 
@@ -19,7 +20,14 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
-		BlockFishing.initFishing();
+		if(ModLoader.configSettings.fishingNetBlock)
+		{
+			BlockRegistry.block_fishing = new BlockFishing(); 
+			
+			SamsRegistry.registerBlock(BlockRegistry.block_fishing,BlockFishing.name);
+
+			BlockFishing.addRecipe();
+		}
   
 		BlockCommandBlockCraftable.initWeatherBlock();
 		
