@@ -7,10 +7,10 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;   
 
-import com.lothrazar.block.*; 
-import com.lothrazar.command.*; 
-import com.lothrazar.event.*; 
-import com.lothrazar.item.*;   
+import com.lothrazar.samscontent.block.*;
+import com.lothrazar.samscontent.command.*;
+import com.lothrazar.samscontent.event.*;
+import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.proxy.ClientProxy;
 import com.lothrazar.samscontent.proxy.CommonProxy;

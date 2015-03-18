@@ -11,11 +11,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration; 
 
-import com.lothrazar.command.*; 
-import com.lothrazar.event.HandlerPlayerHarvest;
-import com.lothrazar.event.HandlerRichAnimals;
-import com.lothrazar.item.ItemWandBuilding;
-import com.lothrazar.item.ItemWandHarvest;
+import com.lothrazar.samscontent.command.*;
+import com.lothrazar.samscontent.event.HandlerPlayerHarvest;
+import com.lothrazar.samscontent.event.HandlerRichAnimals;
+import com.lothrazar.samscontent.item.ItemWandBuilding;
+import com.lothrazar.samscontent.item.ItemWandHarvest;
 
 public class ConfigFile
 { 
