@@ -244,6 +244,7 @@ public class ModLoader
      		,ItemRegistry.wandLivestock
      		,ItemRegistry.wandProspect
      		,ItemRegistry.wandTransform
+     		,ItemRegistry.wandWater
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()

@@ -42,24 +42,22 @@ public class ItemWandWater  extends Item
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
-		/*if(event.world.isRemote){ return ;}//server side only!
+		if(event.world.isRemote){ return ;}//server side only!
 		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
-		  
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
-		if(held.getItem() == ItemRegistry.wandFire && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{  
-			if(event.entityPlayer.isSneaking())
-			{ 
-				ItemWandWater.castFire(event.world,event.entityPlayer,held); 
-			}
-			else
-			{
-				castExtinguish(event.world,event.entityPlayer,held); 
-			} 
-		}*/
+		if(ModLoader.configSettings.wandWater == false ) {return;}
+		if(held.getItem() != ItemRegistry.wandWater ) {return;}
+		 
+		BlockPos offset = event.pos.offset(event.face);
+ 
+		if( event.action.RIGHT_CLICK_BLOCK == event.action &&
+			event.world.isAirBlock(offset))
+		{   
+			event.world.setBlockState(offset,  Blocks.water.getDefaultState());
+			
+			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+		}
   	}
 }
