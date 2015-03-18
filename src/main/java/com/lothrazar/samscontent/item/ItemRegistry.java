@@ -43,6 +43,7 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_diamond_rich;
 	public static ItemFoodAppleMagic apple_ender;
 	public static ItemWandWater wandWater;
+	public static ItemWandLightning wandLightning;
 	 
 	public static void registerItems()
 	{
@@ -83,6 +84,14 @@ public class ItemRegistry
 			SamsRegistry.registerItem(ItemRegistry.wandWater, "wand_water");
 	 
 			ItemWandWater.addRecipe();		 
+		}
+		if(ModLoader.configSettings.wandLightning)
+		{  
+			ItemRegistry.wandLightning = new ItemWandLightning();
+
+			SamsRegistry.registerItem(ItemRegistry.wandLightning, "wand_lightning");
+	 
+			ItemWandLightning.addRecipe();		 
 		}
 
 		if(ModLoader.configSettings.wandCopy)

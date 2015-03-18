@@ -187,8 +187,13 @@ public class ConfigFile
 		
 		wandFire = instance.getBoolean("wandFire",category, true,
     			"Craft a wand that can either create fire in a line, or extinguish fire all around you.");
-		wandWater = instance.getBoolean("wandFire",category, true,
+		
+		wandWater = instance.getBoolean("wandWater",category, true,
     			"Craft a wand that places water.");
+		
+		wandLightning = instance.getBoolean("wandLightning",category, true,
+    			"Craft a wand that spawns lightning bolts.");
+		
 		wandChest = instance.getBoolean("wandChest",category, true,
     			"Craft a wand that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
 		
@@ -618,5 +623,6 @@ public class ConfigFile
 	public boolean lavaStorage;
 	public boolean waterStorage;
 	public boolean wandWater;
-	public boolean harvestGlassPickaxe; 
+	public boolean harvestGlassPickaxe;
+	public boolean wandLightning; 
 }
