@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.gui;
+package com.lothrazar.samscontent.cfg;
 
   
 import com.lothrazar.samscontent.ModLoader;

@@ -8,6 +8,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;   
 
 import com.lothrazar.samscontent.block.*;
+import com.lothrazar.samscontent.cfg.ConfigFile;
 import com.lothrazar.samscontent.command.*;
 import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
@@ -20,6 +21,7 @@ import com.lothrazar.samscontent.world.MobSpawningRegistry;
 import com.lothrazar.samscontent.world.WorldGenClay; 
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;  
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFence;
@@ -74,7 +76,7 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
   
-@Mod(modid = Reference.MODID, version = Reference.VERSION	, canBeDeactivated = false, name = Reference.NAME, useMetadata = true ,guiFactory = "com.lothrazar.gui.ConfigGuiFactory") 
+@Mod(modid = Reference.MODID, version = Reference.VERSION	, canBeDeactivated = false, name = Reference.NAME, useMetadata = true ,guiFactory = "com.lothrazar.samscontent.config.ConfigGuiFactory") 
 public class ModLoader
 {
 	@Instance(value = Reference.MODID)
