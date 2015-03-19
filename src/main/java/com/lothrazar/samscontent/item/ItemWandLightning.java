@@ -66,7 +66,7 @@ public class ItemWandLightning  extends Item
 				    event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
 				}
 				 
-				if(event.world.isRemote)//only damage the item on the server.
+				if(event.world.isRemote == false)//only damage the item on the server.
 				{ 
 					//unlike other events, we spawn the bolt in both client and server side.
 					//if the spawnEntity was only server side, it would be invisible
