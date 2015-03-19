@@ -40,6 +40,7 @@ public class ItemWandLightning  extends Item
 			Items.ghast_tear  );
 	}
 	 
+	public int range = 6;
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
@@ -51,14 +52,22 @@ public class ItemWandLightning  extends Item
 		if(ModLoader.configSettings.wandLightning == false ) {return;}
 		if(held.getItem() != ItemRegistry.wandLightning ) {return;}
 		 
+		ArrayList<BlockPos> hits = new ArrayList<BlockPos>();
+		hits.add(event.pos.east(range));
+		hits.add(event.pos.west(range));
+		hits.add(event.pos.north(range));
+		hits.add(event.pos.south(range));//TODO: do a circle or radius, or random spots??
 		if( event.action.RIGHT_CLICK_BLOCK == event.action )
 		{    
 			if(event.entityPlayer.isSneaking() == false)
 			{ 
-				EntityLightningBolt lb = new EntityLightningBolt(event.world, event.pos.getX(), event.pos.getY(), event.pos.getZ());
-			//TODO: do a circle or radius, or random spots
-			    event.world.spawnEntityInWorld(lb);
-
+				for(BlockPos hit : hits)
+				{
+					//EntityLightningBolt lb = ;
+				
+				    event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
+				}
+				
 				SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
 			} 
 		} 
