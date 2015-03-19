@@ -20,7 +20,7 @@ public class BlockRegistry
 	public static BlockCommandBlockCraftable command_block_tpbed; 
 	public static BlockFishing block_fishing ;
 	public static BlockXRay block_xray ;
-	private static BlockDamage spikeBlock;
+	public static BlockDamage spikeBlock;
 	
 	public static void registerBlocks() 
 	{  
@@ -30,7 +30,7 @@ public class BlockRegistry
 			
 			SamsRegistry.registerBlock(BlockRegistry.spikeBlock, "block_spike");
 
-			BlockFishing.addRecipe();
+			BlockDamage.addRecipe();
 		}
 		
 		if(ModLoader.configSettings.fishingNetBlock)

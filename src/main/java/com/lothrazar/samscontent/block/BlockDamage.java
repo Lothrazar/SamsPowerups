@@ -8,10 +8,14 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockDamage  extends Block
 {
@@ -58,6 +62,10 @@ public class BlockDamage  extends Block
 	
 	public static void addRecipe() 
 	{
-		
+		GameRegistry.addRecipe(new ItemStack(BlockRegistry.spikeBlock), 
+				"iii", 
+				"i i", 
+				"iii", 
+				'i', Blocks.iron_bars );
 	}
 }
