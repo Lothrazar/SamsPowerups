@@ -9,8 +9,13 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
@@ -49,7 +54,28 @@ public class BlockDamage  extends Block
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
 	{
-		if(entity instanceof EntityLivingBase) //could vbe only Player
+		if(entity instanceof EntitySheep)
+		{
+			EntitySheep sheep = (EntitySheep)entity;
+			
+			if(sheep.getSheared() && sheep.worldObj.isRemote == false)
+			{
+				//this part is the same as how EntitySheep goes
+				sheep.setSheared(true);
+                int i = 1 + sheep.worldObj.rand.nextInt(3);
+
+                for (int j = 0; j < i; ++j)
+                {
+                    EntityItem entityitem = sheep.entityDropItem(new ItemStack(Item.getItemFromBlock(Blocks.wool), 1, sheep.getFleeceColor().getMetadata()), 1.0F);
+                    entityitem.motionY += (double)(sheep.worldObj.rand.nextFloat() * 0.05F);
+                    entityitem.motionX += (double)((sheep.worldObj.rand.nextFloat() - sheep.worldObj.rand.nextFloat()) * 0.1F);
+                    entityitem.motionZ += (double)((sheep.worldObj.rand.nextFloat() - sheep.worldObj.rand.nextFloat()) * 0.1F);
+                }
+                
+                sheep.playSound("mob.sheep.shear", 1.0F, 1.0F);
+			} 
+		}
+		else if(entity instanceof EntityLivingBase) //any non sheeps get damaged
 		{
 			EntityLivingBase living = (EntityLivingBase)entity;
 			
