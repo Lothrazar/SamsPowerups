@@ -14,12 +14,16 @@ import net.minecraft.block.material.MapColor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -58,6 +62,53 @@ public class BlockXRay extends Block
     {
         return EnumWorldBlockLayer.CUTOUT; // transparency
     }
+	@Override
+	public boolean isCollidable()
+	{
+		//TRUE MEANSZ YOU CAN WALK THROUGH IT LIKE A BUSH! USEFUL?
+//this.getCollisionBoundingBox(world, pos, state)
+	    return false;//?? http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/mods-discussion/1371492-problem-with-onentitycollidedwithblock
+	}
+	@Override
+	public AxisAlignedBB getCollisionBoundingBox(World world,BlockPos pos, IBlockState state)
+	{
+		double r = 0.1;
+		
+		return new AxisAlignedBB((double)pos.getX() + r, (double)pos.getY() + r, (double)pos.getZ() + r, (double)pos.getX() + r, (double)pos.getY() + r, (double)pos.getZ() + r);
+	      
+	}
+
+	@Override
+	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
+	{
+		System.out.println("?onEntityCollidedWithBlock");
+		System.out.println(entity instanceof EntityPlayer);//FOR ENTITY PLAYER THIS IS FALSE
+		if(entity instanceof EntityPlayer)
+		{
+			EntityPlayer living = (EntityPlayer)entity;
+			
+			living.attackEntityFrom(DamageSource.cactus, 2);
+			
+			BlockPos offset = pos.offset(entity.getHorizontalFacing());
+
+			System.out.println("?attackEntityFrom");
+			
+			living.knockBack(living, 1F, living.motionX/2 * -1, living.motionZ/2 * -1);
+		}
+		if(entity instanceof EntityLiving)
+		{
+			EntityLiving living = (EntityLiving)entity;
+			
+			living.attackEntityFrom(DamageSource.cactus, 2);
+			
+			BlockPos offset = pos.offset(entity.getHorizontalFacing());
+
+			//System.out.println("?attackEntityFrom");
+			
+			living.knockBack(living, 1F, offset.getX(), offset.getZ());
+		}
+		//this.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
+	}
 	 
 	public static void addRecipe() 
 	{

@@ -1,23 +1,3 @@
-//[march05]: add creative tab for my stuff  
-//[march05]: f3 gamerules: add whitespace above, AND put in all rules with [t][f] instead of only showing TRUE ones
-//[march05]: mushrroms self plant same way we have saplings do
-//[march08]: configs to stop zombies from dropping goodies (carrot/iron/etc)--LivingDropsEvent
-//[march05]: new keybindings that moves the whole rows up and down, not just columns
-//[march05]: sugar cane grow from bonemeal (pocket edition does this)
-//[march08]: wand transform: rotate logs, pistons , hoppers droppers etc,  anything else  that has rotation
-//[march09]: IF we get sign copy/paste working, try the same with noteblocks
-//[march09]: make pigs drop double loo\t from other animals
-//[march10]: walking through a torch has a chance to break it. like boats do to lily pads. make sure to have sound
-//[march08]: death messages for named mobs: to start with try pets and players first. include name/coords
-//[march09: config option to display coordinates of where you died
-//[march09]: Wands of fire and  on use will add or extinguish fire in large area around the player. and/or in a straight line.
-//[march11]: is it worthwhile/easy to turn the appleflying/nbt stuff into an actual potion effect?
-//[march12]: TREES ONLY GROLW && GET UN-PLANTED IF NOT IN THEIR HOME BIOMES 
-//[march11]: Lack of sleep potion effect
-//[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
-//[march12]: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
-//[march13]: worldgen clay Replacing gravel in ocean    
-//[march14]:  item and/or slowfall ability
 
         //sapling/biome feature expansion:
             //TODO: can we prevent cactus growth
@@ -25,11 +5,9 @@
             //TODO: can we prevent vine growth
             //TODO: can we increase vine growth on swampland trees
             //TODO: can we generate mushroom/flower/lilypad growth
- //[march15]: merge the end safefall along with nodamageEnderPearl, and maybe even pearlReturns into ender apple. nice 30min timer?
- //TODO: durability of each wand in config file
+//TODO: durability of each wand in config file
  
 //TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
-//[march15]: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
 //TODO: remote workbench??? @Override
 public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPlayer player)
 {
@@ -43,12 +21,10 @@ public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPl
 
 
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
-
-//TODO: make efficiency tool work on glass?
+//TODO: a way to place signs quick by skipping interface (leaving them blank) 
+ 
 //TODO: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
-//TODO: wand lightning   
-EntityLightningBolt bolt = new EntityLightningBolt(world, i, j, k);
-            world.spawnEntityInWorld(bolt);
+ 
     //using public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
     //blocks that do things to players/mobs . such as
     //TODO: SPIKE BLOCK: 
@@ -64,9 +40,8 @@ EntityLightningBolt bolt = new EntityLightningBolt(world, i, j, k);
         //beetroots can be eaten to restore 1 (Half Heart.svg) health.//soup restores (8)?? seeds from tilling grass 1/15 chance
 //TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
 //TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
-//TODO: a way to place signs quick by skipping interface (leaving them blank) 
-chocolate block copy texture
-charcoal block copy texture
+        chocolate block copy texture
+        charcoal block copy texture
 //TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
 //TODO: cherst uncrafting only gives one stick should be more
 //TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
@@ -111,4 +86,41 @@ charcoal block copy texture
     // : achievement finder , check if dragonslayer//or at least check something to gain a power    
     
             //??((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new S39PacketPlayerAbilities(player.capabilities));
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   //DONE
+    //[march15]: merge the end safefall along with nodamageEnderPearl, and maybe even pearlReturns into ender apple. nice 30min timer?
+ //[march15]: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
+ 
+   //[march05]: add creative tab for my stuff  
+//[march05]: f3 gamerules: add whitespace above, AND put in all rules with [t][f] instead of only showing TRUE ones
+//[march05]: mushrroms self plant same way we have saplings do
+//[march08]: configs to stop zombies from dropping goodies (carrot/iron/etc)--LivingDropsEvent
+//[march05]: new keybindings that moves the whole rows up and down, not just columns
+//[march05]: sugar cane grow from bonemeal (pocket edition does this)
+//[march08]: wand transform: rotate logs, pistons , hoppers droppers etc,  anything else  that has rotation
+//[march09]: IF we get sign copy/paste working, try the same with noteblocks
+//[march09]: make pigs drop double loo\t from other animals
+//[march10]: walking through a torch has a chance to break it. like boats do to lily pads. make sure to have sound
+//[march08]: death messages for named mobs: to start with try pets and players first. include name/coords
+//[march09: config option to display coordinates of where you died
+//[march09]: Wands of fire and  on use will add or extinguish fire in large area around the player. and/or in a straight line.
+//[march11]: is it worthwhile/easy to turn the appleflying/nbt stuff into an actual potion effect?
+//[march12]: TREES ONLY GROLW && GET UN-PLANTED IF NOT IN THEIR HOME BIOMES 
+//[march11]: Lack of sleep potion effect
+//[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
+//[march12]: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
+//[march13]: worldgen clay Replacing gravel in ocean    
+//[march14]:  item and/or slowfall ability
    
