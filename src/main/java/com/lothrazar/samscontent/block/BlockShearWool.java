@@ -23,9 +23,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class BlockDamage  extends Block
+public class BlockShearWool extends Block
 {
-	protected BlockDamage() 
+	protected BlockShearWool() 
 	{
 		//TODO: we may delete this whole block/feature.  It is identical to cactus but does not kill Items.
 		//is too OP for mob farms, and too useless for much else.
@@ -57,9 +57,9 @@ public class BlockDamage  extends Block
 		if(entity instanceof EntitySheep)
 		{
 			EntitySheep sheep = (EntitySheep)entity;
-			
-			if(sheep.getSheared() && sheep.worldObj.isRemote == false)
-			{
+
+			if(sheep.getSheared() == false && sheep.worldObj.isRemote == false)
+			{ 
 				//this part is the same as how EntitySheep goes
 				sheep.setSheared(true);
                 int i = 1 + sheep.worldObj.rand.nextInt(3);
@@ -75,6 +75,7 @@ public class BlockDamage  extends Block
                 sheep.playSound("mob.sheep.shear", 1.0F, 1.0F);
 			} 
 		}
+		/*
 		else if(entity instanceof EntityLivingBase) //any non sheeps get damaged
 		{
 			EntityLivingBase living = (EntityLivingBase)entity;
@@ -101,11 +102,12 @@ public class BlockDamage  extends Block
 				SamsUtilities.moveEntityWallSafe(living, world);	 
 			}
 		}
+		*/
 	}
  
 	public static void addRecipe() 
 	{
-		GameRegistry.addRecipe(new ItemStack(BlockRegistry.spikeBlock), 
+		GameRegistry.addRecipe(new ItemStack(BlockRegistry.block_spike), 
 				"iii", 
 				"i i", 
 				"iii", 
