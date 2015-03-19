@@ -5,6 +5,7 @@ import java.util.Random;
 
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -16,6 +17,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -82,8 +84,8 @@ public class BlockXRay extends Block
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
 	{
 		System.out.println("?onEntityCollidedWithBlock");
-		System.out.println(entity instanceof EntityPlayer);//FOR ENTITY PLAYER THIS IS FALSE
-		if(entity instanceof EntityPlayer)
+		System.out.println(entity instanceof EntityLivingBase);//FOR ENTITY PLAYER THIS IS FALSE
+		if(entity instanceof EntityLivingBase) //could vbe only Player
 		{
 			EntityPlayer living = (EntityPlayer)entity;
 			
@@ -92,22 +94,19 @@ public class BlockXRay extends Block
 			BlockPos offset = pos.offset(entity.getHorizontalFacing());
 
 			System.out.println("?attackEntityFrom");
+		
+			living.knockBack(living, 0F, 
+					 pos.getX() - living.getPosition().getX(), 
+					 pos.getZ() - living.getPosition().getZ());//living.motionZ*0.6000000238418579D);
 			
-			living.knockBack(living, 1F, living.motionX/2 * -1, living.motionZ/2 * -1);
+			//from utilities teleportWall Safe.  TODO: make wallsafe own function
+			while (!world.getCollidingBoundingBoxes(living, living.getEntityBoundingBox()).isEmpty())
+			{
+				System.out.println("?safe move?");
+				living.setPositionAndUpdate(living.posX, living.posY + 1.0D, living.posZ);
+			}
 		}
-		if(entity instanceof EntityLiving)
-		{
-			EntityLiving living = (EntityLiving)entity;
-			
-			living.attackEntityFrom(DamageSource.cactus, 2);
-			
-			BlockPos offset = pos.offset(entity.getHorizontalFacing());
-
-			//System.out.println("?attackEntityFrom");
-			
-			living.knockBack(living, 1F, offset.getX(), offset.getZ());
-		}
-		//this.onEntityCollidedWithBlock(worldIn, pos, state, entityIn);
+		 
 	}
 	 
 	public static void addRecipe() 
