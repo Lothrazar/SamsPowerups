@@ -20,9 +20,19 @@ public class BlockRegistry
 	public static BlockCommandBlockCraftable command_block_tpbed; 
 	public static BlockFishing block_fishing ;
 	public static BlockXRay block_xray ;
+	private static BlockDamage spikeBlock;
 	
 	public static void registerBlocks() 
 	{  
+		if(ModLoader.configSettings.spikeBlock)
+		{
+			BlockRegistry.spikeBlock = new BlockDamage(); 
+			
+			SamsRegistry.registerBlock(BlockRegistry.spikeBlock, "block_spike");
+
+			BlockFishing.addRecipe();
+		}
+		
 		if(ModLoader.configSettings.fishingNetBlock)
 		{
 			BlockRegistry.block_fishing = new BlockFishing(); 

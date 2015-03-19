@@ -398,11 +398,14 @@ public class ConfigFile
 	{
 		category = "blocks";
 		
+		spikeBlock = instance.getBoolean( "spikeBlock",category,true,
+				"A spiky block that damages and knocks back any colliding enitity."); 
+		 
 		fishingNetBlock = instance.getBoolean( "fishingNetBlock",category,true,
-				" Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
+				"Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
 		 
 		xRayBlock = instance.getBoolean( "xRayBlock",category,true,
-				" Create an xray block to see through the world.  Intended for single player, not for cheating on servers."); 
+				"Create an xray block to see through the world.  Intended for single player, not for cheating on servers."); 
 
 		weatherBlock = instance.getBoolean( "weatherBlock",category,true,
 				"Craft block that will run /toggledownfall whenever it gets a redstone signal."); 
@@ -624,5 +627,6 @@ public class ConfigFile
 	public boolean waterStorage;
 	public boolean wandWater;
 	public boolean harvestGlassPickaxe;
-	public boolean wandLightning; 
+	public boolean wandLightning;
+	public boolean spikeBlock; 
 }

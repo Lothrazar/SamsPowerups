@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -289,12 +290,16 @@ public class SamsUtilities
 	{
 		player.setPositionAndUpdate(coords.getX(), coords.getY(), coords.getZ()); 
 
-		while (!world.getCollidingBoundingBoxes(player, player.getEntityBoundingBox()).isEmpty())
-		{
-			player.setPositionAndUpdate(player.posX, player.posY + 1.0D, player.posZ);
-		}
+		moveEntityWallSafe(player, world);
 		  
 		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
+	}
+	public static void moveEntityWallSafe(EntityLivingBase entity, World world) 
+	{
+		while (!world.getCollidingBoundingBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
+		{
+			entity.setPositionAndUpdate(entity.posX, entity.posY + 1.0D, entity.posZ);
+		}
 	}
 	
 	public static boolean isShiftKeyDown()

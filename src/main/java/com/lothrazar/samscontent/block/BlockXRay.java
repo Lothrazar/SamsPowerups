@@ -64,50 +64,7 @@ public class BlockXRay extends Block
     {
         return EnumWorldBlockLayer.CUTOUT; // transparency
     }
-	@Override
-	public boolean isCollidable()
-	{
-		//TRUE MEANSZ YOU CAN WALK THROUGH IT LIKE A BUSH! USEFUL?
-//this.getCollisionBoundingBox(world, pos, state)
-	    return false;//?? http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/mods-discussion/1371492-problem-with-onentitycollidedwithblock
-	}
-	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world,BlockPos pos, IBlockState state)
-	{
-		double r = 0.1;
-		
-		return new AxisAlignedBB((double)pos.getX() + r, (double)pos.getY() + r, (double)pos.getZ() + r, (double)pos.getX() + r, (double)pos.getY() + r, (double)pos.getZ() + r);
-	      
-	}
-
-	@Override
-	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
-	{
-		System.out.println("?onEntityCollidedWithBlock");
-		System.out.println(entity instanceof EntityLivingBase);//FOR ENTITY PLAYER THIS IS FALSE
-		if(entity instanceof EntityLivingBase) //could vbe only Player
-		{
-			EntityPlayer living = (EntityPlayer)entity;
-			
-			living.attackEntityFrom(DamageSource.cactus, 2);
-			
-			BlockPos offset = pos.offset(entity.getHorizontalFacing());
-
-			System.out.println("?attackEntityFrom");
-		
-			living.knockBack(living, 0F, 
-					 pos.getX() - living.getPosition().getX(), 
-					 pos.getZ() - living.getPosition().getZ());//living.motionZ*0.6000000238418579D);
-			
-			//from utilities teleportWall Safe.  TODO: make wallsafe own function
-			while (!world.getCollidingBoundingBoxes(living, living.getEntityBoundingBox()).isEmpty())
-			{
-				System.out.println("?safe move?");
-				living.setPositionAndUpdate(living.posX, living.posY + 1.0D, living.posZ);
-			}
-		}
-		 
-	}
+	
 	 
 	public static void addRecipe() 
 	{
