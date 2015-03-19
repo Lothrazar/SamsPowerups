@@ -245,6 +245,7 @@ public class ModLoader
      		,ItemRegistry.wandProspect
      		,ItemRegistry.wandTransform
      		,ItemRegistry.wandWater
+     		,ItemRegistry.wandLightning
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()
