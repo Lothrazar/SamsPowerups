@@ -28,13 +28,11 @@ public class BlockDamage  extends Block
 	}
  
 	@Override
-	public AxisAlignedBB getCollisionBoundingBox(World world,BlockPos pos, IBlockState state)
-	{
-		double r = 0.1;
-		
-		return new AxisAlignedBB((double)pos.getX() + r, (double)pos.getY() + r, (double)pos.getZ() + r, (double)pos.getX() + r, (double)pos.getY() + r, (double)pos.getZ() + r);
-	}
-
+	public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state)
+    {
+        float f = 0.0625F; //same as cactus
+        return new AxisAlignedBB((double)((float)pos.getX() + f), (double)pos.getY(), (double)((float)pos.getZ() + f), (double)((float)(pos.getX() + 1) - f), (double)((float)(pos.getY() + 1) - f), (double)((float)(pos.getZ() + 1) - f));
+    }
 	public int damageDealt = 1;
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
@@ -43,15 +41,29 @@ public class BlockDamage  extends Block
 		{
 			EntityLivingBase living = (EntityLivingBase)entity;
 			
+			if(living.onGround)
+			{
+			
 			living.attackEntityFrom(DamageSource.cactus, damageDealt);
 			
 			BlockPos offset = pos.offset(entity.getHorizontalFacing());
 
-			living.knockBack(living, 0F, 
-					 pos.getX() - living.getPosition().getX(), 
-					 pos.getZ() - living.getPosition().getZ());//living.motionZ*0.6000000238418579D);
+			double diffX = (pos.getX() - living.getPosition().getX()) * living.motionX;
+			double diffZ = (pos.getZ() - living.getPosition().getZ()) * living.motionY;
+
+			if(Double.isNaN(diffX) || Double.isNaN(diffZ)) {return;}
+			if(diffX == 0 && diffZ == 0) {return;}
 			
-			SamsUtilities.moveEntityWallSafe(living, world);
+			System.out.println("spike "+diffX+" : "+diffZ);
+			
+			living.knockBack(living, 0F, 
+					 diffX /4    , 
+					 diffZ /4
+					 );//living.motionZ*0.6000000238418579D);
+			
+			SamsUtilities.moveEntityWallSafe(living, world);	
+			
+			}
 		}
 	}
  
