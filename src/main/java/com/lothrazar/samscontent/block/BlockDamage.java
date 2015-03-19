@@ -26,12 +26,7 @@ public class BlockDamage  extends Block
 		this.setHardness(4F); 
 		this.setResistance(5F); 
 	}
-
-	@Override
-	public boolean isCollidable()
-	{ 
-	    return false;//True would mean it acts as a water block, can pass through
-	}
+ 
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(World world,BlockPos pos, IBlockState state)
 	{
@@ -59,7 +54,7 @@ public class BlockDamage  extends Block
 			SamsUtilities.moveEntityWallSafe(living, world);
 		}
 	}
-	
+ 
 	public static void addRecipe() 
 	{
 		GameRegistry.addRecipe(new ItemStack(BlockRegistry.spikeBlock), 
