@@ -105,7 +105,7 @@ public class BlockFishing extends Block
 	@Override
 	public boolean isOpaqueCube() 
 	{
-		return false;//transparency stuff
+		return false;//transparency 
 	}
  
 	@SideOnly(Side.CLIENT)
