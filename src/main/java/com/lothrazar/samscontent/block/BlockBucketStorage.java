@@ -22,6 +22,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockBucketStorage extends Block implements ITileEntityProvider //extends BlockContainer
 {
@@ -118,8 +119,14 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		entityPlayer.destroyCurrentEquippedItem();
 	}
 
-	public void addRecipe() {
-		// TODO Auto-generated method stub
+	public void addRecipe() 
+	{
+		GameRegistry.addRecipe(new ItemStack(this), 
+				"iii", 
+				"ibi", 
+				"iii", 
+				'b', this.bucketItem, 
+				'i', Items.iron_ingot   );
 		
 	}
 }
