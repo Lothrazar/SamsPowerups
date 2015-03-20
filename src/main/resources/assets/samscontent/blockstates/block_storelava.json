@@ -1,0 +1,5 @@
+{
+    "variants": {
+        "normal": { "model": "samscontent:block_storelava" }
+    }
+}
