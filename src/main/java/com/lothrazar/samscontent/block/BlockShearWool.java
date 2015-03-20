@@ -46,7 +46,8 @@ public class BlockShearWool extends Block
 	@Override
 	public AxisAlignedBB getCollisionBoundingBox(World worldIn, BlockPos pos, IBlockState state)
     {
-        float f = 0.0625F; //same as cactus
+		//if we dont make the box biger than 1x1x1, the 'Collided' event will Never fire
+        float f = 0.0625F; //same as cactus.
         return new AxisAlignedBB((double)((float)pos.getX() + f), (double)pos.getY(), (double)((float)pos.getZ() + f), (double)((float)(pos.getX() + 1) - f), (double)((float)(pos.getY() + 1) - f), (double)((float)(pos.getZ() + 1) - f));
     }
 	
