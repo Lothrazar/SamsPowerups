@@ -392,10 +392,10 @@ public class ConfigFile
 	{
 		category = "blocks";
 		
-		blockStorageLava = instance.getBoolean( "blockStorageLava",category,true,
+		storeLavaBlock = instance.getBoolean( "storeLavaBlock",category,true,
 				"A block that stores any number of lava buckets (click to insert / withdraw)."); 
 		 
-		spikeBlock = instance.getBoolean( "spikeBlock",category,true,
+		shearSheepBlock = instance.getBoolean( "shearSheepBlock",category,true,
 				"A spiky block that damages and knocks back any colliding enitity."); 
 		 
 		fishingNetBlock = instance.getBoolean( "fishingNetBlock",category,true,
@@ -413,16 +413,16 @@ public class ConfigFile
 		teleportSpawnBlock = instance.getBoolean( "teleportSpawnBlock",category,true,
 				"Command block that teleports you to your bed"); 
 		 
-		gameruleBlockRegen = instance.getBoolean( "gameruleBlock.Regen",category,true,
+		gameruleBlockRegen = instance.getBoolean( "gameruleBlock_Regen",category,true,
 				"Craft blocks that toggle '/gamerule naturalRegenration' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
 		
-		gameruleBlockDaylight = instance.getBoolean( "gameruleBlock.Daylight",category,true,
+		gameruleBlockDaylight = instance.getBoolean( "gameruleBlock_Daylight",category,true,
 				"Craft blocks that toggle '/gamerule doDaylightCycle' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
 		
-		gameruleBlockFiretick = instance.getBoolean( "gameruleBlock.Firetick",category,true,
+		gameruleBlockFiretick = instance.getBoolean( "gameruleBlock_Firetick",category,true,
 				"Craft blocks that toggle '/gamerule doFireTick' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
 		
-		gameruleBlockMobgrief = instance.getBoolean( "gameruleBlock.Mobgrief",category,true,
+		gameruleBlockMobgrief = instance.getBoolean( "gameruleBlock_Mobgrief",category,true,
 				"Craft blocks that toggle '/gamerule doMobGriefing' on redstone signal.  (Can never be opened or edited like a regular command block).");
 	}
 	
@@ -623,6 +623,6 @@ public class ConfigFile
 	public boolean wandWater;
 	public boolean harvestGlassPickaxe;
 	public boolean wandLightning;
-	public boolean spikeBlock;
-	public boolean blockStorageLava; 
+	public boolean shearSheepBlock;
+	public boolean storeLavaBlock; 
 }
