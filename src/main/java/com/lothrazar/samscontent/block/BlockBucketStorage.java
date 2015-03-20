@@ -58,12 +58,22 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
 		if(event.world.isRemote){ return; }//server side only!
-		if(event.entityPlayer.isSneaking()) {return;}//they wanted to place real lava, not insert
+		if(event.entityPlayer.isSneaking()) {return;}//consistent
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
+		
+		if(held == null) //empty hand 
+		{ 
+			//TODO: if right click with empty handremove exactly one bucket, if we can
+			return;
+		}
+		
+		
+		
 		if(held.getItem() != Items.lava_bucket) { return; }
 		
-		if(event.action.RIGHT_CLICK_BLOCK == event.action)
+		
+		
+		if(event.action.LEFT_CLICK_BLOCK == event.action)
 		{ 
 			Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 			
@@ -93,7 +103,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 					event.entityPlayer.destroyCurrentEquippedItem();
 					//TODO: sparkle
 					//TODO: sound effect
-					event.setCanceled(true);//stop laving from landing on the world
+					//event.setCanceled(true);//stop laving from landing on the world, but didnt work
 				}
 			} 
 		}
