@@ -392,6 +392,9 @@ public class ConfigFile
 	{
 		category = "blocks";
 		
+		blockStorageLava = instance.getBoolean( "blockStorageLava",category,true,
+				"A block that stores any number of lava buckets (click to insert / withdraw)."); 
+		 
 		spikeBlock = instance.getBoolean( "spikeBlock",category,true,
 				"A spiky block that damages and knocks back any colliding enitity."); 
 		 
@@ -620,5 +623,6 @@ public class ConfigFile
 	public boolean wandWater;
 	public boolean harvestGlassPickaxe;
 	public boolean wandLightning;
-	public boolean spikeBlock; 
+	public boolean spikeBlock;
+	public boolean blockStorageLava; 
 }

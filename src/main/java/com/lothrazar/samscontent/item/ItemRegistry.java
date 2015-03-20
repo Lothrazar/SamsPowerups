@@ -45,6 +45,7 @@ public class ItemRegistry
 	 
 	public static void registerItems()
 	{
+		//needed for all wands; no config.
 		ItemRegistry.baseWand = new ItemBaseWand(); 
 		SamsRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
 		ItemBaseWand.addRecipe();	  

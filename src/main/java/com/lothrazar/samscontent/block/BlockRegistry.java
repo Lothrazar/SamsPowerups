@@ -26,12 +26,15 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
-		BlockRegistry.block_storelava = new BlockBucketStorage(); 
+		if(ModLoader.configSettings.blockStorageLava)
+		{
+			BlockRegistry.block_storelava = new BlockBucketStorage(); 
+			
+			SamsRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
+	  
+			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
+		}
 		
-		SamsRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
-  
-		GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
-
 		if(ModLoader.configSettings.spikeBlock)
 		{
 			BlockRegistry.block_spike = new BlockShearWool(); 
