@@ -232,7 +232,6 @@ public class ModLoader
      		,new HandlerPlayerSleep()
      		,new HandlerLivingDrops()
      		,new HandlerTorchCollide() 
-     		,new HandlerBucketStorage()
       		,new HandlerPlayerHarvest()
      		,ItemRegistry.itemEnderBook 
      		,ItemRegistry.wandTransform 

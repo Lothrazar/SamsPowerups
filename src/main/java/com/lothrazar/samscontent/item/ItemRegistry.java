@@ -17,9 +17,7 @@ import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;
 
 public class ItemRegistry 
-{
-	public static ItemBucketStorage itemWater;
-	public static ItemBucketStorage itemLava;
+{ 
 	public static ItemEnderBook itemEnderBook = null;
 	public static ItemWandBuilding wandBuilding;
 	public static ItemWandChest wandChest; 
@@ -102,25 +100,7 @@ public class ItemRegistry
 
 			ItemWandCopyPaste.addRecipe();  
 		}
-		
-		if(ModLoader.configSettings.lavaStorage)
-		{ 
-			ItemRegistry.itemLava = new ItemBucketStorage();
-
-			SamsRegistry.registerItem(ItemRegistry.itemLava, "bucket_storage_lava");
-	 
-			ItemBucketStorage.addRecipeLava();
-		}
-
-		if(ModLoader.configSettings.waterStorage)
-		{ 
-			ItemRegistry.itemWater = new ItemBucketStorage();
-
-			SamsRegistry.registerItem(ItemRegistry.itemWater, "bucket_storage_water");
-
-			ItemBucketStorage.addRecipeWater();
-		}
-
+		   
 		if(ModLoader.configSettings.wandBuilding)
 		{ 
 			ItemRegistry.wandBuilding = new ItemWandBuilding(); 

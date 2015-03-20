@@ -365,13 +365,7 @@ public class ConfigFile
 	private void items() 
 	{
 		category = "items";
-
-		lavaStorage = instance.getBoolean( "lavaStorage",category,true,
-				".  " );  
-		///TODO: finish these functions BEFORe doing the config
-		waterStorage = instance.getBoolean( "waterStorage",category,true,
-				".  " );  
-		
+  
 		flintTool = instance.getBoolean( "flintTool",category,true,
 				"Flint Tool: Harvest leaves the same speed as shears, the difference is you get normal drops instead of leaf blocks.  " );  
 		
@@ -622,9 +616,7 @@ public class ConfigFile
 	public boolean saplingGrowthRestricted;
 	public boolean saplingAllNether;
 	public boolean saplingAllEnd;
-	public int potionIdEnder;
-	public boolean lavaStorage;
-	public boolean waterStorage;
+	public int potionIdEnder; 
 	public boolean wandWater;
 	public boolean harvestGlassPickaxe;
 	public boolean wandLightning;
