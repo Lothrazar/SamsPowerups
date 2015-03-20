@@ -19,7 +19,7 @@ public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPl
      return par1ItemStack;
 }
 
-
+//IDEA: bone torches from http://www.reddit.com/r/minecraftsuggestions/comments/2zmq4o/bone_torches/
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
 //TODO: a way to place signs quick by skipping interface (leaving them blank) 
  
