@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
@@ -21,9 +22,16 @@ public class BlockRegistry
 	public static BlockFishing block_fishing ;
 	public static BlockXRay block_xray ;
 	public static BlockShearWool block_spike;
+	public static BlockBucketStorage block_storelava;
 	
 	public static void registerBlocks() 
 	{  
+		BlockRegistry.block_storelava = new BlockBucketStorage(); 
+		
+		SamsRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
+  
+		GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
+
 		if(ModLoader.configSettings.spikeBlock)
 		{
 			BlockRegistry.block_spike = new BlockShearWool(); 

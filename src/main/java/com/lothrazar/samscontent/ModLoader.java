@@ -128,7 +128,8 @@ public class ModLoader
 		ItemRegistry.registerItems();
 		
 		BlockRegistry.registerBlocks();
-
+		
+	
 		this.registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
 		
 		BlockHardnessRegistry.registerChanges();
@@ -246,6 +247,7 @@ public class ModLoader
      		,ItemRegistry.wandTransform
      		,ItemRegistry.wandWater
      		,ItemRegistry.wandLightning
+     		,BlockRegistry.block_storelava
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()

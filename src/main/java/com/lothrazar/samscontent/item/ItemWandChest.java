@@ -155,11 +155,12 @@ public class ItemWandChest extends ItemTool
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
 		  
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
 		if(held.getItem() == ItemRegistry.wandChest && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
+			Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+			
 			if(blockClicked == null || blockClicked == Blocks.air ){return;}
 			
 			if(blockClicked instanceof BlockChest)// && event.entityPlayer.isSneaking()

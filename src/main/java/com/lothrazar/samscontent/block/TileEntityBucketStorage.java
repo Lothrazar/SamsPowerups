@@ -1,0 +1,46 @@
+package com.lothrazar.samscontent.block;
+
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.network.Packet;
+import net.minecraft.tileentity.TileEntity;
+
+public class TileEntityBucketStorage extends TileEntity
+{
+	public static String NBT_ID = "buckets";
+	private int buckets = 0;
+	
+	public TileEntityBucketStorage()
+	{
+		super();
+	}
+	public TileEntityBucketStorage(int in)
+	{
+		super();
+		buckets = in;
+	}
+	
+	public void addBucket()
+	{
+		buckets++;
+	}
+	
+	public int getBuckets()
+	{
+		return buckets;
+	}
+	
+	@Override
+	public void writeToNBT(NBTTagCompound nbt)
+	{
+		nbt.setInteger(TileEntityBucketStorage.NBT_ID, this.buckets);
+	    super.writeToNBT(nbt);
+	}
+	
+	@Override
+	public void readFromNBT(NBTTagCompound nbt)
+	{
+		this.buckets = nbt.getInteger(TileEntityBucketStorage.NBT_ID);
+	    super.readFromNBT(nbt);
+	}
+ 
+}
