@@ -74,6 +74,9 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				&& container.getBuckets() > 0) //empty hand 
 		{ 
 			removeBucket(event.entityPlayer, event.world, container);
+			
+			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");//TODO: sound in config
+			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 		}
 		
 		if(event.action.LEFT_CLICK_BLOCK == event.action 
@@ -81,16 +84,19 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				&& held.getItem() == Items.lava_bucket )
 		{  
 			addBucket(event.entityPlayer, event.world, container); 
+			
+			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in");//TODO: sound in config
+			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 		}
 		
-		SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in");
-		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos); 
   	}
 
 	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage) 
 	{
 		storage.removeBucket();
 
+		System.out.println("removed to ==="+storage.getBuckets());
+		
 		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(Items.lava_bucket)); 
 	}
 
@@ -102,7 +108,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		//Testing confirms this works, since we do it on server side only 
 		//AND since the block data does not affect renderign on the client -> we do not need custom Packets
-		System.out.println("bbb==="+b);
+		System.out.println("added up to ==="+b);
 		
 		entityPlayer.destroyCurrentEquippedItem();
 	}
