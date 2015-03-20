@@ -28,7 +28,14 @@ public class TileEntityBucketStorage extends TileEntity
 	{
 		return buckets;
 	}
-	
+	public boolean removeBucket()
+	{
+		if(buckets <= 0){return false;}
+		
+		buckets--;
+		
+		return true;
+	}
 	@Override
 	public void writeToNBT(NBTTagCompound nbt)
 	{

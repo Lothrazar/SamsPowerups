@@ -17,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -60,52 +61,49 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		if(event.world.isRemote){ return; }//server side only!
 		if(event.entityPlayer.isSneaking()) {return;}//consistent
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		
-		if(held == null) //empty hand 
-		{ 
-			//TODO: if right click with empty handremove exactly one bucket, if we can
-			return;
-		}
-		
-		
-		
-		if(held.getItem() != Items.lava_bucket) { return; }
-		
-		
-		
-		if(event.action.LEFT_CLICK_BLOCK == event.action)
-		{ 
-			Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-			
-			if(blockClicked == null || blockClicked == Blocks.air ){return;}
-			
-			if(blockClicked instanceof BlockBucketStorage)// && event.entityPlayer.isSneaking()
-			{   
-				TileEntity container = event.world.getTileEntity(event.pos);
-				
-				if(container == null) 
-					System.out.println("instance NULL");
-				
-				if(container instanceof TileEntityBucketStorage)
-				{
-					System.out.println("instance of is true");
-					TileEntityBucketStorage storage = (TileEntityBucketStorage)container;
-					
 
-					storage.addBucket();
-					
-					int b = storage.getBuckets();
-					
-					//Testing confirms this works, since we do it on server side only 
-					//AND since the block data does not affect renderign on the client -> we do not need custom Packets
-					System.out.println("bbb==="+b);
-					
-					event.entityPlayer.destroyCurrentEquippedItem();
-					//TODO: sparkle
-					//TODO: sound effect
-					//event.setCanceled(true);//stop laving from landing on the world, but didnt work
-				}
-			} 
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		
+		if(blockClicked == null || blockClicked == Blocks.air ){return;}
+		if((blockClicked instanceof BlockBucketStorage) == false) {return;} 
+	  
+		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);
+	
+		
+		if(held == null && event.action.RIGHT_CLICK_BLOCK == event.action
+				&& container.getBuckets() > 0) //empty hand 
+		{ 
+			removeBucket(event.entityPlayer, event.world, container);
 		}
+		
+		if(event.action.LEFT_CLICK_BLOCK == event.action 
+				&& held != null
+				&& held.getItem() == Items.lava_bucket )
+		{  
+			addBucket(event.entityPlayer, event.world, container); 
+		}
+		
+		SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in");
+		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos); 
   	}
+
+	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage) 
+	{
+		storage.removeBucket();
+
+		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(Items.lava_bucket)); 
+	}
+
+	public void addBucket(EntityPlayer entityPlayer,	World world, TileEntityBucketStorage storage) 
+	{  
+		storage.addBucket();
+		
+		int b = storage.getBuckets();
+		
+		//Testing confirms this works, since we do it on server side only 
+		//AND since the block data does not affect renderign on the client -> we do not need custom Packets
+		System.out.println("bbb==="+b);
+		
+		entityPlayer.destroyCurrentEquippedItem();
+	}
 }
