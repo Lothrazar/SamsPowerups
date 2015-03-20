@@ -115,4 +115,9 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		entityPlayer.destroyCurrentEquippedItem();
 	}
+
+	public void addRecipe() {
+		// TODO Auto-generated method stub
+		
+	}
 }

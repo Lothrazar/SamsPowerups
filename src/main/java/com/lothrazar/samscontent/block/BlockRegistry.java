@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.block;
 
+import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -23,6 +24,7 @@ public class BlockRegistry
 	public static BlockXRay block_xray ;
 	public static BlockShearWool block_spike;
 	public static BlockBucketStorage block_storelava;
+	public static BlockBucketStorage block_storewater;
 	
 	public static void registerBlocks() 
 	{  
@@ -32,9 +34,22 @@ public class BlockRegistry
 			
 			SamsRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
 	  
-			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
+			BlockRegistry.block_storelava.addRecipe();
 		}
-		
+
+		if(ModLoader.configSettings.storeWaterBlock)
+		{
+			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket); 
+			
+			SamsRegistry.registerBlock(BlockRegistry.block_storewater, "block_storewater");
+
+			BlockRegistry.block_storewater.addRecipe();
+		}
+		if(ModLoader.configSettings.storeLavaBlock || ModLoader.configSettings.storeWaterBlock)
+		{
+			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
+			
+		}
 		if(ModLoader.configSettings.shearSheepBlock)
 		{
 			BlockRegistry.block_spike = new BlockShearWool(); 

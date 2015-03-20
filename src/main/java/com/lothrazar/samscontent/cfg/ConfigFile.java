@@ -394,7 +394,8 @@ public class ConfigFile
 		
 		storeLavaBlock = instance.getBoolean( "storeLavaBlock",category,true,
 				"A block that stores any number of lava buckets (click to insert / withdraw)."); 
-		 
+		storeWaterBlock = instance.getBoolean( "storeWaterBlock",category,true,
+				"A block that stores any number of water buckets (click to insert / withdraw)."); 
 		shearSheepBlock = instance.getBoolean( "shearSheepBlock",category,true,
 				"A spiky block that damages and knocks back any colliding enitity."); 
 		 
@@ -624,5 +625,6 @@ public class ConfigFile
 	public boolean harvestGlassPickaxe;
 	public boolean wandLightning;
 	public boolean shearSheepBlock;
-	public boolean storeLavaBlock; 
+	public boolean storeLavaBlock;
+	public boolean storeWaterBlock; 
 }
