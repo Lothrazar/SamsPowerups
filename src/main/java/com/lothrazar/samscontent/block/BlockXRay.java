@@ -40,6 +40,7 @@ public class BlockXRay extends Block
 		this.setCreativeTab(ModLoader.tabSamsContent);
 		this.setHardness(4F); 
 		this.setResistance(5F); 
+		this.setStepSound(soundTypeGlass);
 		this.setTickRandomly(true);
     }
 

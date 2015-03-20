@@ -29,6 +29,12 @@ import net.minecraftforge.common.config.Property;
 
 public class BlockCommandBlockCraftable extends BlockCommandBlock
 {  
+	private void setConstructorDefaults()
+	{ 
+		this.setHardness(3F);
+		this.setResistance(5F);
+		this.setCreativeTab(ModLoader.tabSamsContent);
+	}
 	public static enum CommandType
 	{
 		Gamerule, Weather, TeleportSpawn, TeleportBed 
@@ -43,12 +49,6 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 		return true;//transparency stuff
 	}
 	
-	private void setConstructorDefaults()
-	{ 
-		this.setHardness(3F);
-		this.setResistance(5F);
-		this.setCreativeTab(ModLoader.tabSamsContent);
-	}
 	
 	public BlockCommandBlockCraftable(CommandType t)
 	{   

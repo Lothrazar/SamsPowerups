@@ -1,15 +1,22 @@
 package com.lothrazar.samscontent.block;
 
+import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.item.ItemRegistry;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -22,6 +29,10 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	protected BlockBucketStorage() 
 	{
 		super(Material.iron);
+		this.setHardness(5F);
+		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setStepSound(soundTypeMetal);
+		this.setHarvestLevel("pickaxe", 1);
 	}
 	 
 	@Override
@@ -30,10 +41,22 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		return new TileEntityBucketStorage(meta);
 	} 
 	
-	
+	@Override
+	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) 
+	{
+		TileEntityBucketStorage container = (TileEntityBucketStorage)world.getTileEntity(pos);
+		
+		//since they are not stackable
+		for(int i = 0; i < container.getBuckets(); i++)
+		{
+			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(Items.lava_bucket));
+		}
+	}
+
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
+
 		if(event.world.isRemote){ return; }//server side only!
 
 		if(event.action.RIGHT_CLICK_BLOCK == event.action)

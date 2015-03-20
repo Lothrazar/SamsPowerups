@@ -33,6 +33,7 @@ public class BlockFishing extends Block
 		this.setCreativeTab(ModLoader.tabSamsContent);
 		this.setHardness(3F);
 		this.setResistance(5F); 
+		this.setStepSound(soundTypeWood);
 		this.setTickRandomly(true);
     }
 	    
