@@ -30,6 +30,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	{
 		super(Material.iron);
 		this.setHardness(5F);
+		this.setResistance(5F);
 		this.setCreativeTab(ModLoader.tabSamsContent);
 		this.setStepSound(soundTypeMetal);
 		this.setHarvestLevel("pickaxe", 1);
@@ -56,9 +57,12 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
-
 		if(event.world.isRemote){ return; }//server side only!
-
+		if(event.entityPlayer.isSneaking()) {return;}//they wanted to place real lava, not insert
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held == null) { return; }//empty hand so do nothing
+		if(held.getItem() != Items.lava_bucket) { return; }
+		
 		if(event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
 			Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
@@ -86,6 +90,10 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 					//AND since the block data does not affect renderign on the client -> we do not need custom Packets
 					System.out.println("bbb==="+b);
 					
+					event.entityPlayer.destroyCurrentEquippedItem();
+					//TODO: sparkle
+					//TODO: sound effect
+					event.setCanceled(true);//stop laving from landing on the world
 				}
 			} 
 		}
