@@ -13,6 +13,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
@@ -26,8 +27,9 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 {
 	//http://www.minecraftforge.net/wiki/Basic_Tile_Entity
 	//to be used in tandem with ItemBucketStorage. the (block/item) will remember how many full buckets are inside of it.
+	private Item bucketItem;
 	
-	protected BlockBucketStorage() 
+	protected BlockBucketStorage(Item bucketIn) 
 	{
 		super(Material.iron);
 		this.setHardness(5F);
@@ -35,6 +37,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		this.setCreativeTab(ModLoader.tabSamsContent);
 		this.setStepSound(soundTypeMetal);
 		this.setHarvestLevel("pickaxe", 1);
+		bucketItem = bucketIn;
 	}
 	 
 	@Override
@@ -51,7 +54,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		//since they are not stackable
 		for(int i = 0; i < container.getBuckets(); i++)
 		{
-			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(Items.lava_bucket));
+			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(this.bucketItem));
 		}
 	}
 
@@ -81,7 +84,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		if(event.action.LEFT_CLICK_BLOCK == event.action 
 				&& held != null
-				&& held.getItem() == Items.lava_bucket )
+				&& held.getItem() == this.bucketItem )
 		{  
 			addBucket(event.entityPlayer, event.world, container); 
 			
@@ -97,7 +100,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 
 		System.out.println("removed to ==="+storage.getBuckets());
 		
-		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(Items.lava_bucket)); 
+		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(this.bucketItem)); 
 	}
 
 	public void addBucket(EntityPlayer entityPlayer,	World world, TileEntityBucketStorage storage) 

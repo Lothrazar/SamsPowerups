@@ -28,7 +28,7 @@ public class BlockRegistry
 	{  
 		if(ModLoader.configSettings.storeLavaBlock)
 		{
-			BlockRegistry.block_storelava = new BlockBucketStorage(); 
+			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket); 
 			
 			SamsRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
 	  
