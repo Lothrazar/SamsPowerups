@@ -28,6 +28,15 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
+		if(ModLoader.configSettings.storeWaterBlock)
+		{
+			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket); 
+			
+			SamsRegistry.registerBlock(BlockRegistry.block_storewater, "block_storewater");
+
+			BlockRegistry.block_storewater.addRecipe();
+		}
+		
 		if(ModLoader.configSettings.storeLavaBlock)
 		{
 			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket); 
@@ -37,14 +46,6 @@ public class BlockRegistry
 			BlockRegistry.block_storelava.addRecipe();
 		}
 
-		if(ModLoader.configSettings.storeWaterBlock)
-		{
-			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket); 
-			
-			SamsRegistry.registerBlock(BlockRegistry.block_storewater, "block_storewater");
-
-			BlockRegistry.block_storewater.addRecipe();
-		}
 		if(ModLoader.configSettings.storeLavaBlock || ModLoader.configSettings.storeWaterBlock)
 		{
 			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);

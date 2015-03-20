@@ -50,11 +50,13 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) 
 	{
 		TileEntityBucketStorage container = (TileEntityBucketStorage)world.getTileEntity(pos);
+
+		Block blockClicked = player.worldObj.getBlockState(pos).getBlock();
+		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		
-		//since they are not stackable
-		for(int i = 0; i < container.getBuckets(); i++)
+		for(int i = 0; i < container.getBuckets(); i++)//since they are not stackable
 		{
-			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(this.bucketItem));
+			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
 		}
 	}
 
@@ -69,14 +71,17 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		if(blockClicked == null || blockClicked == Blocks.air ){return;}
 		if((blockClicked instanceof BlockBucketStorage) == false) {return;} 
-	  
-		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);
 	
+		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		
+		if(block.bucketItem != this.bucketItem){return;}//not optimal but it fixes things
+		
+		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);
+ 
 		if(held == null && event.action.RIGHT_CLICK_BLOCK == event.action
 				&& container.getBuckets() > 0) //empty hand 
 		{ 
-			removeBucket(event.entityPlayer, event.world, container);
+			removeBucket(event.entityPlayer, event.world, container, block.bucketItem);
 			
 			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");//TODO: sound in config
 			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
@@ -84,7 +89,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		if(event.action.LEFT_CLICK_BLOCK == event.action 
 				&& held != null
-				&& held.getItem() == this.bucketItem )
+				&& held.getItem() == block.bucketItem )
 		{  
 			addBucket(event.entityPlayer, event.world, container); 
 			
@@ -94,13 +99,11 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
   	}
 
-	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage) 
+	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage, Item bucketItem) 
 	{
 		storage.removeBucket();
-
-		System.out.println("removed to ==="+storage.getBuckets());
-		
-		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(this.bucketItem)); 
+ 
+		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(bucketItem)); 
 	}
 
 	public void addBucket(EntityPlayer entityPlayer,	World world, TileEntityBucketStorage storage) 
@@ -111,8 +114,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		//Testing confirms this works, since we do it on server side only 
 		//AND since the block data does not affect renderign on the client -> we do not need custom Packets
-		System.out.println("added up to ==="+b);
-		
+		 
 		entityPlayer.destroyCurrentEquippedItem();
 	}
 

@@ -233,6 +233,7 @@ public class ModLoader
      		,new HandlerLivingDrops()
      		,new HandlerTorchCollide() 
       		,new HandlerPlayerHarvest()
+     		 //TODO: do not add to list if null
      		,ItemRegistry.itemEnderBook 
      		,ItemRegistry.wandTransform 
      		,ItemRegistry.itemChestSack
@@ -247,6 +248,8 @@ public class ModLoader
      		,ItemRegistry.wandWater
      		,ItemRegistry.wandLightning
      		,BlockRegistry.block_storelava
+     		,BlockRegistry.block_storewater
+    		 //TODO: do not add to list if null
       		,new HandlerEnderpearlTeleport()
      		,new HandlerEnderChestHit() 
      		,new HandlerKeyInput()

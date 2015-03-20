@@ -49,5 +49,4 @@ public class TileEntityBucketStorage extends TileEntity
 		this.buckets = nbt.getInteger(TileEntityBucketStorage.NBT_ID);
 	    super.readFromNBT(nbt);
 	}
- 
 }
