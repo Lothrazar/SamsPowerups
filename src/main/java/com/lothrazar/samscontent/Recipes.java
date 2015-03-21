@@ -1,12 +1,9 @@
 package com.lothrazar.samscontent;
 
 import java.util.ArrayList;  
-import java.util.List; 
-
-import org.apache.logging.log4j.Logger;   
-
-import com.lothrazar.util.Reference; 
-
+import java.util.List;  
+import org.apache.logging.log4j.Logger;    
+import com.lothrazar.util.Reference;  
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.entity.player.EntityPlayer;
@@ -33,40 +30,33 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  
 public class Recipes  
 {  
-	static int EXP=0;
-	private static void removeRecipe(Item resultItem)
-	{     
-		removeRecipe(new ItemStack(resultItem));
-	}
-	private static void removeRecipe(Block resultItem)
-	{     
-		removeRecipe(new ItemStack(resultItem));
-	}
-	private static void removeRecipe(ItemStack resultItem)
-	{     
-		//REFERENCES
-		//http://www.minecraftforge.net/forum/index.php/topic,7146.0.html
-		//http://stackoverflow.com/questions/27459815/minecraft-forge-1-7-10-removing-recipes-from-id
+	static int EXP = 0;
 	
-	    List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
-	    IRecipe tmpRecipe;
-	    ItemStack recipeResult;
-	    for (int i = 0; i < recipes.size(); i++)
-	    {
-	        tmpRecipe = recipes.get(i);
-
-	        recipeResult = tmpRecipe.getRecipeOutput();
-	        if(recipeResult != null) 
-	        {
-	            recipeResult.stackSize = 1;
-	            //recipeResult.setItemDamage(0);
-	        }
-
-	        if (ItemStack.areItemStacksEqual(resultItem, recipeResult))
-	        {
-	            recipes.remove(i--);
-	        }
-	    }
+	public static void registerRecipes() 
+	{ 
+		Recipes.netherwartPurple();
+		
+		Recipes.bookNoLeather(); 
+		  
+		Recipes.mushroomBlocks(); 
+		
+		Recipes.bonemealWool();
+		
+		Recipes.simpleDispenser();
+		
+		Recipes.records();
+		  
+   		Recipes.uncrafting();
+ 
+   		Recipes.smoothstoneRequired();
+   		
+   		Recipes.tieredArmor();
+		  
+   		Recipes.woolDyeSavings();
+		  
+   		Recipes.repeaterSimple();
+		
+   		Recipes.minecartsSimple();
 	}
 	
 	public static void netherwartPurple()
@@ -654,32 +644,6 @@ public class Recipes
 				new ItemStack(Items.lead), new ItemStack(Items.lead));
 	}
 
-	public static void doubleSlabsFlat()
-	{
-		//if(!ModLoader.settings.craftableFlatDoubleSlab){return;} 
-		//the ITEM version does not exist
-		//BLOCK version is valid for example /setblock ~ ~ ~ double_stone_slab 8
-		// /setblock ~ ~ ~ double_stone_slab
-		//item is not valid so this is commented it out
-		//TODO: find a way to get these blocks in the world double_stone_slab 8,double_stone_slab 9?
-		//TODO: find a way to get mushroom blocks all types in game
-		/*
-		GameRegistry.addRecipe(new ItemStack(Blocks.double_stone_slab, 3, Reference.stone_slab_flat), 
-				" xx"," xx", " xx", 
-				'x', new ItemStack(Blocks.stone_slab, 1, Reference.stone_slab_stone));
-		GameRegistry.addRecipe(new ItemStack(Blocks.double_stone_slab, 3,  Reference.stone_slab_flat), 
-				"xx ",	"xx ", "xx ", 
-				'x', new ItemStack(Blocks.stone_slab, 1, Reference.stone_slab_stone)); 
-		
-		GameRegistry.addRecipe(new ItemStack(Blocks.double_stone_slab, 3, Reference.stone_slab_sandflat), 
-				" xx"," xx", " xx", 
-				'x', new ItemStack(Blocks.stone_slab, 1, 	Reference.stone_slab_sandstone));
-		GameRegistry.addRecipe(new ItemStack(Blocks.double_stone_slab, 3, Reference.stone_slab_sandflat), 
-				"xx ", "xx ", "xx ",
-				'x', new ItemStack(Blocks.stone_slab, 1, Reference.stone_slab_sandstone));
-				*/
-	}
-
 	public static void records()
 	{
 		if(!ModLoader.configSettings.craftableTransmuteRecords) {return;}
@@ -1018,34 +982,39 @@ public class Recipes
 		
 		
 	}
-	public static void registerRecipes() 
-	{ 
-		Recipes.netherwartPurple();
-		
-		Recipes.bookNoLeather(); 
-		  
-		Recipes.mushroomBlocks(); 
-		   
-		//Recipes.obsidianIceWater();
-  
-		Recipes.bonemealWool();
-		
-		Recipes.simpleDispenser();
-		
-		Recipes.records();
-		  
-		Recipes.doubleSlabsFlat();
-		 
-   		Recipes.uncrafting();
- 
-   		Recipes.smoothstoneRequired();
-   		
-   		Recipes.tieredArmor();
-		  
-   		Recipes.woolDyeSavings();
-		  
-   		Recipes.repeaterSimple();
-		
-   		Recipes.minecartsSimple();
+	
+	private static void removeRecipe(Item resultItem)
+	{     
+		removeRecipe(new ItemStack(resultItem));
+	}
+	private static void removeRecipe(Block resultItem)
+	{     
+		removeRecipe(new ItemStack(resultItem));
+	}
+	private static void removeRecipe(ItemStack resultItem)
+	{     
+		//REFERENCES
+		//http://www.minecraftforge.net/forum/index.php/topic,7146.0.html
+		//http://stackoverflow.com/questions/27459815/minecraft-forge-1-7-10-removing-recipes-from-id
+	
+	    List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
+	    IRecipe tmpRecipe;
+	    ItemStack recipeResult;
+	    for (int i = 0; i < recipes.size(); i++)
+	    {
+	        tmpRecipe = recipes.get(i);
+
+	        recipeResult = tmpRecipe.getRecipeOutput();
+	        if(recipeResult != null) 
+	        {
+	            recipeResult.stackSize = 1;
+	            //recipeResult.setItemDamage(0);
+	        }
+
+	        if (ItemStack.areItemStacksEqual(resultItem, recipeResult))
+	        {
+	            recipes.remove(i--);
+	        }
+	    }
 	}
 }
