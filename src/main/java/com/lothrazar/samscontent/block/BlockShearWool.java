@@ -110,8 +110,9 @@ public class BlockShearWool extends Block
 	{
 		GameRegistry.addRecipe(new ItemStack(BlockRegistry.block_spike), 
 				"iii", 
-				"i i", 
+				"isi", 
 				"iii", 
+				's', Items.shears,
 				'i', Blocks.iron_bars );
 	}
 }
