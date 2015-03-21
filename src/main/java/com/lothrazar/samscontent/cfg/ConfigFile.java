@@ -184,15 +184,18 @@ public class ConfigFile
 	{ 
 		category = "items_wands";
 
-		category = category + ".wandFire";
+		category = "items_wands" + ".wandFire";
 
 		ItemWandFire.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
-		
+
+		ItemWandFire.RADIUS  = instance.getInt("radius",category, 16,1,64,
+    			"Range in all directions.");
+ 
 		wandFire = instance.getBoolean("wandFire",category, true,
     			"Craft a wand that can either create fire in a line, or extinguish fire all around you.");
 
-		category = category + ".wandWater";
+		category = "items_wands" + ".wandWater";
 
 		ItemWandWater.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
@@ -200,7 +203,7 @@ public class ConfigFile
 		wandWater = instance.getBoolean("wandWater",category, true,
     			"Craft a wand that places water.");
 
-		category = category + ".wandLightning";
+		category = "items_wands" + ".wandLightning";
 
 		ItemWandLightning.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
@@ -208,7 +211,7 @@ public class ConfigFile
 		wandLightning = instance.getBoolean("wandLightning",category, true,
     			"Craft a wand that spawns lightning bolts.");
 
-		category = category + ".wandChest";
+		category = "items_wands" + ".wandChest";
 
 		ItemWandChest.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
@@ -216,7 +219,7 @@ public class ConfigFile
 		wandChest = instance.getBoolean("wandChest",category, true,
     			"Craft a wand that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
 
-		category = category + ".wandCopy";
+		category = "items_wands" + ".wandCopy";
 
 		ItemWandCopyPaste.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
@@ -224,15 +227,18 @@ public class ConfigFile
 		wandCopy = instance.getBoolean("wandCopy",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
 
-		category = category + ".wandHarvest";
+		category = "items_wands" + ".wandHarvest";
 
 		ItemWandHarvest.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
+
+		ItemWandHarvest.RADIUS  = instance.getInt("radius",category, 16,1,64,
+    			"Range in all directions.");
 		
 		wandHarvest = instance.getBoolean("wandHarvest",category, true,
     			"Craft a wand that will harvest the crops in the area around you.");
 
-		category = category + ".wandLivestock";
+		category = "items_wands" + ".wandLivestock";
 
 		ItemWandLivestock.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
@@ -240,7 +246,7 @@ public class ConfigFile
 		wandLivestock = instance.getBoolean("wandLivestock",category, true,
     			"Craft a wand that will transform livestock animals into spawn eggs.");
 
-		category = category + ".wandTransform";
+		category = "items_wands" + ".wandTransform";
 
 		ItemWandTransform.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
@@ -248,18 +254,18 @@ public class ConfigFile
 		wandTransform = instance.getBoolean("wandTransform",category, true,
     			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
 
-		category = category + ".wandProspect";
+		category = "items_wands" + ".wandProspect";
 		
 		ItemWandProspect.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 
 		ItemWandProspect.RADIUS  = instance.getInt("radius",category, 16,1,64,
-    			"Search range in all directions.");
+    			"Range in all directions.");
 
 		wandProspect = instance.getBoolean("wandProspect",category, true,
     			"Craft a wand that will prospect the nearby area for diamonds."); 
 		
-		category = category + ".wandBuilding"; 
+		category = "items_wands" + ".wandBuilding"; 
 		
 		wandBuilding = instance.getBoolean( "wandBuilding", category,true,
 				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  

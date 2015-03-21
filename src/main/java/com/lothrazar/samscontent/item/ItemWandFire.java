@@ -38,12 +38,12 @@ public class ItemWandFire  extends Item
 			Items.flint_and_steel  );
 	}
 	
-	public static int range = 9;//TODO: range in config
+	public static int RADIUS = 9;//TODO: range in config
 	public static int DURABILITY;
 
 	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 
-		for(int i = 2; i < range; i++)
+		for(int i = 2; i < RADIUS; i++)
 		{
 			BlockPos fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), i);
 			

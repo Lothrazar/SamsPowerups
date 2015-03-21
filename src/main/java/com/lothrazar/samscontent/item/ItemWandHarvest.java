@@ -43,10 +43,10 @@ public class ItemWandHarvest extends ItemTool
 			ItemRegistry.baseWand, 
 			Blocks.hay_block  );
 	}
-	private static int RADIUS = 128;
+	public static int RADIUS = 128;
 	public static int DURABILITY = 80;
-	public static boolean drainsHunger = true;
-	public static boolean drainsDurability = true;
+	//public static boolean drainsHunger = true;
+	//public static boolean drainsDurability = true;
   
 	public ItemWandHarvest( )
 	{   
@@ -114,12 +114,12 @@ public class ItemWandHarvest extends ItemTool
 		} //end of the outer loop
 		
 		entityPlayer.swingItem();
-		 
+		/* 
 		if(drainsHunger)
 		{
 			SamsUtilities.drainHunger(entityPlayer);
 		}
-		
+		*/
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
 	
