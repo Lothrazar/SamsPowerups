@@ -6,35 +6,13 @@
             //TODO: can we prevent vine growth
             //TODO: can we increase vine growth on swampland trees
             //TODO: can we generate mushroom/flower/lilypad growth
-//TODO: durability of each wand in config file
  
 //TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
-//TODO: remote workbench??? @Override
-public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPlayer player)
-{
-     if(world.isRemote)
-     {
-          player.displayGUIWorkbench((int)player.posX, (int)player.posY, (int)player.posZ);
-          setDamage(par1ItemStack, par1ItemStack.getItemDamage() + 1);
-     }
-     return par1ItemStack;
-}
-
+//TODO: remote or portable workbench
 //IDEA: bone torches from http://www.reddit.com/r/minecraftsuggestions/comments/2zmq4o/bone_torches/
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
 //TODO: a way to place signs quick by skipping interface (leaving them blank) 
- 
 //TODO: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
- 
-    //using public void onEntityCollidedWithBlock(World world, int i, int j, int k, Entity entity)
-    //blocks that do things to players/mobs . such as
-    //TODO: SPIKE BLOCK: 
-    ///TODO: MILKING BLOCK-  s-damage/shear sheep/milk cow/breed or feed animals/etc?
-    //TODO: breeding block
-    //TODO: MILKER ITEM: recipe uses tons of iron. each use pulls milk from a cow, drops the actual bucket.
-    //durability/number of uses is related to how many buckets it makes
-    //so its not 'free buckets'. its just transformed iron
-//TODO: can we shear multiple sheep with one click/wanduse
 //TODO: find a way that you need food variety to live.
 //TODO: add beetroot.six beetroot like a sign above a bowl -> one bt soup. fills //1 beetroot gives one rose red. it breeds pigs and gets follow like carrot  
         ///referencefood https://bitbucket.org/Zuxelus/usefulfood/src/f74eea7793c5a95e8ecf4d7344f3e5182884942c/main/java/mods/usefulfood/?at=master
@@ -44,7 +22,6 @@ public ItemStack onItemRightClick(ItemStack par1ItemStack, World world, EntityPl
         chocolate block copy texture
         charcoal block copy texture
 //TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
-//TODO: cherst uncrafting only gives one stick should be more
 //TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
 //TODO: hotkey to search through inventory and use enderpearl ingoring all else
 //TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
