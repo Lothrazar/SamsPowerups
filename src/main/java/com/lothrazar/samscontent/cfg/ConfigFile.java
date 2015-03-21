@@ -446,7 +446,8 @@ public class ConfigFile
 	private void blocks() 
 	{
 		category = "blocks";
-		
+		storeMilkBlock = instance.getBoolean( "storeMilkBlock",category,true,
+				"A block that stores any number of milk buckets (click to insert / withdraw)."); 
 		storeLavaBlock = instance.getBoolean( "storeLavaBlock",category,true,
 				"A block that stores any number of lava buckets (click to insert / withdraw)."); 
 		storeWaterBlock = instance.getBoolean( "storeWaterBlock",category,true,
@@ -681,5 +682,6 @@ public class ConfigFile
 	public boolean wandLightning;
 	public boolean shearSheepBlock;
 	public boolean storeLavaBlock;
-	public boolean storeWaterBlock; 
+	public boolean storeWaterBlock;
+	public boolean storeMilkBlock;
 }

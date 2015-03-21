@@ -256,6 +256,7 @@ public class ModLoader
 		handlers.add(ItemRegistry.wandLightning       );
 		handlers.add(BlockRegistry.block_storelava    );
 		handlers.add(BlockRegistry.block_storewater   );
+		handlers.add(BlockRegistry.block_storemilk   );
 
      	for(Object h : handlers)
      		if(h != null)

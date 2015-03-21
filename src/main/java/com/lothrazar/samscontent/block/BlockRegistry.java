@@ -25,6 +25,7 @@ public class BlockRegistry
 	public static BlockShearWool block_spike;
 	public static BlockBucketStorage block_storelava;
 	public static BlockBucketStorage block_storewater;
+	public static BlockBucketStorage block_storemilk;
 	
 	public static void registerBlocks() 
 	{  
@@ -36,7 +37,14 @@ public class BlockRegistry
 
 			BlockRegistry.block_storewater.addRecipe();
 		}
-		
+		if(ModLoader.configSettings.storeMilkBlock)
+		{
+			BlockRegistry.block_storemilk = new BlockBucketStorage(Items.milk_bucket); 
+			
+			SamsRegistry.registerBlock(BlockRegistry.block_storemilk, "block_storemilk");
+
+			BlockRegistry.block_storemilk.addRecipe();
+		}
 		if(ModLoader.configSettings.storeLavaBlock)
 		{
 			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket); 

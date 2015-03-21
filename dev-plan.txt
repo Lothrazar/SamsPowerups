@@ -27,7 +27,7 @@
 //TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
 //TODO: smart potion button
 //TODO: smart torch button
-//TODO: is there a nice forge friendly way of adding potion brewing recipes
+//TODO: is there a nice forge friendly way of adding potion brewing recipes -> NOPE
 //TODO: can we catch the middle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
 //TODO: far reach place hotkey. use player look vectors and trickery 
 //TODO: wand of chest transportation: make it also work with dispensers/droppers/trapped chests/ etc. set extra flag to identify
