@@ -1007,15 +1007,25 @@ public class Recipes
 	        tmpRecipe = recipes.get(i);
 
 	        recipeResult = tmpRecipe.getRecipeOutput();
-	        if(recipeResult != null) 
-	        {
+	        /*
+	       
+	         this was copied in from sample code showing what was possible
+	         it was a bug to leave this in for every call and outside the if statement
+	         since this made EVERY RECIPE IN THE GAME produce one item
+	          
+	           
+	            
 	            recipeResult.stackSize = 1;
 	            //recipeResult.setItemDamage(0);
-	        }
-
-	        if (ItemStack.areItemStacksEqual(resultItem, recipeResult))
+	       
+*/
+	        if( recipeResult != null && 
+	        	ItemStack.areItemStacksEqual(resultItem, recipeResult))
 	        {
 	            recipes.remove(i--);
+	            
+	            //TODO: do we want to log changes here?
+	           // System.out.println("  REMOVE RECIPE:"+recipeResult.getUnlocalizedName());
 	        }
 	    }
 	}
