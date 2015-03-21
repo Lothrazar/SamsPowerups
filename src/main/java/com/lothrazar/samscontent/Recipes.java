@@ -50,6 +50,8 @@ public class Recipes
  
    		Recipes.smoothstoneRequired();
    		
+   		Recipes.furnaceNeedsCoal();  
+   		
    		Recipes.tieredArmor();
 		  
    		Recipes.woolDyeSavings();
@@ -810,7 +812,7 @@ public class Recipes
 		{ 
 			if(dye != Reference.dye_bonemeal)
 			{
-				removeRecipe(new ItemStack(Blocks.wool,1,dye));				
+				//removeRecipe(new ItemStack(Blocks.wool,1,dye));				
 			
 				GameRegistry.addRecipe(new ItemStack(Blocks.wool,8,dye), 
 						"www","wdw", "www", 
