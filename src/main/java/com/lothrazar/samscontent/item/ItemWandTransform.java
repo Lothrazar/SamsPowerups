@@ -44,7 +44,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandTransform extends ItemTool
 { 
-	private static int DURABILITY = 80;
+	public static int DURABILITY = 80;
 	public static boolean drainsHunger = false;
 	public static boolean drainsDurability = true;
   
@@ -56,8 +56,6 @@ public class ItemWandTransform extends ItemTool
 		this.setCreativeTab(ModLoader.tabSamsContent);
 	}
 	  
-	
-	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      

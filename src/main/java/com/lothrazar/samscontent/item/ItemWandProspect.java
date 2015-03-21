@@ -37,8 +37,8 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandProspect extends ItemTool
 {
-	private static int RADIUS = 16;//TODO: CONFIG FILE
-	private static int DURABILITY = 80;
+	public static int RADIUS = 16;//TODO: CONFIG FILE
+	public static int DURABILITY;
 	public static boolean drainsHunger = true;
 	public static boolean drainsDurability = true;
   

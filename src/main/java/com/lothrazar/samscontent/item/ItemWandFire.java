@@ -27,7 +27,7 @@ public class ItemWandFire  extends Item
 	{  
 		super();  
 		this.setCreativeTab(ModLoader.tabSamsContent);
-    	this.setMaxDamage(99); 
+    	this.setMaxDamage(DURABILITY); 
 		this.setMaxStackSize(1);
 	}
  
@@ -39,6 +39,7 @@ public class ItemWandFire  extends Item
 	}
 	
 	public static int range = 9;//TODO: range in config
+	public static int DURABILITY;
 
 	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 

@@ -24,12 +24,12 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandLightning  extends Item
 {
-	public static int durability = 99;//TODO: config 
+	public static int DURABILITY = 99;//TODO: config 
 	public ItemWandLightning()
 	{  
 		super();  
 		this.setCreativeTab(ModLoader.tabSamsContent);
-    	this.setMaxDamage(durability);
+    	this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
 	}
  

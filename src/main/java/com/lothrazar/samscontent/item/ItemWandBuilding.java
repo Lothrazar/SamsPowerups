@@ -41,7 +41,7 @@ public class ItemWandBuilding extends ItemTool
 		this.setCreativeTab(ModLoader.tabSamsContent);
 	}
 
-	private static int DURABILITY = 200;
+	public static int DURABILITY = 200;
 	public static boolean replaceBedrock = false;
 	public static boolean replaceObsidian = false;
 	public static boolean replaceTileEntities = false;

@@ -28,6 +28,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandCopyPaste  extends Item
 {
+	public static int DURABILITY;
+
+
 	public ItemWandCopyPaste()
 	{  
 		super();  

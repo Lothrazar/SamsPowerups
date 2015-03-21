@@ -14,8 +14,7 @@ import net.minecraftforge.common.config.Configuration;
 import com.lothrazar.samscontent.command.*;
 import com.lothrazar.samscontent.event.HandlerPlayerHarvest;
 import com.lothrazar.samscontent.event.HandlerRichAnimals;
-import com.lothrazar.samscontent.item.ItemWandBuilding;
-import com.lothrazar.samscontent.item.ItemWandHarvest;
+import com.lothrazar.samscontent.item.*; 
 
 public class ConfigFile
 { 
@@ -184,39 +183,90 @@ public class ConfigFile
 	private void wands() 
 	{ 
 		category = "items_wands";
+
+		category = category + ".wandFire";
+
+		ItemWandFire.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandFire = instance.getBoolean("wandFire",category, true,
     			"Craft a wand that can either create fire in a line, or extinguish fire all around you.");
+
+		category = category + ".wandWater";
+
+		ItemWandWater.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandWater = instance.getBoolean("wandWater",category, true,
     			"Craft a wand that places water.");
+
+		category = category + ".wandLightning";
+
+		ItemWandLightning.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandLightning = instance.getBoolean("wandLightning",category, true,
     			"Craft a wand that spawns lightning bolts.");
+
+		category = category + ".wandChest";
+
+		ItemWandChest.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandChest = instance.getBoolean("wandChest",category, true,
     			"Craft a wand that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
+
+		category = category + ".wandCopy";
+
+		ItemWandCopyPaste.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandCopy = instance.getBoolean("wandCopy",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
+
+		category = category + ".wandHarvest";
+
+		ItemWandHarvest.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandHarvest = instance.getBoolean("wandHarvest",category, true,
     			"Craft a wand that will harvest the crops in the area around you.");
+
+		category = category + ".wandLivestock";
+
+		ItemWandLivestock.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandLivestock = instance.getBoolean("wandLivestock",category, true,
     			"Craft a wand that will transform livestock animals into spawn eggs.");
+
+		category = category + ".wandTransform";
+
+		ItemWandTransform.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
 		
 		wandTransform = instance.getBoolean("wandTransform",category, true,
     			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
+
+		category = category + ".wandProspect";
 		
+		ItemWandProspect.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+
+		ItemWandProspect.RADIUS  = instance.getInt("radius",category, 16,1,64,
+    			"Search range in all directions.");
+
 		wandProspect = instance.getBoolean("wandProspect",category, true,
     			"Craft a wand that will prospect the nearby area for diamonds."); 
 		
-		category = category+".wandBuilding";//sub catgeory
+		category = category + ".wandBuilding"; 
 		
 		wandBuilding = instance.getBoolean( "wandBuilding", category,true,
 				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
 		
+		ItemWandBuilding.DURABILITY   = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+
 		ItemWandBuilding.replaceBedrock = instance.getBoolean("replaceBedrock", category ,true,
 			"Set true to allow the building wand to affect bedrock.  "	);
 		

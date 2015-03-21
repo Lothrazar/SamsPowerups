@@ -39,7 +39,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 public class ItemWandLivestock extends ItemTool
 {
 	private static int RADIUS = 128;
-	private static int DURABILITY = 80;
+	public static int DURABILITY = 80;
 	public static boolean drainsHunger = true;
 	public static boolean drainsDurability = true;
   

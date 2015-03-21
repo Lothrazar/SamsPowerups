@@ -1,7 +1,3 @@
-//TODO: why does one log craft to ONE PLANK!?!?? BUG IN UNCRAFTING???
-//disable modules one by one to find
-
-
 //TODO: milk storage.
 
         //sapling/biome feature expansion:
