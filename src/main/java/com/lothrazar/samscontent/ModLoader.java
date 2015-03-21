@@ -89,7 +89,6 @@ public class ModLoader
 	public static SimpleNetworkWrapper network; 
 	public static RuntimeChangelog changelog;
 	
-	
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
 	{ 
 		@Override
@@ -129,12 +128,11 @@ public class ModLoader
 		
 		BlockRegistry.registerBlocks();
 		
-	
 		this.registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
 		
 		BlockHardnessRegistry.registerChanges();
 		
-		/*
+		/*//TODO: i never did get this to work without always crashing and corrupting the world
 		Block beetrootCrop = new BeetrootBlock();
 
 		SamsRegistry.registerBlock(beetrootCrop, "beetroot");
@@ -148,8 +146,7 @@ public class ModLoader
 
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
-	{      
-		
+	{       
 		CreativeTweaks.registerTabImprovements();
 	
 		MobSpawningRegistry.registerSpawns();
@@ -223,52 +220,50 @@ public class ModLoader
 		//FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
 		 
     	//they are just Objects, because i have not yet found a reason to add an interface/superclass 
-     	Object[] handlers = new Object[]
-     	{
-     		//TODO: dont put every one in every bus, make three lists one day. WARNING that will cause bugs
-     		 new HandlerBonemealUse()
-      		,new HandlerSaplingDespawnGrowth()//this is only one needs terrain gen buff, plus one of the regular ones
-     		,new HandlerPotionTick()
-     		,new HandlerPlayerSleep()
-     		,new HandlerLivingDrops()
-     		,new HandlerTorchCollide() 
-      		,new HandlerPlayerHarvest()
-     		 //TODO: do not add to list if null
-     		,ItemRegistry.itemEnderBook 
-     		,ItemRegistry.wandTransform 
-     		,ItemRegistry.itemChestSack
-     		,ItemRegistry.wandBuilding
-     		,ItemRegistry.wandChest
-     		,ItemRegistry.wandCopy
-     		,ItemRegistry.wandFire
-     		,ItemRegistry.wandHarvest
-     		,ItemRegistry.wandLivestock
-     		,ItemRegistry.wandProspect
-     		,ItemRegistry.wandTransform
-     		,ItemRegistry.wandWater
-     		,ItemRegistry.wandLightning
-     		,BlockRegistry.block_storelava
-     		,BlockRegistry.block_storewater
-    		 //TODO: do not add to list if null
-      		,new HandlerEnderpearlTeleport()
-     		,new HandlerEnderChestHit() 
-     		,new HandlerKeyInput()
-     		,new HandlerLivingDeath()
-     		,new HandlerWandBuilding()
-      		,new HandlerRichAnimals()
-      		,new HandlerScreenText()
-     		,new HandlerSkullSignNames()  
-        	,new HandlerPlayerFallTheEnd()
-      		,new HandlerSwiftDeposit()
-     		,instance
-     	};
-     	
-     	for(Object o : handlers)
-     	{ 
-    		MinecraftForge.EVENT_BUS.register(o);
-    		MinecraftForge.TERRAIN_GEN_BUS.register(o);
-    		MinecraftForge.ORE_GEN_BUS.register(o); 
-    		FMLCommonHandler.instance().bus().register(o); 
-     	}
+     	ArrayList<Object> handlers = new ArrayList<Object>();
+     	 
+     	handlers.add(new HandlerBonemealUse()         );
+      	handlers.add(new HandlerSaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
+     	handlers.add(new HandlerPotionTick()          );
+     	handlers.add(new HandlerPlayerSleep()         );
+     	handlers.add(new HandlerLivingDrops()         );
+     	handlers.add(new HandlerTorchCollide()        );
+      	handlers.add(new HandlerPlayerHarvest()       );
+      	handlers.add(new HandlerEnderpearlTeleport()  );
+     	handlers.add(new HandlerEnderChestHit()       );
+     	handlers.add(new HandlerKeyInput()            );
+     	handlers.add(new HandlerLivingDeath()         );
+     	handlers.add(new HandlerWandBuilding()        );
+      	handlers.add(new HandlerRichAnimals()         );
+      	handlers.add(new HandlerScreenText()          );
+     	handlers.add(new HandlerSkullSignNames()      );
+        handlers.add(new HandlerPlayerFallTheEnd()    );
+      	handlers.add(new HandlerSwiftDeposit()        );
+     	handlers.add(instance                         );
+     	handlers.add(ItemRegistry.itemEnderBook       );
+		handlers.add(ItemRegistry.itemEnderBook       );
+		handlers.add(ItemRegistry.wandTransform       );
+		handlers.add(ItemRegistry.itemChestSack       );
+		handlers.add(ItemRegistry.wandBuilding        );
+		handlers.add(ItemRegistry.wandChest           );
+		handlers.add(ItemRegistry.wandCopy            );
+		handlers.add(ItemRegistry.wandFire            );
+		handlers.add(ItemRegistry.wandHarvest         );
+		handlers.add(ItemRegistry.wandLivestock       );
+		handlers.add(ItemRegistry.wandProspect        );
+		handlers.add(ItemRegistry.wandTransform       );
+		handlers.add(ItemRegistry.wandWater           );
+		handlers.add(ItemRegistry.wandLightning       );
+		handlers.add(BlockRegistry.block_storelava    );
+		handlers.add(BlockRegistry.block_storewater   );
+
+     	for(Object h : handlers)
+     		if(h != null)
+	     	{ 
+	    		MinecraftForge.EVENT_BUS.register(h);
+	    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
+	    		MinecraftForge.ORE_GEN_BUS.register(h); 
+	    		FMLCommonHandler.instance().bus().register(h); 
+	     	}
 	}
 }
