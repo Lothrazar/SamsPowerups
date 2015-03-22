@@ -29,6 +29,7 @@ public class BlockRegistry
 	public static BlockCropBeetroot beetrootCrop;
 	public static void registerBlocks() 
 	{  
+		//TODO: config file 
 		beetrootCrop = (BlockCropBeetroot) new BlockCropBeetroot();
 
 		SamsRegistry.registerBlock(beetrootCrop, "beetroot_crop");
