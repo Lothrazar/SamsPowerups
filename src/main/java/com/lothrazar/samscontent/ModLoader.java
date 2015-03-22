@@ -87,7 +87,8 @@ public class ModLoader
 	
 	public static Logger logger; 
 	public static ConfigFile configSettings;
-	public static SimpleNetworkWrapper network;  
+	public static SimpleNetworkWrapper network; 
+	public static AchievementRegistry achievements; 
 	
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
 	{ 
@@ -121,11 +122,14 @@ public class ModLoader
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, 0, Side.SERVER);
 
+		
 		PotionRegistry.registerPotionEffects();
 
 		BlockRegistry.registerBlocks();
 		
 		ItemRegistry.registerItems();
+		
+		achievements = new AchievementRegistry();
 		 
 		this.registerEventHandlers(); 
 		
@@ -135,7 +139,8 @@ public class ModLoader
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
-		AchievementRegistry.registerAll();
+		
+		achievements.registerAll();
 		
 		CreativeTweaks.registerTabImprovements();
 	
@@ -199,7 +204,9 @@ public class ModLoader
 		//FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
 		 
     	ArrayList<Object> handlers = new ArrayList<Object>();
-     	 
+
+     	handlers.add(instance                         );
+     	handlers.add(achievements);
      	handlers.add(new HandlerBonemealUse()         );
       	handlers.add(new HandlerSaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
      	handlers.add(new HandlerPotionTick()          );
@@ -218,7 +225,8 @@ public class ModLoader
      	handlers.add(new HandlerSkullSignNames()      );
         handlers.add(new HandlerPlayerFallTheEnd()    );
       	handlers.add(new HandlerSwiftDeposit()        );
-     	handlers.add(instance                         );
+		handlers.add(new HandlerHoeUse() );
+		handlers.add(new HandlerFlintPumpkin());
      	handlers.add(ItemRegistry.itemEnderBook       );
 		handlers.add(ItemRegistry.itemEnderBook       );
 		handlers.add(ItemRegistry.wandTransform       );
@@ -236,16 +244,14 @@ public class ModLoader
 		handlers.add(BlockRegistry.block_storelava    );
 		handlers.add(BlockRegistry.block_storewater   );
 		handlers.add(BlockRegistry.block_storemilk   );
-		handlers.add(new HandlerHoeUse() );
-		handlers.add(new HandlerFlintPumpkin());
 
      	for(Object h : handlers)
      		if(h != null)
 	     	{ 
+	    		FMLCommonHandler.instance().bus().register(h);
 	    		MinecraftForge.EVENT_BUS.register(h);
 	    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
 	    		MinecraftForge.ORE_GEN_BUS.register(h); 
-	    		FMLCommonHandler.instance().bus().register(h); 
 	     	}
 	}
 }
