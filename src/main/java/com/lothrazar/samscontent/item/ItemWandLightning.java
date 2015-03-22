@@ -24,7 +24,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandLightning  extends Item
 {
-	public static int DURABILITY = 99;//TODO: config 
+	public static int DURABILITY = 99; 
 	public ItemWandLightning()
 	{  
 		super();  

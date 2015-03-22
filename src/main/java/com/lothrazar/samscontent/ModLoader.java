@@ -87,8 +87,7 @@ public class ModLoader
 	
 	public static Logger logger; 
 	public static ConfigFile configSettings;
-	public static SimpleNetworkWrapper network; 
-	public static RuntimeChangelog changelog;
+	public static SimpleNetworkWrapper network;  
 	
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
 	{ 
@@ -113,8 +112,7 @@ public class ModLoader
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{ 
-		logger = event.getModLog(); 
-		changelog = new RuntimeChangelog();
+		logger = event.getModLog();  
 		
 		initModInfo(event.getModMetadata());
 		
@@ -232,7 +230,8 @@ public class ModLoader
      	handlers.add(new HandlerBonemealUse()         );
       	handlers.add(new HandlerSaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
      	handlers.add(new HandlerPotionTick()          );
-     	handlers.add(new HandlerPlayerSleep()         );
+     	handlers.add(new HandlerEat()         );
+     	handlers.add(new HandlerSleep()         );
      	handlers.add(new HandlerLivingDrops()         );
      	handlers.add(new HandlerTorchCollide()        );
       	handlers.add(new HandlerPlayerHarvest()       );

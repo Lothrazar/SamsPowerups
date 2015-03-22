@@ -23,7 +23,7 @@ public class ItemToolFlint extends ItemTool
 		super(attackDamage, material,effectiveBlocks);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ModLoader.tabSamsContent);
-		this.setMaxDamage(durability);//TODO: config 
+		this.setMaxDamage(durability); 
 	}
 	
 	public static void addRecipe() 

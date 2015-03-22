@@ -129,10 +129,7 @@ public class ItemWandCopyPaste  extends Item
 				{
 					ItemWandCopyPaste.pasteNote(event.world,event.entityPlayer,noteblock,held); 
 				} 
-			}
-			//TODO: copy or paste if shift or not
-		//	ItemWandCopyPaste.castExtinguish(event.world,event.entityPlayer,held); 
-			
+			} 
 		}
   	}
 }

@@ -89,9 +89,7 @@ public class Recipes
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,2,Reference.dye_purple)
 			,Items.nether_wart
-			,new ItemStack(Items.dye,1,Reference.dye_bonemeal));
-		
-		ModLoader.changelog.log("Recipe: Purple Dye Netherwart");
+			,new ItemStack(Items.dye,1,Reference.dye_bonemeal)); 
 	}
 
 	public static void gravelToClay()
@@ -1046,7 +1044,7 @@ public class Recipes
 	        {
 	            recipes.remove(i--);
 	            
-	            //TODO: do we want to log changes here?
+	    
 	           // System.out.println("  REMOVE RECIPE:"+recipeResult.getUnlocalizedName());
 	        }
 	    }

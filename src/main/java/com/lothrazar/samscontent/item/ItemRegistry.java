@@ -87,13 +87,13 @@ public class ItemRegistry
 	 
 		if(ModLoader.configSettings.wandFire)
 		{ 
-			ModLoader.changelog.log("ItemWandFire registered");
 			ItemRegistry.wandFire = new ItemWandFire();
 
 			SamsRegistry.registerItem(ItemRegistry.wandFire, "wand_fire");
 	 
 			ItemWandFire.addRecipe();		 
 		}
+		
 		if(ModLoader.configSettings.wandWater)
 		{  
 			ItemRegistry.wandWater = new ItemWandWater();
@@ -102,6 +102,7 @@ public class ItemRegistry
 	 
 			ItemWandWater.addRecipe();		 
 		}
+		
 		if(ModLoader.configSettings.wandLightning)
 		{  
 			ItemRegistry.wandLightning = new ItemWandLightning();
