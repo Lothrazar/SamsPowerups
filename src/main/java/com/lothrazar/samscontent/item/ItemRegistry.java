@@ -51,21 +51,23 @@ public class ItemRegistry
 	public static Item beetrootSoup;
 	public static void registerItems()
 	{
-		beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModLoader.tabSamsContent);
-		beetrootItem = new ItemFood(3, false).setCreativeTab(ModLoader.tabSamsContent);
-		beetrootSoup = new ItemSoup(8).setCreativeTab(ModLoader.tabSamsContent);
-		
-		SamsRegistry.registerItem(beetrootSeed, "beetroot_seed");
-		SamsRegistry.registerItem(beetrootItem, "beetroot_item");
-		SamsRegistry.registerItem(beetrootSoup, "beetroot_soup");
-		  
-		
-		
 		//needed for all wands; no config.
 		ItemRegistry.baseWand = new ItemBaseWand(); 
 		SamsRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
-		ItemBaseWand.addRecipe();	  
- 
+		ItemBaseWand.addRecipe();	
+		
+		if(ModLoader.configSettings.beetroot)
+		{ 
+			beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModLoader.tabSamsContent);
+			SamsRegistry.registerItem(beetrootSeed, "beetroot_seed");
+			
+			beetrootItem = new ItemFood(3, false).setCreativeTab(ModLoader.tabSamsContent);
+			SamsRegistry.registerItem(beetrootItem, "beetroot_item");
+			
+			beetrootSoup = new ItemSoup(8).setCreativeTab(ModLoader.tabSamsContent); 
+			SamsRegistry.registerItem(beetrootSoup, "beetroot_soup");
+		}
+		   
 		if(ModLoader.configSettings.flintTool) 
 		{
 			//TODO: redo texture higher res

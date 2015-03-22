@@ -60,32 +60,21 @@ public class ConfigFile
 		nature();
  
 		animals();
- 
+		 
+		pocket_edition();  
+		
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 
-		//category = "convenience"; 
-		 
 		betterBonemeal = instance.getBoolean("betterBonemeal",category, true,
     			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
- 		 
-		/*
-		chanceReturnEnderPearl = instance.getInt("chanceReturnEnderPearl",category, 50,0,100,//numbers are Default, Min, Max
-    			"Chance that your ender pearl is returned to you and not destroyed on use (so just set to zero for vanilla)");
-				 
-		noDamageEnderPearl = instance.getBoolean("noDamageEnderPearl",category, true,
-    			"No damage taken from an ender pearl throw");
-    			
-		theEndSafeFall = instance.getBoolean("theEndSafeFall",category, true,
-			"Falling off the world in the end will instead teleport you to the top, making a falling loop.");
-
-*/
+ 
 		increasedStackSizes = instance.getBoolean("increasedStackSizes",category, true,
 			"While true, many items and blocks (not tools/armor/potions) have their max stack size increased to 64.  " +
 			"Included are: ender pearl, egg, snowball, cookie, mushroom stew, boat, all minecarts, all doors, cake, saddle, " +
 			"horse armor, empty bucket, bed, all records."); 
 		
 		moreFuel = instance.getBoolean("moreFuel",category, true,
-    			"More can be used as furnace fuel: seeds, leaves, paper, shrubs"); 
+    			"More can be used as furnace fuel: seeds, leaves, paper, shrubs, and more."); 
 	 
 		swiftDeposit = instance.getBoolean("swiftDeposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
@@ -96,7 +85,6 @@ public class ConfigFile
 		skullSignNames = instance.getBoolean("skullSignNames",category, true,
     			"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
 		 
-		
 		removeZombieCarrotPotato = instance.getBoolean("removeZombieCarrotPotato",category, true,
     			"Disable these zombie drops."); 
 
@@ -106,11 +94,18 @@ public class ConfigFile
 		dropPlayerSkullOnDeath = instance.getBoolean("dropPlayerSkullOnDeath",category, true,
     			"Players will drop their skull when they die.");
 
-		
 		fragileTorches = instance.getBoolean("fragileTorches",category, true,
 				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
 		
 		if(instance.hasChanged()){ instance.save(); }
+	}
+
+	public void pocket_edition() 
+	{
+		category = "pocket_edition";
+				
+		beetroot =  instance.getBoolean( "beetroot",category,true,
+				"Add beetroot, similar to pocket edition.  Use a golden hoe to get seeds. " );
 	}
 
 	private void animals() 
@@ -419,8 +414,12 @@ public class ConfigFile
 	
 	private void items() 
 	{
+		
+		
 		category = "items";
-  
+		
+		
+		
 		flintTool = instance.getBoolean( "flintTool",category,true,
 				"Flint Tool: Harvest leaves the same speed as shears, the difference is you get normal drops instead of leaf blocks.  " );  
 		
@@ -684,4 +683,5 @@ public class ConfigFile
 	public boolean storeLavaBlock;
 	public boolean storeWaterBlock;
 	public boolean storeMilkBlock;
+	public boolean beetroot;
 }

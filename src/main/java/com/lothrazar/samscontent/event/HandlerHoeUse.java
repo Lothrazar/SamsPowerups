@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.event;
 
+import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.item.ItemRegistry;
 import com.lothrazar.util.SamsUtilities;
 
@@ -14,6 +15,7 @@ public class HandlerHoeUse
 	@SubscribeEvent
 	public void onHoeUse(UseHoeEvent event)
 	{ 
+		if(ModLoader.configSettings.beetroot == false){return;}
 		if(event.world.isRemote){return;}
 		if(event.world.isAirBlock(event.pos.up()) == false){return;}
 		//this fires BEFORE the block turns into farmland (is cancellable) so check for grass and dirt, not farmland

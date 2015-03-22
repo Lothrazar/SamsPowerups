@@ -1,4 +1,12 @@
-//TODO: milk storage.
+//TODO: milk storage texture
+//TODO: remote or portable workbench
+//TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
+//TODO: a way to place signs quick by skipping interface (leaving them blank)
+//IDEA: bone torches from http://www.reddit.com/r/minecraftsuggestions/comments/2zmq4o/bone_torches/
+//TODO: find a way that you need food variety to live.
+//TODO: beetroot  breeds pigs 
+//TODO: beetroot gets pigs to follow like carrot  
+//[march21]: add beetroot.six beetroot like a sign above a bowl -> one bt soup. fills //1 beetroot gives one rose red.
 
         //sapling/biome feature expansion:
             //TODO: can we prevent cactus growth
@@ -8,15 +16,13 @@
             //TODO: can we generate mushroom/flower/lilypad growth
  
 //TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
-//TODO: remote or portable workbench
-//IDEA: bone torches from http://www.reddit.com/r/minecraftsuggestions/comments/2zmq4o/bone_torches/
-//TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
-//TODO: a way to place signs quick by skipping interface (leaving them blank) 
-//TODO: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
-//TODO: find a way that you need food variety to live.
-//TODO: add beetroot.six beetroot like a sign above a bowl -> one bt soup. fills //1 beetroot gives one rose red. it breeds pigs and gets follow like carrot  
-        ///referencefood https://bitbucket.org/Zuxelus/usefulfood/src/f74eea7793c5a95e8ecf4d7344f3e5182884942c/main/java/mods/usefulfood/?at=master
-        //beetroots can be eaten to restore 1 (Half Heart.svg) health.//soup restores (8)?? seeds from tilling grass 1/15 chance
+
+
+
+ 
+//: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
+
+
 //TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
 //TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
         chocolate block copy texture
