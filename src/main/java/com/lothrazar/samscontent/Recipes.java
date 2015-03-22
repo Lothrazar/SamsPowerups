@@ -2,8 +2,12 @@ package com.lothrazar.samscontent;
 
 import java.util.ArrayList;  
 import java.util.List;  
+
 import org.apache.logging.log4j.Logger;    
+
+import com.lothrazar.samscontent.item.ItemRegistry;
 import com.lothrazar.util.Reference;  
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
 import net.minecraft.entity.player.EntityPlayer;
@@ -59,6 +63,24 @@ public class Recipes
    		Recipes.repeaterSimple();
 		
    		Recipes.minecartsSimple();
+   		
+   		Recipes.beetroot();
+	}
+	
+	public static void beetroot()
+	{
+		if(!ModLoader.configSettings.beetroot)  {return;}
+
+		GameRegistry.addRecipe(new ItemStack(Blocks.red_mushroom_block),
+				"rrr",
+				"rrr",
+				" b ",
+				'r', ItemRegistry.beetrootItem,
+				'b', Items.bowl);
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,2,Reference.dye_red)
+			,ItemRegistry.beetrootItem);
+	
 	}
 	
 	public static void netherwartPurple()
