@@ -166,6 +166,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 				}
 			}
 		}
+		System.out.println("getdrops: "+ret.size()+"   it was age "+ age);
 		return ret;
 	}
 
@@ -197,6 +198,8 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 		{
 			age = GROWTHMAX;
 		}
+		
+		System.out.println("Grow up to "+age);
 		
 		//the 2 is a notification flag
 		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(age)), 2);

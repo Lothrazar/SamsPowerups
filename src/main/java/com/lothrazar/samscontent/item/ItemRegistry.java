@@ -53,6 +53,7 @@ public class ItemRegistry
 		beetrootItem = new ItemFood(6, false).setCreativeTab(ModLoader.tabSamsContent).setUnlocalizedName("beetrootItem");
  
 		SamsRegistry.registerItem(beetrootSeed, "beetrootSeed");
+		SamsRegistry.registerItem(beetrootItem, "beetrootItem");
 		  
 		
 		
