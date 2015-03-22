@@ -6,6 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
 
 public class AchievementRegistry 
 {
@@ -35,5 +38,14 @@ public class AchievementRegistry
 		
 
 		AchievementPage.registerAchievementPage(page);
+	}
+	
+	@SubscribeEvent
+	public void onCraft(ItemCraftedEvent event)
+	{
+		if(event.crafting != null && event.crafting.getItem() == ItemRegistry.apple_chocolate)
+		{
+			event.player.addStat(test, 1);
+		}
 	}
 }

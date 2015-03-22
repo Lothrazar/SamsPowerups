@@ -13,6 +13,8 @@
             //TODO: can we prevent vine growth
 
 
+//TODO: import net.minecraftforge.fml.common.gameevent.PlayerEvent. Respawn Event - use for this?
+
 //TODO: can we spawn zombie horse? 
 //USE EXISTING WAND TRANSFORM?
      //Magic wand to turn horses to zombie/skeleton?
