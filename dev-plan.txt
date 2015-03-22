@@ -6,52 +6,15 @@
 //TODO: find a way that you need food variety to live.
 //TODO: beetroot  breeds pigs 
 //TODO: beetroot gets pigs to follow like carrot  
-//[march21]: add beetroot.six beetroot like a sign above a bowl -> one bt soup. fills //1 beetroot gives one rose red.
-
+ 
         //sapling/biome feature expansion:
             //TODO: can we prevent cactus growth
             //TODO: can we prevent reeds growth
             //TODO: can we prevent vine growth
-            //TODO: can we increase vine growth on swampland trees
-            //TODO: can we generate mushroom/flower/lilypad growth
- 
-//TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
 
 
-
- 
-//: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
-
-
-//TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
-//TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
-        chocolate block copy texture
-        charcoal block copy texture
-//TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
-//TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
-//TODO: hotkey to search through inventory and use enderpearl ingoring all else
-//TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
-//TODO: smart potion button
-//TODO: smart torch button
-//TODO: is there a nice forge friendly way of adding potion brewing recipes -> NOPE
-//TODO: can we catch the middle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
-//TODO: far reach place hotkey. use player look vectors and trickery 
-//TODO: wand of chest transportation: make it also work with dispensers/droppers/trapped chests/ etc. set extra flag to identify
-//TODO: log/stone boat: exact copy of existing boat, but unbreakable.  
-//TODO:  using a flintnsteel on pumpkin makes it into jack lantern
-//TODO: option to stop zombie/skel taking SUNLIGHT damage
-//TODO: option to stop enderman taking Water damage (but dont stop TP?)
-//TODO: for the home/worldhome. add consumable items that do this (ender cookie, ender apple, etc)
-//TODO: add achievements for my custom items and stuff
-//TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
-//TODO: sort gamerules in f3.
-//TODO: it should have disabled making a furnace without coal. should require it
-//TODO: collission with bat causes blindness? or poison or some random effect? maybe?  
-//TODO: idea: fossils: just like buttons but spawn on ground in caves. breaking it gives bones? 
-//TODO: is it posible to disable sleeping? maybe just remove from bed if in bed?
-    //todo?? shape/conic/circle drawing in game//http://i.imgur.com/t3N1U8p.png
-//TODO: CommandSearch (and others?) set boolean showCoords = true;      //else it does directoins
 //TODO: can we spawn zombie horse? 
+//USE EXISTING WAND TRANSFORM?
      //Magic wand to turn horses to zombie/skeleton?
                 //yeah i think we can in the sapwn event and roll a dice and check the biome
                 //http://www.minecraftforge.net/forum/index.php?topic=8937.0
@@ -62,6 +25,39 @@
             Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
             Untamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
                 */ 
+
+//TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
+     AND achievements for MY stuff
+//TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
+
+
+
+//: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
+
+
+//TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
+//TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
+
+//TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
+//TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
+//TODO: hotkey to search through inventory and use enderpearl ingoring all else
+//TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
+//TODO: smart potion button
+//TODO: smart torch button
+
+//TODO: can we catch the middle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
+//TODO: far reach place hotkey. use player look vectors and trickery 
+//TODO: wand of chest transportation: make it also work with dispensers/droppers/trapped chests/ etc. set extra flag to identify
+//TODO: log/stone boat: exact copy of existing boat, but unbreakable.  
+
+//TODO: sort gamerules in f3.
+//TODO: collission with bat causes blindness? or poison or some random effect? maybe?  
+
+
+
+    //todo?? shape/conic/circle drawing in game//http://i.imgur.com/t3N1U8p.png
+//TODO: CommandSearch (and others?) set boolean showCoords = true;      //else it does directoins
+
     
     //??The Existing no falldamage enderpearl power: Do it from an ender apple?? 
         //if we need to: try asm out http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571568-tutorial-1-6-2-changing-vanilla-without-editing
@@ -79,11 +75,15 @@
    
    
    
-   
+   //TODO: is there a nice forge friendly way of adding potion brewing recipes -> NOPE
    
    
    
    //DONE
+   
+   
+   //[march22]:  using a flintnsteel on pumpkin makes it into jack lantern
+ //[march21]: add beetroot.
     //[march15]: merge the end safefall along with nodamageEnderPearl, and maybe even pearlReturns into ender apple. nice 30min timer?
  //[march15]: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
  

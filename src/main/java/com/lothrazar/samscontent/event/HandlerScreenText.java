@@ -95,7 +95,7 @@ public class HandlerScreenText
 	 		addHorseInfo(event, player);   
 	 	} 
 	  
-	 	if(SamsUtilities.isShiftKeyDown()) //if(showGameRules)//todo config
+	 	if(SamsUtilities.isShiftKeyDown()) //if(showGameRules)//TODO: config
 	 	{ 
 			event.left.add("");
 			addGameruleInfo(event, world); 
