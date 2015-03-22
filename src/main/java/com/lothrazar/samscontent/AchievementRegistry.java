@@ -69,11 +69,9 @@ public class AchievementRegistry
 			register(appleEmerald);
 		} 
 		
-  
 		//TODO: can page name be from lang file?
-		//page = new AchievementPage("Sam's Content",appleChoc,appleDiamond,appleLapis,appleEmerald);//, ach1, ach2, ach3, ach4
-		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray());//, ach1, ach2, ach3, ach4
-		  
+		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
+
 	 	AchievementPage.registerAchievementPage(page);
 	}
 	
