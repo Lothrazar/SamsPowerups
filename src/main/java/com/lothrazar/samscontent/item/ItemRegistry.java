@@ -7,11 +7,14 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.block.BlockRegistry;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsRegistry;
@@ -42,9 +45,17 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_ender;
 	public static ItemWandWater wandWater;
 	public static ItemWandLightning wandLightning;
-	 
+	public static 	Item beetrootSeed ;
+	public static Item beetrootItem;
 	public static void registerItems()
 	{
+		beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModLoader.tabSamsContent);
+		beetrootItem = new ItemFood(6, false).setCreativeTab(ModLoader.tabSamsContent).setUnlocalizedName("beetrootItem");
+ 
+		SamsRegistry.registerItem(beetrootSeed, "beetrootSeed");
+		  
+		
+		
 		//needed for all wands; no config.
 		ItemRegistry.baseWand = new ItemBaseWand(); 
 		SamsRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   

@@ -1,28 +1,38 @@
 package com.lothrazar.samscontent.block;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Random;
+
+import com.lothrazar.samscontent.item.ItemRegistry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
+import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyInteger;
+import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCropBeetroot extends BlockBush implements IGrowable
 {
 	private static int LIGHT = 9;
 	private static int GROWTHMAX = 3;
+	private static int MAXDROPPED = 3;
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, GROWTHMAX);
 
-	
-	protected BlockCropBeetroot()
+	public BlockCropBeetroot()
 	{
 		setDefaultState(this.blockState.getBaseState().withProperty(AGE, Integer.valueOf(0)));
 		setTickRandomly(true);
@@ -39,7 +49,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	@Override
 	protected boolean canPlaceBlockOn(Block ground)
 	{
-		return ground == Blocks.farmland;
+		return ground == Blocks.farmland; 
 	}
 	
 	public void updateTick(World worldIn, BlockPos pos, IBlockState state, Random rand)
@@ -113,33 +123,87 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	  return worldIn.getLight(pos) >= LIGHT - 1 || //should this be AND?  meaning it needs light AND water?
 			 worldIn.getBlockState(pos.down()).getBlock().canSustainPlant(worldIn, pos.down(), EnumFacing.UP, this);
 	}
-	/*
+	
+  
+	@SideOnly(Side.CLIENT)
 	@Override
-	public Item getSeed()
+	public Item getItem(World worldIn, BlockPos pos)
 	{
-		return null;//TODOmake the seed 
-	}*/
+	  return ItemRegistry.beetrootSeed;
+	}
+	@Override
+	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
+	{
+	  super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);
+	}
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+	{
+	  return ((Integer)state.getValue(AGE)).intValue() == GROWTHMAX ? ItemRegistry.beetrootItem: ItemRegistry.beetrootSeed;
+	}
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state,	boolean isClient) 
 	{
 
 
-		return false;
+		return canBlockStay(worldIn,pos,state);
+	}
+
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+	{
+		List<ItemStack> ret = super.getDrops(world, pos, state, fortune);
+		int age = ((Integer)state.getValue(AGE)).intValue();
+		Random rand = (world instanceof World) ? ((World)world).rand : new Random();
+		if (age >= GROWTHMAX)
+		{
+			int k = MAXDROPPED + fortune;
+			for (int i = 0; i < MAXDROPPED + fortune; i++) 
+			{
+				if (rand.nextInt(15) <= age) 
+				{
+					ret.add(new ItemStack(ItemRegistry.beetrootItem));
+				}
+			}
+		}
+		return ret;
 	}
 
 	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos,	IBlockState state) 
-	{
-
-
-		return false;
+	{ 
+		return true;
 	}
-
+	public IBlockState getStateFromMeta(int meta)
+	{
+	  return getDefaultState().withProperty(AGE, Integer.valueOf(meta));
+	}
+	
+	public int getMetaFromState(IBlockState state)
+	{
+	  return ((Integer)state.getValue(AGE)).intValue();
+	}
+	
+	public BlockState createBlockState()
+	{
+	  return new BlockState(this, new IProperty[] { AGE });
+	}
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
 	{
-
+	    int age = ((Integer)state.getValue(AGE)).intValue() + 1;
+	    
+		if (age > GROWTHMAX) 
+		{
+			age = GROWTHMAX;
+		}
+		
+		//the 2 is a notification flag
+		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(age)), 2);
 		
 	}
+	
+	
+	
 
 }
