@@ -38,7 +38,7 @@ public class ItemWandFire  extends Item
 			Items.flint_and_steel  );
 	}
 	
-	public static int RADIUS = 9;//TODO: range in config
+	public static int RADIUS;
 	public static int DURABILITY;
 
 	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
@@ -56,10 +56,9 @@ public class ItemWandFire  extends Item
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 	}
 
-	public int radius = 8;//TODO: radius in config 
 	public void castExtinguish(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 
-		ArrayList<BlockPos> fires = SamsUtilities.findBlocks(entityPlayer, Blocks.fire, radius);
+		ArrayList<BlockPos> fires = SamsUtilities.findBlocks(entityPlayer, Blocks.fire, RADIUS);
 		
 		for(BlockPos p : fires)
 		{ 

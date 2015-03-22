@@ -57,7 +57,6 @@ public class HandlerPotionTick
  
 	private void tickLiquidWalk(LivingUpdateEvent event, Block liquid)
 	{
-		//TODO: forge fluid dictionary? one potion effect for all liquid maybe?
     	 World world = event.entityLiving.worldObj;
     	 
     	 if(world.getBlockState(event.entityLiving.getPosition().down()).getBlock() == liquid && 

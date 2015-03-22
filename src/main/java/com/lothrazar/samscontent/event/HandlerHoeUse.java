@@ -24,7 +24,7 @@ public class HandlerHoeUse
 		
 		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
 			&& event.current.getItem() == Items.golden_hoe  //TODO:  maybe also in config
-			&& event.world.rand.nextInt(32) == 0)  //TODO: put the 1/x odds in config file?
+			&& event.world.rand.nextInt(16) == 0) //pocket edition vanilla is 1/16
 		{					
 			SamsUtilities.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetrootSeed);
 		}

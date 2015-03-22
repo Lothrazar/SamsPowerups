@@ -79,6 +79,18 @@
    
    
    
+        //this worked in 1.7, adding trades to villagers
+        /*
+        if(ModSamsContent.settings.moreFutureTrades)
+        {
+            VillageTrading v = new VillageTrading();
+            
+            VillagerRegistry.instance().registerVillageTradeHandler(1, v);
+            VillagerRegistry.instance().registerVillageTradeHandler(2, v);
+        }
+        */ 
+   
+   
    //DONE
    
    

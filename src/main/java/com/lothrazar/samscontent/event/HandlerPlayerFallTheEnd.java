@@ -25,13 +25,6 @@ public class HandlerPlayerFallTheEnd
 				)
 		{  
 			SamsUtilities.teleportWallSafe(player, player.worldObj, player.getPosition().up(256)); 
-					
-			int duration = 20 * Reference.TICKS_PER_SEC;
- 
-			//TODO: put each potion effect in config file. or one CSV.
-			//event.player.addPotionEffect(new PotionEffect(Reference.potion_WITHER, duration, 0));
-			//event.player.addPotionEffect(new PotionEffect(Reference.potion_NAUSEA, duration, 0));
-			////event.player.addPotionEffect(new PotionEffect(Reference.potion_HUNGER, duration, 0)); 
 		} 
 	} 
 }

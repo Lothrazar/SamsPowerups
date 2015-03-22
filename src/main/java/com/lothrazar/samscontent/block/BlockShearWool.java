@@ -27,8 +27,6 @@ public class BlockShearWool extends Block
 {
 	protected BlockShearWool() 
 	{
-		//TODO: we may delete this whole block/feature.  It is identical to cactus but does not kill Items.
-		//is too OP for mob farms, and too useless for much else.
 		super(Material.iron); 
 		this.setCreativeTab(ModLoader.tabSamsContent);
 		this.setStepSound(soundTypeMetal);
@@ -51,7 +49,6 @@ public class BlockShearWool extends Block
         return new AxisAlignedBB((double)((float)pos.getX() + f), (double)pos.getY(), (double)((float)pos.getZ() + f), (double)((float)(pos.getX() + 1) - f), (double)((float)(pos.getY() + 1) - f), (double)((float)(pos.getZ() + 1) - f));
     }
 	
-	public int damageDealt = 1;
 	@Override
 	public void onEntityCollidedWithBlock(World world, BlockPos pos, IBlockState state, Entity entity)
 	{
@@ -76,34 +73,6 @@ public class BlockShearWool extends Block
                 sheep.playSound("mob.sheep.shear", 1.0F, 1.0F);
 			} 
 		}
-		/*
-		else if(entity instanceof EntityLivingBase) //any non sheeps get damaged
-		{
-			EntityLivingBase living = (EntityLivingBase)entity;
-			
-			if(living.onGround)
-			{ 
-				living.attackEntityFrom(DamageSource.cactus, damageDealt);
-				
-				BlockPos offset = pos.offset(entity.getHorizontalFacing());
-	
-				double diffX = (pos.getX() - living.getPosition().getX()) * living.motionX;
-				double diffZ = (pos.getZ() - living.getPosition().getZ()) * living.motionY;
-	
-				if(Double.isNaN(diffX) || Double.isNaN(diffZ)) {return;}
-				if(diffX == 0 && diffZ == 0) {return;}
-				
-				System.out.println("spike "+diffX+" : "+diffZ);
-				
-				living.knockBack(living, 0F, 
-						 diffX /3.5   , 
-						 diffZ /3.5
-						 );//living.motionZ*0.6000000238418579D);
-				
-				SamsUtilities.moveEntityWallSafe(living, world);	 
-			}
-		}
-		*/
 	}
  
 	public static void addRecipe() 

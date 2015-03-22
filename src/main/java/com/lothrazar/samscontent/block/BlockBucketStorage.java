@@ -84,7 +84,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		{ 
 			removeBucket(event.entityPlayer, event.world, container, block.bucketItem);
 			
-			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");//TODO: sound in config
+			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");
 			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 		}
 		
@@ -94,7 +94,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		{  
 			addBucket(event.entityPlayer, event.world, container); 
 			
-			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in");//TODO: sound in config
+			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
 			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 		}
 		

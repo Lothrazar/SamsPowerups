@@ -121,32 +121,15 @@ public class ModLoader
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, 0, Side.SERVER);
 
-    	//must do potions before items, for the apples
-    	
 		PotionRegistry.registerPotionEffects();
-		//used to be items then blocks. but Crops need blocks first
-		BlockRegistry.registerBlocks();
-		ItemRegistry.registerItems();
-		
-		//msut do events after blocks & items
-		this.registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
-		
-		BlockHardnessRegistry.registerChanges();
-		
-		
-		/*//TODO: i never did get this to work without always crashing and corrupting the world
-		Block beetrootCrop = new BeetrootBlock();
 
-		SamsRegistry.registerBlock(beetrootCrop, "beetroot");
+		BlockRegistry.registerBlocks();
 		
-	
-		Item beetroot_seet = new BeetrootSeedItem(1,0.3F,false,beetrootCrop);
+		ItemRegistry.registerItems();
+		 
+		this.registerEventHandlers(); 
 		
-		SamsRegistry.registerItem(beetroot_seet, "beetroot_seed");
-  */
-		//trying again
-		
-		
+		BlockHardnessRegistry.registerChanges(); 
 	}
 
 	@EventHandler
@@ -173,17 +156,6 @@ public class ModLoader
 		}
 
 		proxy.registerRenderers();
-		 
-		//this worked in 1.7, adding trades to villagers
-		/*
-  		if(ModSamsContent.settings.moreFutureTrades)
-  		{
-	  		VillageTrading v = new VillageTrading();
-	  		
-			VillagerRegistry.instance().registerVillageTradeHandler(1, v);
-			VillagerRegistry.instance().registerVillageTradeHandler(2, v);
-  		}
-  		*/ 
 	}
 	
 	@EventHandler 
@@ -224,8 +196,7 @@ public class ModLoader
 		//TODO: version checker
 		//FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
 		 
-    	//they are just Objects, because i have not yet found a reason to add an interface/superclass 
-     	ArrayList<Object> handlers = new ArrayList<Object>();
+    	ArrayList<Object> handlers = new ArrayList<Object>();
      	 
      	handlers.add(new HandlerBonemealUse()         );
       	handlers.add(new HandlerSaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
