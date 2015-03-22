@@ -132,6 +132,7 @@ public class ModLoader
 		
 		BlockHardnessRegistry.registerChanges();
 		
+		
 		/*//TODO: i never did get this to work without always crashing and corrupting the world
 		Block beetrootCrop = new BeetrootBlock();
 
@@ -142,6 +143,13 @@ public class ModLoader
 		
 		SamsRegistry.registerItem(beetroot_seet, "beetroot_seed");
   */
+		//trying again
+		// Block beetrootCrop = new BlockCropBeetroot().setHardness(0.0F).setUnlocalizedName("beetrootCrop");
+		 /* 20:20 */    
+		//Item beetrootSeed = new ItemSeeds(beetrootCrop, Blocks.farmland).setCreativeTab(this.tabSamsContent).setUnlocalizedName("beetrootSeed");
+ 
+		
+		
 	}
 
 	@EventHandler
