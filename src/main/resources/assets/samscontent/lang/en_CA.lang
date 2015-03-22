@@ -1,5 +1,11 @@
 achievement.appleChoc=Chocolate Apple
-achievement.appleChoc.desc=Sweet Tooth
+achievement.appleChoc.desc=Wrap an apple in chocolate
+achievement.appleDiamond=Diamond Apple
+achievement.appleDiamond.desc=Wrap an apple in diamond
+achievement.appleEmerald=Emerald Apple
+achievement.appleEmerald.desc=Wrap an apple in emerald
+achievement.appleLapis=Lapis Apple
+achievement.appleLapis.desc=Wrap an apple in lapis
 itemGroup.tabSamsContent=Sam's Content
 potion.tired=Lack of Sleep
 potion.slowfall=Slowfall

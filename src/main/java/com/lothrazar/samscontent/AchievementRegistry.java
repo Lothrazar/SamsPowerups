@@ -28,7 +28,7 @@ public class AchievementRegistry
 	{
 		//Achievement constructor (id, name, x, y, icon, pre-requisite achievement 
 		
-		int xSpacing = 3;
+		int xSpacing = 2;
 		
 		int xStart = 0;
 		int yStart = 0;
@@ -60,19 +60,11 @@ public class AchievementRegistry
 			appleEmerald = new Achievement(Reference.MODID + "_appleEmerald", "appleEmerald", xCurrent, yCurrent, ItemRegistry.apple_emerald, null);
 			appleEmerald.registerStat(); 
 		} 
- 
-
-		
+  
 		//TODO: can page name be from lang file?
 		page = new AchievementPage("Sam's Content",appleChoc,appleDiamond,appleLapis,appleEmerald);//, ach1, ach2, ach3, ach4
   
 	 	AchievementPage.registerAchievementPage(page);
-	}
-	
-	private void addStatSafe(Achievement stat, EntityPlayer player)
-	{
-		if(stat != null) 
-			player.addStat(stat, 1);
 	}
 	
 	@SubscribeEvent
@@ -84,17 +76,24 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(appleChoc,event.player);
 		}
-		else if(appleLapis != null && event.crafting.getItem() == ItemRegistry.apple_lapis)
+		else if(event.crafting.getItem() == ItemRegistry.apple_lapis)
 		{ 
 			addStatSafe(appleLapis,event.player); 
 		}
-		else if(appleEmerald != null && event.crafting.getItem() == ItemRegistry.apple_emerald)
+		else if(event.crafting.getItem() == ItemRegistry.apple_emerald)
 		{ 
 			addStatSafe(appleEmerald,event.player); 
 		}
-		else if(appleDiamond != null && event.crafting.getItem() == ItemRegistry.apple_diamond)
+		else if(event.crafting.getItem() == ItemRegistry.apple_diamond)
 		{ 
 			addStatSafe(appleDiamond,event.player);  
 		}
 	}
+	
+	private void addStatSafe(Achievement stat, EntityPlayer player)
+	{
+		if(stat != null) 
+			player.addStat(stat, 1);
+	}
+	
 }
