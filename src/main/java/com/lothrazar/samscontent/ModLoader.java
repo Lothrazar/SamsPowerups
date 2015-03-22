@@ -135,6 +135,8 @@ public class ModLoader
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
+		AchievementRegistry.registerAll();
+		
 		CreativeTweaks.registerTabImprovements();
 	
 		MobSpawningRegistry.registerSpawns();
