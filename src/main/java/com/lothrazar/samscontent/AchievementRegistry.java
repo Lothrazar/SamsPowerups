@@ -1,5 +1,7 @@
 package com.lothrazar.samscontent;
 
+import java.util.ArrayList;
+
 import com.lothrazar.samscontent.item.ItemRegistry;
 import com.lothrazar.util.Reference;
 
@@ -22,8 +24,13 @@ public class AchievementRegistry
 	public Achievement appleLapis;
 	public Achievement appleDiamond;
 	public Achievement appleEmerald;
-	 
-	
+
+	private ArrayList<Achievement> ach = new ArrayList<Achievement>();
+	private void register(Achievement a)
+	{
+		a.registerStat();
+		ach.add(a);
+	}
 	public void registerAll()
 	{
 		//Achievement constructor (id, name, x, y, icon, pre-requisite achievement 
@@ -36,34 +43,37 @@ public class AchievementRegistry
 		int xCurrent = xStart;
 		int yCurrent = yStart;
 		
+		
 		if(ItemRegistry.apple_chocolate != null)
 		{ 
 			xCurrent += xSpacing;
 			appleChoc = new Achievement(Reference.MODID + "_appleChoc", "appleChoc", xCurrent, yCurrent, ItemRegistry.apple_chocolate, null);
-			appleChoc.registerStat(); 
+			register(appleChoc);
 		} 
 		if(ItemRegistry.apple_lapis != null)
 		{ 
 			xCurrent += xSpacing;
 			appleLapis = new Achievement(Reference.MODID + "_appleLapis", "appleLapis", xCurrent, yCurrent, ItemRegistry.apple_lapis, null);
-			appleLapis.registerStat(); 
+			register(appleLapis);
 		} 
 		if(ItemRegistry.apple_diamond != null)
 		{ 
 			xCurrent += xSpacing;
 			appleDiamond = new Achievement(Reference.MODID + "_appleDiamond", "appleDiamond", xCurrent, yCurrent, ItemRegistry.apple_diamond, null);
-			appleDiamond.registerStat(); 
+			register(appleDiamond); 
 		} 
 		if(ItemRegistry.apple_emerald != null)
 		{ 
 			xCurrent += xSpacing;
 			appleEmerald = new Achievement(Reference.MODID + "_appleEmerald", "appleEmerald", xCurrent, yCurrent, ItemRegistry.apple_emerald, null);
-			appleEmerald.registerStat(); 
+			register(appleEmerald);
 		} 
+		
   
 		//TODO: can page name be from lang file?
-		page = new AchievementPage("Sam's Content",appleChoc,appleDiamond,appleLapis,appleEmerald);//, ach1, ach2, ach3, ach4
-  
+		//page = new AchievementPage("Sam's Content",appleChoc,appleDiamond,appleLapis,appleEmerald);//, ach1, ach2, ach3, ach4
+		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray());//, ach1, ach2, ach3, ach4
+		  
 	 	AchievementPage.registerAchievementPage(page);
 	}
 	
