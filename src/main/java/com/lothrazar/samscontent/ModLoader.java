@@ -43,6 +43,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemDoor;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -122,15 +123,18 @@ public class ModLoader
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, 0, Side.SERVER);
 
+    	//must do potions before items, for the apples
+    	
 		PotionRegistry.registerPotionEffects();
-		
+		//used to be items then blocks. but Crops need blocks first
+		BlockRegistry.registerBlocks();
 		ItemRegistry.registerItems();
 		
-		BlockRegistry.registerBlocks();
-		
+		//msut do events after blocks & items
 		this.registerEventHandlers(); //IEXTENDED properties sasy this goes in init?
 		
 		BlockHardnessRegistry.registerChanges();
+		
 		
 		/*//TODO: i never did get this to work without always crashing and corrupting the world
 		Block beetrootCrop = new BeetrootBlock();
@@ -142,6 +146,9 @@ public class ModLoader
 		
 		SamsRegistry.registerItem(beetroot_seet, "beetroot_seed");
   */
+		//trying again
+		
+		
 	}
 
 	@EventHandler

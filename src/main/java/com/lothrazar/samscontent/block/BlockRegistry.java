@@ -26,9 +26,14 @@ public class BlockRegistry
 	public static BlockBucketStorage block_storelava;
 	public static BlockBucketStorage block_storewater;
 	public static BlockBucketStorage block_storemilk;
-	
+	public static BlockCropBeetroot beetrootCrop;
 	public static void registerBlocks() 
 	{  
+		beetrootCrop = (BlockCropBeetroot) new BlockCropBeetroot();
+
+		SamsRegistry.registerBlock(beetrootCrop, "beetroot_crop");
+		 
+		
 		if(ModLoader.configSettings.storeWaterBlock)
 		{
 			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket); 

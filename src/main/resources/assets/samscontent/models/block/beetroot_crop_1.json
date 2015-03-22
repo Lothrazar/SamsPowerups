@@ -1,0 +1,6 @@
+{
+	"parent": "block/crop",
+	"textures": {
+		"crop": "samscontent:blocks/beetroot_crop_1"
+	}
+}
