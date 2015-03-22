@@ -31,7 +31,7 @@ public class BlockRegistry
 	{  
 		beetrootCrop = (BlockCropBeetroot) new BlockCropBeetroot();
 
-		SamsRegistry.registerBlock(beetrootCrop, "beetrootCrop");
+		SamsRegistry.registerBlock(beetrootCrop, "beetroot_crop");
 		 
 		
 		if(ModLoader.configSettings.storeWaterBlock)
