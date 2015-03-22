@@ -173,7 +173,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	@Override
 	public boolean canUseBonemeal(World worldIn, Random rand, BlockPos pos,	IBlockState state) 
 	{ 
-		return true;
+		return ((Integer)state.getValue(AGE)).intValue() < GROWTHMAX;
 	}
 	public IBlockState getStateFromMeta(int meta)
 	{
