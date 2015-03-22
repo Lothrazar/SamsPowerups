@@ -9,6 +9,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemSeeds;
+import net.minecraft.item.ItemSoup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -47,13 +48,16 @@ public class ItemRegistry
 	public static ItemWandLightning wandLightning;
 	public static 	Item beetrootSeed ;
 	public static Item beetrootItem;
+	public static Item beetrootSoup;
 	public static void registerItems()
 	{
 		beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModLoader.tabSamsContent);
-		beetrootItem = new ItemFood(6, false).setCreativeTab(ModLoader.tabSamsContent).setUnlocalizedName("beetrootItem");
- 
-		SamsRegistry.registerItem(beetrootSeed, "beetrootSeed");
-		SamsRegistry.registerItem(beetrootItem, "beetrootItem");
+		beetrootItem = new ItemFood(3, false).setCreativeTab(ModLoader.tabSamsContent);
+		beetrootSoup = new ItemSoup(8).setCreativeTab(ModLoader.tabSamsContent);
+		
+		SamsRegistry.registerItem(beetrootSeed, "beetroot_seed");
+		SamsRegistry.registerItem(beetrootItem, "beetroot_item");
+		SamsRegistry.registerItem(beetrootSoup, "beetroot_soup");
 		  
 		
 		
