@@ -265,6 +265,7 @@ public class ModLoader
 		handlers.add(BlockRegistry.block_storewater   );
 		handlers.add(BlockRegistry.block_storemilk   );
 		handlers.add(new HandlerHoeUse() );
+		handlers.add(new HandlerFlintPumpkin());
 
      	for(Object h : handlers)
      		if(h != null)
