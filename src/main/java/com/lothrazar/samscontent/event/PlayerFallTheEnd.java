@@ -10,7 +10,7 @@ import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
-public class HandlerPlayerFallTheEnd 
+public class PlayerFallTheEnd 
 { 
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event)

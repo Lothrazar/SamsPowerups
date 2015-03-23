@@ -5,8 +5,9 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 import com.lothrazar.util.SamsUtilities;
 
-public class HandlerSleep 
+public class PlayerSleep 
 {
+	/*
 // keep track of nights slept. but also nights not slept since last death? timestamps on player spawn to start.
 	@SubscribeEvent
 	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)
@@ -31,5 +32,5 @@ public class HandlerSleep
 		
 		}
 
-	}
+	}*/
 }

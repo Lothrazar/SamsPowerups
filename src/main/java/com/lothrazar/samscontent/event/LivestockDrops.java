@@ -21,7 +21,7 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerRichAnimals 
+public class LivestockDrops 
 {  
 	public static int livestockLootScaleFactor = 4; //if livestock is killed by player, buff the loot by this factor
 

@@ -24,7 +24,7 @@ import net.minecraftforge.event.terraingen.SaplingGrowTreeEvent;
 import net.minecraftforge.fml.common.eventhandler.Event.Result;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerSaplingDespawnGrowth
+public class SaplingDespawnGrowth
 {  
 	public List<Integer> oakBiomes = new ArrayList<Integer>();
 	public List<Integer> spruceBiomes = new ArrayList<Integer>();
@@ -33,7 +33,7 @@ public class HandlerSaplingDespawnGrowth
 	public List<Integer> darkoakBiomes = new ArrayList<Integer>();
 	public List<Integer> acaciaBiomes = new ArrayList<Integer>();
 	
-	public HandlerSaplingDespawnGrowth()
+	public SaplingDespawnGrowth()
 	{
 			
 		oakBiomes.add(BiomeGenBase.forest.biomeID);

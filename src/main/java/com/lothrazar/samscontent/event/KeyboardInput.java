@@ -6,7 +6,7 @@ import com.lothrazar.samscontent.MessageKeyPressed;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.proxy.ClientProxy; 
 
-public class HandlerKeyInput 
+public class KeyboardInput 
 { 
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 

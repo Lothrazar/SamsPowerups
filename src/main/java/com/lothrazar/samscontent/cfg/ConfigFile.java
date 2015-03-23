@@ -11,9 +11,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration; 
 
-import com.lothrazar.samscontent.command.*;
-import com.lothrazar.samscontent.event.HandlerPlayerHarvest;
-import com.lothrazar.samscontent.event.HandlerRichAnimals;
+import com.lothrazar.samscontent.command.*; 
+import com.lothrazar.samscontent.event.LivestockDrops;
 import com.lothrazar.samscontent.item.*; 
 
 public class ConfigFile
@@ -115,7 +114,7 @@ public class ConfigFile
 	{
 		category = "animals";
 		
-		HandlerRichAnimals.livestockLootScaleFactor  = instance.getInt("livestockLootScaleFactor",category, 5,0,32,
+		LivestockDrops.livestockLootScaleFactor  = instance.getInt("livestockLootScaleFactor",category, 5,0,32,
 	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
 			 
 		petNametagDrops = instance.getBoolean("petNametagDrops",category, true,

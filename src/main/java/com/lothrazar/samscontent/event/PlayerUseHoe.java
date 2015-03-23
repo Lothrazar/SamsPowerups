@@ -10,7 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerHoeUse 
+public class PlayerUseHoe 
 {
 	@SubscribeEvent
 	public void onHoeUse(UseHoeEvent event)

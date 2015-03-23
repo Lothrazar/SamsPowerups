@@ -14,7 +14,7 @@ import com.lothrazar.util.Reference;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerBonemealUse
+public class PlayerBonemealUse
 {
 	private boolean isUsingBonemeal(ItemStack held )
 	{ 

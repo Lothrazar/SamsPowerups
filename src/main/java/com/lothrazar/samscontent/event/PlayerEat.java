@@ -11,8 +11,9 @@ import net.minecraftforge.event.entity.player.PlayerUseItemEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerEat 
+public class PlayerEat 
 {
+	/*
 	@SubscribeEvent
 	public void onEat(PlayerUseItemEvent.Finish event)
 	{
@@ -29,5 +30,5 @@ public class HandlerEat
 			} 
 		}
 	}
-
+*/
 }

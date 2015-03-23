@@ -14,7 +14,7 @@ import com.lothrazar.util.Reference;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerSwiftDeposit
+public class ChestDeposit
 {  
 	@SuppressWarnings("unused")
   	@SubscribeEvent

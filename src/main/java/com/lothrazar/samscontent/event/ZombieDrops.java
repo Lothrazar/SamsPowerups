@@ -13,7 +13,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerLivingDrops
+public class ZombieDrops
 { 
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)

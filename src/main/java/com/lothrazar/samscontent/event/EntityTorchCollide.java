@@ -8,7 +8,7 @@ import net.minecraft.init.Blocks;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerTorchCollide 
+public class EntityTorchCollide 
 { 
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent event)

@@ -6,7 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerEnderChestHit
+public class PlayerEnderChestHit
 { 
  	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)

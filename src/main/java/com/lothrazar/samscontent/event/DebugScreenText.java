@@ -49,7 +49,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  
-public class HandlerScreenText
+public class DebugScreenText
 {   
 	 public Date addDays(Date baseDate, int daysToAdd) 
 	 {

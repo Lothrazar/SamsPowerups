@@ -12,7 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerLivingDeath 
+public class EntityLivingDeath 
 {
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDeathEvent event)

@@ -198,24 +198,24 @@ public class ModLoader
 		 
     	ArrayList<Object> handlers = new ArrayList<Object>();
      	 
-     	handlers.add(new HandlerBonemealUse()         );
-      	handlers.add(new HandlerSaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
-     	handlers.add(new HandlerPotionTick()          );
-     	handlers.add(new HandlerEat()         );
-     	handlers.add(new HandlerSleep()         );
-     	handlers.add(new HandlerLivingDrops()         );
-     	handlers.add(new HandlerTorchCollide()        );
-      	handlers.add(new HandlerPlayerHarvest()       );
-      	handlers.add(new HandlerEnderpearlTeleport()  );
-     	handlers.add(new HandlerEnderChestHit()       );
-     	handlers.add(new HandlerKeyInput()            );
-     	handlers.add(new HandlerLivingDeath()         );
+     	handlers.add(new PlayerBonemealUse()         );
+      	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
+     	handlers.add(new EntityPotionTick()          );
+     	handlers.add(new PlayerEat()         );
+     	handlers.add(new PlayerSleep()         );
+     	handlers.add(new ZombieDrops()         );
+     	handlers.add(new EntityTorchCollide()        );
+      	//handlers.add(new HandlerPlayerHarvest()       );
+      	handlers.add(new EnderpearlTeleport()  );
+     	handlers.add(new PlayerEnderChestHit()       );
+     	handlers.add(new KeyboardInput()            );
+     	handlers.add(new EntityLivingDeath()         );
      	handlers.add(new HandlerWandBuilding()        );
-      	handlers.add(new HandlerRichAnimals()         );
-      	handlers.add(new HandlerScreenText()          );
-     	handlers.add(new HandlerSkullSignNames()      );
-        handlers.add(new HandlerPlayerFallTheEnd()    );
-      	handlers.add(new HandlerSwiftDeposit()        );
+      	handlers.add(new LivestockDrops()         );
+      	handlers.add(new DebugScreenText()          );
+     	handlers.add(new SkullSignNames()      );
+        handlers.add(new PlayerFallTheEnd()    );
+      	handlers.add(new ChestDeposit()        );
      	handlers.add(instance                         );
      	handlers.add(ItemRegistry.itemEnderBook       );
 		handlers.add(ItemRegistry.itemEnderBook       );
@@ -234,8 +234,8 @@ public class ModLoader
 		handlers.add(BlockRegistry.block_storelava    );
 		handlers.add(BlockRegistry.block_storewater   );
 		handlers.add(BlockRegistry.block_storemilk   );
-		handlers.add(new HandlerHoeUse() );
-		handlers.add(new HandlerFlintPumpkin());
+		handlers.add(new PlayerUseHoe() );
+		handlers.add(new FlintPumpkin());
 
      	for(Object h : handlers)
      		if(h != null)

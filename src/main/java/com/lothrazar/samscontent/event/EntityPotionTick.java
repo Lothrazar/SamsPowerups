@@ -13,7 +13,7 @@ import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class HandlerPotionTick 
+public class EntityPotionTick 
 { 
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 

@@ -53,7 +53,7 @@ import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
  
-public class HandlerSkullSignNames  
+public class SkullSignNames  
 {   
   	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
