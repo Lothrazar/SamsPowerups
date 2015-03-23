@@ -26,6 +26,9 @@ shearing block: do we want it to also affect chickens/cows? would have to have a
             //IF SO BE CAREFUL OF UNCRAFTING
      //TODO: can we have achieves that are not just '1', first times.  maybe 'kill 100 creepers' and such
             
+            
+//TODO: revisit early game at a later stage. things to consider: no wood/logs by hand, flint tools, emerald tools, MAYBE wood & stone armor?            
+            
 //TODO: can we spawn zombie horse? 
 //USE EXISTING WAND TRANSFORM?
      //Magic wand to turn horses to zombie/skeleton?

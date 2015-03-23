@@ -318,15 +318,15 @@ public class ConfigFile
 	private void harvesting_changes() 
 	{
 		category = "harvesting_changes";
-		
+		 /*
 		String csv = instance.getString("harvestOnlyShovel",category, "minecraft:dirt,minecraft:sand",
     			"If these blocks are not harvested by a shovel, they will break but have no drops."); 
 		HandlerPlayerHarvest.setShovelFromCSV(csv);
-	 
+	
 		String csvaxe = instance.getString("harvestOnlyAxe",category, "minecraft:log,minecraft:log2",
     			"If these blocks are not harvested by an axe, they will break but have no drops."); 
 		HandlerPlayerHarvest.seAxeFromCSV(csvaxe);
-		 
+		 */
 		harvestGlassPickaxe  = instance.getBoolean("harvestGlassPickaxe",category, true,
     			"Sets the pickaxe as the correct tool to harvest glass (by default there is no correct glass tool)."); 
 		
@@ -421,11 +421,11 @@ public class ConfigFile
 		
 		category = "items";
 		
-		
+		/*
 		
 		flintTool = instance.getBoolean( "flintTool",category,true,
 				"Flint Tool: Harvest leaves the same speed as shears, the difference is you get normal drops instead of leaf blocks.  " );  
-		
+		*/
 		appleChocolate = instance.getBoolean( "appleChocolate",category,true,
 			"An apple surrounded by either chocolate or cookies gives a short buff of Haste when eaten.  " );  
 		

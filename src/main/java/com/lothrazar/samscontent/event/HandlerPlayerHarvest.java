@@ -17,6 +17,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class HandlerPlayerHarvest 
 { 
+	/*
 	public static ArrayList<Block> blocksOnlyShovel = new ArrayList<Block> (); 
 	public static ArrayList<Block> blocksOnlyAxe    = new ArrayList<Block> ();
 
@@ -28,8 +29,7 @@ public class HandlerPlayerHarvest
 	public static void seAxeFromCSV(String csv)
 	{
 		blocksOnlyAxe = SamsUtilities.getBlockListFromCSV(csv); 
-	}
-	 
+	} 
 	@SubscribeEvent
     public void onHarvestDrops(BlockEvent.HarvestDropsEvent event)
     { 
@@ -63,15 +63,15 @@ public class HandlerPlayerHarvest
 			{
 				//item is in the restricted list, and its not a matching tool  
 				event.drops.remove(i);
-			} 	
+			} 	 
 			else if(		blocksOnlyAxe.contains(bh) && 
 					playerUsingAxe == false) 
 			{
 				//item is in the restricted list, and its not a matching tool  
 				event.drops.remove(i);
-			} 
+			}  
 			 
 			bh = null;
 		}
-    } 
+    } */
 }

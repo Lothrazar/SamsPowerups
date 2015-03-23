@@ -41,7 +41,7 @@ public class ItemRegistry
 	public static ItemWandFire wandFire;
 	public static ItemWandCopyPaste wandCopy;
 	public static ItemBaseWand baseWand;
-	public static ItemToolFlint flintTool;
+	//public static ItemToolFlint flintTool;
 	public static ItemFoodAppleMagic apple_diamond_rich;
 	public static ItemFoodAppleMagic apple_ender;
 	public static ItemWandWater wandWater;
@@ -67,7 +67,7 @@ public class ItemRegistry
 			beetrootSoup = new ItemSoup(8).setCreativeTab(ModLoader.tabSamsContent); 
 			SamsRegistry.registerItem(beetrootSoup, "beetroot_soup");
 		}
-		   
+		   /*
 		if(ModLoader.configSettings.flintTool) 
 		{
 			//TODO: redo texture higher res
@@ -83,7 +83,7 @@ public class ItemRegistry
 			SamsRegistry.registerItem(ItemRegistry.flintTool, "flint_tool");
 	
 			ItemToolFlint.addRecipe();
-		}
+		}*/
 	 
 		if(ModLoader.configSettings.wandFire)
 		{ 
