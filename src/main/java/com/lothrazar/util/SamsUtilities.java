@@ -29,18 +29,20 @@ public class SamsUtilities
 {    
 	public static void dropItemStackInWorld(World worldObj, BlockPos pos, Block block)
 	{
-		dropItemStackInWorld(worldObj, pos, new ItemStack(block)); 
- 
+		dropItemStackInWorld(worldObj, pos, new ItemStack(block));  
 	}
+	
 	public static void dropItemStackInWorld(World worldObj, BlockPos pos, Item item)
 	{
 		dropItemStackInWorld(worldObj, pos, new ItemStack(item)); 
 	}
+	
 	public static void dropItemStackInWorld(World worldObj, BlockPos pos, ItemStack stack)
 	{
 		EntityItem entityItem = new EntityItem(worldObj, pos.getX(),pos.getY(),pos.getZ(), stack); 
     	worldObj.spawnEntityInWorld(entityItem);
 	}
+	
 	public static void drainHunger(EntityPlayer player)
 	{
 		if(player.getFoodStats().getFoodLevel() > 0)
@@ -48,6 +50,7 @@ public class SamsUtilities
 			player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel() - 1 );
 		}
 	}
+	
 	public static void damageOrBreakHeld(EntityPlayer player)
 	{ 
 		if(player.getCurrentEquippedItem().getItemDamage() < player.getCurrentEquippedItem().getMaxDamage()) 
@@ -56,19 +59,21 @@ public class SamsUtilities
 		}
 		else
 		{ 
-			player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
- 
+			player.inventory.setInventorySlotContents(player.inventory.currentItem, null); 
 			playSoundAt(player, "random.break");
 		} 
 	}
+	
 	public static void playSoundAt(Entity player, String sound)
 	{ 
 		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
 	}
+	
 	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
 	{
 		spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
     }
+	
 	public static void spawnParticle(World world, EnumParticleTypes type, double x, double y, double z)
 	{ 
 		float f = (float)x + 0.5F;
@@ -78,6 +83,7 @@ public class SamsUtilities
         float f4 = 0.6F - 0.3F;
     	world.spawnParticle(type, (double)(f - f3), (double)f1, (double)(f2 + f4), 0.0D, 0.0D, 0.0D);
     }
+	
 	public static double distanceBetweenHorizontal(BlockPos start, BlockPos end)
 	{
 		int xDistance =  Math.abs(start.getX() - end.getX() );
@@ -85,6 +91,7 @@ public class SamsUtilities
 		//ye olde pythagoras
 		return Math.sqrt(xDistance * xDistance + zDistance * zDistance);
 	}
+	
 	public static double distanceBetween(BlockPos start, BlockPos end)
 	{
 		int xDistance =  Math.abs(start.getX() - end.getX() );
@@ -93,6 +100,7 @@ public class SamsUtilities
 		//ye olde pythagoras
 		return Math.sqrt(xDistance * xDistance + zDistance * zDistance + yDistance * yDistance);
 	}
+	
 	public static ArrayList<BlockPos> findBlocks(EntityPlayer player, Block blockHunt, int RADIUS ) 
 	{        
 		ArrayList<BlockPos> found = new ArrayList<BlockPos>();
@@ -130,6 +138,7 @@ public class SamsUtilities
 		
 		return found; 
 	}
+	
 	public static BlockPos findClosestBlock(EntityPlayer player, Block blockHunt, int RADIUS )// Blocks.mob_spawner
 	{        
 		int xMin = (int) player.posX - RADIUS;
@@ -179,6 +188,7 @@ public class SamsUtilities
 			player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel() - 1 );
 		}
 	}
+	
 	private void onSuccess(EntityPlayer player)
 	{
 		player.swingItem();
@@ -194,6 +204,7 @@ public class SamsUtilities
 			player.worldObj.playSoundAtEntity(player, "random.break", 1.0F, 1.0F);
 		} 
 	}
+	
 	public static String getItemStackNBT(ItemStack item, String prop) 
 	{
 		if(item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
@@ -201,13 +212,14 @@ public class SamsUtilities
 		if(s == null) { s = ""; }
 		return s;
 	} 
+	
 	public static void setItemStackNBT(ItemStack item,	String prop, String value) 
 	{
 		if(item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
-		
-		//display/Name
+		 
 		item.getTagCompound().setString(prop, value);
 	} 
+	
 	public static void incrementItemStackIntegerNBT(ItemStack item,	String prop, int inc) 
 	{
 		int prev = getItemStackIntegerNBT(item,prop);
@@ -216,11 +228,13 @@ public class SamsUtilities
 		if(prev < 0) {prev = 0;}
 		item.getTagCompound().setInteger(prop, prev);
 	} 
+	
 	public static int getItemStackIntegerNBT(ItemStack heldWand, String prop) 
 	{
 		if(heldWand.getTagCompound() == null) heldWand.setTagCompound(new NBTTagCompound());
 		return heldWand.getTagCompound().getInteger(prop);
 	}
+	
 	public static void incrementPlayerIntegerNBT(EntityPlayer player, String prop, int inc)
 	{
 		int prev = getPlayerIntegerNBT(player,prop);
@@ -294,6 +308,7 @@ public class SamsUtilities
 		  
 		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
 	}
+	
 	public static void moveEntityWallSafe(EntityLivingBase entity, World world) 
 	{
 		while (!world.getCollidingBoundingBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
@@ -306,49 +321,27 @@ public class SamsUtilities
 	{
 		return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT); 
 	}
-/*//when an action is used
-	private void onSuccess(EntityPlayer player,ItemStack heldWand)
-	{
-		player.swingItem();
-		 
-		if(drainsHunger && player.getFoodStats().getFoodLevel() > 0)
-		{
-			player.getFoodStats().setFoodLevel(player.getFoodStats().getFoodLevel() - 1 );
-		}
-		
-		//make it take damage, or get destroyed
-  
-		if(player.getCurrentEquippedItem().getItemDamage() < ItemWandDungeon.DURABILITY - 1)//if about to die
-		{ 
-			player.getCurrentEquippedItem().damageItem(1, player); 
-		}
-		else
-		{ 
-			player.inventory.setInventorySlotContents(player.inventory.currentItem, null);
- 
-			player.worldObj.playSoundAtEntity(player, "random.break", 1.0F, 1.0F);
-		} 
-		
-		player.worldObj.spawnParticle(EnumParticleTypes.FLAME, player.posX,player.posY,player.posZ,1,1,1,1); 
-		player.worldObj.spawnParticle(EnumParticleTypes.REDSTONE, player.posX,player.posY,player.posZ,1,1,1,1); 
-		player.worldObj.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
-	}*/
+
 	public static void printChatMessage(String string) 
 	{ 
 		printChatMessage(new ChatComponentTranslation(string)); 
 	}
+	
 	public static void printChatMessage(IChatComponent string) 
 	{ 
 		 Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(string); 
 	}
+	
 	public static String posToString(BlockPos position) 
 	{ 
 		return "["+ position.getX() + ", "+position.getY()+", "+position.getZ()+"]";
 	} 
+	
 	public static boolean isNighttime(World worldObj)
 	{
 		return !isDaytime(worldObj);
 	}
+	
 	public static boolean isDaytime(World worldObj) 
 	{ 
 		long time = worldObj.getWorldTime(); 
