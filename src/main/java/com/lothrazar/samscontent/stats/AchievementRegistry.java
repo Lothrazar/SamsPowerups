@@ -28,6 +28,7 @@ public class AchievementRegistry
 	public Achievement baseWand;
 	public Achievement wandLightning;
 	public Achievement appleEnder;
+	public Achievement beetrootSeed;
 	
 	private void register(Achievement a)
 	{
@@ -78,10 +79,18 @@ public class AchievementRegistry
 		
 		if(ItemRegistry.apple_ender != null)
 		{ 
-			xCurrent += xSpacing;
-			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder", xCurrent, yCurrent, ItemRegistry.apple_ender, null);
-			register(appleEnder);
+			//xCurrent += xSpacing;
+			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder" , AchievementList.buildBetterPickaxe.displayColumn + 2, AchievementList.buildBetterPickaxe.displayRow, ItemRegistry.apple_ender, AchievementList.buildBetterPickaxe);
+			appleEnder.registerStat(); 
 		} 
+		
+
+		if(ItemRegistry.beetrootSeed != null)
+		{  
+			beetrootSeed = new Achievement(Reference.MODID + "_beetrootSeed", "beetrootSeed" , AchievementList.buildHoe.displayColumn - 2, AchievementList.buildHoe.displayRow + 1, ItemRegistry.beetrootSeed, AchievementList.buildHoe);
+			beetrootSeed.registerStat(); 
+		} 
+		
 /*
 		//next row down
 		yCurrent += ySpacing;
