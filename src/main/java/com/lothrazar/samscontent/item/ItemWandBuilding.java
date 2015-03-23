@@ -8,6 +8,7 @@ import com.google.common.collect.Sets;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
@@ -141,8 +142,9 @@ public class ItemWandBuilding extends ItemTool
 		held.getTagCompound().setInteger(KEY_TIMEOUT,20);//cannot do for another twenty ticks 
 		return newMode;
 	}
-	
-	public static void onPlayerTick(PlayerTickEvent event) 
+	 
+	@SubscribeEvent
+	public void onPlayerTick(PlayerTickEvent event) 
 	{	
 		if(event.player.worldObj.isRemote){ return ;}
 		ItemStack held = event.player.getCurrentEquippedItem(); 
@@ -383,4 +385,30 @@ public class ItemWandBuilding extends ItemTool
     {
     	return true;
     }  
+    
+    
+    
+    
+    
+   
+
+	@SubscribeEvent
+	public void onPlayerClick(PlayerInteractEvent event)
+  	{ 
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
+		if(held==null || held.getItem() != ItemRegistry.wandBuilding){return;}
+		 
+		if(event.action.LEFT_CLICK_BLOCK == event.action  )
+		{ 
+			ItemWandBuilding.onPlayerLeftClick(event);
+		}
+		else
+		{
+			if(event.world.isRemote){return;}
+			ItemWandBuilding.onPlayerRightClick(event);
+		} 
+  	}
+    
+    
+    
 }

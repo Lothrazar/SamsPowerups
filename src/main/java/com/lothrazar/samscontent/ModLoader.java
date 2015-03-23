@@ -209,8 +209,7 @@ public class ModLoader
       	handlers.add(new EnderpearlTeleport()  );
      	handlers.add(new PlayerEnderChestHit()       );
      	handlers.add(new KeyboardInput()            );
-     	handlers.add(new EntityLivingDeath()         );
-     	handlers.add(new HandlerWandBuilding()        );
+     	handlers.add(new EntityLivingDeath()         ); 
       	handlers.add(new LivestockDrops()         );
       	handlers.add(new DebugScreenText()          );
      	handlers.add(new SkullSignNames()      );
