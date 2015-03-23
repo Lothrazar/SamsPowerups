@@ -1,3 +1,15 @@
+achievement.appleChoc=Chocolate Apple
+achievement.appleChoc.desc=Wrap an apple in chocolate
+achievement.appleDiamond=Diamond Apple
+achievement.appleDiamond.desc=Wrap an apple in diamond
+achievement.appleEmerald=Emerald Apple
+achievement.appleEmerald.desc=Wrap an apple in emerald
+achievement.appleLapis=Lapis Apple
+achievement.appleLapis.desc=Wrap an apple in lapis
+achievement.appleEnder=Ender Apple
+achievement.appleEnder.desc=Wrap an apple in ender pearls
+achievement.beetrootSeed=Beetroot Farmer
+achievement.beetrootSeed.desc=Find beetroot seeds in the ground
 itemGroup.tabSamsContent=Sam's Content
 potion.tired=Lack of Sleep
 potion.slowfall=Slowfall

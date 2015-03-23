@@ -20,6 +20,7 @@
 shearing block: do we want it to also affect chickens/cows? would have to have a forced time delay or something
 //TODO: investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
 
+<<<<<<< HEAD
 //TODO: crafting recipes for stuff like saddle / heads / podzol etc, but DEFAULT TO DISABLED.
 //TODO: a third achievement page for vanilla extras (clock/chain armor/ all that weird stuff)
 //TODO: tweak existing recipes so they give more loot? example: fences could give 10, stairs could give 8 or 10 instead of 6 
@@ -31,6 +32,10 @@ shearing block: do we want it to also affect chickens/cows? would have to have a
                  
 //TODO: revisit early game at a later stage. things to consider: no wood/logs by hand, flint tools, emerald tools, MAYBE wood & stone armor?            
             
+=======
+//TODO: import net.minecraftforge.fml.common.gameevent.PlayerEvent. Respawn Event - use for this?
+
+>>>>>>> ach
 //TODO: can we spawn zombie horse? 
 //USE EXISTING WAND TRANSFORM?
      //Magic wand to turn horses to zombie/skeleton?
