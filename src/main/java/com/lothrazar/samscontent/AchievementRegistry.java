@@ -20,29 +20,34 @@ public class AchievementRegistry
 	 
 	private AchievementPage page;
 	
+	private ArrayList<Achievement> ach = new ArrayList<Achievement>();
+	
 	public Achievement appleChoc;
 	public Achievement appleLapis;
 	public Achievement appleDiamond;
 	public Achievement appleEmerald;
-
-	private ArrayList<Achievement> ach = new ArrayList<Achievement>();
+	public Achievement baseWand;
+	public Achievement wandLightning;
+	public Achievement appleEnder;
+	
 	private void register(Achievement a)
 	{
 		a.registerStat();
 		ach.add(a);
 	}
+	
 	public void registerAll()
 	{
 		//Achievement constructor (id, name, x, y, icon, pre-requisite achievement 
 		
-		int xSpacing = 2;
+		final int xSpacing = 2;
+		final int ySpacing = 2;
 		
-		int xStart = 0;
-		int yStart = 0;
+		final int xStart = 0;
+		final int yStart = 0;
 		
 		int xCurrent = xStart;
 		int yCurrent = yStart;
-		
 		
 		if(ItemRegistry.apple_chocolate != null)
 		{ 
@@ -50,24 +55,63 @@ public class AchievementRegistry
 			appleChoc = new Achievement(Reference.MODID + "_appleChoc", "appleChoc", xCurrent, yCurrent, ItemRegistry.apple_chocolate, null);
 			register(appleChoc);
 		} 
+		
 		if(ItemRegistry.apple_lapis != null)
 		{ 
 			xCurrent += xSpacing;
 			appleLapis = new Achievement(Reference.MODID + "_appleLapis", "appleLapis", xCurrent, yCurrent, ItemRegistry.apple_lapis, null);
 			register(appleLapis);
 		} 
+		
 		if(ItemRegistry.apple_diamond != null)
 		{ 
 			xCurrent += xSpacing;
 			appleDiamond = new Achievement(Reference.MODID + "_appleDiamond", "appleDiamond", xCurrent, yCurrent, ItemRegistry.apple_diamond, null);
 			register(appleDiamond); 
 		} 
+		
 		if(ItemRegistry.apple_emerald != null)
 		{ 
 			xCurrent += xSpacing;
 			appleEmerald = new Achievement(Reference.MODID + "_appleEmerald", "appleEmerald", xCurrent, yCurrent, ItemRegistry.apple_emerald, null);
 			register(appleEmerald);
 		} 
+		
+		if(ItemRegistry.apple_ender != null)
+		{ 
+			xCurrent += xSpacing;
+			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder", xCurrent, yCurrent, ItemRegistry.apple_ender, null);
+			register(appleEnder);
+		} 
+/*
+		//next row down
+		yCurrent += ySpacing;
+		xCurrent = xStart;
+		
+		if(ItemRegistry.baseWand != null)
+		{ 
+			xCurrent += xSpacing;
+			baseWand = new Achievement(Reference.MODID + "_baseWand", "baseWand", xCurrent, yCurrent, ItemRegistry.baseWand, null);
+			register(baseWand);
+		} 
+
+		//next row down
+		yCurrent += ySpacing;
+		xCurrent = xStart;
+		
+		if(ItemRegistry.wandLightning != null)
+		{ 
+			xCurrent += xSpacing;
+			wandLightning = new Achievement(Reference.MODID + "_" + "wandLightning", "wandLightning", xCurrent, yCurrent, ItemRegistry.wandLightning, baseWand);
+			register(wandLightning);
+		} 
+*/		
+		
+		//TODO: IDEA: importing achieves from Xpos/PS versions 
+		// http://minecraft.gamepedia.com/Achievements 
+		
+		
+		
 		
 		//TODO: can page name be from lang file?
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));

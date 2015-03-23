@@ -10,6 +10,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 
 public class HandlerWandBuilding 
 {
+	//TODO: REFACTOR
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event) 
 	{

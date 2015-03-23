@@ -18,6 +18,7 @@ public class ItemToolFlint extends ItemTool
 { 
 	public static int durability = 100;
  
+	//TODO: revisit this AND revisit wood by hand harvesting and the sapling-wooden axe, etc etc
 	protected ItemToolFlint(float attackDamage, ToolMaterial material,	Set effectiveBlocks) 
 	{ 
 		super(attackDamage, material,effectiveBlocks);
