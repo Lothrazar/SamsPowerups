@@ -15,6 +15,7 @@ import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.proxy.ClientProxy;
 import com.lothrazar.samscontent.proxy.CommonProxy;
+import com.lothrazar.samscontent.stats.AchievementRegistry;
 import com.lothrazar.samscontent.world.ChestGen;
 import com.lothrazar.samscontent.world.FurnaceFuel;
 import com.lothrazar.samscontent.world.MobSpawningRegistry;

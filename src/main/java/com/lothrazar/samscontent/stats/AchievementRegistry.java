@@ -1,10 +1,9 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samscontent.stats;
 
 import java.util.ArrayList;
 
 import com.lothrazar.samscontent.item.ItemRegistry;
-import com.lothrazar.util.Reference;
-
+import com.lothrazar.util.Reference; 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.stats.Achievement;
