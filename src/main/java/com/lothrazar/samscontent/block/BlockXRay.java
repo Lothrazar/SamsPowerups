@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.Random; 
 
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.util.SamsRegistry;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;

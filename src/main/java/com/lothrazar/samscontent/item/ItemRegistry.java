@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.item;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -17,8 +18,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.block.BlockRegistry;
 import com.lothrazar.samscontent.item.*;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsRegistry;
+import com.lothrazar.util.Reference; 
 
 public class ItemRegistry 
 { 
@@ -49,23 +49,37 @@ public class ItemRegistry
 	public static 	Item beetrootSeed ;
 	public static Item beetrootItem;
 	public static Item beetrootSoup;
+	
+	public static ArrayList<Item> items = new ArrayList<Item>();
+	
+	 public static void registerItem(Item item, String name)
+	 { 
+		 item.setUnlocalizedName(name);
+		 
+		 GameRegistry.registerItem(item, name);
+		 
+		// setTextureNameForItem(s, name); 
+		 items.add(item);
+	 }
+	
+	
 	public static void registerItems()
 	{
 		//needed for all wands; no config.
 		ItemRegistry.baseWand = new ItemBaseWand(); 
-		SamsRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
+		ItemRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
 		ItemBaseWand.addRecipe();	
 		
 		if(ModLoader.configSettings.beetroot)
 		{ 
 			beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModLoader.tabSamsContent);
-			SamsRegistry.registerItem(beetrootSeed, "beetroot_seed");
+			ItemRegistry.registerItem(beetrootSeed, "beetroot_seed");
 			
 			beetrootItem = new ItemFood(3, false).setCreativeTab(ModLoader.tabSamsContent);
-			SamsRegistry.registerItem(beetrootItem, "beetroot_item");
+			ItemRegistry.registerItem(beetrootItem, "beetroot_item");
 			
 			beetrootSoup = new ItemSoup(8).setCreativeTab(ModLoader.tabSamsContent); 
-			SamsRegistry.registerItem(beetrootSoup, "beetroot_soup");
+			ItemRegistry.registerItem(beetrootSoup, "beetroot_soup");
 		}
 		   /*
 		if(ModLoader.configSettings.flintTool) 
@@ -89,7 +103,7 @@ public class ItemRegistry
 		{ 
 			ItemRegistry.wandFire = new ItemWandFire();
 
-			SamsRegistry.registerItem(ItemRegistry.wandFire, "wand_fire");
+			registerItem(ItemRegistry.wandFire, "wand_fire");
 	 
 			ItemWandFire.addRecipe();		 
 		}
@@ -98,7 +112,7 @@ public class ItemRegistry
 		{  
 			ItemRegistry.wandWater = new ItemWandWater();
 
-			SamsRegistry.registerItem(ItemRegistry.wandWater, "wand_water");
+			ItemRegistry.registerItem(ItemRegistry.wandWater, "wand_water");
 	 
 			ItemWandWater.addRecipe();		 
 		}
@@ -107,7 +121,7 @@ public class ItemRegistry
 		{  
 			ItemRegistry.wandLightning = new ItemWandLightning();
 
-			SamsRegistry.registerItem(ItemRegistry.wandLightning, "wand_lightning");
+			ItemRegistry.registerItem(ItemRegistry.wandLightning, "wand_lightning");
 	 
 			ItemWandLightning.addRecipe();		 
 		}
@@ -116,7 +130,7 @@ public class ItemRegistry
 		{ 
 			ItemRegistry.wandCopy = new ItemWandCopyPaste();
 
-			SamsRegistry.registerItem(ItemRegistry.wandCopy, "wand_copy");
+			ItemRegistry.registerItem(ItemRegistry.wandCopy, "wand_copy");
 
 			ItemWandCopyPaste.addRecipe();  
 		}
@@ -124,7 +138,7 @@ public class ItemRegistry
 		if(ModLoader.configSettings.wandBuilding)
 		{ 
 			ItemRegistry.wandBuilding = new ItemWandBuilding(); 
-			SamsRegistry.registerItem(ItemRegistry.wandBuilding, "wand_building" );  
+			ItemRegistry.registerItem(ItemRegistry.wandBuilding, "wand_building" );  
 			 
 			ItemWandBuilding.addRecipe(); 
 		}
@@ -132,10 +146,10 @@ public class ItemRegistry
 		if(ModLoader.configSettings.wandChest)
 		{   
 			ItemRegistry.itemChestSack = new ItemChestSack();   
-			SamsRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
+			ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 			
 			ItemRegistry.wandChest = new ItemWandChest(); 
-			SamsRegistry.registerItem(ItemRegistry.wandChest, "wand_chest");
+			ItemRegistry.registerItem(ItemRegistry.wandChest, "wand_chest");
 	 
 			ItemWandChest.addRecipe();  
 		}
@@ -143,7 +157,7 @@ public class ItemRegistry
 		if(ModLoader.configSettings.wandTransform)
 		{   
 			ItemRegistry.wandTransform = new ItemWandTransform(); 
-			SamsRegistry.registerItem(ItemRegistry.wandTransform, "wand_transform");
+			ItemRegistry.registerItem(ItemRegistry.wandTransform, "wand_transform");
 
 			ItemWandTransform.addRecipe();  
 		}
@@ -151,7 +165,7 @@ public class ItemRegistry
 		if(ModLoader.configSettings.wandHarvest)
 		{   
 			ItemRegistry.wandHarvest = new ItemWandHarvest();
-			SamsRegistry.registerItem(ItemRegistry.wandHarvest, "wand_harvest");
+			ItemRegistry.registerItem(ItemRegistry.wandHarvest, "wand_harvest");
 
 			ItemWandHarvest.addRecipe();  
 		}
@@ -160,7 +174,7 @@ public class ItemRegistry
 		{   
 			ItemRegistry.wandLivestock = new ItemWandLivestock();
 	  
-			SamsRegistry.registerItem(ItemRegistry.wandLivestock, "wand_livestock");
+			ItemRegistry.registerItem(ItemRegistry.wandLivestock, "wand_livestock");
 
 			ItemWandLivestock.addRecipe();  
 		}
@@ -169,7 +183,7 @@ public class ItemRegistry
 		{   
 			ItemRegistry.wandProspect = new ItemWandProspect();
 	  
-			SamsRegistry.registerItem(ItemRegistry.wandProspect, "wand_prospect");
+			ItemRegistry.registerItem(ItemRegistry.wandProspect, "wand_prospect");
 
 			ItemWandProspect.addRecipe();  
 		}
@@ -178,7 +192,7 @@ public class ItemRegistry
 		{ 
 			ItemRegistry.itemEnderBook = new ItemEnderBook();
 
-			SamsRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender");
+			ItemRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender");
 
 			ItemEnderBook.addRecipe();
 		}
@@ -187,13 +201,13 @@ public class ItemRegistry
 		{
 			ItemRegistry.apple_emerald = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_emerald.addEffect(ItemFoodAppleMagic.emeraldPotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.emeraldLevel);  
-			SamsRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
+			ItemRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Items.emerald));
 			 
 			ItemRegistry.apple_emerald_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);
 			ItemRegistry.apple_emerald_rich.addEffect(ItemFoodAppleMagic.emeraldPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.emeraldLevel); 
-			SamsRegistry.registerItem(ItemRegistry.apple_emerald_rich, "apple_emerald_rich");
+			ItemRegistry.registerItem(ItemRegistry.apple_emerald_rich, "apple_emerald_rich");
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Blocks.emerald_block));
 		}   
@@ -203,14 +217,14 @@ public class ItemRegistry
 			ItemRegistry.apple_diamond = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_diamond.addEffect(ItemFoodAppleMagic.diamondPotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.dimondLevel);  
 			ItemRegistry.apple_diamond.addEffect(ItemFoodAppleMagic.diamondPotion2, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.dimond2Level);  
-			SamsRegistry.registerItem(ItemRegistry.apple_diamond, "apple_diamond");
+			ItemRegistry.registerItem(ItemRegistry.apple_diamond, "apple_diamond");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_diamond,new ItemStack(Items.diamond));
 		 
 			ItemRegistry.apple_diamond_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);
 			ItemRegistry.apple_diamond_rich.addEffect(ItemFoodAppleMagic.diamondPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.dimondLevel); 
 			ItemRegistry.apple_diamond_rich.addEffect(ItemFoodAppleMagic.diamondPotion2, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.dimond2Level); 
-			SamsRegistry.registerItem(ItemRegistry.apple_diamond_rich, "apple_diamond_rich");
+			ItemRegistry.registerItem(ItemRegistry.apple_diamond_rich, "apple_diamond_rich");
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_diamond_rich,new ItemStack(Blocks.diamond_block));
 		 
@@ -220,13 +234,13 @@ public class ItemRegistry
 		{ 
 			ItemRegistry.apple_lapis = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_lapis.addEffect(ItemFoodAppleMagic.lapisPotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.lapisLevel); 
-			SamsRegistry.registerItem(ItemRegistry.apple_lapis, "apple_lapis");
+			ItemRegistry.registerItem(ItemRegistry.apple_lapis, "apple_lapis");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis,new ItemStack(Items.dye, 1, Reference.dye_lapis) );
 	 
 			ItemRegistry.apple_lapis_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);
 			ItemRegistry.apple_lapis_rich.addEffect(ItemFoodAppleMagic.lapisPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.lapisLevel); 
-			SamsRegistry.registerItem(ItemRegistry.apple_lapis_rich, "apple_lapis_rich");
+			ItemRegistry.registerItem(ItemRegistry.apple_lapis_rich, "apple_lapis_rich");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis_rich,new ItemStack(Blocks.lapis_block));
 		}
@@ -235,12 +249,12 @@ public class ItemRegistry
 		{
 			ItemRegistry.apple_chocolate = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false); 
 			ItemRegistry.apple_chocolate.addEffect(ItemFoodAppleMagic.chocolatePotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.chocolateLevel + 1); 
-			SamsRegistry.registerItem(ItemRegistry.apple_chocolate, "apple_chocolate");
+			ItemRegistry.registerItem(ItemRegistry.apple_chocolate, "apple_chocolate");
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_chocolate, new ItemStack(Items.dye, 1, Reference.dye_cocoa) );
 		  
 			ItemRegistry.apple_chocolate_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, true);  
 			ItemRegistry.apple_chocolate_rich.addEffect(ItemFoodAppleMagic.chocolatePotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.chocolateLevel);  
-			SamsRegistry.registerItem(ItemRegistry.apple_chocolate_rich, "apple_chocolate_rich");
+			ItemRegistry.registerItem(ItemRegistry.apple_chocolate_rich, "apple_chocolate_rich");
 			 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_chocolate_rich, new ItemStack(Items.cookie));
 		}
@@ -250,7 +264,7 @@ public class ItemRegistry
 			ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);  
 			ItemRegistry.apple_nether_star.addEffect(ItemFoodAppleMagic.netherwartApplePotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.netherwartAppleLevel);  
 	
-			SamsRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
+			ItemRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_nether_star,new ItemStack(Items.nether_wart));
 		}
@@ -260,7 +274,7 @@ public class ItemRegistry
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);   
 			ItemRegistry.apple_ender.addEffect(ItemFoodAppleMagic.enderPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.enderLevel);  
 	
-			SamsRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
+			ItemRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
 			
 			GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ender)
 				,"lll","lal","lll"  

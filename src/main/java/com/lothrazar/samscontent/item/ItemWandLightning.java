@@ -3,8 +3,7 @@ package com.lothrazar.samscontent.item;
 import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.util.SamsRegistry;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
 import net.minecraft.creativetab.CreativeTabs;

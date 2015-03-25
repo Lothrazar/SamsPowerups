@@ -1,15 +1,17 @@
 package com.lothrazar.samscontent.block;
 
+import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsRegistry;
+import com.lothrazar.util.Reference; 
 
 public class BlockRegistry 
 { 
@@ -27,20 +29,38 @@ public class BlockRegistry
 	public static BlockBucketStorage block_storewater;
 	public static BlockBucketStorage block_storemilk;
 	public static BlockCropBeetroot beetrootCrop;
+	
+	public static ArrayList<Block> blocks = new ArrayList<Block>();
+	
+	 public static void registerBlock(Block s, String name)
+	 {    
+		 s.setUnlocalizedName(name); 
+		 
+		 GameRegistry.registerBlock(s, name);
+		 
+		 //TOOD: remove this
+		// SamsRegistry.setTextureNameForItem(Item.getItemFromBlock(s), name); 
+
+		System.out.println("rrr.blocks :: "+name);
+		
+		 blocks.add(s);
+	 }
+	
+	
 	public static void registerBlocks() 
 	{  
 		if(ModLoader.configSettings.beetroot)
 		{
 			beetrootCrop = (BlockCropBeetroot) new BlockCropBeetroot();
 
-			SamsRegistry.registerBlock(beetrootCrop, "beetroot_crop"); 
+			BlockRegistry.registerBlock(beetrootCrop, "beetroot_crop"); 
 		}
 		 
 		if(ModLoader.configSettings.storeWaterBlock)
 		{
 			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket); 
 			
-			SamsRegistry.registerBlock(BlockRegistry.block_storewater, "block_storewater");
+			registerBlock(BlockRegistry.block_storewater, "block_storewater");
 
 			BlockRegistry.block_storewater.addRecipe();
 		}
@@ -48,7 +68,7 @@ public class BlockRegistry
 		{
 			BlockRegistry.block_storemilk = new BlockBucketStorage(Items.milk_bucket); 
 			
-			SamsRegistry.registerBlock(BlockRegistry.block_storemilk, "block_storemilk");
+			BlockRegistry.registerBlock(BlockRegistry.block_storemilk, "block_storemilk");
 
 			BlockRegistry.block_storemilk.addRecipe();
 		}
@@ -56,7 +76,7 @@ public class BlockRegistry
 		{
 			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket); 
 			
-			SamsRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
+			BlockRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
 	  
 			BlockRegistry.block_storelava.addRecipe();
 		}
@@ -70,7 +90,7 @@ public class BlockRegistry
 		{
 			BlockRegistry.block_spike = new BlockShearWool(); 
 			
-			SamsRegistry.registerBlock(BlockRegistry.block_spike, "block_spike");
+			BlockRegistry.registerBlock(BlockRegistry.block_spike, "block_spike");
 
 			BlockShearWool.addRecipe();
 		}
@@ -79,7 +99,7 @@ public class BlockRegistry
 		{
 			BlockRegistry.block_fishing = new BlockFishing(); 
 			
-			SamsRegistry.registerBlock(BlockRegistry.block_fishing,BlockFishing.name);
+			registerBlock(BlockRegistry.block_fishing,BlockFishing.name);
 
 			BlockFishing.addRecipe();
 		}
@@ -88,7 +108,7 @@ public class BlockRegistry
 		{
 			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
 	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_weather,"command_block_weather");
+			BlockRegistry.registerBlock(BlockRegistry.command_block_weather,"command_block_weather");
 	
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_weather,new ItemStack(Items.water_bucket));
 		}
@@ -97,7 +117,7 @@ public class BlockRegistry
 		{ 
 			BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
 	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_tpspawn,"command_block_tpspawn");
+			BlockRegistry.registerBlock(BlockRegistry.command_block_tpspawn,"command_block_tpspawn");
 	
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpspawn,new ItemStack(Items.ender_eye));
 		}
@@ -106,7 +126,7 @@ public class BlockRegistry
 		{ 
 			BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
 	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
+			BlockRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
 			
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
 		}
@@ -115,7 +135,7 @@ public class BlockRegistry
 		{ 
 			BlockRegistry.command_block_regen = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.naturalRegeneration);
 	 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_regen, "command_block_regen");
+			BlockRegistry.registerBlock(BlockRegistry.command_block_regen, "command_block_regen");
 			
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_regen,new ItemStack(Items.golden_apple) );  
 		} 
@@ -124,7 +144,7 @@ public class BlockRegistry
 		{
 			BlockRegistry.command_block_daycycle = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doDaylightCycle);
 			 
-			SamsRegistry.registerBlock(BlockRegistry.command_block_daycycle, "command_block_daycycle");
+			BlockRegistry.registerBlock(BlockRegistry.command_block_daycycle, "command_block_daycycle");
 			
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_daycycle,new ItemStack( Blocks.glowstone) ); 
 		}
@@ -133,7 +153,7 @@ public class BlockRegistry
 		{ 
 			BlockRegistry.command_block_firetick = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doFireTick);
  
-			SamsRegistry.registerBlock(BlockRegistry.command_block_firetick, "command_block_firetick");
+			BlockRegistry.registerBlock(BlockRegistry.command_block_firetick, "command_block_firetick");
 
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_firetick,new ItemStack( Items.lava_bucket) ); 
 		}
@@ -142,7 +162,8 @@ public class BlockRegistry
 		{ 
 			BlockRegistry.command_block_mobgrief = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.mobGriefing);
  
-			SamsRegistry.registerBlock(BlockRegistry.command_block_mobgrief, "command_block_mobgrief");
+			BlockRegistry.registerBlock(BlockRegistry.command_block_mobgrief, "command_block_mobgrief");
+			
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_mobgrief,new ItemStack( Blocks.tnt) );  
 		}
  
@@ -150,7 +171,7 @@ public class BlockRegistry
 		{ 
 			BlockRegistry.block_xray = new BlockXRay(); 
 			
-			SamsRegistry.registerBlock(BlockRegistry.block_xray,"block_xray");
+			BlockRegistry.registerBlock(BlockRegistry.block_xray,"block_xray");
  
 			BlockXRay.addRecipe();
 		}

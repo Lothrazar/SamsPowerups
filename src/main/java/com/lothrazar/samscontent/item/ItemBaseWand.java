@@ -8,7 +8,7 @@ import net.minecraft.item.ItemTool;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.util.SamsRegistry;
+import com.lothrazar.util.*;
 
 public class ItemBaseWand extends Item
 { 

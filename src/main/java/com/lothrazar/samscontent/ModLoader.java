@@ -20,8 +20,7 @@ import com.lothrazar.samscontent.world.ChestGen;
 import com.lothrazar.samscontent.world.FurnaceFuel;
 import com.lothrazar.samscontent.world.MobSpawningRegistry;
 import com.lothrazar.samscontent.world.WorldGenClay; 
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsRegistry;  
+import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDoor;

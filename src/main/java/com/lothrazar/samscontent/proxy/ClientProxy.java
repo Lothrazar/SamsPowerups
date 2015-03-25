@@ -1,10 +1,17 @@
 package com.lothrazar.samscontent.proxy;
 
 import java.util.ArrayList;
+
 import org.lwjgl.input.Keyboard;   
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsRegistry;
+
+import  net.minecraft.item.Item;
+
+import com.lothrazar.samscontent.block.BlockRegistry;
+import com.lothrazar.samscontent.item.ItemRegistry;
+import com.lothrazar.util.*;
+
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.entity.RenderItem;
@@ -33,15 +40,38 @@ public class ClientProxy extends CommonProxy
          
         keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown); 
-        
-        String item;
+
+       
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
+
+        String name;
+        Item item;
+	 
+        for(Block b : BlockRegistry.blocks)
+        { 
+        	item = Item.getItemFromBlock(b);
+        	name = Reference.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
+
+   			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	
+        	 
+        }
+        
+
+        for(Item i : ItemRegistry.items)
+        {  
+        	name = Reference.TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
+
+   			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	
+        	
+   			System.out.println("iii :: "+name);
+        }
+        /*
    		for(int i = 0; i < SamsRegistry.delay.size(); i++)
    		{
-   			item = Reference.TEXTURE_LOCATION + SamsRegistry.delayNames.get(i); 
-   			mesher.register(SamsRegistry.delay.get(i), 0, new ModelResourceLocation( item , "inventory"));					
+   			name = Reference.TEXTURE_LOCATION + SamsRegistry.delayNames.get(i); 
+   			mesher.register(SamsRegistry.delay.get(i), 0, new ModelResourceLocation( name , "inventory"));					
    		} 
-
+         */
          //More info on proxy rendering
          //http://www.minecraftforge.net/forum/index.php?topic=27684.0
         //http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2272349-lessons-from-my-first-mc-1-8-mod

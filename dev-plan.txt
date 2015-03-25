@@ -12,6 +12,27 @@
             //TODO: can we prevent reeds growth
             //TODO: can we prevent vine growth
 
+
+
+public ItemBaseWand()
++   {
++       super();
++       this.setCreativeTab(ModLoader.tabSamsContent);
++   }
+
++       //todo get carrying block enderman.func_175489_ck();
+
+
+
+
+
++ 
++ item like ender book but single use. using it transforms it into a different 'save point' object. then when that is consumed, the TP goes off and its gone.
++ 
++ all functions in one wand
++ 
+
+
 //TODO: import achieves from other plats (xbox/PS)
 //TODO: more pocket edition features to go with beetroot (nether reactor? crafting recipes?)
 //TODO: completley revisit and possibly remove flint tool AND the non-punching wood stuff. we already have the tools and armor changes which covers the same purpose
