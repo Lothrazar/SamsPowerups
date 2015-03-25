@@ -52,8 +52,7 @@ public class ClientProxy extends CommonProxy
         	item = Item.getItemFromBlock(b);
         	name = Reference.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
 
-   			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	
-        	 
+   			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	 
         }
         
 
@@ -61,9 +60,7 @@ public class ClientProxy extends CommonProxy
         {  
         	name = Reference.TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
 
-   			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	
-        	
-   			System.out.println("iii :: "+name);
+   			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
         /*
    		for(int i = 0; i < SamsRegistry.delay.size(); i++)

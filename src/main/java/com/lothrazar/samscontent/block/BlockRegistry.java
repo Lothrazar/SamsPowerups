@@ -37,12 +37,7 @@ public class BlockRegistry
 		 s.setUnlocalizedName(name); 
 		 
 		 GameRegistry.registerBlock(s, name);
-		 
-		 //TOOD: remove this
-		// SamsRegistry.setTextureNameForItem(Item.getItemFromBlock(s), name); 
-
-		System.out.println("rrr.blocks :: "+name);
-		
+		  
 		 blocks.add(s);
 	 }
 	

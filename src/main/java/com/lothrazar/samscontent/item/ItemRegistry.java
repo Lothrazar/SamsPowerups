@@ -58,7 +58,6 @@ public class ItemRegistry
 		 
 		 GameRegistry.registerItem(item, name);
 		 
-		// setTextureNameForItem(s, name); 
 		 items.add(item);
 	 }
 	
