@@ -11,7 +11,13 @@ import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.SamsRegistry;
 
 public class ItemBaseWand extends Item
-{
+{ 
+	public ItemBaseWand()
+	{
+		super();
+		this.setCreativeTab(ModLoader.tabSamsContent);
+	}
+ 
 	public static void addRecipe() 
 	{
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.baseWand)
