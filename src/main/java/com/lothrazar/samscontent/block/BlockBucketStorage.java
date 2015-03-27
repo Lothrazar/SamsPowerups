@@ -38,7 +38,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		super(Material.iron);
 		this.setHardness(5F);
 		this.setResistance(5F);
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		
 		this.setStepSound(soundTypeMetal);
 		this.setHarvestLevel("pickaxe", 1);
 		bucketItem = bucketIn;

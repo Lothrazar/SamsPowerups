@@ -81,10 +81,11 @@ public class BlockRegistry
 			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
 		
 			BlockRegistry.block_storeempty = new BlockBucketStorage(null); 
+			
+			BlockRegistry.block_storeempty.setCreativeTab(ModLoader.tabSamsContent);
 
 			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
 			
-
 			BlockRegistry.block_storeempty.addRecipe();
 			
 		}
