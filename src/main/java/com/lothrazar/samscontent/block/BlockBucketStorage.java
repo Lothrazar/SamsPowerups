@@ -20,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
@@ -87,7 +88,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
 		if(event.world.isRemote){ return; }//server side only!
-		if(event.entityPlayer.isSneaking()) {return;}//consistent
+		
+		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
@@ -105,6 +107,22 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);
  
+		if(event.entityPlayer.isSneaking() && event.action.LEFT_CLICK_BLOCK == event.action
+				&& this.bucketItem == null)
+		{
+			int inside;
+			if(blockClicked == BlockRegistry.block_storeempty) 
+				inside = 0;
+			else
+				inside = container.getBuckets() + 1;//yess its messed up?
+			event.entityPlayer.addChatMessage(new ChatComponentTranslation(inside+""));
+			
+			return;//no sounds just tell us how much
+		}
+		
+		if(event.entityPlayer.isSneaking()) {return;}//consistent
+		
+		
 		if(held == null && event.action.RIGHT_CLICK_BLOCK == event.action //RIGHT CLICK REMOVE from block
 				&& block.bucketItem  != null
 				&& block.bucketItem ==  this.bucketItem)  
@@ -124,6 +142,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		if(event.action.LEFT_CLICK_BLOCK == event.action) //LEFT CLICK DEPOSIT INTO block		 
 		{   
+			
+			 
 			//before we add the bucket, wait and should we set the block first?
 			if(blockClicked == BlockRegistry.block_storeempty && block.bucketItem == null && held != null)	//then set this block based on bucket
 			{ 
@@ -156,6 +176,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
 				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up());  
 			}
+			 
 		}
 		
   	}
