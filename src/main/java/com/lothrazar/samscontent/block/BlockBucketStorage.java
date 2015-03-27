@@ -19,10 +19,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.EnumWorldBlockLayer;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBucketStorage extends Block implements ITileEntityProvider //extends BlockContainer
 {
@@ -41,6 +44,18 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		bucketItem = bucketIn;
 	}
 	 
+	@Override
+	public boolean isOpaqueCube() 
+	{
+		return false;//transparency 
+	}
+	
+	@SideOnly(Side.CLIENT)
+    public EnumWorldBlockLayer getBlockLayer()
+    {
+        return EnumWorldBlockLayer.CUTOUT;
+    }
+	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) 
 	{ 
