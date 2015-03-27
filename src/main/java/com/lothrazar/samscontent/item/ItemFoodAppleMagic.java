@@ -90,25 +90,11 @@ public class ItemFoodAppleMagic extends ItemFood
 	public static int hungerSmall = 1;
 	public static int hungerLarge = 4; //how much it fills us up
   
-	public static int chocolatePotion = Potion.digSpeed.id;//Haste
-	public static int chocolateLevel = com.lothrazar.samscontent.potion.PotionRegistry.I;
 	
-	public static int lapisPotion = PotionRegistry.waterwalk.id;
-	public static int lapisLevel = PotionRegistry.I;
 	
-	public static int emeraldPotion = PotionRegistry.slowfall.id;  
-	public static int emeraldLevel = PotionRegistry.I;
  
-	public static int diamondPotion = PotionRegistry.flying.id;
-	public static int diamondPotion2 = Potion.resistance.id; 
-	public static int dimondLevel = PotionRegistry.I;
-	public static int dimond2Level = PotionRegistry.I;
 	
-	public static int netherwartApplePotion = PotionRegistry.lavawalk.id;
-	public static int netherwartAppleLevel = PotionRegistry.I;
 
-	public static int enderPotion = PotionRegistry.ender.id;
-	public static int enderLevel = PotionRegistry.I;
 
 	public static void addRecipe(ItemFoodAppleMagic apple, ItemStack ingredient) 
 	{
@@ -130,8 +116,10 @@ public class ItemFoodAppleMagic extends ItemFood
 		for(int i = 0; i < potionIds.size(); i++)  
   		{ 
   			p = Potion.potionTypes[potionIds.get(i)];
+  			
+  			String debug = potionIds.get(i)+":"+p.getName();
   			 
-  			list.add(SamsUtilities.lang(p.getName()));  //  +","//TODO: could be duration and such too
+  			list.add(debug+":"+SamsUtilities.lang(p.getName()));  //  +","//TODO: could be duration and such too
   			
   		}  
       //  String mode = held.getTagCompound().getString(KEY_MODE); 

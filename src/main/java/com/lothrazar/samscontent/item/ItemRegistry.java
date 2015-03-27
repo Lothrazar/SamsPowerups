@@ -13,11 +13,13 @@ import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemSoup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.block.BlockRegistry;
 import com.lothrazar.samscontent.item.*;
+import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference; 
 
 public class ItemRegistry 
@@ -199,30 +201,36 @@ public class ItemRegistry
 		if(ModLoader.configSettings.appleEmerald) 
 		{
 			ItemRegistry.apple_emerald = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
-			ItemRegistry.apple_emerald.addEffect(ItemFoodAppleMagic.emeraldPotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.emeraldLevel);  
+			ItemRegistry.apple_emerald.addEffect(PotionRegistry.slowfall.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
+			ItemRegistry.apple_emerald.addEffect(Potion.jump.id, ItemFoodAppleMagic.timeShort, PotionRegistry.V); 
 			ItemRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Items.emerald));
 			 
 			ItemRegistry.apple_emerald_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);
-			ItemRegistry.apple_emerald_rich.addEffect(ItemFoodAppleMagic.emeraldPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.emeraldLevel); 
+			ItemRegistry.apple_emerald_rich.addEffect(PotionRegistry.slowfall.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I); 
+			ItemRegistry.apple_emerald.addEffect(Potion.jump.id, ItemFoodAppleMagic.timeShort, PotionRegistry.V); 
 			ItemRegistry.registerItem(ItemRegistry.apple_emerald_rich, "apple_emerald_rich");
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Blocks.emerald_block));
+			 
 		}   
 		 
 		if(ModLoader.configSettings.appleDiamond) 
 		{ 
+			 
 			ItemRegistry.apple_diamond = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
-			ItemRegistry.apple_diamond.addEffect(ItemFoodAppleMagic.diamondPotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.dimondLevel);  
-			ItemRegistry.apple_diamond.addEffect(ItemFoodAppleMagic.diamondPotion2, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.dimond2Level);  
+			ItemRegistry.apple_diamond.addEffect(PotionRegistry.flying.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
+			ItemRegistry.apple_diamond.addEffect(Potion.resistance.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);   
+			ItemRegistry.apple_diamond.addEffect(Potion.absorption.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
 			ItemRegistry.registerItem(ItemRegistry.apple_diamond, "apple_diamond");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_diamond,new ItemStack(Items.diamond));
 		 
 			ItemRegistry.apple_diamond_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);
-			ItemRegistry.apple_diamond_rich.addEffect(ItemFoodAppleMagic.diamondPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.dimondLevel); 
-			ItemRegistry.apple_diamond_rich.addEffect(ItemFoodAppleMagic.diamondPotion2, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.dimond2Level); 
+			ItemRegistry.apple_diamond_rich.addEffect(PotionRegistry.flying.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I); 
+			ItemRegistry.apple_diamond_rich.addEffect(Potion.resistance.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I); 
+			ItemRegistry.apple_diamond.addEffect(Potion.absorption.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
 			ItemRegistry.registerItem(ItemRegistry.apple_diamond_rich, "apple_diamond_rich");
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_diamond_rich,new ItemStack(Blocks.diamond_block));
@@ -232,56 +240,57 @@ public class ItemRegistry
 		if(ModLoader.configSettings.appleLapis)
 		{ 
 			ItemRegistry.apple_lapis = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
-			ItemRegistry.apple_lapis.addEffect(ItemFoodAppleMagic.lapisPotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.lapisLevel); 
+			ItemRegistry.apple_lapis.addEffect(PotionRegistry.waterwalk.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I); 
+			 
 			ItemRegistry.registerItem(ItemRegistry.apple_lapis, "apple_lapis");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis,new ItemStack(Items.dye, 1, Reference.dye_lapis) );
 	 
 			ItemRegistry.apple_lapis_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);
-			ItemRegistry.apple_lapis_rich.addEffect(ItemFoodAppleMagic.lapisPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.lapisLevel); 
+			ItemRegistry.apple_lapis_rich.addEffect(PotionRegistry.waterwalk.id, ItemFoodAppleMagic.timeLong,PotionRegistry.I);
+			 
 			ItemRegistry.registerItem(ItemRegistry.apple_lapis_rich, "apple_lapis_rich");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis_rich,new ItemStack(Blocks.lapis_block));
+			
+ 
 		}
 		  
 		if(ModLoader.configSettings.appleChocolate)
 		{
 			ItemRegistry.apple_chocolate = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false); 
-			ItemRegistry.apple_chocolate.addEffect(ItemFoodAppleMagic.chocolatePotion, ItemFoodAppleMagic.timeShort, ItemFoodAppleMagic.chocolateLevel + 1); 
+			ItemRegistry.apple_chocolate.addEffect(Potion.digSpeed.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I + 1); 
 			ItemRegistry.registerItem(ItemRegistry.apple_chocolate, "apple_chocolate");
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_chocolate, new ItemStack(Items.dye, 1, Reference.dye_cocoa) );
 		  
 			ItemRegistry.apple_chocolate_rich = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, true);  
-			ItemRegistry.apple_chocolate_rich.addEffect(ItemFoodAppleMagic.chocolatePotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.chocolateLevel);  
+			ItemRegistry.apple_chocolate_rich.addEffect(Potion.digSpeed.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I);  
 			ItemRegistry.registerItem(ItemRegistry.apple_chocolate_rich, "apple_chocolate_rich");
 			 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_chocolate_rich, new ItemStack(Items.cookie));
+		 
 		}
 	 
 		if(ModLoader.configSettings.appleNetherStar) 
 		{ 
 			ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);  
-			ItemRegistry.apple_nether_star.addEffect(ItemFoodAppleMagic.netherwartApplePotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.netherwartAppleLevel);  
-	
+		 
+			ItemRegistry.apple_nether_star.addEffect( PotionRegistry.lavawalk.id, ItemFoodAppleMagic.timeLong,  PotionRegistry.I);  
+			 
 			ItemRegistry.registerItem(ItemRegistry.apple_nether_star, "apple_nether_star");
 		 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_nether_star,new ItemStack(Items.nether_wart));
 		}
 	 
-		if(ModLoader.configSettings.appleNetherStar) 
+		if(ModLoader.configSettings.appleNetherStar)//TODO: apple ender in config 
 		{ 
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);   
-			ItemRegistry.apple_ender.addEffect(ItemFoodAppleMagic.enderPotion, ItemFoodAppleMagic.timeLong, ItemFoodAppleMagic.enderLevel);  
-	
+			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I);  
+			 
 			ItemRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
-			
-			GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ender)
-				,"lll","lal","lll"  
-				,'l', Items.ender_pearl
-				,'a', Items.apple); 
-			
-			if(ModLoader.configSettings.uncraftGeneral) 
-				GameRegistry.addSmelting(ItemRegistry.apple_ender, new ItemStack(Items.ender_pearl, 8),	0); 
+
+			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl)) ;
 		} 
+		 
 	}
 }
