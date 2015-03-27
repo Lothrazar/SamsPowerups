@@ -55,6 +55,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		Block blockClicked = player.worldObj.getBlockState(pos).getBlock();
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		
+		if(block.bucketItem != null)
 		for(int i = 0; i < container.getBuckets(); i++)//since they are not stackable
 		{
 			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
@@ -74,7 +75,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		if((blockClicked instanceof BlockBucketStorage) == false) {return;} 
 	
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
-		
+		//TODO: set block based on 
+	//	if(block.bucketItem != null), if this is empty
 		if(block.bucketItem != this.bucketItem){return;}//not optimal but it fixes things
 		
 		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);

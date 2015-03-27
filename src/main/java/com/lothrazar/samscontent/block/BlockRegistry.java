@@ -28,6 +28,7 @@ public class BlockRegistry
 	public static BlockBucketStorage block_storelava;
 	public static BlockBucketStorage block_storewater;
 	public static BlockBucketStorage block_storemilk;
+	public static BlockBucketStorage block_storeempty;
 	public static BlockCropBeetroot beetrootCrop;
 	
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
@@ -50,6 +51,8 @@ public class BlockRegistry
 
 			BlockRegistry.registerBlock(beetrootCrop, "beetroot_crop"); 
 		}
+		
+		
 		 
 		if(ModLoader.configSettings.storeWaterBlock)
 		{
@@ -76,9 +79,16 @@ public class BlockRegistry
 			BlockRegistry.block_storelava.addRecipe();
 		}
 
-		if(ModLoader.configSettings.storeLavaBlock || ModLoader.configSettings.storeWaterBlock)
+		if(ModLoader.configSettings.storeLavaBlock || ModLoader.configSettings.storeWaterBlock || ModLoader.configSettings.storeMilkBlock)
 		{
 			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
+		
+			BlockRegistry.block_storeempty = new BlockBucketStorage(null); 
+
+			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
+			
+
+		//	BlockRegistry.block_storeempty.addRecipe();
 			
 		}
 		if(ModLoader.configSettings.shearSheepBlock)
