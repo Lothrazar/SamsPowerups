@@ -100,17 +100,16 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);
  
 		if(held == null && event.action.RIGHT_CLICK_BLOCK == event.action //RIGHT CLICK REMOVE from block
-				&& block.bucketItem  != null  )  
+				&& block.bucketItem  != null
+				&& block.bucketItem ==  this.bucketItem)  
 		{ 
 			if(container.getBuckets() > 0)
-			{
-				
-			
+			{ 
 				removeBucket(event.entityPlayer, event.world, container, block.bucketItem);
 			}
-			else
-			{
-				//was == 0
+			else //it is also empty
+			{ 
+				removeBucket(event.entityPlayer, event.world, container, block.bucketItem);
 				event.world.setBlockState(event.pos, BlockRegistry.block_storeempty.getDefaultState());
 			}
 			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");
@@ -121,8 +120,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		{   
 			//before we add the bucket, wait and should we set the block first?
 			if(blockClicked == BlockRegistry.block_storeempty && block.bucketItem == null && held != null)	//then set this block based on bucket
-			{
-				System.out.println("left click on empty");
+			{ 
 			
 				if(held.getItem() == Items.lava_bucket)
 				{
@@ -147,7 +145,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				}
 			}
 			else if(held != null &&  held.getItem() == block.bucketItem)
-			{ 
+			{  
 				addBucket(event.entityPlayer, event.world, container); 
 				SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
 				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up());  
