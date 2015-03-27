@@ -86,33 +86,72 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
+	
+		
 		if(blockClicked == null || blockClicked == Blocks.air ){return;}
 		if((blockClicked instanceof BlockBucketStorage) == false) {return;} 
 	
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		//TODO: set block based on 
 	//	if(block.bucketItem != null), if this is empty
-		if(block.bucketItem != this.bucketItem){return;}//not optimal but it fixes things
+		//if(block.bucketItem != this.bucketItem){return;}//not optimal but it fixes things
+		 
 		
 		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);
  
-		if(held == null && event.action.RIGHT_CLICK_BLOCK == event.action
-				&& container.getBuckets() > 0) //empty hand 
+		if(held == null && event.action.RIGHT_CLICK_BLOCK == event.action //RIGHT CLICK REMOVE from block
+				&& block.bucketItem  != null  )  
 		{ 
-			removeBucket(event.entityPlayer, event.world, container, block.bucketItem);
+			if(container.getBuckets() > 0)
+			{
+				
 			
+				removeBucket(event.entityPlayer, event.world, container, block.bucketItem);
+			}
+			else
+			{
+				//was == 0
+				event.world.setBlockState(event.pos, BlockRegistry.block_storeempty.getDefaultState());
+			}
 			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");
 			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 		}
 		
-		if(event.action.LEFT_CLICK_BLOCK == event.action 
-				&& held != null
-				&& held.getItem() == block.bucketItem )
-		{  
-			addBucket(event.entityPlayer, event.world, container); 
+		if(event.action.LEFT_CLICK_BLOCK == event.action) //LEFT CLICK DEPOSIT INTO block		 
+		{   
+			//before we add the bucket, wait and should we set the block first?
+			if(blockClicked == BlockRegistry.block_storeempty && block.bucketItem == null && held != null)	//then set this block based on bucket
+			{
+				System.out.println("left click on empty");
 			
-			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+				if(held.getItem() == Items.lava_bucket)
+				{
+					event.world.setBlockState(event.pos, BlockRegistry.block_storelava.getDefaultState());
+					addBucket(event.entityPlayer, event.world, container); 
+					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
+					SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+				}
+				else if(held.getItem()  == Items.water_bucket)
+				{
+					event.world.setBlockState(event.pos, BlockRegistry.block_storewater.getDefaultState());
+					addBucket(event.entityPlayer, event.world, container); 
+					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
+					SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+				} 
+				if(held.getItem() == Items.milk_bucket)
+				{ 
+					event.world.setBlockState(event.pos, BlockRegistry.block_storemilk.getDefaultState());
+					addBucket(event.entityPlayer, event.world, container); 
+					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
+					SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+				}
+			}
+			else if(held != null &&  held.getItem() == block.bucketItem)
+			{ 
+				addBucket(event.entityPlayer, event.world, container); 
+				SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
+				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up());  
+			}
 		}
 		
   	}
@@ -138,12 +177,13 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 
 	public void addRecipe() 
 	{
-		GameRegistry.addRecipe(new ItemStack(this), 
-				"iii", 
-				"ibi", 
-				"iii", 
-				'b', this.bucketItem, 
-				'i', Items.iron_ingot   );
+		GameRegistry.addRecipe(new ItemStack(BlockRegistry.block_storeempty), 
+				"ioi", 
+				"ogo", 
+				"ioi", 
+				'o', Blocks.obsidian, 
+				'i', Items.iron_ingot,
+				'g', Blocks.glass );
 		
 	}
 }

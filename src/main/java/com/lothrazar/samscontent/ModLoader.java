@@ -241,6 +241,7 @@ public class ModLoader
 		handlers.add(BlockRegistry.block_storelava    );
 		handlers.add(BlockRegistry.block_storewater   );
 		handlers.add(BlockRegistry.block_storemilk   ); 
+		handlers.add(BlockRegistry.block_storeempty  ); 
 		handlers.add(new PlayerUseHoe() );
 		handlers.add(new FlintPumpkin()); 
 

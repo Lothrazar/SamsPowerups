@@ -60,7 +60,6 @@ public class BlockRegistry
 			
 			registerBlock(BlockRegistry.block_storewater, "block_storewater");
 
-			BlockRegistry.block_storewater.addRecipe();
 		}
 		if(ModLoader.configSettings.storeMilkBlock)
 		{
@@ -68,7 +67,6 @@ public class BlockRegistry
 			
 			BlockRegistry.registerBlock(BlockRegistry.block_storemilk, "block_storemilk");
 
-			BlockRegistry.block_storemilk.addRecipe();
 		}
 		if(ModLoader.configSettings.storeLavaBlock)
 		{
@@ -76,7 +74,6 @@ public class BlockRegistry
 			
 			BlockRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
 	  
-			BlockRegistry.block_storelava.addRecipe();
 		}
 
 		if(ModLoader.configSettings.storeLavaBlock || ModLoader.configSettings.storeWaterBlock || ModLoader.configSettings.storeMilkBlock)
@@ -88,7 +85,7 @@ public class BlockRegistry
 			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
 			
 
-		//	BlockRegistry.block_storeempty.addRecipe();
+			BlockRegistry.block_storeempty.addRecipe();
 			
 		}
 		if(ModLoader.configSettings.shearSheepBlock)
