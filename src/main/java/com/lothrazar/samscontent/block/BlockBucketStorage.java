@@ -1,5 +1,7 @@
 package com.lothrazar.samscontent.block;
 
+import java.util.Random;
+
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.samscontent.item.ItemRegistry;
 import com.lothrazar.util.SamsUtilities;
@@ -61,7 +63,11 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	{ 
 		return new TileEntityBucketStorage(meta);
 	} 
-	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune)
+    {
+        return Item.getItemFromBlock(BlockRegistry.block_storeempty);
+    }
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) 
 	{
@@ -70,8 +76,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		Block blockClicked = player.worldObj.getBlockState(pos).getBlock();
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		
-		if(block.bucketItem != null)
-		for(int i = 0; i < container.getBuckets(); i++)//since they are not stackable
+		if(block.bucketItem != null)//yes thats not a mistake, the null check and <=
+		for(int i = 0; i <= container.getBuckets(); i++)//since they are not stackable
 		{
 			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
 		}
