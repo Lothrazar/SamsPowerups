@@ -17,6 +17,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World; 
 
 import org.apache.logging.log4j.Level;
@@ -346,5 +347,10 @@ public class SamsUtilities
 	{ 
 		long time = worldObj.getWorldTime(); 
 		return time < 12300 || time > 23850;
+	}
+
+	public static String lang(String name)
+	{
+		return StatCollector.translateToLocal(name);
 	}
 }

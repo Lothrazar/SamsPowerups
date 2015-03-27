@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.item;
 
 import java.util.ArrayList; 
+import java.util.List;
 
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.ModLoader; 
@@ -20,6 +21,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
@@ -117,4 +120,34 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(apple, new ItemStack(ingredient.getItem(), 8),	0);
 	} 
+	
+	
+	@Override
+	public void addInformation(ItemStack held, EntityPlayer player, List list, boolean par4) 
+	 {  
+		//setCompoundIfNull(held);
+		Potion p;
+		for(int i = 0; i < potionIds.size(); i++)  
+  		{ 
+  			p = Potion.potionTypes[potionIds.get(i)];
+  			 
+  			list.add(SamsUtilities.lang(p.getName()));  //  +","//TODO: could be duration and such too
+  			
+  		}  
+      //  String mode = held.getTagCompound().getString(KEY_MODE); 
+       // list.add("Mode: " + EnumChatFormatting.GREEN +mode); 
+        /*  
+		int item =	held.getTagCompound().getInteger(KEY_ITEM); 
+		int qty  =	held.getTagCompound().getInteger(KEY_QTY);
+		int dmg  =	held.getTagCompound().getInteger(KEY_DMG);
+
+		//int filter  =	held.stackTagCompound.getInteger(KEY_ITEMFILTER);
+          
+		if( item > 0)
+		{ 
+			String blockName = Item.getItemById(item).getUnlocalizedName().replace("tile.", "");
+	         list.add("type: " + EnumChatFormatting.GREEN +blockName); 
+	         list.add("blocks: " + EnumChatFormatting.GREEN +qty);  
+		}   */
+	 } 
 }
