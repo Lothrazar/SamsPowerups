@@ -6,6 +6,7 @@ import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -40,20 +41,31 @@ public class ItemWandFire  extends Item
 	public static int RADIUS;
 	public static int DURABILITY;
 
-	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held, EnumFacing face) 
+	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 
+		BlockPos fr;
 		for(int i = 2; i < RADIUS; i++)
 		{
-			//previously used entityPlayer.getHorizontalFacing()
-			BlockPos fr = entityPlayer.getPosition().offset(face, i);
+			//previously used 
+			fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), i);
 			
-			if(world.isAirBlock(fr))
-			{
-				world.setBlockState(fr, Blocks.fire.getDefaultState());
-			}
+			setBlockIfAir(world,fr, Blocks.fire.getDefaultState());
+			setBlockIfAir(world,fr.up(), Blocks.fire.getDefaultState()); 
+			setBlockIfAir(world,fr.down(), Blocks.fire.getDefaultState()); 
+			setBlockIfAir(world,fr.south(), Blocks.fire.getDefaultState()); 
+			setBlockIfAir(world,fr.north(), Blocks.fire.getDefaultState()); 
+			setBlockIfAir(world,fr.east(), Blocks.fire.getDefaultState()); 
+			setBlockIfAir(world,fr.west(), Blocks.fire.getDefaultState()); 
+		
 		}
 		 
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
+	}
+	
+	public static void setBlockIfAir(World world, BlockPos pos, IBlockState state)
+	{
+		if(world.isAirBlock(pos))
+			world.setBlockState(pos, state); 
 	}
 
 	public void castExtinguish(World world, EntityPlayer entityPlayer,	ItemStack held) 
@@ -87,7 +99,7 @@ public class ItemWandFire  extends Item
 		{  
 			if(event.entityPlayer.isSneaking() == false)
 			{ 
-				ItemWandFire.castFire(event.world,event.entityPlayer,held,event.face); 
+				ItemWandFire.castFire(event.world,event.entityPlayer,held); //?,event.face
 			}
 			else
 			{
