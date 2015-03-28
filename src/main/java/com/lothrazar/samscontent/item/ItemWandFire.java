@@ -40,11 +40,12 @@ public class ItemWandFire  extends Item
 	public static int RADIUS;
 	public static int DURABILITY;
 
-	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
+	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held, EnumFacing face) 
 	{ 
 		for(int i = 2; i < RADIUS; i++)
 		{
-			BlockPos fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), i);
+			//previously used entityPlayer.getHorizontalFacing()
+			BlockPos fr = entityPlayer.getPosition().offset(face, i);
 			
 			if(world.isAirBlock(fr))
 			{
@@ -84,9 +85,9 @@ public class ItemWandFire  extends Item
 		if(held.getItem() == ItemRegistry.wandFire && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{  
-			if(event.entityPlayer.isSneaking())
+			if(event.entityPlayer.isSneaking() == false)
 			{ 
-				ItemWandFire.castFire(event.world,event.entityPlayer,held); 
+				ItemWandFire.castFire(event.world,event.entityPlayer,held,event.face); 
 			}
 			else
 			{
