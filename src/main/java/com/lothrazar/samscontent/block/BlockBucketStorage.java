@@ -147,27 +147,27 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 			//before we add the bucket, wait and should we set the block first?
 			if(blockClicked == BlockRegistry.block_storeempty && block.bucketItem == null && held != null)	//then set this block based on bucket
 			{ 
+				IBlockState state = null;
 			
 				if(held.getItem() == Items.lava_bucket)
 				{
-					event.world.setBlockState(event.pos, BlockRegistry.block_storelava.getDefaultState());
-					addBucket(event.entityPlayer, event.world, container); 
-					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-					SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+					state = BlockRegistry.block_storelava.getDefaultState(); 
 				}
 				else if(held.getItem()  == Items.water_bucket)
 				{
-					event.world.setBlockState(event.pos, BlockRegistry.block_storewater.getDefaultState());
-					addBucket(event.entityPlayer, event.world, container); 
-					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-					SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+					state = BlockRegistry.block_storewater.getDefaultState(); 
 				} 
 				if(held.getItem() == Items.milk_bucket)
 				{ 
-					event.world.setBlockState(event.pos, BlockRegistry.block_storemilk.getDefaultState());
+					state = BlockRegistry.block_storemilk.getDefaultState();  
+				}
+				
+				if(state != null)
+				{ 
+					event.world.setBlockState(event.pos, state);
 					addBucket(event.entityPlayer, event.world, container); 
 					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-					SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+					SamsUtilities.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 				}
 			}
 			else if(held != null &&  held.getItem() == block.bucketItem)

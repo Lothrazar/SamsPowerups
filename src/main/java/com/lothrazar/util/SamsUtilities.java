@@ -74,15 +74,22 @@ public class SamsUtilities
 	{
 		spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
     }
-	
+	public static void spawnParticleSixAround(World world, EnumParticleTypes type, BlockPos pos)
+	{
+		spawnParticle(world,type,pos.up());
+		spawnParticle(world,type,pos.down());
+		spawnParticle(world,type,pos.east());
+		spawnParticle(world,type,pos.west());
+		spawnParticle(world,type,pos.south());
+		spawnParticle(world,type,pos.north());
+    }
 	public static void spawnParticle(World world, EnumParticleTypes type, double x, double y, double z)
 	{ 
-		float f = (float)x + 0.5F;
-        float f1 = (float)y + 0.0F + 6.0F / 16.0F;
-        float f2 = (float)z + 0.5F;
-        float f3 = 0.52F;
-        float f4 = 0.6F - 0.3F;
-    	world.spawnParticle(type, (double)(f - f3), (double)f1, (double)(f2 + f4), 0.0D, 0.0D, 0.0D);
+		//http://www.minecraftforge.net/forum/index.php?topic=9744.0
+		for(int countparticles = 0; countparticles <= 10; ++countparticles)
+		{
+			world.spawnParticle(type, x + (world.rand.nextDouble() - 0.5D) * (double)0.8, y + world.rand.nextDouble() * (double)1.5 - (double)0.1, z + (world.rand.nextDouble() - 0.5D) * (double)0.8, 0.0D, 0.0D, 0.0D);
+		} 
     }
 	
 	public static double distanceBetweenHorizontal(BlockPos start, BlockPos end)
