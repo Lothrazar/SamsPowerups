@@ -87,7 +87,6 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
-		if(event.world.isRemote){ return; }//server side only!
 		
 		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
@@ -100,6 +99,13 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		if((blockClicked instanceof BlockBucketStorage) == false) {return;} 
 	
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
+		
+		
+
+		SamsUtilities.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+System.out.println("just sent sixparticles around");
+		if(event.world.isRemote){ return; }//server side only! from now on
+		
 		//TODO: set block based on 
 	//	if(block.bucketItem != null), if this is empty
 		//if(block.bucketItem != this.bucketItem){return;}//not optimal but it fixes things
