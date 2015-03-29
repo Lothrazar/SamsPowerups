@@ -36,8 +36,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemChestSackEmpty extends ItemTool
 {
-	 
-  
 	public ItemChestSackEmpty( )
 	{   
 		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
@@ -46,19 +44,18 @@ public class ItemChestSackEmpty extends ItemTool
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	 
-	private static int RADIUS_PROSPECT = 16;
-	
 	@Override
     public boolean hasEffect(ItemStack par1ItemStack)
     {
-    	return true; //give it shimmer
+    	return false; //give it shimmer
     }
 	  
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandChest),
-			ItemRegistry.baseWand, 
-			Blocks.trapped_chest  );
+			Items.leather,
+			Items.string,
+			Blocks.chest  );
 	}
 
 	public void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)

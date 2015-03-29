@@ -23,6 +23,7 @@ item.beetroot_soup.name=Beetroot Soup
 item.flint_tool.name=Flint Tool
 item.book_ender.name=Ender Book
 item.chest_sack.name=Sack of Holding
+item.chest_sack_empty.name=Empty Sack of Holding
 item.wand_building.name=Wand of Building
 item.wand_chest.name=Wand of Holding
 item.wand_copy.name=Wand of Copy
