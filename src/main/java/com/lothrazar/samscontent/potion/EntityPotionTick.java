@@ -63,6 +63,14 @@ public class EntityPotionTick
     			 world.isAirBlock(event.entityLiving.getPosition()) && 
     			 event.entityLiving.motionY < 0)
     	 {
+    		 //now wait here, since if we are a sneaking player we cancel it
+    		 if(event.entityLiving instanceof EntityPlayer)
+    		 {
+    			 EntityPlayer p = (EntityPlayer)event.entityLiving;
+    			 if(p.isSneaking())
+    				 return;//let them slip down into it
+    		 }
+    		 
     		 event.entityLiving.motionY  = 0;//stop falling
     		 event.entityLiving.onGround = true; //act as if on solid ground
     		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
