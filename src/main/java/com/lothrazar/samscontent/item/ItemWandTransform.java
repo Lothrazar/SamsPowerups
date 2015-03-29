@@ -63,10 +63,8 @@ public class ItemWandTransform extends Item
 		   
 		if(held.getItem() == ItemRegistry.wandTransform && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{
-
-			transformBlock(event.entityPlayer, event.world, held, event.pos);
-			
+		{ 
+			transformBlock(event.entityPlayer, event.world, held, event.pos); 
 		}
   	}
 	
@@ -92,8 +90,6 @@ public class ItemWandTransform extends Item
 		Block block = blockState.getBlock();
 		int metaCurrent, metaNew = INVALID;
 		IBlockState blockStateNew = null;
-		
-		
 		
 		if(block == Blocks.red_mushroom_block)
 		{
@@ -739,34 +735,26 @@ public class ItemWandTransform extends Item
    
 		if(blockStateNew != null)
 		{
+			player.swingItem();
 			 
-			if(world.isRemote == true)
+			if(world.isRemote) // clientside
 			{
-				SamsUtilities.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos);
-				SamsUtilities.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, player.getPosition());
-
-
-				player.swingItem();
+				SamsUtilities.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
 			}
 			else
 			{
-				//server side stuff
 				SamsUtilities.playSoundAt(player, "random.wood_click");
  
 				player.worldObj.setBlockState(pos,blockStateNew);
 				 
 				SamsUtilities.damageOrBreakHeld(player);
 			}
-			
 		}
 	}
 	
-	/*
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
 	{         
-        list.add("For use only on");   
-        list.add("Mushroom blocks");   
-        list.add("Double Slabs");          
-	} */ 
+        list.add("Cycles the blockstate of some blocks");         
+	} 
 }
