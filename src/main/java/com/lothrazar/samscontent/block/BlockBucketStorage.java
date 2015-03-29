@@ -112,6 +112,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		//TODO: fix particles
 		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos); 
+		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.entityPlayer.getPosition()); 
 //System.out.println("just sent ppp");
 		if(event.world.isRemote){ return; }//server side only! from now on
 		
@@ -150,6 +152,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				removeBucket(event.entityPlayer, event.world, container, block.bucketItem);
 				event.world.setBlockState(event.pos, BlockRegistry.block_storeempty.getDefaultState());
 			}
+			event.world.updateComparatorOutputLevel(event.pos, blockClicked);
 			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");
 			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 		}
@@ -164,6 +167,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				if(held.getItem() == Items.lava_bucket)
 				{
 					state = BlockRegistry.block_storelava.getDefaultState(); 
+					//event.world.scheduleUpdate(event.pos, BlockRegistry.block_storelava , 2);
 				}
 				else if(held.getItem()  == Items.water_bucket)
 				{
@@ -178,6 +182,9 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				{ 
 					event.world.setBlockState(event.pos, state);
 					addBucket(event.entityPlayer, event.world, container); 
+					
+					event.world.updateComparatorOutputLevel(event.pos, blockClicked);
+					
 					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
 					SamsUtilities.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
 				}
@@ -185,6 +192,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 			else if(held != null &&  held.getItem() == block.bucketItem)
 			{  
 				addBucket(event.entityPlayer, event.world, container); 
+				event.world.updateComparatorOutputLevel(event.pos, blockClicked);
 				SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
 				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up());  
 			} 
