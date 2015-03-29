@@ -31,16 +31,14 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper; 
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandLivestock extends ItemTool
 {
-	private static int RADIUS = 128;
-	public static int DURABILITY = 80;
-	public static boolean drainsHunger = true;
-	public static boolean drainsDurability = true;
+	public static int DURABILITY;
   
 	public ItemWandLivestock( )
 	{   
@@ -56,7 +54,6 @@ public class ItemWandLivestock extends ItemTool
     	return true; //give it shimmer
     }
  
-
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandLivestock),
@@ -100,29 +97,25 @@ public class ItemWandLivestock extends ItemTool
 		
 		if(entity_id > 0)
 		{
-			entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(Items.spawn_egg,1,entity_id),true);
+			entityPlayer.swingItem();
 			entityPlayer.worldObj.removeEntity(target); 
 			
-			entityPlayer.swingItem();
-			 
-			if(drainsHunger)
-			{
-				SamsUtilities.drainHunger(entityPlayer);
-			}
-			
+			if(entityPlayer.worldObj.isRemote) 
+				SamsUtilities.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
+			else
+				entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(Items.spawn_egg,1,entity_id),true);
+
+			SamsUtilities.playSoundAt(entityPlayer, "random.fizz");
 			SamsUtilities.damageOrBreakHeld(entityPlayer);
 		} 
 	}
 	
-	
-  
 	@SubscribeEvent
 	public void onEntityInteractEvent(EntityInteractEvent event)
   	{
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem(); 
 		if(held == null || held.getItem() != ItemRegistry.wandLivestock ){ return;}
-		if(event.entityPlayer.worldObj.isRemote ){ return;}//so do nothing on client side
-     
+		 
 		ItemRegistry.wandLivestock.entitySpawnEgg(event.entityPlayer, event.target); 
   	} 
 }
