@@ -31,9 +31,7 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockBucketStorage extends Block implements ITileEntityProvider //extends BlockContainer
-{
-	//http://www.minecraftforge.net/wiki/Basic_Tile_Entity
-	//to be used in tandem with ItemBucketStorage. the (block/item) will remember how many full buckets are inside of it.
+{ 
 	private Item bucketItem;
 	
 	protected BlockBucketStorage(Item bucketIn) 
@@ -46,11 +44,24 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		this.setHarvestLevel("pickaxe", 1);
 		bucketItem = bucketIn;
 	}
-	 
+
 	@Override
 	public boolean isOpaqueCube() 
 	{
 		return false;//transparency 
+	}
+	
+	@Override
+	public boolean hasComparatorInputOverride() 
+	{
+		return true; //allows it to emit redstone power directly to comp. in following function
+	}
+	
+	@Override
+	public int getComparatorInputOverride(World world, BlockPos pos)
+	{
+		TileEntityBucketStorage container = (TileEntityBucketStorage)world.getTileEntity(pos);
+		return container.getBuckets(); 
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -64,11 +75,13 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	{ 
 		return new TileEntityBucketStorage(meta);
 	} 
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
         return Item.getItemFromBlock(BlockRegistry.block_storeempty);
     }
+	
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) 
 	{
@@ -86,24 +99,20 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		
-		
+  	{       
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		
-	
-		
+		 
 		if(blockClicked == null || blockClicked == Blocks.air ){return;}
 		if((blockClicked instanceof BlockBucketStorage) == false) {return;} 
 	
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		
 		
-
-		SamsUtilities.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
-System.out.println("just sent sixparticles around");
+		//TODO: fix particles
+		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+//System.out.println("just sent ppp");
 		if(event.world.isRemote){ return; }//server side only! from now on
 		
 		//TODO: set block based on 
@@ -127,8 +136,7 @@ System.out.println("just sent sixparticles around");
 		}
 		
 		if(event.entityPlayer.isSneaking()) {return;}//consistent
-		
-		
+		 
 		if(held == null && event.action.RIGHT_CLICK_BLOCK == event.action //RIGHT CLICK REMOVE from block
 				&& block.bucketItem  != null
 				&& block.bucketItem ==  this.bucketItem)  
@@ -147,9 +155,7 @@ System.out.println("just sent sixparticles around");
 		}
 		
 		if(event.action.LEFT_CLICK_BLOCK == event.action) //LEFT CLICK DEPOSIT INTO block		 
-		{   
-			
-			 
+		{    
 			//before we add the bucket, wait and should we set the block first?
 			if(blockClicked == BlockRegistry.block_storeempty && block.bucketItem == null && held != null)	//then set this block based on bucket
 			{ 
@@ -181,10 +187,8 @@ System.out.println("just sent sixparticles around");
 				addBucket(event.entityPlayer, event.world, container); 
 				SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
 				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up());  
-			}
-			 
-		}
-		
+			} 
+		} 
   	}
 
 	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage, Item bucketItem) 
