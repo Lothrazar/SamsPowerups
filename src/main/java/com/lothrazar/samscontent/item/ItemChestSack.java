@@ -45,6 +45,7 @@ public class ItemChestSack extends Item
 	public ItemChestSack()
 	{  
 		super();  
+		this.setMaxStackSize(1);
 	}
    
 	@Override
@@ -200,6 +201,9 @@ public class ItemChestSack extends Item
 		 
 		//make the player slot empty
 		entityPlayer.destroyCurrentEquippedItem();
+		
+		//drop the empty sack now
+		SamsUtilities.dropItemStackInWorld(entityPlayer.worldObj, pos, ItemRegistry.wandChest);
   	} 
 	
 	@SubscribeEvent

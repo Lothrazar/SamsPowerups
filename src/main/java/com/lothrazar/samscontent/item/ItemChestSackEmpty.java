@@ -34,21 +34,14 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemChestSackEmpty extends ItemTool
+public class ItemChestSackEmpty extends Item
 {
 	public ItemChestSackEmpty( )
 	{   
-		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
-    	this.setMaxDamage(1); 
+		super(); 
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
-	 
-	@Override
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-    	return false; //give it shimmer
-    }
 	  
 	public static void addRecipe() 
 	{
