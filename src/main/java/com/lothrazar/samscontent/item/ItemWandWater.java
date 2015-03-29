@@ -50,10 +50,19 @@ public class ItemWandWater  extends Item
 		if(ModSamsContent.configSettings.wandWater == false ) {return;}
 		if(held.getItem() != ItemRegistry.wandWater ) {return;}
 		
-		if(event.face == null){return;}//n o idea why this is null sometimes but it is
-		 
+		BlockPos offset;
+		
+		if(event.face == null)
+		{
+			//so we clicked Through a block, for example hitting into water, maybe flowing water
+			offset = event.pos;
+		}
+		else 
+		{
+			offset = event.pos.offset(event.face);//get the neighbouring
+		}
+		
 		boolean success = false;
-		BlockPos offset = event.pos.offset(event.face);
 		
 		ArrayList<Block> waterBoth = new ArrayList<Block>();
 		waterBoth.add(Blocks.flowing_water);
@@ -89,8 +98,9 @@ public class ItemWandWater  extends Item
 				}  
 			}
 			else //not sneaking, regular item use
-			{
-				if(event.world.isAirBlock(offset) )
+			{ 
+				if(event.world.isAirBlock(offset) || 
+					event.world.getBlockState(offset).getBlock() == Blocks.flowing_water)
 				{ 
 					event.world.setBlockState(offset,  Blocks.water.getDefaultState()); 
 					
@@ -98,8 +108,7 @@ public class ItemWandWater  extends Item
 				}
 			} 
 		}
-		
-
+		 
 		if(success)
 		{ 
 			if(event.world.isRemote)
