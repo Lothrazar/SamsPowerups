@@ -28,20 +28,21 @@ import com.sun.istack.internal.logging.Logger;
 
 public class SamsUtilities
 {    
-	public static void dropItemStackInWorld(World worldObj, BlockPos pos, Block block)
+	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Block block)
 	{
-		dropItemStackInWorld(worldObj, pos, new ItemStack(block));  
+		return dropItemStackInWorld(worldObj, pos, new ItemStack(block));  
 	}
 	
-	public static void dropItemStackInWorld(World worldObj, BlockPos pos, Item item)
+	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Item item)
 	{
-		dropItemStackInWorld(worldObj, pos, new ItemStack(item)); 
+		return dropItemStackInWorld(worldObj, pos, new ItemStack(item)); 
 	}
 	
-	public static void dropItemStackInWorld(World worldObj, BlockPos pos, ItemStack stack)
+	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, ItemStack stack)
 	{
 		EntityItem entityItem = new EntityItem(worldObj, pos.getX(),pos.getY(),pos.getZ(), stack); 
     	worldObj.spawnEntityInWorld(entityItem);
+    	return entityItem;
 	}
 	
 	public static void drainHunger(EntityPlayer player)

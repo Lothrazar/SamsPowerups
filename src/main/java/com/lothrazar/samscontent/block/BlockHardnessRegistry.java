@@ -13,7 +13,6 @@ public class BlockHardnessRegistry
 		Blocks.emerald_ore.setHardness(ModSamsContent.configSettings.emeraldOreHardness); //v=3
 		Blocks.mob_spawner.setHardness(ModSamsContent.configSettings.spawnerHardness);//v=5
 		
-		
 		if(ModSamsContent.configSettings.harvestGlassPickaxe)
 		{ 
 			Blocks.glass.setHarvestLevel("pickaxe", 3);

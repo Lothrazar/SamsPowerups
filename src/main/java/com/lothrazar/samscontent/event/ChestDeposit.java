@@ -136,8 +136,10 @@ public class ChestDeposit
 		
 		if( totalSlotsFreed > 0) 
 		{
-			//String msg = "Magic Sort deposited "+totalItemsMoved+" items.";
+		String msg = "Magic Sort deposited "+totalItemsMoved+" items.";
 //we used to send chat message here, no longer
+		System.out.println("TODO: particles??"+msg);//TODO particles here
+			
 			
 		}
   	}

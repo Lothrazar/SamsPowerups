@@ -116,36 +116,34 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	    return f;
 	}
 	
-	
-	
 	public boolean canBlockStay(World worldIn, BlockPos pos, IBlockState state)
 	{
-	  return worldIn.getLight(pos) >= LIGHT - 1 || //should this be AND?  meaning it needs light AND water?
+		return worldIn.getLight(pos) >= LIGHT - 1 || //should this be AND?  meaning it needs light AND water?
 			 worldIn.getBlockState(pos.down()).getBlock().canSustainPlant(worldIn, pos.down(), EnumFacing.UP, this);
 	}
 	
-  
 	@SideOnly(Side.CLIENT)
 	@Override
 	public Item getItem(World worldIn, BlockPos pos)
 	{
-	  return ItemRegistry.beetrootSeed;
+		return ItemRegistry.beetrootSeed;
 	}
+	
 	@Override
 	public void dropBlockAsItemWithChance(World worldIn, BlockPos pos, IBlockState state, float chance, int fortune)
 	{
-	  super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);
+		super.dropBlockAsItemWithChance(worldIn, pos, state, chance, 0);
 	}
+	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-	  return ((Integer)state.getValue(AGE)).intValue() == GROWTHMAX ? ItemRegistry.beetrootItem: ItemRegistry.beetrootSeed;
+		return ((Integer)state.getValue(AGE)).intValue() == GROWTHMAX ? ItemRegistry.beetrootItem: ItemRegistry.beetrootSeed;
 	}
+	
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state,	boolean isClient) 
 	{
-
-
 		return canBlockStay(worldIn,pos,state);
 	}
 
@@ -166,7 +164,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 				}
 			}
 		}
-		System.out.println("getdrops: "+ret.size()+"   it was age "+ age);
+
 		return ret;
 	}
 
@@ -175,6 +173,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	{ 
 		return ((Integer)state.getValue(AGE)).intValue() < GROWTHMAX;
 	}
+	
 	public IBlockState getStateFromMeta(int meta)
 	{
 	  return getDefaultState().withProperty(AGE, Integer.valueOf(meta));
@@ -182,13 +181,14 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	
 	public int getMetaFromState(IBlockState state)
 	{
-	  return ((Integer)state.getValue(AGE)).intValue();
+		return ((Integer)state.getValue(AGE)).intValue();
 	}
 	
 	public BlockState createBlockState()
 	{
-	  return new BlockState(this, new IProperty[] { AGE });
+		return new BlockState(this, new IProperty[] { AGE });
 	}
+	
 	@Override
 	public void grow(World worldIn, Random rand, BlockPos pos, IBlockState state)
 	{
@@ -198,15 +198,8 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 		{
 			age = GROWTHMAX;
 		}
-		
-		System.out.println("Grow up to "+age);
-		
+		 
 		//the 2 is a notification flag
 		worldIn.setBlockState(pos, state.withProperty(AGE, Integer.valueOf(age)), 2);
-		
 	}
-	
-	
-	
-
 }

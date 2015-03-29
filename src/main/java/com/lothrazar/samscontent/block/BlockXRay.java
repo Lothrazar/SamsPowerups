@@ -66,7 +66,6 @@ public class BlockXRay extends Block
         return EnumWorldBlockLayer.CUTOUT; // transparency
     }
 	
-	 
 	public static void addRecipe() 
 	{
 		GameRegistry.addRecipe(new ItemStack(BlockRegistry.block_xray), 

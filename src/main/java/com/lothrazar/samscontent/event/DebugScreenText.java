@@ -68,16 +68,11 @@ public class DebugScreenText
 		{ 
 			event.right.clear();
 		}
-		 //ok add left content
-		event.left.add("");
-		
+
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
-		
-		//PlayerPowerups props = PlayerPowerups.get(player); 
-	  
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
-  
-	
+
+		event.left.add("");
 		addDateTimeInfo(event, world);
 		  
 	 	if(ModSamsContent.configSettings.debugSlime && player.dimension == Reference.Dimension.overworld)

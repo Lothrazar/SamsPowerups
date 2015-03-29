@@ -29,8 +29,7 @@ public class EntityTorchCollide
 		if(event.entityLiving.worldObj.getBlockState(event.entityLiving.getPosition()).getBlock() == Blocks.torch
 				&& event.entityLiving.worldObj.rand.nextDouble() < 0.01
 				&& event.entityLiving.worldObj.isRemote == false)
-		{
-  
+		{ 
 			event.entityLiving.worldObj.destroyBlock(event.entityLiving.getPosition(), true);  
 		}
 	}

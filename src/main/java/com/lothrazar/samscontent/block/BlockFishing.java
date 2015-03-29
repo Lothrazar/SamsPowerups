@@ -45,12 +45,13 @@ public class BlockFishing extends Block
 		int yCoord = pos.getY();
 		int zCoord = pos.getZ();
 		 
-		 if(worldObj.getBlockState(new BlockPos(xCoord+1, yCoord, zCoord)).equals(Blocks.water) == false
-		 || worldObj.getBlockState(new BlockPos(xCoord-1, yCoord, zCoord)).equals(Blocks.water) == false 
-		 || worldObj.getBlockState(new BlockPos(xCoord, yCoord, zCoord+1)).equals(Blocks.water) == false
-		 || worldObj.getBlockState(new BlockPos(xCoord, yCoord, zCoord-1)).equals(Blocks.water) == false //these 4 lines cover the four direct sides horiz
-		 || worldObj.getBlockState(new BlockPos(xCoord, yCoord-1, zCoord)).equals(Blocks.water) == false 
-		 || worldObj.getBlockState(new BlockPos(xCoord, yCoord-2, zCoord)).equals(Blocks.water) == false //also go 2 deep
+		 if(worldObj.getBlockState(pos.down()).equals(Blocks.water) == false
+		 || worldObj.getBlockState(pos.down(2)).equals(Blocks.water) == false 
+		 || worldObj.getBlockState(pos.down(3)).equals(Blocks.water) == false //3 deep, and
+		 || worldObj.getBlockState(pos.north()).equals(Blocks.water) == false
+		 || worldObj.getBlockState(pos.east()).equals(Blocks.water) == false //these 4 lines cover the four direct sides horiz
+		 || worldObj.getBlockState(pos.west()).equals(Blocks.water) == false 
+		 || worldObj.getBlockState(pos.south()).equals(Blocks.water) == false  
 		 
 		)
 		 {
@@ -97,11 +98,9 @@ public class BlockFishing extends Block
 			 fishSpawned = pufferfish;
 		 }
 		 
-        EntityItem entityItem = new EntityItem(worldObj, xCoord, yCoord, zCoord, fishSpawned);
-    	 
-    	worldObj.spawnEntityInWorld(entityItem);
-    	
-    	worldObj.playSoundAtEntity(entityItem,"game.neutral.swim.splash",1F,1F); 
+		 EntityItem ei = SamsUtilities.dropItemStackInWorld(worldObj, pos, fishSpawned);
+		  
+    	worldObj.playSoundAtEntity(ei,"game.neutral.swim.splash",1F,1F); 
     }
 
 	@Override
