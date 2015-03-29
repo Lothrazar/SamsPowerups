@@ -34,14 +34,14 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandProspect extends ItemTool
+public class ItemWandProspect extends Item
 {
-	public static int RADIUS = 16; 
+	public static int RADIUS; 
 	public static int DURABILITY; 
   
 	public ItemWandProspect( )
 	{   
-		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
+		super(); 
     	this.setMaxDamage(DURABILITY); 
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);

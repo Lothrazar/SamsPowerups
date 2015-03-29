@@ -33,11 +33,11 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandBuilding extends ItemTool
+public class ItemWandBuilding extends Item
 {  
 	public ItemWandBuilding( )
 	{   
-		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
+		super(); 
     	this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);

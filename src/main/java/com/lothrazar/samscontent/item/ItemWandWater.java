@@ -23,7 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandWater  extends Item
 {
-	public static int DURABILITY = 99; 
+	public static int DURABILITY; 
 	public ItemWandWater()
 	{  
 		super();  

@@ -36,13 +36,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandLivestock extends ItemTool
+public class ItemWandLivestock extends Item
 {
 	public static int DURABILITY;
   
 	public ItemWandLivestock( )
 	{   
-		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
+		super(); 
     	this.setMaxDamage(DURABILITY); 
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);

@@ -41,15 +41,13 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandTransform extends ItemTool
+public class ItemWandTransform extends Item
 { 
 	public static int DURABILITY = 80;
-	public static boolean drainsHunger = false;
-	public static boolean drainsDurability = true;
   
 	public ItemWandTransform( )
 	{   
-		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
+		super(); 
     	this.setMaxDamage(DURABILITY); 
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
@@ -757,11 +755,6 @@ public class ItemWandTransform extends ItemTool
  
 				player.worldObj.setBlockState(pos,blockStateNew);
 				 
-				if(drainsHunger)
-				{
-					SamsUtilities.drainHunger(player);
-				}
-				
 				SamsUtilities.damageOrBreakHeld(player);
 			}
 			

@@ -34,25 +34,23 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandHarvest extends ItemTool
+public class ItemWandHarvest extends Item
 {
+	public static int RADIUS;
+	public static int DURABILITY; 
+	public ItemWandHarvest( )
+	{   
+		super(); 
+    	this.setMaxDamage(DURABILITY); 
+		this.setMaxStackSize(1);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
+	}
+	 
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandHarvest),
 			ItemRegistry.baseWand, 
 			Blocks.hay_block  );
-	}
-	public static int RADIUS = 128;
-	public static int DURABILITY = 80;
-	//public static boolean drainsHunger = true;
-	//public static boolean drainsDurability = true;
-  
-	public ItemWandHarvest( )
-	{   
-		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	   
 	@Override

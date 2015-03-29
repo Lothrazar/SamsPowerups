@@ -24,6 +24,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandFire  extends Item
 {
+	public static int RADIUS;
+	public static int DURABILITY;
 	public ItemWandFire()
 	{  
 		super();  
@@ -39,8 +41,6 @@ public class ItemWandFire  extends Item
 			Items.flint_and_steel  );
 	}
 	
-	public static int RADIUS;
-	public static int DURABILITY;
 
 	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 
