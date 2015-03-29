@@ -439,9 +439,15 @@ public class ConfigFile
 		 
 		appleNetherStar = instance.getBoolean( "appleNetherStar",category,true,
 				"A nether star surrounded by apples.  Eating this gives you the power of flight for a number of seconds (visible in the debug screen)."); 
-		  
+
+		category = "items" + ".wandWater";
+		
 		enderBook = instance.getBoolean( "enderBook",category,true,
 				" Craft an ender book that lets you save waypoints, and then teleport to them later (only in the overworld).");
+
+		ItemEnderBook.DURABILITY  = instance.getInt("durability",category, 50,1,999,
+    			"Durability (number of uses in survival).");
+
 	}
 	
 	private void blocks() 

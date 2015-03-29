@@ -57,10 +57,6 @@ public class ItemWandChest extends ItemTool
     	return true; //give it shimmer
     }
 	  
-	
-	
-
-
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandChest),

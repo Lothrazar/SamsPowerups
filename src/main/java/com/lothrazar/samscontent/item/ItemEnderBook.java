@@ -33,7 +33,7 @@ import net.minecraft.util.MathHelper;
 public class ItemEnderBook extends ItemTool
 { 
 	public final static String KEY_LOC = "location"; 
-	public static int DURABILITY = 50;//TODO: FROM CONFIG FILE
+	public static int DURABILITY;
 	
 	public ItemEnderBook()
 	{  
@@ -144,6 +144,7 @@ public class ItemEnderBook extends ItemTool
 		
 	
 		entityPlayer.getCurrentEquippedItem().damageItem(1, entityPlayer);
+		entityPlayer.swingItem();
 	}
 
 	public static void addRecipe() 
