@@ -55,31 +55,34 @@ public class ItemWandWater  extends Item
 		boolean success = false;
 		BlockPos offset = event.pos.offset(event.face);
 		
+		ArrayList<Block> waterBoth = new ArrayList<Block>();
+		waterBoth.add(Blocks.flowing_water);
+		waterBoth.add(Blocks.water);
 		
 		if( event.action.RIGHT_CLICK_BLOCK == event.action )
 		{   
 			if(event.entityPlayer.isSneaking())
 			{ 
-				if(event.world.getBlockState(offset).getBlock() == Blocks.water)
+				if(waterBoth.contains(event.world.getBlockState(offset).getBlock()))
 				{
 					event.world.setBlockToAir(offset);
 					
 					success = true;
-					//also do neighbours, if they are water
+					//also do neighbours, if they are water. here we include flowing now
 					
-					if(event.world.getBlockState(offset.north()).getBlock() == Blocks.water)
+					if(waterBoth.contains(event.world.getBlockState(offset.north()).getBlock()))
 					{
 						event.world.setBlockToAir(offset.north()); 
 					} 
-					if(event.world.getBlockState(offset.south()).getBlock() == Blocks.water)
+					if(waterBoth.contains(event.world.getBlockState(offset.south()).getBlock()))
 					{
 						event.world.setBlockToAir(offset.south()); 
 					} 
-					if(event.world.getBlockState(offset.east()).getBlock() == Blocks.water)
+					if(waterBoth.contains(event.world.getBlockState(offset.east()).getBlock()))
 					{
 						event.world.setBlockToAir(offset.east()); 
 					} 
-					if(event.world.getBlockState(offset.west()).getBlock() == Blocks.water)
+					if(waterBoth.contains(event.world.getBlockState(offset.west()).getBlock()))
 					{
 						event.world.setBlockToAir(offset.west()); 
 					} 
