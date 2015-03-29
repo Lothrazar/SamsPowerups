@@ -44,26 +44,29 @@ public class ItemWandCopyPaste  extends Item
 			ItemRegistry.baseWand, 
 			Items.paper  );
 	}
+	private static final String KEY_SIGN0 = "sign_0";
+	private static final String KEY_SIGN1 = "sign_1";
+	private static final String KEY_SIGN2 = "sign_2";
+	private static final String KEY_SIGN3 = "sign_3";
+	private static final String KEY_NOTE = "note";
 
 	public static void copySign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 
 	{  
-		SamsUtilities.setItemStackNBT(held, "sign_0", sign.signText[0].getUnformattedText());
-		SamsUtilities.setItemStackNBT(held, "sign_1", sign.signText[1].getUnformattedText());
-		SamsUtilities.setItemStackNBT(held, "sign_2", sign.signText[2].getUnformattedText());
-		SamsUtilities.setItemStackNBT(held, "sign_3", sign.signText[3].getUnformattedText());
+		SamsUtilities.setItemStackNBT(held, KEY_SIGN0, sign.signText[0].getUnformattedText());
+		SamsUtilities.setItemStackNBT(held, KEY_SIGN1, sign.signText[1].getUnformattedText());
+		SamsUtilities.setItemStackNBT(held, KEY_SIGN2, sign.signText[2].getUnformattedText());
+		SamsUtilities.setItemStackNBT(held, KEY_SIGN3, sign.signText[3].getUnformattedText());
 
 		entityPlayer.swingItem(); 
 	}
 
 	public static void pasteSign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 
-	{  
-		//sign.setPlayer(entityPlayer);
-		sign.signText[0] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_0"));
-		sign.signText[1] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_1"));
-		sign.signText[2] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_2"));
-		sign.signText[3] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, "sign_3"));
-
-		//sign.setEditable(false);
+	{   
+		sign.signText[0] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN0));
+		sign.signText[1] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN1));
+		sign.signText[2] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN2));
+		sign.signText[3] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN3));
+ 
 		entityPlayer.swingItem();
 	 
 		world.markBlockForUpdate(sign.getPos());//so update is refreshed on client side
@@ -75,14 +78,14 @@ public class ItemWandCopyPaste  extends Item
 	{ 
 		if(held.getTagCompound() == null) held.setTagCompound(new NBTTagCompound());
 		
-		held.getTagCompound().setByte("note", noteblock.note); 
+		held.getTagCompound().setByte(KEY_NOTE, noteblock.note); 
 	}
 
 	public static void pasteNote(World world, EntityPlayer entityPlayer,TileEntityNote noteblock, ItemStack held) 
 	{ 
 		if(held.getTagCompound() == null)  {return;}//nothing ot paste
 		
-		noteblock.note = held.getTagCompound().getByte("note");
+		noteblock.note = held.getTagCompound().getByte(KEY_NOTE);
 		world.markBlockForUpdate(noteblock.getPos());//so update is refreshed on client side
 
 		entityPlayer.swingItem();
