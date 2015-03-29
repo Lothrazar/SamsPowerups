@@ -65,7 +65,25 @@ public class ItemWandWater  extends Item
 					event.world.setBlockToAir(offset);
 					
 					success = true;
-				} 
+					//also do neighbours, if they are water
+					
+					if(event.world.getBlockState(offset.north()).getBlock() == Blocks.water)
+					{
+						event.world.setBlockToAir(offset.north()); 
+					} 
+					if(event.world.getBlockState(offset.south()).getBlock() == Blocks.water)
+					{
+						event.world.setBlockToAir(offset.south()); 
+					} 
+					if(event.world.getBlockState(offset.east()).getBlock() == Blocks.water)
+					{
+						event.world.setBlockToAir(offset.east()); 
+					} 
+					if(event.world.getBlockState(offset.west()).getBlock() == Blocks.water)
+					{
+						event.world.setBlockToAir(offset.west()); 
+					} 
+				}  
 			}
 			else //not sneaking, regular item use
 			{
