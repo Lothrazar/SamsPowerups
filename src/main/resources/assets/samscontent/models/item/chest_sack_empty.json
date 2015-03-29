@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/wand_chest"
+        "layer0": "samscontent:items/chest_sack_empty"
     },
     "display": {
         "thirdperson": {

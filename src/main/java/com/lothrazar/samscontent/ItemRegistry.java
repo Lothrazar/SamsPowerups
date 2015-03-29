@@ -24,7 +24,7 @@ public class ItemRegistry
 { 
 	public static ItemEnderBook itemEnderBook = null;
 	public static ItemWandBuilding wandBuilding;
-	public static ItemWandChest wandChest; 
+	public static ItemChestSackEmpty wandChest; 
 	public static ItemChestSack itemChestSack;
 	public static ItemWandHarvest wandHarvest;
 	public static ItemWandTransform wandTransform; 
@@ -147,10 +147,10 @@ public class ItemRegistry
 			ItemRegistry.itemChestSack = new ItemChestSack();   
 			ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 			
-			ItemRegistry.wandChest = new ItemWandChest(); 
-			ItemRegistry.registerItem(ItemRegistry.wandChest, "wand_chest");
+			ItemRegistry.wandChest = new ItemChestSackEmpty(); 
+			ItemRegistry.registerItem(ItemRegistry.wandChest, "chest_sack_empty");
 	 
-			ItemWandChest.addRecipe();  
+			ItemChestSackEmpty.addRecipe();  
 		}
 
 		if(ModSamsContent.configSettings.wandTransform)

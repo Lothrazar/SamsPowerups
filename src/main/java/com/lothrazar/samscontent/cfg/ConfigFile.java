@@ -207,14 +207,9 @@ public class ConfigFile
 		wandLightning = instance.getBoolean("wandLightning",category, true,
     			"Craft a wand that spawns lightning bolts.");
 
-		category = parentCateory + ".wandChest";
-
-		ItemWandChest.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
+	 
 		
-		wandChest = instance.getBoolean("wandChest",category, true,
-    			"Craft a wand that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
-
+		
 		category = parentCateory + ".wandCopy";
 
 		ItemWandCopyPaste.DURABILITY  = instance.getInt("durability",category, 200,1,999,
@@ -420,6 +415,9 @@ public class ConfigFile
 		
 		category = "items";
 		
+		wandChest = instance.getBoolean("chest_sack",category, true,
+    			"Craft an empty sack that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
+
 		/*
 		
 		flintTool = instance.getBoolean( "flintTool",category,true,

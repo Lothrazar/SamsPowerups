@@ -34,18 +34,15 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandChest extends ItemTool
+public class ItemChestSackEmpty extends ItemTool
 {
-	private static int RADIUS = 128;
-	public static int DURABILITY = 80;
-	public static boolean drainsHunger = true;
-	public static boolean drainsDurability = true;
+	 
   
-	public ItemWandChest( )
+	public ItemChestSackEmpty( )
 	{   
 		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
+    	this.setMaxDamage(1); 
+		this.setMaxStackSize(64);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	 
@@ -132,13 +129,8 @@ public class ItemWandChest extends ItemTool
 		entityPlayer.worldObj.setBlockToAir(pos);//, Blocks.air, 0,2);	 
 
 		entityPlayer.swingItem();
-		 
-		if(drainsHunger)
-		{
-			SamsUtilities.drainHunger(entityPlayer);
-		}
-		
-		SamsUtilities.damageOrBreakHeld(entityPlayer);
+		 //TODO: paticle and sound
+		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
 	}
  
 	
