@@ -54,14 +54,14 @@ public class ItemRegistry
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	
-	 public static void registerItem(Item item, String name)
-	 { 
+	public static void registerItem(Item item, String name)
+	{ 
 		 item.setUnlocalizedName(name);
 		 
 		 GameRegistry.registerItem(item, name);
 		 
 		 items.add(item);
-	 }
+	}
 	
 	
 	public static void registerItems()

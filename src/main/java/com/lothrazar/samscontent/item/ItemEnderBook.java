@@ -75,8 +75,7 @@ public class ItemEnderBook extends ItemTool
 	 }
 
 	public void saveCurrentLocation(EntityPlayer entityPlayer, ItemStack itemStack) 
-	{ 
-		// if(event.entityPlayer.isSneaking() == false){ return;} 
+	{  
 		int slot = entityPlayer.inventory.currentItem + 1;
     	Location loc = new Location(slot
     			,entityPlayer.posX
@@ -126,10 +125,7 @@ public class ItemEnderBook extends ItemTool
     	
 		String csv = enderBookInstance.getTagCompound().getString(KEY);
 		
-		if(csv == null || csv.isEmpty()) 
-		{ 
-			return;
-		}
+		if(csv == null || csv.isEmpty()) {return;}
 		
 		Location loc = new Location(csv);
 		 

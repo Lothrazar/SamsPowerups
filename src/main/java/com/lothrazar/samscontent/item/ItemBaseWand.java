@@ -29,6 +29,5 @@ public class ItemBaseWand extends Item
 		
 		if(ModLoader.configSettings.uncraftGeneral)
 			GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);
-	}
-
+	} 
 }

@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Level;
 
 import com.lothrazar.samscontent.ModLoader;
 import com.lothrazar.util.Reference;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -48,10 +49,7 @@ public class ItemChestSack extends Item
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
 	{
-		if(itemStack.getTagCompound() == null)
-		{
-			itemStack.setTagCompound(new NBTTagCompound());
-		}
+		SamsUtilities.setItemStackNotNull(itemStack);
 	  
 		String count = itemStack.getTagCompound().getString("count"); 
 		if(count == null ) {count = "0";}
@@ -66,19 +64,15 @@ public class ItemChestSack extends Item
 	  
 	public void sortFromSackToChestEntity(TileEntityChest chest, ItemStack held, PlayerInteractEvent event)
   	{
-		if(held.getTagCompound()==null){return;}
+		SamsUtilities.setItemStackNotNull(held);
 	  
 		int[] itemids = held.getTagCompound().getIntArray(KEY_ITEMIDS);
 		int[] itemdmg = held.getTagCompound().getIntArray(KEY_ITEMDMG);
 		int[] itemqty = held.getTagCompound().getIntArray(KEY_ITEMQTY);
 		
-		if(itemids == null)
-		{ 
-			return;
-		}
+		if(itemids == null){return;}
  
-  		int totalItemsMoved = 0;
-  		//int totalTypesMoved = 0;
+  		int totalItemsMoved = 0; 
   		int totalSlotsFreed = 0;
   		
   		boolean debug = false;
@@ -117,8 +111,7 @@ public class ItemChestSack extends Item
 				
 				invItem = new ItemStack(Item.getItemById(item),qty,meta);
 		  
-	 
-  				if( invItem.getItem().equals(chestItem.getItem()) && invItem.getItemDamage() ==  chestItem.getItemDamage() )
+  				if(invItem.getItem().equals(chestItem.getItem()) && invItem.getItemDamage() ==  chestItem.getItemDamage() )
   				{   
   					chestMax = chestItem.getItem().getItemStackLimit(chestItem);
   					room = chestMax - chestItem.stackSize;
@@ -155,12 +148,11 @@ public class ItemChestSack extends Item
   					   
   				}//end if items match   
   			}//close loop on player inventory items
-			
 		}//close loop on chest items
 		
 		if( totalSlotsFreed > 0 ) 
 		{
-			String msg = "Sack Sort deposited "+totalItemsMoved+" items."; 
+			String msg = "Sack Sort deposited " + totalItemsMoved + " items."; 
 		 
 			//TODO: do we want a sound here? or write to chest? or log file?
 			//event.entityPlayer.playSound("random.bowhit1",5, 5);
@@ -206,7 +198,7 @@ public class ItemChestSack extends Item
 		}
 		 
 		//make the player slot empty
-		entityPlayer.inventory.setInventorySlotContents(entityPlayer.inventory.currentItem,null); 
+		entityPlayer.destroyCurrentEquippedItem();
   	} 
 	
 	@SubscribeEvent

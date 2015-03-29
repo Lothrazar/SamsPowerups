@@ -112,8 +112,7 @@ public class ItemWandBuilding extends ItemTool
 		//now here we should wait. 
 		 
 		boolean wandIsEmpty = (held.getTagCompound().getInteger(KEY_ITEM) == 0);
-		
-		
+		 
 		if(wandIsEmpty)
 		{
 			//if the wand is empty, do not let them go into mode replace OR dump.
@@ -169,8 +168,7 @@ public class ItemWandBuilding extends ItemTool
   		if(currentMode.equals(MODE_REPLACE))
 		{ 
 			doReplace(event, held); 
-		}
-	 
+		} 
 		else if(currentMode.equals(MODE_PICK)) 
 		{ 
 			doPick(event, held);  
@@ -233,8 +231,7 @@ public class ItemWandBuilding extends ItemTool
 		if(unReplaceableBlocks.contains(blockClicked)) {return; }//not allowed
 		 
 		if(blockClicked.hasTileEntity(bs) && replaceTileEntities == false){return; }
-		 
-		
+		  
 		if(Block.getIdFromBlock(blockClicked) == item 
 				&& blockClickedDamage == dmg)
 		{
@@ -243,7 +240,6 @@ public class ItemWandBuilding extends ItemTool
 			
 			return;
 		}
-		
 		
 		//	future feature:: listen to filter held.stackTagCompound.setInteger(KEY_ITEMFILTER,Block.getIdFromBlock(blockClicked));
 		//the 2 here is just a magic flag it passes to the world to propogate the event
@@ -261,16 +257,15 @@ public class ItemWandBuilding extends ItemTool
 		}
 		
 		//spawn out the block that we replaced
-		ItemStack drop = new ItemStack(blockClicked ,1, blockClickedDamage); //.damageDropped(blockClickedDamage)
+		ItemStack drop = new ItemStack(blockClicked ,1, blockClickedDamage); 
 		
 		if(drop != null) 
 		{  
 			EntityItem entityitemDrop = new EntityItem(event.entityPlayer.worldObj,event.pos.getX(),event.pos.getY(),event.pos.getZ(), drop);
   
 			entityitemDrop.setPickupDelay(10);
-
-	//drop item pops it out at my location
-			event.entity.entityDropItem(drop, 1);//quantity = 1
+ 
+			event.entity.entityDropItem(drop, 1);//drop item pops it out at my location
 			
 			//something ws done. do the thing.
 			 event.entityPlayer.getCurrentEquippedItem().damageItem(1, event.entityPlayer);

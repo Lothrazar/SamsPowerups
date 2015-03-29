@@ -12,6 +12,7 @@ import com.lothrazar.samscontent.cfg.ConfigFile;
 import com.lothrazar.samscontent.command.*;
 import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
+import com.lothrazar.samscontent.potion.EntityPotionTick;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.proxy.ClientProxy;
 import com.lothrazar.samscontent.proxy.CommonProxy;

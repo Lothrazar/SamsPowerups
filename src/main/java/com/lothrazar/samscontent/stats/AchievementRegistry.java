@@ -38,17 +38,13 @@ public class AchievementRegistry
 	
 	public void registerAll()
 	{
+		registerVanillaPage(); 
 		
-		//first all the ones on the vanila page
+		registerMyPage();
+	}
 
-		if(ItemRegistry.beetrootSeed != null)
-		{  
-			beetrootSeed = new Achievement(Reference.MODID + "_beetrootSeed", "beetrootSeed" , AchievementList.buildHoe.displayColumn - 2, AchievementList.buildHoe.displayRow + 1, ItemRegistry.beetrootSeed, AchievementList.buildHoe);
-			beetrootSeed.registerStat(); //not on my page
-		} 
-		
-		//Achievement constructor (id, name, x, y, icon, pre-requisite achievement 
-		
+	public void registerMyPage() 
+	{ 
 		final int xSpacing = 2;
 		final int ySpacing = 2;
 		
@@ -130,6 +126,15 @@ public class AchievementRegistry
 
 	 	AchievementPage.registerAchievementPage(page);
 	}
+
+	public void registerVanillaPage() 
+	{ 
+		if(ItemRegistry.beetrootSeed != null)
+		{  
+			beetrootSeed = new Achievement(Reference.MODID + "_beetrootSeed", "beetrootSeed" , AchievementList.buildHoe.displayColumn - 2, AchievementList.buildHoe.displayRow + 1, ItemRegistry.beetrootSeed, AchievementList.buildHoe);
+			beetrootSeed.registerStat(); //not on my page
+		}
+	}
 	
 	@SubscribeEvent
 	public void onCraft(ItemCraftedEvent event)
@@ -162,6 +167,5 @@ public class AchievementRegistry
 	{
 		if(stat != null) 
 			player.addStat(stat, 1);
-	}
-	
+	} 
 }

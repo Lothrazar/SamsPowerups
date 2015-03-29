@@ -1,7 +1,6 @@
-package com.lothrazar.samscontent.event;
+package com.lothrazar.samscontent.potion;
 
 import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 
 import net.minecraft.block.Block;
@@ -36,6 +35,7 @@ public class EntityPotionTick
 		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
 	    { 
 			//does nothing here, exactly.  see HandlerEnderpearlTeleport, and handlerPlayerFall
+			//TODO: 1/10 chance of spawn paricle of ender
 	    } 
 	}
 

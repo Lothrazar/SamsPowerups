@@ -215,15 +215,21 @@ public class SamsUtilities
 	
 	public static String getItemStackNBT(ItemStack item, String prop) 
 	{
-		if(item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
+		setItemStackNotNull(item);
+		
 		String s = item.getTagCompound().getString(prop);
 		if(s == null) { s = ""; }
 		return s;
 	} 
 	
+	public static void setItemStackNotNull(ItemStack item)
+	{
+		if(item.getTagCompound() == null) {item.setTagCompound(new NBTTagCompound());}
+	}
+	
 	public static void setItemStackNBT(ItemStack item,	String prop, String value) 
 	{
-		if(item.getTagCompound() == null) item.setTagCompound(new NBTTagCompound());
+		setItemStackNotNull(item);
 		 
 		item.getTagCompound().setString(prop, value);
 	} 
@@ -237,10 +243,10 @@ public class SamsUtilities
 		item.getTagCompound().setInteger(prop, prev);
 	} 
 	
-	public static int getItemStackIntegerNBT(ItemStack heldWand, String prop) 
+	public static int getItemStackIntegerNBT(ItemStack item, String prop) 
 	{
-		if(heldWand.getTagCompound() == null) heldWand.setTagCompound(new NBTTagCompound());
-		return heldWand.getTagCompound().getInteger(prop);
+		setItemStackNotNull(item);
+		return item.getTagCompound().getInteger(prop);
 	}
 	
 	public static void incrementPlayerIntegerNBT(EntityPlayer player, String prop, int inc)

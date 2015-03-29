@@ -61,7 +61,7 @@ public class ItemFoodAppleMagic extends ItemFood
 	@Override
 	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
     {     
-		if(par2World.isRemote == false)///false means serverside
+		if(par2World.isRemote == false)  //false means serverside
 	  		for(int i = 0; i < potionIds.size(); i++)  
 	  		{ 
 	  			par3EntityPlayer.addPotionEffect(new PotionEffect(potionIds.get(i) ,potionDurations.get(i),potionAmplifiers.get(i)));
@@ -89,13 +89,7 @@ public class ItemFoodAppleMagic extends ItemFood
 
 	public static int hungerSmall = 1;
 	public static int hungerLarge = 4; //how much it fills us up
-  
-	
-	
- 
-	
-
-
+   
 	public static void addRecipe(ItemFoodAppleMagic apple, ItemStack ingredient) 
 	{
 		GameRegistry.addRecipe(new ItemStack(apple)
@@ -106,36 +100,16 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(ModLoader.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(apple, new ItemStack(ingredient.getItem(), 8),	0);
 	} 
-	
-	
+	 
 	@Override
 	public void addInformation(ItemStack held, EntityPlayer player, List list, boolean par4) 
-	 {  
-		//setCompoundIfNull(held);
+	{   
 		Potion p;
 		for(int i = 0; i < potionIds.size(); i++)  
   		{ 
   			p = Potion.potionTypes[potionIds.get(i)];
-  			
-  			//String debug = potionIds.get(i)+":"+p.getName();
   			 
-  			list.add(SamsUtilities.lang(p.getName()));  //  +","//TODO: could be duration and such too
-  			
-  		}  
-      //  String mode = held.getTagCompound().getString(KEY_MODE); 
-       // list.add("Mode: " + EnumChatFormatting.GREEN +mode); 
-        /*  
-		int item =	held.getTagCompound().getInteger(KEY_ITEM); 
-		int qty  =	held.getTagCompound().getInteger(KEY_QTY);
-		int dmg  =	held.getTagCompound().getInteger(KEY_DMG);
-
-		//int filter  =	held.stackTagCompound.getInteger(KEY_ITEMFILTER);
-          
-		if( item > 0)
-		{ 
-			String blockName = Item.getItemById(item).getUnlocalizedName().replace("tile.", "");
-	         list.add("type: " + EnumChatFormatting.GREEN +blockName); 
-	         list.add("blocks: " + EnumChatFormatting.GREEN +qty);  
-		}   */
-	 } 
+  			list.add(SamsUtilities.lang(p.getName()));  //  +","//TODO: could be duration and such too 
+  		}   
+	} 
 }
