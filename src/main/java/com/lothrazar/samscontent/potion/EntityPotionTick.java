@@ -62,9 +62,8 @@ public class EntityPotionTick
     	 if(world.getBlockState(event.entityLiving.getPosition().down()).getBlock() == liquid && 
     			 world.isAirBlock(event.entityLiving.getPosition()) && 
     			 event.entityLiving.motionY < 0)
-    	 {
-    		 //now wait here, since if we are a sneaking player we cancel it
-    		 if(event.entityLiving instanceof EntityPlayer)
+    	 { 
+    		 if(event.entityLiving instanceof EntityPlayer)  //now wait here, since if we are a sneaking player we cancel it
     		 {
     			 EntityPlayer p = (EntityPlayer)event.entityLiving;
     			 if(p.isSneaking())
@@ -81,6 +80,12 @@ public class EntityPotionTick
 	{
 		 if(event.entityLiving.isPotionActive(PotionRegistry.slowfall)) 
 	     { 
+			 if(event.entityLiving instanceof EntityPlayer)  //now wait here, since if we are a sneaking player we cancel
+			 {
+    			 EntityPlayer p = (EntityPlayer)event.entityLiving;
+    			 if(p.isSneaking())
+    				 return;//so fall normally for now
+    		 }
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
 	    	 if(event.entityLiving.motionY < 0)
 	    	 { 
