@@ -109,19 +109,6 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		
-		
-		//TODO: fix particles
-		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
-		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos); 
-		SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.entityPlayer.getPosition()); 
-//System.out.println("just sent ppp");
-		if(event.world.isRemote){ return; }//server side only! from now on
-		
-		//TODO: set block based on 
-	//	if(block.bucketItem != null), if this is empty
-		//if(block.bucketItem != this.bucketItem){return;}//not optimal but it fixes things
-		 
-		
 		TileEntityBucketStorage container = (TileEntityBucketStorage)event.world.getTileEntity(event.pos);
  
 		if(event.entityPlayer.isSneaking() && event.action.LEFT_CLICK_BLOCK == event.action
@@ -154,7 +141,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 			}
 			event.world.updateComparatorOutputLevel(event.pos, blockClicked);
 			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");
-			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face)); 
 		}
 		
 		if(event.action.LEFT_CLICK_BLOCK == event.action) //LEFT CLICK DEPOSIT INTO block		 
@@ -166,8 +153,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 			
 				if(held.getItem() == Items.lava_bucket)
 				{
-					state = BlockRegistry.block_storelava.getDefaultState(); 
-					//event.world.scheduleUpdate(event.pos, BlockRegistry.block_storelava , 2);
+					state = BlockRegistry.block_storelava.getDefaultState();  
 				}
 				else if(held.getItem()  == Items.water_bucket)
 				{
@@ -186,7 +172,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 					event.world.updateComparatorOutputLevel(event.pos, blockClicked);
 					
 					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-					SamsUtilities.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.up()); 
+					SamsUtilities.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face)); 
 				}
 			}
 			else if(held != null &&  held.getItem() == block.bucketItem)
@@ -194,26 +180,23 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				addBucket(event.entityPlayer, event.world, container); 
 				event.world.updateComparatorOutputLevel(event.pos, blockClicked);
 				SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.up());  
+				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face));  
 			} 
 		} 
   	}
 
 	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage, Item bucketItem) 
-	{
+	{ 
 		storage.removeBucket();
  
 		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(bucketItem)); 
 	}
 
 	public void addBucket(EntityPlayer entityPlayer,	World world, TileEntityBucketStorage storage) 
-	{  
+	{   
 		storage.addBucket();
 		
 		int b = storage.getBuckets();
-		
-		//Testing confirms this works, since we do it on server side only 
-		//AND since the block data does not affect renderign on the client -> we do not need custom Packets
 		 
 		entityPlayer.destroyCurrentEquippedItem();
 	}
@@ -226,7 +209,6 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				"ioi", 
 				'o', Blocks.obsidian, 
 				'i', Items.iron_ingot,
-				'g', Blocks.glass );
-		
+				'g', Blocks.glass ); 
 	}
 }
