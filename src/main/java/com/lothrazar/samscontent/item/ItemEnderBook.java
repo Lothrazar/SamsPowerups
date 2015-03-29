@@ -3,7 +3,8 @@ package com.lothrazar.samscontent.item;
 import java.util.List; 
 
 import com.google.common.collect.Sets;   
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -19,7 +20,9 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.config.Configuration;
@@ -29,15 +32,15 @@ import net.minecraft.util.MathHelper;
 
 public class ItemEnderBook extends ItemTool
 { 
-	public static String KEY_LOC = "location"; 
-	private static int DURABILITY = 50;
+	public final static String KEY_LOC = "location"; 
+	public static int DURABILITY = 50;//TODO: FROM CONFIG FILE
 	
 	public ItemEnderBook()
 	{  
 		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
     	this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 
 	@Override
@@ -45,55 +48,37 @@ public class ItemEnderBook extends ItemTool
 	{ 
 	     if (itemStack.getTagCompound() == null) 
 	     { 
-        	 list.add("Right Click while sneaking to set location" );
+        	 //list.add("Right Click while sneaking to set location" );
+        	 list.add("Save your current location while sneaking");
 	    	 return;
 	     }
-	     
-	     ItemStack held = player.getCurrentEquippedItem();
+	      
+ 		 String csv = itemStack.getTagCompound().getString(KEY_LOC);
 
-		 int slot = player.inventory.currentItem + 1;
-			
-	     String KEY;
-	     Location loc;
-	     String display;
-	     for(int i = 1; i <= 9; i++)
-	     { 
-	     	 KEY = KEY_LOC + "_" + i;
+		 if(csv != null && csv.isEmpty() == false) 
+		 {
+			 Location loc = new Location(csv);
+	    	 list.add(EnumChatFormatting.DARK_GREEN + loc.toDisplayShort());//was NoCords
+		 }  
+	}
 
-	 		String csv = itemStack.getTagCompound().getString(KEY);
-
-			if(csv == null || csv.isEmpty()) {continue;} 
-			loc = new Location(csv);
- 
-			if(slot == i && held != null && held.equals(itemStack))
-				display = EnumChatFormatting.GRAY+ "["+ EnumChatFormatting.RED + i +EnumChatFormatting.GRAY+ "] " ;
-			else
-				display = EnumChatFormatting.GRAY+ "["+ i + "] " ;
-			 
-	    	 list.add(display+EnumChatFormatting.DARK_GREEN + loc.toDisplayNoCoords());
-	     } 
-	 }
-
-	public void saveCurrentLocation(EntityPlayer entityPlayer, ItemStack itemStack) 
-	{  
-		int slot = entityPlayer.inventory.currentItem + 1;
-    	Location loc = new Location(slot
+	public void saveCurrentLocation(World world, EntityPlayer entityPlayer, ItemStack itemStack) 
+	{   
+    	Location loc = new Location(0
     			,entityPlayer.posX
     			,entityPlayer.posY
     			,entityPlayer.posZ
     			,entityPlayer.dimension 
-    			,""//,biome.biomeName
+    			,""//,biome.biomeName //could get from world
     			);
-    	
-    	String KEY = ItemEnderBook.KEY_LOC + "_" + slot;
-
-		if (itemStack.getTagCompound() == null) itemStack.setTagCompound(new NBTTagCompound());
-    	itemStack.getTagCompound().setString(KEY, loc.toCSV());		
+    	 
+    	SamsUtilities.setItemStackNotNull(itemStack);
+    	itemStack.getTagCompound().setString(KEY_LOC, loc.toCSV());		
 	} 
 	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
-	{
+	{	 
 		ItemStack itemStack = event.entityPlayer.getCurrentEquippedItem();
 
 		if (itemStack == null || 
@@ -106,24 +91,25 @@ public class ItemEnderBook extends ItemTool
 
 		//left or right click with THIS book does the corresponding action
 		 
-		if (event.action.LEFT_CLICK_BLOCK == event.action)
-		{ 			 
-			teleport(event.entityPlayer, itemStack);			 
-		} 
-		else
-		{ 
-			saveCurrentLocation( event.entityPlayer, itemStack);
-		}
+		if (event.action.RIGHT_CLICK_BLOCK == event.action)
+			if(event.entityPlayer.isSneaking())
+			{ 			 
+				saveCurrentLocation(event.world,event.entityPlayer, itemStack);		 
+			} 
+			else
+			{ 
+				teleport(event.world,event.entityPlayer, itemStack);	
+			}
 		
 		event.entityPlayer.swingItem();
 	}  
 	
-	public void teleport(EntityPlayer entityPlayer, ItemStack enderBookInstance) 
+	public void teleport(World world, EntityPlayer entityPlayer, ItemStack enderBookInstance) 
 	{ 
 		int slot = entityPlayer.inventory.currentItem + 1;
-    	String KEY = ItemEnderBook.KEY_LOC + "_" + slot;
+    	//String KEY = ItemEnderBook.KEY_LOC + "_" + slot;
     	
-		String csv = enderBookInstance.getTagCompound().getString(KEY);
+		String csv = enderBookInstance.getTagCompound().getString(KEY_LOC);
 		
 		if(csv == null || csv.isEmpty()) {return;}
 		
@@ -143,19 +129,35 @@ public class ItemEnderBook extends ItemTool
 			return;//if its end, nether, or anything else such as from another mod
 		}
 		
-	    entityPlayer.setPositionAndUpdate(loc.X,loc.Y,loc.Z); 
+		//do once before teleport
+		 
+		world.playSoundAtEntity(entityPlayer, "mob.endermen.portal", 1.0F, 1.0F);  
+		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition());
+		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing()));//they are suttle, so make extra
+		
+		SamsUtilities.teleportWallSafe(entityPlayer, world, new BlockPos(loc.X,loc.Y,loc.Z));
 
+		//and again at new location
+		world.playSoundAtEntity(entityPlayer, "mob.endermen.portal", 1.0F, 1.0F);  
+		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition());		
+		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing()));//they are suttle, so make extra
+		
+	
 		entityPlayer.getCurrentEquippedItem().damageItem(1, entityPlayer);
 	}
 
 	public static void addRecipe() 
 	{
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.itemEnderBook), "eee", "ebe",
-				"eee", 'e', Items.ender_pearl, 'b', Items.book);
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.itemEnderBook), 
+				"eee", 
+				"ebe",
+				"eee", 
+				'e', Items.ender_pearl, 
+				'b', Items.book);
 
-		if(ModLoader.configSettings.uncraftGeneral) 
-			GameRegistry.addSmelting(ItemRegistry.itemEnderBook, new ItemStack(
-					Items.ender_pearl, 8), 0);
+		if(ModSamsContent.configSettings.uncraftGeneral) 
+			GameRegistry.addSmelting(ItemRegistry.itemEnderBook, 
+					new ItemStack(Items.ender_pearl, 8), 0);
 	}
 }
  

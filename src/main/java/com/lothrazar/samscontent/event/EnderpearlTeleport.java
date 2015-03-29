@@ -7,7 +7,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 
 public class EnderpearlTeleport 

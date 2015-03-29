@@ -5,7 +5,8 @@ import java.util.List;
 import java.util.Random; 
 
 import com.google.common.collect.Sets; 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -39,7 +40,7 @@ public class ItemWandBuilding extends ItemTool
 		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
     	this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 
 	public static int DURABILITY = 200;

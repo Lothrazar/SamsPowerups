@@ -2,7 +2,8 @@ package com.lothrazar.samscontent.item;
 
 import java.util.ArrayList;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -33,7 +34,7 @@ public class ItemWandCopyPaste  extends Item
 	public ItemWandCopyPaste()
 	{  
 		super();  
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
     	this.setMaxDamage(99); 
 		this.setMaxStackSize(1);
 	}

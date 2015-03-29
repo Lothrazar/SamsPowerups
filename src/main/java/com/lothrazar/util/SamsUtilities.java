@@ -23,7 +23,7 @@ import net.minecraft.world.World;
 import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard; 
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.sun.istack.internal.logging.Logger;
 
 public class SamsUtilities
@@ -269,7 +269,7 @@ public class SamsUtilities
 			 
 			 if(b == null)
 			 {
-				 ModLoader.logger.log(Level.WARN, "getBlockListFromCSV : Block not found : "+id);
+				 ModSamsContent.logger.log(Level.WARN, "getBlockListFromCSV : Block not found : "+id);
 			 }
 			 else 
 			 {
@@ -298,7 +298,7 @@ public class SamsUtilities
 			 
 			if(isItNull == null)
 			{
-				ModLoader.logger.log(Level.WARN, "Item not found : "+ ids[i]);
+				ModSamsContent.logger.log(Level.WARN, "Item not found : "+ ids[i]);
 			}
 			else
 			{
@@ -319,8 +319,6 @@ public class SamsUtilities
 		player.setPositionAndUpdate(coords.getX(), coords.getY(), coords.getZ()); 
 
 		moveEntityWallSafe(player, world);
-		  
-		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
 	}
 	
 	public static void moveEntityWallSafe(EntityLivingBase entity, World world) 

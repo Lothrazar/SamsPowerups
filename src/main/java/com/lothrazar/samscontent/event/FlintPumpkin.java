@@ -7,15 +7,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.item.ItemRegistry;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 
 public class FlintPumpkin 
 {
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
-		if(ModLoader.configSettings.flintPumpkin == false){return;}
+		if(ModSamsContent.configSettings.flintPumpkin == false){return;}
 		if(event.world.isRemote){ return; }//server side only!
 		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  

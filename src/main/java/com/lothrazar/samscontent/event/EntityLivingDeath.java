@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.event;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -21,7 +21,7 @@ public class EntityLivingDeath
  
 		EntityPlayer player = (EntityPlayer)event.entity;
 		
-		if(ModLoader.configSettings.dropPlayerSkullOnDeath)
+		if(ModSamsContent.configSettings.dropPlayerSkullOnDeath)
 		{ 
 			ItemStack skull =  new ItemStack(Items.skull,1,Reference.skull_player);
 			if(skull.getTagCompound() == null) skull.setTagCompound(new NBTTagCompound()); 
@@ -30,7 +30,7 @@ public class EntityLivingDeath
 			SamsUtilities.dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);
 		}
 		
-		if(ModLoader.configSettings.playerDeathCoordinates)
+		if(ModSamsContent.configSettings.playerDeathCoordinates)
 		{
 			String coordsStr = SamsUtilities.posToString(player.getPosition()); 
 			SamsUtilities.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);

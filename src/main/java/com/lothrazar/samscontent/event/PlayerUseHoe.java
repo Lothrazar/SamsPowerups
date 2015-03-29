@@ -1,7 +1,7 @@
 package com.lothrazar.samscontent.event;
 
-import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.item.ItemRegistry;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;
@@ -15,7 +15,7 @@ public class PlayerUseHoe
 	@SubscribeEvent
 	public void onHoeUse(UseHoeEvent event)
 	{ 
-		if(ModLoader.configSettings.beetroot == false){return;}
+		if(ModSamsContent.configSettings.beetroot == false){return;}
 		if(event.world.isRemote){return;}
 		if(event.world.isAirBlock(event.pos.up()) == false){return;}
 		//this fires BEFORE the block turns into farmland (is cancellable) so check for grass and dirt, not farmland

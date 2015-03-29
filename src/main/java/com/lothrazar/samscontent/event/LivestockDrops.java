@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.event;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.client.Minecraft;
@@ -30,7 +30,7 @@ public class LivestockDrops
 	{ 
 		if(event.entity.worldObj.isRemote) {return;}
 		
-		if(ModLoader.configSettings.petNametagDrops && 
+		if(ModSamsContent.configSettings.petNametagDrops && 
 				isPet(event.entity) )
 		{ 
 			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
@@ -51,7 +51,7 @@ public class LivestockDrops
 				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, event.entity.getPosition(), nameTag); 
 			}
 		}
-		if(ModLoader.configSettings.petNametagChat && 
+		if(ModSamsContent.configSettings.petNametagChat && 
 				event.entity instanceof EntityLiving )
 		{ 
 			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag

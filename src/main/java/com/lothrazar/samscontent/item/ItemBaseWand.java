@@ -7,7 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 public class ItemBaseWand extends Item
@@ -15,7 +16,7 @@ public class ItemBaseWand extends Item
 	public ItemBaseWand()
 	{
 		super();
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
  
 	public static void addRecipe() 
@@ -27,7 +28,7 @@ public class ItemBaseWand extends Item
 			, 'e', Items.emerald
 			, 'b', Items.blaze_rod  );
 		
-		if(ModLoader.configSettings.uncraftGeneral)
+		if(ModSamsContent.configSettings.uncraftGeneral)
 			GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);
 	} 
 }

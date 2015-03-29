@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.event;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -18,7 +18,7 @@ public class ZombieDrops
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)
 	{
-		if(ModLoader.configSettings.removeZombieCarrotPotato 
+		if(ModSamsContent.configSettings.removeZombieCarrotPotato 
 		  && event.entity instanceof EntityZombie)
 		{  
 			for(int i = 0; i < event.drops.size(); i++) 

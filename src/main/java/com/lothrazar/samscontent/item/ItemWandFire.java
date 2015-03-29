@@ -2,7 +2,8 @@ package com.lothrazar.samscontent.item;
 
 import java.util.ArrayList;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -26,7 +27,7 @@ public class ItemWandFire  extends Item
 	public ItemWandFire()
 	{  
 		super();  
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
     	this.setMaxDamage(DURABILITY); 
 		this.setMaxStackSize(1);
 	}

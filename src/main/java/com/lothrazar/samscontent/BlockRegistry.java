@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.block;
+package com.lothrazar.samscontent;
 
 import java.util.ArrayList;
 
@@ -9,7 +9,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.block.BlockBucketStorage;
+import com.lothrazar.samscontent.block.BlockCommandBlockCraftable;
+import com.lothrazar.samscontent.block.BlockCropBeetroot;
+import com.lothrazar.samscontent.block.BlockFishing;
+import com.lothrazar.samscontent.block.BlockShearWool;
+import com.lothrazar.samscontent.block.BlockXRay;
+import com.lothrazar.samscontent.block.TileEntityBucketStorage;
 import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
 import com.lothrazar.util.Reference; 
 
@@ -45,30 +51,28 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
-		if(ModLoader.configSettings.beetroot)
+		if(ModSamsContent.configSettings.beetroot)
 		{
 			beetrootCrop = (BlockCropBeetroot) new BlockCropBeetroot();
 
 			BlockRegistry.registerBlock(beetrootCrop, "beetroot_crop"); 
 		}
-		
-		
 		 
-		if(ModLoader.configSettings.storeWaterBlock)
+		if(ModSamsContent.configSettings.storeWaterBlock)
 		{
 			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket); 
 			
 			registerBlock(BlockRegistry.block_storewater, "block_storewater");
 
 		}
-		if(ModLoader.configSettings.storeMilkBlock)
+		if(ModSamsContent.configSettings.storeMilkBlock)
 		{
 			BlockRegistry.block_storemilk = new BlockBucketStorage(Items.milk_bucket); 
 			
 			BlockRegistry.registerBlock(BlockRegistry.block_storemilk, "block_storemilk");
 
 		}
-		if(ModLoader.configSettings.storeLavaBlock)
+		if(ModSamsContent.configSettings.storeLavaBlock)
 		{
 			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket); 
 			
@@ -76,20 +80,20 @@ public class BlockRegistry
 	  
 		}
 
-		if(ModLoader.configSettings.storeLavaBlock || ModLoader.configSettings.storeWaterBlock || ModLoader.configSettings.storeMilkBlock)
+		if(ModSamsContent.configSettings.storeLavaBlock || ModSamsContent.configSettings.storeWaterBlock || ModSamsContent.configSettings.storeMilkBlock)
 		{
 			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
 		
 			BlockRegistry.block_storeempty = new BlockBucketStorage(null); 
 			
-			BlockRegistry.block_storeempty.setCreativeTab(ModLoader.tabSamsContent);
+			BlockRegistry.block_storeempty.setCreativeTab(ModSamsContent.tabSamsContent);
 
 			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
 			
 			BlockRegistry.block_storeempty.addRecipe();
 			
 		}
-		if(ModLoader.configSettings.shearSheepBlock)
+		if(ModSamsContent.configSettings.shearSheepBlock)
 		{
 			BlockRegistry.block_spike = new BlockShearWool(); 
 			
@@ -98,7 +102,7 @@ public class BlockRegistry
 			BlockShearWool.addRecipe();
 		}
 		
-		if(ModLoader.configSettings.fishingNetBlock)
+		if(ModSamsContent.configSettings.fishingNetBlock)
 		{
 			BlockRegistry.block_fishing = new BlockFishing(); 
 			
@@ -107,7 +111,7 @@ public class BlockRegistry
 			BlockFishing.addRecipe();
 		}
   
-		if(ModLoader.configSettings.weatherBlock) 
+		if(ModSamsContent.configSettings.weatherBlock) 
 		{
 			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
 	 
@@ -116,7 +120,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_weather,new ItemStack(Items.water_bucket));
 		}
 		 
-		if(ModLoader.configSettings.teleportSpawnBlock) 
+		if(ModSamsContent.configSettings.teleportSpawnBlock) 
 		{ 
 			BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
 	 
@@ -125,7 +129,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpspawn,new ItemStack(Items.ender_eye));
 		}
 
-		if(ModLoader.configSettings.teleportBedBlock) 
+		if(ModSamsContent.configSettings.teleportBedBlock) 
 		{ 
 			BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
 	 
@@ -134,7 +138,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
 		}
 		
-		if(ModLoader.configSettings.gameruleBlockRegen)
+		if(ModSamsContent.configSettings.gameruleBlockRegen)
 		{ 
 			BlockRegistry.command_block_regen = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.naturalRegeneration);
 	 
@@ -143,7 +147,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_regen,new ItemStack(Items.golden_apple) );  
 		} 
 		
-		if(ModLoader.configSettings.gameruleBlockDaylight)
+		if(ModSamsContent.configSettings.gameruleBlockDaylight)
 		{
 			BlockRegistry.command_block_daycycle = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doDaylightCycle);
 			 
@@ -152,7 +156,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_daycycle,new ItemStack( Blocks.glowstone) ); 
 		}
 		
-		if(ModLoader.configSettings.gameruleBlockFiretick)
+		if(ModSamsContent.configSettings.gameruleBlockFiretick)
 		{ 
 			BlockRegistry.command_block_firetick = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doFireTick);
  
@@ -161,7 +165,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_firetick,new ItemStack( Items.lava_bucket) ); 
 		}
 		
-		if(ModLoader.configSettings.gameruleBlockMobgrief)
+		if(ModSamsContent.configSettings.gameruleBlockMobgrief)
 		{ 
 			BlockRegistry.command_block_mobgrief = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.mobGriefing);
  
@@ -170,7 +174,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_mobgrief,new ItemStack( Blocks.tnt) );  
 		}
  
-		if(ModLoader.configSettings.xRayBlock)
+		if(ModSamsContent.configSettings.xRayBlock)
 		{ 
 			BlockRegistry.block_xray = new BlockXRay(); 
 			

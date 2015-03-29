@@ -79,10 +79,10 @@ import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
   
 @Mod(modid = Reference.MODID, version = Reference.VERSION	, canBeDeactivated = false, name = Reference.NAME, useMetadata = true ,guiFactory = "com.lothrazar.samscontent.cfg.ConfigGuiFactory") 
-public class ModLoader
+public class ModSamsContent
 {
 	@Instance(value = Reference.MODID)
-	public static ModLoader instance;
+	public static ModSamsContent instance;
 	@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
 	public static CommonProxy proxy;   
 	
@@ -143,22 +143,22 @@ public class ModLoader
 		
 		achievements.registerAll();
 		
-		CreativeTweaks.registerTabImprovements();
+		CreativeInventoryTweaks.registerTabImprovements();
 	
 		MobSpawningRegistry.registerSpawns();
   
 		ChestGen.regsiterLoot();
 		  
-		Recipes.registerRecipes();
+		RecipeRegistry.registerRecipes();
 		 
 		StackSizeIncreaser.registerChanges(); 
  
-  		if(ModLoader.configSettings.moreFuel) 
+  		if(ModSamsContent.configSettings.moreFuel) 
   		{
   			GameRegistry.registerFuelHandler(new FurnaceFuel()); 
   		}
   		
-  		if(ModLoader.configSettings.worldGenClayOceans)
+  		if(ModSamsContent.configSettings.worldGenClayOceans)
 		{ 
 			GameRegistry.registerWorldGenerator(new WorldGenClay(), 0); //zero is Weight of generator
 		}
@@ -174,28 +174,28 @@ public class ModLoader
 	@EventHandler
 	public void onServerStarting(FMLServerStartingEvent event)
 	{
-		if(ModLoader.configSettings.searchtrade) 
+		if(ModSamsContent.configSettings.searchtrade) 
 			event.registerServerCommand(new CommandSearchTrades()); 
 		
-		if(ModLoader.configSettings.searchitem) 
+		if(ModSamsContent.configSettings.searchitem) 
 			event.registerServerCommand(new CommandSearchItem()); 
 		
-		if(ModLoader.configSettings.searchspawner) 
+		if(ModSamsContent.configSettings.searchspawner) 
 			event.registerServerCommand(new CommandSearchSpawner()); 
 		 
-		if(ModLoader.configSettings.simplewaypoint) 
+		if(ModSamsContent.configSettings.simplewaypoint) 
 			event.registerServerCommand(new CommandSimpleWaypoints()); 
 		
-		if(ModLoader.configSettings.todo) 
+		if(ModSamsContent.configSettings.todo) 
 			event.registerServerCommand(new CommandTodoList());  
 		 
-		if(ModLoader.configSettings.kit)  
+		if(ModSamsContent.configSettings.kit)  
 			event.registerServerCommand(new CommandKit()); 
   
-		if(ModLoader.configSettings.home) 
+		if(ModSamsContent.configSettings.home) 
 			event.registerServerCommand(new CommandWorldHome()); 
 		
-		if(ModLoader.configSettings.worldhome) 
+		if(ModSamsContent.configSettings.worldhome) 
 			event.registerServerCommand(new CommandHome());
 	}
   

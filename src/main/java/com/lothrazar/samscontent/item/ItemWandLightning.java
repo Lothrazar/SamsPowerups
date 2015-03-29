@@ -2,7 +2,8 @@ package com.lothrazar.samscontent.item;
 
 import java.util.ArrayList;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -27,7 +28,7 @@ public class ItemWandLightning  extends Item
 	public ItemWandLightning()
 	{  
 		super();  
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
     	this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
 	}
@@ -47,7 +48,7 @@ public class ItemWandLightning  extends Item
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
 		
-		if(ModLoader.configSettings.wandLightning == false ) {return;}
+		if(ModSamsContent.configSettings.wandLightning == false ) {return;}
 		if(held.getItem() != ItemRegistry.wandLightning ) {return;}
 		 
 		ArrayList<BlockPos> hits = new ArrayList<BlockPos>();

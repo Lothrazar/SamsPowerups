@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.event;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -13,7 +13,7 @@ public class EntityTorchCollide
 	@SubscribeEvent
 	public void onLivingUpdate(LivingUpdateEvent event)
 	{
-		if(ModLoader.configSettings.fragileTorches == false) { return; }
+		if(ModSamsContent.configSettings.fragileTorches == false) { return; }
 		
 		if(event.entityLiving == null){return;}//it could be an entity thats not living
 		

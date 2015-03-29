@@ -6,8 +6,8 @@ import org.lwjgl.input.Keyboard;
 
 import  net.minecraft.item.Item;
 
-import com.lothrazar.samscontent.block.BlockRegistry;
-import com.lothrazar.samscontent.item.ItemRegistry;
+import com.lothrazar.samscontent.BlockRegistry;
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.client.registry.ClientRegistry;

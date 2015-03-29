@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import com.lothrazar.samscontent.item.ItemRegistry;
+import com.lothrazar.samscontent.ItemRegistry;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;

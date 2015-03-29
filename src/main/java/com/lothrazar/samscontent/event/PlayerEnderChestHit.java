@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.event;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -13,7 +13,7 @@ public class PlayerEnderChestHit
  	{      
 		if(event.action == event.action.LEFT_CLICK_BLOCK)
 		{
-			if(ModLoader.configSettings.smartEnderchest && 
+			if(ModSamsContent.configSettings.smartEnderchest && 
 					event.entityPlayer.getCurrentEquippedItem() != null && 
 					event.entityPlayer.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.ender_chest) )
 			{

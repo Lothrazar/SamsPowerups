@@ -1,7 +1,8 @@
 package com.lothrazar.samscontent.item;
 
 import com.google.common.collect.Sets;  
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -43,7 +44,7 @@ public class ItemWandProspect extends ItemTool
 		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
     	this.setMaxDamage(DURABILITY); 
 		this.setMaxStackSize(1);
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	   
 	@Override

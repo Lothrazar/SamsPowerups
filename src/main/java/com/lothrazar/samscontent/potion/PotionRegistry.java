@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.potion;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 
 import net.minecraft.potion.Potion;
 import net.minecraft.util.ResourceLocation;
@@ -32,17 +32,17 @@ public class PotionRegistry
  
 	private static void registerNewPotionEffects() 
 	{ 
-		PotionRegistry.tired = (new PotionCustom(ModLoader.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
+		PotionRegistry.tired = (new PotionCustom(ModSamsContent.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
 		
-		PotionRegistry.waterwalk = (new PotionCustom(ModLoader.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
+		PotionRegistry.waterwalk = (new PotionCustom(ModSamsContent.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		PotionRegistry.lavawalk = (new PotionCustom(ModLoader.configSettings.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
+		PotionRegistry.lavawalk = (new PotionCustom(ModSamsContent.configSettings.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
-		PotionRegistry.slowfall = (new PotionCustom(ModLoader.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModSamsContent.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		
-		PotionRegistry.flying = (new PotionCustom(ModLoader.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
+		PotionRegistry.flying = (new PotionCustom(ModSamsContent.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
 		
-		PotionRegistry.ender = (new PotionCustom(ModLoader.configSettings.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
+		PotionRegistry.ender = (new PotionCustom(ModSamsContent.configSettings.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 	}
 
 	private static void initPotionTypesReflection() 

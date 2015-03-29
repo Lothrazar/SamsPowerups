@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.samscontent.ModLoader; 
+import com.lothrazar.samscontent.ModSamsContent; 
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -44,7 +44,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		potionIds = new ArrayList<Integer>();
 		potionDurations = new ArrayList<Integer>();
 		potionAmplifiers = new ArrayList<Integer>();
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	 
 	public ItemFoodAppleMagic addEffect(int potionId,int potionDuration,int potionAmplifier)
@@ -97,7 +97,7 @@ public class ItemFoodAppleMagic extends ItemFood
 			,'l', ingredient
 			,'a', Items.apple);
 		
-		if(ModLoader.configSettings.uncraftGeneral) 
+		if(ModSamsContent.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(apple, new ItemStack(ingredient.getItem(), 8),	0);
 	} 
 	 

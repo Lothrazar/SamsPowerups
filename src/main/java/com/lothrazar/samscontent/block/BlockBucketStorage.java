@@ -2,8 +2,9 @@ package com.lothrazar.samscontent.block;
 
 import java.util.Random;
 
-import com.lothrazar.samscontent.ModLoader;
-import com.lothrazar.samscontent.item.ItemRegistry;
+import com.lothrazar.samscontent.BlockRegistry;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;
@@ -34,7 +35,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 { 
 	private Item bucketItem;
 	
-	protected BlockBucketStorage(Item bucketIn) 
+	public BlockBucketStorage(Item bucketIn) 
 	{
 		super(Material.iron);
 		this.setHardness(5F);

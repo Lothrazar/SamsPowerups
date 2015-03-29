@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.potion;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
 
 import net.minecraft.block.Block;
@@ -84,7 +84,7 @@ public class EntityPotionTick
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
 	    	 if(event.entityLiving.motionY < 0)
 	    	 { 
-				event.entityLiving.motionY *= ModLoader.configSettings.slowfallSpeed;
+				event.entityLiving.motionY *= ModSamsContent.configSettings.slowfallSpeed;
 				  
 				event.entityLiving.fallDistance = 0f; //for no fall damage
 	    	 } 

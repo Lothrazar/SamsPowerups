@@ -72,6 +72,7 @@ public class CommandHome implements ICommand
 			 coords = block.getBedSpawnPosition(world, coords, player);
 
 			 SamsUtilities.teleportWallSafe(player, world, coords); 
+			 world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
 		 }
 		 else
 		 {

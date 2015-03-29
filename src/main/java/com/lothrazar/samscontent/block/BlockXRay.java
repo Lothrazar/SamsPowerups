@@ -3,7 +3,8 @@ package com.lothrazar.samscontent.block;
 import java.util.ArrayList;
 import java.util.Random; 
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.BlockRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -36,7 +37,7 @@ public class BlockXRay extends Block
 	public BlockXRay()
 	{
 		super(Material.glass); 
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 		this.setHardness(4F); 
 		this.setResistance(5F); 
 		this.setStepSound(soundTypeGlass);
@@ -76,7 +77,7 @@ public class BlockXRay extends Block
 				'g', Blocks.glass, 
 				'o', Blocks.obsidian);
 
-		if(ModLoader.configSettings.uncraftGeneral) 
+		if(ModSamsContent.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(new ItemStack(BlockRegistry.block_xray)
 			, new ItemStack(Blocks.web, 4), 0);
 	}

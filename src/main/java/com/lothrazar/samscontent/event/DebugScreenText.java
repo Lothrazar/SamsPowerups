@@ -14,7 +14,7 @@ import java.util.Random;
 
 import org.apache.logging.log4j.Logger; 
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.potion.PotionRegistry;
@@ -64,7 +64,7 @@ public class DebugScreenText
 	{ 
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false){return;}
 
-		if(ModLoader.configSettings.debugClearRight )
+		if(ModSamsContent.configSettings.debugClearRight )
 		{ 
 			event.right.clear();
 		}
@@ -80,17 +80,17 @@ public class DebugScreenText
 	
 		addDateTimeInfo(event, world);
 		  
-	 	if(ModLoader.configSettings.debugSlime && player.dimension == Reference.Dimension.overworld)
+	 	if(ModSamsContent.configSettings.debugSlime && player.dimension == Reference.Dimension.overworld)
 	 	{ 
 	    	addSlimeChunkInfo(event, player, world); 
 	 	}
 	 	
-	 	if(ModLoader.configSettings.debugVillageInfo && world.villageCollectionObj != null)
+	 	if(ModSamsContent.configSettings.debugVillageInfo && world.villageCollectionObj != null)
 	 	{   
 			 addVillageInfo(event, player, world);	 
 		 }
 	 	
-	 	if(ModLoader.configSettings.debugHorseInfo && player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
+	 	if(ModSamsContent.configSettings.debugHorseInfo && player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
 	 	{ 
 	 		addHorseInfo(event, player);   
 	 	} 

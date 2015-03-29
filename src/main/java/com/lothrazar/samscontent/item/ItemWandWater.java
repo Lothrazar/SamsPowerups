@@ -2,7 +2,8 @@ package com.lothrazar.samscontent.item;
 
 import java.util.ArrayList;
 
-import com.lothrazar.samscontent.ModLoader;
+import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -26,7 +27,7 @@ public class ItemWandWater  extends Item
 	public ItemWandWater()
 	{  
 		super();  
-		this.setCreativeTab(ModLoader.tabSamsContent);
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
     	this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
 	}
@@ -46,7 +47,7 @@ public class ItemWandWater  extends Item
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
 		
-		if(ModLoader.configSettings.wandWater == false ) {return;}
+		if(ModSamsContent.configSettings.wandWater == false ) {return;}
 		if(held.getItem() != ItemRegistry.wandWater ) {return;}
 		
 		if(event.face == null){return;}//n o idea why this is null sometimes but it is
