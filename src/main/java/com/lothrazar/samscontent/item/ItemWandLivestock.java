@@ -105,7 +105,7 @@ public class ItemWandLivestock extends ItemTool
 			else
 				entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(Items.spawn_egg,1,entity_id),true);
 
-			SamsUtilities.playSoundAt(entityPlayer, "random.fizz");
+			SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
 			SamsUtilities.damageOrBreakHeld(entityPlayer);
 		} 
 	}

@@ -93,9 +93,7 @@ public class ItemWandCopyPaste  extends Item
 	 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		if(event.world.isRemote){ return ;}//server side only!
-		
+  	{  
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
 		  
@@ -104,6 +102,8 @@ public class ItemWandCopyPaste  extends Item
 		if(held.getItem() == ItemRegistry.wandCopy &&   
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{   
+			boolean isValid = false;
+			
 			if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
 			{
 				TileEntitySign sign = (TileEntitySign)event.world.getTileEntity(event.pos);
@@ -116,6 +116,8 @@ public class ItemWandCopyPaste  extends Item
 				{
 					ItemWandCopyPaste.pasteSign(event.world,event.entityPlayer,sign,held); 
 				} 
+				
+				isValid = true; 
 			}
 			if(blockClicked == Blocks.noteblock)
 			{
@@ -129,6 +131,22 @@ public class ItemWandCopyPaste  extends Item
 				{
 					ItemWandCopyPaste.pasteNote(event.world,event.entityPlayer,noteblock,held); 
 				} 
+				
+				isValid = true; 
+			} 
+			
+			if(isValid)
+			{
+				if(event.world.isRemote)
+				{	
+					SamsUtilities.spawnParticle(event.world, EnumParticleTypes.PORTAL, event.pos); 
+				}
+				else
+				{
+					SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+				}
+				
+				SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
 			} 
 		}
   	}
