@@ -46,32 +46,33 @@ public class ItemWandLightning  extends Item
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{       
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		
+		if(held == null) { return; }//empty hand so do nothing 
 		if(ModSamsContent.configSettings.wandLightning == false ) {return;}
 		if(held.getItem() != ItemRegistry.wandLightning ) {return;}
 		 
-		ArrayList<BlockPos> hits = new ArrayList<BlockPos>();
-		hits.add(event.pos.east(range));
-		hits.add(event.pos.west(range));
-		hits.add(event.pos.north(range));
-		hits.add(event.pos.south(range));//TODO: do a circle or radius, or random spots?? different modes one day?
-		
 		if( event.action.RIGHT_CLICK_BLOCK == event.action )
 		{    
-			if(event.entityPlayer.isSneaking() == false)
+			if(event.entityPlayer.isSneaking() == false) //normal attack: the clicked block
+			{	    
+				event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, event.pos.getX(), event.pos.getY(), event.pos.getZ()));
+			
+				SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+			}
+			else //radius all around the player
 			{ 
+				BlockPos center = event.entityPlayer.getPosition();
+				ArrayList<BlockPos> hits = new ArrayList<BlockPos>();
+				hits.add(center.east(range));
+				hits.add(center.west(range));
+				hits.add(center.north(range));
+				hits.add(center.south(range));//TODO: do a circle or radius, or random spots?? different modes one day?
+				
 				for(BlockPos hit : hits)
 				{ 
 				    event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
 				}
 				 
-				if(event.world.isRemote == false)//only damage the item on the server.
-				{ 
-					//unlike other events, we spawn the bolt in both client and server side.
-					//if the spawnEntity was only server side, it would be invisible
-					SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
-				}
+				SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
 			} 
 		} 
   	}
