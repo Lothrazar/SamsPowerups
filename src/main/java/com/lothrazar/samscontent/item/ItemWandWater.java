@@ -42,7 +42,7 @@ public class ItemWandWater  extends Item
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
-		if(event.world.isRemote){ return ;}//server side only!
+		//if(event.world.isRemote){ return ;}//server side only!
 		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
@@ -54,6 +54,7 @@ public class ItemWandWater  extends Item
 		 
 		boolean success = false;
 		BlockPos offset = event.pos.offset(event.face);
+		
 		
 		if( event.action.RIGHT_CLICK_BLOCK == event.action )
 		{   
@@ -80,11 +81,12 @@ public class ItemWandWater  extends Item
 
 		if(success)
 		{ 
-			SamsUtilities.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, event.pos);
-			SamsUtilities.playSoundAt(event.entityPlayer, "liquid.water");
+			if(event.world.isRemote)
+				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, offset);
+			else
+				SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
 			
-			SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
-			 
+			SamsUtilities.playSoundAt(event.entityPlayer, "liquid.water"); 
 		}
   	}
 }
