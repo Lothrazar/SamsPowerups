@@ -30,18 +30,16 @@ public class ItemWandCopyPaste  extends Item
 {
 	public static int DURABILITY;
 
-
 	public ItemWandCopyPaste()
 	{  
 		super();  
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
-    	this.setMaxDamage(99); 
+    	this.setMaxDamage(DURABILITY); 
 		this.setMaxStackSize(1);
 	}
- 
-	
-
-	public static void addRecipe() {
+  
+	public static void addRecipe() 
+	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandCopy),
 			ItemRegistry.baseWand, 
 			Items.paper  );
@@ -89,8 +87,7 @@ public class ItemWandCopyPaste  extends Item
 
 		entityPlayer.swingItem();
 	} 
-	
-	
+	 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
