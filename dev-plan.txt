@@ -1,3 +1,12 @@
+//TODO: telep wand that does home/worldhome? single use items like edible ender pearls?
+//TODO: keybind to flip 90 degrees backwards
+make chest wand into oneuse item, the 'empty sack'
+//potion effect or held token consumable that keeps your items when you die? look for playerRespawn event?
+//TODO: jump/sidestrafe/dodge keybind.
+//keyb to shrink to 1 height if possible
+new firey wand that shoots the fire charges
+new ice wand that turns water to ice AND... maybve shoot ice projectile? OR put in 'Frozen solid" potion effect, stops movement
+
 //TODO: milk storage texture
 //TODO: remote or portable workbench
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
