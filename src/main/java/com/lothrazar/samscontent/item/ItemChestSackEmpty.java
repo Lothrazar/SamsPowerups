@@ -49,6 +49,9 @@ public class ItemChestSackEmpty extends Item
 			Items.leather,
 			Items.string,
 			Blocks.chest  );
+		
+		if(ModSamsContent.configSettings.uncraftGeneral)
+			GameRegistry.addSmelting(ItemRegistry.wandChest, new ItemStack(Items.leather), 0);
 	}
 
 	public void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
