@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.item;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModSamsContent;
@@ -18,6 +19,7 @@ import net.minecraft.tileentity.TileEntityNote;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
@@ -74,6 +76,8 @@ public class ItemWandCopyPaste  extends Item
 		entityPlayer.swingItem();
 	}
 
+	
+	
 	public static void copyNote(World world, EntityPlayer entityPlayer,TileEntityNote noteblock, ItemStack held) 
 	{ 
 		if(held.getTagCompound() == null) held.setTagCompound(new NBTTagCompound());
@@ -150,4 +154,36 @@ public class ItemWandCopyPaste  extends Item
 			} 
 		}
   	}
+	
+	
+	@Override
+	public void addInformation(ItemStack held, EntityPlayer player, List list, boolean par4) 
+	{  
+		if(held.getTagCompound() == null)
+		{
+			list.add("Shift click to copy a sign or noteblock"); 
+			return;
+		}
+		
+		String sign = SamsUtilities.getItemStackNBT(held, KEY_SIGN0)
+				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN1)
+				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN2)
+				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN3);
+		
+		if(sign.length() > 0)
+		{ 
+			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN0));
+			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN1));
+			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN2));
+			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN3));
+		}
+ 
+		String s = SamsUtilities.noteToString(held.getTagCompound().getByte(KEY_NOTE));
+
+		if(s != null)
+		{
+			list.add("Note: " + s);
+		} 
+	} 
+	
 }
