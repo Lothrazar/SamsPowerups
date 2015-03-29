@@ -25,6 +25,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ItemWandLightning  extends Item
 {
 	public static int DURABILITY; 
+	public int range = 8; //TODO: in config
+	
 	public ItemWandLightning()
 	{  
 		super();  
@@ -40,7 +42,6 @@ public class ItemWandLightning  extends Item
 			Items.ghast_tear  );
 	}
 	 
-	public int range = 8; //TODO: in config
 	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
@@ -53,8 +54,12 @@ public class ItemWandLightning  extends Item
 		if( event.action.RIGHT_CLICK_BLOCK == event.action )
 		{    
 			if(event.entityPlayer.isSneaking() == false) //normal attack: the clicked block
-			{	    
-				event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, event.pos.getX(), event.pos.getY(), event.pos.getZ()));
+			{	     
+				BlockPos hit = event.pos;
+				
+				if(event.face != null) {hit = event.pos.offset(event.face);}
+				
+				event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
 			
 				SamsUtilities.damageOrBreakHeld(event.entityPlayer);
 			}
