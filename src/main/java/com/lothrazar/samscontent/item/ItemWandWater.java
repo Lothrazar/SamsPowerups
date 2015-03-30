@@ -98,15 +98,42 @@ public class ItemWandWater  extends Item
 				}  
 			}
 			else //not sneaking, regular item use
-			{ 
+			{  
 				if(event.world.isAirBlock(offset) || 
-					event.world.getBlockState(offset).getBlock() == Blocks.flowing_water)
+						waterBoth.contains(event.world.getBlockState(offset).getBlock()))
 				{ 
 					event.world.setBlockState(offset,  Blocks.water.getDefaultState()); 
-					
-					success = true;
+					 
+					success = true; 
 				}
-			} 
+				/*
+				System.out.println("UUPPPP "+event.world.getBlockState(offset.up()).getBlock().getUnlocalizedName());
+				if(event.world.getBlockState(offset.up()).getBlock() == Blocks.flowing_water)
+				{
+					event.world.setBlockState(offset.up(),  Blocks.water.getDefaultState()); 
+					success = true; 
+				}
+				if(event.world.getBlockState(offset.west()).getBlock() == Blocks.flowing_water)
+				{
+					event.world.setBlockState(offset.west(),  Blocks.water.getDefaultState()); 
+					success = true; 
+				}
+				if(event.world.getBlockState(offset.east()).getBlock() == Blocks.flowing_water)
+				{
+					event.world.setBlockState(offset.east(),  Blocks.water.getDefaultState()); 
+					success = true; 
+				}
+				if(event.world.getBlockState(offset.south()).getBlock() == Blocks.flowing_water)
+				{
+					event.world.setBlockState(offset.south(),  Blocks.water.getDefaultState()); 
+					success = true; 
+				}
+				if(event.world.getBlockState(offset.north()).getBlock() == Blocks.flowing_water)
+				{
+					event.world.setBlockState(offset.north(),  Blocks.water.getDefaultState()); 
+					success = true; 
+				}*/
+			}
 		}
 		 
 		if(success)
