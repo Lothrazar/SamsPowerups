@@ -22,13 +22,19 @@ public class ItemBaseWand extends Item
 	public static void addRecipe() 
 	{
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.baseWand)
-			,"beb"
+			,"b  "
 			," b "
-			," b "
-			, 'e', Items.emerald
-			, 'b', Items.blaze_rod  );
+			,"  b" 
+			,'b', Items.blaze_rod  );
 		
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.baseWand)
+			,"  b"
+			," b "
+			,"b  " 
+			,'b', Items.blaze_rod  );
+		
+
 		if(ModSamsContent.configSettings.uncraftGeneral)
-			GameRegistry.addSmelting(ItemRegistry.wandBuilding, new ItemStack(Items.emerald,1,0),0);
+			GameRegistry.addSmelting(ItemRegistry.baseWand, new ItemStack(Items.blaze_rod,3), 0);
 	} 
 }
