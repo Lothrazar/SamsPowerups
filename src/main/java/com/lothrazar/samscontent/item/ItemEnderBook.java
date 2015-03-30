@@ -30,14 +30,14 @@ import net.minecraftforge.common.config.Property;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraft.util.MathHelper;
 
-public class ItemEnderBook extends ItemTool
+public class ItemEnderBook extends Item
 { 
 	public final static String KEY_LOC = "location"; 
 	public static int DURABILITY;
 	
 	public ItemEnderBook()
 	{  
-		super(1.0F,Item.ToolMaterial.WOOD, Sets.newHashSet()); 
+		super(); 
     	this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
@@ -105,10 +105,7 @@ public class ItemEnderBook extends ItemTool
 	}  
 	
 	public void teleport(World world, EntityPlayer entityPlayer, ItemStack enderBookInstance) 
-	{ 
-		int slot = entityPlayer.inventory.currentItem + 1;
-    	//String KEY = ItemEnderBook.KEY_LOC + "_" + slot;
-    	
+	{  
 		String csv = enderBookInstance.getTagCompound().getString(KEY_LOC);
 		
 		if(csv == null || csv.isEmpty()) {return;}
