@@ -37,6 +37,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper; 
 import net.minecraft.world.World;
+import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandHarvest extends Item
@@ -65,8 +66,7 @@ public class ItemWandHarvest extends Item
     }
 	 
 	public void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
-	{ 
-		int isFullyGrown = 7; //certain this is full for wheat. applies to other plants as well 
+	{  
 		//http://www.minecraftforge.net/wiki/Plants
  
 		int x = (int)entityPlayer.posX;
@@ -80,69 +80,49 @@ public class ItemWandHarvest extends Item
 		int zMax = z + RADIUS;
 		
 		int eventy = pos.getY();
-
-		if(world.isRemote == false)  //only drop items in serverside
+		
+		BlockPos posCurrent;
+		
+		int countHarvested = 0;
+		
 		for (int xLoop = xMin; xLoop <= xMax; xLoop++)
 		{ 
 			for (int zLoop = zMin; zLoop <= zMax; zLoop++)
 			{
-				IBlockState bs = entityPlayer.worldObj.getBlockState(new BlockPos(xLoop, eventy, zLoop));
+				posCurrent = new BlockPos(xLoop, eventy, zLoop);
+				IBlockState bs = world.getBlockState(posCurrent);
 				Block blockCheck = bs.getBlock(); 
 
 				if(blockCheck instanceof IGrowable)
-				{
-					//TODO: instead of droppin item on the plaeyer
-					//just world.destropy block and replace it with the .getSeed90
-					//??
-				}
-				//anything here should implemetn IGrowable, and also
-				//extend BlockBush...
-				//but those two dont give access to the seed/crop inside
-				
-				//BlockBush.age
-				//int i = ((Integer)state.getValue(AGE)).intValue();
-
-				//BlockCrops c = (BlockCrops)blockCheck;
-				//BlockBush b =  (BlockBush)blockCheck;
-				 
-				//everything always drops 1 thing. which in a way is 2 things
-				//because we replant for free, so a full grown carrot becomes a fresh planted carrot but also drops one
-				if(blockCheck == Blocks.wheat && Blocks.wheat.getMetaFromState(bs) == isFullyGrown)
 				{ 
-				//	blockDamage = ;
-					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop),Blocks.wheat.getDefaultState());//this plants a seed. it is not 'hay_block'
-					  
-					//entityPlayer.dropItem(Items.wheat, 1); //no seeds, they got replanted
-					
+					IGrowable plant = (IGrowable) blockCheck;
 
-					entityPlayer.dropItem(blockCheck.getItemDropped(bs, world.rand, 0), 1); //no seeds, they got replanted
-				}
-				if( blockCheck == Blocks.carrots && Blocks.carrots.getMetaFromState(bs) == isFullyGrown)
-				{
-					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop), Blocks.carrots.getDefaultState());
-					 
-					entityPlayer.dropItem(Items.carrot, 1); 
-				}
-				if( blockCheck == Blocks.potatoes && Blocks.potatoes.getMetaFromState(bs) == isFullyGrown)
-				{
-					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop), Blocks.potatoes.getDefaultState());
-					 
-					//TODO: poison 
-			       // if (((Integer)state.getValue(AGE)) >= 7 && rand.nextInt(50) == 0)
-			        //    ret.add(new ItemStack(Items.poisonous_potato));
-					entityPlayer.dropItem(Items.potato, 1); 
+					if(plant.canGrow(world, posCurrent, bs, world.isRemote) == false)
+					{  
+						if(world.isRemote == false)  //only drop items in serverside
+							world.destroyBlock(posCurrent, true);
+						//break fully grown, plant new seed
+						world.setBlockState(posCurrent, blockCheck.getDefaultState());//this plants a seed. it is not 'hay_block'
+					
+						countHarvested++;
+					} 
 				} 
 			}  
 		} //end of the outer loop
  
-		entityPlayer.swingItem();
-
-		SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
-		 
-		if(world.isRemote) //client side 
-			SamsUtilities.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
-		else 
-			SamsUtilities.damageOrBreakHeld(entityPlayer); 
+		if(countHarvested > 0)//something happened
+		{ 
+			entityPlayer.swingItem();
+	
+			SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
+			 
+			if(world.isRemote) //client side 
+				SamsUtilities.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
+			else 
+				SamsUtilities.damageOrBreakHeld(entityPlayer); 
+			
+			//TODO: could damage based on countHarvested ?
+		}
 	}
 	
 	@SubscribeEvent
@@ -153,8 +133,9 @@ public class ItemWandHarvest extends Item
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
 		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 
-				event.action.RIGHT_CLICK_BLOCK == event.action && //TODO: IBush or IPlantable or something?
-		    (blockClicked == Blocks.wheat || blockClicked == Blocks.carrots || blockClicked == Blocks.potatoes))
+				event.action.RIGHT_CLICK_BLOCK == event.action//TODO: IBush or IPlantable or something?
+		    // && (blockClicked == Blocks.wheat || blockClicked == Blocks.carrots || blockClicked == Blocks.potatoes)
+		    )
 		{ 
 			ItemRegistry.wandHarvest.replantField(event.world,event.entityPlayer,held,event.pos); 
 		}

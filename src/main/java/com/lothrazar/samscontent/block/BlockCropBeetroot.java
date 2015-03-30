@@ -28,7 +28,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 public class BlockCropBeetroot extends BlockBush implements IGrowable
 {
 	private static int LIGHT = 9;
-	private static int GROWTHMAX = 3;
+	private static int GROWTHMAX = 3;//wheat uses 7 but carrot/potato has 7
 	private static int MAXDROPPED = 3;
 	public static final PropertyInteger AGE = PropertyInteger.create("age", 0, GROWTHMAX);
 
@@ -144,7 +144,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	@Override
 	public boolean canGrow(World worldIn, BlockPos pos, IBlockState state,	boolean isClient) 
 	{
-		return canBlockStay(worldIn,pos,state);
+		return ((Integer)state.getValue(AGE)).intValue() < GROWTHMAX;
 	}
 
 	@Override
