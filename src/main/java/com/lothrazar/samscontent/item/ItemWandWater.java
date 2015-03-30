@@ -41,25 +41,23 @@ public class ItemWandWater  extends Item
 	 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		//if(event.world.isRemote){ return ;}//server side only!
-		
+  	{       
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		if(held == null) { return; }//empty hand so do nothing
 		
 		if(ModSamsContent.configSettings.wandWater == false ) {return;}
 		if(held.getItem() != ItemRegistry.wandWater ) {return;}
 		
-		BlockPos offset;
+		BlockPos hit;
 		
-		if(event.face == null)
-		{
-			//so we clicked Through a block, for example hitting into water, maybe flowing water
-			offset = event.pos;
+		if(event.face == null || event.world.getBlockState(event.pos).getBlock().isReplaceable(event.world, event.pos))
+		{ 
+			hit = event.pos; //if we clicked water, then it does not have a face
+			//or  maybe its replaceable, such as if we clicked on a flower 
 		}
 		else 
-		{
-			offset = event.pos.offset(event.face);//get the neighbouring
+		{ 
+			hit = event.pos.offset(event.face);//get the neighbouring block, like if we hit the side of dirt
 		}
 		
 		boolean success = false;
@@ -68,78 +66,29 @@ public class ItemWandWater  extends Item
 		waterBoth.add(Blocks.flowing_water);
 		waterBoth.add(Blocks.water);
 		
+		Block hitBlock = event.world.getBlockState(hit).getBlock();
+		
 		if( event.action.RIGHT_CLICK_BLOCK == event.action )
-		{   
-			if(event.entityPlayer.isSneaking())
-			{ 
-				if(waterBoth.contains(event.world.getBlockState(offset).getBlock()))
-				{
-					event.world.setBlockToAir(offset);
-					
-					success = true;
-					//also do neighbours, if they are water. here we include flowing now
-					
-					if(waterBoth.contains(event.world.getBlockState(offset.north()).getBlock()))
-					{
-						event.world.setBlockToAir(offset.north()); 
-					} 
-					if(waterBoth.contains(event.world.getBlockState(offset.south()).getBlock()))
-					{
-						event.world.setBlockToAir(offset.south()); 
-					} 
-					if(waterBoth.contains(event.world.getBlockState(offset.east()).getBlock()))
-					{
-						event.world.setBlockToAir(offset.east()); 
-					} 
-					if(waterBoth.contains(event.world.getBlockState(offset.west()).getBlock()))
-					{
-						event.world.setBlockToAir(offset.west()); 
-					} 
-				}  
-			}
-			else //not sneaking, regular item use
+		{     
+			if(event.world.isAirBlock(hit) || waterBoth.contains(hitBlock) || hitBlock.isReplaceable(event.world, hit))
 			{  
-				if(event.world.isAirBlock(offset) || 
-						waterBoth.contains(event.world.getBlockState(offset).getBlock()))
+				//if its water or air, we just set the block , but if its replaceable then break it first for drops
+				
+				if(hitBlock.isReplaceable(event.world, hit))
 				{ 
-					event.world.setBlockState(offset,  Blocks.water.getDefaultState()); 
-					 
-					success = true; 
+					event.world.destroyBlock(hit, true);
 				}
-				/*
-				System.out.println("UUPPPP "+event.world.getBlockState(offset.up()).getBlock().getUnlocalizedName());
-				if(event.world.getBlockState(offset.up()).getBlock() == Blocks.flowing_water)
-				{
-					event.world.setBlockState(offset.up(),  Blocks.water.getDefaultState()); 
-					success = true; 
-				}
-				if(event.world.getBlockState(offset.west()).getBlock() == Blocks.flowing_water)
-				{
-					event.world.setBlockState(offset.west(),  Blocks.water.getDefaultState()); 
-					success = true; 
-				}
-				if(event.world.getBlockState(offset.east()).getBlock() == Blocks.flowing_water)
-				{
-					event.world.setBlockState(offset.east(),  Blocks.water.getDefaultState()); 
-					success = true; 
-				}
-				if(event.world.getBlockState(offset.south()).getBlock() == Blocks.flowing_water)
-				{
-					event.world.setBlockState(offset.south(),  Blocks.water.getDefaultState()); 
-					success = true; 
-				}
-				if(event.world.getBlockState(offset.north()).getBlock() == Blocks.flowing_water)
-				{
-					event.world.setBlockState(offset.north(),  Blocks.water.getDefaultState()); 
-					success = true; 
-				}*/
+				
+				event.world.setBlockState(hit, Blocks.water.getDefaultState()); 
+				 
+				success = true; 
 			}
 		}
 		 
 		if(success)
 		{ 
 			if(event.world.isRemote)
-				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, offset);
+				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, hit);
 			else
 				SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
 			
