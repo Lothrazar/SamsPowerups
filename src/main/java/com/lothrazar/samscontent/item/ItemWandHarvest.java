@@ -133,8 +133,7 @@ public class ItemWandHarvest extends Item
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
 		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 
-				event.action.RIGHT_CLICK_BLOCK == event.action//TODO: IBush or IPlantable or something?
-		    // && (blockClicked == Blocks.wheat || blockClicked == Blocks.carrots || blockClicked == Blocks.potatoes)
+				event.action.RIGHT_CLICK_BLOCK == event.action 
 		    )
 		{ 
 			ItemRegistry.wandHarvest.replantField(event.world,event.entityPlayer,held,event.pos); 

@@ -78,11 +78,8 @@ public class BlockShearWool extends Block
  
 	public static void addRecipe() 
 	{
-		GameRegistry.addRecipe(new ItemStack(BlockRegistry.block_spike), 
-				"iii", 
-				"isi", 
-				"iii", 
-				's', Items.shears,
-				'i', Blocks.iron_bars );
+		GameRegistry.addShapelessRecipe(new ItemStack(BlockRegistry.block_spike), 
+				new ItemStack(Items.shears,1,0),
+				Blocks.obsidian );
 	}
 }
