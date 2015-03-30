@@ -31,6 +31,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper; 
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
@@ -61,8 +62,7 @@ public class ItemWandHarvest extends Item
     }
 	 
 	public void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
-	{
-		if(world.isRemote){ return; }//server side only!
+	{ 
 		int isFullyGrown = 7; //certain this is full for wheat. applies to other plants as well 
 		//http://www.minecraftforge.net/wiki/Plants
  
@@ -77,7 +77,8 @@ public class ItemWandHarvest extends Item
 		int zMax = z + RADIUS;
 		
 		int eventy = pos.getY();
-		
+
+		if(world.isRemote == false)  //only drop items in serverside
 		for (int xLoop = xMin; xLoop <= xMax; xLoop++)
 		{ 
 			for (int zLoop = zMin; zLoop <= zMax; zLoop++)
@@ -110,8 +111,13 @@ public class ItemWandHarvest extends Item
 		} //end of the outer loop
 		
 		entityPlayer.swingItem();
-		 //TODO: sound/particle
-		SamsUtilities.damageOrBreakHeld(entityPlayer);
+
+		SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
+		 
+		if(world.isRemote) //client side 
+			SamsUtilities.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
+		else 
+			SamsUtilities.damageOrBreakHeld(entityPlayer); 
 	}
 	
 	@SubscribeEvent
