@@ -25,7 +25,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ItemWandLightning  extends Item
 {
 	public static int DURABILITY; 
-	public int range = 8; //TODO: in config
+	public int range = 8; //TODO: in config??
 	
 	public ItemWandLightning()
 	{  
@@ -42,7 +42,6 @@ public class ItemWandLightning  extends Item
 			Items.ghast_tear  );
 	}
 	 
-	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{       

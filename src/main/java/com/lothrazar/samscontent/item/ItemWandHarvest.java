@@ -32,6 +32,7 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandHarvest extends Item
@@ -59,27 +60,25 @@ public class ItemWandHarvest extends Item
     	return true; //give it shimmer
     }
 	 
-	public void replantField(EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
+	public void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
 	{
-		int isFullyGrown = 7; //certain this is full for wheat. applies to other plants as well
-		 
+		if(world.isRemote){ return; }//server side only!
+		int isFullyGrown = 7; //certain this is full for wheat. applies to other plants as well 
 		//http://www.minecraftforge.net/wiki/Plants
-
-		int radius = 32;
-		
+ 
 		int x = (int)entityPlayer.posX;
 		int y = (int)entityPlayer.posY;
 		int z = (int)entityPlayer.posZ;
 		
 		//search in a cube
-		int xMin = x - radius;
-		int xMax = x + radius; 
-		int zMin = z - radius;
-		int zMax = z + radius;
+		int xMin = x - RADIUS;
+		int xMax = x + RADIUS; 
+		int zMin = z - RADIUS;
+		int zMax = z + RADIUS;
 		
 		int eventy = pos.getY();
 		
-		for (int xLoop = xMin; xLoop <= x + radius; xLoop++)
+		for (int xLoop = xMin; xLoop <= xMax; xLoop++)
 		{ 
 			for (int zLoop = zMin; zLoop <= zMax; zLoop++)
 			{
@@ -111,30 +110,22 @@ public class ItemWandHarvest extends Item
 		} //end of the outer loop
 		
 		entityPlayer.swingItem();
-		/* 
-		if(drainsHunger)
-		{
-			SamsUtilities.drainHunger(entityPlayer);
-		}
-		*/
+		 //TODO: sound/particle
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
 	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
-		if(event.world.isRemote){ return; }//server side only!
-		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		  
+		 
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
-		if(held.getItem() == ItemRegistry.wandHarvest && 
-				event.action.RIGHT_CLICK_BLOCK == event.action && 
+		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 
+				event.action.RIGHT_CLICK_BLOCK == event.action && //TODO: IBush or IPlantable or something?
 		    (blockClicked == Blocks.wheat || blockClicked == Blocks.carrots || blockClicked == Blocks.potatoes))
 		{ 
-			ItemRegistry.wandHarvest.replantField(event.entityPlayer,held,event.pos); 
+			ItemRegistry.wandHarvest.replantField(event.world,event.entityPlayer,held,event.pos); 
 		}
   	}
 }
