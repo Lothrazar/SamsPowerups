@@ -9,7 +9,10 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockBush;
 import net.minecraft.block.BlockChest;
+import net.minecraft.block.BlockCrops;
+import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
@@ -85,15 +88,34 @@ public class ItemWandHarvest extends Item
 			{
 				IBlockState bs = entityPlayer.worldObj.getBlockState(new BlockPos(xLoop, eventy, zLoop));
 				Block blockCheck = bs.getBlock(); 
-		 
+
+				if(blockCheck instanceof IGrowable)
+				{
+					//TODO: instead of droppin item on the plaeyer
+					//just world.destropy block and replace it with the .getSeed90
+					//??
+				}
+				//anything here should implemetn IGrowable, and also
+				//extend BlockBush...
+				//but those two dont give access to the seed/crop inside
+				
+				//BlockBush.age
+				//int i = ((Integer)state.getValue(AGE)).intValue();
+
+				//BlockCrops c = (BlockCrops)blockCheck;
+				//BlockBush b =  (BlockBush)blockCheck;
+				 
 				//everything always drops 1 thing. which in a way is 2 things
 				//because we replant for free, so a full grown carrot becomes a fresh planted carrot but also drops one
 				if(blockCheck == Blocks.wheat && Blocks.wheat.getMetaFromState(bs) == isFullyGrown)
 				{ 
 				//	blockDamage = ;
 					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop),Blocks.wheat.getDefaultState());//this plants a seed. it is not 'hay_block'
-					 
-					entityPlayer.dropItem(Items.wheat, 1); //no seeds, they got replanted
+					  
+					//entityPlayer.dropItem(Items.wheat, 1); //no seeds, they got replanted
+					
+
+					entityPlayer.dropItem(blockCheck.getItemDropped(bs, world.rand, 0), 1); //no seeds, they got replanted
 				}
 				if( blockCheck == Blocks.carrots && Blocks.carrots.getMetaFromState(bs) == isFullyGrown)
 				{
@@ -105,11 +127,14 @@ public class ItemWandHarvest extends Item
 				{
 					entityPlayer.worldObj.setBlockState(new BlockPos(xLoop,eventy,zLoop), Blocks.potatoes.getDefaultState());
 					 
+					//TODO: poison 
+			       // if (((Integer)state.getValue(AGE)) >= 7 && rand.nextInt(50) == 0)
+			        //    ret.add(new ItemStack(Items.poisonous_potato));
 					entityPlayer.dropItem(Items.potato, 1); 
 				} 
 			}  
 		} //end of the outer loop
-		
+ 
 		entityPlayer.swingItem();
 
 		SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
