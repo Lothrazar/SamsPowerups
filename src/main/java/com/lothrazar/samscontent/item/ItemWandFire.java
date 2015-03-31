@@ -10,6 +10,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntityLargeFireball;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -46,6 +47,7 @@ public class ItemWandFire  extends Item
 		BlockPos fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1);
 		 
 		
+		world.spawnEntityInWorld(new EntityLargeFireball(world,fr.getX(),fr.getY(),fr.getZ(),1,1,1));
 		for(int i = 2; i < 10; i++)
 		{
 			//previously used 

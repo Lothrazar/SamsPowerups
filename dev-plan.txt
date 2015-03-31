@@ -129,6 +129,12 @@ shearing block: do we want it to also affect chickens/cows? would have to have a
    //ice wand
    //can we do ice projectiles? 
    //or make the ice wand throw snowballs for free
+   
+    //TODO: this works to launch moving fire charge, so work on that. also Small versin?
+    //  world.spawnEntityInWorld(new EntityLargeFireball(world,fr.getX(),fr.getY(),fr.getZ(),1,1,1));
+    
+    
+    
    //new Freezing potion efect? disables movement?
    
    //http://www.minecraftforge.net/wiki/Tutorials/Basic_Shooter_Item_-_Blaster_Rifle
