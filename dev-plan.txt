@@ -121,16 +121,30 @@ shearing block: do we want it to also affect chickens/cows? would have to have a
     
             //??((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new S39PacketPlayerAbilities(player.capabilities));
    
+   //boats of all 6 wood colors?
+   
+   //worldgen ocean: decorate with reeds down there?
    
    
+   //ice wand
+   //can we do ice projectiles? 
+   //or make the ice wand throw snowballs for free
+   //new Freezing potion efect? disables movement?
    
+   //http://www.minecraftforge.net/wiki/Tutorials/Basic_Shooter_Item_-_Blaster_Rifle
+   //http://www.minecraftforge.net/wiki/Tutorials/Block_Manipulation_-_Plasma_gun
    
-   
-   
+   //put in config file: potions stack 1-3
+   //zombie/skeleton immune to sunlgiht?
+   //endermen immune to water (if possible)
    
    
    //TODO: is there a nice forge friendly way of adding potion brewing recipes -> NOPE
    
+   
+   //ideas: zombie villagers drop emeralds: % in config
+   //baby zombies drop feathers %
+   //nametag on villaers - does it work in vanilla? can we force it
    
    
         //this worked in 1.7, adding trades to villagers
