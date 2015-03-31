@@ -11,6 +11,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityLargeFireball;
+import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -46,11 +47,13 @@ public class ItemWandFireball  extends Item
 	{ 
 		BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();
 
-		 world.spawnEntityInWorld(new EntityLargeFireball(world,up.getX(),up.getY(),up.getZ()
+		 //if you use EntityLargeFireball, thats the one that explodes like a Ghast shot
+		//the Small one is from the firecharge item like in a dispenser
+		 world.spawnEntityInWorld(new EntitySmallFireball(world,up.getX(),up.getY(),up.getZ()
 				 ,entityPlayer.getLookVec().xCoord
 				 ,entityPlayer.getLookVec().yCoord
 				 ,entityPlayer.getLookVec().zCoord));
-		 
+	 
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
