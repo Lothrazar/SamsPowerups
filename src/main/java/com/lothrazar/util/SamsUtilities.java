@@ -3,6 +3,7 @@ package com.lothrazar.util;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
@@ -71,7 +72,11 @@ public class SamsUtilities
 	{ 
 		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
 	}
-	
+	public static void setBlockIfAir(World world, BlockPos pos, IBlockState state)
+	{
+		if(world.isAirBlock(pos))
+			world.setBlockState(pos, state); 
+	}
 	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
 	{
 		spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());

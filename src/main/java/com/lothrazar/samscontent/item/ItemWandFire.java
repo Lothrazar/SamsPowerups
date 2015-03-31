@@ -50,24 +50,20 @@ public class ItemWandFire  extends Item
 			//previously used 
 			fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), i);
 			
-			setBlockIfAir(world,fr, Blocks.fire.getDefaultState());
-			setBlockIfAir(world,fr.up(), Blocks.fire.getDefaultState()); 
-			setBlockIfAir(world,fr.down(), Blocks.fire.getDefaultState()); 
-			setBlockIfAir(world,fr.south(), Blocks.fire.getDefaultState()); 
-			setBlockIfAir(world,fr.north(), Blocks.fire.getDefaultState()); 
-			setBlockIfAir(world,fr.east(), Blocks.fire.getDefaultState()); 
-			setBlockIfAir(world,fr.west(), Blocks.fire.getDefaultState()); 
+			SamsUtilities.setBlockIfAir(world,fr, Blocks.fire.getDefaultState());
+			SamsUtilities.setBlockIfAir(world,fr.up(), Blocks.fire.getDefaultState()); 
+			SamsUtilities.setBlockIfAir(world,fr.down(), Blocks.fire.getDefaultState()); 
+			SamsUtilities.setBlockIfAir(world,fr.south(), Blocks.fire.getDefaultState()); 
+			SamsUtilities.setBlockIfAir(world,fr.north(), Blocks.fire.getDefaultState()); 
+			SamsUtilities.setBlockIfAir(world,fr.east(), Blocks.fire.getDefaultState()); 
+			SamsUtilities.setBlockIfAir(world,fr.west(), Blocks.fire.getDefaultState()); 
 		
 		}
 		 
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 	}
 	
-	public static void setBlockIfAir(World world, BlockPos pos, IBlockState state)
-	{
-		if(world.isAirBlock(pos))
-			world.setBlockState(pos, state); 
-	}
+	
 
 	public void castExtinguish(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 
