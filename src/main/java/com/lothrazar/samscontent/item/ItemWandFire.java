@@ -45,9 +45,9 @@ public class ItemWandFire  extends Item
 	public static void castFire(World world, EntityPlayer entityPlayer ) 
 	{ 
 		BlockPos fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1);
-		 
 		
-		world.spawnEntityInWorld(new EntityLargeFireball(world,fr.getX(),fr.getY(),fr.getZ(),1,1,1));
+		
+		
 		for(int i = 2; i < 10; i++)
 		{
 			//previously used 

@@ -234,6 +234,7 @@ public class ModSamsContent
 		handlers.add(ItemRegistry.wandChest           );
 		handlers.add(ItemRegistry.wandCopy            );
 		handlers.add(ItemRegistry.wandFire            );
+		handlers.add(ItemRegistry.wandFireball            );
 		handlers.add(ItemRegistry.wandHarvest         );
 		handlers.add(ItemRegistry.wandLivestock       );
 		handlers.add(ItemRegistry.wandProspect        );

@@ -51,6 +51,7 @@ public class ItemRegistry
 	public static Item beetrootSoup;
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
+	public static ItemWandFireball wandFireball;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -80,24 +81,16 @@ public class ItemRegistry
 			beetrootSoup = new ItemSoup(8).setCreativeTab(ModSamsContent.tabSamsContent); 
 			ItemRegistry.registerItem(beetrootSoup, "beetroot_soup");
 		}
-		   /*
-		if(ModLoader.configSettings.flintTool) 
-		{
-			//TODO: redo texture higher res
-			
-			//its like shears for leaves in the speed it goes, but does not give leaf blocks
-			
-			Set harvests = new HashSet<Block>();
-			harvests.add(Blocks.leaves);
-			harvests.add(Blocks.leaves2); 
-			harvests.add(Blocks.tallgrass); //ferns and grass
-			ItemRegistry.flintTool = new ItemToolFlint(1,ToolMaterial.EMERALD, harvests);
+		 
+		if(ModSamsContent.configSettings.wandFireball)
+		{ 
+			ItemRegistry.wandFireball = new ItemWandFireball();
+
+			registerItem(ItemRegistry.wandFireball, "wand_fireball");
 	 
-			SamsRegistry.registerItem(ItemRegistry.flintTool, "flint_tool");
-	
-			ItemToolFlint.addRecipe();
-		}*/
-	 
+			ItemWandFire.addRecipe();		 
+		}
+		
 		if(ModSamsContent.configSettings.wandFire)
 		{ 
 			ItemRegistry.wandFire = new ItemWandFire();
