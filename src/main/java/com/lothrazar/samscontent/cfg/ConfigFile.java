@@ -63,6 +63,10 @@ public class ConfigFile
 		pocket_edition();  
 		
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
+		
+		endermenDropCarryingBlock = instance.getBoolean("endermenDropCarryingBlock",category, true,
+    			"Endermen will always drop any block they are carrying.");
+		 
 
 		flintPumpkin = instance.getBoolean("flintPumpkin",category, true,
     			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
@@ -691,4 +695,5 @@ public class ConfigFile
 	public boolean storeMilkBlock;
 	public boolean beetroot;
 	public boolean flintPumpkin;
+	public boolean endermenDropCarryingBlock;
 }
