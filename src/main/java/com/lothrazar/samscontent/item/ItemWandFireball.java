@@ -45,15 +45,13 @@ public class ItemWandFireball  extends Item
 	public static void cast(World world, EntityPlayer entityPlayer ) 
 	{ 
 		BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();
-		
-		
-		int velX = 1;
-		int velY = 0;
-		int velZ = 1;//TOOD: fix these directions based on facing...
+
 		 world.spawnEntityInWorld(new EntityLargeFireball(world,up.getX(),up.getY(),up.getZ()
-				 ,velX,velY,velZ));
+				 ,entityPlayer.getLookVec().xCoord
+				 ,entityPlayer.getLookVec().yCoord
+				 ,entityPlayer.getLookVec().zCoord));
 		 
-		//SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
+		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
 	 
@@ -70,15 +68,9 @@ public class ItemWandFireball  extends Item
 		if(held.getItem() == ItemRegistry.wandFireball && 
 				event.action.RIGHT_CLICK_AIR == event.action)
 		{  
-			//if(event.entityPlayer.isSneaking() == false)
-			//{ 
-				ItemWandFireball.cast(event.world,event.entityPlayer );  
-		//	}
-			/*
-			else
-			{
-				castExtinguish(event.world,event.entityPlayer,held); 
-			} */
+		 
+			ItemWandFireball.cast(event.world,event.entityPlayer );  
+ 
 		}
   	}
 }
