@@ -23,13 +23,12 @@ public class EntityLivingDeath
 			&& event.entity instanceof EntityEnderman)
 		{ 
 			EntityEnderman mob = (EntityEnderman)event.entity;
-			System.out.println("endermen death");//TODO: delete debug sts
+ 
 			IBlockState bs = mob.func_175489_ck();
 			
-			if(bs != null && bs.getBlock() != null)
+			if(bs != null && bs.getBlock() != null && event.entity.worldObj.isRemote == false)
 			{
-				System.out.println(bs.getBlock().getUnlocalizedName());//TODO: delete debug sts
-				
+				//drop it on server side
 				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, mob.getPosition(), bs.getBlock());
 			} 
 		}
