@@ -23,8 +23,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandFire  extends Item
-{
-	public static int RADIUS;
+{ 
 	public static int DURABILITY;
 	public ItemWandFire()
 	{  
@@ -42,29 +41,44 @@ public class ItemWandFire  extends Item
 	}
 	
 
-	public static void castFire(World world, EntityPlayer entityPlayer,	ItemStack held) 
+	public static void castFire(World world, EntityPlayer entityPlayer ) 
 	{ 
-		BlockPos fr;
-		for(int i = 2; i < RADIUS; i++)
+		BlockPos fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1);
+		 
+		
+		for(int i = 2; i < 10; i++)
 		{
 			//previously used 
-			fr = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), i);
-			
+			fr = fr.offset(entityPlayer.getHorizontalFacing(), 1);//one more out
+		 
 			SamsUtilities.setBlockIfAir(world,fr, Blocks.fire.getDefaultState());
 			SamsUtilities.setBlockIfAir(world,fr.up(), Blocks.fire.getDefaultState()); 
 			SamsUtilities.setBlockIfAir(world,fr.down(), Blocks.fire.getDefaultState()); 
+			/*
 			SamsUtilities.setBlockIfAir(world,fr.south(), Blocks.fire.getDefaultState()); 
 			SamsUtilities.setBlockIfAir(world,fr.north(), Blocks.fire.getDefaultState()); 
 			SamsUtilities.setBlockIfAir(world,fr.east(), Blocks.fire.getDefaultState()); 
 			SamsUtilities.setBlockIfAir(world,fr.west(), Blocks.fire.getDefaultState()); 
-		
+			*/
+			
+			for(int w = 1; w <= i/2; w++)
+			{
+				//go left and right
+				
+
+				SamsUtilities.setBlockIfAir(world,fr.east(w), Blocks.fire.getDefaultState());
+				SamsUtilities.setBlockIfAir(world,fr.west(w), Blocks.fire.getDefaultState());
+				SamsUtilities.setBlockIfAir(world,fr.south(w), Blocks.fire.getDefaultState());
+				SamsUtilities.setBlockIfAir(world,fr.north(w), Blocks.fire.getDefaultState());
+			} 
 		}
 		 
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
+		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
 	
 	
-
+/*
 	public void castExtinguish(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 
 		ArrayList<BlockPos> fires = SamsUtilities.findBlocks(entityPlayer, Blocks.fire, RADIUS);
@@ -79,7 +93,7 @@ public class ItemWandFire  extends Item
 		{
 			SamsUtilities.playSoundAt(entityPlayer, "liquid.water");
 		} 
-	}
+	}*/
 	  
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
@@ -92,16 +106,17 @@ public class ItemWandFire  extends Item
 		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
 		if(held.getItem() == ItemRegistry.wandFire && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
+				event.action.RIGHT_CLICK_AIR == event.action)
 		{  
-			if(event.entityPlayer.isSneaking() == false)
-			{ 
-				ItemWandFire.castFire(event.world,event.entityPlayer,held); //?,event.face
-			}
+			//if(event.entityPlayer.isSneaking() == false)
+			//{ 
+				ItemWandFire.castFire(event.world,event.entityPlayer );  
+		//	}
+			/*
 			else
 			{
 				castExtinguish(event.world,event.entityPlayer,held); 
-			} 
+			} */
 		}
   	}
 }

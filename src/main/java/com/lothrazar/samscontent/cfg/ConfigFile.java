@@ -188,9 +188,6 @@ public class ConfigFile
 
 		ItemWandFire.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
-
-		ItemWandFire.RADIUS  = instance.getInt("radius",category, 16,1,64,
-    			"Range in all directions.");
  
 		wandFire = instance.getBoolean("wandFire",category, true,
     			"Craft a wand that can either create fire in a line, or extinguish fire all around you.");
