@@ -1,10 +1,14 @@
 package com.lothrazar.samscontent.item;//.entity.projectile;
 
+import com.lothrazar.samscontent.potion.PotionRegistry;
+
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
@@ -41,6 +45,11 @@ public class EntitySnowBolt extends EntitySnowball
             }
 
             mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)b0);
+            
+            if(mop.entityHit instanceof EntityLiving)
+            {
+            	((EntityLiving)mop.entityHit).addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,30,0));
+            }
         }
 
         for (int i = 0; i < 10; ++i)
