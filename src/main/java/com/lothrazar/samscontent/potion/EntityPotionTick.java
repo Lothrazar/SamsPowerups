@@ -38,9 +38,19 @@ public class EntityPotionTick
 	    { 
 			event.entityLiving.motionX = 0;
 			event.entityLiving.motionY = 0;
-			event.entityLiving.motionZ = 0;
+			event.entityLiving.motionZ = 0;//still can move but feels like about 90% reduction
+			
+			if(event.entityLiving instanceof EntityPlayer)
+			{ 
+				EntityPlayer p = (EntityPlayer)event.entityLiving;
+   			 	if(p.isSprinting())
+   			 	{
+   			 		p.setSprinting(false);
+   			 	}
+			}
 	    } 
 	}
+	
 	private void tickEnder(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
