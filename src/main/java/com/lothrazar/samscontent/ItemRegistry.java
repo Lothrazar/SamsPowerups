@@ -52,6 +52,7 @@ public class ItemRegistry
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemWandFireball wandFireball;
+	public static ItemWandSnowball wandSnowball;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -89,6 +90,15 @@ public class ItemRegistry
 			registerItem(ItemRegistry.wandFireball, "wand_fireball");
 	 
 			ItemWandFire.addRecipe();		 
+		}
+		 
+		if(ModSamsContent.configSettings.wandSnowball)
+		{ 
+			ItemRegistry.wandSnowball = new ItemWandSnowball();
+
+			registerItem(ItemRegistry.wandSnowball, "wand_snowball");
+	 
+			ItemWandSnowball.addRecipe();		 
 		}
 		
 		if(ModSamsContent.configSettings.wandFire)

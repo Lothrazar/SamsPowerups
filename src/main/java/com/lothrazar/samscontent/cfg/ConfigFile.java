@@ -200,7 +200,14 @@ public class ConfigFile
 		wandFireball = instance.getBoolean("wandFireball",category, true,
     			"Craft a wand that can shoots fire charges.");
 
-		 
+		
+		category = parentCateory + ".wandSnowball";
+
+		ItemWandSnowball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+ 
+		wandSnowball = instance.getBoolean("wandSnowball",category, true,
+    			"Craft a wand that can shoots snowballs.");
 		
 		category = parentCateory + ".wandWater";
 
@@ -704,4 +711,5 @@ public class ConfigFile
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;
 	public boolean wandFireball;
+	public boolean wandSnowball;
 }
