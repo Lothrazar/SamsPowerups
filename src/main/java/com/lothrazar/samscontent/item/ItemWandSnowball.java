@@ -47,14 +47,12 @@ public class ItemWandSnowball  extends Item
 		BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();
 
 		//TODO: can we spawn multiple maybe triple shot in three dir.
+	
+		EntitySnowBolt snow = new EntitySnowBolt(world,entityPlayer 	 );
 		
-		 world.spawnEntityInWorld(new EntitySnowball(world,entityPlayer
-				/*
-				 ,entityPlayer.getLookVec().xCoord
-				 ,entityPlayer.getLookVec().yCoord
-				 ,entityPlayer.getLookVec().zCoord
-				 */
-				 ));
+		snow.getEntityData().setBoolean("icy", true);
+		
+		 world.spawnEntityInWorld(snow);
 	 
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 		SamsUtilities.damageOrBreakHeld(entityPlayer);

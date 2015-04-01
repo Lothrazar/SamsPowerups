@@ -11,7 +11,7 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent; 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityLivingDeath 

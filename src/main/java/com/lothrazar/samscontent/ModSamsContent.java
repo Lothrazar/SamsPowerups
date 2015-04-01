@@ -234,8 +234,8 @@ public class ModSamsContent
 		handlers.add(ItemRegistry.wandChest           );
 		handlers.add(ItemRegistry.wandCopy            );
 		handlers.add(ItemRegistry.wandFire            );
-		handlers.add(ItemRegistry.wandFireball            );
-		handlers.add(ItemRegistry.wandSnowball            );
+		handlers.add(ItemRegistry.wandFireball        );
+		handlers.add(ItemRegistry.wandSnowball        );
 		handlers.add(ItemRegistry.wandHarvest         );
 		handlers.add(ItemRegistry.wandLivestock       );
 		handlers.add(ItemRegistry.wandProspect        );
@@ -244,10 +244,10 @@ public class ModSamsContent
 		handlers.add(ItemRegistry.wandLightning       );
 		handlers.add(BlockRegistry.block_storelava    );
 		handlers.add(BlockRegistry.block_storewater   );
-		handlers.add(BlockRegistry.block_storemilk   ); 
-		handlers.add(BlockRegistry.block_storeempty  ); 
-		handlers.add(new PlayerUseHoe() );
-		handlers.add(new FlintPumpkin()); 
+		handlers.add(BlockRegistry.block_storemilk    ); 
+		handlers.add(BlockRegistry.block_storeempty   ); 
+		handlers.add(new PlayerUseHoe() 			  );
+		handlers.add(new FlintPumpkin()				  ); 
 
      	for(Object h : handlers)
      		if(h != null)
