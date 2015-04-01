@@ -141,7 +141,11 @@ public class ModSamsContent
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
-		
+		//TODO: LexManos et all have not yet fixed IVillageTradeHandler
+	//	VillageTrading v = new VillageTrading(); 
+        //VillagerRegistry.instance().registerVillageTradeHandler(1, v);
+      //  VillagerRegistry.instance().registerVillageTradeHandler(2, v);
+        
 		achievements.registerAll();
 		
 		CreativeInventoryTweaks.registerTabImprovements();

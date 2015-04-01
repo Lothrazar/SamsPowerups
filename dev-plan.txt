@@ -4,8 +4,8 @@ make chest wand into oneuse item, the 'empty sack'
 //potion effect or held token consumable that keeps your items when you die? look for playerRespawn event?
 //TODO: jump/sidestrafe/dodge keybind.
 //keyb to shrink to 1 height if possible
-new firey wand that shoots the fire charges
-new ice wand that turns water to ice AND... maybve shoot ice projectile? OR put in 'Frozen solid" potion effect, stops movement
+ 
+// 'Frozen solid" potion effect, stops movement. from icewand shots
  
 //TODO: remote or portable workbench
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
@@ -15,56 +15,25 @@ new ice wand that turns water to ice AND... maybve shoot ice projectile? OR put 
 //TODO: beetroot  breeds pigs 
 //TODO: beetroot gets pigs to follow like carrot  
  
-        //sapling/biome feature expansion:
-            //TODO: can we prevent cactus growth
-            //TODO: can we prevent reeds growth
-            //TODO: can we prevent vine growth
-
-
-
-public ItemBaseWand()
-+   {
-+       super();
-+       this.setCreativeTab(ModLoader.tabSamsContent);
-+   }
-
-+       //todo get carrying block enderman.func_175489_ck();!!!
-
-
-
-
-
-+ 
+ 
 + item like ender book but single use. using it transforms it into a different 'save point' object. then when that is consumed, the TP goes off and its gone.
-+ 
-+ all functions in one wand
-+ 
-
+  
+ 
 
 //TODO: import achieves from other plats (xbox/PS)
 //TODO: more pocket edition features to go with beetroot (nether reactor? crafting recipes?)
 //TODO: completley revisit and possibly remove flint tool AND the non-punching wood stuff. we already have the tools and armor changes which covers the same purpose
 //TODO: create a void dimension, but very restricted in size (bedrock). 
 //      would enter it somehow with an ender chest interaction
-shearing block: do we want it to also affect chickens/cows? would have to have a forced time delay or something
+ 
 //TODO: investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
-
-<<<<<<< HEAD
-//TODO: crafting recipes for stuff like saddle / heads / podzol etc, but DEFAULT TO DISABLED.
+ 
 //TODO: a third achievement page for vanilla extras (clock/chain armor/ all that weird stuff)
-//TODO: tweak existing recipes so they give more loot? example: fences could give 10, stairs could give 8 or 10 instead of 6 
-            //IF SO BE CAREFUL OF UNCRAFTING
-     //TODO: can we have achieves that are not just '1', first times.  maybe 'kill 100 creepers' and such
+//TODO: can we have achieves that are not just '1', first times.  maybe 'kill 100 creepers' and such
             
-  
-//Zombies used to drop feathers. do we want to config a % chance to add that back in?                
-                 
-//TODO: revisit early game at a later stage. things to consider: no wood/logs by hand, flint tools, emerald tools, MAYBE wood & stone armor?            
-            
-=======
-//TODO: import net.minecraftforge.fml.common.gameevent.PlayerEvent. Respawn Event - use for this?
+//TODO: revisit early game at a later stage. things to consider: no wood/logs by hand, flint tools,
+    emerald tools, MAYBE wood & stone armor?            
 
->>>>>>> ach
 //TODO: can we spawn zombie horse? 
 //USE EXISTING WAND TRANSFORM?
      //Magic wand to turn horses to zombie/skeleton?
@@ -151,46 +120,6 @@ shearing block: do we want it to also affect chickens/cows? would have to have a
    //ideas: zombie villagers drop emeralds: % in config
    //baby zombies drop feathers %
    //nametag on villaers - does it work in vanilla? can we force it
-   
-   
-        //this worked in 1.7, adding trades to villagers
-        /*
-        if(ModSamsContent.settings.moreFutureTrades)
-        {
-            VillageTrading v = new VillageTrading();
-            
-            VillagerRegistry.instance().registerVillageTradeHandler(1, v);
-            VillagerRegistry.instance().registerVillageTradeHandler(2, v);
-        }
-        */ 
-   
-   
-   //DONE
-   
-   
-   //[march22]:  using a flintnsteel on pumpkin makes it into jack lantern
- //[march21]: add beetroot.
-    //[march15]: merge the end safefall along with nodamageEnderPearl, and maybe even pearlReturns into ender apple. nice 30min timer?
- //[march15]: by appling the 'lackofsleep' potion,  find a way so that you need sleep to live.
- 
-   //[march05]: add creative tab for my stuff  
-//[march05]: f3 gamerules: add whitespace above, AND put in all rules with [t][f] instead of only showing TRUE ones
-//[march05]: mushrroms self plant same way we have saplings do
-//[march08]: configs to stop zombies from dropping goodies (carrot/iron/etc)--LivingDropsEvent
-//[march05]: new keybindings that moves the whole rows up and down, not just columns
-//[march05]: sugar cane grow from bonemeal (pocket edition does this)
-//[march08]: wand transform: rotate logs, pistons , hoppers droppers etc,  anything else  that has rotation
-//[march09]: IF we get sign copy/paste working, try the same with noteblocks
-//[march09]: make pigs drop double loo\t from other animals
-//[march10]: walking through a torch has a chance to break it. like boats do to lily pads. make sure to have sound
-//[march08]: death messages for named mobs: to start with try pets and players first. include name/coords
-//[march09: config option to display coordinates of where you died
-//[march09]: Wands of fire and  on use will add or extinguish fire in large area around the player. and/or in a straight line.
-//[march11]: is it worthwhile/easy to turn the appleflying/nbt stuff into an actual potion effect?
-//[march12]: TREES ONLY GROLW && GET UN-PLANTED IF NOT IN THEIR HOME BIOMES 
-//[march11]: Lack of sleep potion effect
-//[march11]: either make obsidian softer OR make special tool that mines (only) obsidian but really fast?
-//[march12]: flint tool gets saplings at higher rate from leaves. also works like a stone/wooden axe
-//[march13]: worldgen clay Replacing gravel in ocean    
-//[march14]:  item and/or slowfall ability
-   
+    
+    //TODO: villagetradehander
+    
