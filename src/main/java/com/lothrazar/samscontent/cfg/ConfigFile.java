@@ -173,10 +173,13 @@ public class ConfigFile
 		potionIdFlying = instance.getInt("potionIdFlying",category, 43,33,200,
     			"ID is only exposed to avoid conflicts with other mods.  THIS IS INTENDED FOR USE ONLY IN SINGLE PLAYER.");
 		
-		potionIdLavawalk  = instance.getInt("potionIdLavawalk",category, 44,33,200,
+		potionIdLavawalk = instance.getInt("potionIdLavawalk",category, 44,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		
-		potionIdEnder  = instance.getInt("potionIdEnder",category, 45,33,200,
+		potionIdEnder = instance.getInt("potionIdEnder",category, 45,33,200,
+    			"ID is only exposed to avoid conflicts with other mods.");
+		
+		potionIdFrozen = instance.getInt("potionIdFrozen",category, 46,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		
 		slowfallSpeed = instance.getFloat("slowfallSpeed",category, 0.41F,0.1F,1F,
@@ -716,4 +719,5 @@ public class ConfigFile
 	public boolean wandFireball;
 	public boolean wandSnowball;
 	public int potionStackSize;
+	public int potionIdFrozen;
 }

@@ -16,6 +16,7 @@ public class PotionRegistry
 	public static Potion flying;
 	public static Potion lavawalk;
 	public static Potion ender;
+	public static Potion frozen;
 	
 	public final static int I = 0; 
 	public final static int II = 1;
@@ -43,7 +44,9 @@ public class PotionRegistry
 		PotionRegistry.flying = (new PotionCustom(ModSamsContent.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
 		
 		PotionRegistry.ender = (new PotionCustom(ModSamsContent.configSettings.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
-	}
+		
+		PotionRegistry.frozen = (new PotionCustom(ModSamsContent.configSettings.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
+}
 
 	private static void initPotionTypesReflection() 
 	{

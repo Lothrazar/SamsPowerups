@@ -28,8 +28,19 @@ public class EntityPotionTick
 	     tickLavawalk(event);
 
 	     tickEnder(event); 
+	     
+	     tickFrozen(event); 
 	}
 
+	private void tickFrozen(LivingUpdateEvent event) 
+	{
+		if(event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
+	    { 
+			event.entityLiving.motionX = 0;
+			event.entityLiving.motionY = 0;
+			event.entityLiving.motionZ = 0;
+	    } 
+	}
 	private void tickEnder(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
