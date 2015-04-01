@@ -9,6 +9,10 @@ public class StackSizeIncreaser
 { 
 	public static void registerChanges()
 	{ 
+		int pot = ModSamsContent.configSettings.potionStackSize;
+		
+		Items.potionitem.setMaxStackSize(pot);
+		
 		if(!ModSamsContent.configSettings.increasedStackSizes ) {return;}
 		
 		ArrayList<Item> to64 = new ArrayList<Item>();

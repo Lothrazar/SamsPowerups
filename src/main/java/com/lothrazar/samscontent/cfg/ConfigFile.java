@@ -79,6 +79,9 @@ public class ConfigFile
 			"Included are: ender pearl, egg, snowball, cookie, mushroom stew, boat, all minecarts, all doors, cake, saddle, " +
 			"horse armor, empty bucket, bed, all records."); 
 		
+		potionStackSize  = instance.getInt("potionStackSize",category, 1,1,3,
+    			"Potion stack size can be increased to three, but not by default.");
+		
 		moreFuel = instance.getBoolean("moreFuel",category, true,
     			"More can be used as furnace fuel: seeds, leaves, paper, shrubs, and more."); 
 	 
@@ -712,4 +715,5 @@ public class ConfigFile
 	public boolean endermenDropCarryingBlock;
 	public boolean wandFireball;
 	public boolean wandSnowball;
+	public int potionStackSize;
 }
