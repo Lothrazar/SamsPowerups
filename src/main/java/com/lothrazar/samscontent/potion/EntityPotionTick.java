@@ -2,11 +2,13 @@ package com.lothrazar.samscontent.potion;
 
 import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
@@ -34,11 +36,13 @@ public class EntityPotionTick
 
 	private void tickFrozen(LivingUpdateEvent event) 
 	{
-		if(event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
+		if(event.entityLiving != null && event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
 	    { 
 			event.entityLiving.motionX = 0;
 			event.entityLiving.motionY = 0;
 			event.entityLiving.motionZ = 0;//still can move but feels like about 90% reduction
+			
+			SamsUtilities.spawnParticle(event.entityLiving.worldObj, EnumParticleTypes.SNOWBALL, event.entityLiving.getPosition());
 			
 			if(event.entityLiving instanceof EntityPlayer)
 			{ 
