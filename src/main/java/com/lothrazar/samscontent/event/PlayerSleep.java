@@ -1,12 +1,24 @@
 package com.lothrazar.samscontent.event;
 
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
+import com.lothrazar.samscontent.PlayerPowerups;
 import com.lothrazar.util.SamsUtilities;
 
 public class PlayerSleep 
 {
+	
+	@SubscribeEvent
+ 	public void onEntityConstructing(EntityConstructing event)
+ 	{ 
+ 		if (event.entity instanceof EntityPlayer && PlayerPowerups.get((EntityPlayer) event.entity) == null)
+ 		{ 
+ 			PlayerPowerups.register((EntityPlayer) event.entity);
+ 		} 
+ 	}
 
 // keep track of nights slept. but also nights not slept since last death? timestamps on player spawn to start.
 	@SubscribeEvent
