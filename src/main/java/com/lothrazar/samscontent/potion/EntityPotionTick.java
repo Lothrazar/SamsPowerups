@@ -53,6 +53,11 @@ public class EntityPotionTick
         		//this. fires only on server side. so send packet for client to spawn particles and so on
         		ModSamsContent.network.sendToAll(new MessagePotion(event.entityLiving.getPosition()));
         	}
+        	
+        	if(event.entityLiving.worldObj.isAirBlock(event.entityLiving.getPosition()))
+        	{
+        		event.entityLiving.worldObj.setBlockState(event.entityLiving.getPosition(), Blocks.snow_layer.getDefaultState());
+        	}
              
 			if(event.entityLiving instanceof EntityPlayer)
 			{ 

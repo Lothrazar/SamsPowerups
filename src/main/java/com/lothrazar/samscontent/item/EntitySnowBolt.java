@@ -58,10 +58,7 @@ public class EntitySnowBolt extends EntitySnowball
             	EntityLivingBase e = (EntityLivingBase)mop.entityHit;
             	
             	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,5 * Reference.TICKS_PER_SEC,0));
-            }
-            
-            //  on block impact, extenguish fire
-             
+            } 
       }
 
         for (int i = 0; i < 10; ++i)
