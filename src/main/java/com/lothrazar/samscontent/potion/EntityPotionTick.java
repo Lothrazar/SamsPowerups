@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.potion;
 
+import com.lothrazar.samscontent.MessagePotion;
 import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
@@ -8,6 +9,7 @@ import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
@@ -61,7 +63,15 @@ public class EntityPotionTick
 		//	}
 			//event.entityLiving.setCustomNameTag("froz");
 			event.entityLiving.setInWeb();
-			event.entityLiving.spawnRunningParticles();
+			//event.entityLiving.spawnRunningParticles();
+
+        	BlockPos particlesAt = event.entityLiving.getPosition();
+        	
+        	if(event.entityLiving.worldObj.getTotalWorldTime() % Reference.TICKS_PER_SEC == 0) //once per second
+        	{
+        		ModSamsContent.network.sendToAll(new MessagePotion(particlesAt));
+        	}
+            
 			
 			//event.entityLiving.setFire(1);//this works but we dont want it, just example
 			if(event.entityLiving instanceof EntityPlayer)

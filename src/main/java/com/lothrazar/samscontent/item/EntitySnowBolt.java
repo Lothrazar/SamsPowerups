@@ -52,15 +52,16 @@ public class EntitySnowBolt extends EntitySnowball
             System.out.println("Send Packet For  "+mop.entityHit.getName());
           //  System.out.println("rrr"+mop.entityHit.worldObj.isRemote);
             
-            //TODO: well cant do particles here, its server onlyu, how to get to client?? packets???
             
-            ModSamsContent.network.sendToAll(new MessagePotion());
-        
             if(mop.entityHit instanceof EntityLivingBase)
             {
             	EntityLivingBase e = (EntityLivingBase)mop.entityHit;
-            	//???	SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL, event.entityLiving.getPosition());
-            	
+            	//???	SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL,);
+            	BlockPos particlesAt =  e.getPosition();
+                //TODO: well cant do particles here, its server onlyu, how to get to client?? packets???
+                
+               // ModSamsContent.network.sendToAll(new MessagePotion(particlesAt.getX(),particlesAt.getY(),particlesAt.getZ()));
+            
             
                // SamsUtilities.spawnParticle(e.worldObj, EnumParticleTypes.SNOWBALL, e.getPosition());
     			
