@@ -7,6 +7,7 @@ import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
@@ -37,6 +38,15 @@ public class EntityPotionTick
 	     
 	     tickFrozen(event); 
 	}
+	
+	private void doPotionParticle(World world, EntityLivingBase living, EnumParticleTypes particle)
+	{
+		if(world.getTotalWorldTime() % Reference.TICKS_PER_SEC == 0) //once per second
+    	{
+    		//this. fires only on server side. so send packet for client to spawn particles and so on
+    		ModSamsContent.network.sendToAll(new MessagePotion(living.getPosition(), particle.getParticleID()));
+    	}
+	}
 
 	private void tickFrozen(LivingUpdateEvent event) 
 	{ 
@@ -47,18 +57,11 @@ public class EntityPotionTick
 			event.entityLiving.motionZ = event.entityLiving.motionZ / 5;
 			
 			event.entityLiving.setInWeb(); 
-  
-        	if(event.entityLiving.worldObj.getTotalWorldTime() % Reference.TICKS_PER_SEC == 0) //once per second
-        	{
-        		//this. fires only on server side. so send packet for client to spawn particles and so on
-        		ModSamsContent.network.sendToAll(new MessagePotion(event.entityLiving.getPosition(),EnumParticleTypes.SNOWBALL.getParticleID()));
-        	}
-        	
-        	if(event.entityLiving.worldObj.isAirBlock(event.entityLiving.getPosition()))
-        	{
-        		event.entityLiving.worldObj.setBlockState(event.entityLiving.getPosition(), Blocks.snow_layer.getDefaultState());
-        	}
-             
+			
+			doPotionParticle(event.entityLiving.worldObj,event.entityLiving,EnumParticleTypes.SNOWBALL);
+
+			SamsUtilities.setBlockIfAir(event.entityLiving.worldObj, event.entityLiving.getPosition(), Blocks.snow_layer.getDefaultState());
+     
 			if(event.entityLiving instanceof EntityPlayer)
 			{ 
 				EntityPlayer p = (EntityPlayer)event.entityLiving;
