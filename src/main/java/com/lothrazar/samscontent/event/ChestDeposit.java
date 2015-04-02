@@ -7,10 +7,13 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -54,15 +57,15 @@ public class ChestDeposit
   	  		teAdjacent = chest.adjacentChestZPos; 
   	  	}
  
-  		sortFromPlayerToChestEntity(chest,event.entityPlayer);
+  		sortFromPlayerToChestEntity(event.world,chest,event.entityPlayer);
   	
   		if(teAdjacent != null)
   		{
-  	  		sortFromPlayerToChestEntity(teAdjacent,event.entityPlayer);
+  	  		sortFromPlayerToChestEntity(event.world,teAdjacent,event.entityPlayer);
   		}
    	}//end player interact event  
  
-  	private void sortFromPlayerToChestEntity(TileEntityChest chest, EntityPlayer entityPlayer)
+  	private void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
   	{ 
   		int totalItemsMoved = 0; 
   		int totalSlotsFreed = 0;
@@ -136,10 +139,12 @@ public class ChestDeposit
 		
 		if( totalSlotsFreed > 0) 
 		{
-		String msg = "Magic Sort deposited "+totalItemsMoved+" items.";
-//we used to send chat message here, no longer
-		System.out.println("TODO: particles??"+msg);//TODO particles here
+			String msg = "Magic Sort deposited "+totalItemsMoved+" items.";
+				//we used to send chat message here, no longer
+			System.out.println("TODO: particles??"+msg);//TODO particles here
 			
+			SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos());
+		
 			
 		}
   	}

@@ -179,13 +179,9 @@ public class EntityPotionTick
 		 if(event.entityLiving.isPotionActive(PotionRegistry.tired)) 
 	     { 
 	    	 if(event.entityLiving.worldObj.rand.nextInt(Reference.TICKS_PER_SEC) == 0) //pick out one random tick from each second
-	    	 {
-	        	 //System.out.println("potionTired potion hit");
-	        	 
+	    	 { 
 	        	 //need drawbacks ... food cannot be full?
-	        	 
-	        	 //it only affects players. sets saturation out
-	        	 
+	        	  //TODO: other stuff?
 	        	 if(event.entityLiving instanceof EntityPlayer)
 	        	 {
 	        		 EntityPlayer player = (EntityPlayer)event.entityLiving;

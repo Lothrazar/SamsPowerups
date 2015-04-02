@@ -27,8 +27,7 @@ public class WorldGenClay implements IWorldGenerator
 	private int clayMaxHeight = 64;
 	
 	public WorldGenClay() 
-	{ 
-    	System.out.println("Clay WorldGenClay init" );
+	{  
 	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	}
 	 
@@ -64,8 +63,7 @@ public class WorldGenClay implements IWorldGenerator
 	        if( biome == BiomeGenBase.ocean || 
 	        	biome == BiomeGenBase.deepOcean)
 	        { 
-	        	generator.generate(world, rand, pos); 
-	        	System.out.println("Clay at "+SamsUtilities.posToString(pos));
+	        	generator.generate(world, rand, pos);  
 	        }
 	    }
 	} 
