@@ -15,7 +15,6 @@ import com.lothrazar.samscontent.block.BlockCropBeetroot;
 import com.lothrazar.samscontent.block.BlockFishing;
 import com.lothrazar.samscontent.block.BlockShearWool;
 import com.lothrazar.samscontent.block.BlockXRay;
-import com.lothrazar.samscontent.block.TileEntityBucketStorage;
 import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
 import com.lothrazar.util.Reference; 
 
@@ -82,7 +81,7 @@ public class BlockRegistry
 
 		if(ModSamsContent.configSettings.storeLavaBlock || ModSamsContent.configSettings.storeWaterBlock || ModSamsContent.configSettings.storeMilkBlock)
 		{
-			GameRegistry.registerTileEntity(com.lothrazar.samscontent.block.TileEntityBucketStorage.class, Reference.MODID);
+			GameRegistry.registerTileEntity(com.lothrazar.samscontent.tileentity.TileEntityBucketStorage.class, Reference.MODID);
 		
 			BlockRegistry.block_storeempty = new BlockBucketStorage(null); 
 			

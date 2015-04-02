@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.entity.projectile.EntitySnowBolt;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;

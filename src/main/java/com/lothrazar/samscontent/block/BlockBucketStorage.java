@@ -5,6 +5,7 @@ import java.util.Random;
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;

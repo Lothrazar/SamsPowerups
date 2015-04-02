@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.block;
+package com.lothrazar.samscontent.tileentity;
 
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.Packet;

@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samscontent.potion;
 
 import com.lothrazar.util.SamsUtilities;
 

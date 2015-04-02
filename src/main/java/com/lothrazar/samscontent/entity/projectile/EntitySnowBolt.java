@@ -1,7 +1,7 @@
-package com.lothrazar.samscontent.item;//.entity.projectile;
+package com.lothrazar.samscontent.entity.projectile; 
 
-import com.lothrazar.samscontent.MessagePotion;
 import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.potion.MessagePotion;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;

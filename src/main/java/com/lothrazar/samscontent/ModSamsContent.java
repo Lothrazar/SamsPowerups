@@ -14,6 +14,7 @@ import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.EnderpearlTeleport;
 import com.lothrazar.samscontent.potion.EntityPotionTick;
+import com.lothrazar.samscontent.potion.MessagePotion;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.proxy.ClientProxy;
 import com.lothrazar.samscontent.proxy.CommonProxy;
