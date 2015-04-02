@@ -20,20 +20,23 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 	private int x;
 	private int y;
 	private int z;
+	private int particle;
 	public MessagePotion()
 	{ 
 	}
-	public MessagePotion(BlockPos p)
+	public MessagePotion(BlockPos p, int part)
 	{ 
 		x = p.getX();
 		y = p.getY();
 		z = p.getZ(); 
+		particle = part;
 	}
-	public MessagePotion(int _x,int _y,int _z)
+	public MessagePotion(int _x,int _y,int _z, int part)
 	{ 
 		x = _x;
 		y = _y;
 		z = _z; 
+		particle = part;
 	}
 	
 	@Override
@@ -45,12 +48,13 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 		 x = Integer.parseInt(pts[0]);
 		 y = Integer.parseInt(pts[1]);
 		 z = Integer.parseInt(pts[2]);   
+		 particle = Integer.parseInt(pts[3]);   
 	}
 
 	@Override
 	public void toBytes(ByteBuf buf) 
 	{
-		 ByteBufUtils.writeUTF8String(buf, x+","+y+","+z); 
+		 ByteBufUtils.writeUTF8String(buf, x+","+y+","+z+","+particle); 
 	}
 
 	@Override
@@ -61,8 +65,8 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 			//  http://www.minecraftforge.net/forum/index.php?topic=21195.0
 			World world = Minecraft.getMinecraft().thePlayer.worldObj;//Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
   
-			SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL, new BlockPos(message.x,message.y,message.z));
-			SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL, new BlockPos(message.x,message.y+1,message.z));
+			SamsUtilities.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y,message.z));
+			SamsUtilities.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y+1,message.z));
 	 	
 		}
 		 

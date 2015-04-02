@@ -50,9 +50,7 @@ public class EntitySnowBolt extends EntitySnowball
             }
 
             mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), damage);
-            
-            System.out.println("thrower  "+this.getThrower().getName());
-    
+             
             if(mop.entityHit instanceof EntityLivingBase)
             {
             	EntityLivingBase e = (EntityLivingBase)mop.entityHit;
@@ -70,8 +68,10 @@ public class EntitySnowBolt extends EntitySnowball
         if (this.worldObj.isRemote == false)
         {
             if( mop.sideHit != null && this.getThrower() instanceof EntityPlayer)
+            {
             	this.worldObj.extinguishFire((EntityPlayer)this.getThrower(), mop.getBlockPos(), mop.sideHit);
-     
+            }
+            
         	if(this.isInWater() )
 	        { 
         		BlockPos waterPos = this.getPosition();
@@ -87,7 +87,9 @@ public class EntitySnowBolt extends EntitySnowball
         		}
 
             	if(waterPos != null) //rarely happens but it does
+            	{
             		this.worldObj.setBlockState(waterPos, Blocks.ice.getDefaultState()); 
+            	}
 	        }
         	 
             this.setDead();

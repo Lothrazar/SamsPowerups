@@ -51,7 +51,7 @@ public class EntityPotionTick
         	if(event.entityLiving.worldObj.getTotalWorldTime() % Reference.TICKS_PER_SEC == 0) //once per second
         	{
         		//this. fires only on server side. so send packet for client to spawn particles and so on
-        		ModSamsContent.network.sendToAll(new MessagePotion(event.entityLiving.getPosition()));
+        		ModSamsContent.network.sendToAll(new MessagePotion(event.entityLiving.getPosition(),EnumParticleTypes.SNOWBALL.getParticleID()));
         	}
         	
         	if(event.entityLiving.worldObj.isAirBlock(event.entityLiving.getPosition()))
