@@ -8,6 +8,7 @@ import com.lothrazar.util.SamsUtilities;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
@@ -49,27 +50,18 @@ public class EntitySnowBolt extends EntitySnowball
 
             mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), damage);
             
-            System.out.println("Send Packet For  "+mop.entityHit.getName());
-          //  System.out.println("rrr"+mop.entityHit.worldObj.isRemote);
-            
-            
+            System.out.println("thrower  "+this.getThrower().getName());
+    
             if(mop.entityHit instanceof EntityLivingBase)
             {
             	EntityLivingBase e = (EntityLivingBase)mop.entityHit;
-            	//???	SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL,);
-            	BlockPos particlesAt =  e.getPosition();
-                //TODO: well cant do particles here, its server onlyu, how to get to client?? packets???
-                
-               // ModSamsContent.network.sendToAll(new MessagePotion(particlesAt.getX(),particlesAt.getY(),particlesAt.getZ()));
-            
-            
-               // SamsUtilities.spawnParticle(e.worldObj, EnumParticleTypes.SNOWBALL, e.getPosition());
-    			
+            	
             	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,500,0));
             }
             
-            //to do putout fire
-        }
+            //  on block impact, extenguish fire
+             
+      }
 
         for (int i = 0; i < 10; ++i)
         {
@@ -77,8 +69,11 @@ public class EntitySnowBolt extends EntitySnowball
             this.worldObj.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
         }
   
-        if (!this.worldObj.isRemote)
+        if (this.worldObj.isRemote == false)
         {
+            if( mop.sideHit != null && this.getThrower() instanceof EntityPlayer)
+            	this.worldObj.extinguishFire((EntityPlayer)this.getThrower(), mop.getBlockPos(), mop.sideHit);
+     
         	if(this.isInWater() )
 	        { 
         		BlockPos waterPos = this.getPosition();

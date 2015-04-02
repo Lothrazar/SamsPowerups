@@ -21,6 +21,8 @@ public class EntityPotionTick
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
+		if(event.entityLiving == null){return;}
+		
 	     tickTired(event); 
 	        
 	     tickFlying(event);
@@ -38,42 +40,20 @@ public class EntityPotionTick
 
 	private void tickFrozen(LivingUpdateEvent event) 
 	{ 
-
-		
-		//System.out.println("___"+event.entityLiving.getName());
-		if(event.entityLiving != null && event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
+		if(event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
 	    { 
-			event.entityLiving.motionX = 0;
-			event.entityLiving.motionY = 0;
-			event.entityLiving.motionZ = 0;//still can move but feels like about 90% reduction
-		//	if(event.entityLiving.worldObj.isRemote == true)
-			//if(event.entityLiving.isServerWorld() == false)//event.entityLiving.worldObj
-			//{
-				//why? it never fire here?
-			//	System.out.println("isServerWorld ==false;; client "+event.entityLiving.getName());
-				/*World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
-				
-				if(world.isRemote)
-				{
-					System.out.println("isRemote found a world...");
-				}
-				
-				SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL, event.entityLiving.getPosition());
-			*/
-		//	}
-			//event.entityLiving.setCustomNameTag("froz");
-			event.entityLiving.setInWeb();
-			//event.entityLiving.spawnRunningParticles();
-
-        	BlockPos particlesAt = event.entityLiving.getPosition();
-        	
+			event.entityLiving.motionX = event.entityLiving.motionX / 5;
+			event.entityLiving.motionY = event.entityLiving.motionY / 5;
+			event.entityLiving.motionZ = event.entityLiving.motionZ / 5;
+			
+			event.entityLiving.setInWeb(); 
+  
         	if(event.entityLiving.worldObj.getTotalWorldTime() % Reference.TICKS_PER_SEC == 0) //once per second
         	{
-        		ModSamsContent.network.sendToAll(new MessagePotion(particlesAt));
+        		//this. fires only on server side. so send packet for client to spawn particles and so on
+        		ModSamsContent.network.sendToAll(new MessagePotion(event.entityLiving.getPosition()));
         	}
-            
-			
-			//event.entityLiving.setFire(1);//this works but we dont want it, just example
+             
 			if(event.entityLiving instanceof EntityPlayer)
 			{ 
 				EntityPlayer p = (EntityPlayer)event.entityLiving;
@@ -89,8 +69,7 @@ public class EntityPotionTick
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
 	    { 
-			//does nothing here, exactly.  see HandlerEnderpearlTeleport, and handlerPlayerFall
-			//TODO: 1/10 chance of spawn paricle of ender
+			//does nothing here, exactly.  see HandlerEnderpearlTeleport, and handlerPlayerFall 
 	    } 
 	}
 
