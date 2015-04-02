@@ -4,6 +4,7 @@ import com.lothrazar.util.SamsUtilities;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -37,10 +38,13 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 		if(ctx.side.isClient())// == Side.CLIENT
 		{
 			//  http://www.minecraftforge.net/forum/index.php?topic=21195.0
-			System.out.println("CLIENT  onMessage   " );
-			World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
+			World world = Minecraft.getMinecraft().thePlayer.worldObj;//Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
+ 
+
+			System.out.println("CLIENT  onMessage   " +world.isRemote);
 			
-			SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL, new BlockPos(0,5,0));
+			SamsUtilities.spawnParticleSixAround(world, EnumParticleTypes.SNOWBALL, new BlockPos(0,5,0));
+			SamsUtilities.spawnParticleSixAround(world, EnumParticleTypes.SNOWBALL, new BlockPos(0,10,0));
 			
 		}
 		else
