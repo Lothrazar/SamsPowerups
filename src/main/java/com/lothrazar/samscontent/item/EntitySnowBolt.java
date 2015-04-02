@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.item;//.entity.projectile;
 import com.lothrazar.samscontent.MessagePotion;
 import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.samscontent.potion.PotionRegistry;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.EntityLiving;
@@ -56,7 +57,7 @@ public class EntitySnowBolt extends EntitySnowball
             {
             	EntityLivingBase e = (EntityLivingBase)mop.entityHit;
             	
-            	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,500,0));
+            	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,5 * Reference.TICKS_PER_SEC,0));
             }
             
             //  on block impact, extenguish fire
