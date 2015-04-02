@@ -36,7 +36,10 @@ public class PlayerSleep
 			//	SamsUtilities.incrementPlayerIntegerNBT(event.entityPlayer, "full_sleeps", 1);
   
 			//	event.entityPlayer.getEntityData().setLong("last_sleep", event.entity.worldObj.getWorldTime());
-
+				PlayerPowerups props = PlayerPowerups.get(event.entityPlayer);
+				
+							props.incrementCurrentFly();
+				 			System.out.println("iextended properties "+props.getCurrentSleep());
 				//TODO: this is unfinished. need to check current time
 				//and check number of days awake, and give tired buff
 				

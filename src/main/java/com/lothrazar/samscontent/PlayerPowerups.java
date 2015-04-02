@@ -66,9 +66,9 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		return this.player.getDataWatcher().getWatchableObjectInt(SLEEP_WATCHER);
 	}
-	public final void incrementCurrentFly(int amount)
+	public final void incrementCurrentFly()
 	{ 
-		setCurrentSleep(getCurrentSleep() + amount);
+		setCurrentSleep(getCurrentSleep() + 1);
 	}
 	public final void setCurrentSleep(int amount)
 	{
