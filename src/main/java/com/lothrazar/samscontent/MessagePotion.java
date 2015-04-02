@@ -66,8 +66,6 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 			World world = Minecraft.getMinecraft().thePlayer.worldObj;//Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
   
 			SamsUtilities.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y,message.z));
-			SamsUtilities.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y+1,message.z));
-	 	
 		}
 		 
 		return null;

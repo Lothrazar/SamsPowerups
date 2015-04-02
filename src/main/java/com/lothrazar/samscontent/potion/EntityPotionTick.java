@@ -41,7 +41,7 @@ public class EntityPotionTick
 	
 	private void doPotionParticle(World world, EntityLivingBase living, EnumParticleTypes particle)
 	{
-		if(world.getTotalWorldTime() % Reference.TICKS_PER_SEC == 0) //once per second
+		if(world.getTotalWorldTime() % Reference.TICKS_PER_SEC/2 == 0) // every half second
     	{
     		//this. fires only on server side. so send packet for client to spawn particles and so on
     		ModSamsContent.network.sendToAll(new MessagePotion(living.getPosition(), particle.getParticleID()));
@@ -77,7 +77,8 @@ public class EntityPotionTick
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
 	    { 
-			//does nothing here, exactly.  see HandlerEnderpearlTeleport, and handlerPlayerFall 
+			//also  see HandlerEnderpearlTeleport, and handlerPlayerFall 
+			doPotionParticle(event.entityLiving.worldObj,event.entityLiving,EnumParticleTypes.PORTAL); 
 	    } 
 	}
 
