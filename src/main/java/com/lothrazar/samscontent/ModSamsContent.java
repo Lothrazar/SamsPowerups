@@ -123,7 +123,8 @@ public class ModSamsContent
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, 0, Side.SERVER);
-
+    	network.registerMessage(MessagePotion.class, MessagePotion.class, 0, Side.CLIENT);
+//new one here
 		
 		PotionRegistry.registerPotionEffects();
 

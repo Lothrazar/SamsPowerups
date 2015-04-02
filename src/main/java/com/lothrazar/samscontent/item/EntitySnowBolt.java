@@ -1,6 +1,9 @@
 package com.lothrazar.samscontent.item;//.entity.projectile;
 
+import com.lothrazar.samscontent.MessagePotion;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.samscontent.potion.PotionRegistry;
+import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -37,19 +40,34 @@ public class EntitySnowBolt extends EntitySnowball
     {
         if (mop.entityHit != null)
         {
-            byte b0 = 0;
+            float damage = 0;
 
             if (mop.entityHit instanceof EntityBlaze)
             {
-                b0 = 3;
+                damage = 3;
             }
 
-            mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), (float)b0);
+            mop.entityHit.attackEntityFrom(DamageSource.causeThrownDamage(this, this.getThrower()), damage);
             
-            if(mop.entityHit instanceof EntityLiving)
+            System.out.println("Send Packet For  "+mop.entityHit.getName());
+          //  System.out.println("rrr"+mop.entityHit.worldObj.isRemote);
+            
+            //TODO: well cant do particles here, its server onlyu, how to get to client?? packets???
+            
+            ModSamsContent.network.sendToAll(new MessagePotion());
+        
+            if(mop.entityHit instanceof EntityLivingBase)
             {
-            	((EntityLiving)mop.entityHit).addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,30,0));
+            	EntityLivingBase e = (EntityLivingBase)mop.entityHit;
+            	//???	SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL, event.entityLiving.getPosition());
+            	
+            
+               // SamsUtilities.spawnParticle(e.worldObj, EnumParticleTypes.SNOWBALL, e.getPosition());
+    			
+            	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,500,0));
             }
+            
+            //to do putout fire
         }
 
         for (int i = 0; i < 10; ++i)

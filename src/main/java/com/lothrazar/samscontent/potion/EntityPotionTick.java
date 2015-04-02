@@ -11,7 +11,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent; 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityPotionTick 
@@ -35,15 +35,35 @@ public class EntityPotionTick
 	}
 
 	private void tickFrozen(LivingUpdateEvent event) 
-	{
+	{ 
+
+		
+		//System.out.println("___"+event.entityLiving.getName());
 		if(event.entityLiving != null && event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
 	    { 
 			event.entityLiving.motionX = 0;
 			event.entityLiving.motionY = 0;
 			event.entityLiving.motionZ = 0;//still can move but feels like about 90% reduction
+		//	if(event.entityLiving.worldObj.isRemote == true)
+			//if(event.entityLiving.isServerWorld() == false)//event.entityLiving.worldObj
+			//{
+				//why? it never fire here?
+			//	System.out.println("isServerWorld ==false;; client "+event.entityLiving.getName());
+				/*World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
+				
+				if(world.isRemote)
+				{
+					System.out.println("isRemote found a world...");
+				}
+				
+				SamsUtilities.spawnParticle(world, EnumParticleTypes.SNOWBALL, event.entityLiving.getPosition());
+			*/
+		//	}
+			//event.entityLiving.setCustomNameTag("froz");
+			event.entityLiving.setInWeb();
+			event.entityLiving.spawnRunningParticles();
 			
-			SamsUtilities.spawnParticle(event.entityLiving.worldObj, EnumParticleTypes.SNOWBALL, event.entityLiving.getPosition());
-			
+			//event.entityLiving.setFire(1);//this works but we dont want it, just example
 			if(event.entityLiving instanceof EntityPlayer)
 			{ 
 				EntityPlayer p = (EntityPlayer)event.entityLiving;
