@@ -20,11 +20,20 @@ public class PlayerSleep
 
 //worldtime x => didnt sleep
 			
-			if(event.entity.worldObj.getWorldTime() == 13000 - 10)//opr it was 24000
+			//wakeup first night is 24000
+			//wakeup 2 is 48000, and so on
+			int oneDay = 24000;//so morning after first sleep goes from 0 to this.
+			
+			
+			if(event.entity.worldObj.getWorldTime() % oneDay == oneDay - 10)//opr it was 
 			{
 
 				PlayerPowerups props = PlayerPowerups.get(p);
 				props.increment(PlayerPowerups.AWAKE_WATCHER);
+				
+				
+	 			System.out.println(event.entity.worldObj.getWorldTime());
+	 			System.out.println(event.entity.worldObj.getWorldTime() % oneDay );
 	 			System.out.println("did not sleep the night,,.. "+props.getInt(PlayerPowerups.AWAKE_WATCHER));
 			}
 			

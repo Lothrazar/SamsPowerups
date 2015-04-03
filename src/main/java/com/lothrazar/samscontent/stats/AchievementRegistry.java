@@ -6,6 +6,7 @@ import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.util.Reference; 
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
@@ -41,7 +42,150 @@ public class AchievementRegistry
 	{
 		registerVanillaPage(); 
 		
+		registerConsolePage();
+		
 		registerMyPage();
+	}
+
+	private void registerConsolePage() 
+	{
+		ArrayList<Achievement> console = new ArrayList<Achievement>();
+		//http://minecraft.gamepedia.com/Achievements
+ 
+		final int xSpacing = 2;
+		final int ySpacing = 2;
+		
+		final int xStart = 0;
+		final int yStart = 0;
+		
+		int xCurrent = xStart;
+		int yCurrent = yStart;
+		
+		//TODO: can page name be from lang file?
+		AchievementPage consolepage = new AchievementPage("From Console",(Achievement[]) console.toArray(new Achievement[0]));
+
+
+		Achievement moarTools = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement dispense = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement leaderOfPack;
+		
+		Achievement awardedAll = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement porkChop = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement passingTime = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement haggler = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement potPlanter = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement sign = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement ironBelly = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement shear = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement rainbow = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement stayinFrosty = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement chestfulCob = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement renewableEnergy = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement music = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement ironman = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement zombieDoc = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement lionTamer = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		Achievement archer = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools.registerStat();
+		console.add(moarTools);
+		
+		xCurrent += xSpacing;
+		
+		
+		
+		
+		
+	 	AchievementPage.registerAchievementPage(consolepage);
 	}
 
 	public void registerMyPage() 
