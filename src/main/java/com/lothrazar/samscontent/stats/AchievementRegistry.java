@@ -67,124 +67,121 @@ public class AchievementRegistry
 
 		Achievement moarTools = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
 		moarTools.registerStat();
-		console.add(moarTools);
-		
+		console.add(moarTools); 
 		xCurrent += xSpacing;
 		
-		Achievement dispense = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement dispense = new Achievement(Reference.MODID + "_dispense", "dispense", xCurrent, yCurrent, Items.golden_axe, null);
+		dispense.registerStat();
+		console.add(dispense); 
 		xCurrent += xSpacing;
 		
-		Achievement leaderOfPack;
-		
+		Achievement leaderOfPack = new Achievement(Reference.MODID + "_leaderOfPack", "leaderOfPack", xCurrent, yCurrent, Items.golden_axe, null);
+		leaderOfPack.registerStat();
+		console.add(leaderOfPack);
+		xCurrent += xSpacing;
+		/*
 		Achievement awardedAll = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
 		moarTools.registerStat();
 		console.add(moarTools);
+		xCurrent += xSpacing;
+		*/
+		
+		
+		Achievement porkChop = new Achievement(Reference.MODID + "porkChop", "porkChop", xCurrent, yCurrent, Items.golden_axe, null);
+		porkChop.registerStat();
+		console.add(porkChop);
 		
 		xCurrent += xSpacing;
 		
-		Achievement porkChop = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
+		Achievement passingTime = new Achievement(Reference.MODID + "passingTime", "passingTime", xCurrent, yCurrent, Items.golden_axe, null);
+		passingTime.registerStat();
+		console.add(passingTime); 
+		xCurrent += xSpacing;
+		
+
+		yCurrent += ySpacing;  //next row down
+		xCurrent = xStart;
+		
+		Achievement haggler = new Achievement(Reference.MODID + "haggler", "haggler", xCurrent, yCurrent, Items.golden_axe, null);
+		haggler.registerStat();
+		console.add(haggler);
 		
 		xCurrent += xSpacing;
 		
-		Achievement passingTime = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement potPlanter = new Achievement(Reference.MODID + "potPlanter", "potPlanter", xCurrent, yCurrent, Items.golden_axe, null);
+		potPlanter.registerStat();
+		console.add(potPlanter); 
 		xCurrent += xSpacing;
 		
-		Achievement haggler = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement sign = new Achievement(Reference.MODID + "sign", "sign", xCurrent, yCurrent, Items.golden_axe, null);
+		sign.registerStat();
+		console.add(sign); 
 		xCurrent += xSpacing;
 		
-		Achievement potPlanter = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement ironBelly = new Achievement(Reference.MODID + "ironBelly", "ironBelly", xCurrent, yCurrent, Items.golden_axe, null);
+		ironBelly.registerStat();
+		console.add(ironBelly); 
 		xCurrent += xSpacing;
 		
-		Achievement sign = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement shear = new Achievement(Reference.MODID + "shear", "shear", xCurrent, yCurrent, Items.golden_axe, null);
+		shear.registerStat();
+		console.add(shear); 
 		xCurrent += xSpacing;
 		
-		Achievement ironBelly = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
+
+		yCurrent += ySpacing;  //next row down
+		xCurrent = xStart;
 		
+		Achievement rainbow = new Achievement(Reference.MODID + "rainbow", "rainbow", xCurrent, yCurrent, Items.golden_axe, null);
+		rainbow.registerStat();
+		console.add(rainbow); 
 		xCurrent += xSpacing;
 		
-		Achievement shear = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement stayinFrosty = new Achievement(Reference.MODID + "stayinFrosty", "stayinFrosty", xCurrent, yCurrent, Items.golden_axe, null);
+		stayinFrosty.registerStat();
+		console.add(stayinFrosty); 
 		xCurrent += xSpacing;
 		
-		Achievement rainbow = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement chestfulCob = new Achievement(Reference.MODID + "chestfulCob", "chestfulCob", xCurrent, yCurrent, Items.golden_axe, null);
+		chestfulCob.registerStat();
+		console.add(chestfulCob); 
 		xCurrent += xSpacing;
 		
-		Achievement stayinFrosty = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement renewableEnergy = new Achievement(Reference.MODID + "renewableEnergy", "renewableEnergy", xCurrent, yCurrent, Items.golden_axe, null);
+		renewableEnergy.registerStat();
+		console.add(renewableEnergy); 
 		xCurrent += xSpacing;
 		
-		Achievement chestfulCob = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement music = new Achievement(Reference.MODID + "music", "music", xCurrent, yCurrent, Items.golden_axe, null);
+		music.registerStat();
+		console.add(music); 
 		xCurrent += xSpacing;
 		
-		Achievement renewableEnergy = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
+
+		yCurrent += ySpacing;  //next row down
+		xCurrent = xStart;
 		
+		Achievement ironman = new Achievement(Reference.MODID + "ironman", "ironman", xCurrent, yCurrent, Items.golden_axe, null);
+		ironman.registerStat();
+		console.add(ironman); 
 		xCurrent += xSpacing;
 		
-		Achievement music = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement zombieDoc = new Achievement(Reference.MODID + "zombieDoc", "zombieDoc", xCurrent, yCurrent, Items.golden_axe, null);
+		zombieDoc.registerStat();
+		console.add(zombieDoc); 
 		xCurrent += xSpacing;
 		
-		Achievement ironman = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement lionTamer = new Achievement(Reference.MODID + "lionTamer", "lionTamer", xCurrent, yCurrent, Items.golden_axe, null);
+		lionTamer.registerStat();
+		console.add(lionTamer); 
 		xCurrent += xSpacing;
 		
-		Achievement zombieDoc = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
+		Achievement archer = new Achievement(Reference.MODID + "archer", "archer", xCurrent, yCurrent, Items.golden_axe, null);
+		archer.registerStat();
+		console.add(archer); 
 		xCurrent += xSpacing;
 		
-		Achievement lionTamer = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
-		xCurrent += xSpacing;
-		
-		Achievement archer = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		
-		xCurrent += xSpacing;
-		
-		
-		
-		
-		
+		 
 	 	AchievementPage.registerAchievementPage(consolepage);
 	}
 
@@ -237,8 +234,8 @@ public class AchievementRegistry
 
 		
 /*
-		//next row down
-		yCurrent += ySpacing;
+		
+		yCurrent += ySpacing;  //next row down
 		xCurrent = xStart;
 		
 		if(ItemRegistry.baseWand != null)
