@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.util.Reference; 
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -329,21 +330,71 @@ public class AchievementRegistry
 	@SubscribeEvent
 	public void onPickup(ItemPickupEvent event)
 	{
+		//TODO:count to 30 emeralds on pickup. do we also have to count inventory?
 		
+		
+		//TODO: count to 16 different wool types
 	}
 	
 	@SubscribeEvent
 	public void onSmelt(ItemSmeltedEvent event)
 	{
+		if(event.smelting == null){return;}
 		
+		Item item = event.smelting.getItem();
+		int meta = event.smelting.getMetadata();
 
+		if(item == Items.coal && meta == 1)//charcoal
+		{ 
+			addStatSafe(renewableEnergy,event.player);
+		}
+
+	}
+	
+	public void onPlace()
+	{
+		//TODO: this for pot Plant placed
 	}
 	
 	public void onEaten()
 	{
 		//TODO: set this up/ porkChop - also on smelted? on player Eat event - so on use but with Action.type == EAT or something
 		
+		
+		//TODO: if eaten zombie flesh & starving
+		
+		
 	}
+	
+	//TODO: how to detect iron golem creation?
+	public void onIronGolemCreated(EntityPlayer player)//, BlockPos pos
+	{
+		
+	}
+	
+	//TODO: on Armor Worn?
+	
+	//TODO: on villager cvured/gold apple
+	
+	//TODO: on mob killed by player
+	public void onMobKilledByPlayer(EntityLivingBase mob, EntityPlayer player)
+	{
+		
+	}
+	
+	//TODO: on shear sheep event
+	
+	//TODO: swim in lava event (and check potion for fire prot)
+	
+	//TODO: no idea how to do cobble one
+	
+	
+	
+	//TODO: on tame wolf event, and count them for leaderOfPack
+	//TODO: tame ocelt event
+	
+	//TODO: play for 100 days trigger
+	
 	
 	@SubscribeEvent
 	public void onCraft(ItemCraftedEvent event)
@@ -377,11 +428,25 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(dispense,event.player);  
 		}
+		else if(item == Item.getItemFromBlock(Blocks.flower_pot))
+		{ 
+//TODO: potPlanter counts this plus the placement of it together
+		}
+		else if(item == Items.sign)
+		{ 
+//TODO: also this plus if placed, two things for that stat
+		}
+		//TODO: for moarTools, craft pickaxe,shovel,axe,hoe, kind of four hidden achievements and all four then give the last one
+		
 	}
 	
 	private void addStatSafe(Achievement stat, EntityPlayer player)
 	{
-		if(stat != null) 
-			player.addStat(stat, 1);
+		addStatSafe(stat, player, 1);
+	} 
+	private void addStatSafe(Achievement stat, EntityPlayer player, int amt)
+	{
+		if(stat != null && player != null) 
+			player.addStat(stat, amt);
 	} 
 }
