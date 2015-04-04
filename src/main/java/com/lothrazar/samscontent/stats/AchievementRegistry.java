@@ -105,9 +105,7 @@ public class AchievementRegistry
 		int yCurrent = yStart;
 		
 		//TODO: can page name be from lang file?
-		AchievementPage consolepage = new AchievementPage("From Console",(Achievement[]) console.toArray(new Achievement[0]));
-
-
+	
 		moarTools = new Achievement(Reference.MODID + "moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
 		moarTools.registerStat();
 		console.add(moarTools); 
@@ -229,7 +227,9 @@ public class AchievementRegistry
 		console.add(archer); 
 		xCurrent += xSpacing;
 		
-		 
+		AchievementPage consolepage = new AchievementPage("From Console",(Achievement[]) console.toArray(new Achievement[0]));
+
+
 	 	AchievementPage.registerAchievementPage(consolepage);
 	}
 

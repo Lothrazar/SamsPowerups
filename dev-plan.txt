@@ -6,7 +6,7 @@ make chest wand into oneuse item, the 'empty sack'
 //keyb to shrink to 1 height if possible
  
 // 'Frozen solid" potion effect, stops movement. from icewand shots
- 
+ //command OR wand to play random song
 //TODO: remote or portable workbench
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
 //TODO: a way to place signs quick by skipping interface (leaving them blank)
