@@ -518,8 +518,6 @@ public class RecipeRegistry
 		
 		GameRegistry.addSmelting(Blocks.piston, new ItemStack(Items.iron_ingot), EXP);
  
-   
- 
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.pumpkin),			new ItemStack(Blocks.lit_pumpkin));
 		 
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.melon, 9),			new ItemStack(Blocks.melon_block));
@@ -748,6 +746,8 @@ public class RecipeRegistry
 				new ItemStack(Blocks.wool, 1, 15), new ItemStack(Items.dye, 1,				Reference.dye_bonemeal));
 	}
 /*
+ //TODO: revisit add this back in, but default to turned OFF??
+  * ALSO find out which ones can and cannot be obtained with vanilla creeper/lightning way
 	public static void mobHeads()
 	{
 		if(!ModLoader.settings.craftableMobHeads) 	{return;}
@@ -831,7 +831,7 @@ public class RecipeRegistry
 		{ 
 			if(dye != Reference.dye_bonemeal)
 			{
-				//removeRecipe(new ItemStack(Blocks.wool,1,dye));				
+				//removeRecipe(new ItemStack(Blocks.wool,1,dye));		//TODO: revisit this?		
 			
 				GameRegistry.addRecipe(new ItemStack(Blocks.wool,8,dye), 
 						"www","wdw", "www", 

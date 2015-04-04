@@ -17,6 +17,7 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntitySheep;
@@ -64,7 +65,7 @@ public class ItemWandLivestock extends Item
 	public void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 
 	{
 		int entity_id = 0;
-		 
+		 //TODO: for all of these, check for and drop name tag
 		if(target instanceof EntityCow
 			&& ((EntityCow) target).isChild() == false)
 		{ 
@@ -93,6 +94,42 @@ public class ItemWandLivestock extends Item
 		if(target instanceof EntityBat)
 		{  
 			entity_id = Reference.entity_bat; 
+		} 
+		if(target instanceof EntityHorse)
+		{  
+			EntityHorse h = (EntityHorse)target;
+			
+			//TODO: when usd on horse, drop the armor/saddle/other stuff int he world (chest)
+			
+			//TODO: test if we can set Variant and Type to get Undead/Skeleton horses
+			//and still have them tamed/mounted?
+			//if so make new "zombie wand"
+			//that also cures zombie villagers on use 
+			
+			
+		//	h.getAlwaysRenderNameTag()
+		//	h.getCurrentArmor(arg0)
+		//	h.getEquipmentInSlot(arg0)
+			//h.setTamedBy(arg0)
+			//h.isAdultHorse()
+			//h.isChild()
+		//	h.isUndead()
+		//	h.setLeashedToEntity(arg0, arg1);
+		//	h.setHorseVariant(arg0);
+		//	h.setHorseType(arg0);
+			//TODO: can we spawn zombie horse? 
+			//USE EXISTING WAND TRANSFORM?
+			     //Magic wand to turn horses to zombie/skeleton?
+			                //yeah i think we can in the sapwn event and roll a dice and check the biome
+			                //http://www.minecraftforge.net/forum/index.php?topic=8937.0
+			                //and then just tag all biome horses as the undead type 
+			                /*
+			                 * Tamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3,Tame:1}
+			            Untamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3}
+			            Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
+			            Untamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
+			                */ 
+
 		}
 		
 		if(entity_id > 0)

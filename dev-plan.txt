@@ -34,18 +34,6 @@ make chest wand into oneuse item, the 'empty sack'
 //TODO: revisit early game at a later stage. things to consider: no wood/logs by hand, flint tools,
     emerald tools, MAYBE wood & stone armor?            
 
-//TODO: can we spawn zombie horse? 
-//USE EXISTING WAND TRANSFORM?
-     //Magic wand to turn horses to zombie/skeleton?
-                //yeah i think we can in the sapwn event and roll a dice and check the biome
-                //http://www.minecraftforge.net/forum/index.php?topic=8937.0
-                //and then just tag all biome horses as the undead type 
-                /*
-                 * Tamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3,Tame:1}
-            Untamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3}
-            Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
-            Untamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
-                */ 
 
 //TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
      AND achievements for MY stuff
