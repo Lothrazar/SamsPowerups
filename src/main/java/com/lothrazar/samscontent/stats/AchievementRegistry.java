@@ -6,6 +6,7 @@ import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.util.Reference; 
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.stats.Achievement;
@@ -14,6 +15,7 @@ import net.minecraftforge.common.AchievementPage;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent; 
 
 public class AchievementRegistry 
 {
@@ -31,6 +33,46 @@ public class AchievementRegistry
 	public Achievement wandLightning;
 	public Achievement appleEnder;
 	public Achievement beetrootSeed;
+
+	private Achievement archer;
+
+	private Achievement lionTamer;
+
+	private Achievement zombieDoc;
+
+	private Achievement ironman;
+
+	private Achievement bodyguard;
+
+	private Achievement music;
+
+	private Achievement renewableEnergy;
+
+	private Achievement chestfulCob;
+
+	private Achievement stayinFrosty;
+
+	private Achievement rainbow;
+
+	private Achievement shear;
+
+	private Achievement ironBelly;
+
+	private Achievement sign;
+
+	private Achievement potPlanter;
+
+	private Achievement haggler;
+
+	private Achievement passingTime;
+
+	private Achievement porkChop;
+
+	private Achievement leaderOfPack;
+
+	private Achievement dispense;
+
+	private Achievement moarTools;
 	
 	private void register(Achievement a)
 	{
@@ -65,17 +107,17 @@ public class AchievementRegistry
 		AchievementPage consolepage = new AchievementPage("From Console",(Achievement[]) console.toArray(new Achievement[0]));
 
 
-		Achievement moarTools = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
+		moarTools = new Achievement(Reference.MODID + "moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
 		moarTools.registerStat();
 		console.add(moarTools); 
 		xCurrent += xSpacing;
 		
-		Achievement dispense = new Achievement(Reference.MODID + "_dispense", "dispense", xCurrent, yCurrent, Items.golden_axe, null);
+		dispense = new Achievement(Reference.MODID + "dispense", "dispense", xCurrent, yCurrent, Items.golden_axe, null);
 		dispense.registerStat();
 		console.add(dispense); 
 		xCurrent += xSpacing;
 		
-		Achievement leaderOfPack = new Achievement(Reference.MODID + "_leaderOfPack", "leaderOfPack", xCurrent, yCurrent, Items.golden_axe, null);
+		leaderOfPack = new Achievement(Reference.MODID + "leaderOfPack", "leaderOfPack", xCurrent, yCurrent, Items.golden_axe, null);
 		leaderOfPack.registerStat();
 		console.add(leaderOfPack);
 		xCurrent += xSpacing;
@@ -87,13 +129,13 @@ public class AchievementRegistry
 		*/
 		
 		
-		Achievement porkChop = new Achievement(Reference.MODID + "porkChop", "porkChop", xCurrent, yCurrent, Items.golden_axe, null);
+		porkChop = new Achievement(Reference.MODID + "porkChop", "porkChop", xCurrent, yCurrent, Items.golden_axe, null);
 		porkChop.registerStat();
 		console.add(porkChop);
 		
 		xCurrent += xSpacing;
 		
-		Achievement passingTime = new Achievement(Reference.MODID + "passingTime", "passingTime", xCurrent, yCurrent, Items.golden_axe, null);
+		passingTime = new Achievement(Reference.MODID + "passingTime", "passingTime", xCurrent, yCurrent, Items.golden_axe, null);
 		passingTime.registerStat();
 		console.add(passingTime); 
 		xCurrent += xSpacing;
@@ -102,28 +144,28 @@ public class AchievementRegistry
 		yCurrent += ySpacing;  //next row down
 		xCurrent = xStart;
 		
-		Achievement haggler = new Achievement(Reference.MODID + "haggler", "haggler", xCurrent, yCurrent, Items.golden_axe, null);
+		haggler = new Achievement(Reference.MODID + "haggler", "haggler", xCurrent, yCurrent, Items.golden_axe, null);
 		haggler.registerStat();
 		console.add(haggler);
 		
 		xCurrent += xSpacing;
 		
-		Achievement potPlanter = new Achievement(Reference.MODID + "potPlanter", "potPlanter", xCurrent, yCurrent, Items.golden_axe, null);
+		potPlanter = new Achievement(Reference.MODID + "potPlanter", "potPlanter", xCurrent, yCurrent, Items.golden_axe, null);
 		potPlanter.registerStat();
 		console.add(potPlanter); 
 		xCurrent += xSpacing;
 		
-		Achievement sign = new Achievement(Reference.MODID + "sign", "sign", xCurrent, yCurrent, Items.golden_axe, null);
+		sign = new Achievement(Reference.MODID + "sign", "sign", xCurrent, yCurrent, Items.golden_axe, null);
 		sign.registerStat();
 		console.add(sign); 
 		xCurrent += xSpacing;
 		
-		Achievement ironBelly = new Achievement(Reference.MODID + "ironBelly", "ironBelly", xCurrent, yCurrent, Items.golden_axe, null);
+		ironBelly = new Achievement(Reference.MODID + "ironBelly", "ironBelly", xCurrent, yCurrent, Items.golden_axe, null);
 		ironBelly.registerStat();
 		console.add(ironBelly); 
 		xCurrent += xSpacing;
 		
-		Achievement shear = new Achievement(Reference.MODID + "shear", "shear", xCurrent, yCurrent, Items.golden_axe, null);
+		shear = new Achievement(Reference.MODID + "shear", "shear", xCurrent, yCurrent, Items.golden_axe, null);
 		shear.registerStat();
 		console.add(shear); 
 		xCurrent += xSpacing;
@@ -132,27 +174,27 @@ public class AchievementRegistry
 		yCurrent += ySpacing;  //next row down
 		xCurrent = xStart;
 		
-		Achievement rainbow = new Achievement(Reference.MODID + "rainbow", "rainbow", xCurrent, yCurrent, Items.golden_axe, null);
+		rainbow = new Achievement(Reference.MODID + "rainbow", "rainbow", xCurrent, yCurrent, Items.golden_axe, null);
 		rainbow.registerStat();
 		console.add(rainbow); 
 		xCurrent += xSpacing;
 		
-		Achievement stayinFrosty = new Achievement(Reference.MODID + "stayinFrosty", "stayinFrosty", xCurrent, yCurrent, Items.golden_axe, null);
+		stayinFrosty = new Achievement(Reference.MODID + "stayinFrosty", "stayinFrosty", xCurrent, yCurrent, Items.golden_axe, null);
 		stayinFrosty.registerStat();
 		console.add(stayinFrosty); 
 		xCurrent += xSpacing;
 		
-		Achievement chestfulCob = new Achievement(Reference.MODID + "chestfulCob", "chestfulCob", xCurrent, yCurrent, Items.golden_axe, null);
+		chestfulCob = new Achievement(Reference.MODID + "chestfulCob", "chestfulCob", xCurrent, yCurrent, Items.golden_axe, null);
 		chestfulCob.registerStat();
 		console.add(chestfulCob); 
 		xCurrent += xSpacing;
 		
-		Achievement renewableEnergy = new Achievement(Reference.MODID + "renewableEnergy", "renewableEnergy", xCurrent, yCurrent, Items.golden_axe, null);
+		renewableEnergy = new Achievement(Reference.MODID + "renewableEnergy", "renewableEnergy", xCurrent, yCurrent, Items.golden_axe, null);
 		renewableEnergy.registerStat();
 		console.add(renewableEnergy); 
 		xCurrent += xSpacing;
 		
-		Achievement music = new Achievement(Reference.MODID + "music", "music", xCurrent, yCurrent, Items.golden_axe, null);
+		music = new Achievement(Reference.MODID + "music", "music", xCurrent, yCurrent, Items.golden_axe, null);
 		music.registerStat();
 		console.add(music); 
 		xCurrent += xSpacing;
@@ -161,22 +203,27 @@ public class AchievementRegistry
 		yCurrent += ySpacing;  //next row down
 		xCurrent = xStart;
 		
-		Achievement ironman = new Achievement(Reference.MODID + "ironman", "ironman", xCurrent, yCurrent, Items.golden_axe, null);
+		bodyguard = new Achievement(Reference.MODID + "bodyguard", "bodyguard", xCurrent, yCurrent, Items.golden_axe, null);
+		bodyguard.registerStat();
+		console.add(bodyguard); 
+		xCurrent += xSpacing;
+		
+		ironman = new Achievement(Reference.MODID + "ironman", "ironman", xCurrent, yCurrent, Items.golden_axe, null);
 		ironman.registerStat();
 		console.add(ironman); 
 		xCurrent += xSpacing;
 		
-		Achievement zombieDoc = new Achievement(Reference.MODID + "zombieDoc", "zombieDoc", xCurrent, yCurrent, Items.golden_axe, null);
+		zombieDoc = new Achievement(Reference.MODID + "zombieDoc", "zombieDoc", xCurrent, yCurrent, Items.golden_axe, null);
 		zombieDoc.registerStat();
 		console.add(zombieDoc); 
 		xCurrent += xSpacing;
 		
-		Achievement lionTamer = new Achievement(Reference.MODID + "lionTamer", "lionTamer", xCurrent, yCurrent, Items.golden_axe, null);
+		lionTamer = new Achievement(Reference.MODID + "lionTamer", "lionTamer", xCurrent, yCurrent, Items.golden_axe, null);
 		lionTamer.registerStat();
 		console.add(lionTamer); 
 		xCurrent += xSpacing;
 		
-		Achievement archer = new Achievement(Reference.MODID + "archer", "archer", xCurrent, yCurrent, Items.golden_axe, null);
+		archer = new Achievement(Reference.MODID + "archer", "archer", xCurrent, yCurrent, Items.golden_axe, null);
 		archer.registerStat();
 		console.add(archer); 
 		xCurrent += xSpacing;
@@ -278,30 +325,57 @@ public class AchievementRegistry
 		}
 	}
 	
+	
+	@SubscribeEvent
+	public void onPickup(ItemPickupEvent event)
+	{
+		
+	}
+	
+	@SubscribeEvent
+	public void onSmelt(ItemSmeltedEvent event)
+	{
+		
+
+	}
+	
+	public void onEaten()
+	{
+		//TODO: set this up/ porkChop - also on smelted? on player Eat event - so on use but with Action.type == EAT or something
+		
+	}
+	
 	@SubscribeEvent
 	public void onCraft(ItemCraftedEvent event)
-	{
+	{ 
 		if(event.crafting == null){return;}
+		
+		Item item = event.crafting.getItem();
+		int meta = event.crafting.getMetadata();
 
-		if(event.crafting.getItem() == ItemRegistry.apple_chocolate)
+		if(item == ItemRegistry.apple_chocolate)
 		{ 
 			addStatSafe(appleChoc,event.player);
 		}
-		else if(event.crafting.getItem() == ItemRegistry.apple_lapis)
+		else if(item == ItemRegistry.apple_lapis)
 		{ 
 			addStatSafe(appleLapis,event.player); 
 		}
-		else if(event.crafting.getItem() == ItemRegistry.apple_emerald)
+		else if(item == ItemRegistry.apple_emerald)
 		{ 
 			addStatSafe(appleEmerald,event.player); 
 		}
-		else if(event.crafting.getItem() == ItemRegistry.apple_diamond)
+		else if(item == ItemRegistry.apple_diamond)
 		{ 
 			addStatSafe(appleDiamond,event.player);  
 		}
-		else if(event.crafting.getItem() == ItemRegistry.apple_ender)
+		else if(item == ItemRegistry.apple_ender)
 		{ 
 			addStatSafe(appleEnder,event.player);  
+		}
+		else if(item == Item.getItemFromBlock(Blocks.dispenser))
+		{ 
+			addStatSafe(dispense,event.player);  
 		}
 	}
 	
