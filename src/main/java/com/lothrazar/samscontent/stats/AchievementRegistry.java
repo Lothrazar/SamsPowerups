@@ -404,6 +404,9 @@ public class AchievementRegistry
 		Item item = event.crafting.getItem();
 		int meta = event.crafting.getMetadata();
 
+	//	System.out.println("   "+item.getUnlocalizedName());
+		
+
 		if(item == ItemRegistry.apple_chocolate)
 		{ 
 			addStatSafe(appleChoc,event.player);
@@ -425,7 +428,7 @@ public class AchievementRegistry
 			addStatSafe(appleEnder,event.player);  
 		}
 		else if(item == Item.getItemFromBlock(Blocks.dispenser))
-		{ 
+		{  
 			addStatSafe(dispense,event.player);  
 		}
 		else if(item == Item.getItemFromBlock(Blocks.flower_pot))

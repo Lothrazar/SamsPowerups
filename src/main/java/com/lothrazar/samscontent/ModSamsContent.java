@@ -233,6 +233,7 @@ public class ModSamsContent
         handlers.add(new PlayerFallTheEnd()    );
       	handlers.add(new ChestDeposit()        );
      	handlers.add(instance                         ); 
+     	handlers.add(achievements);
      	handlers.add(ItemRegistry.itemEnderBook       );
 		handlers.add(ItemRegistry.itemEnderBook       );
 		handlers.add(ItemRegistry.wandTransform       );
