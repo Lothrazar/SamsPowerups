@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.stats;
 import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.PlayerPowerups;
 import com.lothrazar.util.Reference; 
 
 import net.minecraft.entity.EntityLivingBase;
@@ -10,6 +11,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
@@ -330,10 +332,29 @@ public class AchievementRegistry
 	@SubscribeEvent
 	public void onPickup(ItemPickupEvent event)
 	{
-		//TODO:count to 30 emeralds on pickup. do we also have to count inventory?
+		if(event.pickedUp == null || event.pickedUp.getEntityItem() == null){return;}
 		
+		ItemStack items = event.pickedUp.getEntityItem();
+		
+		if(items.getItem() == Items.emerald && items.stackSize >= 30)
+		{
+			//TODO: dont think this counts trading..??
+			addStatSafe(haggler, event.player);	
+			
+			
+		} 
+		
+		if(items.getItem() == Item.getItemFromBlock(Blocks.wool))
+		{
+			PlayerPowerups ext = PlayerPowerups.get(event.player);
+			
+			
+			//ext.triggerWoolColor(items.getMetadata());
+			
+		}
 		
 		//TODO: count to 16 different wool types
+		//but we dont want ot have to keep all at once
 	}
 	
 	@SubscribeEvent

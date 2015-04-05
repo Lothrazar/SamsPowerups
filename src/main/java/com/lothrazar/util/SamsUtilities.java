@@ -356,17 +356,6 @@ public class SamsUtilities
 		return "["+ position.getX() + ", "+position.getY()+", "+position.getZ()+"]";
 	} 
 	
-	public static boolean isNighttime(World worldObj)
-	{
-		return !isDaytime(worldObj);
-	}
-	
-	public static boolean isDaytime(World worldObj) 
-	{ 
-		long time = worldObj.getWorldTime(); 
-		return time < 12300 || time > 23850;
-	}
-
 	public static String lang(String name)
 	{
 		return StatCollector.translateToLocal(name);

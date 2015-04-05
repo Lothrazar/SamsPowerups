@@ -25,18 +25,19 @@ public class PlayerSleep
 			int oneDay = 24000;//so morning after first sleep goes from 0 to this.
 			
 			
-			if(event.entity.worldObj.getWorldTime() % oneDay == oneDay - 10)//opr it was 
-			{
-
+			if(event.entity.worldObj.getWorldTime() % oneDay == oneDay - 10) 
+			{ 
 				PlayerPowerups props = PlayerPowerups.get(p);
 				props.increment(PlayerPowerups.AWAKE_WATCHER);
-				
-				
+				 
 	 			System.out.println(event.entity.worldObj.getWorldTime());
 	 			System.out.println(event.entity.worldObj.getWorldTime() % oneDay );
-	 			System.out.println("did not sleep the night,,.. "+props.getInt(PlayerPowerups.AWAKE_WATCHER));
+	 			System.out.println("# awake = "+props.getInt(PlayerPowerups.AWAKE_WATCHER));
 			}
 			
+			
+			//TODO: this is unfinished. should count # awake/asleep and give tired buff
+			 
 			
 		}
 	}
@@ -53,30 +54,18 @@ public class PlayerSleep
 	@SubscribeEvent
 	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)
 	{
-		if(event.entity.worldObj.isRemote == false)
+		//called when the player leaves the bed, may or may not be morning
+		System.out.println("wakeup  " +event.entity.worldObj.getWorldTime());
+		if(event.entity.worldObj.isRemote == false
+				&& event.entity.worldObj.isDaytime() == false)//.fires on both remotes
 		{ 
-		//.fires on both remotes
-		//wakeup early always false.
-	//	must check time of day for full night
-			//: wakeup  13000
-			System.out.println("wakeup  " +event.entity.worldObj.getWorldTime());
-			 
-			if(SamsUtilities.isNighttime(event.entity.worldObj))
-			{ 
-			//	event.entityPlayer.getEntityData().setLong("last_sleep", event.entity.worldObj.getWorldTime());
-				PlayerPowerups props = PlayerPowerups.get(event.entityPlayer);
-	
-				props.increment(PlayerPowerups.SLEEP_WATCHER);
-	 			System.out.println("iextended properties "+props.getInt(PlayerPowerups.SLEEP_WATCHER));
-	 			
-	 			
-	 			
-	 			
-				//TODO: this is unfinished. need to check current time
-				//and check number of days awake, and give tired buff
-				
-			} 
-		
+		 
+			PlayerPowerups props = PlayerPowerups.get(event.entityPlayer);
+			
+			props.increment(PlayerPowerups.SLEEP_WATCHER);
+			
+ 			System.out.println("#sleeps = "+props.getInt(PlayerPowerups.SLEEP_WATCHER));
+ 		 
 		}
 
 	}

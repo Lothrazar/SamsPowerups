@@ -20,11 +20,16 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 	public static final int AWAKE_WATCHER = 21;
 	private static final String NBT_AWAKE_CURRENT = "samNightUnslept"; 
+	
+
+	//public static final int WOOLWHITE_WATCHER = 22;
+	
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;  
 		this.player.getDataWatcher().addObject(SLEEP_WATCHER, 0);
 		this.player.getDataWatcher().addObject(AWAKE_WATCHER, 0);
+	//	this.player.getDataWatcher().addObject(WOOLWHITE_WATCHER, 0);
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -37,8 +42,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		return (PlayerPowerups) player.getExtendedProperties(EXT_PROP_NAME);
 	}
 	
-	
-	
 	@Override
 	public void saveNBTData(NBTTagCompound compound) 
 	{
@@ -46,7 +49,9 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		NBTTagCompound properties = new NBTTagCompound(); 
 		properties.setInteger(NBT_SLEEP_CURRENT, this.player.getDataWatcher().getWatchableObjectInt(SLEEP_WATCHER)); 
 		properties.setInteger(NBT_AWAKE_CURRENT, this.player.getDataWatcher().getWatchableObjectInt(AWAKE_WATCHER)); 
- 
+		
+		//properties.setInteger(NBT_WOOL_WHITE, this.player.getDataWatcher().getWatchableObjectInt(WOOLWHITE_WATCHER));
+		
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
 
@@ -80,4 +85,17 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(WATCHER, amount);
 	}
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
+/*
+	public void triggerWoolColor(int metadata) 
+	{
+		// TODO  
+		System.out.println("metadata");
+		
+	}
+	public boolean allWoolColors()
+	{
+		//TODO
+		return false;
+	}
+	*/
 }
