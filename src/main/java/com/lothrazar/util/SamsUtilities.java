@@ -14,6 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
@@ -395,5 +396,28 @@ public class SamsUtilities
 		}
 		
 		return s;
+	}
+	
+	
+	public static TileEntityChest getChestAdj(TileEntityChest chest) 
+	{
+		TileEntityChest teAdjacent = null;
+		if(chest.adjacentChestXNeg != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestXNeg; 
+  	  	}
+  		if(chest.adjacentChestXPos != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestXPos; 
+  	  	}
+  		if(chest.adjacentChestZNeg != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestZNeg ; 
+  	  	}
+  		if(chest.adjacentChestZPos != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestZPos; 
+  	  	}
+		return teAdjacent;
 	}
 }

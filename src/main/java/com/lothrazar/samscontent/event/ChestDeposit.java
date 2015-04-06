@@ -18,52 +18,35 @@ import com.lothrazar.util.SamsUtilities;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChestDeposit
-{  
-	@SuppressWarnings("unused")
+{   
   	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{      
-		if(ModSamsContent.configSettings.swiftDeposit == false){ return; }
+		if(ModSamsContent.configSettings.swiftDeposit  && 
+				event.action == event.action.LEFT_CLICK_BLOCK && 
+				event.entityPlayer.isSneaking()  && 
+				event.entityPlayer.getCurrentEquippedItem() == null)
+		{ 
+	  	  	TileEntity te =	event.entity.worldObj.getTileEntity(event.pos);
+	  
+	  	  	if(te != null && (te instanceof TileEntityChest))
+	  	  	{ 
+				TileEntityChest chest = (TileEntityChest)te ; 
+				 
+		  		sortFromPlayerToChestEntity(event.world,chest,event.entityPlayer);
+
+		  	  	//check for double chest 
+		  	    TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest);
+		  		if(teAdjacent != null)
+		  		{
+		  	  		sortFromPlayerToChestEntity(event.world,teAdjacent,event.entityPlayer);
+		  		}
+	  	  	}
+		}
 		
-		if(event.action != event.action.LEFT_CLICK_BLOCK) { return; }
-	 
-		if(event.entityPlayer.isSneaking() == false){ return; }
-		  
-		if(event.entityPlayer.getCurrentEquippedItem() != null){ return; }//empty hand
-	 
-  	  	TileEntity te =	event.entity.worldObj.getTileEntity(event.pos);
-  
-  	  	if(te == null || !(te instanceof TileEntityChest)){return;} 
-		TileEntityChest chest = (TileEntityChest)te ; 
-  	  	if(chest==null){return;}//some of these is null shouldn't happen
-  	  	 
-  	  	//check for double chest
-  	    TileEntityChest teAdjacent = null;
-  	  	
-  	  	if(chest.adjacentChestXNeg != null)
-  	  	{
-  	  		teAdjacent = chest.adjacentChestXNeg; 
-  	  	}
-  		if(chest.adjacentChestXPos != null)
-  	  	{
-  	  		teAdjacent = chest.adjacentChestXPos; 
-  	  	}
-  		if(chest.adjacentChestZNeg != null)
-  	  	{
-  	  		teAdjacent = chest.adjacentChestZNeg ; 
-  	  	}
-  		if(chest.adjacentChestZPos != null)
-  	  	{
-  	  		teAdjacent = chest.adjacentChestZPos; 
-  	  	}
- 
-  		sortFromPlayerToChestEntity(event.world,chest,event.entityPlayer);
-  	
-  		if(teAdjacent != null)
-  		{
-  	  		sortFromPlayerToChestEntity(event.world,teAdjacent,event.entityPlayer);
-  		}
    	}//end player interact event  
+
+	
  
   	private void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
   	{ 
