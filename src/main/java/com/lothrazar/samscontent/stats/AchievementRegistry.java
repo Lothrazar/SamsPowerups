@@ -15,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
@@ -328,7 +329,15 @@ public class AchievementRegistry
 		}
 	}
 	
-	
+	@SubscribeEvent
+ 	public void onEntityConstructing(EntityConstructing event)
+ 	{ 
+ 		if (event.entity instanceof EntityPlayer && PlayerPowerups.get((EntityPlayer) event.entity) == null)
+ 		{ 
+ 			PlayerPowerups.register((EntityPlayer) event.entity);
+ 		} 
+ 	}
+	 
 	@SubscribeEvent
 	public void onPickup(ItemPickupEvent event)
 	{

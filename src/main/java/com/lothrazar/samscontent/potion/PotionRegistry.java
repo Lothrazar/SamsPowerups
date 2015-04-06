@@ -10,7 +10,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class PotionRegistry 
 { 
-	public static Potion tired;//http://www.minecraftforge.net/wiki/Potion_Tutorial
+	//public static Potion tired;//http://www.minecraftforge.net/wiki/Potion_Tutorial
 	public static Potion waterwalk;
 	public static Potion slowfall;
 	public static Potion flying;
@@ -33,7 +33,7 @@ public class PotionRegistry
  
 	private static void registerNewPotionEffects() 
 	{ 
-		PotionRegistry.tired = (new PotionCustom(ModSamsContent.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
+		//PotionRegistry.tired = (new PotionCustom(ModSamsContent.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
 		
 		PotionRegistry.waterwalk = (new PotionCustom(ModSamsContent.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		

@@ -23,7 +23,7 @@ public class EntityPotionTick
 	{  
 		if(event.entityLiving == null){return;}
 		
-	     tickTired(event); 
+	    // tickTired(event); 
 	        
 	     tickFlying(event);
 	  
@@ -173,7 +173,7 @@ public class EntityPotionTick
 	    	 }
 	     }
 	}
-
+/*
 	private void tickTired(LivingUpdateEvent event) 
 	{
 		 if(event.entityLiving.isPotionActive(PotionRegistry.tired)) 
@@ -196,4 +196,5 @@ public class EntityPotionTick
 	    	 } 
          }
 	}
+	*/
 }
