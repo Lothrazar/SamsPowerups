@@ -223,13 +223,9 @@ public class ModSamsContent
  
      	  
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
-     	handlers.add(new PlayerEat()         );   
-     	handlers.add(new PlayerEnderChestHit()       );   
-      	handlers.add(new DebugScreenText()          );  
-      	handlers.add(new ChestDeposit()        );
+      	handlers.add(new DebugScreenText()          );  //This one can stay  
      	handlers.add(instance                         ); 
-     	handlers.add(achievements);
-     	handlers.add(ItemRegistry.itemEnderBook       );
+     	handlers.add(achievements); 
 		handlers.add(ItemRegistry.itemEnderBook       );
 		handlers.add(ItemRegistry.wandTransform       );
 		handlers.add(ItemRegistry.itemChestSack       );
@@ -377,15 +373,38 @@ public class ModSamsContent
 	 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
-  	{         
+  	{        
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
+		TileEntity maybesign = event.world.getTileEntity(event.pos);
+		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
 		//TODO: a way to Name Villagers with name tags (is there a vanilla way)
     //i can use entityInteractEvent, detect name tag and then cancel the event
         //       then the entity has a 'setCustomNameTag' function
 
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
-		TileEntity maybesign = event.world.getTileEntity(event.pos);
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
 		
+		if (held != null && 
+			held.getItem() != null && 
+			ItemRegistry.itemEnderBook != null &&
+			held.getItem() == ItemRegistry.itemEnderBook && 
+			event.action.RIGHT_CLICK_BLOCK == event.action)
+		{   
+			if(event.entityPlayer.isSneaking())
+			{ 			 
+				ItemEnderBook.saveCurrentLocation(event.world,event.entityPlayer, held);		 
+			} 
+			else
+			{ 
+				ItemEnderBook.teleport(event.world,event.entityPlayer, held);	
+			} 
+		}
+		
+		if(event.action == event.action.LEFT_CLICK_BLOCK && 
+			ModSamsContent.configSettings.smartEnderchest && 
+			event.entityPlayer.getCurrentEquippedItem() != null && 
+			event.entityPlayer.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.ender_chest))
+		{
+			event.entityPlayer.displayGUIChest(event.entityPlayer.getInventoryEnderChest()); 
+		} 
 		
 		if(ModSamsContent.configSettings.swiftDeposit  && 
 				event.action == event.action.LEFT_CLICK_BLOCK && 

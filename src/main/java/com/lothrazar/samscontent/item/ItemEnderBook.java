@@ -62,7 +62,7 @@ public class ItemEnderBook extends Item
 		 }  
 	}
 
-	public void saveCurrentLocation(World world, EntityPlayer entityPlayer, ItemStack itemStack) 
+	public static void saveCurrentLocation(World world, EntityPlayer entityPlayer, ItemStack itemStack) 
 	{   
     	Location loc = new Location(0
     			,entityPlayer.posX
@@ -74,37 +74,10 @@ public class ItemEnderBook extends Item
     	 
     	SamsUtilities.setItemStackNotNull(itemStack);
     	itemStack.getTagCompound().setString(KEY_LOC, loc.toCSV());		
+		entityPlayer.swingItem();
 	} 
-	
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-	{	 
-		ItemStack itemStack = event.entityPlayer.getCurrentEquippedItem();
-
-		if (itemStack == null || 
-			itemStack.getItem() == null || 
-			ItemRegistry.itemEnderBook == null ||
-			itemStack.getItem() != ItemRegistry.itemEnderBook )
-		{ 
-			return; 
-		}
-
-		//left or right click with THIS book does the corresponding action
-		 
-		if (event.action.RIGHT_CLICK_BLOCK == event.action)
-			if(event.entityPlayer.isSneaking())
-			{ 			 
-				saveCurrentLocation(event.world,event.entityPlayer, itemStack);		 
-			} 
-			else
-			{ 
-				teleport(event.world,event.entityPlayer, itemStack);	
-			}
-		
-		event.entityPlayer.swingItem();
-	}  
-	
-	public void teleport(World world, EntityPlayer entityPlayer, ItemStack enderBookInstance) 
+	  
+	public static void teleport(World world, EntityPlayer entityPlayer, ItemStack enderBookInstance) 
 	{  
 		String csv = enderBookInstance.getTagCompound().getString(KEY_LOC);
 		
