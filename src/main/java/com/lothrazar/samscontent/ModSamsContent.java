@@ -218,8 +218,7 @@ public class ModSamsContent
      	handlers.add(new PlayerBonemealUse()         );
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
      	handlers.add(new EntityPotionTick()          );
-     	handlers.add(new PlayerEat()         );
-     	handlers.add(new PlayerSleep()         );
+     	handlers.add(new PlayerEat()         ); 
      	handlers.add(new ZombieDrops()         );
      	handlers.add(new EntityTorchCollide()        );
       	//handlers.add(new HandlerPlayerHarvest()       );

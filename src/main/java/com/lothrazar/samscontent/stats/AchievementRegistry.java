@@ -88,7 +88,7 @@ public class AchievementRegistry
 	{
 		registerVanillaPage(); 
 		
-		registerConsolePage();
+		//registerConsolePage();//TODO: need work on triggering each one, big feature
 		
 		registerMyPage();
 	}
@@ -229,7 +229,8 @@ public class AchievementRegistry
 		archer.registerStat();
 		console.add(archer); 
 		xCurrent += xSpacing;
-		
+
+		// http://minecraft.gamepedia.com/Achievements 
 		AchievementPage consolepage = new AchievementPage("From Console",(Achievement[]) console.toArray(new Achievement[0]));
 
 
@@ -281,40 +282,7 @@ public class AchievementRegistry
 			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder" ,xCurrent, yCurrent,ItemRegistry.apple_ender,null);
 			register(appleEnder);
 		} 
-		
-
-		
-/*
-		
-		yCurrent += ySpacing;  //next row down
-		xCurrent = xStart;
-		
-		if(ItemRegistry.baseWand != null)
-		{ 
-			xCurrent += xSpacing;
-			baseWand = new Achievement(Reference.MODID + "_baseWand", "baseWand", xCurrent, yCurrent, ItemRegistry.baseWand, null);
-			register(baseWand);
-		} 
-
-		//next row down
-		yCurrent += ySpacing;
-		xCurrent = xStart;
-		
-		if(ItemRegistry.wandLightning != null)
-		{ 
-			xCurrent += xSpacing;
-			wandLightning = new Achievement(Reference.MODID + "_" + "wandLightning", "wandLightning", xCurrent, yCurrent, ItemRegistry.wandLightning, baseWand);
-			register(wandLightning);
-		} 
-*/		
-		
-		//TODO: IDEA: importing achieves from Xpos/PS versions 
-		// http://minecraft.gamepedia.com/Achievements 
-		
-		
-		
-		
-		//TODO: can page name be from lang file?
+		  
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
 
 	 	AchievementPage.registerAchievementPage(page);
@@ -377,8 +345,7 @@ public class AchievementRegistry
 		if(item == Items.coal && meta == 1)//charcoal
 		{ 
 			addStatSafe(renewableEnergy,event.player);
-		}
-
+		} 
 	}
 	
 	public void onPlace()
