@@ -11,6 +11,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -420,4 +421,14 @@ public class SamsUtilities
   	  	}
 		return teAdjacent;
 	}
+	
+	public static boolean isBonemeal(ItemStack held )
+	{ 
+		Item heldItem = (held == null) ? null : held.getItem();
+		
+		if(heldItem == null){return false;}
+	 
+		return (heldItem.equals(Items.dye)  && held.getItemDamage() == Reference.dye_bonemeal); 
+	}
+	 
 }

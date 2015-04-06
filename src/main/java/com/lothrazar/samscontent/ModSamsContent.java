@@ -49,7 +49,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -216,8 +218,7 @@ public class ModSamsContent
 		 
     	ArrayList<Object> handlers = new ArrayList<Object>();
  
-     	 
-     	handlers.add(new PlayerBonemealUse()         );
+     	  
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
      	handlers.add(new PlayerEat()         );   
      	handlers.add(new PlayerEnderChestHit()       );  
@@ -245,8 +246,7 @@ public class ModSamsContent
 		handlers.add(BlockRegistry.block_storelava    );
 		handlers.add(BlockRegistry.block_storewater   );
 		handlers.add(BlockRegistry.block_storemilk    ); 
-		handlers.add(BlockRegistry.block_storeempty   );  
-		handlers.add(new FlintPumpkin()				  ); 
+		handlers.add(BlockRegistry.block_storeempty   );   
 
      	for(Object h : handlers)
      		if(h != null)
@@ -309,6 +309,7 @@ public class ModSamsContent
 			//TODO: child zombie feathers
 		} 
 	}
+	 
 	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
@@ -319,6 +320,127 @@ public class ModSamsContent
 
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
 		TileEntity maybesign = event.world.getTileEntity(event.pos);
+		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		
+		
+		if(ModSamsContent.configSettings.swiftDeposit  && 
+				event.action == event.action.LEFT_CLICK_BLOCK && 
+				event.entityPlayer.isSneaking()  && 
+				event.entityPlayer.getCurrentEquippedItem() == null)
+		{ 
+	  	  	TileEntity te =	event.entity.worldObj.getTileEntity(event.pos);
+	  
+	  	  	if(te != null && (te instanceof TileEntityChest))
+	  	  	{ 
+				TileEntityChest chest = (TileEntityChest)te ; 
+				 
+		  		ChestDeposit.sortFromPlayerToChestEntity(event.world,chest,event.entityPlayer);
+
+		  	  	//check for double chest 
+		  	    TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest);
+		  		if(teAdjacent != null)
+		  		{
+		  			ChestDeposit.sortFromPlayerToChestEntity(event.world,teAdjacent,event.entityPlayer);
+		  		}
+	  	  	}
+		}
+		
+		if(ModSamsContent.configSettings.betterBonemeal 
+  				&& event.action != event.action.LEFT_CLICK_BLOCK 
+  				&& SamsUtilities.isBonemeal(held)  && 
+  				blockClicked != null ) 
+		{    
+			boolean showParticles = false;
+			boolean decrementInv = false;
+			
+			//event.entityPlayer.worldObj.getBlockState(event.pos)
+			//new method: the Block itself tells what number to return, not the world.  
+			//the world wraps up the state of the block that we can query, and the 
+			//block class translates
+
+	  		if(event.world.isRemote){return;}//stop it from doing a second ghost item drop clientsideonly
+	  		
+		 	if ( blockClicked.equals(Blocks.yellow_flower))//yellow flowers have no damage variations
+		 	{  
+			  	event.entity.entityDropItem( new ItemStack(Blocks.yellow_flower ,1), 1); 
+
+		 		decrementInv = true;
+			  	showParticles = true;
+		 	}
+		 	else if ( blockClicked.equals(Blocks.red_flower)) 	//the red flower is ALL the flowers
+		 	{   
+				int blockClickedDamage = Blocks.red_flower.getMetaFromState(event.entityPlayer.worldObj.getBlockState(event.pos)); 
+
+			  	event.entity.entityDropItem( new ItemStack(Blocks.red_flower ,1,blockClickedDamage), 1);//quantity = 1
+
+		 		decrementInv = true;
+			  	showParticles = true; 
+		 	}
+		 	else if ( blockClicked.equals(Blocks.waterlily))
+		 	{ 
+			  	event.entity.entityDropItem( new ItemStack(Blocks.waterlily ,1), 1);
+
+		 		decrementInv = true;
+			  	showParticles = true;
+		 	} 
+		 	else if ( blockClicked.equals(Blocks.reeds))
+		 	{
+		 		//reeds can only be three tall so we stop there
+		 		Block blockAbove = event.entityPlayer.worldObj.getBlockState(event.pos.up(1)).getBlock();
+		 		Block blockAbove2 = event.entityPlayer.worldObj.getBlockState(event.pos.up(2)).getBlock();
+		 		
+		 		int goUp = 0;
+		 		
+		 		if(event.entityPlayer.worldObj.isAirBlock(event.pos.up(1))) goUp = 1;
+		 		else if(event.entityPlayer.worldObj.isAirBlock(event.pos.up(2))) goUp = 2;
+
+				if(goUp > 0)
+				{
+			 		event.entityPlayer.worldObj.setBlockState(event.pos.up(goUp), Blocks.reeds.getDefaultState());
+
+				  	showParticles = true;
+			 		decrementInv = true;
+				} 
+		 	}
+		 	
+		 	if(decrementInv)
+		 	{ 
+		 		if(event.entityPlayer.capabilities.isCreativeMode == false)
+		 			held.stackSize--;
+		 		
+		 		if(held.stackSize == 0) 
+		 			event.entityPlayer.inventory.setInventorySlotContents(event.entityPlayer.inventory.currentItem, null); 		 
+		 	}
+		 	if(showParticles)
+		 	{
+		 		event.entityPlayer.worldObj.spawnParticle(EnumParticleTypes.SPELL, event.pos.getX(), event.pos.getY(), event.pos.getZ(), 0, 0, 0, 4);	
+		 	} 
+		}
+		
+		
+		if(ModSamsContent.configSettings.flintPumpkin && 
+				held != null && held.getItem() == Items.flint_and_steel && 
+				event.action.RIGHT_CLICK_BLOCK == event.action )
+		{   
+			if(blockClicked == Blocks.pumpkin)
+			{
+				event.world.setBlockState(event.pos, Blocks.lit_pumpkin.getDefaultState());
+				 
+				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
+				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
+			
+				SamsUtilities.playSoundAt(event.entityPlayer, "fire.ignite"); 
+			}
+			else if(blockClicked == Blocks.lit_pumpkin)//then un-light it
+			{
+				event.world.setBlockState(event.pos, Blocks.pumpkin.getDefaultState());
+				 
+				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
+				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
+				
+				SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
+			}
+		}
 		
 		
 		if(ModSamsContent.configSettings.skullSignNames && 

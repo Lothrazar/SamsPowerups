@@ -18,37 +18,9 @@ import com.lothrazar.util.SamsUtilities;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChestDeposit
-{   
-  	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		if(ModSamsContent.configSettings.swiftDeposit  && 
-				event.action == event.action.LEFT_CLICK_BLOCK && 
-				event.entityPlayer.isSneaking()  && 
-				event.entityPlayer.getCurrentEquippedItem() == null)
-		{ 
-	  	  	TileEntity te =	event.entity.worldObj.getTileEntity(event.pos);
-	  
-	  	  	if(te != null && (te instanceof TileEntityChest))
-	  	  	{ 
-				TileEntityChest chest = (TileEntityChest)te ; 
-				 
-		  		sortFromPlayerToChestEntity(event.world,chest,event.entityPlayer);
-
-		  	  	//check for double chest 
-		  	    TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest);
-		  		if(teAdjacent != null)
-		  		{
-		  	  		sortFromPlayerToChestEntity(event.world,teAdjacent,event.entityPlayer);
-		  		}
-	  	  	}
-		}
-		
-   	}//end player interact event  
-
-	
+{    
  
-  	private void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
+  	public static void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
   	{ 
   		int totalItemsMoved = 0; 
   		int totalSlotsFreed = 0;
