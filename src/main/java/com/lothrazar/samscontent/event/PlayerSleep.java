@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
@@ -14,6 +15,7 @@ import com.lothrazar.util.SamsUtilities;
 
 public class PlayerSleep 
 {
+	/*
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
@@ -46,6 +48,11 @@ public class PlayerSleep
 			//if(numAwake > numSleeps)
 			int seconds=(int) (event.entity.worldObj.getWorldTime() / Reference.TICKS_PER_SEC);
 			
+			//new idea. track timestamp when we last eneterd the bed
+			//then when/if we wake up and its morning, calculate hours of sleep
+			
+			//also look for the hours entity has been awake	(sincfe last death? loin? what is available?)
+			int ageInMysteryUnitsy = p.getAge();
 			
 			if(seconds % 10 == 0)//hit once every ten seconds
 			{
@@ -63,6 +70,7 @@ public class PlayerSleep
 			}
 		}
 	}
+	*/
 	
 	@SubscribeEvent
  	public void onEntityConstructing(EntityConstructing event)
@@ -89,7 +97,12 @@ public class PlayerSleep
 			
  			//System.out.println("#sleeps = "+props.getInt(PlayerPowerups.SLEEP_WATCHER));
  		 
-		}
-
+		} 
+	}
+	
+	@SubscribeEvent
+	public void onPlayerSleepInBed(PlayerSleepInBedEvent event)
+	{
+		//todo: timestamp
 	}
 }
