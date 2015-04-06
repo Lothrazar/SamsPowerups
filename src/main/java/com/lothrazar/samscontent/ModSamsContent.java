@@ -226,9 +226,10 @@ public class ModSamsContent
       	handlers.add(new DebugScreenText()          );  //This one can stay  
      	handlers.add(instance                         ); 
      	handlers.add(achievements); 
-		handlers.add(ItemRegistry.itemEnderBook       );
+     	
+		//handlers.add(ItemRegistry.itemEnderBook       );
 		handlers.add(ItemRegistry.wandTransform       );
-		handlers.add(ItemRegistry.itemChestSack       );
+		//handlers.add(ItemRegistry.itemChestSack       );
 		handlers.add(ItemRegistry.wandBuilding        );
 		handlers.add(ItemRegistry.wandChest           );
 		handlers.add(ItemRegistry.wandCopy            );
@@ -381,6 +382,37 @@ public class ModSamsContent
     //i can use entityInteractEvent, detect name tag and then cancel the event
         //       then the entity has a 'setCustomNameTag' function
 
+		
+		
+		if(held != null && ItemRegistry.itemChestSack != null && 
+				held.getItem() == ItemRegistry.itemChestSack && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			if(blockClicked == Blocks.chest)
+			{ 
+				if(event.world.isRemote){ return ;}//server side only!
+				TileEntityChest chest = (TileEntityChest)event.entityPlayer.worldObj.getTileEntity(event.pos.up()); 
+					  
+				//TODO: make a shared Utility function that finds adjacent chest
+				TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest); 
+				
+		  		ItemChestSack.sortFromSackToChestEntity(chest,held,event);
+		  		
+		  		if(teAdjacent != null)
+		  		{
+		  			ItemChestSack.sortFromSackToChestEntity(teAdjacent,held,event); 
+		  		} 	
+			}
+			else
+			{
+				//if the up one is air, then build a chest at this spot 
+				if(event.entityPlayer.worldObj.isAirBlock(event.pos.up()))//TODO:??OFFSET?
+				{
+					ItemChestSack.createAndFillChest(event.entityPlayer,held,  event.pos.up());
+				} 
+			}
+		}  
+		
 		
 		if (held != null && 
 			held.getItem() != null && 
