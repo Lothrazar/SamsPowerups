@@ -32,6 +32,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
@@ -223,8 +224,7 @@ public class ModSamsContent
      	  
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
      	handlers.add(new PlayerEat()         );   
-     	handlers.add(new PlayerEnderChestHit()       );  
-      	handlers.add(new LivestockDrops()         );
+     	handlers.add(new PlayerEnderChestHit()       );   
       	handlers.add(new DebugScreenText()          );  
       	handlers.add(new ChestDeposit()        );
      	handlers.add(instance                         ); 
@@ -296,6 +296,7 @@ public class ModSamsContent
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)
 	{
+
 		if(ModSamsContent.configSettings.removeZombieCarrotPotato 
 		  && event.entity instanceof EntityZombie)
 		{  
@@ -308,12 +309,72 @@ public class ModSamsContent
 					event.drops.remove(i);
 				}
 			}
-			//TODO: child zombie feathers
+			//TODO: child zombie feathers %
+			//TODO: villaer emeralds %
 		} 
+		
+		if(event.entity.worldObj.isRemote) {return;}
+		
+		if(ModSamsContent.configSettings.petNametagDrops && 
+				SamsUtilities.isPet(event.entity) )
+		{ 
+			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
+			   event.entity.getCustomNameTag() != ""   
+			   ) 
+			{ 
+				ItemStack nameTag = new ItemStack(Items.name_tag, 1); 
+				 
+				//build multi-level NBT tag so it matches a freshly enchanted one
+				NBTTagCompound nbt = new NBTTagCompound(); 
+				NBTTagCompound display = new NBTTagCompound();
+				display.setString("Name", event.entity.getCustomNameTag());//NOT "CustomName" implied by commandblocks/google 
+				nbt.setTag("display",display);
+				nbt.setInteger("RepairCost", 1);
+				
+				nameTag.setTagCompound(nbt);//put the data into the item stack
+				 
+				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, event.entity.getPosition(), nameTag); 
+			}
+		}
+		if(ModSamsContent.configSettings.petNametagChat && 
+				event.entity instanceof EntityLiving )
+		{ 
+			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
+			   event.entity.getCustomNameTag() != ""   
+			   ) 
+			{    
+				 SamsUtilities.printChatMessage(
+						 (event.source.getDeathMessage((EntityLiving)event.entity)));
+			}
+		}
+		
+		if(SamsUtilities.isLivestock(event.entity))
+		{ 
+			if(event.source.getSourceOfDamage() != null 
+					&& event.source.getSourceOfDamage() instanceof EntityPlayer 
+					&& configSettings.livestockLootScaleFactor > 0) 
+			{ 
+				//if livestock is killed by a palyer, then multiply the loot by the scale factor
+				for(EntityItem ei : event.drops)
+				{ 
+					//the stack size does not seem to be mutable
+					//so we just get and set the stack with a new size
+					
+					//double it again for pigs
+					int factor = (event.entity instanceof EntityPig) ? 2 * configSettings.livestockLootScaleFactor : configSettings.livestockLootScaleFactor;
+					
+					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(),ei.getEntityItem().stackSize * factor,ei.getEntityItem().getItemDamage()));
+				}
+			}
+			else
+			{  
+				event.drops.clear();////nope, was not killed by playerso the cow/whatever drops nothing.
+			}
+		} 
+		
+		
 	}
 	 
-	
-	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{         
@@ -356,7 +417,6 @@ public class ModSamsContent
 			BonemealExt.useBonemeal(event.world, event.entityPlayer, event.pos, blockClicked);
 		}
 		
-		
 		if(ModSamsContent.configSettings.flintPumpkin && 
 				held != null && held.getItem() == Items.flint_and_steel && 
 				event.action.RIGHT_CLICK_BLOCK == event.action )
@@ -379,8 +439,7 @@ public class ModSamsContent
 				
 				SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
 			}
-		}
-		
+		}		
 		
 		if(ModSamsContent.configSettings.skullSignNames && 
 				event.action == event.action.LEFT_CLICK_BLOCK && 

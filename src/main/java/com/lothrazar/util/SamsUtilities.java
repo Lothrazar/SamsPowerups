@@ -9,6 +9,16 @@ import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntityRabbit;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityVillager;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -431,4 +441,24 @@ public class SamsUtilities
 		return (heldItem.equals(Items.dye)  && held.getItemDamage() == Reference.dye_bonemeal); 
 	}
 	 
+	
+	public static boolean isLivestock(Entity entity)
+	{
+		return  (entity instanceof EntityPig) || 
+				(entity instanceof EntitySheep)|| 
+				(entity instanceof EntityChicken) || 
+				(entity instanceof EntityHorse) || 
+				(entity instanceof EntityCow) ||
+				(entity instanceof EntityRabbit); 
+	}
+	
+	public static boolean isPet(Entity entity)
+	{
+		return  (entity instanceof EntityWolf) || 
+				(entity instanceof EntityOcelot) || 
+				(entity instanceof EntityVillager) || 
+				(entity instanceof EntityBat)||
+				(entity instanceof EntityRabbit) ||
+				(entity instanceof EntityHorse)  ; 
+	}
 }

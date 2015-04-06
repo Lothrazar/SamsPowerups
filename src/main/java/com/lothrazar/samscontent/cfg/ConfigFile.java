@@ -11,8 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraftforge.common.config.Configuration; 
 
-import com.lothrazar.samscontent.command.*; 
-import com.lothrazar.samscontent.event.LivestockDrops;
+import com.lothrazar.samscontent.command.*;  
 import com.lothrazar.samscontent.item.*; 
 
 public class ConfigFile
@@ -116,12 +115,12 @@ public class ConfigFile
 		beetroot =  instance.getBoolean( "beetroot",category,true,
 				"Add beetroot, similar to pocket edition.  Use a golden hoe to get seeds. " );
 	}
-
+public int livestockLootScaleFactor;
 	private void animals() 
 	{
 		category = "animals";
 		
-		LivestockDrops.livestockLootScaleFactor  = instance.getInt("livestockLootScaleFactor",category, 5,0,32,
+		livestockLootScaleFactor  = instance.getInt("livestockLootScaleFactor",category, 5,0,32,
 	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
 			 
 		petNametagDrops = instance.getBoolean("petNametagDrops",category, true,
