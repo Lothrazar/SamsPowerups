@@ -30,7 +30,7 @@ import net.minecraftforge.common.config.Property;
 public class ItemFoodAppleMagic extends ItemFood
 {  
 	private boolean hasEffect = false;
-	private static int FLYING_COUNT_PER_EAT = 1;//num of ticks
+	//private static int FLYING_COUNT_PER_EAT = 1;//num of ticks
 	private ArrayList<Integer> potionIds;
 	private ArrayList<Integer> potionDurations;
 	private ArrayList<Integer> potionAmplifiers;
@@ -41,10 +41,10 @@ public class ItemFoodAppleMagic extends ItemFood
 		hasEffect = has_effect;//true gives it enchantment shine
  
 		this.setAlwaysEdible(); //can eat even if full hunger
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 		potionIds = new ArrayList<Integer>();
 		potionDurations = new ArrayList<Integer>();
 		potionAmplifiers = new ArrayList<Integer>();
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	 
 	public ItemFoodAppleMagic addEffect(int potionId,int potionDuration,int potionAmplifier)
