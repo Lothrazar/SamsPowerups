@@ -478,4 +478,19 @@ public class SamsUtilities
 		 
 		return nameTag;
 	}
+
+	public static ItemStack buildNamedPlayerSkull(String displayNameString) 
+	{
+		ItemStack skull =  new ItemStack(Items.skull,1,Reference.skull_player);
+		 
+		SamsUtilities.setItemStackNotNull(skull);
+		
+		skull.getTagCompound().setString("SkullOwner",displayNameString);
+		
+		return skull; 
+	}
+	public static ItemStack buildNamedPlayerSkull(EntityPlayer player) 
+	{
+		return SamsUtilities.buildNamedPlayerSkull(player.getDisplayNameString());
+	}
 }

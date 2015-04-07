@@ -767,10 +767,10 @@ public class ModSamsContent
 			
 			if(ModSamsContent.configSettings.dropPlayerSkullOnDeath)
 			{ 
-				ItemStack skull =  new ItemStack(Items.skull,1,Reference.skull_player);
-				if(skull.getTagCompound() == null) skull.setTagCompound(new NBTTagCompound()); 
-				skull.getTagCompound().setString("SkullOwner",player.getDisplayNameString());
+				// new ItemStack(Items.skull,1,Reference.skull_player);
 				
+				ItemStack skull = SamsUtilities.buildNamedPlayerSkull(player);
+				 
 				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);
 			}
 			
