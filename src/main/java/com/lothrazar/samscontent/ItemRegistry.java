@@ -17,6 +17,7 @@ import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.lothrazar.samscontent.item.*;
+import com.lothrazar.samscontent.item.ItemFoodTeleport.TeleportType;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference; 
 
@@ -53,6 +54,9 @@ public class ItemRegistry
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemWandFireball wandFireball;
 	public static ItemWandSnowball wandSnowball;
+	private static ItemFoodTeleport foodBed;
+	private static ItemFoodTeleport foodSpawn;
+	private static ItemFoodTeleport foodSky;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -70,6 +74,18 @@ public class ItemRegistry
 		ItemRegistry.baseWand = new ItemBaseWand(); 
 		ItemRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
 		ItemBaseWand.addRecipe();	
+		
+
+		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);
+		ItemRegistry.registerItem(foodBed, "tpfood_bed");
+		
+		ItemRegistry.foodSky = new ItemFoodTeleport(2, TeleportType.WORLDHEIGHT);
+		ItemRegistry.registerItem(foodSky, "tpfood_sky");
+		
+		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
+		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
+		
+		 
 		
 		if(ModSamsContent.configSettings.beetroot)
 		{ 
@@ -198,6 +214,8 @@ public class ItemRegistry
 
 			ItemEnderBook.addRecipe();
 		}
+		
+		
 		
 		if(ModSamsContent.configSettings.appleEmerald) 
 		{
