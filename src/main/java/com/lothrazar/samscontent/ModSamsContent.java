@@ -329,16 +329,9 @@ public class ModSamsContent
 			   event.entity.getCustomNameTag() != ""   
 			   ) 
 			{ 
-				ItemStack nameTag = new ItemStack(Items.name_tag, 1); 
-				 
-				//build multi-level NBT tag so it matches a freshly enchanted one
-				NBTTagCompound nbt = new NBTTagCompound(); 
-				NBTTagCompound display = new NBTTagCompound();
-				display.setString("Name", event.entity.getCustomNameTag());//NOT "CustomName" implied by commandblocks/google 
-				nbt.setTag("display",display);
-				nbt.setInteger("RepairCost", 1);
-				
-				nameTag.setTagCompound(nbt);//put the data into the item stack
+				//ItemStack nameTag = new ItemStack(Items.name_tag, 1); 
+				//its not just an item stack, it needs the name stuck on there
+				ItemStack nameTag = SamsUtilities.buildEnchantedNametag(event.entity.getCustomNameTag());
 				 
 				if(world.isRemote == false)
 					SamsUtilities.dropItemStackInWorld(world, event.entity.getPosition(), nameTag); 
@@ -352,7 +345,7 @@ public class ModSamsContent
 			   event.entity.getCustomNameTag() != ""   
 			   ) 
 			{    
-				//show message as if player
+				//show message as if player, works since EntityLiving extends EntityLivingBase
 				 SamsUtilities.printChatMessage(
 						 (event.source.getDeathMessage((EntityLiving)event.entity)));
 			}
@@ -375,14 +368,8 @@ public class ModSamsContent
 					
 					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(),ei.getEntityItem().stackSize * factor,ei.getEntityItem().getItemDamage()));
 				}
-			}
-			else
-			{  
-				event.drops.clear();////nope, was not killed by playerso the cow/whatever drops nothing.
-			}
-		} 
-		
-		
+			} 
+		}  
 	}
 	
 	@SubscribeEvent

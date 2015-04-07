@@ -461,4 +461,21 @@ public class SamsUtilities
 				(entity instanceof EntityRabbit) ||
 				(entity instanceof EntityHorse)  ; 
 	}
+
+	public static ItemStack buildEnchantedNametag(String customNameTag) 
+	{
+		//build multi-level NBT tag so it matches a freshly enchanted one
+		
+		ItemStack nameTag = new ItemStack(Items.name_tag, 1); 
+		  
+		NBTTagCompound nbt = new NBTTagCompound(); 
+		NBTTagCompound display = new NBTTagCompound();
+		display.setString("Name", customNameTag);//NOT "CustomName" implied by commandblocks/google 
+		nbt.setTag("display",display);
+		nbt.setInteger("RepairCost", 1);
+		
+		nameTag.setTagCompound(nbt);//put the data into the item stack
+		 
+		return nameTag;
+	}
 }
