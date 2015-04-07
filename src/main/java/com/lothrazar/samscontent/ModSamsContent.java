@@ -19,6 +19,7 @@ import com.lothrazar.samscontent.world.*;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDoor;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -376,13 +377,23 @@ public class ModSamsContent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
-		TileEntity maybesign = event.world.getTileEntity(event.pos);
 		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
+		TileEntity container = event.world.getTileEntity(event.pos);
 		//TODO: a way to Name Villagers with name tags (is there a vanilla way)
     //i can use entityInteractEvent, detect name tag and then cancel the event
         //       then the entity has a 'setCustomNameTag' function
 
-		
+		if(held != null && held.getItem() == ItemRegistry.itemChestSack && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			if(blockClicked instanceof BlockChest)// && event.entityPlayer.isSneaking()
+			{    
+				if(container instanceof TileEntityChest)
+				{
+					ItemChestSackEmpty.convertChestToSack(event.entityPlayer,held,(TileEntityChest)container,event.pos);  
+				}
+			} 
+		}
 		
 		if(held != null && ItemRegistry.itemChestSack != null && 
 				held.getItem() == ItemRegistry.itemChestSack && 
@@ -497,10 +508,10 @@ public class ModSamsContent
 				event.entityPlayer.isSneaking() && 
 				held != null && held.getItem() == Items.skull && 
 				held.getItemDamage() == Reference.skull_player	&& 
-				maybesign != null &&
-				maybesign instanceof TileEntitySign)
+				container != null &&
+				container instanceof TileEntitySign)
 		{
-			TileEntitySign sign = (TileEntitySign)maybesign; 
+			TileEntitySign sign = (TileEntitySign)container; 
 			String firstLine = sign.signText[0].getUnformattedText();
 			
 			if(firstLine == null) { firstLine = ""; }

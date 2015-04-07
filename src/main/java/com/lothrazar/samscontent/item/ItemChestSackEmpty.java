@@ -54,7 +54,7 @@ public class ItemChestSackEmpty extends Item
 			GameRegistry.addSmelting(ItemRegistry.wandChest, new ItemStack(Items.leather), 0);
 	}
 
-	public void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
+	public static void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
 	{ 
 		ItemStack chestItem;  
 		int chestMax;
@@ -126,32 +126,5 @@ public class ItemChestSackEmpty extends Item
 		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
 	}
  
-	
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		if(event.world.isRemote){ return; }//server side only!
-		
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		  
-		
-		if(held.getItem() == ItemRegistry.wandChest && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-			
-			if(blockClicked == null || blockClicked == Blocks.air ){return;}
-			
-			if(blockClicked instanceof BlockChest)// && event.entityPlayer.isSneaking()
-			{   
-				TileEntity container = event.world.getTileEntity(event.pos);
-				
-				if(container instanceof TileEntityChest)
-				{
-					ItemRegistry.wandChest.convertChestToSack(event.entityPlayer,held,(TileEntityChest)container,event.pos);  
-				}
-			} 
-		}
-  	}
+
 }

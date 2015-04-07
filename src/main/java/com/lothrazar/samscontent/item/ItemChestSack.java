@@ -205,17 +205,5 @@ public class ItemChestSack extends Item
 		//drop the empty sack now
 		SamsUtilities.dropItemStackInWorld(entityPlayer.worldObj, pos, ItemRegistry.wandChest);
   	} 
-	
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
- 
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		
-		
-		     
-		
-  	}
+
 }
