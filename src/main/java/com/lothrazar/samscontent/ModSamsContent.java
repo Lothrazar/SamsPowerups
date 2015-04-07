@@ -280,6 +280,8 @@ public class ModSamsContent
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)
 	{
+		BlockPos pos = event.entity.getPosition();
+		World world = event.entity.worldObj;
 
 		if(ModSamsContent.configSettings.removeZombieCarrotPotato 
 		  && event.entity instanceof EntityZombie)
@@ -293,11 +295,32 @@ public class ModSamsContent
 					event.drops.remove(i);
 				}
 			}
-			//TODO: child zombie feathers %
-			//TODO: villaer emeralds %
+			
+			EntityZombie z = (EntityZombie)event.entity;
+			
+			if(z.isChild())
+			{
+				
+				int pct = ModSamsContent.configSettings.chanceZombieChildFeather;
+				if(event.entity.worldObj.rand.nextInt(100) <= pct)
+				{
+					event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ()
+							,new ItemStack(Items.feather)));
+				}
+			}
+			 
+			if(z.isVillager())
+			{
+				int pct = ModSamsContent.configSettings.chanceZombieVillagerEmerald;
+				if(event.entity.worldObj.rand.nextInt(100) <= pct)
+				{
+					event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ()
+							,new ItemStack(Items.emerald)));
+				}
+			} 
 		} 
 		
-		if(event.entity.worldObj.isRemote) {return;}
+		//if(event.entity.worldObj.isRemote) {return;}
 		
 		if(ModSamsContent.configSettings.petNametagDrops && 
 				SamsUtilities.isPet(event.entity) )
@@ -317,9 +340,11 @@ public class ModSamsContent
 				
 				nameTag.setTagCompound(nbt);//put the data into the item stack
 				 
-				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, event.entity.getPosition(), nameTag); 
+				if(world.isRemote == false)
+					SamsUtilities.dropItemStackInWorld(world, event.entity.getPosition(), nameTag); 
 			}
 		}
+		
 		if(ModSamsContent.configSettings.petNametagChat && 
 				event.entity instanceof EntityLiving )
 		{ 
@@ -327,6 +352,7 @@ public class ModSamsContent
 			   event.entity.getCustomNameTag() != ""   
 			   ) 
 			{    
+				//show message as if player
 				 SamsUtilities.printChatMessage(
 						 (event.source.getDeathMessage((EntityLiving)event.entity)));
 			}

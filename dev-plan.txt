@@ -16,6 +16,8 @@ make chest wand into oneuse item, the 'empty sack'
 //TODO: beetroot gets pigs to follow like carrot  
  
  
+ command that tells recipes - is there an easy way to search and find them?
+ 
 + item like ender book but single use. using it transforms it into a different 'save point' object. then when that is consumed, the TP goes off and its gone.
   
  

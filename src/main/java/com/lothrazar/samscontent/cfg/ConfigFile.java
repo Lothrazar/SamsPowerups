@@ -96,6 +96,13 @@ public class ConfigFile
 		removeZombieCarrotPotato = instance.getBoolean("removeZombieCarrotPotato",category, true,
     			"Disable these zombie drops."); 
 
+		chanceZombieChildFeather   = instance.getInt("chanceZombieChildFeather",category, 10,0,100,
+    			"Percent chance that a child zombie will drop a feather.");
+		
+		chanceZombieVillagerEmerald  = instance.getInt("chanceZombieVillagerEmerald",category, 5,0,100,
+    			"Percent chance that a villager zombie will drop an emerald.");
+		
+		
 		playerDeathCoordinates = instance.getBoolean("playerDeathCoordinates",category, true,
     			"Players will have their death point coordinates broadcast in chat.");
 		
@@ -720,4 +727,6 @@ public int livestockLootScaleFactor;
 	public boolean wandSnowball;
 	public int potionStackSize;
 	public int potionIdFrozen;
+	public int chanceZombieChildFeather;
+	public int chanceZombieVillagerEmerald;
 }
