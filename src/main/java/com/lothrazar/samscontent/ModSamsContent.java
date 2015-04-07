@@ -381,6 +381,29 @@ public class ModSamsContent
 		{
 			ItemWandLivestock.entitySpawnEgg(event.entityPlayer, event.target); 
 		}
+		
+		
+		//TODO: a way to Name Villagers with name tags (is there a vanilla way)
+    //i can use entityInteractEvent, detect name tag and then cancel the event
+        //       then the entity has a 'setCustomNameTag' function
+		
+		if(held != null && held.getItem() == Items.name_tag )
+		{   
+			//TODO: in config file
+			if(event.entity instanceof EntityVillager)
+			{
+				EntityVillager v = (EntityVillager)event.entity;
+				
+				System.out.println("test");
+				
+				//TODO: is this accurate, or do we have to dig out the .display.Name NBT data
+				v.setCustomNameTag(held.getDisplayName());
+				
+				
+			}
+ 
+		}
+		
   	} 
 	 
 	@SubscribeEvent
@@ -389,9 +412,7 @@ public class ModSamsContent
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
 		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
 		TileEntity container = event.world.getTileEntity(event.pos);
-		//TODO: a way to Name Villagers with name tags (is there a vanilla way)
-    //i can use entityInteractEvent, detect name tag and then cancel the event
-        //       then the entity has a 'setCustomNameTag' function
+	
 		if(held != null && held.getItem() == ItemRegistry.wandFire && 
 				event.action.RIGHT_CLICK_AIR == event.action)
 		{   
@@ -402,6 +423,7 @@ public class ModSamsContent
 		{
 			ItemWandWater.cast(event);
 		}
+		
 		if(held != null && held.getItem() == ItemRegistry.wandFireball && 
 				event.action.RIGHT_CLICK_AIR == event.action)
 		{   
@@ -419,13 +441,13 @@ public class ModSamsContent
 		{ 
 			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
 		}
+		
 		if(held != null && held.getItem() == ItemRegistry.wandSnowball && 
 				event.action.RIGHT_CLICK_AIR == event.action)
 		{  
-		 
 			ItemWandSnowball.cast(event.world,event.entityPlayer );  
- 
 		}
+		
 		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 
 				event.action.RIGHT_CLICK_BLOCK == event.action    )
 		{ 
@@ -516,10 +538,8 @@ public class ModSamsContent
 			} 
 		}
 		
-		
-		
-		
 		if(held != null && held.getItem() == ItemRegistry.wandBuilding)
+		{
 			if(event.action.LEFT_CLICK_BLOCK == event.action  )
 			{ 
 				ItemWandBuilding.onPlayerLeftClick(event);
@@ -529,7 +549,7 @@ public class ModSamsContent
 				if(event.world.isRemote){return;}
 				ItemWandBuilding.onPlayerRightClick(event);
 			}
-		
+		}
 		
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
@@ -571,7 +591,6 @@ public class ModSamsContent
 				} 
 			}
 		}  
-		
 		
 		if (held != null && 
 			held.getItem() != null && 
@@ -681,19 +700,19 @@ public class ModSamsContent
 	
 	@SubscribeEvent
 	public void onHoeUse(UseHoeEvent event)
-	{ 
-		if(ModSamsContent.configSettings.beetroot == false){return;}
-		if(event.world.isRemote){return;}
-		if(event.world.isAirBlock(event.pos.up()) == false){return;}
+	{  
 		//this fires BEFORE the block turns into farmland (is cancellable) so check for grass and dirt, not farmland
 		
 		Block clicked = event.world.getBlockState(event.pos).getBlock();
 		
 		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
+			&& event.world.isAirBlock(event.pos.up()) 
+			&& ItemRegistry.beetrootSeed != null
 			&& event.current.getItem() == Items.golden_hoe  //TODO:  maybe also in config
 			&& event.world.rand.nextInt(16) == 0) //pocket edition vanilla is 1/16
-		{					
-			SamsUtilities.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetrootSeed);
+		{			
+			if(event.world.isRemote == false)
+				SamsUtilities.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetrootSeed);
 		}
 	}
 	
