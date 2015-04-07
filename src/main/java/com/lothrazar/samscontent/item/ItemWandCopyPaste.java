@@ -23,9 +23,7 @@ import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.world.World; 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandCopyPaste  extends Item
@@ -94,68 +92,7 @@ public class ItemWandCopyPaste  extends Item
 
 		entityPlayer.swingItem();
 	} 
-	 
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{  
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		  
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		
-		if(held.getItem() == ItemRegistry.wandCopy &&   
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{   
-			boolean isValid = false;
-			
-			if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
-			{
-				TileEntitySign sign = (TileEntitySign)event.world.getTileEntity(event.pos);
-				 
-				if(event.entityPlayer.isSneaking())
-				{ 
-					ItemWandCopyPaste.copySign(event.world,event.entityPlayer,sign,held); 
-				}
-				else
-				{
-					ItemWandCopyPaste.pasteSign(event.world,event.entityPlayer,sign,held); 
-				} 
-				
-				isValid = true; 
-			}
-			if(blockClicked == Blocks.noteblock)
-			{
-				TileEntityNote noteblock = (TileEntityNote)event.world.getTileEntity(event.pos);
-				 
-				if(event.entityPlayer.isSneaking())
-				{ 
-					ItemWandCopyPaste.copyNote(event.world,event.entityPlayer,noteblock,held); 
-				}
-				else
-				{
-					ItemWandCopyPaste.pasteNote(event.world,event.entityPlayer,noteblock,held); 
-				} 
-				
-				isValid = true; 
-			} 
-			
-			if(isValid)
-			{
-				if(event.world.isRemote)
-				{	
-					SamsUtilities.spawnParticle(event.world, EnumParticleTypes.PORTAL, event.pos); 
-				}
-				else
-				{
-					SamsUtilities.damageOrBreakHeld(event.entityPlayer);
-				}
-				
-				SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
-			} 
-		}
-  	}
-	
-	
+  
 	@Override
 	public void addInformation(ItemStack held, EntityPlayer player, List list, boolean par4) 
 	{  

@@ -54,23 +54,5 @@ public class ItemWandSnowball  extends Item
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
-	 
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		if(event.world.isRemote){ return ;}//server side only!
-		
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		  
-//	Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		
-		if(held.getItem() == ItemRegistry.wandSnowball && 
-				event.action.RIGHT_CLICK_AIR == event.action)
-		{  
-		 
-			ItemWandSnowball.cast(event.world,event.entityPlayer );  
- 
-		}
-  	}
+	  
 }

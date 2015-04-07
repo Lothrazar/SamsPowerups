@@ -53,7 +53,7 @@ public class ItemWandProspect extends Item
     	return true; //give it shimmer
     }
 	
-	public void searchProspect(EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
+	public static void searchProspect(EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
 	{  
 		//0 bottom, 1 top
 		//5 east 3 south
@@ -96,21 +96,5 @@ public class ItemWandProspect extends Item
 			ItemRegistry.baseWand, 
 			Items.redstone  );
 	}
- 
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		if(event.world.isRemote){ return ;}//server side only!
-		
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		  
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		
-		if(held.getItem() == ItemRegistry.wandProspect && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			ItemRegistry.wandProspect.searchProspect(event.entityPlayer,held,event.pos);   
-		}
-  	}
+  
 }

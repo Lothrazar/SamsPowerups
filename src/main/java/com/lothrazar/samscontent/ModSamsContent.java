@@ -35,6 +35,7 @@ import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*; 
@@ -52,6 +53,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntityNote;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -65,6 +67,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
@@ -221,28 +224,11 @@ public class ModSamsContent
 		//FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
 		 
     	ArrayList<Object> handlers = new ArrayList<Object>();
- 
-     	  
+  
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
       	handlers.add(new DebugScreenText()          );  //This one can stay  
      	handlers.add(instance                         ); 
-     	handlers.add(achievements); 
-     	
-		//handlers.add(ItemRegistry.itemEnderBook       );
-		handlers.add(ItemRegistry.wandTransform       );
-		//handlers.add(ItemRegistry.itemChestSack       );
-		handlers.add(ItemRegistry.wandBuilding        );
-		handlers.add(ItemRegistry.wandChest           );
-		handlers.add(ItemRegistry.wandCopy            );
-		handlers.add(ItemRegistry.wandFire            );
-		handlers.add(ItemRegistry.wandFireball        );
-		handlers.add(ItemRegistry.wandSnowball        );
-		handlers.add(ItemRegistry.wandHarvest         );
-		handlers.add(ItemRegistry.wandLivestock       );
-		handlers.add(ItemRegistry.wandProspect        );
-		handlers.add(ItemRegistry.wandTransform       );
-		handlers.add(ItemRegistry.wandWater           );
-		handlers.add(ItemRegistry.wandLightning       );
+     	handlers.add(achievements);  
 		handlers.add(BlockRegistry.block_storelava    );
 		handlers.add(BlockRegistry.block_storewater   );
 		handlers.add(BlockRegistry.block_storemilk    ); 
@@ -251,8 +237,8 @@ public class ModSamsContent
      	for(Object h : handlers)
      		if(h != null)
 	     	{ 
-	    		FMLCommonHandler.instance().bus().register(h);
-	    		MinecraftForge.EVENT_BUS.register(h);
+	    		FMLCommonHandler.instance().bus().register(h);//???
+	    		MinecraftForge.EVENT_BUS.register(h);//???
 	    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
 	    		MinecraftForge.ORE_GEN_BUS.register(h); 
 	     	} 
@@ -372,6 +358,17 @@ public class ModSamsContent
 		
 		
 	}
+	
+	@SubscribeEvent
+	public void onEntityInteractEvent(EntityInteractEvent event)
+  	{
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem(); 
+		
+		if(held != null && held.getItem() == ItemRegistry.wandLivestock )
+		{
+			ItemWandLivestock.entitySpawnEgg(event.entityPlayer, event.target); 
+		}
+  	} 
 	 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
@@ -382,7 +379,145 @@ public class ModSamsContent
 		//TODO: a way to Name Villagers with name tags (is there a vanilla way)
     //i can use entityInteractEvent, detect name tag and then cancel the event
         //       then the entity has a 'setCustomNameTag' function
+		if(held != null && held.getItem() == ItemRegistry.wandFire && 
+				event.action.RIGHT_CLICK_AIR == event.action)
+		{   
+			ItemWandFire.castFire(event.world,event.entityPlayer );   
+		}
 
+		if(held != null && held.getItem() == ItemRegistry.wandWater )
+		{
+			ItemWandWater.cast(event);
+		}
+		if(held != null && held.getItem() == ItemRegistry.wandFireball && 
+				event.action.RIGHT_CLICK_AIR == event.action)
+		{   
+			ItemWandFireball.cast(event.world,event.entityPlayer );   
+		}
+
+		if(held != null && held.getItem() == ItemRegistry.wandProspect && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			ItemWandProspect.searchProspect(event.entityPlayer,held,event.pos);   
+		}
+
+		if(held != null && held.getItem() == ItemRegistry.wandTransform && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
+		}
+		if(held != null && held.getItem() == ItemRegistry.wandSnowball && 
+				event.action.RIGHT_CLICK_AIR == event.action)
+		{  
+		 
+			ItemWandSnowball.cast(event.world,event.entityPlayer );  
+ 
+		}
+		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 
+				event.action.RIGHT_CLICK_BLOCK == event.action    )
+		{ 
+			ItemWandHarvest.replantField(event.world,event.entityPlayer,held,event.pos); 
+		}
+		
+		if(held != null && held.getItem() == ItemRegistry.wandLightning &&  
+			  event.action.RIGHT_CLICK_BLOCK == event.action )
+		{    
+			//if(event.entityPlayer.isSneaking() == false) //normal attack: the clicked block
+			//{	     
+				BlockPos hit = event.pos;
+				
+				if(event.face != null) {hit = event.pos.offset(event.face);}
+				
+				//TODO: move to ItemWandLightning.cast()
+				event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
+			
+				SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+			/*}
+			 TODO: different casting modes, just like build wand
+			else //radius all around the player
+			{ 
+				BlockPos center = event.entityPlayer.getPosition();
+				ArrayList<BlockPos> hits = new ArrayList<BlockPos>();
+				hits.add(center.east(range));
+				hits.add(center.west(range));
+				hits.add(center.north(range));
+				hits.add(center.south(range));//TODO: do a circle or radius, or random spots?? different modes one day?
+				
+				for(BlockPos hit : hits)
+				{ 
+				    event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
+				}
+				 
+				SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
+			} */
+		} 
+	 
+		if(held != null && held.getItem() == ItemRegistry.wandCopy &&   
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{   
+			boolean isValid = false;
+			
+			if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
+			{
+				TileEntitySign sign = (TileEntitySign)container;
+				 
+				if(event.entityPlayer.isSneaking())
+				{ 
+					ItemWandCopyPaste.copySign(event.world,event.entityPlayer,sign,held); 
+				}
+				else
+				{
+					ItemWandCopyPaste.pasteSign(event.world,event.entityPlayer,sign,held); 
+				} 
+				
+				isValid = true; 
+			}
+			if(blockClicked == Blocks.noteblock)
+			{
+				TileEntityNote noteblock = (TileEntityNote)container;
+				 
+				if(event.entityPlayer.isSneaking())
+				{ 
+					ItemWandCopyPaste.copyNote(event.world,event.entityPlayer,noteblock,held); 
+				}
+				else
+				{
+					ItemWandCopyPaste.pasteNote(event.world,event.entityPlayer,noteblock,held); 
+				} 
+				
+				isValid = true; 
+			} 
+			
+			if(isValid)
+			{
+				if(event.world.isRemote)
+				{	
+					SamsUtilities.spawnParticle(event.world, EnumParticleTypes.PORTAL, event.pos); 
+				}
+				else
+				{
+					SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+				}
+				
+				SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
+			} 
+		}
+		
+		
+		
+		
+		if(held != null && held.getItem() == ItemRegistry.wandBuilding)
+			if(event.action.LEFT_CLICK_BLOCK == event.action  )
+			{ 
+				ItemWandBuilding.onPlayerLeftClick(event);
+			}
+			else
+			{
+				if(event.world.isRemote){return;}
+				ItemWandBuilding.onPlayerRightClick(event);
+			}
+		
+		
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
@@ -553,6 +688,16 @@ public class ModSamsContent
 	public void onPlayerTick(PlayerTickEvent event)
 	{     
 		EntityPlayer player = event.player;
+		ItemStack held = player.getCurrentEquippedItem(); 
+		
+		if(held != null && 
+				Item.getIdFromItem(held.getItem()) == Item.getIdFromItem(ItemRegistry.wandBuilding) ) 
+		{
+			ItemWandBuilding.setCompoundIfNull(held);
+			
+			ItemWandBuilding.tickTimeout(held); 
+		}
+		
 		  //TODO: why isnt this in potionregistry
 		if( player.isPotionActive(PotionRegistry.ender) && //the potion gives us this safe(ish)falling
 			 	 player.dimension == Reference.Dimension.end && //hence the name of the class

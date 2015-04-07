@@ -65,7 +65,7 @@ public class ItemWandHarvest extends Item
     	return true; //give it shimmer
     }
 	 
-	public void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
+	public static void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
 	{  
 		//http://www.minecraftforge.net/wiki/Plants
  
@@ -124,19 +124,5 @@ public class ItemWandHarvest extends Item
 			//TODO: could damage based on countHarvested ?
 		}
 	}
-	
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		 
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		
-		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 
-				event.action.RIGHT_CLICK_BLOCK == event.action 
-		    )
-		{ 
-			ItemRegistry.wandHarvest.replantField(event.world,event.entityPlayer,held,event.pos); 
-		}
-  	}
+	 
 }

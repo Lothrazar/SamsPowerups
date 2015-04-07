@@ -38,16 +38,9 @@ public class ItemWandWater  extends Item
 			ItemRegistry.baseWand, 
 			Items.water_bucket  );
 	}
-	 
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{       
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		
-		if(ModSamsContent.configSettings.wandWater == false ) {return;}
-		if(held.getItem() != ItemRegistry.wandWater ) {return;}
-		
+	  
+	public static void cast(PlayerInteractEvent event) 
+	{
 		BlockPos hit;
 		
 		if(event.face == null || event.world.getBlockState(event.pos).getBlock().isReplaceable(event.world, event.pos))
@@ -94,5 +87,5 @@ public class ItemWandWater  extends Item
 			
 			SamsUtilities.playSoundAt(event.entityPlayer, "liquid.water"); 
 		}
-  	}
+	}
 }

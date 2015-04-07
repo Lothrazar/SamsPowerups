@@ -53,21 +53,6 @@ public class ItemWandTransform extends Item
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	  
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		  
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		   
-		if(held.getItem() == ItemRegistry.wandTransform && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			transformBlock(event.entityPlayer, event.world, held, event.pos); 
-		}
-  	}
-	
 	@Override
     public boolean hasEffect(ItemStack par1ItemStack)
     {
@@ -84,7 +69,7 @@ public class ItemWandTransform extends Item
 	}
  
 	private static int INVALID = -1;
-	public void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
+	public static void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
 	{
 		IBlockState blockState = player.worldObj.getBlockState(pos);
 		Block block = blockState.getBlock();

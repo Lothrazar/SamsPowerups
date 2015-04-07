@@ -55,7 +55,7 @@ public class ItemWandBuilding extends Item
 			Items.diamond  );
 	}
 	 
-	private static void setCompoundIfNull(ItemStack held)
+	public static void setCompoundIfNull(ItemStack held)
 	{
 		if( held.getTagCompound() == null)
 		{
@@ -143,20 +143,14 @@ public class ItemWandBuilding extends Item
 		return newMode;
 	}
 	 
-	@SubscribeEvent
-	public void onPlayerTick(PlayerTickEvent event) 
-	{	
-		if(event.player.worldObj.isRemote){ return ;}
-		ItemStack held = event.player.getCurrentEquippedItem(); 
-		if(held == null || Item.getIdFromItem(held.getItem()) != Item.getIdFromItem(ItemRegistry.wandBuilding) ) {return; } 
+ 
 
-		setCompoundIfNull(held); 
-		
+	public static void tickTimeout(ItemStack held) {
 		int timeout = held.getTagCompound().getInteger(KEY_TIMEOUT);
 		if(timeout > 0)
 		{
 			 held.getTagCompound().setInteger(KEY_TIMEOUT, (timeout-1));
-		} 
+		}
 	}
 		 
 	public static void onPlayerLeftClick(PlayerInteractEvent event)
@@ -380,31 +374,5 @@ public class ItemWandBuilding extends Item
     public boolean hasEffect(ItemStack par1ItemStack)
     {
     	return true;
-    }  
-    
-    
-    
-    
-    
-   
-
-	@SubscribeEvent
-	public void onPlayerClick(PlayerInteractEvent event)
-  	{ 
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held==null || held.getItem() != ItemRegistry.wandBuilding){return;}
-		 
-		if(event.action.LEFT_CLICK_BLOCK == event.action  )
-		{ 
-			ItemWandBuilding.onPlayerLeftClick(event);
-		}
-		else
-		{
-			if(event.world.isRemote){return;}
-			ItemWandBuilding.onPlayerRightClick(event);
-		} 
-  	}
-    
-    
-    
+    }   
 }

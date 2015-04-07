@@ -66,8 +66,7 @@ public class ItemWandFire  extends Item
 			for(int w = 1; w <= i/2; w++)
 			{
 				//go left and right
-				
-
+				 
 				SamsUtilities.setBlockIfAir(world,fr.east(w), Blocks.fire.getDefaultState());
 				SamsUtilities.setBlockIfAir(world,fr.west(w), Blocks.fire.getDefaultState());
 				SamsUtilities.setBlockIfAir(world,fr.south(w), Blocks.fire.getDefaultState());
@@ -78,8 +77,7 @@ public class ItemWandFire  extends Item
 		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
 		SamsUtilities.damageOrBreakHeld(entityPlayer);
 	}
-	
-	
+	 
 /*
 	public void castExtinguish(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{ 
@@ -96,29 +94,5 @@ public class ItemWandFire  extends Item
 			SamsUtilities.playSoundAt(entityPlayer, "liquid.water");
 		} 
 	}*/
-	  
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{      
-		if(event.world.isRemote){ return ;}//server side only!
-		
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
-		if(held == null) { return; }//empty hand so do nothing
-		  
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
-		
-		if(held.getItem() == ItemRegistry.wandFire && 
-				event.action.RIGHT_CLICK_AIR == event.action)
-		{  
-			//if(event.entityPlayer.isSneaking() == false)
-			//{ 
-				ItemWandFire.castFire(event.world,event.entityPlayer );  
-		//	}
-			/*
-			else
-			{
-				castExtinguish(event.world,event.entityPlayer,held); 
-			} */
-		}
-  	}
+	   
 }

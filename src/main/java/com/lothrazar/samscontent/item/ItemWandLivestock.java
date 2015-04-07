@@ -62,7 +62,7 @@ public class ItemWandLivestock extends Item
 			Items.porkchop  );
 	}
 
-	public void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 
+	public static void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 
 	{
 		int entity_id = 0;
 		 //TODO: for all of these, check for and drop name tag
@@ -147,12 +147,5 @@ public class ItemWandLivestock extends Item
 		} 
 	}
 	
-	@SubscribeEvent
-	public void onEntityInteractEvent(EntityInteractEvent event)
-  	{
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem(); 
-		if(held == null || held.getItem() != ItemRegistry.wandLivestock ){ return;}
-		 
-		ItemRegistry.wandLivestock.entitySpawnEgg(event.entityPlayer, event.target); 
-  	} 
+	
 }
