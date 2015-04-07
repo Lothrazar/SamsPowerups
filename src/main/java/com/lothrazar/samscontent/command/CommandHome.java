@@ -56,29 +56,18 @@ public class CommandHome implements ICommand
 			 return;
 		}
 		
-		 BlockPos coords = player.getBedLocation(0);
+		BlockPos realBedPos = SamsUtilities.getBedLocationSafe(world, player);
 		 
-		 if(coords == null)
-		 { 
-			 player.addChatMessage(new ChatComponentTranslation("Your home bed was missing or obstructed."));
-			 return;
-		 }
- 
-		 Block block = world.getBlockState(coords).getBlock();
-		 
-		 if (block.equals(Blocks.bed) || block.isBed(world, coords, player))
-		 {
-			 //then move over according to how/where the bed wants me to spawn
-			 coords = block.getBedSpawnPosition(world, coords, player);
-
-			 SamsUtilities.teleportWallSafe(player, world, coords); 
-			 world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
-		 }
-		 else
-		 {
-			 //spawn point was set, so the coords were not null, but player broke the bed (probably recently)
-			 player.addChatMessage(new ChatComponentTranslation("Your home bed was missing or obstructed.")); 
-		 } 
+		if(realBedPos != null)
+		{ 
+			SamsUtilities.teleportWallSafe(player, world, realBedPos); 
+			world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
+		}
+		else
+		{
+			//spawn point was set, so the coords were not null, but player broke the bed (probably recently)
+			player.addChatMessage(new ChatComponentTranslation("Your home bed was missing or obstructed.")); 
+		} 
 	}
   
 	@Override

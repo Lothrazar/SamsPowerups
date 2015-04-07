@@ -7,6 +7,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
 
 public class ItemFoodTeleport extends ItemFood
@@ -31,14 +33,15 @@ public class ItemFoodTeleport extends ItemFood
 		return type;
 	}
 	@Override
-	protected void onFoodEaten(ItemStack itemStack, World world, EntityPlayer entityPlayer)
+	protected void onFoodEaten(ItemStack itemStack, World world, EntityPlayer player)
     {     
 		if(world.isRemote == false) //isRemote = false means server only
-		{
-
+		{ 
 			//TODO: telep wand that does home/worldhome? 
 		    //single use items like edible ender pearls?
 			//but is it home or world home, we need to set types
+			
+			boolean playSound = false;
 			 
 
 			switch(((ItemFoodTeleport)itemStack.getItem()).getType())
@@ -47,19 +50,41 @@ public class ItemFoodTeleport extends ItemFood
 				
 				//TODO: refactor those TP commands for reuse of fns here
 				//SamsUtilities.teleportWallSafe(player, world, coords);
+				BlockPos realBedPos = SamsUtilities.getBedLocationSafe(world, player);
+				 
+				if(realBedPos != null)
+				{ 
+					SamsUtilities.teleportWallSafe(player, world, realBedPos); 
+					playSound = true;
+				}
+				else
+				{
+					//spawn point was set, so the coords were not null, but player broke the bed (probably recently)
+					player.addChatMessage(new ChatComponentTranslation("Your home bed was missing or obstructed.")); 
+				} 
+				
 				
 				break;
 			case  WORLDSPAWN:
+
+				SamsUtilities.teleportWallSafe(player, world, world.getSpawnPoint()); 
+				playSound = true;
 				
 				break;
 			case  WORLDHEIGHT:
 				
 				int max = 256;//send them up to worldheight
 				
-				int diff = max - entityPlayer.getPosition().getY() ;
+				int diff = max - player.getPosition().getY() ;
 				
-				SamsUtilities.teleportWallSafe(entityPlayer, world, entityPlayer.getPosition().up(diff));
+				SamsUtilities.teleportWallSafe(player, world, player.getPosition().up(diff));
+				playSound = true;
 				break;
+			}//end switch
+			
+			if(playSound)
+			{ 
+				world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
 			}
 			
 		}

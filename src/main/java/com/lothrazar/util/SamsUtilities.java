@@ -493,4 +493,24 @@ public class SamsUtilities
 	{
 		return SamsUtilities.buildNamedPlayerSkull(player.getDisplayNameString());
 	}
+
+	public static BlockPos getBedLocationSafe(World world, EntityPlayer player) 
+	{
+		 BlockPos realBedPos = null;
+		
+		 BlockPos coords = player.getBedLocation(0);
+		  
+		 if(coords != null)
+		 { 
+			 Block block = world.getBlockState(coords).getBlock();
+			 
+			 if (block.equals(Blocks.bed) || block.isBed(world, coords, player))
+			 {
+				 //then move over according to how/where the bed wants me to spawn
+				 realBedPos = block.getBedSpawnPosition(world, coords, player); 
+			 }
+		 }
+		 
+		 return realBedPos;
+	}
 }
