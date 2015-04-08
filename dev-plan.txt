@@ -1,17 +1,15 @@
 
 
-//TODO: keybind to flip 90 degrees backwards
-
-//potion effect or held token consumable that keeps your items when you die? look for playerRespawn event?
-//TODO: jump/sidestrafe/dodge keybind.
-//keyb to shrink to 1 height if possible
- 
  //command OR wand to play random song
  
+            player.worldObj.playRecord(p_175717_1_, p_175717_2_);
+            
  
 //TODO: remote or portable workbench
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
+
 //TODO: a way to place signs quick by skipping interface (leaving them blank)
+
 //IDEA: bone torches from http://www.reddit.com/r/minecraftsuggestions/comments/2zmq4o/bone_torches/
 //TODO: find a way that you need food variety to live.
 //TODO: beetroot  breeds pigs 
@@ -55,10 +53,6 @@
 
 //TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
 //TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
-//TODO: hotkey to search through inventory and use enderpearl ingoring all else
-//TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
-//TODO: smart potion button
-//TODO: smart torch button
 
 //TODO: can we catch the middle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
 //TODO: far reach place hotkey. use player look vectors and trickery 
