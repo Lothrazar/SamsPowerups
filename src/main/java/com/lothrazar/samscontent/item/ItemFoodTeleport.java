@@ -4,12 +4,14 @@ import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemFoodTeleport extends ItemFood
 {
@@ -89,6 +91,15 @@ public class ItemFoodTeleport extends ItemFood
 			
 		}
     }
-	
 
+	public static void addRecipe(ItemFoodTeleport item, ItemStack ingredient) 
+	{
+		GameRegistry.addRecipe(new ItemStack(item)
+			,"lll","lal","lll"  
+			,'l', ingredient
+			,'a', Items.apple);
+		
+		if(ModSamsContent.configSettings.uncraftGeneral) 
+			GameRegistry.addSmelting(item, new ItemStack(ingredient.getItem(), 8),	0);
+	}
 }

@@ -88,6 +88,11 @@ public class ItemRegistry
 		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
 		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
 		
+		//TODO:?? pick recipes
+		//TODO: textures
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.blaze_powder));
+		
+		
 		if(ModSamsContent.configSettings.beetroot)
 		{ 
 			beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModSamsContent.tabSamsContent);
