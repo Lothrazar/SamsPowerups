@@ -25,6 +25,8 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyShiftDown; 
 	public static KeyBinding keyBarUp;
 	public static KeyBinding keyBarDown; 
+	
+	public static KeyBinding keyPlayerFlip;
 
     @Override
     public void registerRenderers() 
@@ -41,6 +43,8 @@ public class ClientProxy extends CommonProxy
         keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown); 
 
+        keyPlayerFlip = new KeyBinding(Reference.keyPlayerFlipName, Keyboard.KEY_R, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyPlayerFlip); 
        
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 

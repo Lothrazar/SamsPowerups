@@ -20,6 +20,7 @@ public class Reference
 	public static final String keyDownName = "key.columnshiftdown"; 
 	public static final String keyBarUpName = "key.columnbarup";
 	public static final String keyBarDownName = "key.columnbardown"; 
+	public static final String keyPlayerFlipName = "key.playerflip";
 	public static final String keyCategory = "key.categories.inventory";
 	
 	public static final int TICKS_PER_SEC = 20;

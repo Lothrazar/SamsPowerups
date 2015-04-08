@@ -74,6 +74,16 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
 	 	}
+		else if( message.keyPressed == ClientProxy.keyPlayerFlip.getKeyCode())
+	 	{  
+			//TODO: test at 180
+			player.setPositionAndRotation(
+					player.getPosition().getX(),
+					player.getPosition().getY(),
+					player.getPosition().getZ(), 
+					//setRotation is protected
+					player.rotationYaw / 180, player.rotationPitch / 180);
+	 	}
  
 		return null;
 	}
