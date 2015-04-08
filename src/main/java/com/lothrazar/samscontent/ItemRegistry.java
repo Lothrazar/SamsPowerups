@@ -81,18 +81,17 @@ public class ItemRegistry
 		
 		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);
 		ItemRegistry.registerItem(foodBed, "tpfood_bed");
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodBed,new ItemStack(Blocks.wool));
 		
 		ItemRegistry.foodSky = new ItemFoodTeleport(2, TeleportType.WORLDHEIGHT);
 		ItemRegistry.registerItem(foodSky, "tpfood_sky");
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodSky,new ItemStack(Items.emerald));
 		
 		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
 		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
-		
-		//TODO:?? pick recipes
-		//TODO: textures
 		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.gold_ingot));
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodSky,new ItemStack(Items.emerald));
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodBed,new ItemStack(Blocks.wool));
+		
+		//TODO: textures
 		
 		
 		if(ModSamsContent.configSettings.beetroot)
