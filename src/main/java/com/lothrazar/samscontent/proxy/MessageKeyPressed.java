@@ -38,13 +38,13 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	@Override
 	public IMessage onMessage(MessageKeyPressed message, MessageContext ctx)
 	{ 
-		 System.out.println("onMessage");
+		 System.out.println("onMessage"+message.keyPressed);
 		 
 		EntityPlayer player = ctx.getServerHandler().playerEntity; 
 		//THANKS TO THIS
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
 		int currentItem = player.inventory.currentItem;
- System.out.println(message.keyPressed);
+ 
 		if( message.keyPressed == ClientProxy.keyShiftUp.getKeyCode())
  	    {    
 			shiftSlotUp(player, currentItem); 
@@ -76,7 +76,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 6); 
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
-	 	}/*
+	 	} 
 		else if( message.keyPressed == ClientProxy.keyPlayerFlip.getKeyCode())
 	 	{  
 			System.out.println("FlipKeypress "+player.worldObj.isRemote);
@@ -87,7 +87,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 					player.getPosition().getZ(), 
 					//setRotation is protected
 					player.rotationYaw / 180, player.rotationPitch / 180);
-	 	}*/
+	 	} 
  
 		return null;
 	}

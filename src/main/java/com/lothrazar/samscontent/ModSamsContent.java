@@ -749,7 +749,7 @@ public class ModSamsContent
         if(ClientProxy.keyShiftUp.isPressed() )
         { 	     
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyShiftUp.getKeyCode()));  
-        }        /*
+        }        
         else if(ClientProxy.keyShiftDown.isPressed() )
         { 	      
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyShiftDown.getKeyCode()));  
@@ -761,7 +761,11 @@ public class ModSamsContent
         else if(ClientProxy.keyBarUp.isPressed() )
         { 	      
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
-        }  */
+        }   
+        else if(ClientProxy.keyPlayerFlip.isPressed() )
+        { 	      
+        	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPlayerFlip.getKeyCode()));  
+        }   
     } 
 	
 	@SubscribeEvent
