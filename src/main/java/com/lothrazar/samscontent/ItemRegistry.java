@@ -90,7 +90,9 @@ public class ItemRegistry
 		
 		//TODO:?? pick recipes
 		//TODO: textures
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.blaze_powder));
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.gold_ingot));
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodSky,new ItemStack(Items.emerald));
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodBed,new ItemStack(Blocks.wool));
 		
 		
 		if(ModSamsContent.configSettings.beetroot)

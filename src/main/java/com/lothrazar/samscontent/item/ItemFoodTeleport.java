@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.item;
 
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.SamsUtilities;
 
@@ -97,7 +98,7 @@ public class ItemFoodTeleport extends ItemFood
 		GameRegistry.addRecipe(new ItemStack(item)
 			,"lll","lal","lll"  
 			,'l', ingredient
-			,'a', Items.apple);
+			,'a', ItemRegistry.beetrootItem);
 		
 		if(ModSamsContent.configSettings.uncraftGeneral) 
 			GameRegistry.addSmelting(item, new ItemStack(ingredient.getItem(), 8),	0);
