@@ -135,8 +135,9 @@ public class ModSamsContent
 		configSettings = new ConfigFile(new Configuration(event.getSuggestedConfigurationFile()));
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
-    	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, 0, Side.SERVER);
-    	network.registerMessage(MessagePotion.class, MessagePotion.class, 0, Side.CLIENT);
+    	
+    	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
+    	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
 //new one here
 		
 		PotionRegistry.registerPotionEffects();
@@ -748,7 +749,7 @@ public class ModSamsContent
         if(ClientProxy.keyShiftUp.isPressed() )
         { 	     
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyShiftUp.getKeyCode()));  
-        }        
+        }        /*
         else if(ClientProxy.keyShiftDown.isPressed() )
         { 	      
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyShiftDown.getKeyCode()));  
@@ -760,7 +761,7 @@ public class ModSamsContent
         else if(ClientProxy.keyBarUp.isPressed() )
         { 	      
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
-        }  
+        }  */
     } 
 	
 	@SubscribeEvent

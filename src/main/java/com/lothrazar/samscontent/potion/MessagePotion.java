@@ -21,6 +21,9 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 	private int y;
 	private int z;
 	private int particle;
+	
+	public static final int ID = 1;
+	
 	public MessagePotion()
 	{ 
 	}
