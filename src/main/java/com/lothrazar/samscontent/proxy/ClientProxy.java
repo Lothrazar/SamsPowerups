@@ -57,21 +57,14 @@ public class ClientProxy extends CommonProxy
 
    			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-        
-
+         
         for(Item i : ItemRegistry.items)
         {  
         	name = Reference.TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-        /*
-   		for(int i = 0; i < SamsRegistry.delay.size(); i++)
-   		{
-   			name = Reference.TEXTURE_LOCATION + SamsRegistry.delayNames.get(i); 
-   			mesher.register(SamsRegistry.delay.get(i), 0, new ModelResourceLocation( name , "inventory"));					
-   		} 
-         */
+    
          //More info on proxy rendering
          //http://www.minecraftforge.net/forum/index.php?topic=27684.0
         //http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2272349-lessons-from-my-first-mc-1-8-mod

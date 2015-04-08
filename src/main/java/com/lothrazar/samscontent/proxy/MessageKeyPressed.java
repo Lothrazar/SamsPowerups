@@ -38,7 +38,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	@Override
 	public IMessage onMessage(MessageKeyPressed message, MessageContext ctx)
 	{ 
-		 System.out.println("onMessage"+message.keyPressed);
+		// System.out.println("onMessage"+message.keyPressed);
 		 
 		EntityPlayer player = ctx.getServerHandler().playerEntity; 
 		//THANKS TO THIS
@@ -79,14 +79,20 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	} 
 		else if( message.keyPressed == ClientProxy.keyPlayerFlip.getKeyCode())
 	 	{  
-			System.out.println("FlipKeypress "+player.worldObj.isRemote);
+			System.out.println("FlipKeypress "+player.worldObj.isRemote);//==false, so on server
+			System.out.println("y "+player.rotationYaw);
+			System.out.println("p "+player.rotationPitch);
 			//TODO: test at 180
-			player.setPositionAndRotation(
+			player.setLocationAndAngles(  //setPositionAndRotation
 					player.getPosition().getX(),
 					player.getPosition().getY(),
 					player.getPosition().getZ(), 
 					//setRotation is protected
-					player.rotationYaw / 180, player.rotationPitch / 180);
+					player.rotationYaw - 180, player.rotationPitch - 180);
+
+			System.out.println("---y "+player.rotationYaw);
+			System.out.println("---p "+player.rotationPitch);
+			
 	 	} 
  
 		return null;
