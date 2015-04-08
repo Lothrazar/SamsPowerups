@@ -75,7 +75,10 @@ public class ItemRegistry
 		ItemRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
 		ItemBaseWand.addRecipe();	
 		
-
+		
+		
+		//TODO: config for TP food
+		
 		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);
 		ItemRegistry.registerItem(foodBed, "tpfood_bed");
 		
@@ -84,8 +87,6 @@ public class ItemRegistry
 		
 		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
 		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
-		
-		 
 		
 		if(ModSamsContent.configSettings.beetroot)
 		{ 
