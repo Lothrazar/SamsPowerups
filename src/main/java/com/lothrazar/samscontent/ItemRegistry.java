@@ -77,21 +77,6 @@ public class ItemRegistry
 		
 		
 		
-		//TODO: config for TP food
-		
-		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);
-		ItemRegistry.registerItem(foodBed, "tpfood_bed");
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodBed,new ItemStack(Blocks.wool));
-		
-		ItemRegistry.foodSky = new ItemFoodTeleport(2, TeleportType.WORLDHEIGHT);
-		ItemRegistry.registerItem(foodSky, "tpfood_sky");
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodSky,new ItemStack(Items.emerald));
-		
-		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
-		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.gold_ingot));
-		
-		//TODO: textures
 		
 		
 		if(ModSamsContent.configSettings.beetroot)
@@ -322,6 +307,22 @@ public class ItemRegistry
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl)) ;
 		} 
+		
+		
+
+		//TODO: config for TP food
+		
+		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);
+		ItemRegistry.registerItem(foodBed, "tpfood_bed");
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodBed,new ItemStack(Blocks.wool));
+		
+		ItemRegistry.foodSky = new ItemFoodTeleport(2, TeleportType.WORLDHEIGHT);
+		ItemRegistry.registerItem(foodSky, "tpfood_sky");
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodSky,new ItemStack(Items.emerald));
+		
+		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
+		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
+		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.gold_ingot));
 		 
 	}
 }
