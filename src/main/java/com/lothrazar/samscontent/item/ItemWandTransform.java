@@ -12,6 +12,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
+import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -708,7 +709,7 @@ public class ItemWandTransform extends Item
 			metaCurrent = Blocks.standing_sign.getMetaFromState(blockState);
 
 			if(metaCurrent == 15)  
-				metaNew =0;
+				metaNew = 0;
 			else
 				metaNew = metaCurrent + 1; //rotate 
  
@@ -717,6 +718,25 @@ public class ItemWandTransform extends Item
 				blockStateNew =  Blocks.standing_sign.getStateFromMeta(metaNew);
 			}
 		}
+		else if(block == Blocks.standing_banner)
+		{
+			metaCurrent = Blocks.standing_banner.getMetaFromState(blockState);
+
+			if(metaCurrent == 15)  
+				metaNew = 0;
+			else
+				metaNew = metaCurrent + 1; //rotate 
+ 
+			if(metaNew > INVALID)
+			{ 
+				blockStateNew =  Blocks.standing_banner.getStateFromMeta(metaNew);
+			}
+		}
+		
+		//TODO: Banner
+		//what else can rotate 
+		//TODO: trapdoors: top and bottom location
+		//TODO: iron door  left/right
    
 		if(blockStateNew != null)
 		{

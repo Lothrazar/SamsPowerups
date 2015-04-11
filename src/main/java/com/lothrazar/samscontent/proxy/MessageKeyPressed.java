@@ -77,12 +77,14 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
 	 	} 
+		/*
 		else if( message.keyPressed == ClientProxy.keyPlayerFlip.getKeyCode())
 	 	{  
 			System.out.println("FlipKeypress "+player.worldObj.isRemote);//==false, so on server
 			System.out.println("y "+player.rotationYaw);
 			System.out.println("p "+player.rotationPitch);
 			//TODO: test at 180
+		 
 			player.setLocationAndAngles(  //setPositionAndRotation
 					player.getPosition().getX(),
 					player.getPosition().getY(),
@@ -101,6 +103,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			System.out.println("---p "+player.rotationPitch);
 			
 	 	} 
+	 	*/
 		//TODO: hotkey to search through inventory and use enderpearl ingoring all else
 		//TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
 		//TODO: smart potion button

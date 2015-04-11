@@ -761,11 +761,11 @@ public class ModSamsContent
         else if(ClientProxy.keyBarUp.isPressed() )
         { 	      
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
-        }   
+        }   /*
         else if(ClientProxy.keyPlayerFlip.isPressed() )
         { 	      
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPlayerFlip.getKeyCode()));  
-        }   
+        }  */ 
     } 
 	
 	@SubscribeEvent

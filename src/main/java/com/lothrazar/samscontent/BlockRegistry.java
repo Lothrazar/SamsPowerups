@@ -3,6 +3,7 @@ package com.lothrazar.samscontent;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockFlowerPot;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -50,6 +51,12 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
+		
+		Block lapis_pot = (new BlockFlowerPot()).setHardness(0.0F).setStepSound(Block.soundTypeStone);
+		lapis_pot.setCreativeTab(ModSamsContent.tabSamsContent);
+		BlockRegistry.registerBlock(lapis_pot, "lapis_pot"); 
+		
+		
 		if(ModSamsContent.configSettings.beetroot)
 		{
 			beetrootCrop = (BlockCropBeetroot) new BlockCropBeetroot();
