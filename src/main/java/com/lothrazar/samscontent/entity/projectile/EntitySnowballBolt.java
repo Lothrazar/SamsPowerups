@@ -20,19 +20,19 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World; 
 
-public class EntitySnowBolt extends EntitySnowball
+public class EntitySnowballBolt extends EntitySnowball
 { 
-    public EntitySnowBolt(World worldIn)
+    public EntitySnowballBolt(World worldIn)
     {
         super(worldIn);
     }
 
-    public EntitySnowBolt(World worldIn, EntityLivingBase ent)
+    public EntitySnowballBolt(World worldIn, EntityLivingBase ent)
     {
         super(worldIn, ent);
     }
 
-    public EntitySnowBolt(World worldIn, double x, double y, double z)
+    public EntitySnowballBolt(World worldIn, double x, double y, double z)
     {
         super(worldIn, x, y, z);
     }

@@ -457,35 +457,8 @@ public class ModSamsContent
 		
 		if(held != null && held.getItem() == ItemRegistry.wandLightning &&  
 			  event.action.RIGHT_CLICK_BLOCK == event.action )
-		{    
-			//if(event.entityPlayer.isSneaking() == false) //normal attack: the clicked block
-			//{	     
-				BlockPos hit = event.pos;
-				
-				if(event.face != null) {hit = event.pos.offset(event.face);}
-				
-				//TODO: move to ItemWandLightning.cast()
-				event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
-			
-				SamsUtilities.damageOrBreakHeld(event.entityPlayer);
-			/*}
-			 TODO: different casting modes, just like build wand
-			else //radius all around the player
-			{ 
-				BlockPos center = event.entityPlayer.getPosition();
-				ArrayList<BlockPos> hits = new ArrayList<BlockPos>();
-				hits.add(center.east(range));
-				hits.add(center.west(range));
-				hits.add(center.north(range));
-				hits.add(center.south(range));//TODO: do a circle or radius, or random spots?? different modes one day?
-				
-				for(BlockPos hit : hits)
-				{ 
-				    event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
-				}
-				 
-				SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
-			} */
+		{     
+			ItemWandLightning.cast(event); 
 		} 
 	 
 		if(held != null && held.getItem() == ItemRegistry.wandCopy &&   

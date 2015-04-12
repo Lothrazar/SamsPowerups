@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModSamsContent;
-import com.lothrazar.samscontent.entity.projectile.EntitySnowBolt;
+import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -47,7 +47,7 @@ public class ItemWandSnowball  extends Item
 	{ 
 		BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();
  
-		EntitySnowBolt snow = new EntitySnowBolt(world,entityPlayer 	 );
+		EntitySnowballBolt snow = new EntitySnowballBolt(world,entityPlayer 	 );
 		 
 		 world.spawnEntityInWorld(snow);
 	 

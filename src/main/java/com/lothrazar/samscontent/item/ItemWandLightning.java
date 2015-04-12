@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -40,6 +41,30 @@ public class ItemWandLightning  extends Item
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandLightning),
 			ItemRegistry.baseWand, 
 			Items.ghast_tear  );
+	}
+
+	public static void cast(PlayerInteractEvent event) 
+	{
+		BlockPos up = event.entityPlayer.getPosition().offset(event.entityPlayer.getHorizontalFacing(), 1).up();
+		 
+		EntitySnowballBolt snow = new EntitySnowballBolt(event.world,event.entityPlayer 	 );
+		 
+		event.world.spawnEntityInWorld(snow);
+		SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+			
+		
+		
+		/*
+		BlockPos hit = event.pos;
+		
+		if(event.face != null) {hit = event.pos.offset(event.face);}
+		
+		 
+		event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
+	
+		SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+		
+		*/
 	}
 	  
 }
