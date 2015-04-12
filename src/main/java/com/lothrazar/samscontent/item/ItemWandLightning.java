@@ -9,6 +9,7 @@ import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -47,27 +48,32 @@ public class ItemWandLightning  extends Item
 	public static void cast(PlayerInteractEvent event) 
 	{//http://www.asstr.org/files/Collections/Alt.Sex.Stories.Moderated/Year2015/63345
 	//
-		 // event.action.RIGHT_CLICK_BLOCK == event.action
-		BlockPos up = event.entityPlayer.getPosition().offset(event.entityPlayer.getHorizontalFacing(), 1).up();
-		 
-		EntityLightningballBolt ball = new EntityLightningballBolt(event.world,event.entityPlayer 	 );
-		 
-		event.world.spawnEntityInWorld(ball);
-		SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+		if(  event.action.RIGHT_CLICK_AIR == event.action)
+		{
+			//System.out.println("Cast    isRemote="+event.world.isRemote);//WHY IS THIS ONLY REMOTE++FALSE , no clientside?
+			BlockPos up = event.entityPlayer.getPosition().offset(event.entityPlayer.getHorizontalFacing(), 1).up();
+			 
+			EntityLightningballBolt ball = new EntityLightningballBolt(event.world,event.entityPlayer 	 );
+			 
+			event.world.spawnEntityInWorld(ball);
+			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+				
+		}
+		
+		else if( event.action.RIGHT_CLICK_BLOCK == event.action)
+		{
+			BlockPos hit = event.pos;
 			
+			if(event.face != null) {hit = event.pos.offset(event.face);}
+			
+			 
+			event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
 		
-		
-		/*
-		BlockPos hit = event.pos;
-		
-		if(event.face != null) {hit = event.pos.offset(event.face);}
-		
+			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+			
+		}
+		 // event.action.RIGHT_CLICK_BLOCK == event.action
 		 
-		event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
-	
-		SamsUtilities.damageOrBreakHeld(event.entityPlayer);
-		
-		*/
 	}
 	  
 }

@@ -6,6 +6,7 @@ import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase; 
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -20,6 +21,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World; 
+import net.minecraftforge.fml.relauncher.Side;
 
 public class EntityLightningballBolt extends EntitySnowball
 { 
@@ -37,12 +39,14 @@ public class EntityLightningballBolt extends EntitySnowball
     {
         super(worldIn, x, y, z);
     }
-
+ 
     @Override
     protected void onImpact(MovingObjectPosition mop)
-    {
-    
-        this.worldObj.spawnEntityInWorld(new EntityLightningBolt(this.worldObj, this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ()));
+    { 
+    	//happens ONLY for isRemote == false. which means server side.
+    	//thats great but, isremote=true means client, so how to make entity show in clident side.
+    	EntityLightningBolt ball = new EntityLightningBolt(this.worldObj, this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());
+        this.worldObj.spawnEntityInWorld(ball);
 
         this.setDead();
          
