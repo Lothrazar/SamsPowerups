@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.util.*;
 
@@ -44,12 +45,14 @@ public class ItemWandLightning  extends Item
 	}
 
 	public static void cast(PlayerInteractEvent event) 
-	{
+	{//http://www.asstr.org/files/Collections/Alt.Sex.Stories.Moderated/Year2015/63345
+	//
+		 // event.action.RIGHT_CLICK_BLOCK == event.action
 		BlockPos up = event.entityPlayer.getPosition().offset(event.entityPlayer.getHorizontalFacing(), 1).up();
 		 
-		EntitySnowballBolt snow = new EntitySnowballBolt(event.world,event.entityPlayer 	 );
+		EntityLightningballBolt ball = new EntityLightningballBolt(event.world,event.entityPlayer 	 );
 		 
-		event.world.spawnEntityInWorld(snow);
+		event.world.spawnEntityInWorld(ball);
 		SamsUtilities.damageOrBreakHeld(event.entityPlayer);
 			
 		

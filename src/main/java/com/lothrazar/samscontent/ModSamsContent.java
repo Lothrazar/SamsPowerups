@@ -455,8 +455,7 @@ public class ModSamsContent
 			ItemWandHarvest.replantField(event.world,event.entityPlayer,held,event.pos); 
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.wandLightning &&  
-			  event.action.RIGHT_CLICK_BLOCK == event.action )
+		if(held != null && held.getItem() == ItemRegistry.wandLightning )
 		{     
 			ItemWandLightning.cast(event); 
 		} 
