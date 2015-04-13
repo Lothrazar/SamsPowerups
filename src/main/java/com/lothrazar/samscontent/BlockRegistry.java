@@ -51,11 +51,11 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
-		
+		/*
 		Block lapis_pot = (new BlockFlowerPot()).setHardness(0.0F).setStepSound(Block.soundTypeStone);
 		lapis_pot.setCreativeTab(ModSamsContent.tabSamsContent);
 		BlockRegistry.registerBlock(lapis_pot, "lapis_pot"); 
-		
+		*/
 		
 		if(ModSamsContent.configSettings.beetroot)
 		{
