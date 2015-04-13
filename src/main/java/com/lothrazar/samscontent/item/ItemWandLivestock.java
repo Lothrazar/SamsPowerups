@@ -37,16 +37,14 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandLivestock extends Item
+public class ItemWandLivestock extends ItemBaseWand
 {
 	public static int DURABILITY;
   
 	public ItemWandLivestock( )
 	{   
 		super(); 
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+    	this.setMaxDamage(DURABILITY);  
 	}
 	  
 	@Override

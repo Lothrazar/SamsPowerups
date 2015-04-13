@@ -24,15 +24,13 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandFireball  extends Item
+public class ItemWandFireball  extends ItemBaseWand
 { 
 	public static int DURABILITY;
 	public ItemWandFireball()
 	{  
-		super();  
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
+		super();   
+    	this.setMaxDamage(DURABILITY);  
 	}
  
 	public static void addRecipe() 

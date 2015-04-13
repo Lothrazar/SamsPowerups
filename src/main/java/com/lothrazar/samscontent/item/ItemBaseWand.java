@@ -17,6 +17,7 @@ public class ItemBaseWand extends Item
 	{
 		super();
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setMaxStackSize(1); 
 	}
  
 	public static void addRecipe() 

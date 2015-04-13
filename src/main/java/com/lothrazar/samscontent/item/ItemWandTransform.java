@@ -42,16 +42,14 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandTransform extends Item
+public class ItemWandTransform extends ItemBaseWand
 { 
 	public static int DURABILITY = 80;
   
 	public ItemWandTransform( )
 	{   
 		super(); 
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+    	this.setMaxDamage(DURABILITY);  
 	}
 	  
 	@Override

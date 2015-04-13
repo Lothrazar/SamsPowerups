@@ -40,16 +40,14 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandHarvest extends Item
+public class ItemWandHarvest extends ItemBaseWand
 {
 	public static int RADIUS;
 	public static int DURABILITY; 
 	public ItemWandHarvest( )
 	{   
 		super(); 
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+    	this.setMaxDamage(DURABILITY);  
 	}
 	 
 	public static void addRecipe() 

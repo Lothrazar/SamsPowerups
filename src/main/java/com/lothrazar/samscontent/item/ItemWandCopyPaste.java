@@ -26,16 +26,14 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World; 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandCopyPaste  extends Item
+public class ItemWandCopyPaste  extends ItemBaseWand
 {
 	public static int DURABILITY;
 
 	public ItemWandCopyPaste()
 	{  
-		super();  
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
+		super();   
+    	this.setMaxDamage(DURABILITY);  
 	}
   
 	public static void addRecipe() 

@@ -25,17 +25,15 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandLightning  extends Item
+public class ItemWandLightning  extends ItemBaseWand
 {
 	public static int DURABILITY; 
 	public int range = 8; //TODO: in config??
 	
 	public ItemWandLightning()
 	{  
-		super();  
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
-    	this.setMaxDamage(DURABILITY);
-		this.setMaxStackSize(1);
+		super();   
+    	this.setMaxDamage(DURABILITY); 
 	}
  
 	public static void addRecipe() 

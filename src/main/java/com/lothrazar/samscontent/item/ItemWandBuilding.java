@@ -33,14 +33,12 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandBuilding extends Item
+public class ItemWandBuilding extends ItemBaseWand
 {  
 	public ItemWandBuilding( )
 	{   
 		super(); 
     	this.setMaxDamage(DURABILITY);
-		this.setMaxStackSize(1);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 
 	public static int DURABILITY = 200;

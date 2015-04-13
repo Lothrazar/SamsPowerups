@@ -34,7 +34,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandProspect extends Item
+public class ItemWandProspect extends ItemBaseWand
 {
 	/*
 	public static int RADIUS; 
@@ -43,9 +43,7 @@ public class ItemWandProspect extends Item
 	public ItemWandProspect( )
 	{   
 		super(); 
-    	this.setMaxDamage(DURABILITY); 
-		this.setMaxStackSize(1);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+    	this.setMaxDamage(DURABILITY);  
 	}
 	   
 	@Override
