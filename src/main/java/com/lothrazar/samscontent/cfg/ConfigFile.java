@@ -275,9 +275,9 @@ public int livestockLootScaleFactor;
 		
 		wandTransform = instance.getBoolean("wandTransform",category, true,
     			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
-
+		/*
 		category = parentCateory + ".wandProspect";
-		
+			
 		ItemWandProspect.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 
@@ -286,7 +286,7 @@ public int livestockLootScaleFactor;
 
 		wandProspect = instance.getBoolean("wandProspect",category, true,
     			"Craft a wand that will prospect the nearby area for diamonds."); 
-		
+	*/	
 		category = parentCateory + ".wandBuilding"; 
 		
 		wandBuilding = instance.getBoolean( "wandBuilding", category,true,
@@ -699,7 +699,7 @@ public int livestockLootScaleFactor;
 	public boolean wandHarvest;
 	public boolean wandLivestock;
 	public boolean wandTransform;
-	public boolean wandProspect;
+	//public boolean wandProspect;
 	//public int potionIdTired;
 	public int potionIdWaterwalk;
 	public int potionIdSlowfall;

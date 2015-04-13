@@ -188,7 +188,7 @@ public class ItemRegistry
 
 			ItemWandLivestock.addRecipe();  
 		}
-
+/*
 		if(ModSamsContent.configSettings.wandProspect)
 		{   
 			ItemRegistry.wandProspect = new ItemWandProspect();
@@ -197,7 +197,7 @@ public class ItemRegistry
 
 			ItemWandProspect.addRecipe();  
 		}
-
+*/
 		if(ModSamsContent.configSettings.enderBook)
 		{ 
 			ItemRegistry.itemEnderBook = new ItemEnderBook();

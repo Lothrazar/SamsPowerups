@@ -36,6 +36,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandProspect extends Item
 {
+	/*
 	public static int RADIUS; 
 	public static int DURABILITY; 
   
@@ -96,5 +97,5 @@ public class ItemWandProspect extends Item
 			ItemRegistry.baseWand, 
 			Items.redstone  );
 	}
-  
+  */
 }
