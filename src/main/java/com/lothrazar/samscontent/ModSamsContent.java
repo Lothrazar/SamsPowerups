@@ -430,13 +430,13 @@ public class ModSamsContent
 		{   
 			ItemWandFireball.cast(event.world,event.entityPlayer );   
 		}
-
+/*
 		if(held != null && held.getItem() == ItemRegistry.wandProspect && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
 			ItemWandProspect.searchProspect(event.entityPlayer,held,event.pos);   
 		}
-
+*/
 		if(held != null && held.getItem() == ItemRegistry.wandTransform && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
