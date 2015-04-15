@@ -112,7 +112,7 @@ public class ModSamsContent
 		{ 
 			return ItemRegistry.apple_chocolate;
 		}
-	};
+	};                                                                                                                                     
 		
 	private void initModInfo(ModMetadata mcinfo)
 	{ 

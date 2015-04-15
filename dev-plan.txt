@@ -2,9 +2,13 @@
 
  //command OR wand to play random song
  
+ //TODO: replace fire/ice wands-anyone that throws projectiles or something
+ //make them single use items like ender pearls/eggs. use throw sound.
+ 
             player.worldObj.playRecord(p_175717_1_, p_175717_2_);
             
- 
+            //TODO: pet respawning block/spot with nametags
+ //multiply XP by the Difficulty level (1, 2, or 3)
 //TODO: remote or portable workbench
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
 
