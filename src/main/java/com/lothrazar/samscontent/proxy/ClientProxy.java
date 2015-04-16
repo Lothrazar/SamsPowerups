@@ -10,6 +10,7 @@ import  net.minecraft.item.Item;
 
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -67,26 +68,13 @@ public class ClientProxy extends CommonProxy
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-        
-        for(Object key : EntityList.entityEggs.keySet())
+        if(ModSamsContent.configSettings.respawn_egg)
         {
-        	mesher.register(ItemRegistry.respawn_egg, (Integer)key, new ModelResourceLocation(Reference.TEXTURE_LOCATION + "respawn_egg" , "inventory"));	
-            
-        }/*
-        while (iterator.hasNext())
-        {
-
-            Map.Entry pair = (Map.Entry)iterator.next();
-
-
-            System.out.println(pair.getKey() + " = " + pair.getValue());
-            
-            
-            
-        }
-        for (int i = 0; i <.values(); ++i)
-        {
-       }*/
+        	for(Object key : EntityList.entityEggs.keySet())
+            {
+            	mesher.register(ItemRegistry.respawn_egg, (Integer)key, new ModelResourceLocation(Reference.TEXTURE_LOCATION + "respawn_egg" , "inventory"));	 
+            }
+        } 
          //More info on proxy rendering
          //http://www.minecraftforge.net/forum/index.php?topic=27684.0
         //http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2272349-lessons-from-my-first-mc-1-8-mod
