@@ -443,10 +443,10 @@ public class ModSamsContent
 			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.wandSnowball && 
+		if(held != null && held.getItem() == ItemRegistry.frozen_snowball && 
 				event.action.RIGHT_CLICK_AIR == event.action)
 		{  
-			ItemWandSnowball.cast(event.world,event.entityPlayer );  
+			ItemSnowballFrozen.cast(event.world,event.entityPlayer );  
 		}
 		
 		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 

@@ -53,7 +53,7 @@ public class ItemRegistry
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemWandFireball wandFireball;
-	public static ItemWandSnowball wandSnowball;
+	public static ItemSnowballFrozen frozen_snowball;
 	public static ItemFoodTeleport foodBed;
 	public static ItemFoodTeleport foodSpawn;
 	public static ItemFoodTeleport foodSky;
@@ -105,13 +105,13 @@ public class ItemRegistry
 			ItemWandFire.addRecipe();		 
 		}
 		 
-		if(ModSamsContent.configSettings.wandSnowball)
+		if(ModSamsContent.configSettings.frozen_snowball)
 		{ 
-			ItemRegistry.wandSnowball = new ItemWandSnowball();
+			ItemRegistry.frozen_snowball = new ItemSnowballFrozen();
 
-			registerItem(ItemRegistry.wandSnowball, "wand_snowball");
+			registerItem(ItemRegistry.frozen_snowball, "frozen_snowball");
 	 
-			ItemWandSnowball.addRecipe();		 
+			ItemSnowballFrozen.addRecipe();		 
 		}
 		
 		if(ModSamsContent.configSettings.wandFire)

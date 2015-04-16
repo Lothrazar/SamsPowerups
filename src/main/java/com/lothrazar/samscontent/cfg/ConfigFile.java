@@ -218,7 +218,7 @@ public int livestockLootScaleFactor;
 		//ItemWandSnowball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     	//		"Durability (number of uses in survival).");
  
-		wandSnowball = instance.getBoolean("wandSnowball",category, true,
+		frozen_snowball = instance.getBoolean("wandSnowball",category, true,
     			"Craft a wand that can shoots snowballs.");
 		
 		category = parentCateory + ".wandWater";
@@ -723,7 +723,7 @@ public int livestockLootScaleFactor;
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;
 	public boolean wandFireball;
-	public boolean wandSnowball;
+	public boolean frozen_snowball;
 	public int potionStackSize;
 	public int potionIdFrozen;
 	public int chanceZombieChildFeather;

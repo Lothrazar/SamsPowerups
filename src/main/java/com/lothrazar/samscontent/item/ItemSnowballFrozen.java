@@ -24,9 +24,9 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandSnowball  extends Item//BaseWand
+public class ItemSnowballFrozen  extends Item 
 { 
-	public ItemWandSnowball()
+	public ItemSnowballFrozen()
 	{  
 		super();   
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
@@ -35,12 +35,11 @@ public class ItemWandSnowball  extends Item//BaseWand
  
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandSnowball),
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.frozen_snowball),
 			ItemRegistry.baseWand, 
 			Items.snowball );
 	}
-	
-
+	 
 	public static void cast(World world, EntityPlayer entityPlayer ) 
 	{ 
 		BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();
@@ -49,14 +48,8 @@ public class ItemWandSnowball  extends Item//BaseWand
 		 
 		 world.spawnEntityInWorld(snow);
 	 
-		SamsUtilities.playSoundAt(entityPlayer, Reference.sounds.bowtoss);// "fire.ignite");
-		//SamsUtilities.damageOrBreakHeld(entityPlayer);
+		SamsUtilities.playSoundAt(entityPlayer, Reference.sounds.bowtoss); 
 		
-		SamsUtilities.decrHeldStackSize(entityPlayer);
-		
-		
-		
-		
-	}
-	  
+		SamsUtilities.decrHeldStackSize(entityPlayer); 
+	} 
 }
