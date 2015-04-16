@@ -122,20 +122,24 @@ public class ItemWandLivestock extends Item
 		}
 		
 		if(entity_id > 0)
-		{
-			//TODO: itemstack.setDisplayName
-			//only if entiyty.hasDisplayName (for nametag)
-			//System.out.println("livestock   "+entity_id);
+		{ 
 			entityPlayer.swingItem();
 			entityPlayer.worldObj.removeEntity(target); 
 			
 			if(entityPlayer.worldObj.isRemote) 
 				SamsUtilities.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
 			else
-				entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(ItemRegistry.respawn_egg,1,entity_id),true);
+			{
+				ItemStack stack = new ItemStack(ItemRegistry.respawn_egg,1,entity_id);
+				
+				if(target.hasCustomName())
+					stack.setStackDisplayName(target.getCustomNameTag());
+					
+				entityPlayer.dropPlayerItemWithRandomChoice(stack,true);
 
+			}
 			SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
-			//SamsUtilities.damageOrBreakHeld(entityPlayer);
+			 
 			SamsUtilities.decrHeldStackSize(entityPlayer);
 			
 		} 
