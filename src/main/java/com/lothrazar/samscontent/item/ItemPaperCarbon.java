@@ -29,15 +29,11 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemPaperCarbon  extends ItemBaseWand
-{ 
-	//2 items cons
-	//carbon paper!!!
-
+{  
 	public ItemPaperCarbon()
 	{  
 		super();    
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
-		this.setMaxStackSize(64);    
+		this.setCreativeTab(ModSamsContent.tabSamsContent); 
 	}
   
 	public static void addRecipe() 

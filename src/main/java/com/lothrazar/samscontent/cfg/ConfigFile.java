@@ -242,8 +242,8 @@ public int livestockLootScaleFactor;
 		
 		category = parentCateory + ".wandCopy";
 
-		ItemPaperCarbon.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
+	//	ItemPaperCarbon.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    //			"Durability (number of uses in survival).");
 		
 		wandCopy = instance.getBoolean("wandCopy",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
