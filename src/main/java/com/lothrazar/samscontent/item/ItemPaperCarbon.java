@@ -28,7 +28,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemPaperCarbon  extends ItemBaseWand
+public class ItemPaperCarbon  extends Item
 {  
 	public ItemPaperCarbon()
 	{  
@@ -38,10 +38,14 @@ public class ItemPaperCarbon  extends ItemBaseWand
   
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.carbon_paper),
-			ItemRegistry.baseWand, 
-			Items.paper  );
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.carbon_paper,8),
+			"ppp",
+			"pcp",
+			"ppp",
+			'c',new ItemStack(Items.coal,1,1), 
+			'p',Items.paper  );
 	}
+	
 	private static final String KEY_SIGN0 = "sign_0";
 	private static final String KEY_SIGN1 = "sign_1";
 	private static final String KEY_SIGN2 = "sign_2";
