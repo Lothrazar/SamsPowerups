@@ -24,13 +24,13 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandFireball  extends ItemBaseWand
-{ 
-	public static int DURABILITY;
+public class ItemWandFireball  extends Item//BaseWand
+{  
 	public ItemWandFireball()
 	{  
 		super();   
-    	this.setMaxDamage(DURABILITY);  
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setMaxStackSize(64);     
 	}
  
 	public static void addRecipe() 
@@ -51,8 +51,8 @@ public class ItemWandFireball  extends ItemBaseWand
 				 ,entityPlayer.getLookVec().xCoord
 				 ,entityPlayer.getLookVec().yCoord
 				 ,entityPlayer.getLookVec().zCoord));
-	 
-		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
-		SamsUtilities.damageOrBreakHeld(entityPlayer);
+
+		SamsUtilities.playSoundAt(entityPlayer, Reference.sounds.bowtoss);
+		SamsUtilities.decrHeldStackSize(entityPlayer);
 	} 
 }

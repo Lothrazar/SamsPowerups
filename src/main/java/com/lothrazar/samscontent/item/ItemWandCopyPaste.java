@@ -29,6 +29,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ItemWandCopyPaste  extends ItemBaseWand
 {
 	public static int DURABILITY;
+	//2 items cons
+	//carbon paper!!!
 
 	public ItemWandCopyPaste()
 	{  

@@ -223,7 +223,10 @@ public class Reference
 	
 	
 	
-	
+	public static class sounds
+	{
+		public final static String bowtoss = "random.bow";
+	}
 	
 	
 	/*

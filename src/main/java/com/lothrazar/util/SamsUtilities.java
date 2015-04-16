@@ -513,4 +513,9 @@ public class SamsUtilities
 		 
 		 return realBedPos;
 	}
+
+	public static void decrHeldStackSize(EntityPlayer entityPlayer) 
+	{
+		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1); 
+	}
 }

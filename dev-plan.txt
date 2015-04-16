@@ -1,5 +1,9 @@
-
-
+//TODO: chatlog to txt
+//TODO: cobblestone makes damageed stone tools, but smoothstone makes fully repaired.
+//this is instead of totally removing the cobblestone ones
+//TODO: livestock wand shoudl NOT use spawn eggs, as those eggs can mess with spawners, which is OVERPOWERED in survival
+//instead make my own custom 'egg' item, that doe sit. maybe will work with monsters too.
+//make it consumable like pokeball.
  //command OR wand to play random song
  
  //TODO: replace fire/ice wands-anyone that throws projectiles or something

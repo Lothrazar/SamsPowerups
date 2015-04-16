@@ -24,13 +24,13 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandSnowball  extends ItemBaseWand
+public class ItemWandSnowball  extends Item//BaseWand
 { 
-	public static int DURABILITY;
 	public ItemWandSnowball()
 	{  
 		super();   
-    	this.setMaxDamage(DURABILITY);  
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setMaxStackSize(64);   
 	}
  
 	public static void addRecipe() 
@@ -49,8 +49,14 @@ public class ItemWandSnowball  extends ItemBaseWand
 		 
 		 world.spawnEntityInWorld(snow);
 	 
-		SamsUtilities.playSoundAt(entityPlayer, "fire.ignite");
-		SamsUtilities.damageOrBreakHeld(entityPlayer);
+		SamsUtilities.playSoundAt(entityPlayer, Reference.sounds.bowtoss);// "fire.ignite");
+		//SamsUtilities.damageOrBreakHeld(entityPlayer);
+		
+		SamsUtilities.decrHeldStackSize(entityPlayer);
+		
+		
+		
+		
 	}
 	  
 }

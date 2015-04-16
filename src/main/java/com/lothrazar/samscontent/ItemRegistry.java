@@ -75,7 +75,13 @@ public class ItemRegistry
 		ItemRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
 		ItemBaseWand.addRecipe();	
 		
+		 //  registerItem(383, "spawn_egg", (
+		ItemMonsterPlacerSurvival monsterPlacerSurvival = new ItemMonsterPlacerSurvival();
+		ItemRegistry.registerItem(monsterPlacerSurvival, "monsterPlacerSurvival");
 		
+		
+		//.setUnlocalizedName("monsterPlacerSurvival"));
+	       
 		
 		
 		

@@ -206,9 +206,8 @@ public int livestockLootScaleFactor;
     			"Craft a wand that can either create fire in a line, or extinguish fire all around you.");
 
 		category = parentCateory + ".wandFireball";
-
-		ItemWandFireball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
+//	ItemWandFireball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    //			"Durability (number of uses in survival).");
  
 		wandFireball = instance.getBoolean("wandFireball",category, true,
     			"Craft a wand that can shoots fire charges.");
@@ -216,8 +215,8 @@ public int livestockLootScaleFactor;
 		
 		category = parentCateory + ".wandSnowball";
 
-		ItemWandSnowball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
+		//ItemWandSnowball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    	//		"Durability (number of uses in survival).");
  
 		wandSnowball = instance.getBoolean("wandSnowball",category, true,
     			"Craft a wand that can shoots snowballs.");
@@ -262,8 +261,8 @@ public int livestockLootScaleFactor;
 
 		category = parentCateory + ".wandLivestock";
 
-		ItemWandLivestock.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
+	//	ItemWandLivestock.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    	//		"Durability (number of uses in survival).");
 		
 		wandLivestock = instance.getBoolean("wandLivestock",category, true,
     			"Craft a wand that will transform livestock animals into spawn eggs.");
