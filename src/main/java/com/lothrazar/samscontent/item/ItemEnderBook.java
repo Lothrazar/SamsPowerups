@@ -58,8 +58,7 @@ public class ItemEnderBook extends Item
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
 	{ 
 	     if(itemStack.getTagCompound() == null) 
-	     { 
-        	 //list.add("Right Click while sneaking to set location" );
+	     {  
         	 list.add("Save your current location while sneaking.  Only works in the overworld.");
 	    	 return;
 	     }
@@ -77,10 +76,10 @@ public class ItemEnderBook extends Item
 	{   
 		if(entityPlayer.dimension != Reference.Dimension.overworld) 
 		{ 
-			return;//if its end, nether, or anything else such as from another mod
+			return; 
 		}
 		
-    	Location loc = new Location(0
+    	Location loc = new Location(entityPlayer.dimension
     			,entityPlayer.posX
     			,entityPlayer.posY
     			,entityPlayer.posZ
@@ -107,7 +106,7 @@ public class ItemEnderBook extends Item
 		} 
 		else if(loc.dimension == Reference.Dimension.nether) 
 		{
-			entityPlayer.heal(-15);//TODO: config file
+			entityPlayer.setFire(4);//TODO: config file
 		}
 		
 		if(entityPlayer.dimension != Reference.Dimension.overworld) 
@@ -136,18 +135,15 @@ public class ItemEnderBook extends Item
 	}
  
 	public static void rightClickBlock(World world, EntityPlayer entityPlayer,	ItemStack held) 
-	{
-		boolean isEmpty = (held.getTagCompound() == null) ;
-		
-		if(isEmpty)
+	{ 
+		if(entityPlayer.isSneaking())
 		{ 			 
 			ItemEnderBook.saveCurrentLocation(world,entityPlayer, held);		 
 		} 
 		else
 		{ 
 			ItemEnderBook.teleport(world,entityPlayer, held);	
-		} 
-		
+		}  
 	}
 }
  
