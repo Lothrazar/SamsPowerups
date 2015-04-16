@@ -35,9 +35,12 @@ public class ItemSnowballFrozen  extends Item
  
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.frozen_snowball),
-			ItemRegistry.baseWand, 
-			Items.snowball );
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.frozen_snowball,8),
+				"sss",
+				"sis",
+				"sss",
+				'i',Blocks.ice,
+				's',Items.snowball );
 	}
 	 
 	public static void cast(World world, EntityPlayer entityPlayer ) 
