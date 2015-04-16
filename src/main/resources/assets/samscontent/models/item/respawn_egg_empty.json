@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/wand_livestock"
+        "layer0": "samscontent:items/respawn_egg_empty"
     },
     "display": {
         "thirdperson": {

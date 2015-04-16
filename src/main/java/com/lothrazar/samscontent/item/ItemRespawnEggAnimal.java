@@ -32,15 +32,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class ItemMonsterPlacerSurvival extends Item  //ItemMonsterPlacer
+public class ItemRespawnEggAnimal extends Item  //mimic/mirror of ItemMonsterPlacer
 {
-	public ItemMonsterPlacerSurvival()
-    {
-		 //TODO in registry
-		 //  registerItem(383, "spawn_egg", (new ItemMonsterPlacerSurvival()).setUnlocalizedName("monsterPlacerSurvival"));
-	       
-        this.setHasSubtypes(true);
-        this.setCreativeTab(ModSamsContent.tabSamsContent);
+	public ItemRespawnEggAnimal()
+    { 
+        this.setHasSubtypes(true); 
     }
 
     public String getItemStackDisplayName(ItemStack stack)
@@ -85,38 +81,18 @@ public class ItemMonsterPlacerSurvival extends Item  //ItemMonsterPlacer
         else
         {
             IBlockState iblockstate = worldIn.getBlockState(pos);
-/*
-            if (iblockstate.getBlock() == Blocks.mob_spawner)
-            {
-                TileEntity tileentity = worldIn.getTileEntity(pos);
-
-                if (tileentity instanceof TileEntityMobSpawner)
-                {
-                    MobSpawnerBaseLogic mobspawnerbaselogic = ((TileEntityMobSpawner)tileentity).getSpawnerBaseLogic();
-                    mobspawnerbaselogic.setEntityName(EntityList.getStringFromID(stack.getMetadata()));
-                    tileentity.markDirty();
-                    worldIn.markBlockForUpdate(pos);
-
-                    if (!playerIn.capabilities.isCreativeMode)
-                    {
-                        --stack.stackSize;
-                    }
-
-                    return true;
-                }
-            }
-*/
+            //this is where we disabled the interaction with monster spawners
             pos = pos.offset(side);
-            double d0 = 0.0D;
+            double offsetY = 0.0D;
 
             if (side == EnumFacing.UP && iblockstate instanceof BlockFence)
             {
-                d0 = 0.5D;
+                offsetY = 0.5D;
             }
 
 			//System.out.println("livestock   "+stack.getMetadata());
 			
-            Entity entity = spawnCreature(worldIn, stack.getMetadata(), (double)pos.getX() + 0.5D, (double)pos.getY() + d0, (double)pos.getZ() + 0.5D);
+            Entity entity = spawnCreature(worldIn, stack.getMetadata(), (double)pos.getX() + 0.5D, (double)pos.getY() + offsetY, (double)pos.getZ() + 0.5D);
 
             if (entity != null)
             {

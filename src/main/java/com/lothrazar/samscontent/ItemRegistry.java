@@ -29,7 +29,7 @@ public class ItemRegistry
 	public static ItemChestSack itemChestSack;
 	public static ItemWandHarvest wandHarvest;
 	public static ItemWandTransform wandTransform; 
-	public static ItemWandLivestock wandLivestock;
+	public static ItemRespawnEggEmpty respawn_egg_empty;
 	public static ItemWandProspect wandProspect;  
 	public static ItemFoodAppleMagic apple_emerald;
 	public static ItemFoodAppleMagic apple_emerald_rich;
@@ -57,7 +57,7 @@ public class ItemRegistry
 	public static ItemFoodTeleport foodBed;
 	public static ItemFoodTeleport foodSpawn;
 	public static ItemFoodTeleport foodSky;
-	public static ItemMonsterPlacerSurvival respawn_egg;
+	public static ItemRespawnEggAnimal respawn_egg;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -77,8 +77,6 @@ public class ItemRegistry
 		ItemBaseWand.addRecipe();	
 		
 		 //  registerItem(383, "spawn_egg", (
-		respawn_egg = new ItemMonsterPlacerSurvival();
-		ItemRegistry.registerItem(respawn_egg, "respawn_egg");
 		
 		
 		//.setUnlocalizedName("monsterPlacerSurvival"));
@@ -160,7 +158,7 @@ public class ItemRegistry
 			ItemWandBuilding.addRecipe(); 
 		}
 		 
-		if(ModSamsContent.configSettings.wandChest)
+		if(ModSamsContent.configSettings.chest_sack)
 		{   
 			ItemRegistry.itemChestSack = new ItemChestSack();   
 			ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
@@ -187,24 +185,16 @@ public class ItemRegistry
 			ItemWandHarvest.addRecipe();  
 		}
 		
-		if(ModSamsContent.configSettings.wandLivestock)
+		if(ModSamsContent.configSettings.respawn_egg)
 		{   
-			ItemRegistry.wandLivestock = new ItemWandLivestock();
-	  
-			ItemRegistry.registerItem(ItemRegistry.wandLivestock, "wand_livestock");
-
-			ItemWandLivestock.addRecipe();  
+			respawn_egg = new ItemRespawnEggAnimal();
+			ItemRegistry.registerItem(respawn_egg, "respawn_egg");
+			
+			ItemRegistry.respawn_egg_empty = new ItemRespawnEggEmpty(); 
+			ItemRegistry.registerItem(ItemRegistry.respawn_egg_empty, "respawn_egg_empty"); 
+			ItemRespawnEggEmpty.addRecipe();  
 		}
-/*
-		if(ModSamsContent.configSettings.wandProspect)
-		{   
-			ItemRegistry.wandProspect = new ItemWandProspect();
-	  
-			ItemRegistry.registerItem(ItemRegistry.wandProspect, "wand_prospect");
-
-			ItemWandProspect.addRecipe();  
-		}
-*/
+ 
 		if(ModSamsContent.configSettings.enderBook)
 		{ 
 			ItemRegistry.itemEnderBook = new ItemEnderBook();

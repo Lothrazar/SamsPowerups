@@ -45,24 +45,18 @@ import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandLivestock extends Item
+public class ItemRespawnEggEmpty extends Item
 {
-	public ItemWandLivestock( )
+	public ItemRespawnEggEmpty( )
 	{   
 		super(); 
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
 		this.setMaxStackSize(64);   
 	}
-	  
-	@Override
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-    	return true; //give it shimmer
-    }
  
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandLivestock),
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.respawn_egg_empty),
 			ItemRegistry.baseWand, 
 			Items.porkchop  );
 	}

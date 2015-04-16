@@ -378,9 +378,9 @@ public class ModSamsContent
   	{
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem(); 
 		
-		if(held != null && held.getItem() == ItemRegistry.wandLivestock )
+		if(held != null && held.getItem() == ItemRegistry.respawn_egg_empty )
 		{
-			ItemWandLivestock.entitySpawnEgg(event.entityPlayer, event.target); 
+			ItemRespawnEggEmpty.entitySpawnEgg(event.entityPlayer, event.target); 
 		}
 		
 		

@@ -264,7 +264,7 @@ public int livestockLootScaleFactor;
 	//	ItemWandLivestock.DURABILITY  = instance.getInt("durability",category, 200,1,999,
     	//		"Durability (number of uses in survival).");
 		
-		wandLivestock = instance.getBoolean("wandLivestock",category, true,
+		respawn_egg = instance.getBoolean("wandLivestock",category, true,
     			"Craft a wand that will transform livestock animals into spawn eggs.");
 
 		category = parentCateory + ".wandTransform";
@@ -445,7 +445,7 @@ public int livestockLootScaleFactor;
 		
 		category = "items";
 		
-		wandChest = instance.getBoolean("chest_sack",category, true,
+		chest_sack = instance.getBoolean("chest_sack",category, true,
     			"Craft an empty sack that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
 
 		/*
@@ -693,10 +693,10 @@ public int livestockLootScaleFactor;
 	public int emeraldOreHardness;
 	public int spawnerHardness;
 	public boolean wandFire;
-	public boolean wandChest;
+	public boolean chest_sack;
 	public boolean wandCopy;
 	public boolean wandHarvest;
-	public boolean wandLivestock;
+	public boolean respawn_egg;
 	public boolean wandTransform;
 	//public boolean wandProspect;
 	//public int potionIdTired;
