@@ -57,8 +57,8 @@ public class ItemRespawnEggEmpty extends Item
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.respawn_egg_empty),
-			ItemRegistry.baseWand, 
-			Items.porkchop  );
+			Items.egg, 
+			Items.ender_eye  );
 	}
 
 	public static void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 

@@ -42,7 +42,7 @@ public class ItemPaperCarbon  extends Item
 			"ppp",
 			"pcp",
 			"ppp",
-			'c',new ItemStack(Items.coal,1,1), 
+			'c',new ItemStack(Items.coal,1,1), //charcoal
 			'p',Items.paper  );
 	}
 	
@@ -125,8 +125,7 @@ public class ItemPaperCarbon  extends Item
 			list.add("Note: " + s);
 		} 
 	}
-
-	
+ 
 	public static void rightClickBlock(PlayerInteractEvent event) 
 	{
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
@@ -144,7 +143,7 @@ public class ItemPaperCarbon  extends Item
 		{
 			TileEntitySign sign = (TileEntitySign)container;
 			 
-			if(isEmpty)//TODO: instead ise usEmpty for copy
+			if(isEmpty) 
 			{ 
 				ItemPaperCarbon.copySign(world,entityPlayer,sign,held); 
 				wasCopy = true;
