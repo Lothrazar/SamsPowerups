@@ -54,9 +54,10 @@ public class ItemRegistry
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemWandFireball wandFireball;
 	public static ItemWandSnowball wandSnowball;
-	private static ItemFoodTeleport foodBed;
-	private static ItemFoodTeleport foodSpawn;
-	private static ItemFoodTeleport foodSky;
+	public static ItemFoodTeleport foodBed;
+	public static ItemFoodTeleport foodSpawn;
+	public static ItemFoodTeleport foodSky;
+	public static ItemMonsterPlacerSurvival respawn_egg;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -76,8 +77,8 @@ public class ItemRegistry
 		ItemBaseWand.addRecipe();	
 		
 		 //  registerItem(383, "spawn_egg", (
-		ItemMonsterPlacerSurvival monsterPlacerSurvival = new ItemMonsterPlacerSurvival();
-		ItemRegistry.registerItem(monsterPlacerSurvival, "monsterPlacerSurvival");
+		respawn_egg = new ItemMonsterPlacerSurvival();
+		ItemRegistry.registerItem(respawn_egg, "respawn_egg");
 		
 		
 		//.setUnlocalizedName("monsterPlacerSurvival"));

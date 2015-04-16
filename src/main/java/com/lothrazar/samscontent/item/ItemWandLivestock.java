@@ -14,14 +14,19 @@ import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityAgeable;
+import net.minecraft.entity.EntityAgeable; 
+import net.minecraft.entity.passive.EntityAmbientCreature;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityMooshroom;
 import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntityWolf;
+import net.minecraft.entity.passive.EntitySquid;
+import net.minecraft.entity.passive.IAnimals;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -66,93 +71,73 @@ public class ItemWandLivestock extends Item
 	{
 		int entity_id = 0;
 		
-		//make a custom ItemMonsterPlacer
-		ItemMonsterPlacer eggTest;
-		//on line 81 it has the logic for this        if (tileentity instanceof TileEntityMobSpawner)
-		if(target instanceof EntityAgeable 
-				&& ((EntityAgeable) target).isChild())
+		//DO NOT USE = target.getEntityId();. that is the runtime id, so each instance of EntityCow has its own RUNTIME id
+		//different than the class level id which we need here
+ 
+		if( target instanceof EntityHorse ||
+			target instanceof EntityWolf)
 		{
-			//then skip, we dont do this
-			entity_id = 0;
+			return;//disabled flat out.  TODO: maybe turn on from config
 		}
-		else
+ 
+		if(target instanceof EntitySquid) 
+		{  
+			entity_id = Reference.entity_squid;
+		} 
+		else if(target instanceof EntityBat) 
+		{  
+			entity_id = Reference.entity_bat;
+		} 
+		else if(target instanceof EntityAgeable )  
 		{ 
-			 //TODO: for all of these, check for and drop name tag
-			if(target instanceof EntityCow )
-			{ 
-				entity_id = Reference.entity_cow; 
-			}
-			if(target instanceof EntityPig )
-			{ 
-				entity_id = Reference.entity_pig; 
-			}
-			if(target instanceof EntitySheep )
-			{ 
-				entity_id = Reference.entity_sheep; 
+			EntityAgeable targ = (EntityAgeable) target;
+			//these guys all extend EntityAnimal extends EntityAgeable implements IAnimals
+			if(targ.isChild() == false)
+			{
+				if(target instanceof EntityCow )
+				{ 
+					entity_id = Reference.entity_cow; 
+				}
+				if(target instanceof EntityPig )
+				{ 
+					entity_id = Reference.entity_pig; 
+				}
+				if(target instanceof EntitySheep )
+				{ 
+					entity_id = Reference.entity_sheep; 
+				} 
+				if(target instanceof EntityChicken )
+				{ 
+					entity_id = Reference.entity_chicken; 
+				} 
+				if(target instanceof EntityMooshroom )
+				{ 
+					entity_id = Reference.entity_mooshroom; 
+				}
+				if(target instanceof EntityRabbit )
+				{ 
+					entity_id = Reference.entity_rabbit; 
+				} 
 			} 
-			if(target instanceof EntityChicken )
-			{ 
-				entity_id = Reference.entity_chicken; 
-			} 
-			if(target instanceof EntityMooshroom )
-			{ 
-				entity_id = Reference.entity_mooshroom; 
-			} 
-			if(target instanceof EntityBat)
-			{  
-				entity_id = Reference.entity_bat; 
-			} 
-			if(target instanceof EntityHorse)
-			{  
-				EntityHorse h = (EntityHorse)target;
-				
-				//TODO: when usd on horse, drop the armor/saddle/other stuff int he world (chest)
-				
-				//TODO: test if we can set Variant and Type to get Undead/Skeleton horses
-				//and still have them tamed/mounted?
-				//if so make new "zombie wand"
-				//that also cures zombie villagers on use 
-				
-				
-			//	h.getAlwaysRenderNameTag()
-			//	h.getCurrentArmor(arg0)
-			//	h.getEquipmentInSlot(arg0)
-				//h.setTamedBy(arg0)
-				//h.isAdultHorse()
-				//h.isChild()
-			//	h.isUndead()
-			//	h.setLeashedToEntity(arg0, arg1);
-			//	h.setHorseVariant(arg0);
-			//	h.setHorseType(arg0);
-				//TODO: can we spawn zombie horse? 
-				//USE EXISTING WAND TRANSFORM?
-				     //Magic wand to turn horses to zombie/skeleton?
-				                //yeah i think we can in the sapwn event and roll a dice and check the biome
-				                //http://www.minecraftforge.net/forum/index.php?topic=8937.0
-				                //and then just tag all biome horses as the undead type 
-				                /*
-				                 * Tamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3,Tame:1}
-				            Untamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3}
-				            Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
-				            Untamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
-				                */ 
-	
-			}
 		}
 		
 		if(entity_id > 0)
 		{
+			//TODO: itemstack.setDisplayName
+			//only if entiyty.hasDisplayName (for nametag)
+			//System.out.println("livestock   "+entity_id);
 			entityPlayer.swingItem();
 			entityPlayer.worldObj.removeEntity(target); 
 			
 			if(entityPlayer.worldObj.isRemote) 
 				SamsUtilities.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
 			else
-				entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(Items.spawn_egg,1,entity_id),true);
+				entityPlayer.dropPlayerItemWithRandomChoice(new ItemStack(ItemRegistry.respawn_egg,1,entity_id),true);
 
 			SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
 			//SamsUtilities.damageOrBreakHeld(entityPlayer);
 			SamsUtilities.decrHeldStackSize(entityPlayer);
+			
 		} 
 	}
 	

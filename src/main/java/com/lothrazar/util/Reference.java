@@ -153,6 +153,8 @@ public class Reference
 	public static final int entity_chicken = 93;
 	public static final int entity_mooshroom = 96;
 	public static final int entity_bat = 65;
+	public static final int entity_squid = 94;
+	public static final int entity_rabbit = 101;
 
 	public static final int BROWN = 0;
 	public static final int WHITE = 1;

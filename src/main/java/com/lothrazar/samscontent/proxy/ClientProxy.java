@@ -1,6 +1,8 @@
 package com.lothrazar.samscontent.proxy;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.Map;
 
 import org.lwjgl.input.Keyboard;   
 
@@ -17,6 +19,7 @@ import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
 
 public class ClientProxy extends CommonProxy 
@@ -64,7 +67,26 @@ public class ClientProxy extends CommonProxy
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-    
+        
+        for(Object key : EntityList.entityEggs.keySet())
+        {
+        	mesher.register(ItemRegistry.respawn_egg, (Integer)key, new ModelResourceLocation(Reference.TEXTURE_LOCATION + "respawn_egg" , "inventory"));	
+            
+        }/*
+        while (iterator.hasNext())
+        {
+
+            Map.Entry pair = (Map.Entry)iterator.next();
+
+
+            System.out.println(pair.getKey() + " = " + pair.getValue());
+            
+            
+            
+        }
+        for (int i = 0; i <.values(); ++i)
+        {
+       }*/
          //More info on proxy rendering
          //http://www.minecraftforge.net/forum/index.php?topic=27684.0
         //http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2272349-lessons-from-my-first-mc-1-8-mod

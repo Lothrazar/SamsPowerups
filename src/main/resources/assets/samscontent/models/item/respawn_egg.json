@@ -1,7 +1,8 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/base_wand_1"
+        "layer0": "samscontent:items/respawn_egg",
+        "layer1": "samscontent:items/respawn_egg_overlay"
     },
     "display": {
         "thirdperson": {

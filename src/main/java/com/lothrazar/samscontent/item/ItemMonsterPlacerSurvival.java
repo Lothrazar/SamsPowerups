@@ -34,7 +34,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemMonsterPlacerSurvival extends Item  //ItemMonsterPlacer
 {
-	 public ItemMonsterPlacerSurvival()
+	public ItemMonsterPlacerSurvival()
     {
 		 //TODO in registry
 		 //  registerItem(383, "spawn_egg", (new ItemMonsterPlacerSurvival()).setUnlocalizedName("monsterPlacerSurvival"));
@@ -60,7 +60,10 @@ public class ItemMonsterPlacerSurvival extends Item  //ItemMonsterPlacer
     public int getColorFromItemStack(ItemStack stack, int renderPass)
     {
         EntityList.EntityEggInfo entityegginfo = (EntityList.EntityEggInfo)EntityList.entityEggs.get(Integer.valueOf(stack.getMetadata()));
-        return entityegginfo != null ? (renderPass == 0 ? entityegginfo.primaryColor : entityegginfo.secondaryColor) : 16777215;
+   
+        int c = entityegginfo != null ? (renderPass == 0 ? entityegginfo.primaryColor : entityegginfo.secondaryColor) : 16777215;
+         
+        return c;
     }
 
     /**
@@ -111,6 +114,8 @@ public class ItemMonsterPlacerSurvival extends Item  //ItemMonsterPlacer
                 d0 = 0.5D;
             }
 
+			//System.out.println("livestock   "+stack.getMetadata());
+			
             Entity entity = spawnCreature(worldIn, stack.getMetadata(), (double)pos.getX() + 0.5D, (double)pos.getY() + d0, (double)pos.getZ() + 0.5D);
 
             if (entity != null)
@@ -238,5 +243,5 @@ public class ItemMonsterPlacerSurvival extends Item  //ItemMonsterPlacer
             EntityList.EntityEggInfo entityegginfo = (EntityList.EntityEggInfo)iterator.next();
             subItems.add(new ItemStack(itemIn, 1, entityegginfo.spawnedID));
         }
-    }
+    } 
 }
