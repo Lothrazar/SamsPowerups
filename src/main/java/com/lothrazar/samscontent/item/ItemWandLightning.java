@@ -27,8 +27,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandLightning  extends ItemBaseWand
 {
-	public static int DURABILITY; 
-	public int range = 8; //TODO: in config??
+	public static int DURABILITY;  
 	
 	public ItemWandLightning()
 	{  
@@ -44,8 +43,8 @@ public class ItemWandLightning  extends ItemBaseWand
 	}
 
 	public static void cast(PlayerInteractEvent event) 
-	{//http://www.asstr.org/files/Collections/Alt.Sex.Stories.Moderated/Year2015/63345
-	//
+	{
+		//http://www.asstr.org/files/Collections/Alt.Sex.Stories.Moderated/Year2015/63345
 		if(  event.action.RIGHT_CLICK_AIR == event.action)
 		{
 			//System.out.println("Cast    isRemote="+event.world.isRemote);//WHY IS THIS ONLY REMOTE++FALSE , no clientside?

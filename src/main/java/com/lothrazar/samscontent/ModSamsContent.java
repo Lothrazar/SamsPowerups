@@ -528,14 +528,8 @@ public class ModSamsContent
 			held.getItem() == ItemRegistry.itemEnderBook && 
 			event.action.RIGHT_CLICK_BLOCK == event.action)
 		{   
-			if(event.entityPlayer.isSneaking())
-			{ 			 
-				ItemEnderBook.saveCurrentLocation(event.world,event.entityPlayer, held);		 
-			} 
-			else
-			{ 
-				ItemEnderBook.teleport(event.world,event.entityPlayer, held);	
-			} 
+			ItemEnderBook.rightClickBlock(event.world,event.entityPlayer, held);
+			
 		}
 		
 		if(event.action == event.action.LEFT_CLICK_BLOCK && 

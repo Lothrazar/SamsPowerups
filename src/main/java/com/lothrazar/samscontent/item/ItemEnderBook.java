@@ -32,24 +32,35 @@ import net.minecraft.util.MathHelper;
 
 public class ItemEnderBook extends Item
 { 
-	public final static String KEY_LOC = "location"; 
-	public static int DURABILITY;
+	public final static String KEY_LOC = "location";  
 	
 	public ItemEnderBook()
 	{  
-		super(); 
-    	this.setMaxDamage(DURABILITY);
-		this.setMaxStackSize(1);
+		super();  
+		this.setMaxStackSize(1); 
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
+	}
+	
+	public static void addRecipe() 
+	{
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemEnderBook), 
+				 Items.ender_pearl, 
+				 Items.book);
+
+		if(ModSamsContent.configSettings.uncraftGeneral) 
+		{
+			GameRegistry.addSmelting(ItemRegistry.itemEnderBook, 
+					new ItemStack(Items.ender_pearl, 1), 0);
+		}
 	}
 
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
 	{ 
-	     if (itemStack.getTagCompound() == null) 
+	     if(itemStack.getTagCompound() == null) 
 	     { 
         	 //list.add("Right Click while sneaking to set location" );
-        	 list.add("Save your current location while sneaking");
+        	 list.add("Save your current location while sneaking.  Only works in the overworld.");
 	    	 return;
 	     }
 	      
@@ -64,6 +75,11 @@ public class ItemEnderBook extends Item
 
 	public static void saveCurrentLocation(World world, EntityPlayer entityPlayer, ItemStack itemStack) 
 	{   
+		if(entityPlayer.dimension != Reference.Dimension.overworld) 
+		{ 
+			return;//if its end, nether, or anything else such as from another mod
+		}
+		
     	Location loc = new Location(0
     			,entityPlayer.posX
     			,entityPlayer.posY
@@ -115,20 +131,23 @@ public class ItemEnderBook extends Item
 	
 		entityPlayer.getCurrentEquippedItem().damageItem(1, entityPlayer);
 		entityPlayer.swingItem();
+		
+		SamsUtilities.decrHeldStackSize(entityPlayer);
 	}
-
-	public static void addRecipe() 
+ 
+	public static void rightClickBlock(World world, EntityPlayer entityPlayer,	ItemStack held) 
 	{
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.itemEnderBook), 
-				"eee", 
-				"ebe",
-				"eee", 
-				'e', Items.ender_pearl, 
-				'b', Items.book);
-
-		if(ModSamsContent.configSettings.uncraftGeneral) 
-			GameRegistry.addSmelting(ItemRegistry.itemEnderBook, 
-					new ItemStack(Items.ender_pearl, 8), 0);
+		boolean isEmpty = (held.getTagCompound() == null) ;
+		
+		if(isEmpty)
+		{ 			 
+			ItemEnderBook.saveCurrentLocation(world,entityPlayer, held);		 
+		} 
+		else
+		{ 
+			ItemEnderBook.teleport(world,entityPlayer, held);	
+		} 
+		
 	}
 }
  
