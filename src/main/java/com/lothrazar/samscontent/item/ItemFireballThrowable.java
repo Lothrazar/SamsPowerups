@@ -15,6 +15,7 @@ import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFireball;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -24,19 +25,18 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandFireball  extends Item//BaseWand
+public class ItemFireballThrowable  extends Item //since ItemFireball is not throwable
 {  
-	public ItemWandFireball()
+	public ItemFireballThrowable()
 	{  
 		super();   
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
-		this.setMaxStackSize(64);     
+		this.setCreativeTab(ModSamsContent.tabSamsContent); 
 	}
  
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandFire),
-			ItemRegistry.baseWand, 
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.fire_charge_throw,4),
+			Items.ender_eye, 
 			Items.fire_charge );
 	}
 	

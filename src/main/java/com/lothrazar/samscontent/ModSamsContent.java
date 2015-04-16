@@ -425,10 +425,10 @@ public class ModSamsContent
 			ItemWandWater.cast(event);
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.wandFireball && 
+		if(held != null && held.getItem() == ItemRegistry.fire_charge_throw && 
 				event.action.RIGHT_CLICK_AIR == event.action)
 		{   
-			ItemWandFireball.cast(event.world,event.entityPlayer );   
+			ItemFireballThrowable.cast(event.world,event.entityPlayer );   
 		}
 /*
 		if(held != null && held.getItem() == ItemRegistry.wandProspect && 

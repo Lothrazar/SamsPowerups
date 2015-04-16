@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/wand_fireball"
+        "layer0": "samscontent:items/fire_charge_throw"
     },
     "display": {
         "thirdperson": {

@@ -1,4 +1,9 @@
-        
+//TODO: i am removing items in creative, i should do stuff like
+ if (!playerIn.capabilities.isCreativeMode)
+                {
+                    --stack.stackSize;
+                }
+                        
             //  h.getAlwaysRenderNameTag()
             //  h.getCurrentArmor(arg0)
             //  h.getEquipmentInSlot(arg0)

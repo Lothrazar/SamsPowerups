@@ -52,7 +52,7 @@ public class ItemRegistry
 	public static Item beetrootSoup;
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
-	public static ItemWandFireball wandFireball;
+	public static ItemFireballThrowable fire_charge_throw;
 	public static ItemSnowballFrozen frozen_snowball;
 	public static ItemFoodTeleport foodBed;
 	public static ItemFoodTeleport foodSpawn;
@@ -98,9 +98,9 @@ public class ItemRegistry
 		 
 		if(ModSamsContent.configSettings.wandFireball)
 		{ 
-			ItemRegistry.wandFireball = new ItemWandFireball();
+			ItemRegistry.fire_charge_throw = new ItemFireballThrowable();
 
-			registerItem(ItemRegistry.wandFireball, "wand_fireball");
+			registerItem(ItemRegistry.fire_charge_throw, "fire_charge_throw");
 	 
 			ItemWandFire.addRecipe();		 
 		}
