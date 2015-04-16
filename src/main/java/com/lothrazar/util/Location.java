@@ -30,7 +30,7 @@ public class Location
 		Z = p.posZ;
 		index = idx;
 		dimension = p.dimension;
-		name = pname;
+		name = pname; //is often the Biome Name
 		if(name == null) { name = ""; }
 	}
 	

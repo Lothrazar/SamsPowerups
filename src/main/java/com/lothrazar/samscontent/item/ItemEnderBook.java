@@ -69,7 +69,7 @@ public class ItemEnderBook extends Item
 		 if(csv != null && csv.isEmpty() == false) 
 		 {
 			 Location loc = new Location(csv);
-	    	 list.add(EnumChatFormatting.DARK_GREEN + loc.toDisplayShort());//was NoCords
+	    	 list.add(EnumChatFormatting.DARK_GREEN + loc.toDisplay());//was toDisplayShort
 		 }  
 	}
 
@@ -85,8 +85,8 @@ public class ItemEnderBook extends Item
     			,entityPlayer.posY
     			,entityPlayer.posZ
     			,entityPlayer.dimension 
-    			,""//,biome.biomeName //could get from world
-    			);
+    			,world.getBiomeGenForCoords(entityPlayer.getPosition()).biomeName //is this used anywhere?
+    		);
     	 
     	SamsUtilities.setItemStackNotNull(itemStack);
     	itemStack.getTagCompound().setString(KEY_LOC, loc.toCSV());		
