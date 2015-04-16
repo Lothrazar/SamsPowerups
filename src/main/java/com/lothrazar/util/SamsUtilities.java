@@ -516,6 +516,9 @@ public class SamsUtilities
 
 	public static void decrHeldStackSize(EntityPlayer entityPlayer) 
 	{
-		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1); 
+		if (entityPlayer.capabilities.isCreativeMode == false)
+        {
+			entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
+        }
 	}
 }
