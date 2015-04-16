@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/wand_copy"
+        "layer0": "samscontent:items/carbon_paper"
     },
     "display": {
         "thirdperson": {

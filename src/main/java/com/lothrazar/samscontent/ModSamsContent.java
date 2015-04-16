@@ -460,55 +460,12 @@ public class ModSamsContent
 			ItemWandLightning.cast(event); 
 		} 
 	 
-		if(held != null && held.getItem() == ItemRegistry.wandCopy &&   
+		if(held != null && held.getItem() == ItemRegistry.carbon_paper &&   
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{   
-			boolean isValid = false;
+			ItemPaperCarbon.rightClickBlock(event);
 			
-			if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
-			{
-				TileEntitySign sign = (TileEntitySign)container;
-				 
-				if(event.entityPlayer.isSneaking())
-				{ 
-					ItemWandCopyPaste.copySign(event.world,event.entityPlayer,sign,held); 
-				}
-				else
-				{
-					ItemWandCopyPaste.pasteSign(event.world,event.entityPlayer,sign,held); 
-				} 
-				
-				isValid = true; 
-			}
-			if(blockClicked == Blocks.noteblock)
-			{
-				TileEntityNote noteblock = (TileEntityNote)container;
-				 
-				if(event.entityPlayer.isSneaking())
-				{ 
-					ItemWandCopyPaste.copyNote(event.world,event.entityPlayer,noteblock,held); 
-				}
-				else
-				{
-					ItemWandCopyPaste.pasteNote(event.world,event.entityPlayer,noteblock,held); 
-				} 
-				
-				isValid = true; 
-			} 
 			
-			if(isValid)
-			{
-				if(event.world.isRemote)
-				{	
-					SamsUtilities.spawnParticle(event.world, EnumParticleTypes.PORTAL, event.pos); 
-				}
-				else
-				{
-					SamsUtilities.damageOrBreakHeld(event.entityPlayer);
-				}
-				
-				SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
-			} 
 		}
 		
 		if(held != null && held.getItem() == ItemRegistry.wandBuilding)

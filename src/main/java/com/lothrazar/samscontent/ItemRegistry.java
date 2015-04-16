@@ -40,7 +40,7 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_chocolate_rich;
 	public static ItemFoodAppleMagic apple_nether_star;
 	public static ItemWandFire wandFire;
-	public static ItemWandCopyPaste wandCopy;
+	public static ItemPaperCarbon carbon_paper;
 	public static ItemBaseWand baseWand;
 	//public static ItemToolFlint flintTool;
 	public static ItemFoodAppleMagic apple_diamond_rich;
@@ -143,11 +143,11 @@ public class ItemRegistry
 
 		if(ModSamsContent.configSettings.wandCopy)
 		{ 
-			ItemRegistry.wandCopy = new ItemWandCopyPaste();
+			ItemRegistry.carbon_paper = new ItemPaperCarbon();
 
-			ItemRegistry.registerItem(ItemRegistry.wandCopy, "wand_copy");
+			ItemRegistry.registerItem(ItemRegistry.carbon_paper, "carbon_paper");
 
-			ItemWandCopyPaste.addRecipe();  
+			ItemPaperCarbon.addRecipe();  
 		}
 		   
 		if(ModSamsContent.configSettings.wandBuilding)

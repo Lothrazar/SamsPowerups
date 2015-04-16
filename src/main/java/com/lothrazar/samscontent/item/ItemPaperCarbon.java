@@ -15,6 +15,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityNote;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
@@ -24,23 +25,24 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World; 
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandCopyPaste  extends ItemBaseWand
-{
-	public static int DURABILITY;
+public class ItemPaperCarbon  extends ItemBaseWand
+{ 
 	//2 items cons
 	//carbon paper!!!
 
-	public ItemWandCopyPaste()
+	public ItemPaperCarbon()
 	{  
-		super();   
-    	this.setMaxDamage(DURABILITY);  
+		super();    
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setMaxStackSize(64);    
 	}
   
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandCopy),
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.carbon_paper),
 			ItemRegistry.baseWand, 
 			Items.paper  );
 	}
@@ -60,7 +62,7 @@ public class ItemWandCopyPaste  extends ItemBaseWand
 		entityPlayer.swingItem(); 
 	}
 
-	public static void pasteSign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 
+	public static void pasteSign(World world, EntityPlayer entityPlayer, TileEntitySign sign, ItemStack held) 
 	{   
 		sign.signText[0] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN0));
 		sign.signText[1] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN1));
@@ -74,8 +76,6 @@ public class ItemWandCopyPaste  extends ItemBaseWand
 		entityPlayer.swingItem();
 	}
 
-	
-	
 	public static void copyNote(World world, EntityPlayer entityPlayer,TileEntityNote noteblock, ItemStack held) 
 	{ 
 		if(held.getTagCompound() == null) held.setTagCompound(new NBTTagCompound());
@@ -121,6 +121,69 @@ public class ItemWandCopyPaste  extends ItemBaseWand
 		{
 			list.add("Note: " + s);
 		} 
-	} 
+	}
+
 	
+	public static void rightClickBlock(PlayerInteractEvent event) 
+	{
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
+		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
+		TileEntity container = event.world.getTileEntity(event.pos);
+		World world = event.world;
+		EntityPlayer entityPlayer = event.entityPlayer;
+		boolean isValid = false;
+		boolean wasCopy = false;
+
+		if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
+		{
+			TileEntitySign sign = (TileEntitySign)container;
+			 
+			if(entityPlayer.isSneaking())
+			{ 
+				ItemPaperCarbon.copySign(world,entityPlayer,sign,held); 
+				wasCopy = true;
+			}
+			else
+			{
+				ItemPaperCarbon.pasteSign(world,entityPlayer,sign,held); 
+				wasCopy = false;
+			} 
+			
+			isValid = true; 
+		}
+		if(blockClicked == Blocks.noteblock)
+		{
+			TileEntityNote noteblock = (TileEntityNote)container;
+			 
+			if(entityPlayer.isSneaking())
+			{ 
+				ItemPaperCarbon.copyNote(world,entityPlayer,noteblock,held);
+				wasCopy = true; 
+			}
+			else
+			{
+				ItemPaperCarbon.pasteNote(world,entityPlayer,noteblock,held); 
+				wasCopy = false;
+			} 
+			
+			isValid = true; 
+		} 
+		
+		if(isValid)
+		{
+			if(event.world.isRemote)
+			{	
+				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.PORTAL, event.pos); 
+			}
+			else
+			{ 
+				if(wasCopy == false)//on paste, we consume the item
+				{
+					SamsUtilities.decrHeldStackSize(entityPlayer);
+				}
+			}
+			
+			SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
+		}  
+	}  
 }
