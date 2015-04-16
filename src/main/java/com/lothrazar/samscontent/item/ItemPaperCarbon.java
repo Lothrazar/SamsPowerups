@@ -59,6 +59,8 @@ public class ItemPaperCarbon  extends Item
 		SamsUtilities.setItemStackNBT(held, KEY_SIGN2, sign.signText[2].getUnformattedText());
 		SamsUtilities.setItemStackNBT(held, KEY_SIGN3, sign.signText[3].getUnformattedText());
 
+		held.getTagCompound().setByte(KEY_NOTE,(byte)-1); 
+		
 		entityPlayer.swingItem(); 
 	}
 
@@ -96,12 +98,13 @@ public class ItemPaperCarbon  extends Item
 	@Override
 	public void addInformation(ItemStack held, EntityPlayer player, List list, boolean par4) 
 	{  
-		if(held.getTagCompound() == null)
+		boolean isEmpty = (held.getTagCompound() == null);
+		if(isEmpty)
 		{
-			list.add("Shift click to copy a sign or noteblock"); 
+			list.add("Click to copy a sign or noteblock"); 
 			return;
 		}
-		
+		 
 		String sign = SamsUtilities.getItemStackNBT(held, KEY_SIGN0)
 				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN1)
 				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN2)
@@ -133,12 +136,15 @@ public class ItemPaperCarbon  extends Item
 		EntityPlayer entityPlayer = event.entityPlayer;
 		boolean isValid = false;
 		boolean wasCopy = false;
-
-		if(blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign )
+		
+		boolean isEmpty = (held.getTagCompound() == null);
+ 
+		if((blockClicked == Blocks.wall_sign || blockClicked == Blocks.standing_sign) 
+				&&  container instanceof TileEntitySign)
 		{
 			TileEntitySign sign = (TileEntitySign)container;
 			 
-			if(entityPlayer.isSneaking())
+			if(isEmpty)//TODO: instead ise usEmpty for copy
 			{ 
 				ItemPaperCarbon.copySign(world,entityPlayer,sign,held); 
 				wasCopy = true;
@@ -151,11 +157,11 @@ public class ItemPaperCarbon  extends Item
 			
 			isValid = true; 
 		}
-		if(blockClicked == Blocks.noteblock)
+		if(blockClicked == Blocks.noteblock && container instanceof TileEntityNote)
 		{
 			TileEntityNote noteblock = (TileEntityNote)container;
 			 
-			if(entityPlayer.isSneaking())
+			if(isEmpty)
 			{ 
 				ItemPaperCarbon.copyNote(world,entityPlayer,noteblock,held);
 				wasCopy = true; 
