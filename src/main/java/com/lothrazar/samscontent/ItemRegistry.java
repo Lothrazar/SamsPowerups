@@ -23,7 +23,7 @@ import com.lothrazar.util.Reference;
 
 public class ItemRegistry 
 { 
-	public static ItemEnderBook itemEnderBook = null;
+	public static ItemEnderBook itemEnderBook;
 	public static ItemWandBuilding wandBuilding;
 	public static ItemChestSackEmpty wandChest; 
 	public static ItemChestSack itemChestSack;
@@ -38,14 +38,12 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_chocolate;
 	public static ItemFoodAppleMagic apple_chocolate_rich;
 	public static ItemFoodAppleMagic apple_nether_star; 
-	public static ItemPaperCarbon carbon_paper;
-	public static ItemBaseWand baseWand;
-	//public static ItemToolFlint flintTool;
+	public static ItemPaperCarbon carbon_paper;  
 	public static ItemFoodAppleMagic apple_diamond_rich;
 	public static ItemFoodAppleMagic apple_ender;
 	public static ItemWandWater wandWater;
 	public static ItemWandLightning wandLightning;
-	public static 	Item beetrootSeed ;
+	public static Item beetroot_seed ;
 	public static Item beetrootItem;
 	public static Item beetrootSoup;
 	
@@ -67,16 +65,11 @@ public class ItemRegistry
 	}
 	 
 	public static void registerItems()
-	{
-		//needed for all wands; no config.
-		ItemRegistry.baseWand = new ItemBaseWand(); 
-		ItemRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
-		ItemBaseWand.addRecipe();	
-		 
+	{ 
 		if(ModSamsContent.configSettings.beetroot)
 		{ 
-			beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModSamsContent.tabSamsContent);
-			ItemRegistry.registerItem(beetrootSeed, "beetroot_seed");
+			beetroot_seed = new ItemSeeds(BlockRegistry.beetroot_crop, Blocks.farmland).setCreativeTab(ModSamsContent.tabSamsContent);
+			ItemRegistry.registerItem(beetroot_seed, "beetroot_seed");
 			
 			beetrootItem = new ItemFood(3, false).setCreativeTab(ModSamsContent.tabSamsContent);
 			ItemRegistry.registerItem(beetrootItem, "beetroot_item");
@@ -275,7 +268,9 @@ public class ItemRegistry
 		} 
 		 
 		//TODO: config for TP food
-		
+		/*
+		//this is redundant. we already have Ender book which is any location we want,
+		 * AND we have the blocks for teleportation
 		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);
 		ItemRegistry.registerItem(foodBed, "tpfood_bed");
 		ItemFoodTeleport.addRecipe(ItemRegistry.foodBed,new ItemStack(Blocks.wool));
@@ -287,6 +282,6 @@ public class ItemRegistry
 		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
 		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
 		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.gold_ingot));
-		 
+		*/
 	}
 }

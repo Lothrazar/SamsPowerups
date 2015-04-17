@@ -25,7 +25,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandLightning  extends ItemBaseWand
+public class ItemWandLightning  extends Item
 {
 	public static int DURABILITY;  
 	
@@ -33,28 +33,27 @@ public class ItemWandLightning  extends ItemBaseWand
 	{  
 		super();   
     	this.setMaxDamage(DURABILITY); 
+    	this.setMaxStackSize(1); 
+		this.setCreativeTab(ModSamsContent.tabSamsContent);  
 	}
  
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandLightning),
-			ItemRegistry.baseWand, 
-			Items.ghast_tear  );
+			Items.nether_star,  
+			Items.blaze_rod  );
 	}
 
 	public static void cast(PlayerInteractEvent event) 
 	{
-		//http://www.asstr.org/files/Collections/Alt.Sex.Stories.Moderated/Year2015/63345
 		if(  event.action.RIGHT_CLICK_AIR == event.action)
 		{
-			//System.out.println("Cast    isRemote="+event.world.isRemote);//WHY IS THIS ONLY REMOTE++FALSE , no clientside?
 			BlockPos up = event.entityPlayer.getPosition().offset(event.entityPlayer.getHorizontalFacing(), 1).up();
 			 
 			EntityLightningballBolt ball = new EntityLightningballBolt(event.world,event.entityPlayer 	 );
 			 
 			event.world.spawnEntityInWorld(ball);
-			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
-				
+			SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
 		}
 		
 		else if( event.action.RIGHT_CLICK_BLOCK == event.action)
@@ -68,9 +67,6 @@ public class ItemWandLightning  extends ItemBaseWand
 		
 			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
 			
-		}
-		 // event.action.RIGHT_CLICK_BLOCK == event.action
-		 
-	}
-	  
+		} 
+	} 
 }

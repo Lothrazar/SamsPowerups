@@ -126,7 +126,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	@Override
 	public Item getItem(World worldIn, BlockPos pos)
 	{
-		return ItemRegistry.beetrootSeed;
+		return ItemRegistry.beetroot_seed;
 	}
 	
 	@Override
@@ -138,7 +138,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		return ((Integer)state.getValue(AGE)).intValue() == GROWTHMAX ? ItemRegistry.beetrootItem: ItemRegistry.beetrootSeed;
+		return ((Integer)state.getValue(AGE)).intValue() == GROWTHMAX ? ItemRegistry.beetrootItem: ItemRegistry.beetroot_seed;
 	}
 	
 	@Override

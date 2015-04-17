@@ -290,9 +290,9 @@ public class AchievementRegistry
 
 	public void registerVanillaPage() 
 	{ 
-		if(ItemRegistry.beetrootSeed != null)
+		if(ItemRegistry.beetroot_seed != null)
 		{  
-			beetrootSeed = new Achievement(Reference.MODID + "_beetrootSeed", "beetrootSeed" , AchievementList.buildHoe.displayColumn - 2, AchievementList.buildHoe.displayRow + 1, ItemRegistry.beetrootSeed, AchievementList.buildHoe);
+			beetrootSeed = new Achievement(Reference.MODID + "_beetrootSeed", "beetrootSeed" , AchievementList.buildHoe.displayColumn - 2, AchievementList.buildHoe.displayRow + 1, ItemRegistry.beetroot_seed, AchievementList.buildHoe);
 			beetrootSeed.registerStat(); //not on my page
 		}
 	}

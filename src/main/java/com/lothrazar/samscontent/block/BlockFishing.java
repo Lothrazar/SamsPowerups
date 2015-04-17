@@ -113,9 +113,7 @@ public class BlockFishing extends Block
     public EnumWorldBlockLayer getBlockLayer()
     {
         return EnumWorldBlockLayer.CUTOUT;
-    }
-	
-	public static final String name = "block_fishing";
+    } 
 
 	public static void addRecipe() 
 	{

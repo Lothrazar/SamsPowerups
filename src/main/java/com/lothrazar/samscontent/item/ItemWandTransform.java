@@ -42,14 +42,16 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandTransform extends ItemBaseWand
+public class ItemWandTransform extends Item
 { 
-	public static int DURABILITY = 80;
+	public static int DURABILITY;
   
 	public ItemWandTransform( )
 	{   
 		super(); 
-    	this.setMaxDamage(DURABILITY);  
+    	this.setMaxDamage(DURABILITY);
+    	this.setMaxStackSize(1); 
+		this.setCreativeTab(ModSamsContent.tabSamsContent);  
 	}
 	  
 	@Override
@@ -63,7 +65,7 @@ public class ItemWandTransform extends ItemBaseWand
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandTransform),
-			ItemRegistry.baseWand, //TODO: improve this recipe
+			Items.blaze_rod,
 			Blocks.end_stone  );
 	}
  

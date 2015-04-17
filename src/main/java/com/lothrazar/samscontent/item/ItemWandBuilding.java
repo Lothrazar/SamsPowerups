@@ -33,12 +33,14 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandBuilding extends ItemBaseWand
+public class ItemWandBuilding extends Item
 {  
 	public ItemWandBuilding( )
 	{   
 		super(); 
     	this.setMaxDamage(DURABILITY);
+    	this.setMaxStackSize(1); 
+		this.setCreativeTab(ModSamsContent.tabSamsContent);  
 	}
 
 	public static int DURABILITY = 200;
@@ -49,7 +51,7 @@ public class ItemWandBuilding extends ItemBaseWand
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandBuilding),
-			ItemRegistry.baseWand, 
+			Items.blaze_rod, 
 			Items.diamond  );
 	}
 	 

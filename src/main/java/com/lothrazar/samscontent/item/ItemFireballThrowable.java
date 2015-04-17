@@ -31,6 +31,7 @@ public class ItemFireballThrowable  extends Item //since ItemFireball is not thr
 	{  
 		super();   
 		this.setCreativeTab(ModSamsContent.tabSamsContent); 
+		this.setMaxStackSize(64);
 	}
  
 	public static void addRecipe() 

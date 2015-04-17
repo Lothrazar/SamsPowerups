@@ -35,7 +35,7 @@ public class BlockRegistry
 	public static BlockBucketStorage block_storewater;
 	public static BlockBucketStorage block_storemilk;
 	public static BlockBucketStorage block_storeempty;
-	public static BlockCropBeetroot beetrootCrop;
+	public static BlockCropBeetroot beetroot_crop;
 	
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
 	
@@ -59,9 +59,9 @@ public class BlockRegistry
 		
 		if(ModSamsContent.configSettings.beetroot)
 		{
-			beetrootCrop = (BlockCropBeetroot) new BlockCropBeetroot();
+			beetroot_crop = (BlockCropBeetroot) new BlockCropBeetroot();
 
-			BlockRegistry.registerBlock(beetrootCrop, "beetroot_crop"); 
+			BlockRegistry.registerBlock(beetroot_crop, "beetroot_crop"); 
 		}
 		 
 		if(ModSamsContent.configSettings.storeWaterBlock)
@@ -112,7 +112,7 @@ public class BlockRegistry
 		{
 			BlockRegistry.block_fishing = new BlockFishing(); 
 			
-			registerBlock(BlockRegistry.block_fishing,BlockFishing.name);
+			registerBlock(BlockRegistry.block_fishing, "block_fishing");
 
 			BlockFishing.addRecipe();
 		}

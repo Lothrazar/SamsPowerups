@@ -21,19 +21,20 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandWater  extends ItemBaseWand
+public class ItemWandWater  extends Item
 {
 	public static int DURABILITY; 
 	public ItemWandWater()
 	{  
 		super();   
     	this.setMaxDamage(DURABILITY); 
+		this.setCreativeTab(ModSamsContent.tabSamsContent); 
 	}
  
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandWater),
-			ItemRegistry.baseWand, 
+			Items.blaze_rod, 
 			Items.water_bucket  );
 	}
 	  
