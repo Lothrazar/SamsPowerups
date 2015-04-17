@@ -355,7 +355,7 @@ public class ModSamsContent
 		{ 
 			if(event.source.getSourceOfDamage() != null 
 					&& event.source.getSourceOfDamage() instanceof EntityPlayer 
-					&& configSettings.livestockLootScaleFactor > 0) 
+					&& configSettings.livestockLootMultiplier > 0) 
 			{ 
 				//if livestock is killed by a palyer, then multiply the loot by the scale factor
 				for(EntityItem ei : event.drops)
@@ -364,7 +364,7 @@ public class ModSamsContent
 					//so we just get and set the stack with a new size
 					
 					//double it again for pigs
-					int factor = (event.entity instanceof EntityPig) ? 2 * configSettings.livestockLootScaleFactor : configSettings.livestockLootScaleFactor;
+					int factor = (event.entity instanceof EntityPig) ? 2 * configSettings.livestockLootMultiplier : configSettings.livestockLootMultiplier;
 					
 					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(),ei.getEntityItem().stackSize * factor,ei.getEntityItem().getItemDamage()));
 				}

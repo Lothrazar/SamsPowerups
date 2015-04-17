@@ -90,24 +90,7 @@ public class RecipeRegistry
 			,Items.nether_wart
 			,new ItemStack(Items.dye,1,Reference.dye_bonemeal)); 
 	}
-
-	public static void gravelToClay()
-	{
-		if(!ModSamsContent.configSettings.gravelToClay)  {return;}
-
-		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.clay, 4)
-			 ,Items.water_bucket
-			 ,Blocks.gravel
-			 ,Blocks.gravel
-			 ,Blocks.gravel
-			 ,Blocks.gravel
-			 ,Blocks.dirt
-			 ,Blocks.dirt
-			 ,Blocks.dirt
-			 ,Blocks.dirt);
-	}
-	
-	
+  
 	public static void mushroomBlocks()
 	{
 		if(!ModSamsContent.configSettings.craftableMushroomBlocks)  {return;}

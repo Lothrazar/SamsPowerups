@@ -28,6 +28,8 @@ public class ConfigFile
 	public ConfigFile(Configuration c)
 	{
 		instance = c; 
+ 
+		mob_changes();
 
 		commands();
  
@@ -49,67 +51,50 @@ public class ConfigFile
 		 
 		debug_info();
 		 
-		spawning(); 
+		mob_spawning(); 
 		 
 		wands();
 		 
 		potions();
 		 
 		nature();
- 
-		animals();
 		 
 		pocket_edition();  
 		
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
-		endermenDropCarryingBlock = instance.getBoolean("endermenDropCarryingBlock",category, true,
-    			"Endermen will always drop any block they are carrying.");
-		 
-
-		flintPumpkin = instance.getBoolean("flintPumpkin",category, true,
+		
+		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
     			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
 		 
-		betterBonemeal = instance.getBoolean("betterBonemeal",category, true,
+		betterBonemeal = instance.getBoolean("better_bonemeal",category, true,
     			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
  
-		increasedStackSizes = instance.getBoolean("increasedStackSizes",category, true,
-			"While true, many items and blocks (not tools/armor/potions) have their max stack size increased to 64.  " +
-			"Included are: ender pearl, egg, snowball, cookie, mushroom stew, boat, all minecarts, all doors, cake, saddle, " +
-			"horse armor, empty bucket, bed, all records."); 
+		increasedStackSizes = instance.getBoolean("stack_size",category, true,
+			"While true, most vanilla items and blocks have their max stack size increased to 64 (not tools/armor/potions).  ");
 		
-		potionStackSize  = instance.getInt("potionStackSize",category, 1,1,3,
+		potionStackSize = instance.getInt("stack_size_potion",category, 1,1,3,
     			"Potion stack size can be increased to three, but not by default.");
 		
-		moreFuel = instance.getBoolean("moreFuel",category, true,
+		moreFuel = instance.getBoolean("more_fuel",category, true,
     			"More can be used as furnace fuel: seeds, leaves, paper, shrubs, and more."); 
 	 
-		swiftDeposit = instance.getBoolean("swiftDeposit",category, true,
+		swiftDeposit = instance.getBoolean("swift_deposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
 		
-		smartEnderchest = instance.getBoolean("smartEnderchest",category, true,
+		smartEnderchest = instance.getBoolean("smart_enderchest",category, true,
     			"Attack with the ender chest to open it without placing it."	);
 		 
-		skullSignNames = instance.getBoolean("skullSignNames",category, true,
+		skullSignNames = instance.getBoolean("skull_sign_names",category, true,
     			"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
-		 
-		removeZombieCarrotPotato = instance.getBoolean("removeZombieCarrotPotato",category, true,
-    			"Disable these zombie drops."); 
-
-		chanceZombieChildFeather   = instance.getInt("chanceZombieChildFeather",category, 10,0,100,
-    			"Percent chance that a child zombie will drop a feather.");
-		
-		chanceZombieVillagerEmerald  = instance.getInt("chanceZombieVillagerEmerald",category, 5,0,100,
-    			"Percent chance that a villager zombie will drop an emerald.");
-		
-		
-		playerDeathCoordinates = instance.getBoolean("playerDeathCoordinates",category, true,
+		   
+		playerDeathCoordinates = instance.getBoolean("player_death_coordinates",category, true,
     			"Players will have their death point coordinates broadcast in chat.");
 		
-		dropPlayerSkullOnDeath = instance.getBoolean("dropPlayerSkullOnDeath",category, true,
+		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull",category, true,
     			"Players will drop their skull when they die.");
 
-		fragileTorches = instance.getBoolean("fragileTorches",category, true,
+		fragileTorches = instance.getBoolean("fragile_torches",category, true,
 				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
 		
 		if(instance.hasChanged()){ instance.save(); }
@@ -122,36 +107,49 @@ public class ConfigFile
 		beetroot =  instance.getBoolean( "beetroot",category,true,
 				"Add beetroot, similar to pocket edition.  Use a golden hoe to get seeds. " );
 	}
-public int livestockLootScaleFactor;
-	private void animals() 
+	
+	private void mob_changes() 
 	{
-		category = "animals";
+		category = "mob_changes";
 		
-		livestockLootScaleFactor  = instance.getInt("livestockLootScaleFactor",category, 5,0,32,
-	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.  Useful on servers because less animals being collected and bred = less lag.");
+		livestockLootMultiplier  = instance.getInt("livestock_multiplier",category, 5,1,32,
+	    			"Factor to increase drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.  Useful on servers because less animals being collected and bred = less lag.  (use 1 for vanilla behavior)");
 			 
-		petNametagDrops = instance.getBoolean("petNametagDrops",category, true,
+		petNametagDrops = instance.getBoolean("nametag_drops",category, true,
 	    			"Some mobs that are named drop a name tag when they die (wolf, ocelot, villager, bat, rabbit, horse).");
  //TODO: RESPAWNING?
-		petNametagChat  = instance.getBoolean("nametagDeathMessages",category, true,
+		petNametagChat  = instance.getBoolean("nametag_death_messages",category, true,
 	    			"Non-player entities that are named with a Name Tag send a chat death message when they die.");
+	
+		removeZombieCarrotPotato = instance.getBoolean("remove_zombie_carrot_potato",category, true,
+    			"Disable these zombie drops."); 
+
+		chanceZombieChildFeather = instance.getInt("chance_zombie_child_feather",category, 5,0,100,
+    			"Percent chance that a child zombie will drop a feather.");
+		//TODO: zombie pigman rare pork chop. like beta
+		chanceZombieVillagerEmerald = instance.getInt("chance_zombie_villager_emerald",category, 5,0,100,
+    			"Percent chance that a villager zombie will drop an emerald.");
+		
+		endermenDropCarryingBlock = instance.getBoolean("endermen_drop_carrying_block",category, true,
+    			"Endermen will always drop any block they are carrying.");
+		
 	}
 
 	private void nature() 
 	{
 		category = "nature";
   
-		plantDespawningSaplings = instance.getBoolean("plantDespawningSaplings",category, true,
+		plantDespawningSaplings = instance.getBoolean("sapling_plant_despawn",category, true,
     			"When a sapling (or mushroom) despawns while sitting on grass or dirt, it will instead attempt to plant itself.");
 
-		saplingGrowthRestricted = instance.getBoolean("saplingGrowthRestricted",category, true,
+		saplingGrowthRestricted = instance.getBoolean("sapling_biome_restricted",category, true,
     			"Sapling growth is restricted to only their native biomes (for example, birch trees will not grow in roofed forests).");
 		 
-		saplingAllNether = instance.getBoolean("saplingAllNether",category, false,
-    			"Sapling growth restrictions are lifted in the nether.");
+		saplingAllNether = instance.getBoolean("sapling_nether",category, false,
+    			"If true, all saplings grow in the nether (ignoring sapling_biome_restricted).");
 		
-		saplingAllEnd = instance.getBoolean("saplingAllEnd",category, false,
-    			"Sapling growth restrictions are lifted in the end.");
+		saplingAllEnd = instance.getBoolean("sapling_end",category, false,
+    			"If true, all saplings grow in the end (ignoring sapling_biome_restricted)");
 		  
 	}
 
@@ -159,95 +157,68 @@ public int livestockLootScaleFactor;
 	{
 		category = "terrain_generation";
 		
-		worldGenClayOceans = instance.getBoolean("worldGenClayOceans",category, true,
-    			"Clay can generate in oceans just like it used to in the old days.");
+		//TODO: also add dirt and sand!?!?!?
+		
+		worldGenClayOceans = instance.getBoolean("clay_oceans",category, true,
+    			"Clay can generate in oceans just like it used to in the old days.  It replaces the gravel in patches.");
 	}
 
 	private void potions() 
 	{ 
 		category = "potions";
 		
-		potionIdWaterwalk = instance.getInt("potionIdWaterwalk",category, 40,33,200,
+		potionIdWaterwalk = instance.getInt("potion_waterwalk_id",category, 40,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		  
-		potionIdSlowfall = instance.getInt("potionIdSlowfall",category, 41,33,200,
+		potionIdSlowfall = instance.getInt("potion_slowfall_id",category, 41,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		  
-		potionIdFlying = instance.getInt("potionIdFlying",category, 42,33,200,
+		potionIdFlying = instance.getInt("potion_flying_id",category, 42,33,200,
     			"ID is only exposed to avoid conflicts with other mods.  THIS IS INTENDED FOR USE ONLY IN SINGLE PLAYER.");
 		
-		potionIdLavawalk = instance.getInt("potionIdLavawalk",category, 43,33,200,
+		potionIdLavawalk = instance.getInt("potion_lavawalk_id",category, 43,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		
-		potionIdEnder = instance.getInt("potionIdEnder",category, 44,33,200,
+		potionIdEnder = instance.getInt("potion_ender_id",category, 44,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		
-		potionIdFrozen = instance.getInt("potionIdFrozen",category, 45,33,200,
+		potionIdFrozen = instance.getInt("potion_frost_id",category, 45,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		
 
 		//	potionIdTired = instance.getInt("potionIdTired",category, 46,33,200,
 	    //			"ID is only exposed to avoid conflicts with other mods.");
 		
-		slowfallSpeed = instance.getFloat("slowfallSpeed",category, 0.41F,0.1F,1F,
+		slowfallSpeed = instance.getFloat("potion_slowfall_speed",category, 0.41F,0.1F,1F,
     			"This factor affects how much the slowfall potion slows down the entity.");
 	}
 
 	private void wands() 
 	{ 
 		String parentCateory = "items"; 
+  
+		fire_charge_throw = instance.getBoolean("fire_charge_throw",category, true,
+    			"Craft new version of the fire charge that is throwable (as if it came out of a dispenser).");
  
-		category = parentCateory + ".wandFireball";
- 
-		wandFireball = instance.getBoolean("wandFireball",category, true,
-    			"Craft a wand that can shoots fire charges.");
- 
-		category = parentCateory + ".wandSnowball";
- 
-		frozen_snowball = instance.getBoolean("wandSnowball",category, true,
-    			"Craft a wand that can shoots snowballs.");
+		frozen_snowball = instance.getBoolean("frozen_snowball",category, true,
+    			"Throw a frozen snowball that freezes water and causes a short icy potion effect to anything it hits.");
 		
-		category = parentCateory + ".wandWater";
-
-		ItemWandWater.DURABILITY  = instance.getInt("durability",category, 50,1,999,
-    			"Durability (number of uses in survival).");
-		
-		wandWater = instance.getBoolean("wandWater",category, true,
-    			"Craft a wand that places water.");
-
-		category = parentCateory + ".wandLightning";
-
-		ItemWandLightning.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
-		
-		wandLightning = instance.getBoolean("wandLightning",category, true,
-    			"Craft a wand that spawns lightning bolts.");
- 
-		category = parentCateory + ".wandCopy";
- 
-		wandCopy = instance.getBoolean("wandCopy",category, true,
+		carbon_paper = instance.getBoolean("carbon_paper",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
-
-		category = parentCateory + ".wandHarvest";
-
-	 
-		ItemMagicHarvester.RADIUS  = instance.getInt("radius",category, 16,1,64,
+ 
+		ItemMagicHarvester.RADIUS  = instance.getInt("magic_harvester_radius",category, 16,1,64,
     			"Range in all directions.");
 		
-		wandHarvest = instance.getBoolean("wandHarvest",category, true,
-    			"Craft a wand that will harvest the crops in the area around you.");
-
-		category = parentCateory + ".wandLivestock";
+		magic_harvester = instance.getBoolean("magic_harvester",category, true,
+    			"This harvests a large area of crops at once while also replanting for you.");
  
-		respawn_egg = instance.getBoolean("wandLivestock",category, true,
-    			"Craft a wand that will transform livestock animals into spawn eggs.");
-
-		category = parentCateory + ".wandTransform";
-
-		ItemWandTransform.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+		respawn_egg = instance.getBoolean("respawn_egg",category, true,
+    			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
+ 
+		ItemWandTransform.DURABILITY  = instance.getInt("wand_transform_durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 		
-		wandTransform = instance.getBoolean("wandTransform",category, true,
+		wandTransform = instance.getBoolean("wand_transform_enabled",category, true,
     			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
 		/*
 		category = parentCateory + ".wandProspect";
@@ -261,9 +232,9 @@ public int livestockLootScaleFactor;
 		wandProspect = instance.getBoolean("wandProspect",category, true,
     			"Craft a wand that will prospect the nearby area for diamonds."); 
 	*/	
-		category = parentCateory + ".wandBuilding"; 
+		category = parentCateory + ".wand_building"; 
 		
-		wandBuilding = instance.getBoolean( "wandBuilding", category,true,
+		wandBuilding = instance.getBoolean( "wand_building", category,true,
 				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
 		
 		ItemWandBuilding.DURABILITY   = instance.getInt("durability",category, 200,1,999,
@@ -278,11 +249,28 @@ public int livestockLootScaleFactor;
 		ItemWandBuilding.replaceTileEntities = instance.getBoolean("replaceTileEntities", category ,true,
 			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
 			 "(such as chest or dispenser).   "	); 
+		
+		category = parentCateory + ".wandWater";
+
+		ItemWandWater.DURABILITY  = instance.getInt("wand_water_durability",category, 50,1,999,
+    			"Durability (number of uses in survival).");
+		
+		wandWater = instance.getBoolean("wand_water",category, true,
+    			"Craft a wand that places water.");
+		
+		category = parentCateory + ".wandLightning";
+
+		ItemWandLightning.DURABILITY  = instance.getInt("wand_lightning",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+		
+		wandLightning = instance.getBoolean("wand_lightning",category, true,
+    			"Craft a wand that spawns lightning bolts.");
+  
 	}
 
 	private void creative() 
 	{
-		category = "creativeInventoryAdded";
+		category = "creative_inventory_added";
 		
 		//no comment on purpose. more readable, less vertical space
 		mushroomBlocksCreativeInventory = instance.get(category,"mushroomBlocks", true).getBoolean();
@@ -301,13 +289,13 @@ public int livestockLootScaleFactor;
 	{
 		category = "recipes_changes";
 		
-		furnaceNeedsCoal = instance.getBoolean("furnaceNeedsCoal",category, true,
+		furnaceNeedsCoal = instance.getBoolean("furnace_coal",category, true,
 				"If true, you cannot craft a furnace with only 8 cobblestone, it will also require one coal in the center.");  
 		
-		smoothstoneToolsRequired = instance.getBoolean("smoothstoneToolsRequired",category, true,
+		smoothstoneToolsRequired = instance.getBoolean("smoothstone_tools",category, true,
 				"If true, all stone tools will require smoothstone instead of cobble.");  
 
-		tieredArmor = instance.getBoolean("tieredArmor",category, true,
+		tieredArmor = instance.getBoolean("tiered_armor",category, true,
 				"If true, crafting iron armor requires repaired leather armor as part of the recipe, AND diamond armor requires chain mail.");  
 	}
 
@@ -323,179 +311,152 @@ public int livestockLootScaleFactor;
     			"If these blocks are not harvested by an axe, they will break but have no drops."); 
 		HandlerPlayerHarvest.seAxeFromCSV(csvaxe);
 		 */
-		harvestGlassPickaxe  = instance.getBoolean("harvestGlassPickaxe",category, true,
+		harvestGlassPickaxe  = instance.getBoolean("harvest_glass_pickaxe",category, true,
     			"Sets the pickaxe as the correct tool to harvest glass (by default there is no correct glass tool)."); 
 		
-		obsidianHardness  = instance.getInt("obsidianHardness",category, 10,1,50,
+		obsidianHardness  = instance.getInt("obsidian_hardness",category, 10,1,50,
 	    		"Hardness level of Obsidian (vanilla is 50).");
 
-		redstoneOreHardness = instance.getInt("redstoneOreHardness",category, 6,1,50,
+		redstoneOreHardness = instance.getInt("redstone_ore_hardness",category, 6,1,50,
     			"Hardness level of redstone ore (vanilla is 3).");
 		
-		diamondOreHardness  = instance.getInt("diamondOreHardness",category, 10,1,50,
+		diamondOreHardness  = instance.getInt("diamond_ore_hardness",category, 10,1,50,
 	    		"Hardness level of diamond ore (vanilla is 3).");
 		 
-		emeraldOreHardness  = instance.getInt("emeraldOreHardness",category, 12,1,50,
+		emeraldOreHardness  = instance.getInt("emerald_ore_hardness",category, 12,1,50,
 	    		"Hardness level of emerald ore (vanilla is 3).");
 		 
-		spawnerHardness  = instance.getInt("spawnerHardness",category, 50,1,50,
+		spawnerHardness  = instance.getInt("spawner_hardness",category, 50,1,50,
 	    		"Hardness level of mob spawners (vanilla is 5)."); 
 	}
   
-	private void spawning() 
+	private void mob_spawning() 
 	{
-		category = "spawning";
+		category = "mob_spawning";
 		
-		spawnBlazeDesertHills = instance.getBoolean("blazeDesertHills",category, true,
-    			"Blazes spawn naturally in Desert Hills."); 
+		spawnBlazeDesertHills = instance.get(category,"blaze_desertHills", true).getBoolean(); 
     		
-		spawnMagmaCubeDesert = instance.getBoolean("magmaCubeDesert",category, true,
-    			"Magma cubes spawn naturally in Desert."); 
+		spawnMagmaCubeDesert = instance.get(category,"magmaCube_Desert", true).getBoolean(); 
     		
-		spawnCaveSpiderMesa = instance.getBoolean("caveSpiderMesa",category, true,
-    			"Cave spiders spawn naturally in Mesa. "); 
+		spawnCaveSpiderMesa = instance.get(category,"caveSpider_Mesa", true).getBoolean(); 
     		
-		spawnCaveSpiderRoofedForest = instance.getBoolean("caveSpiderRoofedForest",category, true,
-    			"Cave Spiders spawn naturally in Roofed Forest."); 
+		spawnCaveSpiderRoofedForest = instance.get(category,"caveSpider_RoofedForest", true).getBoolean(); 
     		
-		spawnSnowgolemsIceMountains = instance.getBoolean("snowgolemsIceMountains",category, true,
-    			"Snow Golems spawn naturally in Ice Mountains. "); 
+		spawnSnowgolemsIceMountains = instance.get(category,"snowgolems_IceMountains", true).getBoolean(); 
     		
-		spawnGhastDeepOcean = instance.getBoolean("ghastDeepOcean",category, true,
-    			"Ghasts spawn naturally in Deep Ocean (above). "); 
+		spawnGhastDeepOcean = instance.get(category,"ghast_DeepOcean", true).getBoolean(); 
     		
-		spawnHorseIcePlains = instance.getBoolean("horseIcePlains",category, true,
-    			"Horses spawn naturally in Ice Plains. "); 
+		spawnHorseIcePlains = instance.get(category,"horse_IcePlains", true).getBoolean(); 
     		
-		spawnHorseOceanIslands = instance.getBoolean("horseOceanIslands",category, true,
-    			"Horses pawn naturally in Deep Ocean (islands). "); 
+		spawnHorseOceanIslands = instance.get(category,"horse_OceanIslands", true).getBoolean(); 
     		
-		spawnHorseExtremeHills = instance.getBoolean("horseExtremeHills",category, true,
-    			"Horses pawn naturally in Extreme Hills. "); 
+		spawnHorseExtremeHills = instance.get(category,"horse_ExtremeHills", true).getBoolean(); 
     		
-		spawnVillagerExtremeHills = instance.getBoolean("villagerExtremeHills",category, true,
-    			"Villagers pawn naturally in Extreme Hills (not village buildings, it just rarely spawns a villager instead of another passive mob). "); 
+		spawnVillagerExtremeHills = instance.get(category,"villager_ExtremeHills", true).getBoolean();
+    			//"Villagers pawn naturally in Extreme Hills (not village buildings, it just rarely spawns a villager instead of another passive mob). "); 
     
-		spawnCaveSpiderJungle = instance.getBoolean("caveSpiderJungle",category, true,
-    			"Cave Spiderspawn naturally in Jungle. "); 
+		spawnCaveSpiderJungle = instance.get(category,"caveSpider_Jungle", true).getBoolean(); 
 	}
 	 
 	private void debug_info() 
 	{
-		category = "debug_screen";
+		category = "debug_screen_f3";
 		  
-		debugClearRight = instance.getBoolean("clearRight",category, true,
-    			"Clears the right side of the debug screen (F3). " );
+		debugClearRight = instance.getBoolean("clear_right",category, false,
+    			"Clears the right side. " );
 		
 		debugSlime = instance.getBoolean("slime",category, true,
-    			"It will show if you are standing in a slime chunk." );
+    			"Shows if you are standing in a slime chunk." );
 		
 		debugHorseInfo = instance.getBoolean("horse",category, true,
-    			"It will show info on any horse ridden including speed, jump height, species.");
+    			"Shows info on any horse ridden including speed, jump height, species.");
 		
 		debugVillageInfo = instance.getBoolean("village",category, true,
-    			"It will show info on any village you are standing in.");
+    			"Shows info on any village you are standing in.");
 	}
 	
 	private void dungeon_chests() 
 	{
-		category = "dungeon_chests";
+		category = "more_chest_loot";
  
-		lootObsidian = instance.getBoolean("obsidian",category, true,
-    			"Add obsidian as a random treasure from naturally spawned chests "	);
+		lootObsidian = instance.get(category,"obsidian", true).getBoolean();
   
-		lootAllRecords = instance.getBoolean("records",category, true,
-    			"Add all record types as a random treasure from naturally spawned chests ");
+		lootAllRecords = instance.get(category,"records", true).getBoolean();
  
-		lootGlowstone = instance.getBoolean("glowstone",category, true,
-    			"Add glowstone dust as a random treasure from naturally spawned chests ");
+		lootGlowstone = instance.get(category,"glowstone", true).getBoolean();
  
-		lootQuartz = instance.getBoolean("quartz",category, true,
-    			"Add quartz as a random treasure from naturally spawned chests ");
+		lootQuartz = instance.get(category,"quartz", true).getBoolean();
 	}
 	
 	private void items() 
 	{
 		category = "items";
 		
-		enderBook = instance.getBoolean( "enderBook",category,true,
-				" Craft an ender book that lets you save waypoints, and then teleport to them later (only in the overworld).");
+		enderBook = instance.getBoolean( "ender_book",category,true,
+				" Craft an ender book that lets you save a waypoint, and then teleport to it later (single use).");
  
 		chest_sack = instance.getBoolean("chest_sack",category, true,
-    			"Craft an empty sack that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
-
-		/*
+    			"Craft an empty sack that can transport chests by turning them into sacks; place the full sack to re-create the full chest.  Items with NBT data (enchantments and more) will pop out on the ground.");
+ 
+		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();  
 		
-		flintTool = instance.getBoolean( "flintTool",category,true,
-				"Flint Tool: Harvest leaves the same speed as shears, the difference is you get normal drops instead of leaf blocks.  " );  
-		*/
-		appleChocolate = instance.getBoolean( "appleChocolate",category,true
-			,""//"An apple surrounded by either chocolate or cookies gives a short buff of Haste when eaten.  "
-			);  
-		
-		appleEmerald = instance.getBoolean( "appleEmerald",category,true,
-				"An apple surrounded by emeralds gives a short buff of Absorption V when eaten. " );  
-		
-		appleLapis = instance.getBoolean( "appleLapis",category,true,
-				"An apple surrounded by lapis gives a short buff of Resistance when eaten.  " );  
-		 
-		appleDiamond = instance.getBoolean( "appleDiamond",category,true,
-				"Eating a diamond apple gives you two extra persistant hearts (until you die)."); 
-		 
-		appleNetherStar = instance.getBoolean( "appleNetherStar",category,true,
-				"A nether star surrounded by apples.  Eating this gives you the power of flight for a number of seconds (visible in the debug screen)."); 
-
-	
-	
+		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();
+	 
+		appleLapis = instance.get(category, "apple_lapis",true).getBoolean();
+	  
+		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean();
+	  
+		appleNetherStar = instance.get(category, "apple_netherwart",true).getBoolean();
 	}
 	
 	private void blocks() 
 	{
 		category = "blocks";
-		storeMilkBlock = instance.getBoolean( "storeMilkBlock",category,true,
+		
+		storeMilkBlock = instance.getBoolean( "storeMilk",category,true,
 				"A block that stores any number of milk buckets (click to insert / withdraw)."); 
-		storeLavaBlock = instance.getBoolean( "storeLavaBlock",category,true,
+		
+		storeLavaBlock = instance.getBoolean( "storeLava",category,true,
 				"A block that stores any number of lava buckets (click to insert / withdraw)."); 
-		storeWaterBlock = instance.getBoolean( "storeWaterBlock",category,true,
-				"A block that stores any number of water buckets (click to insert / withdraw)."); 
-		shearSheepBlock = instance.getBoolean( "shearSheepBlock",category,true,
+		
+		storeWaterBlock = instance.getBoolean( "storeWater",category,true,
+				"A block that stores any number of water buckets (click to insert / withdraw).");
+		
+		shearSheepBlock = instance.getBoolean( "shearSheep",category,true,
 				"Shears adult sheep that collide with this block."); 
 		 
-		fishingNetBlock = instance.getBoolean( "fishingNetBlock",category,true,
+		fishingNetBlock = instance.getBoolean( "fishing_net",category,true,
 				"Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
 		 
-		xRayBlock = instance.getBoolean( "xRayBlock",category,true,
-				"Create an xray block to see through the world.  Intended for single player, not for cheating on servers."); 
+		xRayBlock = instance.getBoolean( "xRay",category,true,
+				"Create an xray block to see through the world at the block location.  Intended for single player, not for cheating on servers."); 
 
-		weatherBlock = instance.getBoolean( "weatherBlock",category,true,
+		weatherBlock = instance.getBoolean( "weather",category,true,
 				"Craft block that will run /toggledownfall whenever it gets a redstone signal."); 
 		
-		teleportBedBlock = instance.getBoolean( "teleportBedBlock",category,true,
+		teleportBedBlock = instance.getBoolean( "teleport_bed",category,true,
 				"Command block that teleports you to the world spawn");
 		
-		teleportSpawnBlock = instance.getBoolean( "teleportSpawnBlock",category,true,
+		teleportSpawnBlock = instance.getBoolean( "teleport_spawn",category,true,
 				"Command block that teleports you to your bed"); 
 		 
-		gameruleBlockRegen = instance.getBoolean( "gameruleBlock_Regen",category,true,
+		gameruleBlockRegen = instance.getBoolean( "gamerule_naturalregen",category,true,
 				"Craft blocks that toggle '/gamerule naturalRegenration' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
 		
-		gameruleBlockDaylight = instance.getBoolean( "gameruleBlock_Daylight",category,true,
+		gameruleBlockDaylight = instance.getBoolean( "gamerule_daylightcycle",category,true,
 				"Craft blocks that toggle '/gamerule doDaylightCycle' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
 		
-		gameruleBlockFiretick = instance.getBoolean( "gameruleBlock_Firetick",category,true,
+		gameruleBlockFiretick = instance.getBoolean( "gamerule_firetick",category,true,
 				"Craft blocks that toggle '/gamerule doFireTick' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
 		
-		gameruleBlockMobgrief = instance.getBoolean( "gameruleBlock_Mobgrief",category,true,
+		gameruleBlockMobgrief = instance.getBoolean( "gamerule_mobgrief",category,true,
 				"Craft blocks that toggle '/gamerule doMobGriefing' on redstone signal.  (Can never be opened or edited like a regular command block).");
 	}
 	
 	private void recipes_new() 
 	{
 		category = "recipes_new";
-		
-		gravelToClay = instance.getBoolean( "gravelToClay",category,true,
-				"Since clay in oceans has been replaced by pure gravel, this recipe lets you turn 4 clay, 4 dirt, and one bucket worth of water into Clay Blocks");
-		
+		 
 		netherwartPurpleDye = instance.getBoolean( "netherwartPurpleDye",category,true,
 				"Craft bonemeal and netherwart into purple dye.");
 		
@@ -653,8 +614,7 @@ public int livestockLootScaleFactor;
 	public boolean barrierCreativeInventory;
 	public boolean dragonEggCreativeInventory;
 	public boolean farmlandCreativeInventory;
-	public boolean spawnerCreativeInventory;
-	public boolean gravelToClay;
+	public boolean spawnerCreativeInventory; 
 	public boolean fragileTorches;
 	public boolean removeZombieCarrotPotato;
 	public boolean petNametagChat;
@@ -664,12 +624,11 @@ public int livestockLootScaleFactor;
 	public int emeraldOreHardness;
 	public int spawnerHardness; 
 	public boolean chest_sack;
-	public boolean wandCopy;
-	public boolean wandHarvest;
+	public boolean carbon_paper;
+	public boolean magic_harvester;
 	public boolean respawn_egg;
 	public boolean wandTransform;
-	//public boolean wandProspect;
-	//public int potionIdTired;
+	public int livestockLootMultiplier;
 	public int potionIdWaterwalk;
 	public int potionIdSlowfall;
 	public int potionIdFlying;
@@ -692,7 +651,7 @@ public int livestockLootScaleFactor;
 	public boolean beetroot;
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;
-	public boolean wandFireball;
+	public boolean fire_charge_throw;
 	public boolean frozen_snowball;
 	public int potionStackSize;
 	public int potionIdFrozen;

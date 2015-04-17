@@ -78,7 +78,7 @@ public class ItemRegistry
 			ItemRegistry.registerItem(beetrootSoup, "beetroot_soup");
 		}
 		 
-		if(ModSamsContent.configSettings.wandFireball)
+		if(ModSamsContent.configSettings.fire_charge_throw)
 		{ 
 			ItemRegistry.fire_charge_throw = new ItemFireballThrowable();
 
@@ -114,7 +114,7 @@ public class ItemRegistry
 			ItemWandLightning.addRecipe();		 
 		}
 
-		if(ModSamsContent.configSettings.wandCopy)
+		if(ModSamsContent.configSettings.carbon_paper)
 		{ 
 			ItemRegistry.carbon_paper = new ItemPaperCarbon();
 
@@ -150,7 +150,7 @@ public class ItemRegistry
 			ItemWandTransform.addRecipe();  
 		}
 
-		if(ModSamsContent.configSettings.wandHarvest)
+		if(ModSamsContent.configSettings.magic_harvester)
 		{   
 			ItemRegistry.magic_harvester = new ItemMagicHarvester();
 			ItemRegistry.registerItem(ItemRegistry.magic_harvester, "magic_harvester");
