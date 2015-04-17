@@ -209,7 +209,7 @@ public int livestockLootScaleFactor;
 		
 		category = parentCateory + ".wandWater";
 
-		ItemWandWater.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+		ItemWandWater.DURABILITY  = instance.getInt("durability",category, 50,1,999,
     			"Durability (number of uses in survival).");
 		
 		wandWater = instance.getBoolean("wandWater",category, true,
@@ -282,22 +282,19 @@ public int livestockLootScaleFactor;
 
 	private void creative() 
 	{
-		category = "creative";
+		category = "creativeInventoryAdded";
 		
-		mushroomBlocksCreativeInventory = instance.getBoolean("mushroomBlocks",category, true,
-    			"Add the (missing) mushroom blocks into creative inventory where they should be.");
+		//no comment on purpose. more readable, less vertical space
+		mushroomBlocksCreativeInventory = instance.get(category,"mushroomBlocks", true).getBoolean();
 
-		barrierCreativeInventory = instance.getBoolean("barrier",category, true,
-    			"Add barrier into creative inventory.");
+		barrierCreativeInventory = instance.get(category,"barrier", true).getBoolean();
 		
-		dragonEggCreativeInventory = instance.getBoolean("dragonEgg",category, true,
-    			"Add dragon egg into creative inventory.");
+		dragonEggCreativeInventory = instance.get(category,"dragonEgg", true).getBoolean();
 		
-		farmlandCreativeInventory = instance.getBoolean("farmland",category, true,
-    			"Add farmland into creative inventory.");
+		farmlandCreativeInventory = instance.get(category,"farmland", true).getBoolean();
 		
-		spawnerCreativeInventory = instance.getBoolean("spawner",category, true,
-    			"Add spawner into creative inventory.");
+		spawnerCreativeInventory = instance.get(category,"spawner", true).getBoolean();
+	 
 	}
 
 	private void recipes_changes() 
@@ -419,10 +416,11 @@ public int livestockLootScaleFactor;
 	
 	private void items() 
 	{
-		
-		
 		category = "items";
 		
+		enderBook = instance.getBoolean( "enderBook",category,true,
+				" Craft an ender book that lets you save waypoints, and then teleport to them later (only in the overworld).");
+ 
 		chest_sack = instance.getBoolean("chest_sack",category, true,
     			"Craft an empty sack that can transport chests by turning them into sacks.  Items with NBT data will pop out.");
 
@@ -431,8 +429,9 @@ public int livestockLootScaleFactor;
 		flintTool = instance.getBoolean( "flintTool",category,true,
 				"Flint Tool: Harvest leaves the same speed as shears, the difference is you get normal drops instead of leaf blocks.  " );  
 		*/
-		appleChocolate = instance.getBoolean( "appleChocolate",category,true,
-			"An apple surrounded by either chocolate or cookies gives a short buff of Haste when eaten.  " );  
+		appleChocolate = instance.getBoolean( "appleChocolate",category,true
+			,""//"An apple surrounded by either chocolate or cookies gives a short buff of Haste when eaten.  "
+			);  
 		
 		appleEmerald = instance.getBoolean( "appleEmerald",category,true,
 				"An apple surrounded by emeralds gives a short buff of Absorption V when eaten. " );  
@@ -446,11 +445,8 @@ public int livestockLootScaleFactor;
 		appleNetherStar = instance.getBoolean( "appleNetherStar",category,true,
 				"A nether star surrounded by apples.  Eating this gives you the power of flight for a number of seconds (visible in the debug screen)."); 
 
-		category = "items" + ".wandWater";
-		
-		enderBook = instance.getBoolean( "enderBook",category,true,
-				" Craft an ender book that lets you save waypoints, and then teleport to them later (only in the overworld).");
- 
+	
+	
 	}
 	
 	private void blocks() 

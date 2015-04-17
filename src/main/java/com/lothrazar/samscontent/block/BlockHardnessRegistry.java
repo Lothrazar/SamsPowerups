@@ -12,6 +12,7 @@ public class BlockHardnessRegistry
 		Blocks.diamond_ore.setHardness(ModSamsContent.configSettings.diamondOreHardness);//v=3
 		Blocks.emerald_ore.setHardness(ModSamsContent.configSettings.emeraldOreHardness); //v=3
 		Blocks.mob_spawner.setHardness(ModSamsContent.configSettings.spawnerHardness);//v=5
+		Blocks.redstone_ore.setHardness(ModSamsContent.configSettings.redstoneOreHardness); //v=3
 		
 		if(ModSamsContent.configSettings.harvestGlassPickaxe)
 		{ 
