@@ -138,8 +138,7 @@ public class ModSamsContent
     	
     	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
     	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
-//new one here
-		
+ 		
 		PotionRegistry.registerPotionEffects();
 
 		BlockRegistry.registerBlocks();
@@ -160,10 +159,10 @@ public class ModSamsContent
 	//	VillageTrading v = new VillageTrading(); 
         //VillagerRegistry.instance().registerVillageTradeHandler(1, v);
       //  VillagerRegistry.instance().registerVillageTradeHandler(2, v);
-        
+		 
 		achievements.registerAll();
 		
-		CreativeInventoryTweaks.registerTabImprovements();
+		CreativeInventoryRegistry.registerTabImprovements();
 	
 		MobSpawningRegistry.registerSpawns();
   
@@ -678,11 +677,7 @@ public class ModSamsContent
         else if(ClientProxy.keyBarUp.isPressed() )
         { 	      
         	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
-        }   /*
-        else if(ClientProxy.keyPlayerFlip.isPressed() )
-        { 	      
-        	 ModSamsContent.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPlayerFlip.getKeyCode()));  
-        }  */ 
+        }   
     } 
 	
 	@SubscribeEvent
@@ -707,9 +702,7 @@ public class ModSamsContent
 			EntityPlayer player = (EntityPlayer)event.entity;
 			
 			if(ModSamsContent.configSettings.dropPlayerSkullOnDeath)
-			{ 
-				// new ItemStack(Items.skull,1,Reference.skull_player);
-				
+			{  
 				ItemStack skull = SamsUtilities.buildNamedPlayerSkull(player);
 				 
 				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);

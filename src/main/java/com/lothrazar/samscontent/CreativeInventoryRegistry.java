@@ -3,7 +3,7 @@ package com.lothrazar.samscontent;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Blocks;
 
-public class CreativeInventoryTweaks 
+public class CreativeInventoryRegistry 
 {
 	public static void registerTabImprovements() 
 	{ 
