@@ -128,11 +128,11 @@ public int livestockLootScaleFactor;
 		category = "animals";
 		
 		livestockLootScaleFactor  = instance.getInt("livestockLootScaleFactor",category, 5,0,32,
-	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.");
+	    			"Scale factor to multiply drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.  Useful on servers because less animals being collected and bred = less lag.");
 			 
 		petNametagDrops = instance.getBoolean("petNametagDrops",category, true,
 	    			"Some mobs that are named drop a name tag when they die (wolf, ocelot, villager, bat, rabbit, horse).");
- 
+ //TODO: RESPAWNING?
 		petNametagChat  = instance.getBoolean("nametagDeathMessages",category, true,
 	    			"Non-player entities that are named with a Name Tag send a chat death message when they die.");
 	}
@@ -330,16 +330,19 @@ public int livestockLootScaleFactor;
     			"Sets the pickaxe as the correct tool to harvest glass (by default there is no correct glass tool)."); 
 		
 		obsidianHardness  = instance.getInt("obsidianHardness",category, 10,1,50,
-	    			"Hardness level of Obsidian (vanilla is 50).");
+	    		"Hardness level of Obsidian (vanilla is 50).");
 
+		redstoneOreHardness = instance.getInt("redstoneOreHardness",category, 6,1,50,
+    			"Hardness level of redstone ore (vanilla is 3).");
+		
 		diamondOreHardness  = instance.getInt("diamondOreHardness",category, 10,1,50,
-	    			"Hardness level of diamond ore (vanilla is 3).");
+	    		"Hardness level of diamond ore (vanilla is 3).");
 		 
 		emeraldOreHardness  = instance.getInt("emeraldOreHardness",category, 12,1,50,
-	    			"Hardness level of emerald ore (vanilla is 3).");
+	    		"Hardness level of emerald ore (vanilla is 3).");
 		 
 		spawnerHardness  = instance.getInt("spawnerHardness",category, 50,1,50,
-	    			"Hardness level of mob spawners (vanilla is 5).");
+	    		"Hardness level of mob spawners (vanilla is 5)."); 
 	}
   
 	private void spawning() 
@@ -460,7 +463,7 @@ public int livestockLootScaleFactor;
 		storeWaterBlock = instance.getBoolean( "storeWaterBlock",category,true,
 				"A block that stores any number of water buckets (click to insert / withdraw)."); 
 		shearSheepBlock = instance.getBoolean( "shearSheepBlock",category,true,
-				"A spiky block that damages and knocks back any colliding enitity."); 
+				"Shears adult sheep that collide with this block."); 
 		 
 		fishingNetBlock = instance.getBoolean( "fishingNetBlock",category,true,
 				"Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
@@ -699,4 +702,5 @@ public int livestockLootScaleFactor;
 	public int potionIdFrozen;
 	public int chanceZombieChildFeather;
 	public int chanceZombieVillagerEmerald;
+	public float redstoneOreHardness;
 }
