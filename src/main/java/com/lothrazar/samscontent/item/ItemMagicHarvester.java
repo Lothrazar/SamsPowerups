@@ -40,29 +40,24 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandHarvest extends ItemBaseWand
+public class ItemMagicHarvester extends Item
 {
-	public static int RADIUS;
-	public static int DURABILITY; 
-	public ItemWandHarvest( )
+	public static int RADIUS; //from config file
+	
+	public ItemMagicHarvester( )
 	{   
 		super(); 
-    	this.setMaxDamage(DURABILITY);  
+    	this.setMaxStackSize(64); 
+		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
 	 
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandHarvest),
-			ItemRegistry.baseWand, 
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.magic_harvester),
+			Items.ender_eye, 
 			Blocks.hay_block  );
 	}
 	   
-	@Override
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-    	return true; //give it shimmer
-    }
-	 
 	public static void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
 	{  
 		//http://www.minecraftforge.net/wiki/Plants
@@ -117,9 +112,9 @@ public class ItemWandHarvest extends ItemBaseWand
 			if(world.isRemote) //client side 
 				SamsUtilities.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
 			else 
-				SamsUtilities.damageOrBreakHeld(entityPlayer); 
-			
-			//TODO: could damage based on countHarvested ?
+			{
+				SamsUtilities.decrHeldStackSize(entityPlayer);  
+			} 
 		}
 	}
 	 

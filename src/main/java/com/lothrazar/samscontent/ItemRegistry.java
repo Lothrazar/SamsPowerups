@@ -27,7 +27,7 @@ public class ItemRegistry
 	public static ItemWandBuilding wandBuilding;
 	public static ItemChestSackEmpty wandChest; 
 	public static ItemChestSack itemChestSack;
-	public static ItemWandHarvest wandHarvest;
+	public static ItemMagicHarvester magic_harvester;
 	public static ItemWandTransform wandTransform; 
 	public static ItemRespawnEggEmpty respawn_egg_empty;
 	public static ItemWandProspect wandProspect;  
@@ -75,15 +75,7 @@ public class ItemRegistry
 		ItemRegistry.baseWand = new ItemBaseWand(); 
 		ItemRegistry.registerItem(ItemRegistry.baseWand, "base_wand" );   
 		ItemBaseWand.addRecipe();	
-		
-		 //  registerItem(383, "spawn_egg", (
-		
-		
-		//.setUnlocalizedName("monsterPlacerSurvival"));
-	       
-		
-		
-		
+		 
 		if(ModSamsContent.configSettings.beetroot)
 		{ 
 			beetrootSeed = new ItemSeeds(BlockRegistry.beetrootCrop, Blocks.farmland).setCreativeTab(ModSamsContent.tabSamsContent);
@@ -179,10 +171,10 @@ public class ItemRegistry
 
 		if(ModSamsContent.configSettings.wandHarvest)
 		{   
-			ItemRegistry.wandHarvest = new ItemWandHarvest();
-			ItemRegistry.registerItem(ItemRegistry.wandHarvest, "wand_harvest");
+			ItemRegistry.magic_harvester = new ItemMagicHarvester();
+			ItemRegistry.registerItem(ItemRegistry.magic_harvester, "magic_harvester");
 
-			ItemWandHarvest.addRecipe();  
+			ItemMagicHarvester.addRecipe();  
 		}
 		
 		if(ModSamsContent.configSettings.respawn_egg)
@@ -203,19 +195,13 @@ public class ItemRegistry
 
 			ItemEnderBook.addRecipe();
 		}
-		
-		
-		
+		 
 		if(ModSamsContent.configSettings.appleEmerald) 
 		{
 			ItemRegistry.apple_emerald = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_emerald.addEffect(PotionRegistry.slowfall.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
 			ItemRegistry.apple_emerald.addEffect(Potion.jump.id, ItemFoodAppleMagic.timeShort, PotionRegistry.V); 
-			
-			//TERSTING ONLY
-			//ItemRegistry.apple_emerald.addEffect(PotionRegistry.frozen.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
-			
-			
+			 
 			ItemRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Items.emerald));

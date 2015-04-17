@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/wand_harvest"
+        "layer0": "samscontent:items/magic_harvester"
     },
     "display": {
         "thirdperson": {

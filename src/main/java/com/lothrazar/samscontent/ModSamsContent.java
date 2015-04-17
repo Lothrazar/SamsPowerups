@@ -449,10 +449,10 @@ public class ModSamsContent
 			ItemSnowballFrozen.cast(event.world,event.entityPlayer );  
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.wandHarvest && 
+		if(held != null && held.getItem() == ItemRegistry.magic_harvester && 
 				event.action.RIGHT_CLICK_BLOCK == event.action    )
 		{ 
-			ItemWandHarvest.replantField(event.world,event.entityPlayer,held,event.pos); 
+			ItemMagicHarvester.replantField(event.world,event.entityPlayer,held,event.pos); 
 		}
 		
 		if(held != null && held.getItem() == ItemRegistry.wandLightning )

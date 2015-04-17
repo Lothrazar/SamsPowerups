@@ -250,10 +250,8 @@ public int livestockLootScaleFactor;
 
 		category = parentCateory + ".wandHarvest";
 
-		ItemWandHarvest.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
-
-		ItemWandHarvest.RADIUS  = instance.getInt("radius",category, 16,1,64,
+	 
+		ItemMagicHarvester.RADIUS  = instance.getInt("radius",category, 16,1,64,
     			"Range in all directions.");
 		
 		wandHarvest = instance.getBoolean("wandHarvest",category, true,
