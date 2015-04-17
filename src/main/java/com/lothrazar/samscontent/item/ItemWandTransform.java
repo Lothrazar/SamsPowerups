@@ -62,8 +62,8 @@ public class ItemWandTransform extends ItemBaseWand
 
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandProspect),
-			ItemRegistry.baseWand, 
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandTransform),
+			ItemRegistry.baseWand, //TODO: improve this recipe
 			Blocks.end_stone  );
 	}
  

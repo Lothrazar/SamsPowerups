@@ -29,8 +29,7 @@ public class ItemRegistry
 	public static ItemChestSack itemChestSack;
 	public static ItemMagicHarvester magic_harvester;
 	public static ItemWandTransform wandTransform; 
-	public static ItemRespawnEggEmpty respawn_egg_empty;
-	public static ItemWandProspect wandProspect;  
+	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
 	public static ItemFoodAppleMagic apple_emerald_rich;
 	public static ItemFoodAppleMagic apple_diamond; 
