@@ -38,8 +38,7 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_lapis_rich;
 	public static ItemFoodAppleMagic apple_chocolate;
 	public static ItemFoodAppleMagic apple_chocolate_rich;
-	public static ItemFoodAppleMagic apple_nether_star;
-	public static ItemWandFire wandFire;
+	public static ItemFoodAppleMagic apple_nether_star; 
 	public static ItemPaperCarbon carbon_paper;
 	public static ItemBaseWand baseWand;
 	//public static ItemToolFlint flintTool;
@@ -67,8 +66,7 @@ public class ItemRegistry
 		 
 		 items.add(item);
 	}
-	
-	
+	 
 	public static void registerItems()
 	{
 		//needed for all wands; no config.
@@ -94,7 +92,7 @@ public class ItemRegistry
 
 			registerItem(ItemRegistry.fire_charge_throw, "fire_charge_throw");
 	 
-			ItemWandFire.addRecipe();		 
+			ItemFireballThrowable.addRecipe();		 
 		}
 		 
 		if(ModSamsContent.configSettings.frozen_snowball)
@@ -105,16 +103,7 @@ public class ItemRegistry
 	 
 			ItemSnowballFrozen.addRecipe();		 
 		}
-		
-		if(ModSamsContent.configSettings.wandFire)
-		{ 
-			ItemRegistry.wandFire = new ItemWandFire();
-
-			registerItem(ItemRegistry.wandFire, "wand_fire");
-	 
-			ItemWandFire.addRecipe();		 
-		}
-		
+		 
 		if(ModSamsContent.configSettings.wandWater)
 		{  
 			ItemRegistry.wandWater = new ItemWandWater();
@@ -189,10 +178,8 @@ public class ItemRegistry
  
 		if(ModSamsContent.configSettings.enderBook)
 		{ 
-			ItemRegistry.itemEnderBook = new ItemEnderBook();
-
-			ItemRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender");
-
+			ItemRegistry.itemEnderBook = new ItemEnderBook(); 
+			ItemRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender"); 
 			ItemEnderBook.addRecipe();
 		}
 		 
@@ -216,8 +203,7 @@ public class ItemRegistry
 		}   
 		 
 		if(ModSamsContent.configSettings.appleDiamond) 
-		{ 
-			 
+		{  
 			ItemRegistry.apple_diamond = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_diamond.addEffect(PotionRegistry.flying.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
 			ItemRegistry.apple_diamond.addEffect(Potion.resistance.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);   
@@ -233,7 +219,6 @@ public class ItemRegistry
 			ItemRegistry.registerItem(ItemRegistry.apple_diamond_rich, "apple_diamond_rich");
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_diamond_rich,new ItemStack(Blocks.diamond_block));
-		 
 		}
  
 		if(ModSamsContent.configSettings.appleLapis)
@@ -251,8 +236,7 @@ public class ItemRegistry
 			ItemRegistry.registerItem(ItemRegistry.apple_lapis_rich, "apple_lapis_rich");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis_rich,new ItemStack(Blocks.lapis_block));
-			
- 
+			 
 		}
 		  
 		if(ModSamsContent.configSettings.appleChocolate)
@@ -290,9 +274,7 @@ public class ItemRegistry
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl)) ;
 		} 
-		
-		
-
+		 
 		//TODO: config for TP food
 		
 		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);

@@ -196,27 +196,13 @@ public int livestockLootScaleFactor;
 	private void wands() 
 	{ 
 		String parentCateory = "items"; 
-
-		category = parentCateory + ".wandFire";
-
-		ItemWandFire.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
  
-		wandFire = instance.getBoolean("wandFire",category, true,
-    			"Craft a wand that can either create fire in a line, or extinguish fire all around you.");
-
 		category = parentCateory + ".wandFireball";
-//	ItemWandFireball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    //			"Durability (number of uses in survival).");
  
 		wandFireball = instance.getBoolean("wandFireball",category, true,
     			"Craft a wand that can shoots fire charges.");
-
-		
+ 
 		category = parentCateory + ".wandSnowball";
-
-		//ItemWandSnowball.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    	//		"Durability (number of uses in survival).");
  
 		frozen_snowball = instance.getBoolean("wandSnowball",category, true,
     			"Craft a wand that can shoots snowballs.");
@@ -236,15 +222,9 @@ public int livestockLootScaleFactor;
 		
 		wandLightning = instance.getBoolean("wandLightning",category, true,
     			"Craft a wand that spawns lightning bolts.");
-
-	 
-		
-		
+ 
 		category = parentCateory + ".wandCopy";
-
-	//	ItemPaperCarbon.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    //			"Durability (number of uses in survival).");
-		
+ 
 		wandCopy = instance.getBoolean("wandCopy",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
 
@@ -258,10 +238,7 @@ public int livestockLootScaleFactor;
     			"Craft a wand that will harvest the crops in the area around you.");
 
 		category = parentCateory + ".wandLivestock";
-
-	//	ItemWandLivestock.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    	//		"Durability (number of uses in survival).");
-		
+ 
 		respawn_egg = instance.getBoolean("wandLivestock",category, true,
     			"Craft a wand that will transform livestock animals into spawn eggs.");
 
@@ -470,10 +447,7 @@ public int livestockLootScaleFactor;
 		
 		enderBook = instance.getBoolean( "enderBook",category,true,
 				" Craft an ender book that lets you save waypoints, and then teleport to them later (only in the overworld).");
-
-	//	ItemEnderBook.DURABILITY  = instance.getInt("durability",category, 50,1,999,
-    	//		"Durability (number of uses in survival).");
-
+ 
 	}
 	
 	private void blocks() 
@@ -689,8 +663,7 @@ public int livestockLootScaleFactor;
 	public int obsidianHardness; 
 	public int diamondOreHardness;
 	public int emeraldOreHardness;
-	public int spawnerHardness;
-	public boolean wandFire;
+	public int spawnerHardness; 
 	public boolean chest_sack;
 	public boolean wandCopy;
 	public boolean wandHarvest;

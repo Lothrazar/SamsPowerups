@@ -413,13 +413,7 @@ public class ModSamsContent
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
 		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
 		TileEntity container = event.world.getTileEntity(event.pos);
-	
-		if(held != null && held.getItem() == ItemRegistry.wandFire && 
-				event.action.RIGHT_CLICK_AIR == event.action)
-		{   
-			ItemWandFire.castFire(event.world,event.entityPlayer );   
-		}
-
+	  
 		if(held != null && held.getItem() == ItemRegistry.wandWater )
 		{
 			ItemWandWater.cast(event);
