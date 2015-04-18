@@ -168,7 +168,7 @@ public class ConfigFile
     			"ID is only exposed to avoid conflicts with other mods.");
 		  
 		potionIdFlying = instance.getInt("potion_flying_id",category, 42,33,200,
-    			"ID is only exposed to avoid conflicts with other mods.  THIS IS INTENDED FOR USE ONLY IN SINGLE PLAYER.");
+    			"ID is only exposed to avoid conflicts with other mods. ");
 		
 		potionIdLavawalk = instance.getInt("potion_lavawalk_id",category, 43,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
@@ -427,26 +427,26 @@ public class ConfigFile
 	{
 		category = "recipes_new";
 		 
-		netherwartPurpleDye = instance.getBoolean( "netherwartPurpleDye",category,true,
+		netherwartPurpleDye = instance.getBoolean( "netherwart_purple_dye",category,true,
 				"Craft bonemeal and netherwart into purple dye.");
 		
-		simpleDispenser = instance.getBoolean( "simpleDispenser",category,true,
+		simpleDispenser = instance.getBoolean( "simple_dispenser",category,true,
 				"Craft a dispenser with string in the center instead of a bow.  (Since string is stackable, this makes crafting tons of them much faster and cheaper).");
 		 
-		craftBooksWithoutLeather = instance.getBoolean( "craftBooksWithoutLeather",category,true,
+		craftBooksWithoutLeather = instance.getBoolean( "books_without_leather",category,true,
 				"This allows use the old book crafting recipe from previous versions of the game; three paper but no leather needed.");
 		
-		craftableTransmuteRecords = instance.getBoolean( "transmuteRecords",category,true,
+		craftableTransmuteRecords = instance.getBoolean( "transmute_records",category,true,
 			"This allows you to surround any record in emeralds to transmute it into a different record.");
     
-		craftableBonemealColouredWool =  instance.getBoolean( "craftableBonemealColouredWool",category,true
+		craftableBonemealColouredWool =  instance.getBoolean( "bonemeal_coloured_wool",category,true
 				,"Allows you to dye coloured wool back to white using bonemeal"			); 
   
 		uncraftGeneral = instance.getBoolean( "uncrafting",category,true,
 				"uncrafting: craft or smelt blocks back into their ingredients.  Often it is not a perfect trade.  " +
 				"Example: Craft stairs back into blocks using a 4x4 pattern."	); 
 		
-		craftableMushroomBlocks =  instance.getBoolean( "craftableMushroomBlocks",category,true
+		craftableMushroomBlocks =  instance.getBoolean( "mushroom_blocks",category,true
 				,"Craft mushroom blocks. ");
 	}
 	
