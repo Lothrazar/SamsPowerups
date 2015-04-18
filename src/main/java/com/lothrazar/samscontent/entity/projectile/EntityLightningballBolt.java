@@ -27,7 +27,7 @@ public class EntityLightningballBolt extends EntitySnowball
 { 
     public EntityLightningballBolt(World worldIn)
     {
-        super(worldIn);
+        super(worldIn); 
     }
 
     public EntityLightningballBolt(World worldIn, EntityLivingBase ent)

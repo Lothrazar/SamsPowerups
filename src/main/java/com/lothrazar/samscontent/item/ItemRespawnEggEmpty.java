@@ -64,7 +64,7 @@ public class ItemRespawnEggEmpty extends Item
 	public static void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 
 	{
 		int entity_id = 0;
-		
+	
 		//DO NOT USE = target.getEntityId();. that is the runtime id, so each instance of EntityCow has its own RUNTIME id
 		//different than the class level id which we need here
  

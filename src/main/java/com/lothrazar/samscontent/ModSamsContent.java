@@ -448,9 +448,9 @@ public class ModSamsContent
 			ItemMagicHarvester.replantField(event.world,event.entityPlayer,held,event.pos); 
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.wandLightning )
+		if(held != null && held.getItem() == ItemRegistry.lightning_charge )
 		{     
-			ItemWandLightning.cast(event); 
+			ItemLightning.cast(event); 
 		} 
 	 
 		if(held != null && held.getItem() == ItemRegistry.carbon_paper &&   

@@ -42,7 +42,7 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_diamond_rich;
 	public static ItemFoodAppleMagic apple_ender;
 	public static ItemWandWater wandWater;
-	public static ItemWandLightning wandLightning;
+	public static ItemLightning lightning_charge;
 	public static Item beetroot_seed ;
 	public static Item beetrootItem;
 	public static Item beetrootSoup;
@@ -105,13 +105,13 @@ public class ItemRegistry
 			ItemWandWater.addRecipe();		 
 		}
 		
-		if(ModSamsContent.configSettings.wandLightning)
+		if(ModSamsContent.configSettings.lightning_charge)
 		{  
-			ItemRegistry.wandLightning = new ItemWandLightning();
+			ItemRegistry.lightning_charge = new ItemLightning();
 
-			ItemRegistry.registerItem(ItemRegistry.wandLightning, "wand_lightning");
+			ItemRegistry.registerItem(ItemRegistry.lightning_charge, "lightning_charge");
 	 
-			ItemWandLightning.addRecipe();		 
+			ItemLightning.addRecipe();		 
 		}
 
 		if(ModSamsContent.configSettings.carbon_paper)

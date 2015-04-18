@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/wand_lightning"
+        "layer0": "samscontent:items/lightning_charge"
     },
     "display": {
         "thirdperson": {

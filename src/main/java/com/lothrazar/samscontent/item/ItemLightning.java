@@ -25,23 +25,21 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandLightning  extends Item
-{
-	public static int DURABILITY;  
-	
-	public ItemWandLightning()
+public class ItemLightning  extends Item
+{ 
+	public ItemLightning()
 	{  
-		super();   
-    	this.setMaxDamage(DURABILITY); 
-    	this.setMaxStackSize(1); 
+		super();    
+    	this.setMaxStackSize(64); 
 		this.setCreativeTab(ModSamsContent.tabSamsContent);  
 	}
- 
+ //Lightning Spear?
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandLightning),
-			Items.nether_star,  
-			Items.blaze_rod  );
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.lightning_charge),
+			Items.ghast_tear,  
+			Items.blaze_rod,
+			Items.ender_pearl );//TODO: make this a single use token from a ghast tear
 	}
 
 	public static void cast(PlayerInteractEvent event) 
@@ -65,8 +63,8 @@ public class ItemWandLightning  extends Item
 			 
 			event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
 		
-			SamsUtilities.damageOrBreakHeld(event.entityPlayer);
-			
+			//SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+			SamsUtilities.decrHeldStackSize(event.entityPlayer);
 		} 
 	} 
 }

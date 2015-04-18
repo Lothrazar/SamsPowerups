@@ -125,10 +125,10 @@ public class ConfigFile
     			"Disable these zombie drops."); 
 
 		chanceZombieChildFeather = instance.getInt("chance_zombie_child_feather",category, 5,0,100,
-    			"Percent chance that a child zombie will drop a feather.");
+    			"Percent chance that a child zombie will drop a feather (so 0 for vanilla).");
 		//TODO: zombie pigman rare pork chop. like beta
 		chanceZombieVillagerEmerald = instance.getInt("chance_zombie_villager_emerald",category, 5,0,100,
-    			"Percent chance that a villager zombie will drop an emerald.");
+    			"Percent chance that a villager zombie will drop an emerald (so 0 for vanilla).");
 		
 		endermenDropCarryingBlock = instance.getBoolean("endermen_drop_carrying_block",category, true,
     			"Endermen will always drop any block they are carrying.");
@@ -257,14 +257,9 @@ public class ConfigFile
 		
 		wandWater = instance.getBoolean("wand_water",category, true,
     			"Craft a wand that places water.");
-		
-		category = parentCateory + ".wandLightning";
-
-		ItemWandLightning.DURABILITY  = instance.getInt("wand_lightning",category, 200,1,999,
-    			"Durability (number of uses in survival).");
-		
-		wandLightning = instance.getBoolean("wand_lightning",category, true,
-    			"Craft a wand that spawns lightning bolts.");
+	 
+		lightning_charge = instance.getBoolean("lightning_charge",category, true,
+    			"Works like a fire charge, but it spawns lightning instead of fire.");
   
 	}
 
@@ -428,8 +423,8 @@ public class ConfigFile
 		fishingNetBlock = instance.getBoolean( "fishing_net",category,true,
 				"Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
 		 
-		xRayBlock = instance.getBoolean( "xRay",category,true,
-				"Create an xray block to see through the world at the block location.  Intended for single player, not for cheating on servers."); 
+		xRayBlock = instance.getBoolean( "chunk_error_xray",category,true,
+				"Create an xray block to see through the world at the block location, in the same way a chunk error would.  Intended for single player, not for cheating on servers."); 
 
 		weatherBlock = instance.getBoolean( "weather",category,true,
 				"Craft block that will run /toggledownfall whenever it gets a redstone signal."); 
@@ -521,7 +516,7 @@ public class ConfigFile
 		searchitem = instance.getBoolean("searchitem",category, true,
     			"Players can search nearby chests for items.   Result is only chat output."    		); 
 		
-		CommandSearchItem.REQUIRES_OP = instance.getBoolean("searchitem_needs_op",category, false,
+		CommandSearchItem.REQUIRES_OP = instance.getBoolean("searchitem.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
   
 		enderchest = instance.getBoolean("enderchest",category, true,
@@ -643,7 +638,7 @@ public class ConfigFile
 	public int potionIdEnder; 
 	public boolean wandWater;
 	public boolean harvestGlassPickaxe;
-	public boolean wandLightning;
+	public boolean lightning_charge;
 	public boolean shearSheepBlock;
 	public boolean storeLavaBlock;
 	public boolean storeWaterBlock;
