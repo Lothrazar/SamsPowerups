@@ -28,7 +28,8 @@ public class ItemWandWater  extends Item
 	{  
 		super();   
     	this.setMaxDamage(DURABILITY); 
-		this.setCreativeTab(ModSamsContent.tabSamsContent); 
+    	this.setMaxStackSize(1); 
+		this.setCreativeTab(ModSamsContent.tabSamsContent);  
 	}
  
 	public static void addRecipe() 
