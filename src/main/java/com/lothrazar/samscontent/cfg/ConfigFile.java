@@ -17,13 +17,12 @@ import com.lothrazar.samscontent.item.*;
 public class ConfigFile
 { 
 	private Configuration instance;
+	private String category = "";
+	
 	public Configuration instance()
 	{
 		return instance;
 	}
-	
-	//private static String LevelSep = ".";//to go between main and sub levels nested in the json style cfg file
-	String category = "";
 	
 	public ConfigFile(Configuration c)
 	{
@@ -62,7 +61,6 @@ public class ConfigFile
 		pocket_edition();  
 		
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
-		
 		
 		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
     			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
@@ -131,8 +129,7 @@ public class ConfigFile
     			"Percent chance that a villager zombie will drop an emerald (so 0 for vanilla).");
 		
 		endermenDropCarryingBlock = instance.getBoolean("endermen_drop_carrying_block",category, true,
-    			"Endermen will always drop any block they are carrying.");
-		
+    			"Endermen will always drop any block they are carrying.");	
 	}
 
 	private void nature() 
@@ -150,7 +147,6 @@ public class ConfigFile
 		
 		saplingAllEnd = instance.getBoolean("sapling_end",category, false,
     			"If true, all saplings grow in the end (ignoring sapling_biome_restricted)");
-		  
 	}
 
 	private void terrain_generation() 
@@ -185,10 +181,6 @@ public class ConfigFile
 		potionIdFrozen = instance.getInt("potion_frost_id",category, 45,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
 		
-
-		//	potionIdTired = instance.getInt("potionIdTired",category, 46,33,200,
-	    //			"ID is only exposed to avoid conflicts with other mods.");
-		
 		slowfallSpeed = instance.getFloat("potion_slowfall_speed",category, 0.41F,0.1F,1F,
     			"This factor affects how much the slowfall potion slows down the entity.");
 	}
@@ -215,10 +207,10 @@ public class ConfigFile
 		respawn_egg = instance.getBoolean("respawn_egg",category, true,
     			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
  
-		ItemWandTransform.DURABILITY  = instance.getInt("wand_transform_durability",category, 200,1,999,
+		ItemWandTransform.DURABILITY  = instance.getInt("wand_transform.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 		
-		wandTransform = instance.getBoolean("wand_transform_enabled",category, true,
+		wandTransform = instance.getBoolean("wand_transform",category, true,
     			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
 		/*
 		category = parentCateory + ".wandProspect";
@@ -232,27 +224,24 @@ public class ConfigFile
 		wandProspect = instance.getBoolean("wandProspect",category, true,
     			"Craft a wand that will prospect the nearby area for diamonds."); 
 	*/	
-		category = parentCateory + ".wand_building"; 
-		
+		 
 		wandBuilding = instance.getBoolean( "wand_building", category,true,
 				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
 		
-		ItemWandBuilding.DURABILITY   = instance.getInt("durability",category, 200,1,999,
+		ItemWandBuilding.DURABILITY   = instance.getInt("wand_building.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 
-		ItemWandBuilding.replaceBedrock = instance.getBoolean("replaceBedrock", category ,true,
+		ItemWandBuilding.replaceBedrock = instance.getBoolean("wand_building.replaceBedrock", category ,true,
 			"Set true to allow the building wand to affect bedrock.  "	);
 		
-		ItemWandBuilding.replaceObsidian = instance.getBoolean("replaceObsidian", category ,true,
+		ItemWandBuilding.replaceObsidian = instance.getBoolean("wand_building.replaceObsidian", category ,true,
 			 "Set true to allow the building wand to affect obsidian.  "	);
 		 
-		ItemWandBuilding.replaceTileEntities = instance.getBoolean("replaceTileEntities", category ,true,
+		ItemWandBuilding.replaceTileEntities = instance.getBoolean("wand_building.replaceTileEntities", category ,true,
 			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
 			 "(such as chest or dispenser).   "	); 
-		
-		category = parentCateory + ".wandWater";
-
-		ItemWandWater.DURABILITY  = instance.getInt("wand_water_durability",category, 50,1,999,
+		 
+		ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
     			"Durability (number of uses in survival).");
 		
 		wandWater = instance.getBoolean("wand_water",category, true,
@@ -260,7 +249,6 @@ public class ConfigFile
 	 
 		lightning_charge = instance.getBoolean("lightning_charge",category, true,
     			"Works like a fire charge, but it spawns lightning instead of fire.");
-  
 	}
 
 	private void creative() 
@@ -276,8 +264,7 @@ public class ConfigFile
 		
 		farmlandCreativeInventory = instance.get(category,"farmland", true).getBoolean();
 		
-		spawnerCreativeInventory = instance.get(category,"spawner", true).getBoolean();
-	 
+		spawnerCreativeInventory = instance.get(category,"spawner", true).getBoolean(); 
 	}
 
 	private void recipes_changes() 
@@ -408,15 +395,10 @@ public class ConfigFile
 	{
 		category = "blocks";
 		
-		storeMilkBlock = instance.getBoolean( "storeMilk",category,true,
-				"A block that stores any number of milk buckets (click to insert / withdraw)."); 
-		
-		storeLavaBlock = instance.getBoolean( "storeLava",category,true,
-				"A block that stores any number of lava buckets (click to insert / withdraw)."); 
-		
-		storeWaterBlock = instance.getBoolean( "storeWater",category,true,
-				"A block that stores any number of water buckets (click to insert / withdraw).");
-		
+		//TODO: one config for the blocks
+		storeBucketsBlock = instance.getBoolean( "storeBuckets",category,true,
+				"A block that stores any number of milk/water/lava buckets (click to insert / withdraw)."); 
+	 
 		shearSheepBlock = instance.getBoolean( "shearSheep",category,true,
 				"Shears adult sheep that collide with this block."); 
 		 
@@ -639,10 +621,8 @@ public class ConfigFile
 	public boolean wandWater;
 	public boolean harvestGlassPickaxe;
 	public boolean lightning_charge;
-	public boolean shearSheepBlock;
-	public boolean storeLavaBlock;
-	public boolean storeWaterBlock;
-	public boolean storeMilkBlock;
+	public boolean shearSheepBlock; 
+	public boolean storeBucketsBlock;
 	public boolean beetroot;
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;

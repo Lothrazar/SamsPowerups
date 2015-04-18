@@ -64,41 +64,27 @@ public class BlockRegistry
 			BlockRegistry.registerBlock(beetroot_crop, "beetroot_crop"); 
 		}
 		 
-		if(ModSamsContent.configSettings.storeWaterBlock)
+		if(ModSamsContent.configSettings.storeBucketsBlock)
 		{
-			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket); 
-			
+			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket);  
 			registerBlock(BlockRegistry.block_storewater, "block_storewater");
 
-		}
-		if(ModSamsContent.configSettings.storeMilkBlock)
-		{
-			BlockRegistry.block_storemilk = new BlockBucketStorage(Items.milk_bucket); 
-			
+			BlockRegistry.block_storemilk = new BlockBucketStorage(Items.milk_bucket);  
 			BlockRegistry.registerBlock(BlockRegistry.block_storemilk, "block_storemilk");
-
-		}
-		if(ModSamsContent.configSettings.storeLavaBlock)
-		{
-			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket); 
-			
-			BlockRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");
-	  
-		}
-
-		if(ModSamsContent.configSettings.storeLavaBlock || ModSamsContent.configSettings.storeWaterBlock || ModSamsContent.configSettings.storeMilkBlock)
-		{
+		 
+			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket);  
+			BlockRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");	  
+	
 			GameRegistry.registerTileEntity(com.lothrazar.samscontent.tileentity.TileEntityBucketStorage.class, Reference.MODID);
 		
-			BlockRegistry.block_storeempty = new BlockBucketStorage(null); 
-			
-			BlockRegistry.block_storeempty.setCreativeTab(ModSamsContent.tabSamsContent);
-
+			BlockRegistry.block_storeempty = new BlockBucketStorage(null); 		
+			BlockRegistry.block_storeempty.setCreativeTab(ModSamsContent.tabSamsContent); 
 			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
 			
 			BlockRegistry.block_storeempty.addRecipe();
 			
 		}
+		
 		if(ModSamsContent.configSettings.shearSheepBlock)
 		{
 			BlockRegistry.block_spike = new BlockShearWool(); 
