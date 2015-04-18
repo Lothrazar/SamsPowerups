@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/magic_harvester"
+        "layer0": "samscontent:items/harvest_charge"
     },
     "display": {
         "thirdperson": {

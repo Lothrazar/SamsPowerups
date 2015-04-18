@@ -53,7 +53,7 @@ public class ItemMagicHarvester extends Item
 	 
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.magic_harvester),
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.harvest_charge),
 			Items.ender_eye, 
 			Blocks.hay_block  );
 	}

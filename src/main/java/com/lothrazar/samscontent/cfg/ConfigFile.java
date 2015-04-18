@@ -331,10 +331,10 @@ public class ConfigFile
 		carbon_paper = instance.getBoolean("carbon_paper",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
  
-		ItemMagicHarvester.RADIUS  = instance.getInt("magic_harvester_radius",category, 16,1,64,
+		ItemMagicHarvester.RADIUS  = instance.getInt("harvest_charge.radius",category, 16,1,64,
     			"Range in all directions.");
 		
-		magic_harvester = instance.getBoolean("magic_harvester",category, true,
+		harvest_charge = instance.getBoolean("harvest_charge",category, true,
     			"This harvests a large area of crops at once while also replanting for you.");
  
 		respawn_egg = instance.getBoolean("respawn_egg",category, true,
@@ -595,7 +595,7 @@ public class ConfigFile
 	public int spawnerHardness; 
 	public boolean chest_sack;
 	public boolean carbon_paper;
-	public boolean magic_harvester;
+	public boolean harvest_charge;
 	public boolean respawn_egg;
 	public boolean wandTransform;
 	public int livestockLootMultiplier;

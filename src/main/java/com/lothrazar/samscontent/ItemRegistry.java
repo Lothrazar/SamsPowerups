@@ -27,7 +27,7 @@ public class ItemRegistry
 	public static ItemWandBuilding wandBuilding;
 	public static ItemChestSackEmpty wandChest; 
 	public static ItemChestSack itemChestSack;
-	public static ItemMagicHarvester magic_harvester;
+	public static ItemMagicHarvester harvest_charge;
 	public static ItemWandTransform wandTransform; 
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
@@ -150,10 +150,10 @@ public class ItemRegistry
 			ItemWandTransform.addRecipe();  
 		}
 
-		if(ModSamsContent.configSettings.magic_harvester)
+		if(ModSamsContent.configSettings.harvest_charge)
 		{   
-			ItemRegistry.magic_harvester = new ItemMagicHarvester();
-			ItemRegistry.registerItem(ItemRegistry.magic_harvester, "magic_harvester");
+			ItemRegistry.harvest_charge = new ItemMagicHarvester();
+			ItemRegistry.registerItem(ItemRegistry.harvest_charge, "harvest_charge");
 
 			ItemMagicHarvester.addRecipe();  
 		}

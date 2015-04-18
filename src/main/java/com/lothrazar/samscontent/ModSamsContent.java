@@ -442,7 +442,7 @@ public class ModSamsContent
 			ItemSnowballFrozen.cast(event.world,event.entityPlayer );  
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.magic_harvester && 
+		if(held != null && held.getItem() == ItemRegistry.harvest_charge && 
 				event.action.RIGHT_CLICK_BLOCK == event.action    )
 		{ 
 			ItemMagicHarvester.replantField(event.world,event.entityPlayer,held,event.pos); 
