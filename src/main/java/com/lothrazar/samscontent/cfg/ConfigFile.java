@@ -51,9 +51,7 @@ public class ConfigFile
 		debug_info();
 		 
 		mob_spawning(); 
-		 
-		wands();
-		 
+		  
 		potions();
 		 
 		nature();
@@ -184,73 +182,7 @@ public class ConfigFile
 		slowfallSpeed = instance.getFloat("potion_slowfall_speed",category, 0.41F,0.1F,1F,
     			"This factor affects how much the slowfall potion slows down the entity.");
 	}
-
-	private void wands() 
-	{ 
-		String parentCateory = "items"; 
   
-		fire_charge_throw = instance.getBoolean("fire_charge_throw",category, true,
-    			"Craft new version of the fire charge that is throwable (as if it came out of a dispenser).");
- 
-		frozen_snowball = instance.getBoolean("frozen_snowball",category, true,
-    			"Throw a frozen snowball that freezes water and causes a short icy potion effect to anything it hits.");
-		
-		carbon_paper = instance.getBoolean("carbon_paper",category, true,
-    			"Craft a wand that can copy and paste note blocks and signs.");
- 
-		ItemMagicHarvester.RADIUS  = instance.getInt("magic_harvester_radius",category, 16,1,64,
-    			"Range in all directions.");
-		
-		magic_harvester = instance.getBoolean("magic_harvester",category, true,
-    			"This harvests a large area of crops at once while also replanting for you.");
- 
-		respawn_egg = instance.getBoolean("respawn_egg",category, true,
-    			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
- 
-		ItemWandTransform.DURABILITY  = instance.getInt("wand_transform.durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
-		
-		wandTransform = instance.getBoolean("wand_transform",category, true,
-    			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
-		/*
-		category = parentCateory + ".wandProspect";
-			
-		ItemWandProspect.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
-
-		ItemWandProspect.RADIUS  = instance.getInt("radius",category, 16,1,64,
-    			"Range in all directions.");
-
-		wandProspect = instance.getBoolean("wandProspect",category, true,
-    			"Craft a wand that will prospect the nearby area for diamonds."); 
-	*/	
-		 
-		wandBuilding = instance.getBoolean( "wand_building", category,true,
-				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
-		
-		ItemWandBuilding.DURABILITY   = instance.getInt("wand_building.durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
-
-		ItemWandBuilding.replaceBedrock = instance.getBoolean("wand_building.replaceBedrock", category ,true,
-			"Set true to allow the building wand to affect bedrock.  "	);
-		
-		ItemWandBuilding.replaceObsidian = instance.getBoolean("wand_building.replaceObsidian", category ,true,
-			 "Set true to allow the building wand to affect obsidian.  "	);
-		 
-		ItemWandBuilding.replaceTileEntities = instance.getBoolean("wand_building.replaceTileEntities", category ,true,
-			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
-			 "(such as chest or dispenser).   "	); 
-		 
-		ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
-    			"Durability (number of uses in survival).");
-		
-		wandWater = instance.getBoolean("wand_water",category, true,
-    			"Craft a wand that places water.");
-	 
-		lightning_charge = instance.getBoolean("lightning_charge",category, true,
-    			"Works like a fire charge, but it spawns lightning instead of fire.");
-	}
-
 	private void creative() 
 	{
 		category = "creative_inventory_added";
@@ -389,6 +321,67 @@ public class ConfigFile
 		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean();
 	  
 		appleNetherStar = instance.get(category, "apple_netherwart",true).getBoolean();
+		
+		fire_charge_throw = instance.getBoolean("fire_charge_throw",category, true,
+    			"Craft new version of the fire charge that is throwable (as if it came out of a dispenser).");
+ 
+		frozen_snowball = instance.getBoolean("frozen_snowball",category, true,
+    			"Throw a frozen snowball that freezes water and causes a short icy potion effect to anything it hits.");
+		
+		carbon_paper = instance.getBoolean("carbon_paper",category, true,
+    			"Craft a wand that can copy and paste note blocks and signs.");
+ 
+		ItemMagicHarvester.RADIUS  = instance.getInt("magic_harvester_radius",category, 16,1,64,
+    			"Range in all directions.");
+		
+		magic_harvester = instance.getBoolean("magic_harvester",category, true,
+    			"This harvests a large area of crops at once while also replanting for you.");
+ 
+		respawn_egg = instance.getBoolean("respawn_egg",category, true,
+    			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
+ 
+		ItemWandTransform.DURABILITY  = instance.getInt("wand_transform.durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+		
+		wandTransform = instance.getBoolean("wand_transform",category, true,
+    			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
+		/*
+		category = parentCateory + ".wandProspect";
+			
+		ItemWandProspect.DURABILITY  = instance.getInt("durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+
+		ItemWandProspect.RADIUS  = instance.getInt("radius",category, 16,1,64,
+    			"Range in all directions.");
+
+		wandProspect = instance.getBoolean("wandProspect",category, true,
+    			"Craft a wand that will prospect the nearby area for diamonds."); 
+	*/	
+		 
+		wandBuilding = instance.getBoolean( "wand_building", category,true,
+				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
+		
+		ItemWandBuilding.DURABILITY   = instance.getInt("wand_building.durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+
+		ItemWandBuilding.replaceBedrock = instance.getBoolean("wand_building.replaceBedrock", category ,true,
+			"Set true to allow the building wand to affect bedrock.  "	);
+		
+		ItemWandBuilding.replaceObsidian = instance.getBoolean("wand_building.replaceObsidian", category ,true,
+			 "Set true to allow the building wand to affect obsidian.  "	);
+		 
+		ItemWandBuilding.replaceTileEntities = instance.getBoolean("wand_building.replaceTileEntities", category ,true,
+			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
+			 "(such as chest or dispenser).   "	); 
+		 
+		ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
+    			"Durability (number of uses in survival).");
+		
+		wandWater = instance.getBoolean("wand_water",category, true,
+    			"Craft a wand that places water.");
+	 
+		lightning_charge = instance.getBoolean("lightning_charge",category, true,
+    			"Works like a fire charge, but it spawns lightning instead of fire.");
 	}
 	
 	private void blocks() 
