@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "normal": { "model": "samscontent:command_block_mobgrief" },
-        "triggered=true": { "model": "samscontent:command_block_mobgrief" },
-        "triggered=false": { "model": "samscontent:command_block_mobgrief" } 
-    }
-}

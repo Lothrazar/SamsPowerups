@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "normal": { "model": "samscontent:command_block_regen" },
-        "triggered=true": { "model": "samscontent:command_block_regen" },
-        "triggered=false": { "model": "samscontent:command_block_regen" } 
-    }
-}
