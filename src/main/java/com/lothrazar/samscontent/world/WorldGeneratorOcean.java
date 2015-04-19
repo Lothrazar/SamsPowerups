@@ -16,21 +16,33 @@ import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import net.minecraftforge.fml.common.IWorldGenerator;
 
-public class WorldGenClay implements IWorldGenerator
+public class WorldGeneratorOcean implements IWorldGenerator
 {
 	//i used http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
 	   //TODO worldgen ocean: decorate with reeds down there?
 	//TODO: patches of dirt/sand like before
 	private WorldGenerator genClay;  
+	private WorldGenerator genSand;  
+	private WorldGenerator genDirt;  
+	
+	private int minHeight = 30; 
+	private int maxHeight = 64;
 
+	//TODO: chances in config..!!
 	private int clayChance = 60;
 	private int clayNumBlocks = 12;
-	private int clayMinHeight = 30; 
-	private int clayMaxHeight = 64;
+
+	private int sandChance = 60;
+	private int sandNumBlocks = 12; 
+
+	private int dirtChance = 60;
+	private int dirtNumBlocks = 12; 
 	
-	public WorldGenClay() 
+	public WorldGeneratorOcean() 
 	{  
 	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	}
 	 
 	@Override
@@ -38,8 +50,9 @@ public class WorldGenClay implements IWorldGenerator
 	{ 
 		if(world.provider.getDimensionId() == Reference.Dimension.overworld) 
 		{
-			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, clayChance, clayMinHeight, clayMaxHeight);
-
+			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, clayChance, minHeight, maxHeight);
+			this.run(this.genSand, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, sandChance, minHeight, maxHeight);
+			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, dirtChance, minHeight, maxHeight);
 		} 
 	}
 	

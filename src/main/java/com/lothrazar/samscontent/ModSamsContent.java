@@ -179,7 +179,7 @@ public class ModSamsContent
   		
   		if(ModSamsContent.configSettings.worldGenClayOceans)
 		{ 
-			GameRegistry.registerWorldGenerator(new WorldGenClay(), 0); //zero is Weight of generator
+			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), 0); //zero is Weight of generator
 		}
 
 		proxy.registerRenderers();
