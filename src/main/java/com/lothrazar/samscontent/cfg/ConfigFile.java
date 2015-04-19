@@ -108,7 +108,7 @@ public class ConfigFile
 	{
 		category = "mob_changes";
 		
-		livestockLootMultiplier  = instance.getInt("livestock_multiplier",category, 3,1,10,
+		livestockLootMultiplier  = instance.getInt("livestock_multiplier",category, 2,1,5,
 	    			"Factor to increase drops from livestock: including sheep, chicken, horse, cow, rabbit, and also pigs get double this factor again.  Useful on servers because less animals being collected and bred = less lag.  (use 1 for vanilla behavior)");
 			 
 		petNametagDrops = instance.getBoolean("nametag_drops",category, true,
