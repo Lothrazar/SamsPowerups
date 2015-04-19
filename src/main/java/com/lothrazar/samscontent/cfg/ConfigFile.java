@@ -64,6 +64,9 @@ public class ConfigFile
 		
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
+		canNameVillagers  = instance.getBoolean("name_villagers",category, true,
+    			"You can name villagers with a nametag. ");
+		 
 		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
     			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
 		 
@@ -332,7 +335,7 @@ public class ConfigFile
 		category = "items";
 		
 		enderBook = instance.getBoolean( "ender_book",category,true,
-				" Craft an ender book that lets you save a waypoint, and then teleport to it later (single use).");
+				" Craft an ender book that lets you save a waypoint, and then teleport to it later (single use).  Do not use this outside the overworld.");
  
 		chest_sack = instance.getBoolean("chest_sack",category, true,
     			"Craft an empty sack that can transport chests by turning them into sacks; place the full sack to re-create the full chest.  Items with NBT data (enchantments and more) will pop out on the ground.");
@@ -645,4 +648,5 @@ public class ConfigFile
 	public int dirtNumBlocks;
 	public int sandChance;
 	public int sandNumBlocks;
+	public boolean canNameVillagers;
 }

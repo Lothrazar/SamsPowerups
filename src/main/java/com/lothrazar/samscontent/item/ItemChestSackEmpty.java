@@ -31,6 +31,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MathHelper; 
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
@@ -123,8 +124,12 @@ public class ItemChestSackEmpty extends Item
 		entityPlayer.worldObj.setBlockToAir(pos);//, Blocks.air, 0,2);	 
 
 		entityPlayer.swingItem();
-		 //TODO: paticle and sound
 		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
+
+		 //TODO:TEST TEST paticle and sound
+		SamsUtilities.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.CRIT, pos);
+		
+		SamsUtilities.playSoundAt(entityPlayer, "random.wood_click");
 	}
  
 

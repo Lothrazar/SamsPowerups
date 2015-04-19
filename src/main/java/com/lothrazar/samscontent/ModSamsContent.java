@@ -384,13 +384,11 @@ public class ModSamsContent
 		}
 		
 		
-		//TODO: a way to Name Villagers with name tags (is there a vanilla way)
-    //i can use entityInteractEvent, detect name tag and then cancel the event
-        //       then the entity has a 'setCustomNameTag' function
+		//TODO: TEST TEST TEST 
 		
+		if(ModSamsContent.cfg.canNameVillagers)
 		if(held != null && held.getItem() == Items.name_tag )
-		{   
-			//TODO: in config file
+		{    
 			if(event.entity instanceof EntityVillager)
 			{
 				EntityVillager v = (EntityVillager)event.entity;
@@ -398,13 +396,11 @@ public class ModSamsContent
 				System.out.println("test");
 				
 				//TODO: is this accurate, or do we have to dig out the .display.Name NBT data
-				v.setCustomNameTag(held.getDisplayName());
+				v.setCustomNameTag(held.getDisplayName()); 
 				
-				
-			}
- 
-		}
-		
+				SamsUtilities.decrHeldStackSize(event.entityPlayer);
+			} 
+		} 
   	} 
 	 
 	@SubscribeEvent

@@ -99,18 +99,10 @@ public class ItemEnderBook extends Item
 		if(csv == null || csv.isEmpty()) {return;}
 		
 		Location loc = new Location(csv);
-		 
-		if(loc.dimension == Reference.Dimension.end) 
-		{
-			entityPlayer.setFire(4);//TODO: config file
-		} 
-		else if(loc.dimension == Reference.Dimension.nether) 
-		{
-			entityPlayer.setFire(4);//TODO: config file
-		}
-		
+		  
 		if(entityPlayer.dimension != Reference.Dimension.overworld) 
 		{ 
+			entityPlayer.setFire(4);
 			return;//if its end, nether, or anything else such as from another mod
 		}
 		

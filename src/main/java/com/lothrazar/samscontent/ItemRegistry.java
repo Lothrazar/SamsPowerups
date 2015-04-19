@@ -64,15 +64,15 @@ public class ItemRegistry
 	{ 
 		if(ModSamsContent.cfg.beetroot)
 		{ 
-			//TODO: beetroot  breeds pigs 
-			//TODO: beetroot gets pigs to follow like carrot  
+			//TODO: beetroot  breeds pigs - no forge way exists
+			//TODO: beetroot gets pigs to follow like carrot  - no forge way exists
 			 
 			beetroot_seed = new ItemSeeds(BlockRegistry.beetroot_crop, Blocks.farmland).setCreativeTab(ModSamsContent.tabSamsContent);
 			ItemRegistry.registerItem(beetroot_seed, "beetroot_seed");
 			
 			beetrootItem = new ItemFood(3, false).setCreativeTab(ModSamsContent.tabSamsContent);
 			ItemRegistry.registerItem(beetrootItem, "beetroot_item");
-			
+		
 			beetrootSoup = new ItemSoup(8).setCreativeTab(ModSamsContent.tabSamsContent); 
 			ItemRegistry.registerItem(beetrootSoup, "beetroot_soup");
 		}

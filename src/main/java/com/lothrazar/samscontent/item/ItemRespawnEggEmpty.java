@@ -71,7 +71,7 @@ public class ItemRespawnEggEmpty extends Item
 		if( target instanceof EntityHorse ||
 			target instanceof EntityWolf)
 		{
-			return;//disabled flat out.  TODO: maybe turn on from config
+			return;//these are Ageable, but disabled.
 		}
  
 		if(target instanceof EntitySquid) 
