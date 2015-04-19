@@ -135,23 +135,19 @@ public class DebugScreenText
 		ruleNames.add(Reference.gamerule.naturalRegeneration);
 		ruleNames.add(Reference.gamerule.reducedDebugInfo);
 		ruleNames.add(Reference.gamerule.sendCommandFeedback);
-		ruleNames.add(Reference.gamerule.showDeathMessages);
-		//TODO: more rules missing from 1.8 addition
-
-		String T = "[true]", F = "[false]";
-
-		
+		ruleNames.add(Reference.gamerule.showDeathMessages); 
+ 
 		String name;
 		for(int i = 0; i < ruleNames.size(); i++)
 		{
 			name = ruleNames.get(i);
 			if(rules.getGameRuleBooleanValue(name))
 			{ 
-				event.right.add(EnumChatFormatting.GREEN+name); 
+				event.right.add(EnumChatFormatting.GREEN + name); 
 			}
 			else
 			{ 
-				event.right.add(EnumChatFormatting.RED+name); 
+				event.right.add(EnumChatFormatting.RED + name); 
 			}
 		}
 	}

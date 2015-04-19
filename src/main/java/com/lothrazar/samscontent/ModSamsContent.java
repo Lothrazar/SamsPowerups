@@ -495,8 +495,7 @@ public class ModSamsContent
 			{ 
 				if(event.world.isRemote){ return ;}//server side only!
 				TileEntityChest chest = (TileEntityChest)event.entityPlayer.worldObj.getTileEntity(event.pos.up()); 
-					  
-				//TODO: make a shared Utility function that finds adjacent chest
+					   
 				TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest); 
 				
 		  		ItemChestSack.sortFromSackToChestEntity(chest,held,event);

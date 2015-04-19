@@ -3,7 +3,12 @@
 temp/scaffold block, similar to angel block in EU, except you place it from an item with infinite use
 and it despawns/vanishes on its own randomly (onupdatetick) so it really is temporaroy 
  
-  
+  //??new keybinds? 
+          hotkey to search through inventory and use enderpearl ingoring all else
+          hotkey to eat first food found in inventory searching from topleft to right amd dpwm
+          smart potion button
+          smart torch button 
+          shrink to 1 height if possible
 
  //command OR wand to play random song
  

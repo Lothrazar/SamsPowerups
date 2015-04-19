@@ -16,8 +16,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import com.lothrazar.samscontent.item.*;
-import com.lothrazar.samscontent.item.ItemFoodTeleport.TeleportType;
+import com.lothrazar.samscontent.item.*; 
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference; 
 
@@ -49,10 +48,7 @@ public class ItemRegistry
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemFireballThrowable fire_charge_throw;
-	public static ItemSnowballFrozen frozen_snowball;
-	public static ItemFoodTeleport foodBed;
-	public static ItemFoodTeleport foodSpawn;
-	public static ItemFoodTeleport foodSky;
+	public static ItemSnowballFrozen frozen_snowball; 
 	public static ItemRespawnEggAnimal respawn_egg;
 	
 	public static void registerItem(Item item, String name)

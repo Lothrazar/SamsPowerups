@@ -114,7 +114,6 @@ public class ConfigFile
 				
 		beetroot =  instance.getBoolean( "beetroot",category,true,
 				"Add beetroot, similar to pocket edition.  You must use a golden hoe to get seeds while making farmland. " );
-		 
 	}
 	
 	private void mob_changes() 
@@ -135,7 +134,7 @@ public class ConfigFile
 
 		chanceZombieChildFeather = instance.getInt("chance_zombie_child_feather",category, 5,0,100,
     			"Percent chance that a child zombie will drop a feather (so 0 for vanilla).");
-		//TODO: zombie pigman rare pork chop. like beta
+ 
 		chanceZombieVillagerEmerald = instance.getInt("chance_zombie_villager_emerald",category, 5,0,100,
     			"Percent chance that a villager zombie will drop an emerald (so 0 for vanilla).");
 		
@@ -413,8 +412,7 @@ public class ConfigFile
 	private void blocks() 
 	{
 		category = "blocks";
-		
-		//TODO: one config for the blocks
+		 
 		storeBucketsBlock = instance.getBoolean( "storeBuckets",category,true,
 				"A block that stores any number of milk/water/lava buckets (click to insert / withdraw)."); 
 	 

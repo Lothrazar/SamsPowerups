@@ -75,37 +75,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
 	 	} 
-		/*
-		else if( message.keyPressed == ClientProxy.keyPlayerFlip.getKeyCode())
-	 	{  
-			System.out.println("FlipKeypress "+player.worldObj.isRemote);//==false, so on server
-			System.out.println("y "+player.rotationYaw);
-			System.out.println("p "+player.rotationPitch);
-			//TODO: test at 180
-		 
-			player.setLocationAndAngles(  //setPositionAndRotation
-					player.getPosition().getX(),
-					player.getPosition().getY(),
-					player.getPosition().getZ(), 
-					//setRotation is protected
-					player.rotationYaw - 180, player.rotationPitch - 180);
-//the println before and after DO have different numbers, but doesnt work.
-
-			//TODO: keybind to flip 90 degrees backwards
-
-			//potion effect or held token consumable that keeps your items when you die? look for playerRespawn event?
-			//TODO: jump/sidestrafe/dodge keybind.
-			//keyb to shrink to 1 height if possible
-			 
-			System.out.println("---y "+player.rotationYaw);
-			System.out.println("---p "+player.rotationPitch);
-			
-	 	} 
-	 	*/
-		//TODO: hotkey to search through inventory and use enderpearl ingoring all else
-		//TODO: hotkey to eat first food found in inventory searching from topleft to right amd dpwm
-		//TODO: smart potion button
-		//TODO: smart torch button 
+ 
 
 		return null;
 	}
