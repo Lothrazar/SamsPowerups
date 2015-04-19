@@ -91,11 +91,13 @@ public class ChestDeposit
   				}//end if items match   
   			}//close loop on player inventory items 
 		}//close loop on chest items
-		
+
+		//System.out.println("?"+world.isRemote);
 		if( totalSlotsFreed > 0) 
 		{ 
-			//TODO: test these particles. i had a comment before that they werent working
-			SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos()); 
+			//System.out.println("chestparticles");
+		//particles dont work, this only happens on server side (remote==false always)
+			//SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos().up()); 
 		}
   	}
 }

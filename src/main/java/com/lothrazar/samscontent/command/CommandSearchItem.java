@@ -162,7 +162,7 @@ public class CommandSearchItem  implements ICommand
 		int yLoop = pos.getY();
 		int zLoop = pos.getZ();
 		
-		String totalsStr = foundQty + " found"; //TODO: put that in .lang file
+		String totalsStr = foundQty + " found"; 
 		
 		if(showCoords )
 		{ 

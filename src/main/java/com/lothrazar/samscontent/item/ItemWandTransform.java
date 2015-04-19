@@ -763,33 +763,5 @@ public class ItemWandTransform extends Item
 	
 	
 
-	 //Entity Interact Event??
-   // TODO:? MAYBE?random horse functions that might be for ideas
-                        
-                        
-            //  h.getAlwaysRenderNameTag()
-            //  h.getCurrentArmor(arg0)
-            //  h.getEquipmentInSlot(arg0)
-                //h.setTamedBy(arg0)
-                //h.isAdultHorse()
-                //h.isChild()
-            //  h.isUndead()
-            //  h.setLeashedToEntity(arg0, arg1);
-            //  h.setHorseVariant(arg0);// A TOOL TO CHANGE THIS!L?!?!?!?
-            //  h.setHorseType(arg0);
-                //TODO: can we spawn zombie horse? 
-                //USE EXISTING WAND TRANSFORM?
-                     //Magic wand to turn horses to zombie/skeleton?
-                                //yeah i think we can in the sapwn event and roll a dice and check the biome
-                                //http://www.minecraftforge.net/forum/index.php?topic=8937.0
-                                //and then just tag all biome horses as the undead type 
-                                /*
-                                 * Tamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3,Tame:1}
-                            Untamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3}
-                            Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
-                            Untamed S
-    keleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
-                                */ 
-	
 	
 }

@@ -175,7 +175,7 @@ public class ItemWandBuilding extends Item
   	}
 	
 	public static void onPlayerRightClick(PlayerInteractEvent event)
-  	{   
+  	{    
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 		setCompoundIfNull(held);
 		
@@ -199,7 +199,7 @@ public class ItemWandBuilding extends Item
 		String newMode = toggleNextMode(held);
 		 //if the mode changed, send a message
 		
-		if(newMode != null && currentMode.equals(newMode) == false)
+		if(newMode != null && currentMode.equals(newMode) == false && event.world.isRemote==false)
 		{
 			event.entityPlayer.addChatMessage(new ChatComponentTranslation( "Wand mode : "+newMode)); 
 		} 

@@ -155,11 +155,6 @@ public class ModSamsContent
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
-		//TODO: LexManos et all have not yet fixed IVillageTradeHandler
-	//	VillageTrading v = new VillageTrading(); 
-        //VillagerRegistry.instance().registerVillageTradeHandler(1, v);
-      //  VillagerRegistry.instance().registerVillageTradeHandler(2, v);
-		 
 		achievements.registerAll();
 		
 		CreativeInventoryRegistry.registerTabImprovements();
@@ -319,9 +314,7 @@ public class ModSamsContent
 				}
 			} 
 		} 
-		
-		//if(event.entity.worldObj.isRemote) {return;}
-		
+		 
 		if(ModSamsContent.cfg.petNametagDrops && 
 				SamsUtilities.isPet(event.entity) )
 		{ 
@@ -447,9 +440,7 @@ public class ModSamsContent
 		if(held != null && held.getItem() == ItemRegistry.carbon_paper &&   
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{   
-			ItemPaperCarbon.rightClickBlock(event);
-			
-			
+			ItemPaperCarbon.rightClickBlock(event); 
 		}
 		
 		if(held != null && held.getItem() == ItemRegistry.wandBuilding)
@@ -460,7 +451,7 @@ public class ModSamsContent
 			}
 			else
 			{
-				if(event.world.isRemote){return;}
+				
 				ItemWandBuilding.onPlayerRightClick(event);
 			}
 		}
@@ -483,7 +474,6 @@ public class ModSamsContent
 		{ 
 			if(blockClicked == Blocks.chest)
 			{ 
-				if(event.world.isRemote){ return ;}//server side only!
 				TileEntityChest chest = (TileEntityChest)event.entityPlayer.worldObj.getTileEntity(event.pos.up()); 
 					   
 				TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest); 
@@ -497,10 +487,13 @@ public class ModSamsContent
 			}
 			else
 			{
+				BlockPos chestPos;
+				if(event.face != null) chestPos = event.pos.offset(event.face);
+				else chestPos = event.pos.up();
 				//if the up one is air, then build a chest at this spot 
-				if(event.entityPlayer.worldObj.isAirBlock(event.pos.up()))//TODO:??OFFSET?
+				if(event.entityPlayer.worldObj.isAirBlock(chestPos)) 
 				{
-					ItemChestSack.createAndFillChest(event.entityPlayer,held,  event.pos.up());
+					ItemChestSack.createAndFillChest(event.entityPlayer,held,  chestPos);
 				} 
 			}
 		}  
@@ -640,7 +633,7 @@ public class ModSamsContent
 		if( player.isPotionActive(PotionRegistry.ender) && //the potion gives us this safe(ish)falling
 			 	 player.dimension == Reference.Dimension.end && //hence the name of the class
 				 player.posY < -50 && 
-				 player.worldObj.isRemote  == false && 
+				// player.worldObj.isRemote  == false && 
 				 player.capabilities.isCreativeMode == false
 				)
 		{  

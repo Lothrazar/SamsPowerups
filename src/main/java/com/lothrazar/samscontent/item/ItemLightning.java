@@ -39,7 +39,7 @@ public class ItemLightning  extends Item
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.lightning_charge),
 			Items.ghast_tear,  
 			Items.blaze_rod,
-			Items.ender_pearl );//TODO: make this a single use token from a ghast tear
+			Items.ender_pearl ); 
 	}
 
 	public static void cast(PlayerInteractEvent event) 
