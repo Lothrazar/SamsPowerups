@@ -201,6 +201,11 @@ public class Reference
 		public static final String keepInventory = "keepInventory";
 		public static final String mobGriefing = "mobGriefing";
 		public static final String naturalRegeneration = "naturalRegeneration";
+		public static final String doEntityDrops = "doEntityDrops";
+		public static final String reducedDebugInfo = "reducedDebugInfo";
+		public static final String sendCommandFeedback = "sendCommandFeedback";
+		public static final String showDeathMessages = "showDeathMessages";
+		
 	}
  
 	public static class grassplant

@@ -20,11 +20,7 @@ import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
 import com.lothrazar.util.Reference; 
 
 public class BlockRegistry 
-{ 
-	public static BlockCommandBlockCraftable command_block_regen;
-	public static BlockCommandBlockCraftable command_block_mobgrief;
-	public static BlockCommandBlockCraftable command_block_firetick;
-	public static BlockCommandBlockCraftable command_block_daycycle;
+{  
 	public static BlockCommandBlockCraftable command_block_weather ;
 	public static BlockCommandBlockCraftable command_block_tpspawn;
 	public static BlockCommandBlockCraftable command_block_tpbed; 
@@ -128,44 +124,8 @@ public class BlockRegistry
 			BlockRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
 			
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
-		}
-		
-		if(ModSamsContent.configSettings.gameruleBlockRegen)
-		{ 
-			BlockRegistry.command_block_regen = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.naturalRegeneration);
-	 
-			BlockRegistry.registerBlock(BlockRegistry.command_block_regen, "command_block_regen");
-			
-			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_regen,new ItemStack(Items.golden_apple) );  
 		} 
 		
-		if(ModSamsContent.configSettings.gameruleBlockDaylight)
-		{
-			BlockRegistry.command_block_daycycle = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doDaylightCycle);
-			 
-			BlockRegistry.registerBlock(BlockRegistry.command_block_daycycle, "command_block_daycycle");
-			
-			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_daycycle,new ItemStack( Blocks.glowstone) ); 
-		}
-		
-		if(ModSamsContent.configSettings.gameruleBlockFiretick)
-		{ 
-			BlockRegistry.command_block_firetick = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.doFireTick);
- 
-			BlockRegistry.registerBlock(BlockRegistry.command_block_firetick, "command_block_firetick");
-
-			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_firetick,new ItemStack( Items.lava_bucket) ); 
-		}
-		
-		if(ModSamsContent.configSettings.gameruleBlockMobgrief)
-		{ 
-			BlockRegistry.command_block_mobgrief = new BlockCommandBlockCraftable(CommandType.Gamerule,Reference.gamerule.mobGriefing);
- 
-			BlockRegistry.registerBlock(BlockRegistry.command_block_mobgrief, "command_block_mobgrief");
-			
-			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_mobgrief,new ItemStack( Blocks.tnt) );  
-		}
- 
 		if(ModSamsContent.configSettings.xRayBlock)
 		{ 
 			BlockRegistry.block_xray = new BlockXRay(); 

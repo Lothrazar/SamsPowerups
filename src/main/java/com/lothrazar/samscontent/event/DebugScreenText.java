@@ -26,6 +26,7 @@ import net.minecraft.client.Minecraft;
 //import net.minecraft.client.entity.EntityClientPlayerMP;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.village.Village;
 import net.minecraft.world.GameRules;
@@ -92,11 +93,9 @@ public class DebugScreenText
 	  
 	 	if(SamsUtilities.isShiftKeyDown()) //if(showGameRules)//TODO: config
 	 	{ 
-			event.left.add("");
 			addGameruleInfo(event, world); 
 		} 
 
-		event.left.add("");
 		addTodoCommandInfo(event, player);  
 
 		CommandSimpleWaypoints.AddWaypointInfo(event); 
@@ -108,19 +107,21 @@ public class DebugScreenText
 		
 		if(todoCurrent != null && todoCurrent.isEmpty() == false)
 		{
+			event.left.add("");
 			event.left.add("TODO : "+todoCurrent); 
 		}
 	}
 
 	private void addGameruleInfo(RenderGameOverlayEvent.Text event, World world) 
 	{
-		event.right.add("Enabled Gamerules:");
+		event.right.add(""); 
 		
 		GameRules rules = world.getWorldInfo().getGameRulesInstance();
 		
 		ArrayList<String> ruleNames = new ArrayList<String>();
 		ruleNames.add(Reference.gamerule.commandBlockOutput);
 		ruleNames.add(Reference.gamerule.doDaylightCycle);
+		ruleNames.add(Reference.gamerule.doEntityDrops);
 		ruleNames.add(Reference.gamerule.doFireTick);
 		ruleNames.add(Reference.gamerule.doMobLoot);
 		ruleNames.add(Reference.gamerule.doMobSpawning);
@@ -128,9 +129,13 @@ public class DebugScreenText
 		ruleNames.add(Reference.gamerule.keepInventory);
 		ruleNames.add(Reference.gamerule.mobGriefing);
 		ruleNames.add(Reference.gamerule.naturalRegeneration);
+		ruleNames.add(Reference.gamerule.reducedDebugInfo);
+		ruleNames.add(Reference.gamerule.sendCommandFeedback);
+		ruleNames.add(Reference.gamerule.showDeathMessages);
 		//TODO: more rules missing from 1.8 addition
 
-		String T = "[T]", F = "[F]";
+		String T = "[true]", F = "[false]";
+
 		
 		String name;
 		for(int i = 0; i < ruleNames.size(); i++)
@@ -138,11 +143,11 @@ public class DebugScreenText
 			name = ruleNames.get(i);
 			if(rules.getGameRuleBooleanValue(name))
 			{ 
-				event.right.add(T + " " + name); 
+				event.right.add(EnumChatFormatting.GREEN+name); 
 			}
 			else
 			{ 
-				event.right.add(F + " " +name); 
+				event.right.add(EnumChatFormatting.RED+name); 
 			}
 		}
 	}

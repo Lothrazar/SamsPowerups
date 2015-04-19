@@ -422,18 +422,6 @@ public class ConfigFile
 		
 		teleportSpawnBlock = instance.getBoolean( "teleport_spawn",category,true,
 				"Command block that teleports you to your bed"); 
-		 
-		gameruleBlockRegen = instance.getBoolean( "gamerule_naturalregen",category,true,
-				"Craft blocks that toggle '/gamerule naturalRegenration' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
-		
-		gameruleBlockDaylight = instance.getBoolean( "gamerule_daylightcycle",category,true,
-				"Craft blocks that toggle '/gamerule doDaylightCycle' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
-		
-		gameruleBlockFiretick = instance.getBoolean( "gamerule_firetick",category,true,
-				"Craft blocks that toggle '/gamerule doFireTick' on redstone signal.  (Can never be opened or edited like a regular command block)."); 
-		
-		gameruleBlockMobgrief = instance.getBoolean( "gamerule_mobgrief",category,true,
-				"Craft blocks that toggle '/gamerule doMobGriefing' on redstone signal.  (Can never be opened or edited like a regular command block).");
 	}
 	
 	private void recipes_new() 
@@ -563,10 +551,7 @@ public class ConfigFile
 	public boolean appleLapis;
 	public boolean appleChocolate;
 	public boolean appleEmerald;
-	public boolean gameruleBlockRegen;
-	public boolean gameruleBlockDaylight;
-	public boolean gameruleBlockFiretick;
-	public boolean gameruleBlockMobgrief;
+//	public boolean gameruleBlockRegen; 
 	public boolean debugSlime;
 	public boolean debugHorseInfo;
 	public boolean debugClearRight;
