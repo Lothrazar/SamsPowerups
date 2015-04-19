@@ -156,7 +156,7 @@ public class ItemChestSack extends Item
 		{
 			String msg = "Sack Sort deposited " + totalItemsMoved + " items."; 
 		 
-			//TODO: do we want a sound here? or write to chest? or log file?
+			//dont do sound, there is already a sound played from hitting the block
 			//event.entityPlayer.playSound("random.bowhit1",5, 5);
 		}
 	 

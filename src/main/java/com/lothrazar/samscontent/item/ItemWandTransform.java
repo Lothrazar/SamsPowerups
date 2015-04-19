@@ -732,11 +732,9 @@ public class ItemWandTransform extends Item
 				blockStateNew =  Blocks.standing_banner.getStateFromMeta(metaNew);
 			}
 		}
-		
-		//TODO: Banner
+		 
 		//what else can rotate 
-		//TODO: trapdoors: top and bottom location
-		//TODO: iron door  left/right
+		//TODO: trapdoors: top and bottom location 
    
 		if(blockStateNew != null)
 		{

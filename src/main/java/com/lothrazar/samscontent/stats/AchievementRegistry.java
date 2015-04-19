@@ -24,12 +24,7 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 public class AchievementRegistry 
 {
 	//reference http://www.minecraftforge.net/wiki/How_to_add_an_Achievement
-	//TODO: a third achievement page for vanilla extras (clock/chain armor/ all that weird stuff)
-	//one for collecting all records, etc
-	//TODO: can we have achieves that are not just '1', first times.  maybe 'kill 100 creepers' and such
-
-	//TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
-	   //  AND achievements for MY stuff
+ 
 	private AchievementPage page;
 	
 	private ArrayList<Achievement> ach = new ArrayList<Achievement>();
@@ -37,52 +32,11 @@ public class AchievementRegistry
 	public Achievement appleChoc;
 	public Achievement appleLapis;
 	public Achievement appleDiamond;
-	public Achievement appleEmerald;
-	public Achievement baseWand;
-	public Achievement wandLightning;
+	public Achievement appleEmerald; 
 	public Achievement appleEnder;
 	public Achievement beetrootSeed;
-
-	private Achievement archer;
-
-	private Achievement lionTamer;
-
-	private Achievement zombieDoc;
-
-	private Achievement ironman;
-
-	private Achievement bodyguard;
-
-	private Achievement music;
-
-	private Achievement renewableEnergy;
-
-	private Achievement chestfulCob;
-
-	private Achievement stayinFrosty;
-
-	private Achievement rainbow;
-
-	private Achievement shear;
-
-	private Achievement ironBelly;
-
-	private Achievement sign;
-
-	private Achievement potPlanter;
-
-	private Achievement haggler;
-
-	private Achievement passingTime;
-
-	private Achievement porkChop;
-
-	private Achievement leaderOfPack;
-
-	private Achievement dispense;
-
-	private Achievement moarTools;
-	
+	//TODO: one for each of my items/blocks
+ 
 	private void register(Achievement a)
 	{
 		a.registerStat();
@@ -92,156 +46,10 @@ public class AchievementRegistry
 	public void registerAll()
 	{
 		registerVanillaPage(); 
-		
-		//registerConsolePage();//TODO: need work on triggering each one, big feature
-		
+		 
 		registerMyPage();
 	}
-
-	private void registerConsolePage() 
-	{
-		ArrayList<Achievement> console = new ArrayList<Achievement>();
-		//http://minecraft.gamepedia.com/Achievements
  
-		final int xSpacing = 2;
-		final int ySpacing = 2;
-		
-		final int xStart = 0;
-		final int yStart = 0;
-		
-		int xCurrent = xStart;
-		int yCurrent = yStart;
-		
-		//TODO: can page name be from lang file?
-	
-		moarTools = new Achievement(Reference.MODID + "moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools); 
-		xCurrent += xSpacing;
-		
-		dispense = new Achievement(Reference.MODID + "dispense", "dispense", xCurrent, yCurrent, Items.golden_axe, null);
-		dispense.registerStat();
-		console.add(dispense); 
-		xCurrent += xSpacing;
-		
-		leaderOfPack = new Achievement(Reference.MODID + "leaderOfPack", "leaderOfPack", xCurrent, yCurrent, Items.golden_axe, null);
-		leaderOfPack.registerStat();
-		console.add(leaderOfPack);
-		xCurrent += xSpacing;
-		/*
-		Achievement awardedAll = new Achievement(Reference.MODID + "_moarTools", "moarTools", xCurrent, yCurrent, Items.golden_axe, null);
-		moarTools.registerStat();
-		console.add(moarTools);
-		xCurrent += xSpacing;
-		*/
-		
-		
-		porkChop = new Achievement(Reference.MODID + "porkChop", "porkChop", xCurrent, yCurrent, Items.golden_axe, null);
-		porkChop.registerStat();
-		console.add(porkChop);
-		
-		xCurrent += xSpacing;
-		
-		passingTime = new Achievement(Reference.MODID + "passingTime", "passingTime", xCurrent, yCurrent, Items.golden_axe, null);
-		passingTime.registerStat();
-		console.add(passingTime); 
-		xCurrent += xSpacing;
-		
-
-		yCurrent += ySpacing;  //next row down
-		xCurrent = xStart;
-		
-		haggler = new Achievement(Reference.MODID + "haggler", "haggler", xCurrent, yCurrent, Items.golden_axe, null);
-		haggler.registerStat();
-		console.add(haggler);
-		
-		xCurrent += xSpacing;
-		
-		potPlanter = new Achievement(Reference.MODID + "potPlanter", "potPlanter", xCurrent, yCurrent, Items.golden_axe, null);
-		potPlanter.registerStat();
-		console.add(potPlanter); 
-		xCurrent += xSpacing;
-		
-		sign = new Achievement(Reference.MODID + "sign", "sign", xCurrent, yCurrent, Items.golden_axe, null);
-		sign.registerStat();
-		console.add(sign); 
-		xCurrent += xSpacing;
-		
-		ironBelly = new Achievement(Reference.MODID + "ironBelly", "ironBelly", xCurrent, yCurrent, Items.golden_axe, null);
-		ironBelly.registerStat();
-		console.add(ironBelly); 
-		xCurrent += xSpacing;
-		
-		shear = new Achievement(Reference.MODID + "shear", "shear", xCurrent, yCurrent, Items.golden_axe, null);
-		shear.registerStat();
-		console.add(shear); 
-		xCurrent += xSpacing;
-		
-
-		yCurrent += ySpacing;  //next row down
-		xCurrent = xStart;
-		
-		rainbow = new Achievement(Reference.MODID + "rainbow", "rainbow", xCurrent, yCurrent, Items.golden_axe, null);
-		rainbow.registerStat();
-		console.add(rainbow); 
-		xCurrent += xSpacing;
-		
-		stayinFrosty = new Achievement(Reference.MODID + "stayinFrosty", "stayinFrosty", xCurrent, yCurrent, Items.golden_axe, null);
-		stayinFrosty.registerStat();
-		console.add(stayinFrosty); 
-		xCurrent += xSpacing;
-		
-		chestfulCob = new Achievement(Reference.MODID + "chestfulCob", "chestfulCob", xCurrent, yCurrent, Items.golden_axe, null);
-		chestfulCob.registerStat();
-		console.add(chestfulCob); 
-		xCurrent += xSpacing;
-		
-		renewableEnergy = new Achievement(Reference.MODID + "renewableEnergy", "renewableEnergy", xCurrent, yCurrent, Items.golden_axe, null);
-		renewableEnergy.registerStat();
-		console.add(renewableEnergy); 
-		xCurrent += xSpacing;
-		
-		music = new Achievement(Reference.MODID + "music", "music", xCurrent, yCurrent, Items.golden_axe, null);
-		music.registerStat();
-		console.add(music); 
-		xCurrent += xSpacing;
-		
-
-		yCurrent += ySpacing;  //next row down
-		xCurrent = xStart;
-		
-		bodyguard = new Achievement(Reference.MODID + "bodyguard", "bodyguard", xCurrent, yCurrent, Items.golden_axe, null);
-		bodyguard.registerStat();
-		console.add(bodyguard); 
-		xCurrent += xSpacing;
-		
-		ironman = new Achievement(Reference.MODID + "ironman", "ironman", xCurrent, yCurrent, Items.golden_axe, null);
-		ironman.registerStat();
-		console.add(ironman); 
-		xCurrent += xSpacing;
-		
-		zombieDoc = new Achievement(Reference.MODID + "zombieDoc", "zombieDoc", xCurrent, yCurrent, Items.golden_axe, null);
-		zombieDoc.registerStat();
-		console.add(zombieDoc); 
-		xCurrent += xSpacing;
-		
-		lionTamer = new Achievement(Reference.MODID + "lionTamer", "lionTamer", xCurrent, yCurrent, Items.golden_axe, null);
-		lionTamer.registerStat();
-		console.add(lionTamer); 
-		xCurrent += xSpacing;
-		
-		archer = new Achievement(Reference.MODID + "archer", "archer", xCurrent, yCurrent, Items.golden_axe, null);
-		archer.registerStat();
-		console.add(archer); 
-		xCurrent += xSpacing;
-
-		// http://minecraft.gamepedia.com/Achievements 
-		AchievementPage consolepage = new AchievementPage("From Console",(Achievement[]) console.toArray(new Achievement[0]));
-
-
-	 	AchievementPage.registerAchievementPage(consolepage);
-	}
-
 	public void registerMyPage() 
 	{ 
 		final int xSpacing = 2;
@@ -314,89 +122,22 @@ public class AchievementRegistry
 	@SubscribeEvent
 	public void onPickup(ItemPickupEvent event)
 	{
-		if(event.pickedUp == null || event.pickedUp.getEntityItem() == null){return;}
-		
-		ItemStack items = event.pickedUp.getEntityItem();
-		
-		if(items.getItem() == Items.emerald && items.stackSize >= 30)
-		{
-			//TODO: dont think this counts trading..??
-			addStatSafe(haggler, event.player);	
-			
-			
-		} 
-		
-		if(items.getItem() == Item.getItemFromBlock(Blocks.wool))
-		{
-			PlayerPowerups ext = PlayerPowerups.get(event.player);
-			
-			
-			//ext.triggerWoolColor(items.getMetadata());
-			
-		}
-		
-		//TODO: count to 16 different wool types
-		//but we dont want ot have to keep all at once
+		//if(event.pickedUp == null || event.pickedUp.getEntityItem() == null){return;}
+
+		//PlayerPowerups ext = PlayerPowerups.get(event.player);
+		//ItemStack items = event.pickedUp.getEntityItem();
+ 
 	}
 	
 	@SubscribeEvent
 	public void onSmelt(ItemSmeltedEvent event)
 	{
-		if(event.smelting == null){return;}
+		//if(event.smelting == null){return;}
 		
-		Item item = event.smelting.getItem();
-		int meta = event.smelting.getMetadata();
-
-		if(item == Items.coal && meta == 1)//charcoal
-		{ 
-			addStatSafe(renewableEnergy,event.player);
-		} 
+		//Item item = event.smelting.getItem();
+		//int meta = event.smelting.getMetadata();
+ 
 	}
-	
-	public void onPlace()
-	{
-		//TODO: this for pot Plant placed
-	}
-	
-	public void onEaten()
-	{
-		//TODO: set this up/ porkChop - also on smelted? on player Eat event - so on use but with Action.type == EAT or something
-		
-		
-		//TODO: if eaten zombie flesh & starving
-		
-		
-	}
-	
-	//TODO: how to detect iron golem creation?
-	public void onIronGolemCreated(EntityPlayer player)//, BlockPos pos
-	{
-		
-	}
-	
-	//TODO: on Armor Worn?
-	
-	//TODO: on villager cvured/gold apple
-	
-	//TODO: on mob killed by player
-	public void onMobKilledByPlayer(EntityLivingBase mob, EntityPlayer player)
-	{
-		
-	}
-	
-	//TODO: on shear sheep event
-	
-	//TODO: swim in lava event (and check potion for fire prot)
-	
-	//TODO: no idea how to do cobble one
-	
-	
-	
-	//TODO: on tame wolf event, and count them for leaderOfPack
-	//TODO: tame ocelt event
-	
-	//TODO: play for 100 days trigger
-	
 	
 	@SubscribeEvent
 	public void onCraft(ItemCraftedEvent event)
@@ -405,10 +146,7 @@ public class AchievementRegistry
 		
 		Item item = event.crafting.getItem();
 		int meta = event.crafting.getMetadata();
-
-	//	System.out.println("   "+item.getUnlocalizedName());
-		
-
+ 
 		if(item == ItemRegistry.apple_chocolate)
 		{ 
 			addStatSafe(appleChoc,event.player);
@@ -428,21 +166,7 @@ public class AchievementRegistry
 		else if(item == ItemRegistry.apple_ender)
 		{ 
 			addStatSafe(appleEnder,event.player);  
-		}
-		else if(item == Item.getItemFromBlock(Blocks.dispenser))
-		{  
-			addStatSafe(dispense,event.player);  
-		}
-		else if(item == Item.getItemFromBlock(Blocks.flower_pot))
-		{ 
-//TODO: potPlanter counts this plus the placement of it together
-		}
-		else if(item == Items.sign)
-		{ 
-//TODO: also this plus if placed, two things for that stat
-		}
-		//TODO: for moarTools, craft pickaxe,shovel,axe,hoe, kind of four hidden achievements and all four then give the last one
-		
+		} 
 	}
 	
 	private void addStatSafe(Achievement stat, EntityPlayer player)

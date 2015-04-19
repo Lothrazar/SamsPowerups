@@ -109,7 +109,7 @@ public class ItemFoodAppleMagic extends ItemFood
   		{ 
   			p = Potion.potionTypes[potionIds.get(i)];
   			 
-  			list.add(SamsUtilities.lang(p.getName()));  //  +","//TODO: could be duration and such too 
+  			list.add(SamsUtilities.lang(p.getName()));   
   		}   
 	} 
 }

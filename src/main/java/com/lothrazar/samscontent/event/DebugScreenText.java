@@ -95,7 +95,7 @@ public class DebugScreenText
 	 		addHorseInfo(event, player);   
 	 	} 
 	  
-	 	if(SamsUtilities.isShiftKeyDown()) //if(showGameRules)//TODO: config
+	 	if(SamsUtilities.isShiftKeyDown())  
 	 	{ 
 			addGameruleInfo(event, world); 
 		} 

@@ -193,8 +193,7 @@ public class ItemRegistry
 			ItemRegistry.apple_emerald_rich.addEffect(Potion.jump.id, ItemFoodAppleMagic.timeShort, PotionRegistry.V); 
 			ItemRegistry.registerItem(ItemRegistry.apple_emerald_rich, "apple_emerald_rich");
 
-			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Blocks.emerald_block));
-			 
+			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Blocks.emerald_block)); 
 		}   
 		 
 		if(ModSamsContent.cfg.appleDiamond) 
@@ -230,8 +229,7 @@ public class ItemRegistry
 			 
 			ItemRegistry.registerItem(ItemRegistry.apple_lapis_rich, "apple_lapis_rich");
 			
-			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis_rich,new ItemStack(Blocks.lapis_block));
-			 
+			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis_rich,new ItemStack(Blocks.lapis_block));	 
 		}
 		  
 		if(ModSamsContent.cfg.appleChocolate)
@@ -246,7 +244,6 @@ public class ItemRegistry
 			ItemRegistry.registerItem(ItemRegistry.apple_chocolate_rich, "apple_chocolate_rich");
 			 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_chocolate_rich, new ItemStack(Items.cookie));
-		 
 		}
 	 
 		if(ModSamsContent.cfg.appleNetherStar) 
@@ -260,7 +257,7 @@ public class ItemRegistry
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_nether_star,new ItemStack(Items.nether_wart));
 		}
 	 
-		if(ModSamsContent.cfg.appleNetherStar)//TODO: apple ender in config 
+		if(ModSamsContent.cfg.appleNetherStar) 
 		{ 
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);   
 			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I);  
@@ -268,23 +265,6 @@ public class ItemRegistry
 			ItemRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl)) ;
-		} 
-		 
-		//TODO: config for TP food
-		/*
-		//this is redundant. we already have Ender book which is any location we want,
-		 * AND we have the blocks for teleportation
-		ItemRegistry.foodBed = new ItemFoodTeleport(2, TeleportType.BEDHOME);
-		ItemRegistry.registerItem(foodBed, "tpfood_bed");
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodBed,new ItemStack(Blocks.wool));
-		
-		ItemRegistry.foodSky = new ItemFoodTeleport(2, TeleportType.WORLDHEIGHT);
-		ItemRegistry.registerItem(foodSky, "tpfood_sky");
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodSky,new ItemStack(Items.emerald));
-		
-		ItemRegistry.foodSpawn = new ItemFoodTeleport(2, TeleportType.WORLDSPAWN);
-		ItemRegistry.registerItem(foodSpawn, "tpfood_spawn");
-		ItemFoodTeleport.addRecipe(ItemRegistry.foodSpawn,new ItemStack(Items.gold_ingot));
-		*/
+		}  
 	}
 }
