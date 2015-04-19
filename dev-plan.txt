@@ -1,28 +1,20 @@
 temp/scaffold block, similar to angel block in EU, except you place it from an item with infinite use
 and it despawns/vanishes on its own randomly (onupdatetick) so it really is temporaroy 
+  
+  MISSING game rules in right hand side list  http://minecraft.gamepedia.com/Commands#gamerule
+  
+  
+  use true/false not T/F 
+  
+  
+  LIVESTOCK LOOTING? or just Sheep shear potion effect?
+  
+  
+  NEW GAME RULE BLOCKS: sendcommandfeedback
+  or replac them with items might be better 
+  death messages
+  reduced debug info
                         
-            //  h.getAlwaysRenderNameTag()
-            //  h.getCurrentArmor(arg0)
-            //  h.getEquipmentInSlot(arg0)
-                //h.setTamedBy(arg0)
-                //h.isAdultHorse()
-                //h.isChild()
-            //  h.isUndead()
-            //  h.setLeashedToEntity(arg0, arg1);
-            //  h.setHorseVariant(arg0);
-            //  h.setHorseType(arg0);
-                //TODO: can we spawn zombie horse? 
-                //USE EXISTING WAND TRANSFORM?
-                     //Magic wand to turn horses to zombie/skeleton?
-                                //yeah i think we can in the sapwn event and roll a dice and check the biome
-                                //http://www.minecraftforge.net/forum/index.php?topic=8937.0
-                                //and then just tag all biome horses as the undead type 
-                                /*
-                                 * Tamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3,Tame:1}
-                            Untamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3}
-                            Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
-                            Untamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
-                                */ 
 
 
 //TODO: chatlog to txt
@@ -125,4 +117,38 @@ and it despawns/vanishes on its own randomly (onupdatetick) so it really is temp
    
     
     //TODO: villagetradehander
+    
+    
+    
+    
+    
+    
+    
+    
+    random horse functions that might be for ideas
+                        
+                        
+            //  h.getAlwaysRenderNameTag()
+            //  h.getCurrentArmor(arg0)
+            //  h.getEquipmentInSlot(arg0)
+                //h.setTamedBy(arg0)
+                //h.isAdultHorse()
+                //h.isChild()
+            //  h.isUndead()
+            //  h.setLeashedToEntity(arg0, arg1);
+            //  h.setHorseVariant(arg0);// A TOOL TO CHANGE THIS!L?!?!?!?
+            //  h.setHorseType(arg0);
+                //TODO: can we spawn zombie horse? 
+                //USE EXISTING WAND TRANSFORM?
+                     //Magic wand to turn horses to zombie/skeleton?
+                                //yeah i think we can in the sapwn event and roll a dice and check the biome
+                                //http://www.minecraftforge.net/forum/index.php?topic=8937.0
+                                //and then just tag all biome horses as the undead type 
+                                /*
+                                 * Tamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3,Tame:1}
+                            Untamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3}
+                            Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
+                            Untamed S
+    keleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
+                                */ 
     

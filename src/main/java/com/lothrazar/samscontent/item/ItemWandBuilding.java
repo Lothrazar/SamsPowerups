@@ -368,11 +368,5 @@ public class ItemWandBuilding extends Item
 		} 
 		
 		toggleNextMode(held);//dont stay on extract
-	}
-  
-    @Override
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-    	return true;
-    }   
+	} 
 }
