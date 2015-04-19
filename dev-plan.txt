@@ -1,4 +1,5 @@
- 
+temp/scaffold block, similar to angel block in EU, except you place it from an item with infinite use
+and it despawns/vanishes on its own randomly (onupdatetick) so it really is temporaroy 
                         
             //  h.getAlwaysRenderNameTag()
             //  h.getCurrentArmor(arg0)
