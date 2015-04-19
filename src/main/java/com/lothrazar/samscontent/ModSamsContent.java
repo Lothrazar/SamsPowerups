@@ -625,8 +625,8 @@ public class ModSamsContent
 		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
 			&& event.world.isAirBlock(event.pos.up()) 
 			&& ItemRegistry.beetroot_seed != null
-			&& event.current.getItem() == Items.golden_hoe  //TODO:  maybe also in config
-			&& event.world.rand.nextInt(16) == 0) //pocket edition vanilla is 1/16
+			&& event.current.getItem() == Items.golden_hoe  
+			&& event.world.rand.nextInt(16) == 0)
 		{			
 			if(event.world.isRemote == false)
 				SamsUtilities.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);

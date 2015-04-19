@@ -101,7 +101,9 @@ public class ConfigFile
 		category = "pocket_edition";
 				
 		beetroot =  instance.getBoolean( "beetroot",category,true,
-				"Add beetroot, similar to pocket edition.  Use a golden hoe to get seeds. " );
+				"Add beetroot, similar to pocket edition.  You must use a golden hoe to get seeds while making farmland. " );
+		
+		
 	}
 	
 	private void mob_changes() 
