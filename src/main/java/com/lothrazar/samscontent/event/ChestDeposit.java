@@ -93,14 +93,9 @@ public class ChestDeposit
 		}//close loop on chest items
 		
 		if( totalSlotsFreed > 0) 
-		{
-			String msg = "Magic Sort deposited "+totalItemsMoved+" items.";
-				//we used to send chat message here, no longer
-			System.out.println("TODO: particles??"+msg);//TODO particles here
-			
-			SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos());
-		
-			
+		{ 
+			//TODO: test these particles. i had a comment before that they werent working
+			SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos()); 
 		}
   	}
 }

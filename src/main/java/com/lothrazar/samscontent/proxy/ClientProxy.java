@@ -33,19 +33,14 @@ public class ClientProxy extends CommonProxy
     @Override
     public void registerRenderers() 
     {  
-    	keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_C, Reference.keyCategory);
-        ClientRegistry.registerKeyBinding(ClientProxy.keyShiftUp);
-     
-		keyShiftDown = new KeyBinding(Reference.keyDownName, Keyboard.KEY_V, Reference.keyCategory); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyShiftDown); 
+    	registerKeyBindings(); 
 
-        keyBarUp = new KeyBinding(Reference.keyBarUpName, Keyboard.KEY_N, Reference.keyCategory);
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBarUp);
-         
-        keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategory); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown); 
+        registerModels(); 
+    }
 
-        //More info on proxy rendering
+	private void registerModels() 
+	{
+		//More info on proxy rendering
         //http://www.minecraftforge.net/forum/index.php?topic=27684.0
        //http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/2272349-lessons-from-my-first-mc-1-8-mod
    
@@ -74,6 +69,21 @@ public class ClientProxy extends CommonProxy
             {
             	mesher.register(ItemRegistry.respawn_egg, (Integer)key, new ModelResourceLocation(Reference.TEXTURE_LOCATION + "respawn_egg" , "inventory"));	 
             }
-        } 
-    } 
+        }
+	}
+
+	private void registerKeyBindings() 
+	{
+		keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_C, Reference.keyCategory);
+        ClientRegistry.registerKeyBinding(ClientProxy.keyShiftUp);
+     
+		keyShiftDown = new KeyBinding(Reference.keyDownName, Keyboard.KEY_V, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyShiftDown); 
+
+        keyBarUp = new KeyBinding(Reference.keyBarUpName, Keyboard.KEY_N, Reference.keyCategory);
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBarUp);
+         
+        keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
+	} 
 }
