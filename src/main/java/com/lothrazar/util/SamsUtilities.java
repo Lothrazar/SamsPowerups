@@ -32,6 +32,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World; 
 
@@ -522,5 +523,10 @@ public class SamsUtilities
         {
 			entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
         }
+	}
+
+	public static int getMaxDmgFraction(Item tool, int d) 
+	{
+		return tool.getMaxDamage() - (int)MathHelper.floor_double(tool.getMaxDamage() / d);
 	}
 }

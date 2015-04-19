@@ -231,8 +231,8 @@ public class ConfigFile
 		furnaceNeedsCoal = instance.getBoolean("furnace_coal",category, true,
 				"If true, you cannot craft a furnace with only 8 cobblestone, it will also require one coal in the center.");  
 		
-		smoothstoneToolsRequired = instance.getBoolean("smoothstone_tools",category, true,
-				"If true, all stone tools will require smoothstone instead of cobble.");  
+		smoothstoneTools = instance.getBoolean("smoothstone_tools",category, true,
+				"Making stone tools out of cobblestone gives damaged tools.  Making stone tools out of smoothstone gives the fully repaired tool.");  
 
 		tieredArmor = instance.getBoolean("tiered_armor",category, true,
 				"If true, crafting iron armor requires repaired leather armor as part of the recipe, AND diamond armor requires chain mail.");  
@@ -585,7 +585,7 @@ public class ConfigFile
 	public boolean teleportSpawnBlock;
 	public boolean spawnCaveSpiderJungle;
 	public boolean appleNetherStar;
-	public boolean smoothstoneToolsRequired;
+	public boolean smoothstoneTools;
 	public boolean tieredArmor;
 	public boolean furnaceNeedsCoal;  
 	public boolean plantDespawningSaplings; 
