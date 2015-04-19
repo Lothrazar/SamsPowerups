@@ -10,6 +10,7 @@ public class VillagerTradeRegistry// implements IVillageTradeHandler
 	
 	//then inside the FMLInitializationEvent
 	//but: LexManos et all have not yet fixed IVillageTradeHandler
+	//source http://www.minecraftforge.net/forum/index.php?topic=27580.0
 //	VillageTrading v = new VillageTrading(); 
     //VillagerRegistry.instance().registerVillageTradeHandler(1, v);
   //  VillagerRegistry.instance().registerVillageTradeHandler(2, v);

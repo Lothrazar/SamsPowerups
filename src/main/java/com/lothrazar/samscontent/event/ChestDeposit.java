@@ -91,8 +91,7 @@ public class ChestDeposit
   				}//end if items match   
   			}//close loop on player inventory items 
 		}//close loop on chest items
-
-		//System.out.println("?"+world.isRemote);
+ 
 		if( totalSlotsFreed > 0) 
 		{ 
 			//System.out.println("chestparticles");

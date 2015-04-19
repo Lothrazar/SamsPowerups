@@ -119,7 +119,7 @@ public class CommandSearchItem  implements ICommand
   
 		int ifound = foundMessages.size();
 		
-		if(ifound == 0) //TODO: put that in .lang file
+		if(ifound == 0)  
 		{ 
 			player.addChatMessage(new ChatComponentTranslation("No items found within " + RADIUS + " blocks of you."));
 		}
