@@ -177,7 +177,7 @@ public class ModSamsContent
   			GameRegistry.registerFuelHandler(new FurnaceFuel()); 
   		}
   		
-  		if(ModSamsContent.configSettings.worldGenClayOceans)
+  		if(ModSamsContent.configSettings.worldGenOceansNotUgly)
 		{ 
 			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), 0); //zero is Weight of generator
 		}

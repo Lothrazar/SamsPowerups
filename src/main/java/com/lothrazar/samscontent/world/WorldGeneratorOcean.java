@@ -2,6 +2,7 @@ package com.lothrazar.samscontent.world;
 
 import java.util.Random;
 
+import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -18,31 +19,20 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 
 public class WorldGeneratorOcean implements IWorldGenerator
 {
-	//i used http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
-	   //TODO worldgen ocean: decorate with reeds down there?
-	//TODO: patches of dirt/sand like before
+	//Thanks to ref :  http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
+
 	private WorldGenerator genClay;  
 	private WorldGenerator genSand;  
 	private WorldGenerator genDirt;  
 	
-	private int minHeight = 30; 
-	private int maxHeight = 64;
-
-	//TODO: chances in config..!!
-	private int clayChance = 60;
-	private int clayNumBlocks = 12;
-
-	private int sandChance = 60;
-	private int sandNumBlocks = 12; 
-
-	private int dirtChance = 60;
-	private int dirtNumBlocks = 12; 
-	
+	private final int MIN_HEIGHT = 20; 
+	private final int MAX_HEIGHT = 128;
+ 
 	public WorldGeneratorOcean() 
 	{  
-	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModSamsContent.configSettings.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModSamsContent.configSettings.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModSamsContent.configSettings.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	}
 	 
 	@Override
@@ -50,9 +40,12 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	{ 
 		if(world.provider.getDimensionId() == Reference.Dimension.overworld) 
 		{
-			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, clayChance, minHeight, maxHeight);
-			this.run(this.genSand, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, sandChance, minHeight, maxHeight);
-			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, dirtChance, minHeight, maxHeight);
+			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
+					ModSamsContent.configSettings.clayChance, MIN_HEIGHT, MAX_HEIGHT);
+			this.run(this.genSand, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
+					ModSamsContent.configSettings.sandChance, MIN_HEIGHT, MAX_HEIGHT);
+			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE,
+					ModSamsContent.configSettings.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
 	}
 	
