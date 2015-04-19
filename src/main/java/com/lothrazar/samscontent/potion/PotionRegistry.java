@@ -51,17 +51,17 @@ public class PotionRegistry
 	{ 
 		//PotionRegistry.tired = (new PotionCustom(ModSamsContent.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
 		
-		PotionRegistry.waterwalk = (new PotionCustom(ModSamsContent.configSettings.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
+		PotionRegistry.waterwalk = (new PotionCustom(ModSamsContent.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		PotionRegistry.lavawalk = (new PotionCustom(ModSamsContent.configSettings.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
+		PotionRegistry.lavawalk = (new PotionCustom(ModSamsContent.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
-		PotionRegistry.slowfall = (new PotionCustom(ModSamsContent.configSettings.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModSamsContent.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		
-		PotionRegistry.flying = (new PotionCustom(ModSamsContent.configSettings.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
+		PotionRegistry.flying = (new PotionCustom(ModSamsContent.cfg.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
 		
-		PotionRegistry.ender = (new PotionCustom(ModSamsContent.configSettings.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
+		PotionRegistry.ender = (new PotionCustom(ModSamsContent.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 		
-		PotionRegistry.frozen = (new PotionCustom(ModSamsContent.configSettings.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
+		PotionRegistry.frozen = (new PotionCustom(ModSamsContent.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
@@ -232,7 +232,7 @@ public class PotionRegistry
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
 	    	 if(event.entityLiving.motionY < 0)
 	    	 { 
-				event.entityLiving.motionY *= ModSamsContent.configSettings.slowfallSpeed;
+				event.entityLiving.motionY *= ModSamsContent.cfg.slowfallSpeed;
 				  
 				event.entityLiving.fallDistance = 0f; //for no fall damage
 	    	 } 

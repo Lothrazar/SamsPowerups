@@ -47,7 +47,7 @@ public class ItemEnderBook extends Item
 				 Items.ender_pearl, 
 				 Items.book);
 
-		if(ModSamsContent.configSettings.uncraftGeneral) 
+		if(ModSamsContent.cfg.uncraftGeneral) 
 		{
 			GameRegistry.addSmelting(ItemRegistry.itemEnderBook, 
 					new ItemStack(Items.ender_pearl, 1), 0);

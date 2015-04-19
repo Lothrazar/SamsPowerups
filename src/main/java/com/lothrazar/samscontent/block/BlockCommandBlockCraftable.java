@@ -149,7 +149,7 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 				'r', Blocks.redstone_block
 				);
 			
-		if(ModSamsContent.configSettings.uncraftGeneral) 
+		if(ModSamsContent.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(BlockRegistry.command_block_weather, new ItemStack(Blocks.redstone_block, 5), 0);
 	}  
 }

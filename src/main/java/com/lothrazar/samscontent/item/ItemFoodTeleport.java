@@ -100,7 +100,7 @@ public class ItemFoodTeleport extends ItemFood
 			,'l', ingredient
 			,'a', ItemRegistry.beetrootItem);
 		
-		if(ModSamsContent.configSettings.uncraftGeneral) 
+		if(ModSamsContent.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(item, new ItemStack(ingredient.getItem(), 8),	0);
 	}
 }

@@ -125,7 +125,7 @@ public class BlockFishing extends Block
 				'f', new ItemStack(Items.fishing_rod, 1, 0), 
 				'p', Blocks.planks);
 
-		if(ModSamsContent.configSettings.uncraftGeneral)
+		if(ModSamsContent.cfg.uncraftGeneral)
 		{
 			GameRegistry.addSmelting(new ItemStack(BlockRegistry.block_fishing)
 			, new ItemStack(Blocks.web, 4), 0); 

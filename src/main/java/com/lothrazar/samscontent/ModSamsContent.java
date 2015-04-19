@@ -101,7 +101,7 @@ public class ModSamsContent
 	public static CommonProxy proxy;   
 	
 	public static Logger logger; 
-	public static ConfigFile configSettings;
+	public static ConfigFile cfg;
 	public static SimpleNetworkWrapper network; 
 	public static AchievementRegistry achievements; 
 	
@@ -132,7 +132,7 @@ public class ModSamsContent
 		
 		initModInfo(event.getModMetadata());
 		
-		configSettings = new ConfigFile(new Configuration(event.getSuggestedConfigurationFile()));
+		cfg = new ConfigFile(new Configuration(event.getSuggestedConfigurationFile()));
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	
@@ -172,12 +172,12 @@ public class ModSamsContent
 		 
 		StackSizeIncreaser.registerChanges(); 
  
-  		if(ModSamsContent.configSettings.moreFuel) 
+  		if(ModSamsContent.cfg.moreFuel) 
   		{
   			GameRegistry.registerFuelHandler(new FurnaceFuel()); 
   		}
   		
-  		if(ModSamsContent.configSettings.worldGenOceansNotUgly)
+  		if(ModSamsContent.cfg.worldGenOceansNotUgly)
 		{ 
 			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), 0); //zero is Weight of generator
 		}
@@ -193,28 +193,28 @@ public class ModSamsContent
 	@EventHandler
 	public void onServerStarting(FMLServerStartingEvent event)
 	{
-		if(ModSamsContent.configSettings.searchtrade) 
+		if(ModSamsContent.cfg.searchtrade) 
 			event.registerServerCommand(new CommandSearchTrades()); 
 		
-		if(ModSamsContent.configSettings.searchitem) 
+		if(ModSamsContent.cfg.searchitem) 
 			event.registerServerCommand(new CommandSearchItem()); 
 		
-		if(ModSamsContent.configSettings.searchspawner) 
+		if(ModSamsContent.cfg.searchspawner) 
 			event.registerServerCommand(new CommandSearchSpawner()); 
 		 
-		if(ModSamsContent.configSettings.simplewaypoint) 
+		if(ModSamsContent.cfg.simplewaypoint) 
 			event.registerServerCommand(new CommandSimpleWaypoints()); 
 		
-		if(ModSamsContent.configSettings.todo) 
+		if(ModSamsContent.cfg.todo) 
 			event.registerServerCommand(new CommandTodoList());  
 		 
-		if(ModSamsContent.configSettings.kit)  
+		if(ModSamsContent.cfg.kit)  
 			event.registerServerCommand(new CommandKit()); 
   
-		if(ModSamsContent.configSettings.home) 
+		if(ModSamsContent.cfg.home) 
 			event.registerServerCommand(new CommandWorldHome()); 
 		
-		if(ModSamsContent.configSettings.worldhome) 
+		if(ModSamsContent.cfg.worldhome) 
 			event.registerServerCommand(new CommandHome());
 	}
   
@@ -255,7 +255,7 @@ public class ModSamsContent
 	{  
 		PotionRegistry.onEntityUpdate(event);
 		
-		if(ModSamsContent.configSettings.fragileTorches)  // && event.entityLiving != null
+		if(ModSamsContent.cfg.fragileTorches)  // && event.entityLiving != null
 		{ 
 			boolean playerCancelled = false;
 			if(event.entityLiving instanceof EntityPlayer)
@@ -283,7 +283,7 @@ public class ModSamsContent
 		BlockPos pos = event.entity.getPosition();
 		World world = event.entity.worldObj;
 
-		if(ModSamsContent.configSettings.removeZombieCarrotPotato 
+		if(ModSamsContent.cfg.removeZombieCarrotPotato 
 		  && event.entity instanceof EntityZombie)
 		{  
 			for(int i = 0; i < event.drops.size(); i++) 
@@ -301,7 +301,7 @@ public class ModSamsContent
 			if(z.isChild())
 			{
 				
-				int pct = ModSamsContent.configSettings.chanceZombieChildFeather;
+				int pct = ModSamsContent.cfg.chanceZombieChildFeather;
 				if(event.entity.worldObj.rand.nextInt(100) <= pct)
 				{
 					event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ()
@@ -311,7 +311,7 @@ public class ModSamsContent
 			 
 			if(z.isVillager())
 			{
-				int pct = ModSamsContent.configSettings.chanceZombieVillagerEmerald;
+				int pct = ModSamsContent.cfg.chanceZombieVillagerEmerald;
 				if(event.entity.worldObj.rand.nextInt(100) <= pct)
 				{
 					event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ()
@@ -322,7 +322,7 @@ public class ModSamsContent
 		
 		//if(event.entity.worldObj.isRemote) {return;}
 		
-		if(ModSamsContent.configSettings.petNametagDrops && 
+		if(ModSamsContent.cfg.petNametagDrops && 
 				SamsUtilities.isPet(event.entity) )
 		{ 
 			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
@@ -338,7 +338,7 @@ public class ModSamsContent
 			}
 		}
 		
-		if(ModSamsContent.configSettings.petNametagChat && 
+		if(ModSamsContent.cfg.petNametagChat && 
 				event.entity instanceof EntityLiving )
 		{ 
 			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
@@ -356,13 +356,13 @@ public class ModSamsContent
 		{ 
 			if(event.source.getSourceOfDamage() != null 
 					&& event.source.getSourceOfDamage() instanceof EntityPlayer 
-					&& configSettings.livestockLootMultiplier > 0) 
+					&& cfg.livestockLootMultiplier > 0) 
 			{ 
 				//if livestock is killed by a palyer, then multiply the loot by the scale factor
 				for(EntityItem ei : event.drops)
 				{  
 					//the stack size does not seem to be mutable  so we just get and set the stack with a new size 
-					int newdrops = ei.getEntityItem().stackSize * configSettings.livestockLootMultiplier;
+					int newdrops = ei.getEntityItem().stackSize * cfg.livestockLootMultiplier;
 					
 					//do not exceed max stack size.  Example: if a sword drops, do not make it a 2stack
 					newdrops = Math.min(newdrops, ei.getEntityItem().getMaxStackSize());
@@ -527,14 +527,14 @@ public class ModSamsContent
 		}
 		
 		if(event.action == event.action.LEFT_CLICK_BLOCK && 
-			ModSamsContent.configSettings.smartEnderchest && 
+			ModSamsContent.cfg.smartEnderchest && 
 			event.entityPlayer.getCurrentEquippedItem() != null && 
 			event.entityPlayer.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.ender_chest))
 		{
 			event.entityPlayer.displayGUIChest(event.entityPlayer.getInventoryEnderChest()); 
 		} 
 		
-		if(ModSamsContent.configSettings.swiftDeposit  && 
+		if(ModSamsContent.cfg.swiftDeposit  && 
 				event.action == event.action.LEFT_CLICK_BLOCK && 
 				event.entityPlayer.isSneaking()  && 
 				event.entityPlayer.getCurrentEquippedItem() == null)
@@ -556,7 +556,7 @@ public class ModSamsContent
 	  	  	}
 		}
 		
-		if(ModSamsContent.configSettings.betterBonemeal 
+		if(ModSamsContent.cfg.betterBonemeal 
   				&& event.action != event.action.LEFT_CLICK_BLOCK 
   				&& SamsUtilities.isBonemeal(held)  && 
   				blockClicked != null ) 
@@ -564,7 +564,7 @@ public class ModSamsContent
 			BonemealExt.useBonemeal(event.world, event.entityPlayer, event.pos, blockClicked);
 		}
 		
-		if(ModSamsContent.configSettings.flintPumpkin && 
+		if(ModSamsContent.cfg.flintPumpkin && 
 				held != null && held.getItem() == Items.flint_and_steel && 
 				event.action.RIGHT_CLICK_BLOCK == event.action )
 		{   
@@ -588,7 +588,7 @@ public class ModSamsContent
 			}
 		}		
 		
-		if(ModSamsContent.configSettings.skullSignNames && 
+		if(ModSamsContent.cfg.skullSignNames && 
 				event.action == event.action.LEFT_CLICK_BLOCK && 
 				event.entityPlayer.isSneaking() && 
 				held != null && held.getItem() == Items.skull && 
@@ -684,7 +684,7 @@ public class ModSamsContent
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDeathEvent event)
 	{
-		if( ModSamsContent.configSettings.endermenDropCarryingBlock
+		if( ModSamsContent.cfg.endermenDropCarryingBlock
 			&& event.entity instanceof EntityEnderman)
 		{ 
 			EntityEnderman mob = (EntityEnderman)event.entity;
@@ -702,14 +702,14 @@ public class ModSamsContent
 		{ 
 			EntityPlayer player = (EntityPlayer)event.entity;
 			
-			if(ModSamsContent.configSettings.dropPlayerSkullOnDeath)
+			if(ModSamsContent.cfg.dropPlayerSkullOnDeath)
 			{  
 				ItemStack skull = SamsUtilities.buildNamedPlayerSkull(player);
 				 
 				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);
 			}
 			
-			if(ModSamsContent.configSettings.playerDeathCoordinates)
+			if(ModSamsContent.cfg.playerDeathCoordinates)
 			{
 				String coordsStr = SamsUtilities.posToString(player.getPosition()); 
 				SamsUtilities.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);

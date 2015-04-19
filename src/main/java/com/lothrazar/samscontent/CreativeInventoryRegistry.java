@@ -9,22 +9,22 @@ public class CreativeInventoryRegistry
 	{ 
 		//http://minecraft.gamepedia.com/Creative#Missing_blocks_and_items
 		
-		if(ModSamsContent.configSettings.mushroomBlocksCreativeInventory)
+		if(ModSamsContent.cfg.mushroomBlocksCreativeInventory)
 		{
 			Blocks.red_mushroom_block.setCreativeTab(CreativeTabs.tabDecorations); 
 			Blocks.brown_mushroom_block.setCreativeTab(CreativeTabs.tabDecorations); 
 		}
 		
-		if(ModSamsContent.configSettings.barrierCreativeInventory)
+		if(ModSamsContent.cfg.barrierCreativeInventory)
 			Blocks.barrier.setCreativeTab(CreativeTabs.tabDecorations); 
 
-		if(ModSamsContent.configSettings.dragonEggCreativeInventory)
+		if(ModSamsContent.cfg.dragonEggCreativeInventory)
 			Blocks.dragon_egg.setCreativeTab(CreativeTabs.tabDecorations); 
 		
-		if(ModSamsContent.configSettings.farmlandCreativeInventory)
+		if(ModSamsContent.cfg.farmlandCreativeInventory)
 			Blocks.farmland.setCreativeTab(CreativeTabs.tabDecorations); 
 		
-		if(ModSamsContent.configSettings.spawnerCreativeInventory)
+		if(ModSamsContent.cfg.spawnerCreativeInventory)
 			Blocks.mob_spawner.setCreativeTab(CreativeTabs.tabDecorations);  
 	} 
 }

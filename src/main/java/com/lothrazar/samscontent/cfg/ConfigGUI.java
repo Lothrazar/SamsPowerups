@@ -14,9 +14,9 @@ public class ConfigGUI extends GuiConfig
     public ConfigGUI(GuiScreen parent) 
     {
         super(parent,
-                new ConfigElement(ModSamsContent.configSettings.instance().getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(),
+                new ConfigElement(ModSamsContent.cfg.instance().getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(),
                 "Sams Powerups", false, false, 
-                GuiConfig.getAbridgedConfigPath(ModSamsContent.configSettings.instance().toString()));
+                GuiConfig.getAbridgedConfigPath(ModSamsContent.cfg.instance().toString()));
         
     }
 }

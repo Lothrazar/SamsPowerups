@@ -30,9 +30,9 @@ public class WorldGeneratorOcean implements IWorldGenerator
  
 	public WorldGeneratorOcean() 
 	{  
-	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModSamsContent.configSettings.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModSamsContent.configSettings.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModSamsContent.configSettings.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModSamsContent.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModSamsContent.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModSamsContent.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	}
 	 
 	@Override
@@ -41,11 +41,11 @@ public class WorldGeneratorOcean implements IWorldGenerator
 		if(world.provider.getDimensionId() == Reference.Dimension.overworld) 
 		{
 			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
-					ModSamsContent.configSettings.clayChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModSamsContent.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genSand, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
-					ModSamsContent.configSettings.sandChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModSamsContent.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE,
-					ModSamsContent.configSettings.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModSamsContent.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
 	}
 	

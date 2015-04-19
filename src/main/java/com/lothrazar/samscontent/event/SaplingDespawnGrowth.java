@@ -116,7 +116,7 @@ public class SaplingDespawnGrowth
 		//deepocean
 		//frozen ocean(10N  
 		 
-		if(ModSamsContent.configSettings.saplingAllNether)
+		if(ModSamsContent.cfg.saplingAllNether)
 		{
 			acaciaBiomes.add(BiomeGenBase.hell.biomeID);
 			oakBiomes.add(BiomeGenBase.hell.biomeID);
@@ -126,7 +126,7 @@ public class SaplingDespawnGrowth
 			jungleBiomes.add(BiomeGenBase.hell.biomeID);
 		}
 		
-		if(ModSamsContent.configSettings.saplingAllEnd)
+		if(ModSamsContent.cfg.saplingAllEnd)
 		{ 
 			acaciaBiomes.add(BiomeGenBase.sky.biomeID);
 			oakBiomes.add(BiomeGenBase.sky.biomeID);
@@ -140,7 +140,7 @@ public class SaplingDespawnGrowth
 	@SubscribeEvent
 	public void onSaplingGrowTreeEvent(SaplingGrowTreeEvent event)
 	{  
-		if(ModSamsContent.configSettings.saplingGrowthRestricted == false) {return;}
+		if(ModSamsContent.cfg.saplingGrowthRestricted == false) {return;}
 		
 		Block b = event.world.getBlockState(event.pos).getBlock();
 		
@@ -197,7 +197,7 @@ public class SaplingDespawnGrowth
 	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent event)
 	{  
-		 if(ModSamsContent.configSettings.plantDespawningSaplings == false) {return;}
+		 if(ModSamsContent.cfg.plantDespawningSaplings == false) {return;}
 		 
 		 ItemStack is = event.entityItem.getEntityItem();
 		 if(is == null ) {return;}//has not happened in the wild, yet

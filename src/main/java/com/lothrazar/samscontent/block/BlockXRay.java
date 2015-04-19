@@ -76,7 +76,7 @@ public class BlockXRay extends Block
 				'g', Blocks.glass, 
 				'o', Blocks.obsidian);
 
-		if(ModSamsContent.configSettings.uncraftGeneral) 
+		if(ModSamsContent.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(new ItemStack(BlockRegistry.block_xray)
 			, new ItemStack(Blocks.web, 4), 0);
 	}

@@ -53,14 +53,14 @@ public class BlockRegistry
 		BlockRegistry.registerBlock(lapis_pot, "lapis_pot"); 
 		*/
 		
-		if(ModSamsContent.configSettings.beetroot)
+		if(ModSamsContent.cfg.beetroot)
 		{
 			beetroot_crop = (BlockCropBeetroot) new BlockCropBeetroot();
 
 			BlockRegistry.registerBlock(beetroot_crop, "beetroot_crop"); 
 		}
 		 
-		if(ModSamsContent.configSettings.storeBucketsBlock)
+		if(ModSamsContent.cfg.storeBucketsBlock)
 		{
 			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket);  
 			registerBlock(BlockRegistry.block_storewater, "block_storewater");
@@ -81,7 +81,7 @@ public class BlockRegistry
 			
 		}
 		
-		if(ModSamsContent.configSettings.shearSheepBlock)
+		if(ModSamsContent.cfg.shearSheepBlock)
 		{
 			BlockRegistry.block_spike = new BlockShearWool(); 
 			
@@ -90,7 +90,7 @@ public class BlockRegistry
 			BlockShearWool.addRecipe();
 		}
 		
-		if(ModSamsContent.configSettings.fishingNetBlock)
+		if(ModSamsContent.cfg.fishingNetBlock)
 		{
 			BlockRegistry.block_fishing = new BlockFishing(); 
 			
@@ -99,7 +99,7 @@ public class BlockRegistry
 			BlockFishing.addRecipe();
 		}
   
-		if(ModSamsContent.configSettings.weatherBlock) 
+		if(ModSamsContent.cfg.weatherBlock) 
 		{
 			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
 	 
@@ -108,7 +108,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_weather,new ItemStack(Items.water_bucket));
 		}
 		 
-		if(ModSamsContent.configSettings.teleportSpawnBlock) 
+		if(ModSamsContent.cfg.teleportSpawnBlock) 
 		{ 
 			BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
 	 
@@ -117,7 +117,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpspawn,new ItemStack(Items.ender_eye));
 		}
 
-		if(ModSamsContent.configSettings.teleportBedBlock) 
+		if(ModSamsContent.cfg.teleportBedBlock) 
 		{ 
 			BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
 	 
@@ -126,7 +126,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
 		} 
 		
-		if(ModSamsContent.configSettings.xRayBlock)
+		if(ModSamsContent.cfg.xRayBlock)
 		{ 
 			BlockRegistry.block_xray = new BlockXRay(); 
 			

@@ -73,7 +73,7 @@ public class ClientProxy extends CommonProxy
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-        if(ModSamsContent.configSettings.respawn_egg)
+        if(ModSamsContent.cfg.respawn_egg)
         {
         	for(Object key : EntityList.entityEggs.keySet())
             {

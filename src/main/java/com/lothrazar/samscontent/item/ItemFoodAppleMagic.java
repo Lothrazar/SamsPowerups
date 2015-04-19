@@ -97,7 +97,7 @@ public class ItemFoodAppleMagic extends ItemFood
 			,'l', ingredient
 			,'a', Items.apple);
 		
-		if(ModSamsContent.configSettings.uncraftGeneral) 
+		if(ModSamsContent.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(apple, new ItemStack(ingredient.getItem(), 8),	0);
 	} 
 	 

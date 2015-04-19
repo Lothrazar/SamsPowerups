@@ -51,7 +51,7 @@ public class ItemChestSackEmpty extends Item
 			Items.string,
 			Blocks.chest  );
 		
-		if(ModSamsContent.configSettings.uncraftGeneral)
+		if(ModSamsContent.cfg.uncraftGeneral)
 			GameRegistry.addSmelting(ItemRegistry.wandChest, new ItemStack(Items.leather), 0);
 	}
 

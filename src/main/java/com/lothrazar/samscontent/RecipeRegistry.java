@@ -68,7 +68,7 @@ public class RecipeRegistry
 	
 	public static void beetroot()
 	{
-		if(!ModSamsContent.configSettings.beetroot)  {return;}
+		if(!ModSamsContent.cfg.beetroot)  {return;}
 
 		GameRegistry.addRecipe(new ItemStack(Blocks.red_mushroom_block),
 				"rrr",
@@ -84,7 +84,7 @@ public class RecipeRegistry
 	
 	public static void netherwartPurple()
 	{
-		if(!ModSamsContent.configSettings.netherwartPurpleDye)  {return;}
+		if(!ModSamsContent.cfg.netherwartPurpleDye)  {return;}
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,2,Reference.dye_purple)
 			,Items.nether_wart
@@ -93,7 +93,7 @@ public class RecipeRegistry
   
 	public static void mushroomBlocks()
 	{
-		if(!ModSamsContent.configSettings.craftableMushroomBlocks)  {return;}
+		if(!ModSamsContent.cfg.craftableMushroomBlocks)  {return;}
 
 		GameRegistry.addRecipe(new ItemStack(Blocks.red_mushroom_block),
 				"mm",
@@ -126,7 +126,7 @@ public class RecipeRegistry
 
 	public static void uncrafting()
 	{
-		if(!ModSamsContent.configSettings.uncraftGeneral) {return;}
+		if(!ModSamsContent.cfg.uncraftGeneral) {return;}
 			
 		GameRegistry.addRecipe(new ItemStack(Blocks.sandstone, 6), "xx", "xx",
 				'x', Blocks.sandstone_stairs);
@@ -648,7 +648,7 @@ public class RecipeRegistry
 
 	public static void records()
 	{
-		if(!ModSamsContent.configSettings.craftableTransmuteRecords) {return;}
+		if(!ModSamsContent.cfg.craftableTransmuteRecords) {return;}
 		// iterate down the list, 8 emeralds each time
 		
 		GameRegistry.addRecipe(new ItemStack(Items.record_13), "xxx", "xsx","xxx"
@@ -695,7 +695,7 @@ public class RecipeRegistry
 
 	public static void bonemealWool()
 	{
-		if(!ModSamsContent.configSettings.craftableBonemealColouredWool){return;}
+		if(!ModSamsContent.cfg.craftableBonemealColouredWool){return;}
 		//use bonemeal to bleach colored wool back to white
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wool, 1, 0),
 				new ItemStack(Blocks.wool, 1, 1), new ItemStack(Items.dye, 1,				Reference.dye_bonemeal)); 
@@ -757,7 +757,7 @@ public class RecipeRegistry
 	  
 	public static void bookNoLeather()
 	{ 
-		if(!ModSamsContent.configSettings.craftBooksWithoutLeather)  {return;}
+		if(!ModSamsContent.cfg.craftBooksWithoutLeather)  {return;}
 			
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.book,1)
 				,new ItemStack(Items.paper)
@@ -767,7 +767,7 @@ public class RecipeRegistry
 
 	public static void repeaterSimple()
 	{ 
-		if(!ModSamsContent.configSettings.craftRepeaterSimple) {return;}
+		if(!ModSamsContent.cfg.craftRepeaterSimple) {return;}
 		
 		GameRegistry.addRecipe(new ItemStack(Items.repeater), "r r", "srs","ttt"
 				, 't', new ItemStack(Blocks.stone)
@@ -777,7 +777,7 @@ public class RecipeRegistry
 
 	public static void minecartsSimple()
 	{
-		if(!ModSamsContent.configSettings.craftMinecartsSimple){return;}
+		if(!ModSamsContent.cfg.craftMinecartsSimple){return;}
 
 		//minecart stuffs: use five iron plus chest for it, instead of making the  cart first
 		//etc for other minecarts too
@@ -807,7 +807,7 @@ public class RecipeRegistry
 
 	public static void woolDyeSavings()
 	{
-		if(!ModSamsContent.configSettings.craftWoolDye8) {return;}
+		if(!ModSamsContent.cfg.craftWoolDye8) {return;}
 		 
 		//so any color that is not white, add the new recipe with all 8 blocks
 		for(int dye = 0; dye < 15; dye++)//only since we know that the dyes are these numbers
@@ -826,7 +826,7 @@ public class RecipeRegistry
 	
 	public static void furnaceNeedsCoal()
 	{ 
-		if(!ModSamsContent.configSettings.furnaceNeedsCoal) {return;}
+		if(!ModSamsContent.cfg.furnaceNeedsCoal) {return;}
 		
 		removeRecipe(Blocks.furnace);
 
@@ -840,7 +840,7 @@ public class RecipeRegistry
 
 	public static void smoothstoneRequired()
 	{ 
-		if(!ModSamsContent.configSettings.smoothstoneToolsRequired) {return;}
+		if(!ModSamsContent.cfg.smoothstoneToolsRequired) {return;}
 
 		//TODO: cobblestone makes damageed stone tools, but smoothstone makes fully repaired.
 
@@ -906,7 +906,7 @@ public class RecipeRegistry
  
 	public static void tieredArmor() 
 	{
-		if(!ModSamsContent.configSettings.tieredArmor) {return;}
+		if(!ModSamsContent.cfg.tieredArmor) {return;}
 
 		removeRecipe(Items.iron_chestplate);
 		removeRecipe(Items.iron_boots);
@@ -977,7 +977,7 @@ public class RecipeRegistry
 	
 	public static void simpleDispenser() 
 	{
-		if(!ModSamsContent.configSettings.simpleDispenser) {return;}
+		if(!ModSamsContent.cfg.simpleDispenser) {return;}
 
 		GameRegistry.addRecipe(new ItemStack(Blocks.dispenser), 
 				"ccc",
