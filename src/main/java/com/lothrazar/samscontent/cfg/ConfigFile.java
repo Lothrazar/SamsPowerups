@@ -57,6 +57,10 @@ public class ConfigFile
 		nature();
 		 
 		pocket_edition();  
+
+		inventory();
+		  
+		player();
 		
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
@@ -65,35 +69,43 @@ public class ConfigFile
 		 
 		betterBonemeal = instance.getBoolean("better_bonemeal",category, true,
     			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
- 
+
+		skullSignNames = instance.getBoolean("skull_sign_names",category, true,
+    			"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
+
+		
+		fragileTorches = instance.getBoolean("fragile_torches",category, true,
+				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
+		  
+		if(instance.hasChanged()){ instance.save(); }
+	}
+
+	private void inventory() 
+	{
+		category = "inventory";
+		
 		increasedStackSizes = instance.getBoolean("stack_size",category, true,
 			"While true, most vanilla items and blocks have their max stack size increased to 64 (not tools/armor/potions).  ");
 		
 		potionStackSize = instance.getInt("stack_size_potion",category, 1,1,3,
     			"Potion stack size can be increased to three, but not by default.");
-		
-		moreFuel = instance.getBoolean("more_fuel",category, true,
-    			"More can be used as furnace fuel: seeds, leaves, paper, shrubs, and more."); 
-	 
+		 
 		swiftDeposit = instance.getBoolean("swift_deposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
 		
 		smartEnderchest = instance.getBoolean("smart_enderchest",category, true,
     			"Attack with the ender chest to open it without placing it."	);
-		 
-		skullSignNames = instance.getBoolean("skull_sign_names",category, true,
-    			"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
-		   
+	}
+
+	private void player() 
+	{
+		category = "player";
+
 		playerDeathCoordinates = instance.getBoolean("player_death_coordinates",category, true,
     			"Players will have their death point coordinates broadcast in chat.");
 		
 		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull",category, true,
     			"Players will drop their skull when they die.");
-
-		fragileTorches = instance.getBoolean("fragile_torches",category, true,
-				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
-		
-		if(instance.hasChanged()){ instance.save(); }
 	}
 
 	public void pocket_edition() 
@@ -102,8 +114,7 @@ public class ConfigFile
 				
 		beetroot =  instance.getBoolean( "beetroot",category,true,
 				"Add beetroot, similar to pocket edition.  You must use a golden hoe to get seeds while making farmland. " );
-		
-		
+		 
 	}
 	
 	private void mob_changes() 
@@ -450,6 +461,10 @@ public class ConfigFile
 		
 		craftableMushroomBlocks =  instance.getBoolean( "mushroom_blocks",category,true
 				,"Craft mushroom blocks. ");
+ 
+		moreFuel = instance.getBoolean("more_fuel",category, true,
+    			"More can be used as furnace fuel: seeds, leaves, paper, shrubs, and more."); 
+	 
 	}
 	
 	private void commands() 
