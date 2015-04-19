@@ -604,8 +604,7 @@ public class ModSamsContent
 				held.setTagCompound(null); 
 			}
 			else
-			{
-				//get the first word
+			{ 
 				firstLine = firstLine.split(" ")[0];
 				
 				if(held.getTagCompound() == null) held.setTagCompound(new NBTTagCompound());
@@ -647,7 +646,7 @@ public class ModSamsContent
 			ItemWandBuilding.tickTimeout(held); 
 		}
 		
-		  //TODO: why isnt this in potionregistry
+		  //   why isnt this in potionregistry
 		if( player.isPotionActive(PotionRegistry.ender) && //the potion gives us this safe(ish)falling
 			 	 player.dimension == Reference.Dimension.end && //hence the name of the class
 				 player.posY < -50 && 
@@ -688,11 +687,10 @@ public class ModSamsContent
 		{ 
 			EntityEnderman mob = (EntityEnderman)event.entity;
  
-			IBlockState bs = mob.func_175489_ck();
+			IBlockState bs = mob.func_175489_ck();//mcp/forge just did not translate this
 			
 			if(bs != null && bs.getBlock() != null && event.entity.worldObj.isRemote == false)
 			{
-				//drop it on server side
 				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, mob.getPosition(), bs.getBlock());
 			} 
 		}

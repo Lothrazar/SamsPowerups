@@ -728,33 +728,7 @@ public class RecipeRegistry
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wool, 1, 0),
 				new ItemStack(Blocks.wool, 1, 15), new ItemStack(Items.dye, 1,				Reference.dye_bonemeal));
 	}
-/*
- //TODO: revisit add this back in, but default to turned OFF??
-  * ALSO find out which ones can and cannot be obtained with vanilla creeper/lightning way
-	public static void mobHeads()
-	{
-		if(!ModLoader.settings.craftableMobHeads) 	{return;}
-	 
-		GameRegistry.addRecipe(new ItemStack(Items.skull,1,Reference.skull_skeleton), "xxx", "xsx","xxx"
-				, 'x', Items.bone
-				, 's',new ItemStack(Items.skull,1,Reference.skull_wither) );
-				 
-		GameRegistry.addRecipe(new ItemStack(Items.skull,1,Reference.skull_zombie), "xxx", "xsx","xxx"
-				, 'x', new ItemStack(Items.rotten_flesh)
-				, 's', new ItemStack(Items.skull,1,Reference.skull_wither));
-		 
-		GameRegistry.addRecipe(new ItemStack(Items.skull,1,Reference.skull_player), "xxx", "xsx","xxx"
-				, 'x', new ItemStack(Items.cake)
-				, 's',new ItemStack(Items.skull,1,Reference.skull_wither));		
-				 
-		GameRegistry.addRecipe(new ItemStack(Items.skull,1,Reference.skull_creeper), "xxx", "xsx","xxx"
-				, 'x', new ItemStack(Blocks.tnt)
-				, 's', new ItemStack(Items.skull,1,Reference.skull_wither));		
-
-		GameRegistry.addSmelting(Items.skull ,new ItemStack(Items.skull,1,Reference.skull_wither), 0);
-	}
-*/
-	  
+ 
 	public static void bookNoLeather()
 	{ 
 		if(!ModSamsContent.cfg.craftBooksWithoutLeather)  {return;}
@@ -778,12 +752,9 @@ public class RecipeRegistry
 	public static void minecartsSimple()
 	{
 		if(!ModSamsContent.cfg.craftMinecartsSimple){return;}
-
-		//minecart stuffs: use five iron plus chest for it, instead of making the  cart first
-		//etc for other minecarts too
-		//normally you would need the minecart created in a different step. this is better
-
-
+ 
+		//normally you would need the minecart created in a different step. this is faster
+ 
 		GameRegistry.addRecipe(new ItemStack(Items.chest_minecart), 
 				"   ","ici", "iii", 
 				'i', Items.iron_ingot,
@@ -814,7 +785,7 @@ public class RecipeRegistry
 		{ 
 			if(dye != Reference.dye_bonemeal)
 			{
-				//removeRecipe(new ItemStack(Blocks.wool,1,dye));		//TODO: revisit this?		
+				//removeRecipe(new ItemStack(Blocks.wool,1,dye));	 	
 			
 				GameRegistry.addRecipe(new ItemStack(Blocks.wool,8,dye), 
 						"www","wdw", "www", 
@@ -837,15 +808,22 @@ public class RecipeRegistry
 				'b', Blocks.cobblestone,  
 				'c', Items.coal );
 	}
-
+	 
 	public static void smoothstoneRequired()
 	{ 
 		if(!ModSamsContent.cfg.smoothstoneToolsRequired) {return;}
 
 		//TODO: cobblestone makes damageed stone tools, but smoothstone makes fully repaired.
-
+//use (int)MathHelper.floor_double(Items.stone_pickaxe.getMaxDamage() / 4)
 		//this is instead of totally removing the cobblestone ones
 		removeRecipe(Items.stone_pickaxe);
+ 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe), 
+				"sss",
+				" t ", 
+				" t ", 
+				's', Blocks.cobblestone,  
+				't', Items.stick );
 		
 		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe), 
 				"sss",
@@ -985,9 +963,7 @@ public class RecipeRegistry
 				"crc", 
 				'c', Blocks.cobblestone,  
 				's', Items.string,
-				'r', Items.redstone ); 
-		
-		
+				'r', Items.redstone );  
 	}
 	
 	private static void removeRecipe(Item resultItem)
@@ -1012,11 +988,7 @@ public class RecipeRegistry
 	        tmpRecipe = recipes.get(i);
 
 	        recipeResult = tmpRecipe.getRecipeOutput();
-	    
-	           // recipeResult.stackSize = 1;
-	            //recipeResult.setItemDamage(0);
-	       
- 
+	     
 	        if( recipeResult != null && 
 	        	ItemStack.areItemStacksEqual(resultItem, recipeResult))
 	        {

@@ -9,6 +9,9 @@ and it despawns/vanishes on its own randomly (onupdatetick) so it really is temp
           smart potion button
           smart torch button 
           shrink to 1 height if possible
+          crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
+          far reach place hotkey. use player look vectors and trickery 
+          
 
  //command OR wand to play random song
  
