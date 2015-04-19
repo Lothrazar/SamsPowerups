@@ -1,154 +1,34 @@
+***this is for possible new feature ideas***
+
 temp/scaffold block, similar to angel block in EU, except you place it from an item with infinite use
 and it despawns/vanishes on its own randomly (onupdatetick) so it really is temporaroy 
+ 
   
-  MISSING game rules in right hand side list  http://minecraft.gamepedia.com/Commands#gamerule
-  
-  
-  use true/false not T/F 
-  
-  
-  LIVESTOCK LOOTING? or just Sheep shear potion effect?
-  
-  
-  NEW GAME RULE BLOCKS: sendcommandfeedback
-  or replac them with items might be better 
-  death messages
-  reduced debug info
-                        
 
-
-//TODO: chatlog to txt
-//TODO: cobblestone makes damageed stone tools, but smoothstone makes fully repaired.
-//this is instead of totally removing the cobblestone ones
-//TODO: livestock wand shoudl NOT use spawn eggs, as those eggs can mess with spawners, which is OVERPOWERED in survival
-//instead make my own custom 'egg' item, that doe sit. maybe will work with monsters too.
-//make it consumable like pokeball.
  //command OR wand to play random song
  
- //TODO: replace fire/ice wands-anyone that throws projectiles or something
- //make them single use items like ender pearls/eggs. use throw sound.
+
+ command that tells recipes - is there an easy way to search and find them?
  
-            player.worldObj.playRecord(p_175717_1_, p_175717_2_);
-            
-            //TODO: pet respawning block/spot with nametags
- //multiply XP by the Difficulty level (1, 2, or 3)
-//TODO: remote or portable workbench
+ 
+ 
 //TODO: EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
 
 //TODO: a way to place signs quick by skipping interface (leaving them blank)
+ 
+//TODO: find a way that you need food variety to live/comfort. 
 
-//IDEA: bone torches from http://www.reddit.com/r/minecraftsuggestions/comments/2zmq4o/bone_torches/
-//TODO: find a way that you need food variety to live.
-//TODO: beetroot  breeds pigs 
-//TODO: beetroot gets pigs to follow like carrot  
  
- 
- command that tells recipes - is there an easy way to search and find them?
- 
-+ item like ender book but single use. using it transforms it into a different 'save point' object. then when that is consumed, the TP goes off and its gone.
-  
  
 
-//TODO: import achieves from other plats (xbox/PS)
 //TODO: more pocket edition features to go with beetroot (nether reactor? crafting recipes?)
-//TODO: completley revisit and possibly remove flint tool AND the non-punching wood stuff. we already have the tools and armor changes which covers the same purpose
-//TODO: create a void dimension, but very restricted in size (bedrock). 
-//      would enter it somehow with an ender chest interaction
+
+
+//TODO: completley revisit   the non-punching wood stuff. maybe flint / wood tools.
+ 
  
 //TODO: investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
  
-//TODO: a third achievement page for vanilla extras (clock/chain armor/ all that weird stuff)
-//TODO: can we have achieves that are not just '1', first times.  maybe 'kill 100 creepers' and such
             
-//TODO: revisit early game at a later stage. things to consider: no wood/logs by hand, flint tools,
-    emerald tools, MAYBE wood & stone armor?            
-
-
-//TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
-     AND achievements for MY stuff
-//TODO: helpfile/command/menu? sapling/biome config and a way (COMMAND) to get a list of trees allowed in CURRENT biome- set them in lists
-
-//TODO: so i cannot open the vanilla crafting bench GUI without a physical benchso my idea is to create my own GUI, extend/copy  net.minecraft.inventory.ContainerWorkbench
-//and then just call that . no items or blocks or anything.
-//TODO: i think since i have updated forge a few times, that import net.minecraftforge.fml.common.registry.VillagerRegistry; now exists. test this.
-
-//: can we lava cauldron http://www.reddit.com/r/minecraftsuggestions/comments/2z6axs/lava_cauldron_and_cauldron_minecart/
-
-
-//TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
-//TODO:??liquids? If so, we have to also do apple juice.//http://www.minecraftforge.net/wiki/Create_a_Fluid
-
-//TODO: eat token that makes you keep inventory on eath but only ONE TIME, not like gamerule
-//TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
-
-//TODO: can we catch the middle click event (its an existing mc keybinding) and make it work in survival? ie hunting thru inventory AND enderchest?
-//TODO: far reach place hotkey. use player look vectors and trickery 
-//TODO: wand of chest transportation: make it also work with dispensers/droppers/trapped chests/ etc. set extra flag to identify
-//TODO: log/stone boat: exact copy of existing boat, but unbreakable.  
-
-//TODO: sort gamerules in f3.
-//TODO: collission with bat causes blindness? or poison or some random effect? maybe?  
-
-
-
-    //todo?? shape/conic/circle drawing in game//http://i.imgur.com/t3N1U8p.png
-//TODO: CommandSearch (and others?) set boolean showCoords = true;      //else it does directoins
-
-    
-    //??The Existing no falldamage enderpearl power: Do it from an ender apple?? 
-        //if we need to: try asm out http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571568-tutorial-1-6-2-changing-vanilla-without-editing
-        //my old ideas such as altering explosions, pumpkins, fence gates, 3x3 inventory, would need this
-    //  is there a use for this? ReflectionHelper.getPrivateValue(ItemSpade.class, null, 0);
-    // : achievement finder , check if dragonslayer//or at least check something to gain a power    
-    
-            //??((EntityPlayerMP) player).playerNetServerHandler.sendPacket(new S39PacketPlayerAbilities(player.capabilities));
-   
-   //boats of all 6 wood colors?
-   
-   //worldgen ocean: decorate with reeds down there?
  
-     
-   //put in config file: potions stack 1-3
-   //zombie/skeleton immune to sunlgiht?
-   //endermen immune to water (if possible)
-   
-   
-   //TODO: is there a nice forge friendly way of adding potion brewing recipes -> NOPE
-   
-    
-    //TODO: villagetradehander
-    
-    
-    
-    
-    
-    
-    
-    
-    random horse functions that might be for ideas
-                        
-                        
-            //  h.getAlwaysRenderNameTag()
-            //  h.getCurrentArmor(arg0)
-            //  h.getEquipmentInSlot(arg0)
-                //h.setTamedBy(arg0)
-                //h.isAdultHorse()
-                //h.isChild()
-            //  h.isUndead()
-            //  h.setLeashedToEntity(arg0, arg1);
-            //  h.setHorseVariant(arg0);// A TOOL TO CHANGE THIS!L?!?!?!?
-            //  h.setHorseType(arg0);
-                //TODO: can we spawn zombie horse? 
-                //USE EXISTING WAND TRANSFORM?
-                     //Magic wand to turn horses to zombie/skeleton?
-                                //yeah i think we can in the sapwn event and roll a dice and check the biome
-                                //http://www.minecraftforge.net/forum/index.php?topic=8937.0
-                                //and then just tag all biome horses as the undead type 
-                                /*
-                                 * Tamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3,Tame:1}
-                            Untamed Zombie Horse: /summon EntityHorse ~ ~ ~ {Type:3}
-                            Tamed Skeleton Horse: /summon EntityHorse ~ ~ ~ {Type:4,Tame:1}
-                            Untamed S
-    keleton Horse: /summon EntityHorse ~ ~ ~ {Type:4}
-                                */ 
     

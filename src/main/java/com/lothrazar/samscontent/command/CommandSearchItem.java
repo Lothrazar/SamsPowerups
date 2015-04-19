@@ -24,7 +24,8 @@ public class CommandSearchItem  implements ICommand
 {
 	private ArrayList<String> aliases = new ArrayList<String>();
 	private static int RADIUS = 32;
-	public static boolean showCoords = true;   
+	public static boolean showCoords = true;   //TODO: put in config and test
+
  
 	public static boolean REQUIRES_OP; 
 	

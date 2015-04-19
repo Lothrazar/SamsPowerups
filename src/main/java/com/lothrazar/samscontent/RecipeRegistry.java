@@ -841,7 +841,10 @@ public class RecipeRegistry
 	public static void smoothstoneRequired()
 	{ 
 		if(!ModSamsContent.configSettings.smoothstoneToolsRequired) {return;}
-		   
+
+		//TODO: cobblestone makes damageed stone tools, but smoothstone makes fully repaired.
+
+		//this is instead of totally removing the cobblestone ones
 		removeRecipe(Items.stone_pickaxe);
 		
 		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe), 

@@ -42,7 +42,8 @@ public class ItemChestSackEmpty extends Item
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
-	  
+	//TODO:  make it also work with dispensers/droppers/trapped chests/ etc. set extra flag to identify
+
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandChest),

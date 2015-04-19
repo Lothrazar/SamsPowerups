@@ -19,6 +19,8 @@ import net.minecraftforge.fml.common.IWorldGenerator;
 public class WorldGenClay implements IWorldGenerator
 {
 	//i used http://bedrockminer.jimdo.com/modding-tutorials/basic-modding/world-generation/
+	   //TODO worldgen ocean: decorate with reeds down there?
+	//TODO: patches of dirt/sand like before
 	private WorldGenerator genClay;  
 
 	private int clayChance = 60;

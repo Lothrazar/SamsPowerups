@@ -30,6 +30,11 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBarUp;
 	public static KeyBinding keyBarDown; 
  	//public static KeyBinding keyPlayerFlip;
+	//TODO: crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
+
+	//TODO: far reach place hotkey. use player look vectors and trickery 
+
+	 
 
     @Override
     public void registerRenderers() 

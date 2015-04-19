@@ -345,6 +345,7 @@ public class ModSamsContent
 			   event.entity.getCustomNameTag() != ""   
 			   ) 
 			{    
+	            //TODO: pet respawning block/spot with nametags
 				//show message as if player, works since EntityLiving extends EntityLivingBase
 				 SamsUtilities.printChatMessage(
 						 (event.source.getDeathMessage((EntityLiving)event.entity)));

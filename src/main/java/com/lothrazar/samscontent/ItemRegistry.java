@@ -68,6 +68,9 @@ public class ItemRegistry
 	{ 
 		if(ModSamsContent.configSettings.beetroot)
 		{ 
+			//TODO: beetroot  breeds pigs 
+			//TODO: beetroot gets pigs to follow like carrot  
+			 
 			beetroot_seed = new ItemSeeds(BlockRegistry.beetroot_crop, Blocks.farmland).setCreativeTab(ModSamsContent.tabSamsContent);
 			ItemRegistry.registerItem(beetroot_seed, "beetroot_seed");
 			

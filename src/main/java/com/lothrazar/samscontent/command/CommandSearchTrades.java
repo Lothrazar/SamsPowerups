@@ -20,7 +20,9 @@ import net.minecraft.village.MerchantRecipeList;
 public class CommandSearchTrades  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
+	public static boolean showCoords = true;   //TODO: put in config and test
 	private ArrayList<String> aliases = new ArrayList<String>();
+	
 	@Override
 	public int compareTo(Object arg0) 
 	{ 

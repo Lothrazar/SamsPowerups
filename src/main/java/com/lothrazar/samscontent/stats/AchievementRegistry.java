@@ -24,7 +24,12 @@ import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 public class AchievementRegistry 
 {
 	//reference http://www.minecraftforge.net/wiki/How_to_add_an_Achievement
-	 
+	//TODO: a third achievement page for vanilla extras (clock/chain armor/ all that weird stuff)
+	//one for collecting all records, etc
+	//TODO: can we have achieves that are not just '1', first times.  maybe 'kill 100 creepers' and such
+
+	//TODO: add achievements for existing ingame stuff (craft compass, killing 100 of a certain mob (use stats) clock, food, etc, etc)
+	   //  AND achievements for MY stuff
 	private AchievementPage page;
 	
 	private ArrayList<Achievement> ach = new ArrayList<Achievement>();
