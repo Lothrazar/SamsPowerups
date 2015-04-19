@@ -382,20 +382,14 @@ public class ModSamsContent
 		{
 			ItemRespawnEggEmpty.entitySpawnEgg(event.entityPlayer, event.target); 
 		}
-		
-		
-		//TODO: TEST TEST TEST 
-		
-		if(ModSamsContent.cfg.canNameVillagers)
-		if(held != null && held.getItem() == Items.name_tag )
+		  
+		if(ModSamsContent.cfg.canNameVillagers && 
+		  held != null && held.getItem() == Items.name_tag && held.hasDisplayName())
 		{    
 			if(event.entity instanceof EntityVillager)
 			{
 				EntityVillager v = (EntityVillager)event.entity;
-				
-				System.out.println("test");
-				
-				//TODO: is this accurate, or do we have to dig out the .display.Name NBT data
+				 
 				v.setCustomNameTag(held.getDisplayName()); 
 				
 				SamsUtilities.decrHeldStackSize(event.entityPlayer);
