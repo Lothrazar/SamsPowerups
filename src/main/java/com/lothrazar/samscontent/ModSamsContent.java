@@ -359,14 +359,14 @@ public class ModSamsContent
 			{ 
 				//if livestock is killed by a palyer, then multiply the loot by the scale factor
 				for(EntityItem ei : event.drops)
-				{ 
-					//the stack size does not seem to be mutable
-					//so we just get and set the stack with a new size
+				{  
+					//the stack size does not seem to be mutable  so we just get and set the stack with a new size 
+					int newdrops = ei.getEntityItem().stackSize * configSettings.livestockLootMultiplier;
 					
-					//double it again for pigs
-					int factor = (event.entity instanceof EntityPig) ? 2 * configSettings.livestockLootMultiplier : configSettings.livestockLootMultiplier;
+					//do not exceed max stack size.  Example: if a sword drops, do not make it a 2stack
+					newdrops = Math.min(newdrops, ei.getEntityItem().getMaxStackSize());
 					
-					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(),ei.getEntityItem().stackSize * factor,ei.getEntityItem().getItemDamage()));
+					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(), newdrops,ei.getEntityItem().getItemDamage()));
 				}
 			} 
 		}  

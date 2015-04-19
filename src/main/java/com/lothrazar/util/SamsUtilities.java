@@ -17,6 +17,7 @@ import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
@@ -449,6 +450,7 @@ public class SamsUtilities
 				(entity instanceof EntityChicken) || 
 				(entity instanceof EntityHorse) || 
 				(entity instanceof EntityCow) ||
+				(entity instanceof EntitySquid) ||
 				(entity instanceof EntityRabbit); 
 	}
 	
