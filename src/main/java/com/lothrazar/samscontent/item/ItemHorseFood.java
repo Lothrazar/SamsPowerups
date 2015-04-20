@@ -43,23 +43,56 @@ public class ItemHorseFood extends Item
 		//or let it through if no owner exists
 		System.out.println("owner = "+ownerID);
 		System.out.println("player = "+player.getUniqueID().toString());
-		 
 		  
-		//TODO: finish and flesh out this feature. all types/variants 
-
 		System.out.println("type = "+horse.getHorseType());
 		System.out.println("variant = "+horse.getHorseVariant());
 		
 		
 		if(held.getItem() == ItemRegistry.horse_upgrade_type)
 		{ 
-			horse.setHorseType(Reference.horse.type_zombie);//hardcoded test
+			switch(horse.getHorseType())
+			{
+			case Reference.horse.type_standard:
+				horse.setHorseType(Reference.horse.type_zombie);  
+				break;
+			case Reference.horse.type_zombie:
+				horse.setHorseType(Reference.horse.type_skeleton);  
+				break;
+			case Reference.horse.type_skeleton:
+				horse.setHorseType(Reference.horse.type_standard);  
+				break;
+			}
 		}
 		else if(held.getItem() == ItemRegistry.horse_upgrade_variant)
 		{
-			horse.setHorseVariant(Reference.horse.variant_white);//hardcoded test
+			switch(horse.getHorseVariant())
+			{
+			case Reference.horse.variant_black: 
+				horse.setHorseVariant(Reference.horse.variant_brown);
+				break;
+			case Reference.horse.variant_brown:   
+				horse.setHorseVariant(Reference.horse.variant_brown_dark);
+				break;
+			case Reference.horse.variant_brown_dark: 
+				horse.setHorseVariant(Reference.horse.variant_chestnut);  
+				break;
+			case Reference.horse.variant_chestnut: 
+				horse.setHorseVariant(Reference.horse.variant_creamy);  
+				break;
+			case Reference.horse.variant_creamy: 
+				horse.setHorseVariant(Reference.horse.variant_gray);  
+				break;
+			case Reference.horse.variant_gray:   
+				horse.setHorseVariant(Reference.horse.variant_white);
+				break;
+			case Reference.horse.variant_white: 
+				horse.setHorseVariant(Reference.horse.variant_black);  
+				break;
+			}
 		}
+		//TODO:we could do speed/jump/health upgrades too
 		 
+		//TODO: sound and particle
 		SamsUtilities.decrHeldStackSize(player); 
 	}
 }
