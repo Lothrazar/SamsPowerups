@@ -12,6 +12,7 @@ import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.EnumParticleTypes;
 
 public class ItemHorseFood extends Item
 { 
@@ -35,6 +36,7 @@ public class ItemHorseFood extends Item
 	public static void onHorseInteract(EntityHorse horse,EntityPlayer player, ItemStack held) 
 	{
 		boolean success = false;
+		/*
 		String ownerID = "..untamed..";
 		if(horse.isTame() && horse.getEntityData().hasKey("OwnerUUID"))
 		{
@@ -45,22 +47,25 @@ public class ItemHorseFood extends Item
 		//or let it through if no owner exists
 		System.out.println("owner = "+ownerID);
 		System.out.println("player = "+player.getUniqueID().toString());
-		   
+		   */
 		if(held.getItem() == ItemRegistry.horse_upgrade_type)
 		{ 
 			switch(horse.getHorseType())
 			{
 			case Reference.horse.type_standard:
 				horse.setHorseType(Reference.horse.type_zombie);  
+				success = true;
 				break;
 			case Reference.horse.type_zombie:
 				horse.setHorseType(Reference.horse.type_skeleton);  
+				success = true;
 				break;
 			case Reference.horse.type_skeleton:
 				horse.setHorseType(Reference.horse.type_standard);  
+				success = true;
 				break;
+				//donkey and mule ignored by design
 			}
-			success = true;
 		} 
 		else if(held.getItem() == ItemRegistry.horse_upgrade_variant)
 		{	 
@@ -71,7 +76,7 @@ public class ItemHorseFood extends Item
 			{
 				var_reduced += 256;//this could be done with modulo % arithmetic too, but meh doesnt matter either way
 				var -= 256;
-			} // invalid numbers maek horse invisible
+			} // invalid numbers make horse invisible
 			switch(var)
 			{
 			case Reference.horse.variant_black:
@@ -106,17 +111,15 @@ public class ItemHorseFood extends Item
 		{
 			float mh =  (float)horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue();
 		
-			if(mh < 40)
-			{
-
+			if(mh < 40) //20 hearts
+			{ 
 				horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(mh + 2);
-				
- 
+				 
 				success = true;
-			}
-			
+			} 
 		}
-		//TODO:we could do speed/jump/health upgrades too	
+		//TODO:we could do jump/speed upgrades too	 BUT would need some reflection, as its  a private var
+		
 		//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
 		//double currJump = horse.getHorseJumpStrength();
 	//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
@@ -125,9 +128,11 @@ public class ItemHorseFood extends Item
 		 
 		if(success)
 		{
-			//TODO: sound and particle
+			//  sound and particle
 			SamsUtilities.decrHeldStackSize(player); 
+			SamsUtilities.spawnParticle(horse.worldObj, EnumParticleTypes.SMOKE_LARGE, horse.getPosition());
 			
+			horse.setEating(true); 
 		}
 	}
 }
