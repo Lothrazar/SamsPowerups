@@ -379,7 +379,7 @@ public class ModSamsContent
 		if(ModSamsContent.cfg.canNameVillagers && 
 		  held != null && held.getItem() == Items.name_tag && held.hasDisplayName())
 		{    
-			if(event.entity instanceof EntityVillager)
+			if(event.target instanceof EntityVillager)
 			{
 				EntityVillager v = (EntityVillager)event.entity;
 				 
@@ -388,17 +388,21 @@ public class ModSamsContent
 				SamsUtilities.decrHeldStackSize(event.entityPlayer);
 			} 
 		} 
-
-		System.out.println("test is it horse? t");
+ 
+		System.out.println("onEntityInteractEvent"); 
+		
 		if(held != null && held.getItem() == ItemRegistry.horse_upgrade)
 		{    
-			if(event.entity instanceof EntityHorse)
+			System.out.println("horse_upgrade item is being used");
+			if(event.target instanceof EntityHorse)
 			{
-				System.out.println("on horse interact");
-				EntityHorse h = (EntityHorse)event.entity;
+				System.out.println("EntityHorseEntityHorseEntityHorse"); 
+				EntityHorse h = (EntityHorse)event.target;
 				
 				ItemHorseFood.onHorseInteract(h,event.entityPlayer,held);  
 			} 
+			else
+				System.out.println(event.entityLiving.getClass().toString()); 
 		} 
 		
   	} 
