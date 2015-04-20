@@ -34,7 +34,7 @@ public class ItemHorseFood extends Item
 	{
 		//list.add("");
 	}
-	public static void addRecipe() 
+	public static void addRecipes() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_type)
 			,Items.carrot

@@ -76,6 +76,8 @@ public class ItemRegistry
 			
 			horse_upgrade_health = new ItemHorseFood();
 			ItemRegistry.registerItem(horse_upgrade_health, "horse_upgrade_health"); 
+			
+			ItemHorseFood.addRecipes();
 		}
 		
 		if(ModSamsContent.cfg.beetroot)
