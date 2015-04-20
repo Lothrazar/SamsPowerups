@@ -24,7 +24,11 @@ public class ItemHorseFood extends Item
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ModSamsContent.tabSamsContent);
 	}
-	
+	@Override
+    public boolean hasEffect(ItemStack par1ItemStack)
+    {
+    	return true; //give it shimmer 
+    }
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
 	{
