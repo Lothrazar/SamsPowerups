@@ -78,13 +78,13 @@ public class DebugScreenText
 		  
 	 	if(ModSamsContent.cfg.debugSlime && player.dimension == Reference.Dimension.overworld)
 	 	{ 
-	    	addSlimeChunkInfo(event, player, world); 
+	 		addSlimeChunkInfo(event, player, world); 
 	 	}
 	 	
 	 	if(ModSamsContent.cfg.debugVillageInfo && world.villageCollectionObj != null)
 	 	{   
-			 addVillageInfo(event, player, world);	 
-		 }
+	 		addVillageInfo(event, player, world);	 
+		}
 	 	
 	 	if(ModSamsContent.cfg.debugHorseInfo && player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
 	 	{ 

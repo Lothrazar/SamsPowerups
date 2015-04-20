@@ -7,6 +7,7 @@ import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -33,6 +34,7 @@ public class ItemHorseFood extends Item
 
 	public static void onHorseInteract(EntityHorse horse,EntityPlayer player, ItemStack held) 
 	{
+		boolean success = false;
 		String ownerID = "..untamed..";
 		if(horse.isTame() && horse.getEntityData().hasKey("OwnerUUID"))
 		{
@@ -62,37 +64,60 @@ public class ItemHorseFood extends Item
 				horse.setHorseType(Reference.horse.type_standard);  
 				break;
 			}
+			success = true;
 		}
+		///261!?!?!
+		//double currJump = horse.getHorseJumpStrength();
+	//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
+		
+		
 		else if(held.getItem() == ItemRegistry.horse_upgrade_variant)
-		{
-			switch(horse.getHorseVariant())
+		{	
+
+			int var = horse.getHorseVariant();
+			int reduced = 0;
+			while(var - 256 > 0)
 			{
-			case Reference.horse.variant_black: 
-				horse.setHorseVariant(Reference.horse.variant_brown);
-				break;
-			case Reference.horse.variant_brown:   
-				horse.setHorseVariant(Reference.horse.variant_brown_dark);
-				break;
-			case Reference.horse.variant_brown_dark: 
-				horse.setHorseVariant(Reference.horse.variant_chestnut);  
-				break;
-			case Reference.horse.variant_chestnut: 
-				horse.setHorseVariant(Reference.horse.variant_creamy);  
-				break;
-			case Reference.horse.variant_creamy: 
-				horse.setHorseVariant(Reference.horse.variant_gray);  
-				break;
-			case Reference.horse.variant_gray:   
-				horse.setHorseVariant(Reference.horse.variant_white);
-				break;
-			case Reference.horse.variant_white: 
-				horse.setHorseVariant(Reference.horse.variant_black);  
-				break;
-			}
+				reduced += 256;
+				var -= 256;
+			}//TODO: needs work. invalid numbers maek horse invisible
+			
+			/*case Reference.horse.variant_white: variant = "White";break; 
+			case Reference.horse.variant_creamy: variant = "Creamy";break;
+			case Reference.horse.variant_chestnut: variant = "Chestnut";break;
+			case Reference.horse.variant_brown: variant = "Brown";break;
+			case Reference.horse.variant_black: variant = "Black";break;
+			case Reference.horse.variant_gray: variant = "Gray";break;
+			case Reference.horse.variant_brown_dark: variant = "Dark Brown";break; */
+			
+			horse.setHorseVariant(horse.getHorseVariant() + 16);
+
+			success = true;
 		}
-		//TODO:we could do speed/jump/health upgrades too
+		else if(held.getItem() == ItemRegistry.horse_upgrade_health)
+		{
+			float mh =  (float)horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue();
+		
+			if(mh < 40)
+			{
+
+				horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(mh + 2);
+				
+ 
+				success = true;
+			}
+			
+		}
+		//TODO:we could do speed/jump/health upgrades too	
+		//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
 		 
-		//TODO: sound and particle
-		SamsUtilities.decrHeldStackSize(player); 
+		
+		 
+		if(success)
+		{
+			//TODO: sound and particle
+			SamsUtilities.decrHeldStackSize(player); 
+			
+		}
 	}
 }

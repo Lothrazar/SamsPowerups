@@ -340,8 +340,7 @@ public class ModSamsContent
 			{    
 	            //TODO: pet respawning block/spot with nametags
 				//show message as if player, works since EntityLiving extends EntityLivingBase
-				 SamsUtilities.printChatMessage(
-						 (event.source.getDeathMessage((EntityLiving)event.entity)));
+				 SamsUtilities.printChatMessage((event.source.getDeathMessage((EntityLiving)event.entity)));
 			}
 		}
 		
@@ -388,23 +387,16 @@ public class ModSamsContent
 				SamsUtilities.decrHeldStackSize(event.entityPlayer);
 			} 
 		} 
- 
-		System.out.println("onEntityInteractEvent"); 
-		
+  
 		if(held != null && held.getItem() instanceof ItemHorseFood)
-		{    
-			System.out.println("horse_upgrade item is being used");
+		{     
 			if(event.target instanceof EntityHorse)
-			{
-				System.out.println("EntityHorseEntityHorseEntityHorse"); 
-				EntityHorse h = (EntityHorse)event.target;
+			{ 
+				ItemHorseFood.onHorseInteract((EntityHorse)event.target,event.entityPlayer,held);  
 				
-				ItemHorseFood.onHorseInteract(h,event.entityPlayer,held);  
-			} 
-			else
-				System.out.println(event.entityLiving.getClass().toString()); 
-		} 
-		
+				event.setCanceled(true);//stop the GUI inventory opening
+			}  
+		}  
   	} 
 	 
 	@SubscribeEvent

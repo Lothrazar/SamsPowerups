@@ -48,6 +48,7 @@ public class ItemRegistry
 	
 	public static ItemHorseFood horse_upgrade_type; 
 	public static ItemHorseFood horse_upgrade_variant; 
+	public static ItemHorseFood horse_upgrade_health; 
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemFireballThrowable fire_charge_throw;
@@ -69,6 +70,8 @@ public class ItemRegistry
 		ItemRegistry.registerItem(horse_upgrade_type, "horse_upgrade_type");
 		horse_upgrade_variant = new ItemHorseFood();
 		ItemRegistry.registerItem(horse_upgrade_variant, "horse_upgrade_variant");
+		horse_upgrade_health = new ItemHorseFood();
+		ItemRegistry.registerItem(horse_upgrade_health, "horse_upgrade_health");
 		
 		
 		if(ModSamsContent.cfg.beetroot)
