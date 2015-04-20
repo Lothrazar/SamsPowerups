@@ -45,11 +45,7 @@ public class ItemHorseFood extends Item
 		//or let it through if no owner exists
 		System.out.println("owner = "+ownerID);
 		System.out.println("player = "+player.getUniqueID().toString());
-		  
-		System.out.println("type = "+horse.getHorseType());
-		System.out.println("variant = "+horse.getHorseVariant());
-		
-		
+		   
 		if(held.getItem() == ItemRegistry.horse_upgrade_type)
 		{ 
 			switch(horse.getHorseType())
@@ -65,32 +61,44 @@ public class ItemHorseFood extends Item
 				break;
 			}
 			success = true;
-		}
-		///261!?!?!
-		//double currJump = horse.getHorseJumpStrength();
-	//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
-		
-		
+		} 
 		else if(held.getItem() == ItemRegistry.horse_upgrade_variant)
-		{	
-
+		{	 
 			int var = horse.getHorseVariant();
-			int reduced = 0;
+			int var_reduced = 0;
+			int var_new = 0;
 			while(var - 256 > 0)
 			{
-				reduced += 256;
+				var_reduced += 256;//this could be done with modulo % arithmetic too, but meh doesnt matter either way
 				var -= 256;
-			}//TODO: needs work. invalid numbers maek horse invisible
-			
-			/*case Reference.horse.variant_white: variant = "White";break; 
-			case Reference.horse.variant_creamy: variant = "Creamy";break;
-			case Reference.horse.variant_chestnut: variant = "Chestnut";break;
-			case Reference.horse.variant_brown: variant = "Brown";break;
-			case Reference.horse.variant_black: variant = "Black";break;
-			case Reference.horse.variant_gray: variant = "Gray";break;
-			case Reference.horse.variant_brown_dark: variant = "Dark Brown";break; */
-			
-			horse.setHorseVariant(horse.getHorseVariant() + 16);
+			} // invalid numbers maek horse invisible
+			switch(var)
+			{
+			case Reference.horse.variant_black:
+				var_new = Reference.horse.variant_brown;  
+				break;
+			case Reference.horse.variant_brown:
+				var_new = Reference.horse.variant_brown_dark;  
+				break;
+			case Reference.horse.variant_brown_dark:
+				var_new = Reference.horse.variant_chestnut;  
+				break;
+			case Reference.horse.variant_chestnut:
+				var_new = Reference.horse.variant_creamy;  
+				break;
+			case Reference.horse.variant_creamy:
+				var_new = Reference.horse.variant_gray;  
+				break;
+			case Reference.horse.variant_gray:
+				var_new = Reference.horse.variant_white;  
+				break;
+			case Reference.horse.variant_white:
+				var_new = Reference.horse.variant_black;  
+				break;
+			}
+			var_new += var_reduced;
+			System.out.println("new = "+var_new);
+			horse.setHorseVariant(var_new);
 
 			success = true;
 		}
@@ -110,6 +118,8 @@ public class ItemHorseFood extends Item
 		}
 		//TODO:we could do speed/jump/health upgrades too	
 		//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
+		//double currJump = horse.getHorseJumpStrength();
+	//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
 		 
 		
 		 
