@@ -388,6 +388,19 @@ public class ModSamsContent
 				SamsUtilities.decrHeldStackSize(event.entityPlayer);
 			} 
 		} 
+
+		System.out.println("test is it horse? t");
+		if(held != null && held.getItem() == ItemRegistry.horse_upgrade)
+		{    
+			if(event.entity instanceof EntityHorse)
+			{
+				System.out.println("on horse interact");
+				EntityHorse h = (EntityHorse)event.entity;
+				
+				ItemHorseFood.onHorseInteract(h,event.entityPlayer,held);  
+			} 
+		} 
+		
   	} 
 	 
 	@SubscribeEvent
