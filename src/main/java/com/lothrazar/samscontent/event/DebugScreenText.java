@@ -10,20 +10,16 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;  
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random; 
-
-import org.apache.logging.log4j.Logger; 
-
+import java.util.Random;  
+import org.apache.logging.log4j.Logger;  
 import com.lothrazar.samscontent.ModSamsContent;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
-
-import net.minecraft.client.Minecraft;
-//import net.minecraft.client.entity.EntityClientPlayerMP;
+import com.lothrazar.util.SamsUtilities; 
+import net.minecraft.client.Minecraft; 
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
@@ -155,17 +151,7 @@ public class DebugScreenText
 	private void addHorseInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 
 	{
 		EntityHorse horse = (EntityHorse)player.ridingEntity;
-		 
-		//int type = horse.getHorseType();
-		//type 0 is horse, type 1 is donkey, type 2 is mule
-		 
-		//variant 0 is white, 1 is creamy
-		//2 is chestnut 3 is brown
-		//4 is black, 5 is grey, 6 is dark brown
-		
-		//int armor = horse.getTotalArmorValue();
-		
-		// nope not this:float speed = horse.getAIMoveSpeed();
+		   
 		double speed =  horse.getEntityAttribute(SharedMonsterAttributes.movementSpeed).getAttributeValue() ;
 			 
 		double jump = horse.getHorseJumpStrength() ;
@@ -198,24 +184,24 @@ public class DebugScreenText
 		
 		switch( var )
 		{
-			case 0:  variant = "White";break; 
-			case 1: variant = "Creamy";break;
-			case 2: variant = "Chestnut";break;
-			case 3: variant = "Brown";break;
-			case 4: variant = "Black";break;
-			case 5: variant = "Gray";break;
-			case 6: variant = "Dark Brown";break; 
+			case Reference.horse.variant_white: variant = "White";break; 
+			case Reference.horse.variant_creamy: variant = "Creamy";break;
+			case Reference.horse.variant_chestnut: variant = "Chestnut";break;
+			case Reference.horse.variant_brown: variant = "Brown";break;
+			case Reference.horse.variant_black: variant = "Black";break;
+			case Reference.horse.variant_gray: variant = "Gray";break;
+			case Reference.horse.variant_brown_dark: variant = "Dark Brown";break; 
 		}
 		
 		//if its not a horse, variant wont matter
 		String type = "";
 		switch( horse.getHorseType())
 		{
-			case 0: type = variant + " Horse";break;
-			case 1: type = "Donkey";break;
-			case 2: type = "Mule";break;
-			case 3: type = "Undead Horse";break;
-			case 4: type = "Skeleton Horse";break;
+			case Reference.horse.type_standard: type = variant + " Horse";break;
+			case Reference.horse.type_donkey: type = "Donkey";break;
+			case Reference.horse.type_mule: type = "Mule";break;
+			case Reference.horse.type_zombie: type = "Zombie Horse";break;
+			case Reference.horse.type_skeleton: type = "Skeleton Horse";break;
 		}
 
 		if(spots != null) type += " ("+spots+")";

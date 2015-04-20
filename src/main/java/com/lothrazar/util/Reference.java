@@ -207,6 +207,23 @@ public class Reference
 		public static final String showDeathMessages = "showDeathMessages";
 		
 	}
+	 
+	public static class horse
+	{
+		public static final int variant_white = 0;
+		public static final int variant_creamy = 1;
+		public static final int variant_chestnut = 2;
+		public static final int variant_brown = 3;
+		public static final int variant_black = 4;
+		public static final int variant_gray = 5;
+		public static final int variant_brown_dark = 6; 
+		
+		public static final int type_standard = 0;
+		public static final int type_donkey = 1;
+		public static final int type_mule = 2;
+		public static final int type_zombie = 3;
+		public static final int type_skeleton = 4;
+	}
  
 	public static class grassplant
 	{

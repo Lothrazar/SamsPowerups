@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.item;
 import java.util.List;
 
 import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.passive.EntityHorse;
@@ -41,13 +42,15 @@ public class ItemHorseFood extends Item
         }
         */
 		
+		//TYPE . 0 = Normal, 1 = Donkey, 2 = Mule, 3 = Undead Horse, 4 = Skeleton Horse
 		
 		
 		
+		//TODO: finish and flesh out this feature. all types/variants 
 
 		System.out.println("type="+h.getHorseType());
 		System.out.println("variant="+h.getHorseVariant());
-		h.setHorseType(3);
+		h.setHorseType(Reference.horse.type_zombie);
 		 
 		SamsUtilities.decrHeldStackSize(entityPlayer);
 		
