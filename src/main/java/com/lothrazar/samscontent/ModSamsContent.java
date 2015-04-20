@@ -391,7 +391,7 @@ public class ModSamsContent
  
 		System.out.println("onEntityInteractEvent"); 
 		
-		if(held != null && held.getItem() == ItemRegistry.horse_upgrade)
+		if(held != null && held.getItem() instanceof ItemHorseFood)
 		{    
 			System.out.println("horse_upgrade item is being used");
 			if(event.target instanceof EntityHorse)
