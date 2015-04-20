@@ -44,7 +44,9 @@ public class ItemRegistry
 	public static ItemLightning lightning_charge;
 	public static Item beetroot_seed ;
 	public static Item beetrootItem;
-	public static Item beetrootSoup;
+	public static Item beetrootSoup;	
+	
+	public static ItemHorseFood horse_upgrade;
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemFireballThrowable fire_charge_throw;
@@ -61,7 +63,11 @@ public class ItemRegistry
 	}
 	 
 	public static void registerItems()
-	{ 
+	{  
+		horse_upgrade = new ItemHorseFood();
+		ItemRegistry.registerItem(horse_upgrade, "horse_upgrade");
+		
+		
 		if(ModSamsContent.cfg.beetroot)
 		{ 
 			//TODO: beetroot  breeds pigs - no forge way exists
