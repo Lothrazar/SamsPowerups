@@ -10,9 +10,11 @@ import com.lothrazar.util.SamsUtilities;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemHorseFood extends Item
 { 
@@ -30,7 +32,17 @@ public class ItemHorseFood extends Item
 	}
 	public static void addRecipe() 
 	{
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_type)
+			,Items.carrot
+			,Items.emerald);
+
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_variant)
+			,Items.carrot
+			,new ItemStack(Items.dye,1,Reference.dye_lapis)); 
 		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_health)
+			,Items.carrot
+			,Items.diamond); 
 	}
 
 	public static void onHorseInteract(EntityHorse horse,EntityPlayer player, ItemStack held) 
