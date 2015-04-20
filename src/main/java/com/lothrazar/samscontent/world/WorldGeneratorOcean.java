@@ -29,7 +29,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	private final int MAX_HEIGHT = 128;
  
 	public WorldGeneratorOcean() 
-	{  
+	{   
 	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModSamsContent.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModSamsContent.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModSamsContent.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
@@ -39,7 +39,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	public void generate(Random random, int chunkX, int chunkZ, World world,IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{ 
 		if(world.provider.getDimensionId() == Reference.Dimension.overworld) 
-		{
+		{ 
 			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
 					ModSamsContent.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genSand, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
@@ -55,7 +55,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	        throw new IllegalArgumentException("Illegal Height Arguments for WorldGenerator");
  
 	    int heightDiff = maxHeight - minHeight;
-	    
+ 
 	    BlockPos pos;
 	    BiomeGenBase biome;
 	    
@@ -67,10 +67,10 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	        
 	        pos = new BlockPos(x, y, z);
 	        biome = world.getBiomeGenForCoords(pos);
-	        
+ 
 	        if( biome == BiomeGenBase.ocean || 
 	        	biome == BiomeGenBase.deepOcean)
-	        { 
+	        {  
 	        	generator.generate(world, rand, pos);  
 	        }
 	    }

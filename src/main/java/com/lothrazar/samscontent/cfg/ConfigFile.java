@@ -169,19 +169,19 @@ public class ConfigFile
 		worldGenOceansNotUgly = instance.getBoolean("ocean_floor",category, true,
     			"Clay, sand, and dirt can generate in oceans just like they used to in the old days.  Replaces the gravel in patches.");
 	 
-		clayNumBlocks = instance.getInt("clay_num",category, 12,1,32,
+		clayNumBlocks = instance.getInt("clay_num",category, 16,1,32,
     			"Blocks per vein.");
-		clayNumBlocks = instance.getInt("clay_chance",category, 65,1,99,
+		clayChance = instance.getInt("clay_chance",category, 65,1,99,
     			"Chance of spawning a vein.");
 		
-		sandNumBlocks = instance.getInt("sand_num",category, 15,1,32,
+		sandNumBlocks = instance.getInt("sand_num",category, 20,1,32,
     			"Blocks per vein.");
-		sandNumBlocks = instance.getInt("sand_chance",category, 45,1,99,
+		sandChance = instance.getInt("sand_chance",category, 45,1,99,
     			"Chance of spawning a vein.");
 
-		dirtNumBlocks = instance.getInt("dirt_num",category, 8,1,32,
+		dirtNumBlocks = instance.getInt("dirt_num",category, 14,1,32,
     			"Blocks per vein.");
-		dirtNumBlocks = instance.getInt("dirt_chance",category, 30,1,99,
+		dirtChance = instance.getInt("dirt_chance",category, 30,1,99,
     			"Chance of spawning a vein.");
 	}
 
