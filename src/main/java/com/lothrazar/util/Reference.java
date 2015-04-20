@@ -255,7 +255,7 @@ public class Reference
 	
 	/*
 	 * http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571574-all-minecraft-playsound-file-names
-	 * 
+	 * http://minecraft.gamepedia.com/Sounds.json
 	 * 1 - ambient.cave.[1-13]
 2 - ambient.weather.rain[1-4]
 3 - ambient.weather.thunder[1-3]

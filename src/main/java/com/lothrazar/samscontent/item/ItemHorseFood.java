@@ -43,7 +43,7 @@ public class ItemHorseFood extends Item
 			ownerID = horse.getEntityData().getString("OwnerUUID");
 		}
 
-		//TODO: only let the OWNER change the types
+		//TODO: only let the OWNER change the types ?? maybe one day
 		//or let it through if no owner exists
 		System.out.println("owner = "+ownerID);
 		System.out.println("player = "+player.getUniqueID().toString());
@@ -76,7 +76,7 @@ public class ItemHorseFood extends Item
 			{
 				var_reduced += 256;//this could be done with modulo % arithmetic too, but meh doesnt matter either way
 				var -= 256;
-			} // invalid numbers make horse invisible
+			} // invalid numbers make horse invisible, but this is somehow safe. and easier than doing bitwise ops
 			switch(var)
 			{
 			case Reference.horse.variant_black:
@@ -102,7 +102,7 @@ public class ItemHorseFood extends Item
 				break;
 			}
 			var_new += var_reduced;
-			System.out.println("new = "+var_new);
+
 			horse.setHorseVariant(var_new);
 
 			success = true;
@@ -118,21 +118,13 @@ public class ItemHorseFood extends Item
 				success = true;
 			} 
 		}
-		//TODO:we could do jump/speed upgrades too	 BUT would need some reflection, as its  a private var
-		
-		//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
-		//double currJump = horse.getHorseJumpStrength();
-	//	horse.getEntityAttribute(EntityHorse.horseJumpStrength).setAttributeValue(3);
-		 
-		
 		 
 		if(success)
-		{
-			//  sound and particle
+		{ 
 			SamsUtilities.decrHeldStackSize(player); 
 			SamsUtilities.spawnParticle(horse.worldObj, EnumParticleTypes.SMOKE_LARGE, horse.getPosition());
-			
-			horse.setEating(true); 
+			SamsUtilities.playSoundAt(player, "random.eat"); 
+			horse.setEating(true); //makes horse animate and bend down to eat
 		}
 	}
 }
