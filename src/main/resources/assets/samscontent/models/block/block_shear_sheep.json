@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "samscontent:blocks/block_spike"
+        "all": "samscontent:blocks/block_shear_sheep"
     }
 }

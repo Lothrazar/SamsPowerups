@@ -1,5 +1,5 @@
  {
-     "parent": "samscontent:block/block_spike",
+     "parent": "samscontent:block/block_shear_sheep",
      "display": {
          "thirdperson": {
              "rotation": [ 10, -45, 170 ],

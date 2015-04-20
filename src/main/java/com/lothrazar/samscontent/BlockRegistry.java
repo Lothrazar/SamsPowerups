@@ -26,7 +26,7 @@ public class BlockRegistry
 	public static BlockCommandBlockCraftable command_block_tpbed; 
 	public static BlockFishing block_fishing ;
 	public static BlockXRay block_xray ;
-	public static BlockShearWool block_spike;
+	public static BlockShearWool block_shear_sheep;
 	public static BlockBucketStorage block_storelava;
 	public static BlockBucketStorage block_storewater;
 	public static BlockBucketStorage block_storemilk;
@@ -83,9 +83,9 @@ public class BlockRegistry
 		
 		if(ModSamsContent.cfg.shearSheepBlock)
 		{
-			BlockRegistry.block_spike = new BlockShearWool(); 
+			BlockRegistry.block_shear_sheep = new BlockShearWool(); 
 			
-			BlockRegistry.registerBlock(BlockRegistry.block_spike, "block_spike");
+			BlockRegistry.registerBlock(BlockRegistry.block_shear_sheep, "block_shear_sheep");
 
 			BlockShearWool.addRecipe();
 		}

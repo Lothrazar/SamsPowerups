@@ -1,9 +1,9 @@
-***this is for possible new feature ideas***
+Possible Features:
 
 temp/scaffold block, similar to angel block in EU, except you place it from an item with infinite use
 and it despawns/vanishes on its own randomly (onupdatetick) so it really is temporaroy 
  
-  //??new keybinds? 
+-
           hotkey to search through inventory and use enderpearl ingoring all else
           hotkey to eat first food found in inventory searching from topleft to right amd dpwm
           smart potion button
@@ -12,23 +12,23 @@ and it despawns/vanishes on its own randomly (onupdatetick) so it really is temp
           crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
           far reach place hotkey. use player look vectors and trickery 
           
-MAYBE revisit achievemnts if i find easier way          
+-MAYBE revisit achievemnts if i find easier way          
 
- //command OR wand to play random song
+-command OR wand to play random song
 
- command that tells recipes - is there an easy way to search and find them?
+-command that tells recipes - is there an easy way to search and find them?
 
-  EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
+-EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
 
-  a way to place signs quick by skipping interface (leaving them blank)
+-a way to place signs quick by skipping interface (leaving them blank)
  
- find a way that you need food variety to live/comfort. 
+-find a way that you need food variety to live/comfort. 
 
- more pocket edition features to go with beetroot (nether reactor? crafting recipes?)
+-more pocket edition features to go with beetroot (nether reactor? crafting recipes?)
 
-// : completley revisit   the non-punching wood stuff. maybe flint / wood tools.
+-completley revisit   the non-punching wood stuff. maybe flint / wood tools.
  
-// : investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
+-investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
 
 //HORSES? change them on the fly without breeeding new wones
 //Custom items!!!!!!
