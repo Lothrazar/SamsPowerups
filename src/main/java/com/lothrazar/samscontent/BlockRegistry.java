@@ -33,26 +33,20 @@ public class BlockRegistry
 	public static BlockBucketStorage block_storeempty;
 	public static BlockCropBeetroot beetroot_crop;
 	
+	//store blocks in a list - because this is used by the ModelMesher in the client proxy later
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
 	
-	 public static void registerBlock(Block s, String name)
-	 {    
-		 s.setUnlocalizedName(name); 
+	public static void registerBlock(Block s, String name)
+	{    
+		s.setUnlocalizedName(name); 
 		 
-		 GameRegistry.registerBlock(s, name);
+		GameRegistry.registerBlock(s, name);
 		  
-		 blocks.add(s);
-	 }
-	
+		blocks.add(s);
+	}
 	
 	public static void registerBlocks() 
 	{  
-		/*
-		Block lapis_pot = (new BlockFlowerPot()).setHardness(0.0F).setStepSound(Block.soundTypeStone);
-		lapis_pot.setCreativeTab(ModSamsContent.tabSamsContent);
-		BlockRegistry.registerBlock(lapis_pot, "lapis_pot"); 
-		*/
-		
 		if(ModSamsContent.cfg.beetroot)
 		{
 			beetroot_crop = (BlockCropBeetroot) new BlockCropBeetroot();
@@ -73,12 +67,11 @@ public class BlockRegistry
 	
 			GameRegistry.registerTileEntity(com.lothrazar.samscontent.tileentity.TileEntityBucketStorage.class, Reference.MODID);
 		
-			BlockRegistry.block_storeempty = new BlockBucketStorage(null); 		
+			BlockRegistry.block_storeempty = new BlockBucketStorage(null); //null for emtpy, no liquids stored inside
 			BlockRegistry.block_storeempty.setCreativeTab(ModSamsContent.tabSamsContent); 
 			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
 			
 			BlockRegistry.block_storeempty.addRecipe();
-			
 		}
 		
 		if(ModSamsContent.cfg.shearSheepBlock)
