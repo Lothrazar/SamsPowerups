@@ -79,7 +79,7 @@ public class ConfigFile
 		
 		fragileTorches = instance.getBoolean("fragile_torches",category, true,
 				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
-		  
+		 
 		if(instance.hasChanged()){ instance.save(); }
 	}
 
@@ -333,7 +333,10 @@ public class ConfigFile
 	private void items() 
 	{
 		category = "items";
-		
+  
+		horse_food_upgrades = instance.getBoolean("horse_food_upgrades",category, true,
+				"Adds three items that let you upgrade a horses health, change its colour and change it into a zombie or skeleton horse.");  
+		  
 		enderBook = instance.getBoolean( "ender_book",category,true,
 				" Craft an ender book that lets you save a waypoint, and then teleport to it later (single use).  Do not use this outside the overworld.");
  
@@ -649,4 +652,5 @@ public class ConfigFile
 	public int sandChance;
 	public int sandNumBlocks;
 	public boolean canNameVillagers;
+	public boolean horse_food_upgrades;
 }

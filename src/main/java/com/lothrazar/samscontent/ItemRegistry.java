@@ -66,13 +66,17 @@ public class ItemRegistry
 	 
 	public static void registerItems()
 	{  
-		horse_upgrade_type = new ItemHorseFood();
-		ItemRegistry.registerItem(horse_upgrade_type, "horse_upgrade_type");
-		horse_upgrade_variant = new ItemHorseFood();
-		ItemRegistry.registerItem(horse_upgrade_variant, "horse_upgrade_variant");
-		horse_upgrade_health = new ItemHorseFood();
-		ItemRegistry.registerItem(horse_upgrade_health, "horse_upgrade_health");
-		
+		if(ModSamsContent.cfg.horse_food_upgrades )
+		{  
+			horse_upgrade_type = new ItemHorseFood();
+			ItemRegistry.registerItem(horse_upgrade_type, "horse_upgrade_type");
+			
+			horse_upgrade_variant = new ItemHorseFood();
+			ItemRegistry.registerItem(horse_upgrade_variant, "horse_upgrade_variant");
+			
+			horse_upgrade_health = new ItemHorseFood();
+			ItemRegistry.registerItem(horse_upgrade_health, "horse_upgrade_health"); 
+		}
 		
 		if(ModSamsContent.cfg.beetroot)
 		{ 
