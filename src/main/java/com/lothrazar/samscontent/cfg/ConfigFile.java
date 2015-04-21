@@ -69,10 +69,11 @@ public class ConfigFile
 		 
 		swiftDeposit = instance.getBoolean("swift_deposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
-		
+		/*
 		smartEnderchest = instance.getBoolean("smart_enderchest",category, true,//TODO: DELETe this, amke it work 
 				//only with ender potion effect. also make ender apples last longer, 10-60 min
     			"Attack with the ender chest to open it without placing it."	);
+    			*/
 	}
 
 	private void player() 
@@ -507,7 +508,7 @@ public class ConfigFile
 	}
 	 
 	public boolean swiftDeposit;
-	public boolean smartEnderchest;
+	//public boolean smartEnderchest;
 	public boolean increasedStackSizes;
 	public boolean moreFuel;
 	public boolean skullSignNames; 

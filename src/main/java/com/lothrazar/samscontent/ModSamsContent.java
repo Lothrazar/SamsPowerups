@@ -513,7 +513,7 @@ public class ModSamsContent
 		}
 		
 		if(event.action == event.action.LEFT_CLICK_BLOCK && 
-			ModSamsContent.cfg.smartEnderchest && 
+			event.entityPlayer.isPotionActive(PotionRegistry.ender) && 
 			event.entityPlayer.getCurrentEquippedItem() != null && 
 			event.entityPlayer.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.ender_chest))
 		{
