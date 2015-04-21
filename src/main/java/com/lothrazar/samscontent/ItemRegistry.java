@@ -139,7 +139,7 @@ public class ItemRegistry
 
 			ItemPaperCarbon.addRecipe();  
 		}
-		   
+		   /*
 		if(ModSamsContent.cfg.wandBuilding)
 		{ 
 			ItemRegistry.wandBuilding = new ItemWandBuilding(); 
@@ -147,7 +147,7 @@ public class ItemRegistry
 			 
 			ItemWandBuilding.addRecipe(); 
 		}
-		 
+		 */
 		if(ModSamsContent.cfg.chest_sack)
 		{   
 			ItemRegistry.itemChestSack = new ItemChestSack();   

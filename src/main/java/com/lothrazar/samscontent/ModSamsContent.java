@@ -448,18 +448,17 @@ public class ModSamsContent
 			ItemPaperCarbon.rightClickBlock(event); 
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.wandBuilding)
+		/*if(held != null && held.getItem() == ItemRegistry.wandBuilding)
 		{
 			if(event.action.LEFT_CLICK_BLOCK == event.action  )
 			{ 
 				ItemWandBuilding.onPlayerLeftClick(event);
 			}
 			else
-			{
-				
+			{ 
 				ItemWandBuilding.onPlayerRightClick(event);
 			}
-		}
+		}*/
 		
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
@@ -626,13 +625,13 @@ public class ModSamsContent
 		EntityPlayer player = event.player;
 		ItemStack held = player.getCurrentEquippedItem(); 
 		
-		if(held != null && 
+		/*if(held != null && 
 				Item.getIdFromItem(held.getItem()) == Item.getIdFromItem(ItemRegistry.wandBuilding) ) 
 		{
 			ItemWandBuilding.setCompoundIfNull(held);
 			
 			ItemWandBuilding.tickTimeout(held); 
-		}
+		}*/
 		
 		  //   why isnt this in potionregistry
 		if( player.isPotionActive(PotionRegistry.ender) && //the potion gives us this safe(ish)falling

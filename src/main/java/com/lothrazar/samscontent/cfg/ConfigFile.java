@@ -362,7 +362,7 @@ public class ConfigFile
 		 
 		wandBuilding = instance.getBoolean( "wand_building", category,true,
 				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
-		
+		/*
 		ItemWandBuilding.DURABILITY   = instance.getInt("wand_building.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 
@@ -375,7 +375,7 @@ public class ConfigFile
 		ItemWandBuilding.replaceTileEntities = instance.getBoolean("wand_building.replaceTileEntities", category ,true,
 			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
 			 "(such as chest or dispenser).   "	); 
-		 
+		 */
 		ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
     			"Durability (number of uses in survival).");
 		

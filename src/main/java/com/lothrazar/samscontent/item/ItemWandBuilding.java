@@ -35,6 +35,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandBuilding extends Item
 {  
+	/*
 	public ItemWandBuilding( )
 	{   
 		super(); 
@@ -369,4 +370,5 @@ public class ItemWandBuilding extends Item
 		
 		toggleNextMode(held);//dont stay on extract
 	} 
+	*/
 }
