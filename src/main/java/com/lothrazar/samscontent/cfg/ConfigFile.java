@@ -99,15 +99,14 @@ public class ConfigFile
 		category = "mob_changes";
 
 		canNameVillagers = instance.get(category, "nametag_usable_on_villagers",true).getBoolean();
-		 
-		 //TODO: RESPAWNING? and remove these two
+		  
 		petNametagDrops = instance.getBoolean("nametag_drops",category, true,
-	    			"Some mobs that are named drop a name tag when they die (wolf, ocelot, villager, bat, rabbit, horse).");
+	    			"Any mobs that is named will drop the name tag again when they die.  ");
+		
 		petNametagChat  = instance.getBoolean("nametag_death_messages",category, true,
-	    			"Non-player entities that are named with a Name Tag send a chat death message when they die.");
+	    			"Non-player entities that are named with a Name Tag send a chat death message when they die as if they were a player.");
 	
-		removeZombieCarrotPotato = instance.get(category,"remove_zombie_drop_carrot_potato", true).getBoolean();
-    			//"Disable these zombie drops."); 
+		removeZombieCarrotPotato = instance.get(category,"remove_zombie_drop_carrot_potato", true).getBoolean(); 
 
 		chanceZombieChildFeather = instance.getInt("chance_zombie_child_feather",category, 5,0,100,
     			"Percent chance that a child zombie will drop a feather (so 0 for vanilla).");
@@ -115,8 +114,7 @@ public class ConfigFile
 		chanceZombieVillagerEmerald = instance.getInt("chance_zombie_villager_emerald",category, 5,0,100,
     			"Percent chance that a villager zombie will drop an emerald (so 0 for vanilla).");
 		
-		endermenDropCarryingBlock = instance.get(category,"endermen_drop_carrying_block", true).getBoolean();
-    		//	"Endermen will always drop any block they are carrying.");	
+		endermenDropCarryingBlock = instance.get(category,"endermen_drop_carrying_block", true).getBoolean(); 
 	}
 
 	private void nature() 

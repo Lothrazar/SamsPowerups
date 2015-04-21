@@ -309,25 +309,21 @@ public class ModSamsContent
 				int pct = ModSamsContent.cfg.chanceZombieVillagerEmerald;
 				if(event.entity.worldObj.rand.nextInt(100) <= pct)
 				{
-					event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ()
-							,new ItemStack(Items.emerald)));
+					event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ() ,new ItemStack(Items.emerald)));
 				}
 			} 
 		} 
 		 
-		if(ModSamsContent.cfg.petNametagDrops && 
-				SamsUtilities.isPet(event.entity) )
+		if(ModSamsContent.cfg.petNametagDrops )//no need to restrict to pets && SamsUtilities.isPet(event.entity)
 		{ 
 			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
 			   event.entity.getCustomNameTag() != ""   
 			   ) 
-			{ 
-				//ItemStack nameTag = new ItemStack(Items.name_tag, 1); 
-				//its not just an item stack, it needs the name stuck on there
+			{  
+				//item stack NBT needs the name enchanted onto it
 				ItemStack nameTag = SamsUtilities.buildEnchantedNametag(event.entity.getCustomNameTag());
-				 
-				if(world.isRemote == false)
-					SamsUtilities.dropItemStackInWorld(world, event.entity.getPosition(), nameTag); 
+			  
+				SamsUtilities.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
 			}
 		}
 		
