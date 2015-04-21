@@ -636,9 +636,9 @@ public class ModSamsContent
 		  //   why isnt this in potionregistry
 		if( player.isPotionActive(PotionRegistry.ender) && //the potion gives us this safe(ish)falling
 			 	// player.dimension == Reference.Dimension.end && //hence the name of the class
-				 player.posY < -50 && 
+				 player.posY < -50// && 
 				// player.worldObj.isRemote  == false && 
-				 player.capabilities.isCreativeMode == false
+				// player.capabilities.isCreativeMode == false
 				)
 		{  
 			SamsUtilities.teleportWallSafe(player, player.worldObj, player.getPosition().up(256)); 
