@@ -343,7 +343,7 @@ public class ModSamsContent
 				 SamsUtilities.printChatMessage((event.source.getDeathMessage((EntityLiving)event.entity)));
 			}
 		}
-		
+		/*
 		if(SamsUtilities.isLivestock(event.entity))
 		{ 
 			if(event.source.getSourceOfDamage() != null 
@@ -362,7 +362,7 @@ public class ModSamsContent
 					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(), newdrops,ei.getEntityItem().getItemDamage()));
 				}
 			} 
-		}  
+		}  */
 	}
 	
 	@SubscribeEvent

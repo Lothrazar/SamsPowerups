@@ -99,10 +99,7 @@ public class ConfigFile
 		category = "mob_changes";
 
 		canNameVillagers = instance.get(category, "nametag_usable_on_villagers",true).getBoolean();
-		
-		livestockLootMultiplier = instance.getInt("livestock_multiplier",category, 2,1,5,
-	    			"Factor to increase drops from livestock: including sheep, chicken, horse, cow, rabbit, pigs, and squid.  Useful because less animals being collected and bred means less lag.  (use 1 for vanilla behavior)");
-			 
+		 
 		 //TODO: RESPAWNING? and remove these two
 		petNametagDrops = instance.getBoolean("nametag_drops",category, true,
 	    			"Some mobs that are named drop a name tag when they die (wolf, ocelot, villager, bat, rabbit, horse).");
@@ -593,7 +590,8 @@ public class ConfigFile
 	public boolean harvest_charge;
 	public boolean respawn_egg;
 	public boolean wandTransform;
-	public int livestockLootMultiplier;
+//	public int livestockLootMultiplier;
+	//TODO: replace this with
 	public int potionIdWaterwalk;
 	public int potionIdSlowfall;
 	public int potionIdFlying;
