@@ -129,6 +129,7 @@ public class ConfigFile
 		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
     			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
 		 
+		//TODO: seperate configs for _all_flowers, _lilypads, _reeds
 		betterBonemeal = instance.getBoolean("better_bonemeal",category, true,
     			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
 
@@ -148,64 +149,54 @@ public class ConfigFile
 	private void ocean_generation() 
 	{
 		category = "ocean_generation";
-		
+		//TODO: patches of cobble that are smaller than the rest
 		worldGenOceansNotUgly = instance.getBoolean("alter_ocean_floor",category, true,
     			"Clay, sand, and dirt can generate in oceans just like they used to in the old days.  Replaces the gravel in patches.");
 	 
-		clayNumBlocks = instance.getInt("clay_num",category, 16,1,32,
-    			"Blocks per vein.");
-		clayChance = instance.getInt("clay_chance",category, 65,1,99,
-    			"Chance of spawning a vein.");
+		clayNumBlocks = instance.get(category,"clay_size",16).getInt();
+		clayChance = instance.get(category,"clay_chance",65).getInt();
 		
-		sandNumBlocks = instance.getInt("sand_num",category, 20,1,32,
-    			"Blocks per vein.");
-		sandChance = instance.getInt("sand_chance",category, 45,1,99,
-    			"Chance of spawning a vein.");
+		sandNumBlocks = instance.get(category,"sand_size",20).getInt();
+		sandChance = instance.get(category,"sand_chance",45).getInt();
 
-		dirtNumBlocks = instance.getInt("dirt_num",category, 14,1,32,
-    			"Blocks per vein.");
-		dirtChance = instance.getInt("dirt_chance",category, 30,1,99,
-    			"Chance of spawning a vein.");
+		dirtNumBlocks = instance.get(category,"dirt_size",14).getInt();
+		dirtChance = instance.get(category,"dirt_chance",30).getInt();
 	}
 
 	private void potions() 
 	{ 
-		category = "potion_ids";
-		
-		potionIdWaterwalk = instance.getInt("potion_waterwalk_id",category, 40,33,200,
-    			"ID is only exposed to avoid conflicts with other mods.");
-		  
-		potionIdSlowfall = instance.getInt("potion_slowfall_id",category, 41,33,200,
-    			"ID is only exposed to avoid conflicts with other mods.");
-		  
-		potionIdFlying = instance.getInt("potion_flying_id",category, 42,33,200,
-    			"ID is only exposed to avoid conflicts with other mods. ");
-		
-		potionIdLavawalk = instance.getInt("potion_lavawalk_id",category, 43,33,200,
-    			"ID is only exposed to avoid conflicts with other mods.");
-		
-		potionIdEnder = instance.getInt("potion_ender_id",category, 44,33,200,
-    			"ID is only exposed to avoid conflicts with other mods.");
-		
-		potionIdFrozen = instance.getInt("potion_frost_id",category, 45,33,200,
-    			"ID is only exposed to avoid conflicts with other mods.");
+		category = "potion_effect_ids";
 
-		category = "potions";
+		instance.addCustomCategoryComment(category, 
+				"IDs are only exposed to avoid conflicts with other mods.  Messing with these might break the game.   ");
+		
+		potionIdWaterwalk = instance.get(category,"waterwalk_id", 40).getInt();
+		  
+		potionIdSlowfall = instance.get(category,"slowfall_id", 41).getInt();
+		  
+		potionIdFlying = instance.get(category,"flying_id", 42).getInt();
+		
+		potionIdLavawalk = instance.get(category,"lavawalk_id", 43).getInt();
+		
+		potionIdEnder = instance.get(category,"ender_id", 44).getInt();
+		
+		potionIdFrozen = instance.get(category,"frost_id", 45).getInt();
+
+		category = "potion_effect_tweaks";
 		
 		slowfallSpeed = instance.getFloat("potion_slowfall_speed",category, 0.41F,0.1F,1F,
-    			"This factor affects how much the slowfall potion slows down the entity.");
+    			"This factor affects how much the slowfall effect slows down the entity.");
 	}
   
 	private void creative() 
 	{
 		category = "creative_inventory_added";
-		
-		//no comment on purpose. more readable, less vertical space
+		 
 		mushroomBlocksCreativeInventory = instance.get(category,"mushroom_blocks", true).getBoolean();
 
 		barrierCreativeInventory = instance.get(category,"barrier", true).getBoolean();
 		
-		dragonEggCreativeInventory = instance.get(category,"dragon_gg", true).getBoolean();
+		dragonEggCreativeInventory = instance.get(category,"dragon_egg", true).getBoolean();
 		
 		farmlandCreativeInventory = instance.get(category,"farmland", true).getBoolean();
 		
