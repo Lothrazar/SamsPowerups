@@ -27,56 +27,30 @@ public class ConfigFile
 	public ConfigFile(Configuration c)
 	{
 		instance = c; 
- 
-		mob_changes();
 
-		commands();
- 
 		blocks();
-		
-	    recipes_new();  
-	    
-		recipes_changes();
-		 
+		commands();
 		creative();
-		 
-		items(); 
-
-		harvesting_changes();
-		
-		ocean_generation();
-		
-		dungeon_chests();
-		 
 		debug_info();
-		 
-		mob_spawning(); 
-		  
-		potions();
-		 
-		nature();
-		 
-		pocket_edition();  
-
+		harvesting_changes();
 		inventory();
-		  
+		items(); 
+		mob_changes();
+		mob_spawning(); 
+		more_chest_loot(); 
+		nature();
+		ocean_generation();
 		player();
-		
+		pocket_edition();  
+		potions(); 
+	    recipes_new();   
+		recipes_changes();
+		  
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
-		canNameVillagers  = instance.getBoolean("name_villagers",category, true,
-    			"You can name villagers with a nametag. ");
-		 
-		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
-    			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
-		 
-		betterBonemeal = instance.getBoolean("better_bonemeal",category, true,
-    			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
-
 		skullSignNames = instance.getBoolean("skull_sign_names",category, true,
     			"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
 
-		
 		fragileTorches = instance.getBoolean("fragile_torches",category, true,
 				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
 		 
@@ -96,7 +70,8 @@ public class ConfigFile
 		swiftDeposit = instance.getBoolean("swift_deposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
 		
-		smartEnderchest = instance.getBoolean("smart_enderchest",category, true,
+		smartEnderchest = instance.getBoolean("smart_enderchest",category, true,//TODO: DELETe this, amke it work 
+				//only with ender potion effect. also make ender apples last longer, 10-60 min
     			"Attack with the ender chest to open it without placing it."	);
 	}
 
@@ -107,8 +82,8 @@ public class ConfigFile
 		playerDeathCoordinates = instance.getBoolean("player_death_coordinates",category, true,
     			"Players will have their death point coordinates broadcast in chat.");
 		
-		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull",category, true,
-    			"Players will drop their skull when they die.");
+		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull_on_death",category, true,
+    			"Players will drop their skull when they die for any reason.");
 	}
 
 	public void pocket_edition() 
@@ -122,18 +97,20 @@ public class ConfigFile
 	private void mob_changes() 
 	{
 		category = "mob_changes";
+
+		canNameVillagers = instance.get(category, "nametag_usable_on_villagers",true).getBoolean();
 		
-		livestockLootMultiplier  = instance.getInt("livestock_multiplier",category, 2,1,5,
+		livestockLootMultiplier = instance.getInt("livestock_multiplier",category, 2,1,5,
 	    			"Factor to increase drops from livestock: including sheep, chicken, horse, cow, rabbit, pigs, and squid.  Useful because less animals being collected and bred means less lag.  (use 1 for vanilla behavior)");
 			 
+		 //TODO: RESPAWNING? and remove these two
 		petNametagDrops = instance.getBoolean("nametag_drops",category, true,
 	    			"Some mobs that are named drop a name tag when they die (wolf, ocelot, villager, bat, rabbit, horse).");
- //TODO: RESPAWNING?
 		petNametagChat  = instance.getBoolean("nametag_death_messages",category, true,
 	    			"Non-player entities that are named with a Name Tag send a chat death message when they die.");
 	
-		removeZombieCarrotPotato = instance.getBoolean("remove_zombie_carrot_potato",category, true,
-    			"Disable these zombie drops."); 
+		removeZombieCarrotPotato = instance.get(category,"remove_zombie_drop_carrot_potato", true).getBoolean();
+    			//"Disable these zombie drops."); 
 
 		chanceZombieChildFeather = instance.getInt("chance_zombie_child_feather",category, 5,0,100,
     			"Percent chance that a child zombie will drop a feather (so 0 for vanilla).");
@@ -141,14 +118,20 @@ public class ConfigFile
 		chanceZombieVillagerEmerald = instance.getInt("chance_zombie_villager_emerald",category, 5,0,100,
     			"Percent chance that a villager zombie will drop an emerald (so 0 for vanilla).");
 		
-		endermenDropCarryingBlock = instance.getBoolean("endermen_drop_carrying_block",category, true,
-    			"Endermen will always drop any block they are carrying.");	
+		endermenDropCarryingBlock = instance.get(category,"endermen_drop_carrying_block", true).getBoolean();
+    		//	"Endermen will always drop any block they are carrying.");	
 	}
 
 	private void nature() 
 	{
 		category = "nature";
-  
+
+		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
+    			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
+		 
+		betterBonemeal = instance.getBoolean("better_bonemeal",category, true,
+    			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
+
 		plantDespawningSaplings = instance.getBoolean("sapling_plant_despawn",category, true,
     			"When a sapling (or mushroom) despawns while sitting on grass or dirt, it will instead attempt to plant itself.");
 
@@ -187,7 +170,7 @@ public class ConfigFile
 
 	private void potions() 
 	{ 
-		category = "potions";
+		category = "potion_ids";
 		
 		potionIdWaterwalk = instance.getInt("potion_waterwalk_id",category, 40,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
@@ -206,6 +189,8 @@ public class ConfigFile
 		
 		potionIdFrozen = instance.getInt("potion_frost_id",category, 45,33,200,
     			"ID is only exposed to avoid conflicts with other mods.");
+
+		category = "potions";
 		
 		slowfallSpeed = instance.getFloat("potion_slowfall_speed",category, 0.41F,0.1F,1F,
     			"This factor affects how much the slowfall potion slows down the entity.");
@@ -304,7 +289,7 @@ public class ConfigFile
 	{
 		category = "debug_screen_f3";
 		  
-		debugClearRight = instance.getBoolean("clear_right",category, false,
+		debugClearRight = instance.getBoolean("clear_right",category, true,
     			"Clears the right side. " );
 		
 		debugSlime = instance.getBoolean("slime",category, true,
@@ -317,7 +302,7 @@ public class ConfigFile
     			"Shows info on any village you are standing in.");
 	}
 	
-	private void dungeon_chests() 
+	private void more_chest_loot() 
 	{
 		category = "more_chest_loot";
  
@@ -429,16 +414,16 @@ public class ConfigFile
 				"Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
 		 
 		xRayBlock = instance.getBoolean( "chunk_error_xray",category,true,
-				"Create an xray block to see through the world at the block location, in the same way a chunk error would.  Intended for single player, not for cheating on servers."); 
+				"An xray block to through the world at the block location, in the same way a chunk error would.  Intended for single player, not for cheating on servers."); 
 
 		weatherBlock = instance.getBoolean( "weather",category,true,
-				"Craft block that will run /toggledownfall whenever it gets a redstone signal."); 
+				"Block that will run /toggledownfall whenever it gets a redstone signal.  Uses command block functions but is not editable by players."); 
 		
 		teleportBedBlock = instance.getBoolean( "teleport_bed",category,true,
-				"Command block that teleports you to the world spawn");
+				"Block that teleports you to the world spawn.  Uses command block functions but is not editable by players.");
 		
 		teleportSpawnBlock = instance.getBoolean( "teleport_spawn",category,true,
-				"Command block that teleports you to your bed"); 
+				"Block that teleports you to your bed.  Uses command block functions but is not editable by players."); 
 	}
 	
 	private void recipes_new() 
