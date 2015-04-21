@@ -44,7 +44,7 @@ public class ConfigFile
 
 		harvesting_changes();
 		
-		terrain_generation();
+		ocean_generation();
 		
 		dungeon_chests();
 		 
@@ -162,11 +162,11 @@ public class ConfigFile
     			"If true, all saplings grow in the end (ignoring sapling_biome_restricted)");
 	}
 
-	private void terrain_generation() 
+	private void ocean_generation() 
 	{
-		category = "terrain_generation";
+		category = "ocean_generation";
 		
-		worldGenOceansNotUgly = instance.getBoolean("ocean_floor",category, true,
+		worldGenOceansNotUgly = instance.getBoolean("alter_ocean_floor",category, true,
     			"Clay, sand, and dirt can generate in oceans just like they used to in the old days.  Replaces the gravel in patches.");
 	 
 		clayNumBlocks = instance.getInt("clay_num",category, 16,1,32,
