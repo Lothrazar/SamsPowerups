@@ -54,6 +54,7 @@ public class ItemRegistry
 	public static ItemFireballThrowable fire_charge_throw;
 	public static ItemSnowballFrozen frozen_snowball; 
 	public static ItemRespawnEggAnimal respawn_egg;
+	public static ItemWandPiston wand_piston;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -66,6 +67,13 @@ public class ItemRegistry
 	 
 	public static void registerItems()
 	{  
+
+		if(ModMain.cfg.wandPiston)
+		{
+			wand_piston = new ItemWandPiston();
+			ItemRegistry.registerItem(wand_piston, "wand_piston");
+		}
+		
 		if(ModMain.cfg.horse_food_upgrades )
 		{  
 			horse_upgrade_type = new ItemHorseFood();

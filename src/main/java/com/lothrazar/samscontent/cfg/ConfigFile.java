@@ -361,8 +361,15 @@ public class ConfigFile
     			"Craft a wand that will prospect the nearby area for diamonds."); 
 	*/	
 		 
-		wandBuilding = instance.getBoolean( "wand_building", category,true,
-				"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
+		wandPiston = instance.getBoolean( "wand_piston", category,true,
+				"Pulls the targeted block towards you, if there is an air block available.  Ignores anything with an inventory (tile entities) and growing plants (IGrowable).  Also ignores anything given by ignore list in this config file.");  
+	
+		String csv = instance.getString("wand_piston.ignored",category, "minecraft:bedrock",
+    			"List of ignored blocks that will not be moved.");
+		ItemWandPiston.seIgnoreBlocksFromString(csv);
+		
+		//wandBuilding = instance.getBoolean( "wand_building", category,true,
+		//		"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
 		/*
 		ItemWandBuilding.DURABILITY   = instance.getInt("wand_building.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
@@ -569,7 +576,7 @@ public class ConfigFile
 	public boolean tieredArmor;
 	public boolean furnaceNeedsCoal;  
 	public boolean plantDespawningSaplings; 
-	public boolean wandBuilding;
+	public boolean wandPiston;
 	public boolean simpleDispenser; 
 	public boolean dropPlayerSkullOnDeath;
 	public boolean searchspawner; 
