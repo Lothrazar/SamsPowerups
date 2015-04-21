@@ -12,7 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;  
 import org.apache.logging.log4j.Logger;  
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.potion.PotionRegistry;
@@ -61,7 +61,7 @@ public class DebugScreenText
 	{ 
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false){return;}
 
-		if(ModSamsContent.cfg.debugClearRight )
+		if(ModMain.cfg.debugClearRight )
 		{ 
 			event.right.clear();
 		}
@@ -76,17 +76,17 @@ public class DebugScreenText
 		event.left.add("");
 		addDateTimeInfo(event, world);
 		  
-	 	if(ModSamsContent.cfg.debugSlime && player.dimension == Reference.Dimension.overworld)
+	 	if(ModMain.cfg.debugSlime && player.dimension == Reference.Dimension.overworld)
 	 	{ 
 	 		addSlimeChunkInfo(event, player, world); 
 	 	}
 	 	
-	 	if(ModSamsContent.cfg.debugVillageInfo && world.villageCollectionObj != null)
+	 	if(ModMain.cfg.debugVillageInfo && world.villageCollectionObj != null)
 	 	{   
 	 		addVillageInfo(event, player, world);	 
 		}
 	 	
-	 	if(ModSamsContent.cfg.debugHorseInfo && player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
+	 	if(ModMain.cfg.debugHorseInfo && player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
 	 	{ 
 	 		addHorseInfo(event, player);   
 	 	} 

@@ -2,7 +2,7 @@ package com.lothrazar.samscontent.item;
 
 import com.google.common.collect.Sets;  
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -50,7 +50,7 @@ public class ItemRespawnEggEmpty extends Item
 	public ItemRespawnEggEmpty( )
 	{   
 		super(); 
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 		this.setMaxStackSize(64);   
 	}
  

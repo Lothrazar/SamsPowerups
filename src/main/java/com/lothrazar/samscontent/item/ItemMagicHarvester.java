@@ -2,7 +2,7 @@ package com.lothrazar.samscontent.item;
 
 import com.google.common.collect.Sets;  
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -48,7 +48,7 @@ public class ItemMagicHarvester extends Item
 	{   
 		super(); 
     	this.setMaxStackSize(64); 
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 	}
 	 
 	public static void addRecipe() 

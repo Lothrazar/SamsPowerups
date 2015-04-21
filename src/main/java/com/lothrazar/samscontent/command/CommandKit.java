@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;

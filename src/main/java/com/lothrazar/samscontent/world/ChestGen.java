@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.world;
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -14,7 +14,7 @@ public class ChestGen
 { 
 	public static void lootGlowstone() 
 	{
-		if(ModSamsContent.cfg.lootGlowstone)
+		if(ModMain.cfg.lootGlowstone)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] 
 			{
@@ -27,7 +27,7 @@ public class ChestGen
 
 	public static void lootQuartz() 
 	{
-		if(ModSamsContent.cfg.lootQuartz)
+		if(ModMain.cfg.lootQuartz)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] 
 			{
@@ -40,7 +40,7 @@ public class ChestGen
 
 	public static void lootObsidian() 
 	{
-		if(ModSamsContent.cfg.lootObsidian)
+		if(ModMain.cfg.lootObsidian)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] 
 			{
@@ -53,7 +53,7 @@ public class ChestGen
 
 	public static void lootAllRecords() 
 	{
-		if(ModSamsContent.cfg.lootAllRecords)
+		if(ModMain.cfg.lootAllRecords)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] 
 			{

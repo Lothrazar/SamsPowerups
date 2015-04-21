@@ -11,7 +11,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 

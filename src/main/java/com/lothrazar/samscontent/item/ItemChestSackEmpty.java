@@ -2,7 +2,7 @@ package com.lothrazar.samscontent.item;
 
 import com.google.common.collect.Sets;  
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -41,7 +41,7 @@ public class ItemChestSackEmpty extends Item
 	{   
 		super(); 
 		this.setMaxStackSize(64);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 	}
 	//TODO:  make it also work with trapped chests/dispensers/droppers/ etc. set extra flag to identify
 
@@ -52,7 +52,7 @@ public class ItemChestSackEmpty extends Item
 			Items.string,
 			Blocks.chest  );
 		
-		if(ModSamsContent.cfg.uncraftGeneral)
+		if(ModMain.cfg.uncraftGeneral)
 			GameRegistry.addSmelting(ItemRegistry.wandChest, new ItemStack(Items.leather), 0);
 	}
 

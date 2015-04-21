@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.item;
 import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -29,7 +29,7 @@ public class ItemWandWater  extends Item
 		super();   
     	this.setMaxDamage(DURABILITY); 
     	this.setMaxStackSize(1); 
-		this.setCreativeTab(ModSamsContent.tabSamsContent);  
+		this.setCreativeTab(ModMain.tabSamsContent);  
 	}
  
 	public static void addRecipe() 

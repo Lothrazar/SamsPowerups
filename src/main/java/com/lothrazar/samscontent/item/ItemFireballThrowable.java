@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.item;
 import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -30,7 +30,7 @@ public class ItemFireballThrowable  extends Item //since ItemFireball is not thr
 	public ItemFireballThrowable()
 	{  
 		super();   
-		this.setCreativeTab(ModSamsContent.tabSamsContent); 
+		this.setCreativeTab(ModMain.tabSamsContent); 
 		this.setMaxStackSize(64);
 	}
  

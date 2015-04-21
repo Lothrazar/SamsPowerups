@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Sets;   
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -38,7 +38,7 @@ public class ItemEnderBook extends Item
 	{  
 		super();  
 		this.setMaxStackSize(1); 
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 	}
 	
 	public static void addRecipe() 
@@ -47,7 +47,7 @@ public class ItemEnderBook extends Item
 				 Items.ender_pearl, 
 				 Items.book);
 
-		if(ModSamsContent.cfg.uncraftGeneral) 
+		if(ModMain.cfg.uncraftGeneral) 
 		{
 			GameRegistry.addSmelting(ItemRegistry.itemEnderBook, 
 					new ItemStack(Items.ender_pearl, 1), 0);

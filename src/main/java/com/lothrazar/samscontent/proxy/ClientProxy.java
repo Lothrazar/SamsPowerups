@@ -10,7 +10,7 @@ import  net.minecraft.item.Item;
 
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -63,7 +63,7 @@ public class ClientProxy extends CommonProxy
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-        if(ModSamsContent.cfg.respawn_egg)
+        if(ModMain.cfg.respawn_egg)
         {
         	for(Object key : EntityList.entityEggs.keySet())
             {

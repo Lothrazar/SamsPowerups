@@ -6,7 +6,7 @@ import java.util.Random;
 
 import com.google.common.collect.Sets; 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;

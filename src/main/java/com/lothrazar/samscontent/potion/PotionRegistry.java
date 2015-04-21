@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.potion;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -51,17 +51,17 @@ public class PotionRegistry
 	{ 
 		//PotionRegistry.tired = (new PotionCustom(ModSamsContent.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
 		
-		PotionRegistry.waterwalk = (new PotionCustom(ModSamsContent.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
+		PotionRegistry.waterwalk = (new PotionCustom(ModMain.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		PotionRegistry.lavawalk = (new PotionCustom(ModSamsContent.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
+		PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
-		PotionRegistry.slowfall = (new PotionCustom(ModSamsContent.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModMain.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		
-		PotionRegistry.flying = (new PotionCustom(ModSamsContent.cfg.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
+		PotionRegistry.flying = (new PotionCustom(ModMain.cfg.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
 		
-		PotionRegistry.ender = (new PotionCustom(ModSamsContent.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
+		PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 		
-		PotionRegistry.frozen = (new PotionCustom(ModSamsContent.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
+		PotionRegistry.frozen = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
@@ -144,7 +144,7 @@ public class PotionRegistry
 		if(world.getTotalWorldTime() % Reference.TICKS_PER_SEC/2 == 0) // every half second
     	{
     		//this. fires only on server side. so send packet for client to spawn particles and so on
-    		ModSamsContent.network.sendToAll(new MessagePotion(living.getPosition(), particle.getParticleID()));
+    		ModMain.network.sendToAll(new MessagePotion(living.getPosition(), particle.getParticleID()));
     	}
 	}
 
@@ -232,7 +232,7 @@ public class PotionRegistry
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
 	    	 if(event.entityLiving.motionY < 0)
 	    	 { 
-				event.entityLiving.motionY *= ModSamsContent.cfg.slowfallSpeed;
+				event.entityLiving.motionY *= ModMain.cfg.slowfallSpeed;
 				  
 				event.entityLiving.fallDistance = 0f; //for no fall damage
 	    	 } 

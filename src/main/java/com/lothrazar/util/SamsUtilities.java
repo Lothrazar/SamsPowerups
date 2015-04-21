@@ -39,7 +39,7 @@ import net.minecraft.world.World;
 import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard; 
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.sun.istack.internal.logging.Logger;
 
 public class SamsUtilities
@@ -292,7 +292,7 @@ public class SamsUtilities
 			 
 			 if(b == null)
 			 {
-				 ModSamsContent.logger.log(Level.WARN, "getBlockListFromCSV : Block not found : "+id);
+				 ModMain.logger.log(Level.WARN, "getBlockListFromCSV : Block not found : "+id);
 			 }
 			 else 
 			 {
@@ -321,7 +321,7 @@ public class SamsUtilities
 			 
 			if(isItNull == null)
 			{
-				ModSamsContent.logger.log(Level.WARN, "Item not found : "+ ids[i]);
+				ModMain.logger.log(Level.WARN, "Item not found : "+ ids[i]);
 			}
 			else
 			{

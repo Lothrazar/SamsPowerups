@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.item;
 import java.util.List;
 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -22,7 +22,7 @@ public class ItemHorseFood extends Item
 	{  
 		super();  
 		this.setMaxStackSize(64);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 	}
 	@Override
     public boolean hasEffect(ItemStack par1ItemStack)

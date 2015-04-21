@@ -2,7 +2,7 @@ package com.lothrazar.samscontent.world;
 
 import java.util.Random;
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -30,9 +30,9 @@ public class WorldGeneratorOcean implements IWorldGenerator
  
 	public WorldGeneratorOcean() 
 	{   
-	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModSamsContent.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModSamsContent.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModSamsContent.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModMain.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModMain.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	}
 	 
 	@Override
@@ -41,11 +41,11 @@ public class WorldGeneratorOcean implements IWorldGenerator
 		if(world.provider.getDimensionId() == Reference.Dimension.overworld) 
 		{ 
 			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
-					ModSamsContent.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModMain.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genSand, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
-					ModSamsContent.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModMain.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE,
-					ModSamsContent.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModMain.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
 	}
 	

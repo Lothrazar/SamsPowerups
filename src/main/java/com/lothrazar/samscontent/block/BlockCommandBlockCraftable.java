@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.block;
 import java.util.Random; 
 
 import com.lothrazar.samscontent.BlockRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.registry.GameRegistry; 
@@ -32,7 +32,7 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 	{ 
 		this.setHardness(3F);
 		this.setResistance(5F);
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 	}
 	public static enum CommandType
 	{
@@ -149,7 +149,7 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 				'r', Blocks.redstone_block
 				);
 			
-		if(ModSamsContent.cfg.uncraftGeneral) 
+		if(ModMain.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(BlockRegistry.command_block_weather, new ItemStack(Blocks.redstone_block, 5), 0);
 	}  
 }

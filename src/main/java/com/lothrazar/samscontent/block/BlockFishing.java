@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.block;
 import java.util.Random;  
 
 import com.lothrazar.samscontent.BlockRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -31,7 +31,7 @@ public class BlockFishing extends Block
 	public BlockFishing()
 	{
 		super(Material.wood);  
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 		this.setHardness(3F);
 		this.setResistance(5F); 
 		this.setStepSound(soundTypeWood);
@@ -125,7 +125,7 @@ public class BlockFishing extends Block
 				'f', new ItemStack(Items.fishing_rod, 1, 0), 
 				'p', Blocks.planks);
 
-		if(ModSamsContent.cfg.uncraftGeneral)
+		if(ModMain.cfg.uncraftGeneral)
 		{
 			GameRegistry.addSmelting(new ItemStack(BlockRegistry.block_fishing)
 			, new ItemStack(Blocks.web, 4), 0); 

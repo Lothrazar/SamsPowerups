@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -173,7 +173,7 @@ public class ItemChestSack extends Item
 		
 		if(itemids==null)
 		{
-			ModSamsContent.logger.log(Level.WARN, "null nbt problem in itemchestsack");
+			ModMain.logger.log(Level.WARN, "null nbt problem in itemchestsack");
 			return;
 		}
 	 

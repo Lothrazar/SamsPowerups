@@ -4,7 +4,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockLiquid;

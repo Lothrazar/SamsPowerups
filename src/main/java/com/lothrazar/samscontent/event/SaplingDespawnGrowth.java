@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.event;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
@@ -116,7 +116,7 @@ public class SaplingDespawnGrowth
 		//deepocean
 		//frozen ocean(10N  
 		 
-		if(ModSamsContent.cfg.saplingAllNether)
+		if(ModMain.cfg.saplingAllNether)
 		{
 			acaciaBiomes.add(BiomeGenBase.hell.biomeID);
 			oakBiomes.add(BiomeGenBase.hell.biomeID);
@@ -126,7 +126,7 @@ public class SaplingDespawnGrowth
 			jungleBiomes.add(BiomeGenBase.hell.biomeID);
 		}
 		
-		if(ModSamsContent.cfg.saplingAllEnd)
+		if(ModMain.cfg.saplingAllEnd)
 		{ 
 			acaciaBiomes.add(BiomeGenBase.sky.biomeID);
 			oakBiomes.add(BiomeGenBase.sky.biomeID);
@@ -140,7 +140,7 @@ public class SaplingDespawnGrowth
 	@SubscribeEvent
 	public void onSaplingGrowTreeEvent(SaplingGrowTreeEvent event)
 	{  
-		if(ModSamsContent.cfg.saplingGrowthRestricted == false) {return;}
+		if(ModMain.cfg.saplingGrowthRestricted == false) {return;}
 		
 		Block b = event.world.getBlockState(event.pos).getBlock();
 		
@@ -197,7 +197,7 @@ public class SaplingDespawnGrowth
 	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent event)
 	{  
-		 if(ModSamsContent.cfg.plantDespawningSaplings == false) {return;}
+		 if(ModMain.cfg.plantDespawningSaplings == false) {return;}
 		 
 		 ItemStack is = event.entityItem.getEntityItem();
 		 if(is == null ) {return;}//has not happened in the wild, yet

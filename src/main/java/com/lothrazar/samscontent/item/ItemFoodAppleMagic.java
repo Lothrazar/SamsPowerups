@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.samscontent.ModSamsContent; 
+import com.lothrazar.samscontent.ModMain; 
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -41,7 +41,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		hasEffect = has_effect;//true gives it enchantment shine
  
 		this.setAlwaysEdible(); //can eat even if full hunger
-		this.setCreativeTab(ModSamsContent.tabSamsContent);
+		this.setCreativeTab(ModMain.tabSamsContent);
 		potionIds = new ArrayList<Integer>();
 		potionDurations = new ArrayList<Integer>();
 		potionAmplifiers = new ArrayList<Integer>();
@@ -97,7 +97,7 @@ public class ItemFoodAppleMagic extends ItemFood
 			,'l', ingredient
 			,'a', Items.apple);
 		
-		if(ModSamsContent.cfg.uncraftGeneral) 
+		if(ModMain.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(apple, new ItemStack(ingredient.getItem(), 8),	0);
 	} 
 	 

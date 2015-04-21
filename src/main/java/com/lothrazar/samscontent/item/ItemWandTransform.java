@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.google.common.collect.Sets;  
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -51,7 +51,7 @@ public class ItemWandTransform extends Item
 		super(); 
     	this.setMaxDamage(DURABILITY);
     	this.setMaxStackSize(1); 
-		this.setCreativeTab(ModSamsContent.tabSamsContent);  
+		this.setCreativeTab(ModMain.tabSamsContent);  
 	}
 	  
 	@Override

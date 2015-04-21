@@ -1,7 +1,7 @@
 package com.lothrazar.samscontent.cfg;
 
   
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraftforge.common.config.ConfigElement;
@@ -14,9 +14,9 @@ public class ConfigGUI extends GuiConfig
     public ConfigGUI(GuiScreen parent) 
     {
         super(parent,
-                new ConfigElement(ModSamsContent.cfg.instance().getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(),
+                new ConfigElement(ModMain.cfg.instance().getCategory(Configuration.CATEGORY_GENERAL)).getChildElements(),
                 "Sams Powerups", false, false, 
-                GuiConfig.getAbridgedConfigPath(ModSamsContent.cfg.instance().toString()));
+                GuiConfig.getAbridgedConfigPath(ModMain.cfg.instance().toString()));
         
     }
 }

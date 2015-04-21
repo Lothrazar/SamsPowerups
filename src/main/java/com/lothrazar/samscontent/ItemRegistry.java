@@ -66,7 +66,7 @@ public class ItemRegistry
 	 
 	public static void registerItems()
 	{  
-		if(ModSamsContent.cfg.horse_food_upgrades )
+		if(ModMain.cfg.horse_food_upgrades )
 		{  
 			horse_upgrade_type = new ItemHorseFood();
 			ItemRegistry.registerItem(horse_upgrade_type, "horse_upgrade_type");
@@ -80,22 +80,22 @@ public class ItemRegistry
 			ItemHorseFood.addRecipes();
 		}
 		
-		if(ModSamsContent.cfg.beetroot)
+		if(ModMain.cfg.beetroot)
 		{ 
 			//TODO: beetroot  breeds pigs - no forge way exists
 			//TODO: beetroot gets pigs to follow like carrot  - no forge way exists
 			 
-			beetroot_seed = new ItemSeeds(BlockRegistry.beetroot_crop, Blocks.farmland).setCreativeTab(ModSamsContent.tabSamsContent);
+			beetroot_seed = new ItemSeeds(BlockRegistry.beetroot_crop, Blocks.farmland).setCreativeTab(ModMain.tabSamsContent);
 			ItemRegistry.registerItem(beetroot_seed, "beetroot_seed");
 			
-			beetrootItem = new ItemFood(3, false).setCreativeTab(ModSamsContent.tabSamsContent);
+			beetrootItem = new ItemFood(3, false).setCreativeTab(ModMain.tabSamsContent);
 			ItemRegistry.registerItem(beetrootItem, "beetroot_item");
 		
-			beetrootSoup = new ItemSoup(8).setCreativeTab(ModSamsContent.tabSamsContent); 
+			beetrootSoup = new ItemSoup(8).setCreativeTab(ModMain.tabSamsContent); 
 			ItemRegistry.registerItem(beetrootSoup, "beetroot_soup");
 		}
 		 
-		if(ModSamsContent.cfg.fire_charge_throw)
+		if(ModMain.cfg.fire_charge_throw)
 		{ 
 			ItemRegistry.fire_charge_throw = new ItemFireballThrowable();
 
@@ -104,7 +104,7 @@ public class ItemRegistry
 			ItemFireballThrowable.addRecipe();		 
 		}
 		 
-		if(ModSamsContent.cfg.frozen_snowball)
+		if(ModMain.cfg.frozen_snowball)
 		{ 
 			ItemRegistry.frozen_snowball = new ItemSnowballFrozen();
 
@@ -113,7 +113,7 @@ public class ItemRegistry
 			ItemSnowballFrozen.addRecipe();		 
 		}
 		 
-		if(ModSamsContent.cfg.wandWater)
+		if(ModMain.cfg.wandWater)
 		{  
 			ItemRegistry.wandWater = new ItemWandWater();
 
@@ -122,7 +122,7 @@ public class ItemRegistry
 			ItemWandWater.addRecipe();		 
 		}
 		
-		if(ModSamsContent.cfg.lightning_charge)
+		if(ModMain.cfg.lightning_charge)
 		{  
 			ItemRegistry.lightning_charge = new ItemLightning();
 
@@ -131,7 +131,7 @@ public class ItemRegistry
 			ItemLightning.addRecipe();		 
 		}
 
-		if(ModSamsContent.cfg.carbon_paper)
+		if(ModMain.cfg.carbon_paper)
 		{ 
 			ItemRegistry.carbon_paper = new ItemPaperCarbon();
 
@@ -148,7 +148,7 @@ public class ItemRegistry
 			ItemWandBuilding.addRecipe(); 
 		}
 		 */
-		if(ModSamsContent.cfg.chest_sack)
+		if(ModMain.cfg.chest_sack)
 		{   
 			ItemRegistry.itemChestSack = new ItemChestSack();   
 			ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
@@ -159,7 +159,7 @@ public class ItemRegistry
 			ItemChestSackEmpty.addRecipe();  
 		}
 
-		if(ModSamsContent.cfg.wandTransform)
+		if(ModMain.cfg.wandTransform)
 		{   
 			ItemRegistry.wandTransform = new ItemWandTransform(); 
 			ItemRegistry.registerItem(ItemRegistry.wandTransform, "wand_transform");
@@ -167,7 +167,7 @@ public class ItemRegistry
 			ItemWandTransform.addRecipe();  
 		}
 
-		if(ModSamsContent.cfg.harvest_charge)
+		if(ModMain.cfg.harvest_charge)
 		{   
 			ItemRegistry.harvest_charge = new ItemMagicHarvester();
 			ItemRegistry.registerItem(ItemRegistry.harvest_charge, "harvest_charge");
@@ -175,7 +175,7 @@ public class ItemRegistry
 			ItemMagicHarvester.addRecipe();  
 		}
 		
-		if(ModSamsContent.cfg.respawn_egg)
+		if(ModMain.cfg.respawn_egg)
 		{   
 			respawn_egg = new ItemRespawnEggAnimal();
 			ItemRegistry.registerItem(respawn_egg, "respawn_egg");
@@ -185,14 +185,14 @@ public class ItemRegistry
 			ItemRespawnEggEmpty.addRecipe();  
 		}
  
-		if(ModSamsContent.cfg.enderBook)
+		if(ModMain.cfg.enderBook)
 		{ 
 			ItemRegistry.itemEnderBook = new ItemEnderBook(); 
 			ItemRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender"); 
 			ItemEnderBook.addRecipe();
 		}
 		 
-		if(ModSamsContent.cfg.appleEmerald) 
+		if(ModMain.cfg.appleEmerald) 
 		{
 			ItemRegistry.apple_emerald = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_emerald.addEffect(PotionRegistry.slowfall.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
@@ -210,7 +210,7 @@ public class ItemRegistry
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Blocks.emerald_block)); 
 		}   
 		 
-		if(ModSamsContent.cfg.appleDiamond) 
+		if(ModMain.cfg.appleDiamond) 
 		{  
 			ItemRegistry.apple_diamond = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_diamond.addEffect(PotionRegistry.flying.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
@@ -229,7 +229,7 @@ public class ItemRegistry
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_diamond_rich,new ItemStack(Blocks.diamond_block));
 		}
  
-		if(ModSamsContent.cfg.appleLapis)
+		if(ModMain.cfg.appleLapis)
 		{ 
 			ItemRegistry.apple_lapis = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
 			ItemRegistry.apple_lapis.addEffect(PotionRegistry.waterwalk.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I); 
@@ -246,7 +246,7 @@ public class ItemRegistry
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_lapis_rich,new ItemStack(Blocks.lapis_block));	 
 		}
 		  
-		if(ModSamsContent.cfg.appleChocolate)
+		if(ModMain.cfg.appleChocolate)
 		{
 			ItemRegistry.apple_chocolate = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false); 
 			ItemRegistry.apple_chocolate.addEffect(Potion.digSpeed.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I + 1); 
@@ -260,7 +260,7 @@ public class ItemRegistry
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_chocolate_rich, new ItemStack(Items.cookie));
 		}
 	 
-		if(ModSamsContent.cfg.appleNetherStar) 
+		if(ModMain.cfg.appleNetherStar) 
 		{ 
 			ItemRegistry.apple_nether_star = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);  
 		 
@@ -271,7 +271,7 @@ public class ItemRegistry
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_nether_star,new ItemStack(Items.nether_wart));
 		}
 	 
-		if(ModSamsContent.cfg.appleNetherStar) 
+		if(ModMain.cfg.appleNetherStar) 
 		{ 
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);   
 			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I);  

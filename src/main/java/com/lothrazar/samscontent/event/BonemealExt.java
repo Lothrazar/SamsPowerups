@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.event;
 
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.block.Block;
@@ -19,7 +19,7 @@ public class BonemealExt
 		 
   		//we could do a 1/3 odds chance or something, but tall flowers work everytime so following that
   		
-  		if(ModSamsContent.cfg.bonemealAllFlowers )
+  		if(ModMain.cfg.bonemealAllFlowers )
   		{ 
 		 	if ( blockClicked.equals(Blocks.yellow_flower))//yellow flowers have no damage variations
 		 	{   
@@ -35,13 +35,13 @@ public class BonemealExt
 		 	} 
   		}
 	 	
-	 	if(ModSamsContent.cfg.bonemealLilypads && blockClicked.equals(Blocks.waterlily))
+	 	if(ModMain.cfg.bonemealLilypads && blockClicked.equals(Blocks.waterlily))
 	 	{ 
 	 		SamsUtilities.dropItemStackInWorld(world, pos,new ItemStack(Blocks.waterlily));
 	 	 
 		  	success = true;
 	 	} 
-	 	if(ModSamsContent.cfg.bonemealReeds && blockClicked.equals(Blocks.reeds))
+	 	if(ModMain.cfg.bonemealReeds && blockClicked.equals(Blocks.reeds))
 	 	{
 	 		//do not drop items, just grow them upwards
 	 	 

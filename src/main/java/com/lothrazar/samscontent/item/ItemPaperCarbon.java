@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -33,7 +33,7 @@ public class ItemPaperCarbon  extends Item
 	public ItemPaperCarbon()
 	{  
 		super();    
-		this.setCreativeTab(ModSamsContent.tabSamsContent); 
+		this.setCreativeTab(ModMain.tabSamsContent); 
 	}
   
 	public static void addRecipe() 
