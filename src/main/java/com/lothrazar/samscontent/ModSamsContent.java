@@ -372,15 +372,18 @@ public class ModSamsContent
 		}
 		  
 		if(ModSamsContent.cfg.canNameVillagers && 
-		  held != null && held.getItem() == Items.name_tag && held.hasDisplayName())
+		  held != null && held.getItem() == Items.name_tag && 
+		  held.hasDisplayName()  )
 		{    
 			if(event.target instanceof EntityVillager)
 			{
-				EntityVillager v = (EntityVillager)event.entity;
-				 
+				EntityVillager v = (EntityVillager)event.target;
+				  
 				v.setCustomNameTag(held.getDisplayName()); 
 				
-				SamsUtilities.decrHeldStackSize(event.entityPlayer);
+				SamsUtilities.decrHeldStackSize(event.entityPlayer); 
+				
+				event.setCanceled(true);//stop the GUI inventory opening 
 			} 
 		} 
   

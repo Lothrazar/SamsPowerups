@@ -192,12 +192,20 @@ public class RecipeRegistry
 		GameRegistry.addRecipe(new ItemStack(Blocks.planks, 3, Reference.planks_darkoak), "   ","xxx", "xxx", 
 				'x', new ItemStack(Blocks.wooden_slab, 1, Reference.planks_darkoak));
   	 
+		//planks to logs
 		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_oak),     "x  ","x  ","xx ", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_oak));
 		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_spruce),  "x  ","x  ","xx ", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_spruce));
 		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_birch),   "x  ","x  ","xx ", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_birch));
 		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_jungle),  "x  ","x  ","xx ", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_jungle));
 		GameRegistry.addRecipe(new ItemStack(Blocks.log2,1, Reference.log2_acacia), "x  ","x  ","xx ", 'x', new ItemStack(Blocks.planks, 1,Reference.planks_acacia));
 		GameRegistry.addRecipe(new ItemStack(Blocks.log2,1, Reference.log2_darkoak),"x  ","x  ","xx ", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_darkoak));
+ 		  
+		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_oak),     " x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_oak));
+		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_spruce),  " x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_spruce));
+		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_birch),   " x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_birch));
+		GameRegistry.addRecipe(new ItemStack(Blocks.log, 1, Reference.log_jungle),  " x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_jungle));
+		GameRegistry.addRecipe(new ItemStack(Blocks.log2,1, Reference.log2_acacia), " x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1,Reference.planks_acacia));
+		GameRegistry.addRecipe(new ItemStack(Blocks.log2,1, Reference.log2_darkoak)," x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_darkoak));
  		  
 		
 		//four planks makes 3 fences
