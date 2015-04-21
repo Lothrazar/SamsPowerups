@@ -1,5 +1,8 @@
 package com.lothrazar.samscontent.event;
 
+import com.lothrazar.samscontent.ModSamsContent;
+import com.lothrazar.util.SamsUtilities;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -12,45 +15,36 @@ public class BonemealExt
 {
 	public static void useBonemeal(World world, EntityPlayer entityPlayer, BlockPos pos, Block blockClicked)
 	{
-		boolean showParticles = false;
-		boolean decrementInv = false;
-		
-		//event.entityPlayer.worldObj.getBlockState(event.pos)
-		//new method: the Block itself tells what number to return, not the world.  
-		//the world wraps up the state of the block that we can query, and the 
-		//block class translates
-
-  		if(world.isRemote){return;}//stop it from doing a second ghost item drop clientsideonly
+		boolean success = false; 
+		 
+  		//we could do a 1/3 odds chance or something, but tall flowers work everytime so following that
   		
-	 	if ( blockClicked.equals(Blocks.yellow_flower))//yellow flowers have no damage variations
-	 	{  
-	 		entityPlayer.entityDropItem( new ItemStack(Blocks.yellow_flower ,1), 1); 
-
-	 		decrementInv = true;
-		  	showParticles = true;
-	 	}
-	 	else if ( blockClicked.equals(Blocks.red_flower)) 	//the red flower is ALL the flowers
-	 	{   
-			int blockClickedDamage = Blocks.red_flower.getMetaFromState(world.getBlockState(pos)); 
-
-			entityPlayer.entityDropItem( new ItemStack(Blocks.red_flower ,1,blockClickedDamage), 1);//quantity = 1
-
-	 		decrementInv = true;
-		  	showParticles = true; 
-	 	}
-	 	else if ( blockClicked.equals(Blocks.waterlily))
+  		if(ModSamsContent.cfg.bonemealAllFlowers )
+  		{ 
+		 	if ( blockClicked.equals(Blocks.yellow_flower))//yellow flowers have no damage variations
+		 	{   
+		 		SamsUtilities.dropItemStackInWorld(world, pos,new ItemStack(Blocks.yellow_flower));
+		
+			  	success = true;
+		 	}
+		 	else if ( blockClicked.equals(Blocks.red_flower)) 	//the red flower is ALL the flowers
+		 	{    
+				SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(Blocks.red_flower ,1,Blocks.red_flower.getMetaFromState(world.getBlockState(pos))));
+		
+			  	success = true; 
+		 	} 
+  		}
+	 	
+	 	if(ModSamsContent.cfg.bonemealLilypads && blockClicked.equals(Blocks.waterlily))
 	 	{ 
-	 		entityPlayer.entityDropItem( new ItemStack(Blocks.waterlily ,1), 1);
-
-	 		decrementInv = true;
-		  	showParticles = true;
+	 		SamsUtilities.dropItemStackInWorld(world, pos,new ItemStack(Blocks.waterlily));
+	 	 
+		  	success = true;
 	 	} 
-	 	else if ( blockClicked.equals(Blocks.reeds))
+	 	if(ModSamsContent.cfg.bonemealReeds && blockClicked.equals(Blocks.reeds))
 	 	{
-	 		//reeds can only be three tall so we stop there
-	 		Block blockAbove = world.getBlockState(pos.up(1)).getBlock();
-	 		Block blockAbove2 = world.getBlockState(pos.up(2)).getBlock();
-	 		
+	 		//do not drop items, just grow them upwards
+	 	 
 	 		int goUp = 0;
 	 		
 	 		if(world.isAirBlock(pos.up(1))) goUp = 1;
@@ -60,24 +54,17 @@ public class BonemealExt
 			{
 				world.setBlockState(pos.up(goUp), Blocks.reeds.getDefaultState());
 
-			  	showParticles = true;
-		 		decrementInv = true;
+			  	success = true; 
 			} 
 	 	}
-	 	
-	 	if(decrementInv)
+	 	//TODO: maybe vines one day
+	 	 
+	 	if(success)
 	 	{ 
-			ItemStack held = entityPlayer.getCurrentEquippedItem();
-			
-	 		if(entityPlayer.capabilities.isCreativeMode == false)
-	 			held.stackSize--;
-	 		
-	 		if(held.stackSize == 0) 
-	 			entityPlayer.inventory.setInventorySlotContents(entityPlayer.inventory.currentItem, null); 		 
-	 	}
-	 	if(showParticles)
-	 	{
-	 		world.spawnParticle(EnumParticleTypes.SPELL, pos.getX(), pos.getY(), pos.getZ(), 0, 0, 0, 4);	
+	 		//the game also uses VILLAGER_HAPPY for their bonemeal events so i copy
+	 		SamsUtilities.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);
+	 		 
+			SamsUtilities.decrHeldStackSize(entityPlayer); 
 	 	} 
 	}
 }

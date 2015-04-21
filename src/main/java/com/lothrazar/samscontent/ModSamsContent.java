@@ -547,9 +547,9 @@ public class ModSamsContent
 	  	  	}
 		}
 		
-		if(ModSamsContent.cfg.betterBonemeal 
-  				&& event.action != event.action.LEFT_CLICK_BLOCK 
-  				&& SamsUtilities.isBonemeal(held)  && 
+		if(//&&
+  				event.action == event.action.RIGHT_CLICK_BLOCK && 
+  				SamsUtilities.isBonemeal(held)  && 
   				blockClicked != null ) 
 		{    
 			BonemealExt.useBonemeal(event.world, event.entityPlayer, event.pos, blockClicked);

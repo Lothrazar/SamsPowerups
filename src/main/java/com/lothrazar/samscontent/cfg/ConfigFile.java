@@ -125,11 +125,13 @@ public class ConfigFile
 
 		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
     			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");
-		 
-		//TODO: seperate configs for _all_flowers, _lilypads, _reeds
-		betterBonemeal = instance.getBoolean("better_bonemeal",category, true,
-    			"Bonemeal grows more things: lilypads, all flowers, and reeds. ");
+  
+		bonemealAllFlowers = instance.get(category,"bonemeal_all_flowers", true).getBoolean();
 
+		bonemealLilypads = instance.get(category,"bonemeal_lilypads", true).getBoolean();
+
+		bonemealReeds = instance.get(category,"bonemeal_reeds", true).getBoolean();
+		
 		plantDespawningSaplings = instance.getBoolean("sapling_plant_despawn",category, true,
     			"When a sapling (or mushroom) despawns while sitting on grass or dirt, it will instead attempt to plant itself.");
 
@@ -209,7 +211,7 @@ public class ConfigFile
 		
 		smoothstoneTools = instance.getBoolean("smoothstone_tools",category, true,
 				"Making stone tools out of cobblestone gives damaged tools.  Making stone tools out of smoothstone gives the fully repaired tool.");  
-
+//TODO: split -> multiple configs, for iron and diamond
 		tieredArmor = instance.getBoolean("tiered_armor",category, true,
 				"If true, crafting iron armor requires repaired leather armor as part of the recipe, AND diamond armor requires chain mail.");  
 	}
@@ -217,14 +219,12 @@ public class ConfigFile
 	private void harvesting_changes() 
 	{
 		category = "harvesting_changes";
-		 /*
+		 /*//TODO: revisit/add back in??
+		  //add clay
 		String csv = instance.getString("harvestOnlyShovel",category, "minecraft:dirt,minecraft:sand",
     			"If these blocks are not harvested by a shovel, they will break but have no drops."); 
 		HandlerPlayerHarvest.setShovelFromCSV(csv);
-	
-		String csvaxe = instance.getString("harvestOnlyAxe",category, "minecraft:log,minecraft:log2",
-    			"If these blocks are not harvested by an axe, they will break but have no drops."); 
-		HandlerPlayerHarvest.seAxeFromCSV(csvaxe);
+	 
 		 */
 		harvestGlassPickaxe  = instance.getBoolean("harvest_glass_pickaxe",category, true,
     			"Sets the pickaxe as the correct tool to harvest glass (by default there is no correct glass tool)."); 
@@ -516,7 +516,9 @@ public class ConfigFile
 	public boolean craftableTransmuteRecords;    
 	public boolean craftableBonemealColouredWool;   
 	public boolean craftBooksWithoutLeather; 
-	public boolean betterBonemeal;
+	public boolean bonemealAllFlowers;
+	public boolean bonemealLilypads;
+	public boolean bonemealReeds;
 	public boolean decorativeBlocks;  
 	public boolean uncraftGeneral; 
 	public boolean fishingNetBlock;
