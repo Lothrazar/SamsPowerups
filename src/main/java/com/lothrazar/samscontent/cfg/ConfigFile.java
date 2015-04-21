@@ -216,11 +216,11 @@ public class ConfigFile
 		category = "creative_inventory_added";
 		
 		//no comment on purpose. more readable, less vertical space
-		mushroomBlocksCreativeInventory = instance.get(category,"mushroomBlocks", true).getBoolean();
+		mushroomBlocksCreativeInventory = instance.get(category,"mushroom_blocks", true).getBoolean();
 
 		barrierCreativeInventory = instance.get(category,"barrier", true).getBoolean();
 		
-		dragonEggCreativeInventory = instance.get(category,"dragonEgg", true).getBoolean();
+		dragonEggCreativeInventory = instance.get(category,"dragon_gg", true).getBoolean();
 		
 		farmlandCreativeInventory = instance.get(category,"farmland", true).getBoolean();
 		
@@ -276,28 +276,28 @@ public class ConfigFile
 	{
 		category = "mob_spawning";
 		
-		spawnBlazeDesertHills = instance.get(category,"blaze_desertHills", true).getBoolean(); 
+		spawnBlazeDesertHills = instance.get(category,"blaze_deserthills", true).getBoolean(); 
     		
-		spawnMagmaCubeDesert = instance.get(category,"magmaCube_Desert", true).getBoolean(); 
+		spawnMagmaCubeDesert = instance.get(category,"magmacube_desert", true).getBoolean(); 
     		
-		spawnCaveSpiderMesa = instance.get(category,"caveSpider_Mesa", true).getBoolean(); 
+		spawnCaveSpiderMesa = instance.get(category,"cavespider_mesa", true).getBoolean(); 
     		
-		spawnCaveSpiderRoofedForest = instance.get(category,"caveSpider_RoofedForest", true).getBoolean(); 
+		spawnCaveSpiderRoofedForest = instance.get(category,"cavespider_roofedforest", true).getBoolean(); 
     		
-		spawnSnowgolemsIceMountains = instance.get(category,"snowgolems_IceMountains", true).getBoolean(); 
+		spawnSnowgolemsIceMountains = instance.get(category,"snowgolems_icemountains", true).getBoolean(); 
     		
-		spawnGhastDeepOcean = instance.get(category,"ghast_DeepOcean", true).getBoolean(); 
+		spawnGhastDeepOcean = instance.get(category,"ghast_deepocean", true).getBoolean(); 
     		
-		spawnHorseIcePlains = instance.get(category,"horse_IcePlains", true).getBoolean(); 
+		spawnHorseIcePlains = instance.get(category,"horse_iceplains", true).getBoolean(); 
     		
-		spawnHorseOceanIslands = instance.get(category,"horse_OceanIslands", true).getBoolean(); 
+		spawnHorseOceanIslands = instance.get(category,"horse_ocean", true).getBoolean(); 
     		
-		spawnHorseExtremeHills = instance.get(category,"horse_ExtremeHills", true).getBoolean(); 
+		spawnHorseExtremeHills = instance.get(category,"horse_extremehills", true).getBoolean(); 
     		
-		spawnVillagerExtremeHills = instance.get(category,"villager_ExtremeHills", true).getBoolean();
+		spawnVillagerExtremeHills = instance.get(category,"villagersingle_extremehills", true).getBoolean();
     			//"Villagers pawn naturally in Extreme Hills (not village buildings, it just rarely spawns a villager instead of another passive mob). "); 
     
-		spawnCaveSpiderJungle = instance.get(category,"caveSpider_Jungle", true).getBoolean(); 
+		spawnCaveSpiderJungle = instance.get(category,"cavespider_jungle", true).getBoolean(); 
 	}
 	 
 	private void debug_info() 
@@ -419,10 +419,10 @@ public class ConfigFile
 	{
 		category = "blocks";
 		 
-		storeBucketsBlock = instance.getBoolean( "storeBuckets",category,true,
+		storeBucketsBlock = instance.getBoolean( "store_buckets",category,true,
 				"A block that stores any number of milk/water/lava buckets (click to insert / withdraw)."); 
 	 
-		shearSheepBlock = instance.getBoolean( "shearSheep",category,true,
+		shearSheepBlock = instance.getBoolean( "shear_sheep",category,true,
 				"Shears adult sheep that collide with this block."); 
 		 
 		fishingNetBlock = instance.getBoolean( "fishing_net",category,true,
