@@ -59,9 +59,15 @@ public class ItemWandPiston extends Item
 		
 		if(event.face != null)
 		{
-			BlockPos offsetpast = pos.offset(event.face,1);
+			BlockPos posTowardsPlayer = pos.offset(event.face,1);
 			
-			if(world.isAirBlock(offsetpast) && world.isBlockModifiable(player, pos)) 
+			BlockPos posAwayPlayer = pos.offset(event.face.getOpposite(),1);
+			
+			System.out.println("towards is "+SamsUtilities.posToString(posTowardsPlayer));
+			System.out.println("AWAY is "+SamsUtilities.posToString(posAwayPlayer));
+			BlockPos posMoveToHere = player.isSneaking() ? posTowardsPlayer : posAwayPlayer;
+			
+			if(world.isAirBlock(posMoveToHere) && world.isBlockModifiable(player, pos)) 
 			{
 				if(world.isRemote) // clientside
 				{
@@ -72,7 +78,7 @@ public class ItemWandPiston extends Item
 					SamsUtilities.playSoundAt(player, "random.wood_click");
 
 					//they swap places
-					world.setBlockState(offsetpast, hit);//pulls the block towards the player
+					world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
 					world.setBlockToAir(pos);
 					 
 					SamsUtilities.damageOrBreakHeld(player);

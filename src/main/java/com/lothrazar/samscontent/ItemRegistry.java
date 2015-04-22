@@ -72,6 +72,7 @@ public class ItemRegistry
 		{
 			wand_piston = new ItemWandPiston();
 			ItemRegistry.registerItem(wand_piston, "wand_piston");
+ 
 		}
 		
 		if(ModMain.cfg.horse_food_upgrades )
