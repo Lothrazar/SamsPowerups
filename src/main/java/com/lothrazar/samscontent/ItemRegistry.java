@@ -66,8 +66,7 @@ public class ItemRegistry
 	}
 	 
 	public static void registerItems()
-	{  
-
+	{   
 		if(ModMain.cfg.wandPiston)
 		{
 			wand_piston = new ItemWandPiston();

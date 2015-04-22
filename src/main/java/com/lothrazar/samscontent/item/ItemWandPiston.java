@@ -58,19 +58,19 @@ public class ItemWandPiston extends Item
 			BlockPos posTowardsPlayer = pos.offset(event.face,1);
 			
 			BlockPos posAwayPlayer = pos.offset(event.face.getOpposite(),1);
-			
-			System.out.println("towards is "+SamsUtilities.posToString(posTowardsPlayer));
-			System.out.println("AWAY is "+SamsUtilities.posToString(posAwayPlayer));
+			 
 			BlockPos posMoveToHere = player.isSneaking() ? posTowardsPlayer : posAwayPlayer;
 			
 			if(world.isAirBlock(posMoveToHere) && world.isBlockModifiable(player, pos)) 
 			{
-				if(world.isRemote) // clientside
+				if(world.isRemote) 
 				{
 					SamsUtilities.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
 				}
 				else
 				{ 
+System.out.println(hit.getBlock().getUnlocalizedName());
+					
 					SamsUtilities.playSoundAt(player, "random.wood_click");
 
 					//they swap places

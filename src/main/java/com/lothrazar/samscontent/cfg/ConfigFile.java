@@ -364,7 +364,7 @@ public class ConfigFile
 		wandPiston = instance.getBoolean( "wand_piston", category,true,
 				"Pulls the targeted block towards you, if there is an air block available.  Ignores anything given by ignore list in this config file.");  
 	
-		String csv = instance.getString("wand_piston.ignored",category, "minecraft:,wooden_door,minecraft:spruce_door,minecraft:birch_door,minecraft:jungle_door,minecraft:acacia_door,minecraft:dark_oak_door,minecraft:iron_door,minecraft:bedrock,minecraft:tripwire_hook,minecraft:stone_button,minecraft:wooden_button,minecraft:stone_pressure_plate,minecraft:wooden_pressure_plate,minecraft:heavy_weighted_pressure_plate,minecraft:light_weighted_pressure_plate,minecraft:redstone_wire,minecraft:mob_spawner,minecraft:ladder",
+		String csv = instance.getString("wand_piston.ignored",category, "minecraft:cactus,minecraft:piston_head,minecraft:piston_extension,minecraft:lit_furnace,minecraft:melon_stem,minecraft:pumpkin_stem,minecraft:wheat,minecraft:crop,minecraft:pumpkinStem,samscontent:beetroot_crop,minecraft:,wooden_door,minecraft:spruce_door,minecraft:birch_door,minecraft:jungle_door,minecraft:acacia_door,minecraft:dark_oak_door,minecraft:iron_door,minecraft:bedrock,minecraft:tripwire,minecraft:tripwire_hook,minecraft:stone_button,minecraft:wooden_button,minecraft:stone_pressure_plate,minecraft:wooden_pressure_plate,minecraft:heavy_weighted_pressure_plate,minecraft:light_weighted_pressure_plate,minecraft:redstone_wire,minecraft:mob_spawner,minecraft:ladder",
     			"List of ignored blocks that will not be moved.");
 		ItemWandPiston.seIgnoreBlocksFromString(csv);
 		
