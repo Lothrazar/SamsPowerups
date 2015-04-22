@@ -2,6 +2,7 @@ package com.lothrazar.samscontent.item;
 
 import java.util.ArrayList;
 
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.SamsUtilities;
 
@@ -10,11 +11,14 @@ import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWandPiston extends Item
 {
@@ -30,15 +34,18 @@ public class ItemWandPiston extends Item
 	
 	public static void seIgnoreBlocksFromString(String csv)
 	{ 
-		System.out.println("seIgnoreBlocksFromString");
-		System.out.println(csv);
 		ignoreList = SamsUtilities.getBlockListFromCSV(csv); 
-		System.out.println("seIgnoreBlocksFromString  "+ignoreList.size());
 	} 
 	
 	public void addRecipe()
 	{
-		
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wand_piston),
+			"  p",
+			" i ",
+			"b  ",
+			'p',Blocks.piston,
+			'i',Blocks.iron_block,
+			'b',Items.blaze_rod); 
 	}
  
 	public static void cast(PlayerInteractEvent event) 
@@ -69,8 +76,7 @@ public class ItemWandPiston extends Item
 				}
 				else
 				{ 
-System.out.println(hit.getBlock().getUnlocalizedName());
-					
+
 					SamsUtilities.playSoundAt(player, "random.wood_click");
 
 					//they swap places

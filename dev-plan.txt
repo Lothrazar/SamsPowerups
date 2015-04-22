@@ -30,5 +30,7 @@ and it despawns/vanishes on its own randomly (onupdatetick) so it really is temp
  
 -investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
 
+-   show spawn chunk [true/false] in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
 
+-bonemeal on vines?
     

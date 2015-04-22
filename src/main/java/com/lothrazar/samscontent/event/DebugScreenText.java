@@ -66,10 +66,6 @@ public class DebugScreenText
 			event.right.clear();
 		}
 
-
-		//TODO:   show this in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
-
-
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
 

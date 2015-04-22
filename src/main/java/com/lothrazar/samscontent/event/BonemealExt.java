@@ -57,8 +57,7 @@ public class BonemealExt
 			  	success = true; 
 			} 
 	 	}
-	 	//TODO: maybe vines one day
-	 	 
+	 	
 	 	if(success)
 	 	{ 
 	 		//the game also uses VILLAGER_HAPPY for their bonemeal events so i copy

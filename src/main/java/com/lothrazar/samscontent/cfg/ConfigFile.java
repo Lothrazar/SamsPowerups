@@ -69,11 +69,6 @@ public class ConfigFile
 		 
 		swiftDeposit = instance.getBoolean("swift_deposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
-		/*
-		smartEnderchest = instance.getBoolean("smart_enderchest",category, true,//TODO: DELETe this, amke it work 
-				//only with ender potion effect. also make ender apples last longer, 10-60 min
-    			"Attack with the ender chest to open it without placing it."	);
-    			*/
 	}
 
 	private void player() 
@@ -348,19 +343,7 @@ public class ConfigFile
 		
 		wandTransform = instance.getBoolean("wand_transform",category, true,
     			"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
-		/*
-		category = parentCateory + ".wandProspect";
-			
-		ItemWandProspect.DURABILITY  = instance.getInt("durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
 
-		ItemWandProspect.RADIUS  = instance.getInt("radius",category, 16,1,64,
-    			"Range in all directions.");
-
-		wandProspect = instance.getBoolean("wandProspect",category, true,
-    			"Craft a wand that will prospect the nearby area for diamonds."); 
-	*/	
-		 
 		wandPiston = instance.getBoolean( "wand_piston", category,true,
 				"Pulls the targeted block towards you, if there is an air block available.  Ignores anything given by ignore list in this config file.");  
 	
@@ -370,29 +353,13 @@ public class ConfigFile
 		
 		ItemWandPiston.DURABILITY = instance.getInt("wand_piston.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
-		
-		//wandBuilding = instance.getBoolean( "wand_building", category,true,
-		//		"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
-		/*
-		ItemWandBuilding.DURABILITY   = instance.getInt("wand_building.durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
 
-		ItemWandBuilding.replaceBedrock = instance.getBoolean("wand_building.replaceBedrock", category ,true,
-			"Set true to allow the building wand to affect bedrock.  "	);
-		
-		ItemWandBuilding.replaceObsidian = instance.getBoolean("wand_building.replaceObsidian", category ,true,
-			 "Set true to allow the building wand to affect obsidian.  "	);
-		 
-		ItemWandBuilding.replaceTileEntities = instance.getBoolean("wand_building.replaceTileEntities", category ,true,
-			 "Set true to allow the building wand to affect Tile Entities - which is anything with an invnetory " +
-			 "(such as chest or dispenser).   "	); 
-		 */
+		wandWater = instance.getBoolean("wand_water",category, true,
+    			"Craft a wand that places water.");
+
 		ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
     			"Durability (number of uses in survival).");
 		
-		wandWater = instance.getBoolean("wand_water",category, true,
-    			"Craft a wand that places water.");
-	 
 		lightning_charge = instance.getBoolean("lightning_charge",category, true,
     			"Works like a fire charge, but it spawns lightning instead of fire.");
 	}
@@ -601,8 +568,6 @@ public class ConfigFile
 	public boolean harvest_charge;
 	public boolean respawn_egg;
 	public boolean wandTransform;
-//	public int livestockLootMultiplier;
-	//TODO: replace this with
 	public int potionIdWaterwalk;
 	public int potionIdSlowfall;
 	public int potionIdFlying;
