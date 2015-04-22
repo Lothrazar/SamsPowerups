@@ -226,7 +226,7 @@ public class ConfigFile
 		redstoneOreHardness = instance.getInt("redstone_ore_hardness",category, 6,1,50,
     			"Hardness level of redstone ore (vanilla is 3).");
 		
-		diamondOreHardness  = instance.getInt("diamond_ore_hardness",category, 10,1,50,
+		diamondOreHardness  = instance.getInt("diamond_ore_hardness",category, 8,1,50,
 	    		"Hardness level of diamond ore (vanilla is 3).");
 		 
 		emeraldOreHardness  = instance.getInt("emerald_ore_hardness",category, 12,1,50,
