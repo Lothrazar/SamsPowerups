@@ -446,6 +446,9 @@ public class ConfigFile
 		
 		searchspawner = instance.getBoolean("searchspawner",category, true,
     			"Players can search for spawners placed in the world.  Result is only chat output.");
+
+		CommandSearchSpawner.showCoords = instance.getBoolean("searchspawner.show_coords",category, false,
+    			"Either show coordinates or directions.");
 		
 		CommandSearchSpawner.REQUIRES_OP = instance.getBoolean("searchspawner.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");

@@ -17,9 +17,9 @@ import com.lothrazar.util.SamsUtilities;
 
 public class CommandSearchSpawner implements ICommand
 { 
-	public static boolean REQUIRES_OP;
-
-	public static boolean showCoords = true;   //TODO: put in config and test
+	public static boolean REQUIRES_OP; 
+	public static boolean showCoords;   //TODO: put in config and test
+	
 	public CommandSearchSpawner()
 	{
 		aliases.add("searchdungeon");
