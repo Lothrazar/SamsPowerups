@@ -94,7 +94,7 @@ public class ChestDeposit
  
 		if( totalSlotsFreed > 0) 
 		{ 
-			//System.out.println("chestparticles");
+			 
 		//particles dont work, this only happens on server side (remote==false always)
 			//SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos().up()); 
 		}

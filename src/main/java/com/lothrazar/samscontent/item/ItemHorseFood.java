@@ -61,8 +61,8 @@ public class ItemHorseFood extends Item
 
 
 		//or let it through if no owner exists
-		System.out.println("owner = "+ownerID);
-		System.out.println("player = "+player.getUniqueID().toString());
+		 ("owner = "+ownerID);
+		 ("player = "+player.getUniqueID().toString());
 		   */
 		if(held.getItem() == ItemRegistry.horse_upgrade_type)
 		{ 

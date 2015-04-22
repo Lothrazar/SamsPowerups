@@ -92,9 +92,7 @@ public class ItemRespawnEggAnimal extends Item  //mimic/mirror of ItemMonsterPla
             {
                 offsetY = 0.5D;
             }
-
-			//System.out.println("livestock   "+stack.getMetadata());
-			
+ 
             Entity entity = spawnCreature(worldIn, stack.getMetadata(), (double)pos.getX() + 0.5D, (double)pos.getY() + offsetY, (double)pos.getZ() + 0.5D);
 
             if (entity != null)

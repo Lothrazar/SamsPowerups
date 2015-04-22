@@ -56,7 +56,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(SLEEP_WATCHER, properties.getInteger(NBT_SLEEP_CURRENT)); 
 		this.player.getDataWatcher().updateObject(AWAKE_WATCHER, properties.getInteger(NBT_AWAKE_CURRENT));
 		// Just so you know it's working, uncomment/ add this line:
-		//System.out.println("IEXTENDED T:currentFlyTicks " + this.player.getDataWatcher().getWatchableObjectInt(SLEEP_WATCHER)  );
+		//.out.println("IEXTENDED T:currentFlyTicks " + this.player.getDataWatcher().getWatchableObjectInt(SLEEP_WATCHER)  );
 	}
 
 	@Override
