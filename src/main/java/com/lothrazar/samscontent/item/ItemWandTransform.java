@@ -10,8 +10,7 @@ import com.lothrazar.util.*;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockChest;
+import net.minecraft.block.Block; 
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockRotatedPillar;
 import net.minecraft.block.state.BlockState;
@@ -30,9 +29,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemTool;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.nbt.NBTTagCompound; 
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
@@ -660,6 +657,34 @@ public class ItemWandTransform extends Item
 			if(metaNew > INVALID)
 			{ 
 				blockStateNew =  Blocks.furnace.getStateFromMeta(metaNew);
+			}
+		}
+		else if(block == Blocks.chest)
+		{ 
+			metaCurrent = Blocks.chest.getMetaFromState(blockState);
+			  
+			if(metaCurrent == 5) //0,1 are down/up, but only 4 directions here
+				metaNew = 2;
+			else
+				metaNew = metaCurrent + 1; //rotate  
+ 
+			if(metaNew > INVALID)
+			{ 
+				blockStateNew =  Blocks.chest.getStateFromMeta(metaNew);
+			}
+		}
+		else if(block == Blocks.trapped_chest)
+		{ 
+			metaCurrent = Blocks.trapped_chest.getMetaFromState(blockState);
+			  
+			if(metaCurrent == 5) //0,1 are down/up, but only 4 directions here
+				metaNew = 2;
+			else
+				metaNew = metaCurrent + 1; //rotate  
+ 
+			if(metaNew > INVALID)
+			{ 
+				blockStateNew =  Blocks.trapped_chest.getStateFromMeta(metaNew);
 			}
 		}
 		else if(block == Blocks.piston)
