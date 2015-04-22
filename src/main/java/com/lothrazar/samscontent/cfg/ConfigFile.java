@@ -485,6 +485,9 @@ public class ConfigFile
 		
 		CommandSimpleWaypoints.REQUIRES_OP = instance.getBoolean("simplewaypoint.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
+
+		CommandSimpleWaypoints.showCoords = instance.getBoolean("simplewaypoint.show_coords",category, false,
+    			"Either show coordinates or directions.");
 		
 		todo = instance.getBoolean("todo",category, true,
     			"Command that lets players use /todo myreminder text, which will then show whatever text they put on the F3 debug screen."); 

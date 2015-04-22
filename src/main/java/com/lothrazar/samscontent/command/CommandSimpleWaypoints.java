@@ -22,7 +22,7 @@ import net.minecraftforge.common.DimensionManager;
 public class CommandSimpleWaypoints  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
-	public static boolean showCoords = true;   //TODO: put in config and test
+	public static boolean showCoords;  
 
 	private ArrayList<String> aliases = new ArrayList<String>();
 
