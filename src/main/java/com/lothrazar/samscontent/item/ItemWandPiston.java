@@ -30,6 +30,7 @@ public class ItemWandPiston extends Item
 		super();
 		this.setCreativeTab(ModMain.tabSamsContent);
 		this.setMaxDamage(DURABILITY);
+		this.setMaxStackSize(1);
 	}
 	
 	public static void seIgnoreBlocksFromString(String csv)
