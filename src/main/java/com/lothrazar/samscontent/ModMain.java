@@ -431,7 +431,9 @@ public class ModMain
 		if(held != null && held.getItem() == ItemRegistry.wandTransform && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
-			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
+			boolean success = ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
+		
+			//if(success) {event.setCanceled(success);} 
 		}
 		
 		if(held != null && held.getItem() == ItemRegistry.frozen_snowball && 

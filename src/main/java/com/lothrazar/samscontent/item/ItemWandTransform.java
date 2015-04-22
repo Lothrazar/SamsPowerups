@@ -70,7 +70,7 @@ public class ItemWandTransform extends Item
 	}
  
 	private static int INVALID = -1;
-	public static void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
+	public static boolean transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
 	{
 		IBlockState blockState = player.worldObj.getBlockState(pos);
 		Block block = blockState.getBlock();
@@ -732,10 +732,35 @@ public class ItemWandTransform extends Item
 				blockStateNew =  Blocks.standing_banner.getStateFromMeta(metaNew);
 			}
 		}
-		 
-		//what else can rotate 
-		//TODO: trapdoors: top and bottom location , and which of 4 sides it connects to
-   
+		else if(block == Blocks.trapdoor)
+		{
+			metaCurrent = Blocks.trapdoor.getMetaFromState(blockState); 
+
+			if(metaCurrent >= 8)  
+				metaNew = metaCurrent - 8; //move it from top to bottom and back. NOT spinning its side
+			else
+				metaNew = metaCurrent + 8;
+ 
+			if(metaNew > INVALID)
+			{  
+				blockStateNew =  Blocks.trapdoor.getStateFromMeta(metaNew);
+			}
+		}
+		else if(block == Blocks.iron_trapdoor)
+		{
+			metaCurrent = Blocks.iron_trapdoor.getMetaFromState(blockState); 
+
+			if(metaCurrent >= 8)  
+				metaNew = metaCurrent - 8;
+			else
+				metaNew = metaCurrent + 8;
+ 
+			if(metaNew > INVALID)
+			{ 
+				blockStateNew =  Blocks.iron_trapdoor.getStateFromMeta(metaNew);
+			}
+		}
+		  
 		if(blockStateNew != null)
 		{
 			player.swingItem();
@@ -751,8 +776,12 @@ public class ItemWandTransform extends Item
 				player.worldObj.setBlockState(pos,blockStateNew);
 				 
 				SamsUtilities.damageOrBreakHeld(player);
+				 
 			}
+			
+			return true;
 		}
+		return false;
 	}
 	
 	@Override
