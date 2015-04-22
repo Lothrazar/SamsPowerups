@@ -23,10 +23,8 @@ import net.minecraftforge.common.config.Property;
 public class CommandSearchItem  implements ICommand
 {
 	private ArrayList<String> aliases = new ArrayList<String>();
-	private static int RADIUS = 32;
-	public static boolean showCoords = true;   //TODO: put in config and test
-
- 
+	public static int RADIUS;
+	public static boolean showCoords;
 	public static boolean REQUIRES_OP; 
 	
 	public CommandSearchItem()

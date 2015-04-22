@@ -461,7 +461,13 @@ public class ConfigFile
 		
 		CommandSearchItem.REQUIRES_OP = instance.getBoolean("searchitem.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-  
+
+		CommandSearchItem.showCoords = instance.getBoolean("searchitem.show_coords",category, false,
+    			"Either show coordinates or directions.");
+
+		CommandSearchItem.RADIUS  = instance.getInt("searchitem.radius",category, 32,1,64,
+    			"Range in all directions.");
+		
 		enderchest = instance.getBoolean("enderchest",category, true,
     			"Players can open their enderchest with a command, no item needed."    		); 
 		
