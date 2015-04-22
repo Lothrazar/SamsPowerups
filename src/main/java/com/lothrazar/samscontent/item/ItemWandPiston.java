@@ -18,15 +18,16 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandPiston extends Item
 {
-	public static int DURABILITY=200;//TODO:CONFIG;
-	private static boolean ingorePlantable = false;
+	public static int DURABILITY = 200;
 	public static ArrayList<Block> ignoreList = new ArrayList<Block>();
+	
 	public ItemWandPiston()
 	{
 		super();
 		this.setCreativeTab(ModMain.tabSamsContent);
 		this.setMaxDamage(DURABILITY);
 	}
+	
 	public static void seIgnoreBlocksFromString(String csv)
 	{ 
 		System.out.println("seIgnoreBlocksFromString");
@@ -34,12 +35,12 @@ public class ItemWandPiston extends Item
 		ignoreList = SamsUtilities.getBlockListFromCSV(csv); 
 		System.out.println("seIgnoreBlocksFromString  "+ignoreList.size());
 	} 
+	
 	public void addRecipe()
 	{
 		
 	}
-
-	
+ 
 	public static void cast(PlayerInteractEvent event) 
 	{
 		BlockPos pos = event.pos;
@@ -51,12 +52,7 @@ public class ItemWandPiston extends Item
 		{
 			return;
 		}
-		
-		if(hit.getBlock() instanceof IGrowable)
-		{
-			return;
-		}
-		
+		 
 		if(event.face != null)
 		{
 			BlockPos posTowardsPlayer = pos.offset(event.face,1);
