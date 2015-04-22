@@ -68,6 +68,7 @@ item.beetroot_soup.name=Beetroot Soup
 item.book_ender.name=Ender Book
 item.chest_sack.name=Sack of Holding
 item.chest_sack_empty.name=Empty Sack of Holding
+item.wand_piston.name=Piston Wand
 item.wand_building.name=Wand of Building 
 item.carbon_paper.name=Carbon Paper  
 item.harvest_charge.name=Harvesting Charge
