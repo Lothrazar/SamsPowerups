@@ -23,7 +23,7 @@ import net.minecraftforge.common.config.Property;
 public class CommandSearchItem  implements ICommand
 {
 	private ArrayList<String> aliases = new ArrayList<String>();
-	public static int RADIUS;
+	public static int RADIUS;//TODO: why not take radius as first argument like searchspawner??
 	public static boolean showCoords;
 	public static boolean REQUIRES_OP; 
 	

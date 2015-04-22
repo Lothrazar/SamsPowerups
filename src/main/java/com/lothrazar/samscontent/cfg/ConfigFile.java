@@ -459,6 +459,9 @@ public class ConfigFile
 		CommandSearchTrades.REQUIRES_OP = instance.getBoolean("searchtrade.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 
+		CommandSearchTrades.showCoords = instance.getBoolean("searchtrade.show_coords",category, false,
+    			"Either show coordinates or directions.");
+		
 		searchitem = instance.getBoolean("searchitem",category, true,
     			"Players can search nearby chests for items.   Result is only chat output."    		); 
 		
