@@ -368,6 +368,9 @@ public class ConfigFile
     			"List of ignored blocks that will not be moved.");
 		ItemWandPiston.seIgnoreBlocksFromString(csv);
 		
+		ItemWandPiston.DURABILITY = instance.getInt("wand_piston.durability",category, 200,1,999,
+    			"Durability (number of uses in survival).");
+		
 		//wandBuilding = instance.getBoolean( "wand_building", category,true,
 		//		"Can craft and use a building wand that can store many stacks of items, and replace blocks without mining.");  
 		/*

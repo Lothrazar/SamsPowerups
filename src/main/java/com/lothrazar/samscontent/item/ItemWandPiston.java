@@ -18,7 +18,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemWandPiston extends Item
 {
-	public static int DURABILITY = 200;
+	public static int DURABILITY;
 	public static ArrayList<Block> ignoreList = new ArrayList<Block>();
 	
 	public ItemWandPiston()
