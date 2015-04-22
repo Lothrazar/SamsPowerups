@@ -33,4 +33,25 @@ and it despawns/vanishes on its own randomly (onupdatetick) so it really is temp
 -   show spawn chunk [true/false] in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
 
 -bonemeal on vines?
+
+--waiting on forge to update for VillagerTradeRegistry// implements IVillageTradeHandler
     
+-  beetroot  breeds pigs - no forge way exists - unless im wrong??
+              beetroot gets pigs to follow like carrot  - no forge way exists
+            
+an item (maybe nametag maybe3 not) for pet respawning block/spot , set their NBT or something
+
+-   horse upgrades: only let the OWNER change the types ?? maybe one day
+
+- add more blocks to ocean?
+
+- add reeds/existing plants to ocean?
+
+-disable digging stuff by hand?
+ /*  revisit/add back in??
+          //add clay
+        String csv = instance.getString("harvestOnlyShovel",category, "minecraft:dirt,minecraft:sand",
+                "If these blocks are not harvested by a shovel, they will break but have no drops."); 
+        HandlerPlayerHarvest.setShovelFromCSV(csv);
+     
+         */

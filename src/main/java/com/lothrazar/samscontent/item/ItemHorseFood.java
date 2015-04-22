@@ -59,7 +59,7 @@ public class ItemHorseFood extends Item
 			ownerID = horse.getEntityData().getString("OwnerUUID");
 		}
 
-		//TODO: only let the OWNER change the types ?? maybe one day
+
 		//or let it through if no owner exists
 		System.out.println("owner = "+ownerID);
 		System.out.println("player = "+player.getUniqueID().toString());

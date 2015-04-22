@@ -923,74 +923,80 @@ public class RecipeRegistry
 	} 
  
 	public static void tieredArmor() 
-	{
-		if(!ModMain.cfg.tieredArmor) {return;}
+	{ 
+		if(ModMain.cfg.iron_armor_requires_leather)
+		{ 
+			removeRecipe(Items.iron_chestplate);
+			removeRecipe(Items.iron_boots);
+			removeRecipe(Items.iron_leggings);
+			removeRecipe(Items.iron_helmet);
+			
+			GameRegistry.addRecipe(new ItemStack(Items.iron_chestplate), 
+					"ixi",
+					"iii", 
+					"iii", 
+					'i', Items.iron_ingot,  
+					'x', Items.leather_chestplate );
+	
+			GameRegistry.addRecipe(new ItemStack(Items.iron_boots), 
+					"   ",
+					"i i", 
+					"ixi", 
+					'i', Items.iron_ingot,  
+					'x', Items.leather_boots );
+	
+			GameRegistry.addRecipe(new ItemStack(Items.iron_leggings), 
+					"iii",
+					"ixi", 
+					"i i", 
+					'i', Items.iron_ingot,  
+					'x', Items.leather_leggings );
+	
+			GameRegistry.addRecipe(new ItemStack(Items.iron_helmet), 
+					"iii",
+					"ixi", 
+					"   ", 
+					'i', Items.iron_ingot,  
+					'x', Items.leather_helmet);
 
-		removeRecipe(Items.iron_chestplate);
-		removeRecipe(Items.iron_boots);
-		removeRecipe(Items.iron_leggings);
-		removeRecipe(Items.iron_helmet);
+		}
 		
-		GameRegistry.addRecipe(new ItemStack(Items.iron_chestplate), 
-				"ixi",
-				"iii", 
-				"iii", 
-				'i', Items.iron_ingot,  
-				'x', Items.leather_chestplate );
-
-		GameRegistry.addRecipe(new ItemStack(Items.iron_boots), 
-				"   ",
-				"i i", 
-				"ixi", 
-				'i', Items.iron_ingot,  
-				'x', Items.leather_boots );
-
-		GameRegistry.addRecipe(new ItemStack(Items.iron_leggings), 
-				"iii",
-				"ixi", 
-				"i i", 
-				'i', Items.iron_ingot,  
-				'x', Items.leather_leggings );
-
-		GameRegistry.addRecipe(new ItemStack(Items.iron_helmet), 
-				"iii",
-				"ixi", 
-				"   ", 
-				'i', Items.iron_ingot,  
-				'x', Items.leather_helmet);
-		 
-		removeRecipe(Items.diamond_chestplate);
-		removeRecipe(Items.diamond_boots);
-		removeRecipe(Items.diamond_leggings);
-		removeRecipe(Items.diamond_helmet);
+		if(ModMain.cfg.diamond_armor_requires_chain)
+		{ 
+			removeRecipe(Items.diamond_chestplate);
+			removeRecipe(Items.diamond_boots);
+			removeRecipe(Items.diamond_leggings);
+			removeRecipe(Items.diamond_helmet);
+			
+			GameRegistry.addRecipe(new ItemStack(Items.diamond_chestplate), 
+					"ixi",
+					"iii", 
+					"iii", 
+					'i', Items.diamond,  
+					'x', Items.chainmail_chestplate );
+	
+			GameRegistry.addRecipe(new ItemStack(Items.diamond_boots), 
+					"   ",
+					"i i", 
+					"ixi", 
+					'i', Items.diamond,  
+					'x', Items.chainmail_boots );
+	
+			GameRegistry.addRecipe(new ItemStack(Items.diamond_leggings), 
+					"iii",
+					"ixi", 
+					"i i", 
+					'i', Items.diamond,  
+					'x', Items.chainmail_leggings );
+	
+			GameRegistry.addRecipe(new ItemStack(Items.diamond_helmet), 
+					"iii",
+					"ixi", 
+					"   ", 
+					'i', Items.diamond,  
+					'x', Items.chainmail_helmet); 
 		
-		GameRegistry.addRecipe(new ItemStack(Items.diamond_chestplate), 
-				"ixi",
-				"iii", 
-				"iii", 
-				'i', Items.diamond,  
-				'x', Items.chainmail_chestplate );
-
-		GameRegistry.addRecipe(new ItemStack(Items.diamond_boots), 
-				"   ",
-				"i i", 
-				"ixi", 
-				'i', Items.diamond,  
-				'x', Items.chainmail_boots );
-
-		GameRegistry.addRecipe(new ItemStack(Items.diamond_leggings), 
-				"iii",
-				"ixi", 
-				"i i", 
-				'i', Items.diamond,  
-				'x', Items.chainmail_leggings );
-
-		GameRegistry.addRecipe(new ItemStack(Items.diamond_helmet), 
-				"iii",
-				"ixi", 
-				"   ", 
-				'i', Items.diamond,  
-				'x', Items.chainmail_helmet); 
+		}
 	}
 	
 	public static void simpleDispenser() 

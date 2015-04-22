@@ -734,7 +734,7 @@ public class ItemWandTransform extends Item
 		}
 		 
 		//what else can rotate 
-		//TODO: trapdoors: top and bottom location 
+		//TODO: trapdoors: top and bottom location , and which of 4 sides it connects to
    
 		if(blockStateNew != null)
 		{

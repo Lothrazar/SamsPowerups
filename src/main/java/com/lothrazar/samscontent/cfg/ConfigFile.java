@@ -142,7 +142,7 @@ public class ConfigFile
 	private void ocean_generation() 
 	{
 		category = "ocean_generation";
-		//TODO: patches of cobble that are smaller than the rest
+	
 		worldGenOceansNotUgly = instance.getBoolean("alter_ocean_floor",category, true,
     			"Clay, sand, and dirt can generate in oceans just like they used to in the old days.  Replaces the gravel in patches.");
 	 
@@ -205,21 +205,18 @@ public class ConfigFile
 		
 		smoothstoneTools = instance.getBoolean("smoothstone_tools",category, true,
 				"Making stone tools out of cobblestone gives damaged tools.  Making stone tools out of smoothstone gives the fully repaired tool.");  
-//TODO: split -> multiple configs, for iron and diamond
-		tieredArmor = instance.getBoolean("tiered_armor",category, true,
-				"If true, crafting iron armor requires repaired leather armor as part of the recipe, AND diamond armor requires chain mail.");  
+
+		iron_armor_requires_leather = instance.getBoolean("iron_armor_requires_leather",category, true,
+				"Iron armor must be crafted on top of leather armor.");  
+
+		diamond_armor_requires_chain = instance.getBoolean("diamond_armor_requires_chain",category, true,
+				"Diamond armor must be crafted on top of chain armor.");  
 	}
 
 	private void harvesting_changes() 
 	{
 		category = "harvesting_changes";
-		 /*//TODO: revisit/add back in??
-		  //add clay
-		String csv = instance.getString("harvestOnlyShovel",category, "minecraft:dirt,minecraft:sand",
-    			"If these blocks are not harvested by a shovel, they will break but have no drops."); 
-		HandlerPlayerHarvest.setShovelFromCSV(csv);
-	 
-		 */
+		
 		harvestGlassPickaxe  = instance.getBoolean("harvest_glass_pickaxe",category, true,
     			"Sets the pickaxe as the correct tool to harvest glass (by default there is no correct glass tool)."); 
 		
@@ -519,7 +516,8 @@ public class ConfigFile
 	public boolean appleLapis;
 	public boolean appleChocolate;
 	public boolean appleEmerald;
-//	public boolean gameruleBlockRegen; 
+	public boolean iron_armor_requires_leather;
+	public boolean diamond_armor_requires_chain;
 	public boolean debugSlime;
 	public boolean debugHorseInfo;
 	public boolean debugClearRight;
@@ -542,8 +540,7 @@ public class ConfigFile
 	public boolean teleportSpawnBlock;
 	public boolean spawnCaveSpiderJungle;
 	public boolean appleNetherStar;
-	public boolean smoothstoneTools;
-	public boolean tieredArmor;
+	public boolean smoothstoneTools; 
 	public boolean furnaceNeedsCoal;  
 	public boolean plantDespawningSaplings; 
 	public boolean wandPiston;

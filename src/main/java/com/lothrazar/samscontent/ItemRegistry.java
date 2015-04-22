@@ -90,10 +90,7 @@ public class ItemRegistry
 		}
 		
 		if(ModMain.cfg.beetroot)
-		{ 
-			//TODO: beetroot  breeds pigs - no forge way exists
-			//TODO: beetroot gets pigs to follow like carrot  - no forge way exists
-			 
+		{  
 			beetroot_seed = new ItemSeeds(BlockRegistry.beetroot_crop, Blocks.farmland).setCreativeTab(ModMain.tabSamsContent);
 			ItemRegistry.registerItem(beetroot_seed, "beetroot_seed");
 			
