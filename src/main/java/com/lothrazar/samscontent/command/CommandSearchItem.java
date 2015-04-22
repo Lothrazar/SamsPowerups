@@ -22,8 +22,7 @@ import net.minecraftforge.common.config.Property;
 
 public class CommandSearchItem  implements ICommand
 {
-	private ArrayList<String> aliases = new ArrayList<String>();
-	public static int RADIUS;//TODO: why not take radius as first argument like searchspawner??
+	private ArrayList<String> aliases = new ArrayList<String>(); 
 	public static boolean showCoords;
 	public static boolean REQUIRES_OP; 
 	
@@ -53,7 +52,7 @@ public class CommandSearchItem  implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender arg0) 
 	{ 
-		return "/" + getName()+" <itemname>";
+		return "/" + getName()+" <itemname> [radius]"; 
 	}
 
 	@Override
@@ -74,26 +73,35 @@ public class CommandSearchItem  implements ICommand
 			return;
 		}
 		
+		int radius = 0;
+		if(args.length > 1)
+		{
+			radius = Integer.parseInt(args[1]);
+		}
+		
+		if(radius > 128) { radius = 128; }//Maximum // 
+		if(radius <= 0 ) { radius = 64;  }//default
+		
 		String searchQuery = args[0].trim().toLowerCase(); // args[0] is the command name or alias used such as "is"
 		ArrayList<IInventory> tilesToSearch = new ArrayList<IInventory>();
 		HashMap<IInventory,BlockPos> dictionary = new HashMap<IInventory,BlockPos> ();
 		IInventory tile;
 		
-		ArrayList<BlockPos> foundChests = SamsUtilities.findBlocks(player, Blocks.chest, RADIUS); 
+		ArrayList<BlockPos> foundChests = SamsUtilities.findBlocks(player, Blocks.chest, radius); 
 		for (BlockPos pos : foundChests)
 		{  	
 			tile = (IInventory)player.worldObj.getTileEntity(pos);  
 			tilesToSearch.add(tile); 
 			dictionary.put(tile, pos);
 		}
-		ArrayList<BlockPos> foundTrapChests = SamsUtilities.findBlocks(player, Blocks.trapped_chest, RADIUS); 
+		ArrayList<BlockPos> foundTrapChests = SamsUtilities.findBlocks(player, Blocks.trapped_chest, radius); 
 		for (BlockPos pos : foundTrapChests)
 		{  	
 			tile = (IInventory)player.worldObj.getTileEntity(pos);  
 			tilesToSearch.add(tile); 
 			dictionary.put(tile, pos);
 		}
-		ArrayList<BlockPos> foundDisp = SamsUtilities.findBlocks(player, Blocks.dispenser, RADIUS); 
+		ArrayList<BlockPos> foundDisp = SamsUtilities.findBlocks(player, Blocks.dispenser, radius); 
 		for (BlockPos pos : foundDisp)
 		{  	
 			tile = (IInventory)player.worldObj.getTileEntity(pos);  
@@ -119,7 +127,7 @@ public class CommandSearchItem  implements ICommand
 		
 		if(ifound == 0)  
 		{ 
-			player.addChatMessage(new ChatComponentTranslation("No items found within " + RADIUS + " blocks of you."));
+			player.addChatMessage(new ChatComponentTranslation("No items found within " + radius + " blocks of you."));
 		}
 		else
 		{ 

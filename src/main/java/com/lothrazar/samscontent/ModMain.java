@@ -214,8 +214,7 @@ public class ModMain
 	}
   
 	private void registerEventHandlers() 
-	{
-		//TODO: version checker
+	{ 
 		//FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
 		 
     	ArrayList<Object> handlers = new ArrayList<Object>();
