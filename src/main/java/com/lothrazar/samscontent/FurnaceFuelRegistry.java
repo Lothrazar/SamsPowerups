@@ -1,6 +1,9 @@
 package com.lothrazar.samscontent;
 
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.Logger; 
+
 import net.minecraft.block.Block;
 import net.minecraft.command.ICommand;
 import net.minecraft.init.Blocks;
@@ -23,84 +26,13 @@ import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
  
-public class FurnaceFuelRegistry    implements IFuelHandler
+public class FurnaceFuelRegistry implements IFuelHandler
 {    
-	@Override
-	public int getBurnTime(ItemStack fuel) 
-	{  
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.deadbush)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Items.wheat_seeds))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Items.pumpkin_seeds))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Items.melon_seeds))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.leaves)))
-		{
-			return FurnaceBurnTime.Sticks;
-		}
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.leaves2)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.tallgrass)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.red_flower)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.yellow_flower)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.reeds)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.red_mushroom)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.brown_mushroom)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.red_mushroom_block)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Item.getItemFromBlock(Blocks.brown_mushroom_block)))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Items.arrow))
-		{
-			return FurnaceBurnTime.Sticks;
-		} 
-		if(fuel.getItem().equals(Items.bow))
-		{
-			return FurnaceBurnTime.Sticks;
-		}  
-		if(fuel.getItem().equals(Items.paper))
-		{
-			return FurnaceBurnTime.Sticks;
-		}
-		
-		return 0;
-	}	
-	
-	public class FurnaceBurnTime // inner class
+	private ArrayList<Item> burnAsStick = new ArrayList<Item>();
+	private ArrayList<Item> burnAsSlabs = new ArrayList<Item>();
+	private ArrayList<Item> burnAsTools = new ArrayList<Item>();
+
+	public class FurnaceBurnTime  
 	{
 		public static final int Sticks = 100;
 		public static final int WoodenSlabs = 150;
@@ -111,4 +43,54 @@ public class FurnaceFuelRegistry    implements IFuelHandler
 		public static final int Sapling = 100;
 		public static final int BlazeRod = 2400; 
 	}
+	
+	public FurnaceFuelRegistry()
+	{
+		burnAsStick.add(Item.getItemFromBlock(Blocks.deadbush));
+		burnAsStick.add(Items.wheat_seeds);
+		burnAsStick.add(Items.pumpkin_seeds);
+		burnAsStick.add(Items.melon_seeds);
+		burnAsStick.add(Item.getItemFromBlock(Blocks.leaves));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.leaves2));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.tallgrass));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.red_flower));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.yellow_flower));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.reeds));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.red_mushroom));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.brown_mushroom));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.brown_mushroom_block));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.red_mushroom_block));
+		burnAsStick.add(Items.arrow);
+		burnAsStick.add(Items.paper);
+		
+		burnAsTools.add(Items.bow);
+		
+		burnAsSlabs.add(Items.jungle_door);
+		burnAsSlabs.add(Items.acacia_door);
+		burnAsSlabs.add(Items.oak_door);
+		burnAsSlabs.add(Items.spruce_door);
+		burnAsSlabs.add(Items.birch_door);
+		burnAsSlabs.add(Items.dark_oak_door);
+	}
+	
+	@Override
+	public int getBurnTime(ItemStack fuel) 
+	{  
+		if(fuel == null){return 0;}//I have never seen this happen, but just to be safe
+		
+		if(burnAsStick.contains(fuel.getItem()))
+		{
+			return FurnaceBurnTime.Sticks;
+		}
+		else if(burnAsTools.contains(fuel.getItem()))
+		{
+			return FurnaceBurnTime.WoodenTools;
+		}
+		else if(burnAsSlabs.contains(fuel.getItem()))
+		{
+			return FurnaceBurnTime.WoodenSlabs;
+		}
+		 
+		return 0;
+	}	
 }

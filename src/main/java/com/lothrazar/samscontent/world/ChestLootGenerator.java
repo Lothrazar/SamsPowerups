@@ -16,7 +16,7 @@ public class ChestLootGenerator
 	{
 		if(ModMain.cfg.lootGlowstone)
 		{ 
-			ItemStack[] allRecords = new ItemStack[] 
+			ItemStack[] allRecords = new ItemStack[] //TODO: rename these variables, possibly refactor the whole class
 			{
 				new ItemStack(Items.glowstone_dust ,64)
 			}; 
