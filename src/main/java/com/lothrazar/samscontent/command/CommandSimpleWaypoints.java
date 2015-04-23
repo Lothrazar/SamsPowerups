@@ -23,6 +23,11 @@ public class CommandSimpleWaypoints  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
 	public static boolean showCoords;  
+	//TODO: SHOW COORDS BUG: 
+	//SIMPLE WAYPOINTS stop using [0] as dimension, use <1> [name] coords [d=0] -
+	//LISTEN TO SHOW COORDS in list. if its false, just say <number>:name OR DELETE SHOW COORDS FLAG
+
+	//in F3 use <1> home
 
 	private ArrayList<String> aliases = new ArrayList<String>();
 
