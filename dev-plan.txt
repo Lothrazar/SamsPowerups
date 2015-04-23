@@ -5,6 +5,8 @@
 
 Possible Features:
 
+//config file entry for waypoints // todo that switches left/right side
+
 temp/scaffold block, similar to angel block in EU, except you place it from an item with infinite use
 and it despawns/vanishes on its own randomly (onupdatetick) so it really is temporaroy 
  

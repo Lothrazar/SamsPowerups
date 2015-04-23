@@ -103,8 +103,8 @@ public class DebugScreenText
 		
 		if(todoCurrent != null && todoCurrent.isEmpty() == false)
 		{
-			event.left.add("");
-			event.left.add(todoCurrent); //used to have "TODO : "+ in front
+			event.right.add("");
+			event.right.add(todoCurrent);
 		}
 	}
 
