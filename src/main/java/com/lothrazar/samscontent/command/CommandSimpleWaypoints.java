@@ -23,12 +23,7 @@ public class CommandSimpleWaypoints  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
 	public static boolean showCoords;  
-	//TODO: SHOW COORDS BUG: 
-	//SIMPLE WAYPOINTS stop using [0] as dimension, use <1> [name] coords [d=0] -
-	//LISTEN TO SHOW COORDS in list. if its false, just say <number>:name OR DELETE SHOW COORDS FLAG
-
-	//in F3 use <1> home
-
+  
 	private ArrayList<String> aliases = new ArrayList<String>();
 
 	public CommandSimpleWaypoints()
@@ -52,7 +47,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender p_71518_1_) 
 	{ 
-		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"+MODE_CLEAR + "|" + MODE_HIDEDISPLAY + "|" + MODE_DISPLAY+"> [savename | displayindex]";
+		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + "|" + MODE_HIDEDISPLAY + "|" + MODE_DISPLAY + "> [displayname | showindex]";
 	}
 
 	@Override
@@ -66,8 +61,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	private static String MODE_LIST = "list";
 	private static String MODE_SAVE = "save";
 	private static String MODE_CLEAR = "delete"; 
-	
-	public static String KEY_CURRENT = "simplewp_current";
+	private static String KEY_CURRENT = "simplewp_current";
 	
 	@Override
 	public void execute(ICommandSender icommandsender, String[] args) 
