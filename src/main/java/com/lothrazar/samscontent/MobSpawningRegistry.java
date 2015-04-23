@@ -1,8 +1,6 @@
-package com.lothrazar.samscontent.world;
+package com.lothrazar.samscontent;
 
 import org.apache.logging.log4j.Level;
-
-import com.lothrazar.samscontent.ModMain;
 
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.monster.EntityBlaze;

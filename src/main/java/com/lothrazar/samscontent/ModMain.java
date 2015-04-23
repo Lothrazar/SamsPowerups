@@ -165,11 +165,11 @@ public class ModMain
 		  
 		RecipeRegistry.registerRecipes();
 		 
-		StackSizeIncreaser.registerChanges(); 
+		StackSizeRegistry.registerChanges(); 
  
   		if(ModMain.cfg.moreFuel) 
   		{
-  			GameRegistry.registerFuelHandler(new FurnaceFuel()); 
+  			GameRegistry.registerFuelHandler(new FurnaceFuelRegistry()); 
   		}
   		
   		if(ModMain.cfg.worldGenOceansNotUgly)
