@@ -10,7 +10,7 @@ import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraftforge.common.ChestGenHooks;
 import static net.minecraftforge.common.ChestGenHooks.*;
 
-public class ChestGen
+public class ChestLootGenerator
 { 
 	public static void lootGlowstone() 
 	{
@@ -119,13 +119,13 @@ public class ChestGen
 
 	public static void regsiterLoot() 
 	{
-		ChestGen.lootAllRecords();
+		ChestLootGenerator.lootAllRecords();
 		
-		ChestGen.lootObsidian(); 
+		ChestLootGenerator.lootObsidian(); 
 		
-		ChestGen.lootQuartz(); 
+		ChestLootGenerator.lootQuartz(); 
 		
-		ChestGen.lootGlowstone(); 
+		ChestLootGenerator.lootGlowstone(); 
 		
 	}
 }

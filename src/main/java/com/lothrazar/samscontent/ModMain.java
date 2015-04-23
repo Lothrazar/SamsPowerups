@@ -161,7 +161,7 @@ public class ModMain
 	
 		MobSpawningRegistry.registerSpawns();
   
-		ChestGen.regsiterLoot();
+		ChestLootGenerator.regsiterLoot();
 		  
 		RecipeRegistry.registerRecipes();
 		 
