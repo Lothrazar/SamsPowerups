@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.proxy;
+package com.lothrazar.samscontent.common;
 
 
 import net.minecraft.entity.Entity;
