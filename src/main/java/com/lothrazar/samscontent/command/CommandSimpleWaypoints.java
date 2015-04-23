@@ -2,16 +2,14 @@ package com.lothrazar.samscontent.command;
 
 import java.io.*;
 import java.util.ArrayList;
-import java.util.List;    
-
-import scala.actors.threadpool.Arrays;
+import java.util.Arrays;
+import java.util.List;     
 
 import com.lothrazar.samscontent.common.PlayerPowerups;
-import com.lothrazar.util.Location;
+import com.lothrazar.util.Location; 
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP;
-//import net.minecraft.client.entity.EntityClientPlayerMP;
+import net.minecraft.client.entity.EntityPlayerSP; 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
