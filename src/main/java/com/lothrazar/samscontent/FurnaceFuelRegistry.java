@@ -59,7 +59,8 @@ public class FurnaceFuelRegistry implements IFuelHandler
 		burnAsStick.add(Item.getItemFromBlock(Blocks.red_mushroom));
 		burnAsStick.add(Item.getItemFromBlock(Blocks.brown_mushroom));
 		burnAsStick.add(Item.getItemFromBlock(Blocks.brown_mushroom_block));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.red_mushroom_block));
+		burnAsStick.add(Item.getItemFromBlock(Blocks.red_mushroom_block)); 
+		burnAsStick.add(Item.getItemFromBlock(Blocks.double_plant));
 		burnAsStick.add(Items.arrow);
 		burnAsStick.add(Items.paper);
 		
