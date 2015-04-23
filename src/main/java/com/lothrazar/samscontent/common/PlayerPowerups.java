@@ -72,6 +72,10 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		return this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER); 
 	}
+	public final void setStringWaypoints(String waypointsCSV) 
+	{
+		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, waypointsCSV);
+	}
 	@Override
 	public void init(Entity entity, World world) 
 	{ 

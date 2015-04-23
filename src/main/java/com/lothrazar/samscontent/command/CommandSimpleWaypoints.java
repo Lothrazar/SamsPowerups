@@ -4,6 +4,9 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;    
 
+import scala.actors.threadpool.Arrays;
+
+import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Location;
 
 import net.minecraft.client.Minecraft;
@@ -23,6 +26,10 @@ public class CommandSimpleWaypoints  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
 	public static boolean showCoords;  
+	
+	//it still functions with flat files if you turn this to false
+	//but set to true uses IExtended properties which is recommended
+	private static final boolean useProps = true;
   
 	private ArrayList<String> aliases = new ArrayList<String>();
 
@@ -143,6 +150,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	{ 
 		ArrayList<String> lines = getForPlayer(p);
 		
+		
 		if(name == null) name = "";
 		
 		//never putr a loc in index zero
@@ -227,7 +235,6 @@ public class CommandSimpleWaypoints  implements ICommand
 		}
 	}
 	 
-
 	@Override
 	public boolean isUsernameIndex(String[] p_82358_1_, int p_82358_2_) 
 	{ 
@@ -252,64 +259,100 @@ public class CommandSimpleWaypoints  implements ICommand
 	
 	private void overwriteForPlayer(EntityPlayer player, ArrayList<String> lines)
 	{
-		String playerName = player.getDisplayName().getUnformattedText();
-		
-		String fileName = filenameForPlayer(playerName);
-		try
+		if(useProps)
 		{
-			File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName);
-			if(!myFile.exists()) myFile.createNewFile();
-			FileOutputStream fos = new FileOutputStream(myFile);
-			DataOutputStream stream = new DataOutputStream(fos);
-			 
+			PlayerPowerups props = PlayerPowerups.get(player);
+			String csv="";
 			for(String line : lines) 
-			{
-				stream.writeBytes(line);
-				stream.writeBytes(System.lineSeparator());
+			{ 
+				csv += line + System.lineSeparator();
 			}
+			props.setStringWaypoints(csv);
 			
-			stream.close();
-			fos.close();
-		} catch (FileNotFoundException e) {
-
-			e.printStackTrace();
-		} //this makes it per-world
-		catch (IOException e) {
-
-			e.printStackTrace();
+			//System.out.println("overwrite for player:");
+			//System.out.println(csv);
+			//System.out.println("arraylist.size() = "+lines.size());
+			
+		}
+		else
+		{
+			String playerName = player.getDisplayName().getUnformattedText();
+			
+			String fileName = filenameForPlayer(playerName);
+			try
+			{
+				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName);
+				if(!myFile.exists()) myFile.createNewFile();
+				FileOutputStream fos = new FileOutputStream(myFile);
+				DataOutputStream stream = new DataOutputStream(fos);
+				 
+				for(String line : lines) 
+				{
+					stream.writeBytes(line);
+					stream.writeBytes(System.lineSeparator());
+				}
+				
+				stream.close();
+				fos.close();
+			} catch (FileNotFoundException e) {
+	
+				e.printStackTrace();
+			} //this makes it per-world
+			catch (IOException e) {
+	
+				e.printStackTrace();
+			} 
 		}
 	}
 	
 	public static ArrayList<String> getForPlayer(EntityPlayer player)
 	{ 
-
-		String playerName = player.getDisplayName().getUnformattedText();
-		String fileName = filenameForPlayer(playerName);
 		ArrayList<String> lines = new ArrayList<String>();
-	 
-		try
-		{
-			//TODO: is there another way to do this? without files?
-			File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName);
-			if(!myFile.exists()) myFile.createNewFile();
-			FileInputStream fis = new FileInputStream(myFile);
-			DataInputStream instream = new DataInputStream(fis);
-			String val;
-			
-			while((val = instream.readLine()) != null) lines.add(val);
-			
-			instream.close();
-			fis.close();
-		} 
-		catch (FileNotFoundException e) 
-		{
-			e.printStackTrace();
-		} //this makes it per-world
-		catch (IOException e) 
-		{
-			e.printStackTrace();
-		}
 		
+		if(useProps)
+		{
+			PlayerPowerups props = PlayerPowerups.get(player);
+			 
+			String csv = props.getStringWaypoints();
+			
+			//System.out.println("getforplayer : ");
+			//System.out.println(csv);
+			//System.out.println("arraylist.size() = "+lines.size());
+			 
+			lines = new ArrayList<String>(Arrays.asList(csv.split(System.lineSeparator())));
+			
+
+		}
+		else
+		{
+			
+			String playerName = player.getDisplayName().getUnformattedText();
+			String fileName = filenameForPlayer(playerName);
+			
+		 
+			try
+			{
+				//TODO: is there another way to do this? without files?
+				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName);
+				if(!myFile.exists()) myFile.createNewFile();
+				FileInputStream fis = new FileInputStream(myFile);
+				DataInputStream instream = new DataInputStream(fis);
+				String val;
+				
+				while((val = instream.readLine()) != null) lines.add(val);
+				
+				instream.close();
+				fis.close();
+			} 
+			catch (FileNotFoundException e) 
+			{
+				e.printStackTrace();
+			} //this makes it per-world
+			catch (IOException e) 
+			{
+				e.printStackTrace();
+			} 
+		}
 		return lines;
 	} 
 	
