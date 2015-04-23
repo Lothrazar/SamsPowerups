@@ -64,6 +64,7 @@ public class FurnaceFuelRegistry implements IFuelHandler
 		burnAsStick.add(Items.paper);
 		
 		burnAsTools.add(Items.bow);
+		burnAsTools.add(Items.bed);
 		
 		burnAsSlabs.add(Items.jungle_door);
 		burnAsSlabs.add(Items.acacia_door);
