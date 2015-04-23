@@ -28,6 +28,7 @@ import net.minecraft.nbt.NBTBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentTranslation;
 //import net.minecraft.util.ChunkCoordinates;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
@@ -47,7 +48,7 @@ public class CommandTodoList implements ICommand
 	//it still functions with flat files if you turn this to false
 	//but set to true uses IExtended properties which is recommended
 	private static final boolean useProps = true;
-	 
+
 	public CommandTodoList()
 	{  
 	    this.aliases.add("todo");   
@@ -144,34 +145,25 @@ public class CommandTodoList implements ICommand
 		 //is the first argument empty
 		 if(args == null || args.length == 0 || args[0] == null || args[0].isEmpty())
 		 {
-			 //they only typed "/todo"
-			 
-			 if(todoCurrent != null && todoCurrent.isEmpty() == false)
-			 {
-				//Chat.addMessage(p,todoCurrent); //just tell them the message if it exists
-			 }
-			  
+			 player.addChatMessage(new ChatComponentTranslation(getCommandUsage(icommandsender))); 
+			
 			 return; 
 		 }
 		 
-
 		 String message = "";
 	   
 		 if(args[0].equals("-"))
 		 { 
 			 todoCurrent = "";
-			 	//message does nothing
 			 args[0] = "";//remove the plus sign 
 		 } 
 		 else if(args[0].equals("+"))
 		 {
-			// message = todoCurrent; //append to existing messages
-			// args[0] = "";//remove the plus sign 
-		
 			 for(int i = 1; i < args.length; i++)
 			 {
 				 message += " " + args[i];
 			 } 
+			 
 			 todoCurrent += " " + message;//so append
 		 }
 		 else 
@@ -181,6 +173,7 @@ public class CommandTodoList implements ICommand
 			 {
 				 message += " " + args[i];
 			 } 
+			 
 			 todoCurrent = message;//so replace
 		 }
  
