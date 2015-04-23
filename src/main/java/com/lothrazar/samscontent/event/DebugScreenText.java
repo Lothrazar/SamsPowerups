@@ -103,7 +103,7 @@ public class DebugScreenText
 		
 		if(todoCurrent != null && todoCurrent.isEmpty() == false)
 		{
-			event.right.add("");
+			//event.right.add("");
 			event.right.add(todoCurrent);
 		}
 	}
