@@ -34,13 +34,10 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
-import net.minecraft.world.World; 
-
+import net.minecraft.world.World;  
 import org.apache.logging.log4j.Level;
-import org.lwjgl.input.Keyboard; 
-
-import com.lothrazar.samscontent.ModMain;
-import com.sun.istack.internal.logging.Logger;
+import org.lwjgl.input.Keyboard;  
+import com.lothrazar.samscontent.ModMain; 
 
 public class SamsUtilities
 {    
