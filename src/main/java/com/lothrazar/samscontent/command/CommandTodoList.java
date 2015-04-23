@@ -11,6 +11,9 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Random; 
+
+import com.lothrazar.samscontent.common.PlayerPowerups;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -40,81 +43,103 @@ public class CommandTodoList implements ICommand
 	public static boolean REQUIRES_OP = false; 
 
 	private ArrayList<String> aliases = new ArrayList<String>(); 
-	
-	public static String KEY_LIST = "todo_list";
-	  
+
+	//it still functions with flat files if you turn this to false
+	//but set to true uses IExtended properties which is recommended
+	private static final boolean useProps = true;
+	 
 	public CommandTodoList()
 	{  
 	    this.aliases.add("todo");   
 	}
-  
+
+	private static String filenameForPlayer(String playerName)
+	{
+		return "todo_"+playerName +".dat";
+	}
 	@Override
 	public String getCommandUsage(ICommandSender s) 
 	{ 
 		return "/" + getName()+" <+|-> <text>";
 	}
    
-	public static String GetTodoForPlayerName(String playerName)
+	public static String GetTodoForPlayer(EntityPlayer player)
 	{
-		//String fileName = "todo_"+ p.getDisplayName() +".dat";
-		String fileName = "todo_"+playerName +".dat";
-   
 		String todoCurrent = "" ; 
-		try 
-	 	{
-			File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName); 
-			if(!myFile.exists()) myFile.createNewFile(); 
-			FileInputStream  fis = new FileInputStream(myFile);
-			DataInputStream instream = new DataInputStream(fis);
+		if(useProps)
+		{
+			PlayerPowerups props = PlayerPowerups.get(player);
 			
-			String val;
-			while((val = instream.readLine()) != null)todoCurrent += val; 
-			instream.close(); 
-			fis.close();
-	 	} catch (FileNotFoundException e) { 
-		//	Relay.addChatMessage(p, "Error with "+fileName);
-			e.printStackTrace();
-		} //this makes it per-world
-		catch (IOException e) {
-		//	Relay.addChatMessage(p, "Error with "+fileName);
-			e.printStackTrace();
+			todoCurrent = props.getStringTodo();
 		}
-	 
+		else
+		{  
+			String fileName = filenameForPlayer(player.getDisplayName().getUnformattedText());
+	   
+			try 
+		 	{
+				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName); 
+				if(!myFile.exists()) myFile.createNewFile(); 
+				FileInputStream  fis = new FileInputStream(myFile);
+				DataInputStream instream = new DataInputStream(fis);
+				
+				String val;
+				while((val = instream.readLine()) != null)todoCurrent += val; 
+				instream.close(); 
+				fis.close();
+		 	} catch (FileNotFoundException e) { 
+			//	Relay.addChatMessage(p, "Error with "+fileName);
+				e.printStackTrace();
+			} //this makes it per-world
+			catch (IOException e) {
+			//	Relay.addChatMessage(p, "Error with "+fileName);
+				e.printStackTrace();
+			}
+
+		}
 		return todoCurrent;
 	}
 	
-	public static void SetTodoForPlayerName(String playerName, String todoCurrent)
+	public static void SetTodoForPlayer(EntityPlayer player, String todoCurrent)
 	{
-		String fileName = "todo_"+playerName +".dat";
-		try{
-			 
-			File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName); 
-			if(!myFile.exists()) myFile.createNewFile(); 
-			FileOutputStream fos = new FileOutputStream(myFile);
+		if(useProps)
+		{
+			PlayerPowerups props = PlayerPowerups.get(player);
 			
-			DataOutputStream stream = new DataOutputStream(fos);
-			stream.writeBytes(todoCurrent);
-			stream.close();
-			fos.close();
-			  
-		} catch (FileNotFoundException e) { 
-		//	Relay.addChatMessage(p, "Error with "+fileName);
-			e.printStackTrace();
-		} //this makes it per-world
-		catch (IOException e) {
-		//	Relay.addChatMessage(p, "Error with "+fileName);
-			e.printStackTrace();
-		} 
+			props.setStringTodo(todoCurrent);
+		}
+		else
+		{ 
+			String fileName = filenameForPlayer(player.getDisplayName().getUnformattedText());
+			
+			try{
+				 
+				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName); 
+				if(!myFile.exists()) myFile.createNewFile(); 
+				FileOutputStream fos = new FileOutputStream(myFile);
+				
+				DataOutputStream stream = new DataOutputStream(fos);
+				stream.writeBytes(todoCurrent);
+				stream.close();
+				fos.close();
+				  
+			} catch (FileNotFoundException e) { 
+			//	Relay.addChatMessage(p, "Error with "+fileName);
+				e.printStackTrace();
+			} //this makes it per-world
+			catch (IOException e) {
+			//	Relay.addChatMessage(p, "Error with "+fileName);
+				e.printStackTrace();
+			} 
+		}
 	}
 	
 	@Override
 	public void execute(ICommandSender icommandsender, String[] args)
 	{ 
-		EntityPlayer p = (EntityPlayer)icommandsender;//
-
-		String fileName = "todo_"+ p.getDisplayName() +".dat";
- 
-		String todoCurrent = GetTodoForPlayerName(p.getDisplayName().getUnformattedText() );
+		EntityPlayer player = (EntityPlayer)icommandsender; 
+  
+		String todoCurrent = GetTodoForPlayer(player );
  
 		 //is the first argument empty
 		 if(args == null || args.length == 0 || args[0] == null || args[0].isEmpty())
@@ -159,7 +184,7 @@ public class CommandTodoList implements ICommand
 			 todoCurrent = message;//so replace
 		 }
  
-		 SetTodoForPlayerName(p.getDisplayName().getUnformattedText(),todoCurrent); 
+		 SetTodoForPlayer(player, todoCurrent); 
 	}
 	 
  

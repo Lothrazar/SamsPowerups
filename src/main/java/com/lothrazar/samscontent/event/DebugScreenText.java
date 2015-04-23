@@ -99,12 +99,12 @@ public class DebugScreenText
 
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 
 	{
-		String todoCurrent = CommandTodoList.GetTodoForPlayerName(player.getName());
+		String todoCurrent = CommandTodoList.GetTodoForPlayer(player);
 		
 		if(todoCurrent != null && todoCurrent.isEmpty() == false)
 		{
 			event.left.add("");
-			event.left.add("TODO : "+todoCurrent); 
+			event.left.add(todoCurrent); //used to have "TODO : "+ in front
 		}
 	}
 

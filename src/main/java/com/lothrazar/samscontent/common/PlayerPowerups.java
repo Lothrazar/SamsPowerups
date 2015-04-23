@@ -20,11 +20,15 @@ public class PlayerPowerups implements IExtendedEntityProperties
 */
 	public static final int WAYPOINT_WATCHER = 20;
 	private static final String NBT_WAYPOINT = "samWaypoints"; 
+
+	public static final int TODO_WATCHER = 21;
+	private static final String NBT_TODO = "samTodo"; 
 	
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;  
 		this.player.getDataWatcher().addObject(WAYPOINT_WATCHER, 0);
+		this.player.getDataWatcher().addObject(TODO_WATCHER, 0);
 		/*
 		this.player.getDataWatcher().addObject(SLEEP_WATCHER, 0);
 		this.player.getDataWatcher().addObject(AWAKE_WATCHER, 0);
@@ -50,7 +54,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		//properties.setInteger(NBT_AWAKE_CURRENT, this.player.getDataWatcher().getWatchableObjectInt(AWAKE_WATCHER)); 
 		
 		properties.setString(NBT_WAYPOINT, this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER)); 
-		
+		properties.setString(NBT_TODO,     this.player.getDataWatcher().getWatchableObjectString(TODO_WATCHER)); 
 		
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
@@ -59,15 +63,21 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public void loadNBTData(NBTTagCompound compound) 
 	{ 
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
-		// Get our data from the custom tag compound
+		
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
-		//link each NBT property together with a watcher 
+		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
+		
 		//this.player.getDataWatcher().updateObject(SLEEP_WATCHER, properties.getInteger(NBT_SLEEP_CURRENT)); 
 		//this.player.getDataWatcher().updateObject(AWAKE_WATCHER, properties.getInteger(NBT_AWAKE_CURRENT));
-		// Just so you know it's working, uncomment/ add this line:
-		//.out.println("IEXTENDED T:currentFlyTicks " + this.player.getDataWatcher().getWatchableObjectInt(SLEEP_WATCHER)  );
+ 	}
+	public final String getStringTodo() 
+	{
+		return this.player.getDataWatcher().getWatchableObjectString(TODO_WATCHER); 
 	}
-
+	public final void setStringTodo(String todo) 
+	{
+		this.player.getDataWatcher().updateObject(TODO_WATCHER, todo);
+	}
 	public final String getStringWaypoints() 
 	{
 		return this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER); 
