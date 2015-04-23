@@ -141,7 +141,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	
 	private void executeSave(EntityPlayer p, String name) 
 	{ 
-		ArrayList<String> lines = GetForPlayerName(p.getDisplayName().getUnformattedText());
+		ArrayList<String> lines = getForPlayer(p);
 		
 		if(name == null) name = "";
 		
@@ -153,21 +153,21 @@ public class CommandSimpleWaypoints  implements ICommand
 		
 		lines.add( here.toCSV());
 		 
-		OverwriteForPlayerName(p.getDisplayName().getUnformattedText(),lines);
+		overwriteForPlayer(p,lines);
 	} 
 
 	private void executeHide(EntityPlayer p) 
 	{
-		ArrayList<String> lines = GetForPlayerName(p.getDisplayName().getUnformattedText());
+		ArrayList<String> lines = getForPlayer(p);
 		
 		if(lines.size() < 1){return;}
 		lines.set(0,"0");
-		OverwriteForPlayerName(p.getDisplayName().getUnformattedText(),lines); 
+		overwriteForPlayer(p,lines); 
 	}
 	
 	private void executeClear(EntityPlayer p) 
 	{
-		ArrayList<String> lines = GetForPlayerName(p.getDisplayName().getUnformattedText());
+		ArrayList<String> lines = getForPlayer(p);
 		
 		if(lines.size() <= 1){return;}
 		
@@ -194,18 +194,18 @@ public class CommandSimpleWaypoints  implements ICommand
 		}
 	 
 		newLines.set(0,"0");
-		OverwriteForPlayerName(p.getDisplayName().getUnformattedText(),newLines);
+		overwriteForPlayer(p,newLines);
 		
 	}
 	
 	private void executeDisplay(EntityPlayer p, int index) 
 	{  
-		SetCurrentForPlayerName(p.getDisplayName().getUnformattedText(),index);
+		SetCurrentForPlayer(p,index);
 	}
 	
 	private void executeList(EntityPlayer p) 
 	{ 
-		ArrayList<String> lines = GetForPlayerName(p.getDisplayName().getUnformattedText());
+		ArrayList<String> lines = getForPlayer(p);
 		
 		int i = 0;
 		String msg;
@@ -234,13 +234,15 @@ public class CommandSimpleWaypoints  implements ICommand
 		return false;
 	} 
 	 
-	private void SetCurrentForPlayerName(String playerName, int current)
+	private void SetCurrentForPlayer(EntityPlayer player, int current)
 	{
-		ArrayList<String> lines = GetForPlayerName(playerName);
+		//String playerName = player.getDisplayName().getUnformattedText();
+		
+		ArrayList<String> lines = getForPlayer(player);
 		
 		lines.set(0, current+"");//overwrite the current index
  
-		OverwriteForPlayerName(playerName, lines);
+		overwriteForPlayer(player, lines);
 	}
 	
 	private static String filenameForPlayer(String playerName)
@@ -248,8 +250,10 @@ public class CommandSimpleWaypoints  implements ICommand
 		return "swp_"+playerName +".dat";
 	}
 	
-	private void OverwriteForPlayerName(String playerName, ArrayList<String> lines)
+	private void overwriteForPlayer(EntityPlayer player, ArrayList<String> lines)
 	{
+		String playerName = player.getDisplayName().getUnformattedText();
+		
 		String fileName = filenameForPlayer(playerName);
 		try
 		{
@@ -276,15 +280,11 @@ public class CommandSimpleWaypoints  implements ICommand
 		}
 	}
 	
-	public static ArrayList<String> GetForPlayerName(String playerName)
+	public static ArrayList<String> getForPlayer(EntityPlayer player)
 	{ 
-		if(playerName == null)
-		{
-			//logger.info("GetForPlayerName possible exception: <null>");
-			return null;
-		}
-	//	logger.info("GetForPlayerName : "+ playerName);
-		String fileName = filenameForPlayer(playerName);;
+
+		String playerName = player.getDisplayName().getUnformattedText();
+		String fileName = filenameForPlayer(playerName);
 		ArrayList<String> lines = new ArrayList<String>();
 	 
 		try
@@ -317,7 +317,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	{
 		EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
 	 
-    	ArrayList<String> saved = GetForPlayerName(Minecraft.getMinecraft().thePlayer.getDisplayName().getUnformattedText());
+    	ArrayList<String> saved = getForPlayer(Minecraft.getMinecraft().thePlayer);//.getDisplayName().getUnformattedText()
 
     	if(saved.size() > 0 && saved.get(0) != null)
     	{ 

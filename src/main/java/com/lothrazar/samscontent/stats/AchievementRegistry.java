@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.stats;
 import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.proxy.PlayerPowerups;
+import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Reference; 
 
 import net.minecraft.entity.EntityLivingBase;
