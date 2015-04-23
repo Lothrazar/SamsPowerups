@@ -621,8 +621,8 @@ public class ModMain
 		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
 			&& event.world.isAirBlock(event.pos.up()) 
 			&& ItemRegistry.beetroot_seed != null
-			&& event.current.getItem() == Items.golden_hoe  
-			&& event.world.rand.nextInt(16) == 0)
+		//	&& event.current.getItem() == Items.golden_hoe  
+			&& event.world.rand.nextInt(16) == 0) //it is a 1/15 chance
 		{			
 			if(event.world.isRemote == false)
 				SamsUtilities.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);
