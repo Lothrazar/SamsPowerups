@@ -208,16 +208,20 @@ public class CommandSimpleWaypoints  implements ICommand
 		ArrayList<String> lines = GetForPlayerName(p.getDisplayName().getUnformattedText());
 		
 		int i = 0;
-		String d;
+		String msg;
 		for(String line : lines)
 		{ 
 			if(i == 0){i++;continue;}
 			
 			if(line == null || line.isEmpty()) {continue;}
 			
-			d = "" + i +" : " +(new Location(line).toDisplay());
+			if(showCoords)  
+				msg = "<" + i + ">  " +(new Location(line).toDisplay());
+			else
+				msg = "<" + i + ">  " +(new Location(line).name);
+				
 	 
-			p.addChatMessage(new ChatComponentTranslation(d)); 
+			p.addChatMessage(new ChatComponentTranslation(msg)); 
 			
 			i++;
 		}
@@ -336,7 +340,7 @@ public class CommandSimpleWaypoints  implements ICommand
     		
     		if(sloc == null || sloc.isEmpty()) {return;}
     	 
-    		if( index < saved.size() && saved.get(index) != null) loc = new Location(sloc);
+    		if( index < saved.size() && saved.get(index) != null) {loc = new Location(sloc);}
     		
     		if(loc != null)
     		{ 
@@ -347,7 +351,12 @@ public class CommandSimpleWaypoints  implements ICommand
     			
     			int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
     			 
-    			String showName = "Distance "+dist+ " from waypoint ["+index+"] " + loc.name;	
+    			String showName = "";
+    			
+    			if(CommandSimpleWaypoints.showCoords)
+    				showName = "Distance "+dist+ " from waypoint <"+index+"> " + loc.toDisplay();	 
+    			else
+    				showName = "Distance "+dist+ " from waypoint <"+index+"> " + loc.name;	
     			
     			boolean sideRight=true;
     			if(sideRight)

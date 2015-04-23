@@ -56,8 +56,8 @@ public class Location
 		if(name == null) name = "";
 		String showName = " ";
 		if(name != null && name.isEmpty() == false) showName = "  :  "+name;
-		
-		return "[" + index + "] " + Math.round(X) + ", " + Math.round(Y) + ", " + Math.round(Z) + showName;		
+		//"[" + index + "] " + 
+		return Math.round(X) + ", " + Math.round(Y) + ", " + Math.round(Z) + showName;		
 	} 
 	
 	public String toDisplayShort() 
