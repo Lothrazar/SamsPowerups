@@ -113,8 +113,14 @@ public class CommandSimpleWaypoints  implements ICommand
 		 //so its outside the scope of commands that do not have a number
 		int index = -1;
 		
-		index = Integer.parseInt(args[1]);
-		
+		try{
+		index = Integer.parseInt(args[1]);//TODO: trycatch on this , it might not be integer
+		}
+		catch(Exception e)
+		{
+			p.addChatMessage(new ChatComponentTranslation(getCommandUsage(icommandsender))); 
+			return;
+		}
 		if(index <= 0 ) //invalid number, or int parse failed
 		{
 			// ZERO NOT ALLOWED
@@ -289,6 +295,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	 
 		try
 		{
+			//TODO: is there another way to do this? without files?
 			File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName);
 			if(!myFile.exists()) myFile.createNewFile();
 			FileInputStream fis = new FileInputStream(myFile);
