@@ -34,6 +34,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
@@ -336,17 +337,17 @@ public class ModMain
 		}
 		
 		if(ModMain.cfg.petNametagChat && 
-				event.entity instanceof EntityLiving )
-		{ 
-			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
-			   event.entity.getCustomNameTag() != ""   
-			   ) 
-			{    
-	           
-				//show message as if player, works since EntityLiving extends EntityLivingBase
-				 SamsUtilities.printChatMessage((event.source.getDeathMessage((EntityLiving)event.entity)));
-			}
+			event.entity instanceof EntityLivingBase && 
+			event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
+		    event.entity.getCustomNameTag() != ""   &&
+		    event.entity.worldObj.isRemote == false) 
+		{    
+           
+			//show message as if player, works since EntityLiving extends EntityLivingBase
+	 
+			SamsUtilities.printChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
 		}
+		 
 		
 		if(ModMain.cfg.cowExtraLeather > 0 && event.entity instanceof EntityCow)
 		{
