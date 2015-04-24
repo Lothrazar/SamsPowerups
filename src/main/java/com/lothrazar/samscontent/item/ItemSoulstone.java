@@ -6,6 +6,8 @@ import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -71,6 +73,19 @@ public class ItemSoulstone extends Item
 				SamsUtilities.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
 
 				event.entityLiving.getEntityData().setBoolean(KEY_STONED, false);
+				
+				
+				if(event.entityLiving instanceof EntityWolf)
+				{
+					EntityWolf dog = (EntityWolf)event.entityLiving;
+					
+					if(dog.isTamed()){ dog.setSitting(true);}
+				}
+				if(event.entityLiving instanceof EntityOcelot)
+				{
+					EntityOcelot cat = (EntityOcelot)event.entityLiving;
+					if(cat.isTamed()){ cat.setSitting(true);}
+				}
 			}
 		} 
 	} 

@@ -67,11 +67,12 @@ public class ItemRegistry
 	}
 	public static void registerItems()
 	{   
-		
-
-		soulstone = new ItemSoulstone();
-		ItemRegistry.registerItem(soulstone, "soulstone");
-		soulstone.addRecipe();
+		if(ModMain.cfg.item_soulstone)
+		{
+			soulstone = new ItemSoulstone();
+			ItemRegistry.registerItem(soulstone, "soulstone");
+			soulstone.addRecipe();
+		}
 		
 		if(ModMain.cfg.wandPiston)
 		{

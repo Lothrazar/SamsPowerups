@@ -308,6 +308,9 @@ public class ConfigFile
 		chest_sack = instance.getBoolean("chest_sack",category, true,
     			"Craft an empty sack that can transport chests by turning them into sacks; place the full sack to re-create the full chest.  Items with NBT data (enchantments and more) will pop out on the ground.");
  
+		item_soulstone = instance.getBoolean("soulstone",category, true,
+    			"Use a soulstone on a mob to give it an extra life.  The first time a soulstoned mob dies, it instead is healed and respawned at the world map spawn point.");
+		 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();  
 		
 		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();
@@ -615,4 +618,5 @@ public class ConfigFile
 	public boolean horse_food_upgrades;
 	public int cowExtraLeather;
 	public boolean sleeping_hunger;
+	public boolean item_soulstone;
 }
