@@ -72,20 +72,27 @@ public class ItemSoulstone extends Item
 				
 				SamsUtilities.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
 
-				event.entityLiving.getEntityData().setBoolean(KEY_STONED, false);
 				
+				boolean isTamedPet = false;
 				
 				if(event.entityLiving instanceof EntityWolf)
 				{
 					EntityWolf dog = (EntityWolf)event.entityLiving;
 					
-					if(dog.isTamed()){ dog.setSitting(true);}
+					isTamedPet = dog.isTamed();
 				}
 				if(event.entityLiving instanceof EntityOcelot)
 				{
 					EntityOcelot cat = (EntityOcelot)event.entityLiving;
-					if(cat.isTamed()){ cat.setSitting(true);}
+
+					isTamedPet = cat.isTamed();
 				}
+				
+				if(isTamedPet == false)
+				{
+					event.entityLiving.getEntityData().setBoolean(KEY_STONED, false);
+				}
+				//else, since pets are buggy and teleport/suicide all the time, just let it stay forever
 			}
 		} 
 	} 

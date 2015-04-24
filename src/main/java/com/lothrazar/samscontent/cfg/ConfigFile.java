@@ -309,7 +309,7 @@ public class ConfigFile
     			"Craft an empty sack that can transport chests by turning them into sacks; place the full sack to re-create the full chest.  Items with NBT data (enchantments and more) will pop out on the ground.");
  
 		item_soulstone = instance.getBoolean("soulstone",category, true,
-    			"Use a soulstone on a mob to give it an extra life.  The first time a soulstoned mob dies, it instead is healed and respawned at the world map spawn point.");
+    			"Use a soulstone on a mob to give it an extra life.  The first time a soulstoned mob dies, it instead is healed and respawned at the world map spawn point.  Tamed pets (dogs/cats) when soulstoned once will keep this forever, so they will forever respawn.  Other mobs/entities will respawn once then lose the soulstone, and it will have to be re-applied.");
 		 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();  
 		
