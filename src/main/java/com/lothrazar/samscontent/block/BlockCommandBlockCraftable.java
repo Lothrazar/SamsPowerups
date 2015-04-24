@@ -140,16 +140,16 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 	  
 	public static void addRecipe(BlockCommandBlockCraftable block, ItemStack flavor) 
 	{
-		GameRegistry.addRecipe(new ItemStack(BlockRegistry.command_block_weather), 
+		GameRegistry.addRecipe(new ItemStack(block), 
 				"rcr", 
 				"cec",
 				"rcr", 
 				'c', Items.comparator, 
-				'e', Items.water_bucket, 
+				'e', flavor, 
 				'r', Blocks.redstone_block
 				);
 			
 		if(ModMain.cfg.uncraftGeneral) 
-			GameRegistry.addSmelting(BlockRegistry.command_block_weather, new ItemStack(Blocks.redstone_block, 5), 0);
+			GameRegistry.addSmelting(block, new ItemStack(Blocks.redstone_block, 5), 0);
 	}  
 }

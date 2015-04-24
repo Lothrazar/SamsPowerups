@@ -220,7 +220,7 @@ public class ItemRegistry
 			ItemRegistry.apple_emerald_rich.addEffect(Potion.jump.id, ItemFoodAppleMagic.timeShort, PotionRegistry.V); 
 			ItemRegistry.registerItem(ItemRegistry.apple_emerald_rich, "apple_emerald_rich");
 
-			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Blocks.emerald_block)); 
+			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald_rich,new ItemStack(Blocks.emerald_block)); 
 		}   
 		 
 		if(ModMain.cfg.appleDiamond) 

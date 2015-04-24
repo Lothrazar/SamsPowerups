@@ -1,5 +1,23 @@
-bugreport; pickup beetroot seed achieve didnt fire.
+BUGS:bugreport; pickup beetroot seed achieve didnt fire.
+ pickup beetroot seed achieve
+
+-Xmx3G
+coimmadn block recipes fixed
+
+beetroot soup missing recipe
+
+emerald apple rich recipe
+
+Wand of Rotation - fix recipe as diagonal like piston, but with endstone/diamond
+
+water wand - fix with lapis block and water bucket
+
+block_shear_sheep name missing in lang
+
+DUPLICATE LANG FILES
  
+
+
 
 SOUL STONE item.
 when used on an entity, sets an NBT so that it respawns (at world spawn) when it does.
