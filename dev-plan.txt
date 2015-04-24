@@ -6,7 +6,7 @@ when used on an entity, sets an NBT so that it respawns (at world spawn) when it
 
 reinstate hunger-after-sleeping/wakeup
 
-bug: wand piston and contents of tile entity (chests)
+bug: wand piston and modded items: arent registered yetr when we do config.
 
 Possible Features:
 

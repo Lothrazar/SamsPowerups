@@ -69,6 +69,8 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
+import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
+import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -454,19 +456,7 @@ public class ModMain
 		{   
 			ItemPaperCarbon.rightClickBlock(event); 
 		}
-		
-		/*if(held != null && held.getItem() == ItemRegistry.wandBuilding)
-		{
-			if(event.action.LEFT_CLICK_BLOCK == event.action  )
-			{ 
-				ItemWandBuilding.onPlayerLeftClick(event);
-			}
-			else
-			{ 
-				ItemWandBuilding.onPlayerRightClick(event);
-			}
-		}*/
-		
+	 
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
@@ -549,8 +539,7 @@ public class ModMain
 	  	  	}
 		}
 		
-		if(//&&
-  				event.action == event.action.RIGHT_CLICK_BLOCK && 
+		if(  event.action == event.action.RIGHT_CLICK_BLOCK && 
   				SamsUtilities.isBonemeal(held)  && 
   				blockClicked != null ) 
 		{    
@@ -626,6 +615,29 @@ public class ModMain
 			}
 
 			event.entityPlayer.addStat(achievements.beetrootSeed, 1);
+		}
+	}
+
+	@SubscribeEvent
+	public void onPlayerSleepInBedEvent(PlayerSleepInBedEvent event)
+	{
+		
+	}
+
+	@SubscribeEvent
+	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)
+	{
+		if(event.entityPlayer.worldObj.isRemote == false)
+		{
+			boolean didSleepAllNight = !event.updateWorld;
+			//System.out.println("isDaytime"+event.entityPlayer.worldObj.isDaytime());//nope, still night no matter what
+		
+			if(didSleepAllNight && ModMain.cfg.sleeping_hunger)
+			{
+				int numSeconds = 60;
+				
+				event.entityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id, 60 * Reference.TICKS_PER_SEC, 1));
+			}
 		}
 	}
 	

@@ -73,6 +73,10 @@ public class ConfigFile
 		
 		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull_on_death",category, true,
     			"Players will drop their skull when they die for any reason.");
+		
+		sleeping_hunger = instance.getBoolean("sleeping_hunger",category, true,
+    			"Passing the full night in a bed will make you hungry.");
+		
 	}
 
 	public void pocket_edition() 
@@ -610,4 +614,5 @@ public class ConfigFile
 	public boolean canNameVillagers;
 	public boolean horse_food_upgrades;
 	public int cowExtraLeather;
+	public boolean sleeping_hunger;
 }
