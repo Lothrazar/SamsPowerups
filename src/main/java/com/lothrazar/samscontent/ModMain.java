@@ -351,30 +351,7 @@ public class ModMain
 		if(ModMain.cfg.cowExtraLeather > 0 && event.entity instanceof EntityCow)
 		{
 			event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ(), new ItemStack(Items.leather,ModMain.cfg.cowExtraLeather)));
-		}
-		
-		ItemSoulstone.onEntityDrops(event);
-		
-		/*
-		if(SamsUtilities.isLivestock(event.entity))
-		{ 
-			if(event.source.getSourceOfDamage() != null 
-					&& event.source.getSourceOfDamage() instanceof EntityPlayer 
-					&& cfg.livestockLootMultiplier > 0) 
-			{ 
-				//if livestock is killed by a palyer, then multiply the loot by the scale factor
-				for(EntityItem ei : event.drops)
-				{  
-					//the stack size does not seem to be mutable  so we just get and set the stack with a new size 
-					int newdrops = ei.getEntityItem().stackSize * cfg.livestockLootMultiplier;
-					
-					//do not exceed max stack size.  Example: if a sword drops, do not make it a 2stack
-					newdrops = Math.min(newdrops, ei.getEntityItem().getMaxStackSize());
-					
-					ei.setEntityItemStack(new ItemStack(ei.getEntityItem().getItem(), newdrops,ei.getEntityItem().getItemDamage()));
-				}
-			} 
-		}  */
+		} 
 	}
 	
 	@SubscribeEvent
