@@ -67,6 +67,7 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
@@ -272,6 +273,12 @@ public class ModMain
 			}
 		}
 	}
+
+	@SubscribeEvent
+	public void onLivingHurt(LivingHurtEvent event) 
+	{ 
+		ItemSoulstone.onLivingHurt(event);
+	}
 	
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)
@@ -346,6 +353,8 @@ public class ModMain
 			event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ(), new ItemStack(Items.leather,ModMain.cfg.cowExtraLeather)));
 		}
 		
+		ItemSoulstone.onEntityDrops(event);
+		
 		/*
 		if(SamsUtilities.isLivestock(event.entity))
 		{ 
@@ -403,6 +412,12 @@ public class ModMain
 				event.setCanceled(true);//stop the GUI inventory opening
 			}  
 		}  
+		
+		if(held != null && held.getItem() instanceof ItemSoulstone)
+		{      
+			ItemSoulstone.onEntityInteract(event);   
+		}  
+		
   	} 
 	 
 	@SubscribeEvent
@@ -707,5 +722,7 @@ public class ModMain
 				SamsUtilities.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
 			}
 		}
+		
+		//ItemSoulstone.onEntityDeath(event);
 	}
 }

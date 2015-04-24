@@ -334,7 +334,7 @@ public class SamsUtilities
 		return player.getEntityData().getInteger(prop);
 	}
 
-	public static void teleportWallSafe(EntityPlayer player, World world, BlockPos coords)
+	public static void teleportWallSafe(EntityLivingBase player, World world, BlockPos coords)
 	{
 		player.setPositionAndUpdate(coords.getX(), coords.getY(), coords.getZ()); 
 

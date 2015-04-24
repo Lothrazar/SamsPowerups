@@ -55,6 +55,7 @@ public class ItemRegistry
 	public static ItemSnowballFrozen frozen_snowball; 
 	public static ItemRespawnEggAnimal respawn_egg;
 	public static ItemWandPiston wand_piston;
+	 public static ItemSoulstone soulstone;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -64,9 +65,13 @@ public class ItemRegistry
 		 
 		 items.add(item);
 	}
-	 
 	public static void registerItems()
 	{   
+		
+
+		soulstone = new ItemSoulstone();
+		ItemRegistry.registerItem(soulstone, "soulstone");
+		
 		if(ModMain.cfg.wandPiston)
 		{
 			wand_piston = new ItemWandPiston();
