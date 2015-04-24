@@ -61,14 +61,6 @@ public class ItemWandPiston extends Item
 			return;
 		}
 		
-		/*
-		TileEntity here = world.getTileEntity(pos);
-		if(here != null)
-		{
-			System.out.println("tile entity is not null");
-		}
-		 */
-		 
 		if(event.face != null)
 		{
 			EntityPlayer player = event.entityPlayer;
@@ -86,8 +78,7 @@ public class ItemWandPiston extends Item
 					SamsUtilities.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
 				}
 				else
-				{ 
-
+				{  
 					SamsUtilities.playSoundAt(player, "random.wood_click");
 
 					//they swap places
@@ -101,6 +92,4 @@ public class ItemWandPiston extends Item
 			} 
 		}
 	}
-	
-	
 }

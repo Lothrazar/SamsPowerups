@@ -67,7 +67,7 @@ public class ItemWandTransform extends Item
 	}
  
 	private static int INVALID = -1;
-	public static boolean transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
+	public static void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
 	{
 		IBlockState blockState = player.worldObj.getBlockState(pos);
 		Block block = blockState.getBlock();
@@ -802,20 +802,13 @@ public class ItemWandTransform extends Item
 				 
 				SamsUtilities.damageOrBreakHeld(player);
 				 
-			}
-			
-			return true;
+			} 
 		}
-		return false;
 	}
 	
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
 	{         
-        list.add("Cycles the blockstate of some blocks");         
-	} 
-	
-	
-
-	
+        list.add("Cycles the blockstate of some blocks");//TODO lang file         
+	}
 }

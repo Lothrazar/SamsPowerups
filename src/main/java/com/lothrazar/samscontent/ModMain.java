@@ -415,7 +415,6 @@ public class ModMain
 			ItemWandWater.cast(event);
 		}
 		
-
 		if(held != null && held.getItem() == ItemRegistry.wand_piston )
 		{
 			ItemWandPiston.cast(event);
@@ -426,19 +425,11 @@ public class ModMain
 		{   
 			ItemFireballThrowable.cast(event.world,event.entityPlayer );   
 		}
-/*
-		if(held != null && held.getItem() == ItemRegistry.wandProspect && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			ItemWandProspect.searchProspect(event.entityPlayer,held,event.pos);   
-		}
-*/
+
 		if(held != null && held.getItem() == ItemRegistry.wandTransform && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
-			boolean success = ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
-		
-			//if(success) {event.setCanceled(success);} 
+			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
 		}
 		
 		if(held != null && held.getItem() == ItemRegistry.frozen_snowball && 
@@ -627,11 +618,14 @@ public class ModMain
 		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
 			&& event.world.isAirBlock(event.pos.up()) 
 			&& ItemRegistry.beetroot_seed != null
-		//	&& event.current.getItem() == Items.golden_hoe  
 			&& event.world.rand.nextInt(16) == 0) //it is a 1/15 chance
 		{			
 			if(event.world.isRemote == false)
+			{
 				SamsUtilities.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);
+			}
+
+			event.entityPlayer.addStat(achievements.beetrootSeed, 1);
 		}
 	}
 	
@@ -639,23 +633,9 @@ public class ModMain
 	public void onPlayerTick(PlayerTickEvent event)
 	{     
 		EntityPlayer player = event.player;
-		ItemStack held = player.getCurrentEquippedItem(); 
 		
-		/*if(held != null && 
-				Item.getIdFromItem(held.getItem()) == Item.getIdFromItem(ItemRegistry.wandBuilding) ) 
-		{
-			ItemWandBuilding.setCompoundIfNull(held);
-			
-			ItemWandBuilding.tickTimeout(held); 
-		}*/
-		
-		  //   why isnt this in potionregistry
-		if( player.isPotionActive(PotionRegistry.ender) && //the potion gives us this safe(ish)falling
-			 	// player.dimension == Reference.Dimension.end && //hence the name of the class
-				 player.posY < -50// && 
-				// player.worldObj.isRemote  == false && 
-				// player.capabilities.isCreativeMode == false
-				)
+		if( player.isPotionActive(PotionRegistry.ender) &&     //   why isnt this in potionregistry
+			player.posY < -50)
 		{  
 			SamsUtilities.teleportWallSafe(player, player.worldObj, player.getPosition().up(256)); 
 		} 
