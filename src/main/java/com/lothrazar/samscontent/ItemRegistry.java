@@ -107,7 +107,13 @@ public class ItemRegistry
 			beetrootSoup = new ItemSoup(8).setCreativeTab(ModMain.tabSamsContent); 
 			ItemRegistry.registerItem(beetrootSoup, "beetroot_soup");
 			
-
+			GameRegistry.addRecipe(new ItemStack(beetrootSoup), 
+					"bbb", 
+					"bbb",
+					" u ", 
+					'b', beetrootItem, 
+					'u', Items.bowl
+					);
 		}
 		 
 		if(ModMain.cfg.fire_charge_throw)
