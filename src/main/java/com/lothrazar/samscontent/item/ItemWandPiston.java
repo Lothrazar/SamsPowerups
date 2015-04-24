@@ -14,6 +14,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
@@ -54,15 +55,24 @@ public class ItemWandPiston extends Item
 		BlockPos pos = event.pos;
 		World world = event.world;
 		IBlockState hit = world.getBlockState(pos);
-		EntityPlayer player = event.entityPlayer;
-		 
+
 		if(hit == null || ignoreList.contains(hit.getBlock()))
 		{
 			return;
 		}
+		
+		/*
+		TileEntity here = world.getTileEntity(pos);
+		if(here != null)
+		{
+			System.out.println("tile entity is not null");
+		}
+		 */
 		 
 		if(event.face != null)
 		{
+			EntityPlayer player = event.entityPlayer;
+			
 			BlockPos posTowardsPlayer = pos.offset(event.face,1);
 			
 			BlockPos posAwayPlayer = pos.offset(event.face.getOpposite(),1);

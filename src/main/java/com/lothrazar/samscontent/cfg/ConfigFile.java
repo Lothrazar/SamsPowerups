@@ -1,16 +1,9 @@
 package com.lothrazar.samscontent.cfg;
 
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntityRabbit;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraftforge.common.config.Configuration; 
-
+import net.minecraftforge.common.config.Configuration;  
 import com.lothrazar.samscontent.command.*;  
 import com.lothrazar.samscontent.item.*; 
 
@@ -110,7 +103,11 @@ public class ConfigFile
 		chanceZombieVillagerEmerald = instance.getInt("chance_zombie_villager_emerald",category, 5,0,100,
     			"Percent chance that a villager zombie will drop an emerald (so 0 for vanilla).");
 		
-		endermenDropCarryingBlock = instance.get(category,"endermen_drop_carrying_block", true).getBoolean(); 
+		endermenDropCarryingBlock = instance.get(category,"endermen_drop_carrying_block", true).getBoolean();
+		
+		cowExtraLeather =instance.getInt("cow_extra_leather",category, 2,0,10,
+    			"Extra leather that is dropped by cows.  Normally they drop 0-2 leather, so with this setting at '2', you will get 2-4 leather per cow.");
+		 
 	}
 
 	private void nature() 
@@ -612,4 +609,5 @@ public class ConfigFile
 	public int sandNumBlocks;
 	public boolean canNameVillagers;
 	public boolean horse_food_upgrades;
+	public int cowExtraLeather;
 }

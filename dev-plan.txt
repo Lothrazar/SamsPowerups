@@ -1,7 +1,12 @@
+bugreport; pickup beetroot seed achieve didnt fire.
 
+TODO: bc of armor, do we want each cow to drop at least 2(ish) leather?
+//cows currently drop 0-2 leather. if we just add a config for cow_extra_leather=2
+//then we get 2-4
+//cows drop 1-3 beef
+//pigs drop 1-3 pork
 
-
-
+bug: wand piston and contents of tile entity (chests)
 
 Possible Features:
 

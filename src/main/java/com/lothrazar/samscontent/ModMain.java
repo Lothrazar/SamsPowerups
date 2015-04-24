@@ -338,6 +338,12 @@ public class ModMain
 				 SamsUtilities.printChatMessage((event.source.getDeathMessage((EntityLiving)event.entity)));
 			}
 		}
+		
+		if(ModMain.cfg.cowExtraLeather > 0 && event.entity instanceof EntityCow)
+		{
+			event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ(), new ItemStack(Items.leather,ModMain.cfg.cowExtraLeather)));
+		}
+		
 		/*
 		if(SamsUtilities.isLivestock(event.entity))
 		{ 
