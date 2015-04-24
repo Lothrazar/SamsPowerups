@@ -106,6 +106,8 @@ public class ItemRegistry
 		
 			beetrootSoup = new ItemSoup(8).setCreativeTab(ModMain.tabSamsContent); 
 			ItemRegistry.registerItem(beetrootSoup, "beetroot_soup");
+			
+
 		}
 		 
 		if(ModMain.cfg.fire_charge_throw)
