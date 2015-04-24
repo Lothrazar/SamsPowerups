@@ -61,9 +61,13 @@ public class ItemWandTransform extends Item
 
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandTransform),
-			Items.blaze_rod,
-			Blocks.end_stone  );
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandWater),
+				"  p",
+				" i ",
+				"b  ",
+				'p',Items.diamond,
+				'i',Blocks.end_stone,
+				'b',Items.blaze_rod); 
 	}
  
 	private static int INVALID = -1;

@@ -34,9 +34,13 @@ public class ItemWandWater  extends Item
  
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandWater),
-			Items.blaze_rod, 
-			Items.water_bucket  );
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandWater),
+				"  p",
+				" i ",
+				"b  ",
+				'p',Items.water_bucket,
+				'i',Blocks.lapis_block,
+				'b',Items.blaze_rod); 
 	}
 	  
 	public static void cast(PlayerInteractEvent event) 
