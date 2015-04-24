@@ -1011,7 +1011,7 @@ public class RecipeRegistry
 				's', Items.string,
 				'r', Items.redstone );  
 	}
-	
+	 
 	private static void removeRecipe(Item resultItem)
 	{     
 		removeRecipe(new ItemStack(resultItem));

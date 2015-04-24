@@ -1,12 +1,10 @@
 package com.lothrazar.samscontent.potion;
 
 import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
-
+import java.lang.reflect.Modifier; 
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
-
+import com.lothrazar.util.SamsUtilities; 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -28,8 +26,7 @@ public class PotionRegistry
 { 
 	//public static Potion tired;//http://www.minecraftforge.net/wiki/Potion_Tutorial
 	public static Potion waterwalk;
-	public static Potion slowfall;
-	public static Potion flying;
+	public static Potion slowfall; 
 	public static Potion lavawalk;
 	public static Potion ender;
 	public static Potion frozen;
@@ -56,9 +53,7 @@ public class PotionRegistry
 		PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModMain.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
-		
-		PotionRegistry.flying = (new PotionCustom(ModMain.cfg.potionIdFlying,  new ResourceLocation("flying"), false, 0)).setPotionName("potion.flying");
-		
+		 
 		PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 		
 		PotionRegistry.frozen = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
@@ -126,7 +121,7 @@ public class PotionRegistry
 		
 	    // tickTired(event); 
 	        
-	     tickFlying(event);
+	     //tickFlying(event);
 	  
 	     tickSlowfall(event);
 	     
@@ -238,7 +233,7 @@ public class PotionRegistry
 	    	 } 
 	     }
 	}
-
+/*
 	private static void tickFlying(LivingUpdateEvent event) 
 	{
 		 if(event.entityLiving.isPotionActive(PotionRegistry.flying)) 
@@ -274,5 +269,5 @@ public class PotionRegistry
 	    	 }
 	     }
 	}
- 
+ */
 }
