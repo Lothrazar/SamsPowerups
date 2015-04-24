@@ -34,7 +34,7 @@ public class ItemSoulstone extends Item
 				new ItemStack(Items.dye,1,Reference.dye_purple),
 				new ItemStack(Items.ender_pearl),
 				new ItemStack(Items.gold_nugget),
-				new ItemStack(Items.name_tag)
+				new ItemStack(Items.blaze_powder)
 		);
 	}
 	
