@@ -290,7 +290,7 @@ public class ItemRegistry
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_nether_star,new ItemStack(Items.nether_wart));
 		}
 	 
-		if(ModMain.cfg.appleNetherStar) 
+		if(ModMain.cfg.appleEmerald) 
 		{ 
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, true);   
 			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I);  
