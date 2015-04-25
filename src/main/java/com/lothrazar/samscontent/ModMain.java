@@ -10,6 +10,7 @@ import org.apache.logging.log4j.Logger;
 import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.cfg.ConfigFile;
 import com.lothrazar.samscontent.command.*;
+import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
@@ -64,12 +65,14 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
@@ -703,4 +706,19 @@ public class ModMain
 		
 		//ItemSoulstone.onEntityDeath(event);
 	}
+	
+	@SubscribeEvent
+	public void onClonePlayer(PlayerEvent.Clone event) 
+	{
+		System.out.println("Cloning player extended properties");
+		PlayerPowerups.get(event.entityPlayer).copy(PlayerPowerups.get(event.original));
+	}
+	@SubscribeEvent
+ 	public void onEntityConstructing(EntityConstructing event)
+ 	{ 
+ 		if (event.entity instanceof EntityPlayer && PlayerPowerups.get((EntityPlayer) event.entity) == null)
+ 		{ 
+ 			PlayerPowerups.register((EntityPlayer) event.entity);
+ 		} 
+ 	}
 }

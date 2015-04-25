@@ -109,15 +109,7 @@ public class AchievementRegistry
 			beetrootSeed.registerStat(); //not on my page
 		}
 	}
-	
-	@SubscribeEvent
- 	public void onEntityConstructing(EntityConstructing event)
- 	{ 
- 		if (event.entity instanceof EntityPlayer && PlayerPowerups.get((EntityPlayer) event.entity) == null)
- 		{ 
- 			PlayerPowerups.register((EntityPlayer) event.entity);
- 		} 
- 	}
+
 	 
 	@SubscribeEvent
 	public void onPickup(ItemPickupEvent event)

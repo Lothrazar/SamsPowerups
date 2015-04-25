@@ -72,15 +72,48 @@ public class PlayerPowerups implements IExtendedEntityProperties
  	}
 	public final String getStringTodo() 
 	{
-		return this.player.getDataWatcher().getWatchableObjectString(TODO_WATCHER); 
+		return this.getStringSafe(TODO_WATCHER);
+		/*
+		try
+		{
+			//why is this giving  java.lang.Integer cannot be cast to java.lang.String
+			return this.player.getDataWatcher().getWatchableObjectString(TODO_WATCHER); 
+		}
+		catch(ClassCastException e)
+		{
+			int test = this.player.getDataWatcher().getWatchableObjectInt(TODO_WATCHER);
+			
+			System.out.println("why is it an integer "+test);
+			return "";
+		}
+		*/
 	}
+	public String getStringSafe(int WATCHER)
+	{
+		//we used to get these exceptions when our "copy" function wanst in here saving us to persist data on player death.
+		//doesnt seem to happen anymore, but keeing the try catch because it couldn't hurt.
+		try
+		{
+			//why is this giving  java.lang.Integer cannot be cast to java.lang.String
+			return this.player.getDataWatcher().getWatchableObjectString(WATCHER); 
+		}
+		catch(ClassCastException e)
+		{
+			//int test = this.player.getDataWatcher().getWatchableObjectInt(WATCHER);
+			
+			//System.out.println("why is it an integer "+test);
+			return "";
+		}
+	}
+	
 	public final void setStringTodo(String todo) 
 	{
 		this.player.getDataWatcher().updateObject(TODO_WATCHER, todo);
 	}
 	public final String getStringWaypoints() 
 	{
-		return this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER); 
+		return this.getStringSafe(WAYPOINT_WATCHER);
+		//return this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER); 
 	}
 	public final void setStringWaypoints(String waypointsCSV) 
 	{
@@ -105,5 +138,17 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	}
 	*/
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
+
+	public void copy(PlayerPowerups props) 
+	{
+		//thanks for the help https://github.com/coolAlias/Tutorial-Demo/blob/master/src/main/java/tutorial/entity/ExtendedPlayer.java
+
+		//set in the player
+		player.getDataWatcher().updateObject(WAYPOINT_WATCHER, props.getStringWaypoints());
+		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo());
+		//set here
+		this.setStringWaypoints(props.getStringWaypoints());
+		this.setStringTodo(props.getStringTodo());  
+	}
 
 }
