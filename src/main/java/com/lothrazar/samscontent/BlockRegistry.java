@@ -25,7 +25,7 @@ public class BlockRegistry
 	public static BlockBucketStorage block_storemilk;
 	public static BlockBucketStorage block_storeempty;
 	public static BlockCropBeetroot beetroot_crop;
-	
+	public static BlockFragile block_fragile;
 	//store blocks in a list - because this is used by the ModelMesher in the client proxy later
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
 	
@@ -40,8 +40,9 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
-		Block block_fragile = new BlockFragile();
+		block_fragile = new BlockFragile();
 		BlockRegistry.registerBlock(block_fragile, "block_fragile"); 
+		block_fragile.addRecipe();
 		
 		if(ModMain.cfg.beetroot)
 		{
