@@ -86,15 +86,15 @@ public class DebugScreenText
 	 	{ 
 	 		addHorseInfo(event, player);   
 	 	} 
-	  
+
+		CommandSimpleWaypoints.AddWaypointInfo(event); 
+		
+		addTodoCommandInfo(event, player);  
+
 	 	if(SamsUtilities.isShiftKeyDown())  
 	 	{ 
 			addGameruleInfo(event, world); 
 		} 
-
-		addTodoCommandInfo(event, player);  
-
-		CommandSimpleWaypoints.AddWaypointInfo(event); 
 	}
 
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 
