@@ -116,7 +116,7 @@ public class BlockRegistry
 	 
 			BlockRegistry.registerBlock(BlockRegistry.command_block_tpbed,"command_block_tpbed");
 			
-			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.ender_pearl));
+			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.bed));
 		} 
 		
 		if(ModMain.cfg.xRayBlock)

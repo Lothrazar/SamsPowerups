@@ -61,7 +61,7 @@ public class ItemWandTransform extends Item
 
 	public static void addRecipe() 
 	{
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandWater),
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandTransform),
 				"  p",
 				" i ",
 				"b  ",

@@ -36,10 +36,9 @@ public class ItemLightning  extends Item
  //Lightning Spear?
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.lightning_charge),
-			Items.ghast_tear,  
-			Items.blaze_rod,
-			Items.ender_pearl ); 
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.lightning_charge,4),
+			Items.ghast_tear,   
+			Items.ender_eye ); 
 	}
 
 	public static void cast(PlayerInteractEvent event) 
