@@ -6,6 +6,7 @@ import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Items;
@@ -74,17 +75,21 @@ public class ItemSoulstone extends Item
 				
 				boolean isTamedPet = false;
 				
+				//functions are different since wolf/ocelot extend EntityTameable, but horse has its own way
 				if(event.entityLiving instanceof EntityWolf)
 				{
-					EntityWolf dog = (EntityWolf)event.entityLiving;
-					
+					EntityWolf dog = (EntityWolf)event.entityLiving; 
 					isTamedPet = dog.isTamed();
 				}
 				if(event.entityLiving instanceof EntityOcelot)
 				{
-					EntityOcelot cat = (EntityOcelot)event.entityLiving;
-
+					EntityOcelot cat = (EntityOcelot)event.entityLiving; 
 					isTamedPet = cat.isTamed();
+				}
+				if(event.entityLiving instanceof EntityHorse)
+				{
+					EntityHorse horse = (EntityHorse)event.entityLiving; 
+					isTamedPet = horse.isTame();
 				}
 				
 				if(isTamedPet == false)
