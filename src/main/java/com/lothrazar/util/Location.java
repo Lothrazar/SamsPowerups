@@ -71,6 +71,6 @@ public class Location
 	
 	public String toDisplayNoCoords()
 	{
-		return name + " (Height " + MathHelper.floor_double(Y) + ")";
+		return name + " (y = " + MathHelper.floor_double(Y) + ")";
 	}
 }

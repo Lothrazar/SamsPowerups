@@ -32,9 +32,8 @@ public class ItemSoulstone extends Item
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.soulstone), 
 				new ItemStack(Items.dye,1,Reference.dye_purple),
-				new ItemStack(Items.ender_pearl),
-				new ItemStack(Items.gold_nugget),
-				new ItemStack(Items.blaze_powder)
+				new ItemStack(Items.ender_eye),
+				new ItemStack(Items.gold_nugget)
 		);
 	}
 	

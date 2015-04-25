@@ -24,16 +24,7 @@ public class ItemHorseFood extends Item
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ModMain.tabSamsContent);
 	}
-	@Override
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-    	return true; //give it shimmer 
-    }
-	@Override
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
-	{
-		//list.add("");
-	}
+	
 	public static void addRecipes() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_type)
