@@ -3,19 +3,12 @@ package com.lothrazar.samscontent;
 import java.util.ArrayList;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockFlowerPot;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-
-import com.lothrazar.samscontent.block.BlockBucketStorage;
-import com.lothrazar.samscontent.block.BlockCommandBlockCraftable;
-import com.lothrazar.samscontent.block.BlockCropBeetroot;
-import com.lothrazar.samscontent.block.BlockFishing;
-import com.lothrazar.samscontent.block.BlockShearWool;
-import com.lothrazar.samscontent.block.BlockXRay;
+import net.minecraftforge.fml.common.registry.GameRegistry; 
+import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
 import com.lothrazar.util.Reference; 
 
@@ -47,9 +40,12 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
+		Block block_fragile = new BlockFragile();
+		BlockRegistry.registerBlock(block_fragile, "block_fragile"); 
+		
 		if(ModMain.cfg.beetroot)
 		{
-			beetroot_crop = (BlockCropBeetroot) new BlockCropBeetroot();
+			beetroot_crop =  new BlockCropBeetroot();
 
 			BlockRegistry.registerBlock(beetroot_crop, "beetroot_crop"); 
 		}
