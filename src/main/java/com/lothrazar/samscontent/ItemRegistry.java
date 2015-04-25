@@ -292,7 +292,7 @@ public class ItemRegistry
 	 
 		if(ModMain.cfg.appleNetherStar) 
 		{ 
-			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);   
+			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, true);   
 			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, ItemFoodAppleMagic.timeLong, PotionRegistry.I);  
 			 
 			ItemRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
