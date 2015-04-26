@@ -31,6 +31,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.oredict.OreDictionary;
  
 public class RecipeRegistry  
 {  
@@ -936,29 +937,28 @@ public class RecipeRegistry
 					"iii", 
 					"iii", 
 					'i', Items.iron_ingot,  
-					'x', Items.leather_chestplate );
+					'x', new ItemStack(Items.leather_chestplate ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.iron_boots), 
 					"   ",
 					"i i", 
 					"ixi", 
 					'i', Items.iron_ingot,  
-					'x', Items.leather_boots );
+					'x', new ItemStack(Items.leather_boots ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.iron_leggings), 
 					"iii",
 					"ixi", 
 					"i i", 
 					'i', Items.iron_ingot,  
-					'x', Items.leather_leggings );
+					'x', new ItemStack(Items.leather_leggings,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.iron_helmet), 
 					"iii",
 					"ixi", 
 					"   ", 
 					'i', Items.iron_ingot,  
-					'x', Items.leather_helmet);
-
+					'x', new ItemStack(Items.leather_helmet,1,OreDictionary.WILDCARD_VALUE)); 
 		}
 		
 		if(ModMain.cfg.diamond_armor_requires_chain)
@@ -973,28 +973,28 @@ public class RecipeRegistry
 					"iii", 
 					"iii", 
 					'i', Items.diamond,  
-					'x', Items.chainmail_chestplate );
+					'x', new ItemStack(Items.chainmail_chestplate ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.diamond_boots), 
 					"   ",
 					"i i", 
 					"ixi", 
 					'i', Items.diamond,  
-					'x', Items.chainmail_boots );
+					'x', new ItemStack(Items.chainmail_boots ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.diamond_leggings), 
 					"iii",
 					"ixi", 
 					"i i", 
 					'i', Items.diamond,  
-					'x', Items.chainmail_leggings );
+					'x', new ItemStack(Items.chainmail_leggings ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.diamond_helmet), 
 					"iii",
 					"ixi", 
 					"   ", 
 					'i', Items.diamond,  
-					'x', Items.chainmail_helmet); 
+					'x', new ItemStack(Items.chainmail_helmet ,1,OreDictionary.WILDCARD_VALUE)); 
 		
 		}
 	}
