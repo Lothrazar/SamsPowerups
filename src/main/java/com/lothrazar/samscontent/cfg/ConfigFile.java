@@ -269,8 +269,8 @@ public class ConfigFile
 	{
 		category = "debug_screen_f3";
 		  
-		debugClearRight = instance.getBoolean("clear_right",category, true,
-    			"Clears the right side. " );
+		reducedDebugImproved = instance.getBoolean("reducedDebugInfo_improved",category, true,
+    			"If this gamerule is turned on, then much more useless information is cleared away (with coordinates still hidden), but some is added back in such as the biome name. " );
 		
 		debugSlime = instance.getBoolean("slime",category, true,
     			"Shows if you are standing in a slime chunk." );
@@ -536,7 +536,7 @@ public class ConfigFile
 	public boolean diamond_armor_requires_chain;
 	public boolean debugSlime;
 	public boolean debugHorseInfo;
-	public boolean debugClearRight;
+	public boolean reducedDebugImproved;
 	public boolean debugVillageInfo;
 	public boolean spawnBlazeDesertHills;
 	public boolean spawnMagmaCubeDesert;

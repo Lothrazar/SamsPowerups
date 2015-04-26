@@ -61,15 +61,27 @@ public class DebugScreenText
 	{ 
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false){return;}
 
-		if(ModMain.cfg.debugClearRight )
-		{ 
-			event.right.clear();
-		}
-
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
+ 
+		if(ModMain.cfg.reducedDebugImproved && 
+				world.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo) )
+		{ 
+			//then replace all existing text with just this
+			event.right.clear();
+			event.left.clear();
 
-		event.left.add("");
+			//float localDiff = world.getDifficultyForLocation(player.getPosition()).func_180168_b();
+
+			//event.left.add(Minecraft.getDebugFPS()+" fps");
+			//event.left.add("E:"+world.loadedEntityList.size()); 
+			event.left.add("Biome: "+world.getBiomeGenForCoords(player.getPosition()).biomeName);
+			//event.left.add("Local Difficulty: "+localDiff+"");
+			//event.left.add("");
+		}
+		
+		 
+ 
 		addDateTimeInfo(event, world);
 		  
 	 	if(ModMain.cfg.debugSlime && player.dimension == Reference.Dimension.overworld)
@@ -102,8 +114,7 @@ public class DebugScreenText
 		String todoCurrent = CommandTodoList.GetTodoForPlayer(player);
 		
 		if(todoCurrent != null && todoCurrent.isEmpty() == false)
-		{
-			//event.right.add("");
+		{ 
 			event.right.add(todoCurrent);
 		}
 	}
@@ -202,7 +213,7 @@ public class DebugScreenText
 
 		if(spots != null) type += " ("+spots+")";
 
-		event.left.add("");
+		//event.left.add("");
 		event.left.add("Riding "+type); 
 
 		DecimalFormat df = new DecimalFormat("0.0000");
@@ -234,10 +245,10 @@ public class DebugScreenText
 		    int rep = closest.getReputationForPlayer(player.getName());
   
 		    event.left.add("");
-		    event.left.add("Village Data");
-		    event.left.add(String.format("# of Villagers: %d",villagers));
-		    event.left.add(String.format("Reputation: %d",rep));
-		    event.left.add(String.format("Valid Doors: %d",doors));
+		   // event.left.add("Village Data");
+		    event.left.add(String.format("Village Pop: %d",villagers));
+		    event.left.add(String.format(" Reputation: %d",rep));
+		    event.left.add(String.format(" Valid Doors: %d",doors));
  
 		    dX = playerX - closest.getCenter().getX();
 		    dZ = playerZ - closest.getCenter().getZ();
