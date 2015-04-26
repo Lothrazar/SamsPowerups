@@ -1,5 +1,16 @@
 BUGS:bugreport; pickup beetroot seed achieve didnt fire.
  pickup beetroot seed achieve
+ 
+ 
+ TODO: the clear right debug feature changed:
+ IF gamerule reducedDebugInfo is TRUE THEN
+we clear left & right
+and add biome name
+MAYBE localDifficulty
+maybe Entities list
+fps if possible
+ 
+ 
 
 -Xmx3G
 coimmadn block recipes fixed
