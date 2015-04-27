@@ -13,12 +13,12 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
 
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
 public class CommandSearchSpawner implements ICommand
 { 
-	public static boolean REQUIRES_OP; 
-	public static boolean showCoords;   
+	public static boolean REQUIRES_OP;  
 	
 	public CommandSearchSpawner()
 	{
@@ -57,6 +57,7 @@ public class CommandSearchSpawner implements ICommand
 	@Override
 	public void execute(ICommandSender sender, String[] args) throws CommandException 
 	{ 
+		EntityPlayer player = (EntityPlayer)sender;
 		int radius = 0;
 		if(args.length > 0)
 		{
@@ -66,13 +67,13 @@ public class CommandSearchSpawner implements ICommand
 		if(radius > 128) { radius = 128; }//Maximum // 
 		if(radius <= 0 ) { radius = 64;  }//default
 		
-		BlockPos found = SamsUtilities.findClosestBlock((EntityPlayer)sender, Blocks.mob_spawner, radius);
+		BlockPos found = SamsUtilities.findClosestBlock(player, Blocks.mob_spawner, radius);
 		
 		String m = "None Found with radius "+radius;
 		
 		if(found != null)
-		{
-			m = "Found at : "+found.getX()+", "+found.getY()+", "+found.getZ();
+		{ 
+			m = "Found at : "+SamsUtilities.getCoordsOrReduced(player, found);
 		}
 		
 		((EntityPlayer)sender).addChatMessage(new ChatComponentTranslation( m )); 

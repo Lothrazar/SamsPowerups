@@ -451,8 +451,8 @@ public class ConfigFile
 		searchspawner = instance.getBoolean("searchspawner",category, true,
     			"Players can search for spawners placed in the world.  Result is only chat output.");
 
-		CommandSearchSpawner.showCoords = instance.getBoolean("searchspawner.show_coords",category, false,
-    			"Either show coordinates or directions.");
+	//	CommandSearchSpawner.showCoords = instance.getBoolean("searchspawner.show_coords",category, false,
+    	//		"Either show coordinates or directions.");
 		
 		CommandSearchSpawner.REQUIRES_OP = instance.getBoolean("searchspawner.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
@@ -463,8 +463,8 @@ public class ConfigFile
 		CommandSearchTrades.REQUIRES_OP = instance.getBoolean("searchtrade.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 
-		CommandSearchTrades.showCoords = instance.getBoolean("searchtrade.show_coords",category, false,
-    			"Either show coordinates or directions.");
+	//	CommandSearchTrades.showCoords = instance.getBoolean("searchtrade.show_coords",category, false,
+    	//		"Either show coordinates or directions.");
 		
 		searchitem = instance.getBoolean("searchitem",category, true,
     			"Players can search nearby chests for items.   Result is only chat output."    		); 
@@ -472,8 +472,8 @@ public class ConfigFile
 		CommandSearchItem.REQUIRES_OP = instance.getBoolean("searchitem.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 
-		CommandSearchItem.showCoords = instance.getBoolean("searchitem.show_coords",category, false,
-    			"Either show coordinates or directions.");
+//		CommandSearchItem.showCoords = instance.getBoolean("searchitem.show_coords",category, false,
+//    			"Either show coordinates or directions.");
  
 		enderchest = instance.getBoolean("enderchest",category, true,
     			"Players can open their enderchest with a command, no item needed."    		); 
@@ -487,8 +487,8 @@ public class ConfigFile
 		CommandSimpleWaypoints.REQUIRES_OP = instance.getBoolean("simplewaypoint.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 
-		CommandSimpleWaypoints.showCoords = instance.getBoolean("simplewaypoint.show_coords",category, false,
-    			"Either show coordinates or directions.");
+//		CommandSimpleWaypoints.showCoords = instance.getBoolean("simplewaypoint.show_coords",category, false,
+//    			"Either show coordinates or directions.");
 		
 		todo = instance.getBoolean("todo",category, true,
     			"Command that lets players use /todo myreminder text, which will then show whatever text they put on the F3 debug screen."); 

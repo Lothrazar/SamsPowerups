@@ -22,8 +22,7 @@ import net.minecraftforge.common.config.Property;
 
 public class CommandSearchItem  implements ICommand
 {
-	private ArrayList<String> aliases = new ArrayList<String>(); 
-	public static boolean showCoords;
+	private ArrayList<String> aliases = new ArrayList<String>();  
 	public static boolean REQUIRES_OP; 
 	
 	public CommandSearchItem()
@@ -121,7 +120,9 @@ public class CommandSearchItem  implements ICommand
 			
 			if(foundQtyTotal > 0)
 			{ 
-				foundMessages.add(itemLocDisplay(player,dictionary.get(inventory),foundQtyTotal));
+				String totalsStr = foundQtyTotal + " found : "; 
+				
+				foundMessages.add(totalsStr + SamsUtilities.getCoordsOrReduced(player,dictionary.get(inventory)));
 			}  
 		}
   
@@ -163,14 +164,14 @@ public class CommandSearchItem  implements ICommand
 		} //end loop on current tile entity
 		return foundQty;
 	}
-	
+	/*
 	private static String itemLocDisplay(	EntityPlayerMP player, BlockPos pos ,int foundQty )
 	{   
 		int xLoop = pos.getX();
 		int yLoop = pos.getY();
 		int zLoop = pos.getZ();
 		
-		String totalsStr = foundQty + " found"; 
+		
 		
 		if(showCoords )
 		{ 
@@ -213,7 +214,7 @@ public class CommandSearchItem  implements ICommand
 		if(isDown) yStr = Math.abs(yDist) + " down ";
 		 
 		return xStr +  yStr +  zStr +": "+ totalsStr;
-	}
+	}*/
  
 	@Override
 	public int compareTo(Object arg0)

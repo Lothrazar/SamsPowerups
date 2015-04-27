@@ -39,7 +39,7 @@ public class ItemWandWater  extends Item
 				" i ",
 				"b  ",
 				'p',Items.water_bucket,
-				'i',Blocks.lapis_block,
+				'i',new ItemStack(Items.dye,1,Reference.dye_lapis),
 				'b',Items.blaze_rod); 
 	}
 	  

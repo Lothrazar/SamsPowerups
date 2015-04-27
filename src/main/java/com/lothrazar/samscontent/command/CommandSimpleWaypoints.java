@@ -7,6 +7,7 @@ import java.util.List;
 
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Location; 
+import com.lothrazar.util.Reference;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP; 
@@ -23,7 +24,7 @@ import net.minecraftforge.common.DimensionManager;
 public class CommandSimpleWaypoints  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
-	public static boolean showCoords;  
+	//public static boolean showCoords;  
 	
 	//it still functions with flat files if you turn this to false
 	//but set to true uses IExtended properties which is recommended
@@ -211,6 +212,8 @@ public class CommandSimpleWaypoints  implements ICommand
 	
 	private void executeList(EntityPlayer p) 
 	{ 
+		boolean showCoords = !p.worldObj.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo);
+		
 		ArrayList<String> lines = getForPlayer(p);
 		
 		int i = 0;
@@ -394,8 +397,9 @@ public class CommandSimpleWaypoints  implements ICommand
     			int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
     			 
     			String showName = "";
+    			boolean showCoords = !p.worldObj.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo);
     			
-    			if(CommandSimpleWaypoints.showCoords)
+    			if(showCoords)
     				showName = "Distance "+dist+ " from waypoint <"+index+"> " + loc.toDisplay();	 
     			else
     				showName = "Distance "+dist+ " from waypoint <"+index+"> " + loc.name;	

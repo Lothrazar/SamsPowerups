@@ -1,6 +1,7 @@
 package com.lothrazar.util;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.MathHelper;
  
 public class Location
@@ -12,6 +13,24 @@ public class Location
 	public int dimension = 0;//  : this is unused right now
 	public String name;
 	
+	public Location(BlockPos pos)
+	{ 
+		X = pos.getX();
+		Y = pos.getY();
+		Z = pos.getZ();
+		index = 0;
+		dimension = 0;
+		name = ""; 
+	}
+	public Location(BlockPos pos, int dim, int idx, String pname)
+	{ 
+		X = pos.getX();
+		Y = pos.getY();
+		Z = pos.getZ();
+		index = idx;
+		dimension = dim;
+		name = pname; 
+	}
 	public Location(int idx,double pX, double pY, double pZ, int d, String pname)
 	{
 		X = pX;

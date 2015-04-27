@@ -21,6 +21,7 @@ import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -35,8 +36,10 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;  
+
 import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard;  
+
 import com.lothrazar.samscontent.ModMain; 
 
 public class SamsUtilities
@@ -528,4 +531,68 @@ public class SamsUtilities
 	{
 		return tool.getMaxDamage() - (int)MathHelper.floor_double(tool.getMaxDamage() / d);
 	}
+	
+	public static String getCoordsOrReduced(EntityPlayer player, BlockPos pos)
+	{
+		boolean showCoords = !player.worldObj.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo);
+		
+		if(showCoords)
+			return pos.getX() + ", " + pos.getY() + ", " + pos.getZ();
+		else
+			return SamsUtilities.getDirectionsString(player, pos); 
+	}
+	
+	//TODO: The showCoords on all the commands is not working at all. must hook to the gamerule
+	//AND use this
+	public static String getDirectionsString(EntityPlayer player, BlockPos pos  )
+	{    
+		/*
+		if(showCoords )
+		{ 
+			return "(" + xLoop + ", " + yLoop + ", " + zLoop + ")" + " : "+ totalsStr;
+		}
+		*/
+ 
+		int xDist,yDist,zDist;
+		
+		xDist = (int) player.posX - pos.getX();
+		yDist = (int) player.posY - pos.getY();
+		zDist = (int) player.posZ - pos.getZ();
+		
+		//in terms of directon copmass:
+		//North is -z;  south is +z		
+		//east is +x, west is -x
+		
+		//so for Distances: 
+		
+		boolean isNorth = (zDist > 0);
+		boolean isSouth = (zDist < 0);
+		
+		boolean isWest = (xDist > 0);
+		boolean isEast = (xDist < 0);
+
+		boolean isUp   = (yDist < 0);
+		boolean isDown = (zDist > 0);
+		
+		String xStr = "";
+		String yStr = "";
+		String zStr = "";
+
+		if(isWest) xStr = Math.abs(xDist) + " west ";
+		if(isEast) xStr = Math.abs(xDist) + " east ";
+		
+		if(isNorth) zStr = Math.abs(zDist) + " north ";
+		if(isSouth) zStr = Math.abs(zDist) + " south ";
+
+		if(isUp)   yStr = Math.abs(yDist) + " up ";
+		if(isDown) yStr = Math.abs(yDist) + " down ";
+		 
+		return xStr +  yStr +  zStr ;
+	}
+	
+	
+	
+	
+	
+	
 }

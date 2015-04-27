@@ -19,8 +19,7 @@ import net.minecraft.village.MerchantRecipeList;
 
 public class CommandSearchTrades  implements ICommand
 {
-	public static boolean REQUIRES_OP; 
-	public static boolean showCoords;   
+	public static boolean REQUIRES_OP;  
 	private ArrayList<String> aliases = new ArrayList<String>();
 
 	public CommandSearchTrades()
@@ -83,17 +82,7 @@ public class CommandSearchTrades  implements ICommand
 				Z + 0.5D - range, 
 				X + 0.5D + range, 255.0D, 
 				Z + 0.5D + range);
-		
-		
-		
-		/*java.lang.IllegalArgumentException: Don't know how to search for interface net.minecraft.entity.IMerchant
-	at net.minecraft.util.ClassInheritanceMultiMap.func_180212_a(ClassInheritanceMultiMap.java:53) ~[ClassInheritanceMultiMap.class:?]
-	at net.minecraft.util.ClassInheritanceMultiMap$1.iterator(ClassInheritanceMultiMap.java:111) ~[ClassInheritanceMultiMap$1.class:?]
-	at net.minecraft.world.chunk.Chunk.getEntitiesOfTypeWithinAAAB(Chunk.java:1026) ~[Chunk.class:?]
-	at net.minecraft.world.World.getEntitiesWithinAABB(World.java:3037) ~[World.class:?]
-	at net.minecraft.world.World.getEntitiesWithinAABB(World.java:3020) ~[World.class:?]
-	at com.lothrazar.command.CommandSearchTrades.execute(CommandSearchTrades.java:75) ~[CommandSear*/
-
+		 
 
 		 List merchants = ic.getEntityWorld().getEntitiesWithinAABB(EntityVillager.class, searchRange);
 
