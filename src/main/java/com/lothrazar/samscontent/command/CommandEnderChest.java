@@ -23,8 +23,8 @@ public class CommandEnderChest implements ICommand
 
 	public CommandEnderChest()
 	{ 
-		this.aliases.add("ec");
-		this.aliases.add("enderchest");
+		this.aliases.add("ec"); 
+		this.aliases.add("ENDERCHEST");
 	}
 
 	@Override

@@ -15,10 +15,13 @@ import net.minecraft.world.World;
 
 public class CommandHome implements ICommand
 {
-	public static boolean REQUIRES_OP; 
-
+	public static boolean REQUIRES_OP;  
 	private ArrayList<String> aliases = new ArrayList<String>();
-	
+
+	public CommandHome()
+	{ 
+		this.aliases.add("HOME");  
+	}
 	@Override
 	public int compareTo(Object arg0)
 	{ 

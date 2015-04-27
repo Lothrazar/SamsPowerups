@@ -22,7 +22,13 @@ public class CommandSearchTrades  implements ICommand
 	public static boolean REQUIRES_OP; 
 	public static boolean showCoords;   
 	private ArrayList<String> aliases = new ArrayList<String>();
-	
+
+	public CommandSearchTrades()
+	{
+		aliases.add("searcht");
+		aliases.add("SEARCHTRADE"); 
+		aliases.add("SEARCHT");   
+	}
 	@Override
 	public int compareTo(Object arg0) 
 	{ 

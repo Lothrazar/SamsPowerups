@@ -22,7 +22,12 @@ import net.minecraft.util.ChatComponentTranslation;
 public class CommandKit implements ICommand
 { 
 	public static boolean REQUIRES_OP;
-	
+	private ArrayList<String> aliases = new ArrayList<String>();
+
+	public CommandKit()
+	{ 
+		this.aliases.add("KIT");  
+	}
 	@Override
 	public int compareTo(Object arg0)
 	{ 
@@ -44,7 +49,7 @@ public class CommandKit implements ICommand
 	@Override
 	public List getAliases()
 	{ 
-		return new ArrayList<String>();
+		return aliases;
 	}
 	
 	public static ArrayList<String> contents = new ArrayList<String>();

@@ -51,7 +51,7 @@ public class CommandTodoList implements ICommand
 
 	public CommandTodoList()
 	{  
-	    this.aliases.add("todo");   
+	    this.aliases.add("TODO");   
 	}
 
 	private static String filenameForPlayer(String playerName)

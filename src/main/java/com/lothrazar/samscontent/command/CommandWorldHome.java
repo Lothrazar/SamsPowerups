@@ -18,7 +18,10 @@ public class CommandWorldHome  implements ICommand
 	public static boolean REQUIRES_OP; 
 	
 	private ArrayList<String> aliases = new ArrayList<String>();
-	
+	public CommandWorldHome()
+	{
+		aliases.add("WORLDHOME");
+	}
 	@Override
 	public int compareTo(Object o)
 	{ 

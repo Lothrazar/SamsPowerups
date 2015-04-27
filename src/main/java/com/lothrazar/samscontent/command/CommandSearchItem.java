@@ -28,7 +28,9 @@ public class CommandSearchItem  implements ICommand
 	
 	public CommandSearchItem()
 	{
-		aliases.add("is");
+		aliases.add("SEARCHITEM");
+		aliases.add("searchi");
+		aliases.add("SEARCHI");
 	}
 	 
 	@Override

@@ -22,7 +22,11 @@ public class CommandSearchSpawner implements ICommand
 	
 	public CommandSearchSpawner()
 	{
-		aliases.add("searchdungeon");
+		aliases.add("SEARCHSPAWNER");
+		aliases.add("searchdungeon"); 
+		aliases.add("SEARCHDUNGEON");  
+		aliases.add("searchs"); 
+		aliases.add("searchd"); 
 	}
 
 	@Override

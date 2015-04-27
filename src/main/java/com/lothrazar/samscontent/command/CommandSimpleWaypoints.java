@@ -27,14 +27,14 @@ public class CommandSimpleWaypoints  implements ICommand
 	
 	//it still functions with flat files if you turn this to false
 	//but set to true uses IExtended properties which is recommended
-	private static final boolean useProps = true;
-  
+	private static final boolean useProps = true; 
 	private ArrayList<String> aliases = new ArrayList<String>();
 
 	public CommandSimpleWaypoints()
 	{  
-		this.aliases.add("wp");
-		this.aliases.add("simplewp");
+		this.aliases.add("swp"); 
+		this.aliases.add("SWP");
+		this.aliases.add("SIMPLEWP");
 	}
 	
 	@Override
