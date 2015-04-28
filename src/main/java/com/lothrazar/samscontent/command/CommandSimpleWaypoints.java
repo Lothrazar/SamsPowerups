@@ -17,6 +17,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.DimensionManager;
@@ -202,7 +203,6 @@ public class CommandSimpleWaypoints  implements ICommand
 	 
 		newLines.set(0,"0");
 		overwriteForPlayer(p,newLines);
-		
 	}
 	
 	private void executeDisplay(EntityPlayer p, int index) 
@@ -217,19 +217,30 @@ public class CommandSimpleWaypoints  implements ICommand
 		ArrayList<String> lines = getForPlayer(p);
 		
 		int i = 0;
-		String msg;
+		String msg = "";
+		Location loc;
+		
 		for(String line : lines)
 		{ 
-			if(i == 0){i++;continue;}
+			if(i == 0){i++;continue;}//just a weird bug that happens, since we index by 1
 			
 			if(line == null || line.isEmpty()) {continue;}
+			msg = EnumChatFormatting.WHITE+"";//overworld and all other dimensions
+			loc = new Location(line);
+			
+		 
+			if(loc.dimension == Reference.Dimension.end)
+				msg = EnumChatFormatting.DARK_PURPLE+"";
+			else if(loc.dimension == Reference.Dimension.nether)
+				msg = EnumChatFormatting.RED+"";
+			
+			msg += "<" + i + "> ";
 			
 			if(showCoords)  
-				msg = "<" + i + ">  " +(new Location(line).toDisplay());
+				msg += loc.toDisplay();
 			else
-				msg = "<" + i + ">  " +(new Location(line).name);
+				msg += loc.name;
 				
-	 
 			p.addChatMessage(new ChatComponentTranslation(msg)); 
 			
 			i++;
@@ -395,20 +406,13 @@ public class CommandSimpleWaypoints  implements ICommand
     			double dZ = p.posZ - loc.Z;
     			
     			int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
-    			 
-    			String showName = "";
-    			boolean showCoords = !p.worldObj.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo);
+    			int dY = MathHelper.floor_double(loc.Y - p.posY);
+    			  
+    			String height = " [" + dY + "]";
     			
-    			if(showCoords)
-    				showName = "Distance "+dist+ " from waypoint <"+index+"> " + loc.toDisplay();	 
-    			else
-    				showName = "Distance "+dist+ " from waypoint <"+index+"> " + loc.name;	
-    			
-    			boolean sideRight=true;
-    			if(sideRight)
-    				event.right.add(showName);
-    			else 
-    				event.left.add(showName);
+    			String showName = dist + "m to <"+index+"> " + loc.name + height;	
+			 
+				event.right.add(showName); 
     		} 
     	}
 	}
