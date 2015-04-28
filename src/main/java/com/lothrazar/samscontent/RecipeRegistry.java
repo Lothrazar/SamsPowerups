@@ -961,7 +961,7 @@ public class RecipeRegistry
 					'x', new ItemStack(Items.leather_helmet,1,OreDictionary.WILDCARD_VALUE)); 
 		}
 		
-		if(ModMain.cfg.diamond_armor_requires_chain)
+		if(ModMain.cfg.diamond_armor_requires_iron)
 		{ 
 			removeRecipe(Items.diamond_chestplate);
 			removeRecipe(Items.diamond_boots);
@@ -973,28 +973,28 @@ public class RecipeRegistry
 					"iii", 
 					"iii", 
 					'i', Items.diamond,  
-					'x', new ItemStack(Items.chainmail_chestplate ,1,OreDictionary.WILDCARD_VALUE));
+					'x', new ItemStack(Items.iron_chestplate ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.diamond_boots), 
 					"   ",
 					"i i", 
 					"ixi", 
 					'i', Items.diamond,  
-					'x', new ItemStack(Items.chainmail_boots ,1,OreDictionary.WILDCARD_VALUE));
+					'x', new ItemStack(Items.iron_boots ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.diamond_leggings), 
 					"iii",
 					"ixi", 
 					"i i", 
 					'i', Items.diamond,  
-					'x', new ItemStack(Items.chainmail_leggings ,1,OreDictionary.WILDCARD_VALUE));
+					'x', new ItemStack(Items.iron_leggings ,1,OreDictionary.WILDCARD_VALUE));
 	
 			GameRegistry.addRecipe(new ItemStack(Items.diamond_helmet), 
 					"iii",
 					"ixi", 
 					"   ", 
 					'i', Items.diamond,  
-					'x', new ItemStack(Items.chainmail_helmet ,1,OreDictionary.WILDCARD_VALUE)); 
+					'x', new ItemStack(Items.iron_helmet ,1,OreDictionary.WILDCARD_VALUE)); 
 		
 		}
 	}

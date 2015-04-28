@@ -68,7 +68,7 @@ public class ConfigFile
 	{
 		category = "player";
 
-		playerDeathCoordinates = instance.getBoolean("player_death_coordinates",category, true,
+		playerDeathCoordinates = instance.getBoolean("player_death_coordinates",category, false,
     			"Players will have their death point coordinates broadcast in chat.");
 		
 		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull_on_death",category, true,
@@ -209,9 +209,12 @@ public class ConfigFile
 
 		iron_armor_requires_leather = instance.getBoolean("iron_armor_requires_leather",category, true,
 				"Iron armor must be crafted on top of leather armor.");  
-
-		diamond_armor_requires_chain = instance.getBoolean("diamond_armor_requires_chain",category, true,
-				"Diamond armor must be crafted on top of chain armor.");  
+ 
+		diamond_armor_requires_iron = instance.getBoolean("diamond_armor_requires_gold",category, true,
+				"Diamond armor must be crafted on top of iron armor.");  
+		
+	//	diamond_armor_requires_chain = instance.getBoolean("diamond_armor_requires_chain",category, true,
+		//		"Diamond armor must be crafted on top of chain armor.");  
 	}
 
 	private void harvesting_changes() 
@@ -532,8 +535,8 @@ public class ConfigFile
 	public boolean appleLapis;
 	public boolean appleChocolate;
 	public boolean appleEmerald;
-	public boolean iron_armor_requires_leather;
-	public boolean diamond_armor_requires_chain;
+	public boolean iron_armor_requires_leather; 
+	public boolean diamond_armor_requires_iron;
 	public boolean debugSlime;
 	public boolean debugHorseInfo;
 	public boolean reducedDebugImproved;
