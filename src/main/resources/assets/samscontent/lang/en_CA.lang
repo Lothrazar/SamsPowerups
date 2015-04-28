@@ -63,6 +63,7 @@ item.horse_upgrade_variant.name=Lapis Carrot
 item.respawn_egg.name=Respawn
 item.respawn_egg_empty.name=Empty Respawn Egg
 item.soulstone.name=Soulstone
+item.soulstone_persist.name=Soulstone
 item.beetroot_item.name=Beetroot
 item.beetroot_seed.name=Beetroot Seeds
 item.beetroot_soup.name=Beetroot Soup 
