@@ -10,6 +10,7 @@ import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityWolf;
 import net.minecraft.init.Items;
+import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumParticleTypes;
@@ -18,14 +19,34 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class ItemSoulstone extends Item
 {
-	public ItemSoulstone()
+	private boolean hasEffect;
+	public ItemSoulstone(boolean shiny)
 	{  
 		super();    
+		hasEffect = shiny;
 		this.setCreativeTab(ModMain.tabSamsContent); 
 	}
+	
+	@Override
+    public boolean hasEffect(ItemStack par1ItemStack)
+    {
+    	return hasEffect; //give it shimmer, depending on if this was set in constructor
+    }
+	@Override
+	@SideOnly(Side.CLIENT)
+	public EnumRarity getRarity(ItemStack par1ItemStack)
+	{
+		 if(hasEffect)
+			 return EnumRarity.EPIC; //dynamic text to match the two apple colours
+		 else 
+			 return EnumRarity.RARE;
+	} 
+	 
 	
 	private static final String KEY_STONED = "soulstone";
 	private static final int VALUE_SINGLEUSE = -1;
@@ -35,10 +56,22 @@ public class ItemSoulstone extends Item
 	public void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.soulstone), 
-				new ItemStack(Items.dye,1,Reference.dye_purple),
-				new ItemStack(Items.ender_eye),
-				new ItemStack(Items.gold_nugget)
+			new ItemStack(Items.dye,1,Reference.dye_purple),
+			new ItemStack(Items.ender_eye),
+			new ItemStack(Items.gold_nugget)
 		);
+		 
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.soulstone_persist)
+			,"lll","lal","lll"  
+			,'l', Items.emerald
+			,'a', ItemRegistry.soulstone);
+	
+		if(ModMain.cfg.uncraftGeneral) 
+		{
+			GameRegistry.addSmelting(ItemRegistry.soulstone, new ItemStack(Items.ender_eye, 8),	0);
+			
+			GameRegistry.addSmelting(ItemRegistry.soulstone_persist, new ItemStack(Items.emerald, 8),	0);
+		} 
 	}
 	
 	public static void onEntityInteract(EntityInteractEvent event) 

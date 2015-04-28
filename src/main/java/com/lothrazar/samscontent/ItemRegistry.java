@@ -70,12 +70,12 @@ public class ItemRegistry
 	{   
 		if(ModMain.cfg.item_soulstone)
 		{
-			soulstone = new ItemSoulstone();
+			soulstone = new ItemSoulstone(false);
 			ItemRegistry.registerItem(soulstone, "soulstone");
 			soulstone.addRecipe();
 
-			soulstone_persist = new ItemSoulstone();
-			ItemRegistry.registerItem(soulstone_persist, "soulstone");
+			soulstone_persist = new ItemSoulstone(true);
+			ItemRegistry.registerItem(soulstone_persist, "soulstone_persist");
 			soulstone_persist.addRecipe();
 		}
 		
