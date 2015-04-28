@@ -122,6 +122,25 @@ public class PotionRegistry
 	    // tickTired(event); 
 	        
 	     //tickFlying(event);
+		if(event.entityLiving instanceof EntityPlayer)
+		{
+			EntityPlayer player = (EntityPlayer)event.entityLiving;
+			
+			int playerGhost = SamsUtilities.getPlayerIntegerNBT(player, "ghost_timer");
+			
+			if(playerGhost <= 0)
+			{
+//TODO: teleport back to source
+				player.setGameType(GameType.SURVIVAL);
+			}
+			else
+			{
+				System.out.println("ghost timer = "+playerGhost);
+				
+				SamsUtilities.incrementPlayerIntegerNBT(player, "ghost_timer",-1);
+				
+			}
+		}
 	  
 	     tickSlowfall(event);
 	     

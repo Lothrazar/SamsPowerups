@@ -279,7 +279,12 @@ public class SamsUtilities
 		if(prev < 0) {prev = 0;}
 		player.getEntityData().setInteger(prop, prev);
 	}
-	 
+
+	public static int getPlayerIntegerNBT(EntityPlayer player, String prop)
+	{ 
+		return player.getEntityData().getInteger(prop);
+	}
+	
 	public static ArrayList<Block> getBlockListFromCSV(String csv)
 	{
 		 ArrayList<Block> blocks = new ArrayList<Block>();
@@ -331,12 +336,7 @@ public class SamsUtilities
 		
 		return items;
 	}
-	
-	public static int getPlayerIntegerNBT(EntityPlayer player, String prop)
-	{ 
-		return player.getEntityData().getInteger(prop);
-	}
-
+	 
 	public static void teleportWallSafe(EntityLivingBase player, World world, BlockPos coords)
 	{
 		player.setPositionAndUpdate(coords.getX(), coords.getY(), coords.getZ()); 

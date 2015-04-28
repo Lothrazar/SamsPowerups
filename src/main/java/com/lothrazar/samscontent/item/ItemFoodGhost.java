@@ -21,13 +21,14 @@ public class ItemFoodGhost extends ItemFood
 	}
 	
 	private static final String KEY_TIMER = "ghost_timer";
-	private static final int GHOST_TICKS = 300 * Reference.TICKS_PER_SEC;
+	private static final int GHOST_TICKS = 30 * Reference.TICKS_PER_SEC;
 	
 	@Override
 	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer player)
     {     
 		if(par2World.isRemote == false)  //false means serverside
 		{
+			//TODO: only allowed in overworld
 			player.setGameType(GameType.SPECTATOR);
 			 
 			SamsUtilities.incrementPlayerIntegerNBT(player, KEY_TIMER, GHOST_TICKS);
@@ -37,7 +38,6 @@ public class ItemFoodGhost extends ItemFood
 	public void addRecipe() 
 	{
 
-		
-	}
- 
+		//probably shapeless, apple + ghast tear
+	} 
 }
