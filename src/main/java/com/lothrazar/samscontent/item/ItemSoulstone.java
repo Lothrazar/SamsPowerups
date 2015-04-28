@@ -28,6 +28,9 @@ public class ItemSoulstone extends Item
 	}
 	
 	private static final String KEY_STONED = "soulstone";
+	private static final int VALUE_SINGLEUSE = -1;
+	private static final int VALUE_PERSIST = 1;
+	private static final int VALUE_EMPTY = 0;
 	
 	public void addRecipe() 
 	{
@@ -40,12 +43,29 @@ public class ItemSoulstone extends Item
 	
 	public static void onEntityInteract(EntityInteractEvent event) 
 	{ 
-		if(event.target.getEntityData().getBoolean(KEY_STONED))
+		Item item = event.entityPlayer.getHeldItem() == null ? null : event.entityPlayer.getHeldItem().getItem();
+		
+		if(item != ItemRegistry.soulstone && item != ItemRegistry.soulstone_persist){return;}
+		
+		
+		
+		//getInteger by default returns zero if no value exists
+		if(item == ItemRegistry.soulstone  && 
+				event.target.getEntityData().getInteger(KEY_STONED) != VALUE_EMPTY)
 		{ 
-			return;//mob has been soulstoned already, do not double up
+			return;//for single use, only apply if existing is empty (do not overwrite persist)
 		}
+		if(item == ItemRegistry.soulstone_persist  && 
+				event.target.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST)
+		{ 
+			return;//if we are using a persisting soulstone, it can overwrite single use or empty
+			//just do not overwrite if we already have a persisting one applied
+		}
+		
+		int newValue = (item == ItemRegistry.soulstone_persist) ? VALUE_PERSIST : VALUE_SINGLEUSE;
+		
 
-		event.target.getEntityData().setBoolean(KEY_STONED, true);
+		event.target.getEntityData().setInteger(KEY_STONED, newValue);
 		
 		SamsUtilities.decrHeldStackSize(event.entityPlayer); 
 		
@@ -59,10 +79,9 @@ public class ItemSoulstone extends Item
 		//thanks for the help:
 		//http://www.minecraftforge.net/forum/index.php?topic=7475.0
 		
-		if(event.entityLiving.getEntityData().getBoolean(KEY_STONED))
-		{ 
-			//yes there is a typo in the word 'amount' but it is not in my code  
-			float amount = event.ammount;
+		if(event.entityLiving.getEntityData().getInteger(KEY_STONED) != VALUE_EMPTY)
+		{  
+			float amount = event.ammount;//yes there is a typo in the word 'amount' but it is not in my code  
 			
 			if(event.entityLiving.getHealth() - amount <= 0)
 			{ 
@@ -72,8 +91,12 @@ public class ItemSoulstone extends Item
 				
 				SamsUtilities.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
 
-				
+				boolean isPersist = event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST;
+				/*
 				boolean isTamedPet = false;
+				
+				
+				
 				
 				//functions are different since wolf/ocelot extend EntityTameable, but horse has its own way
 				if(event.entityLiving instanceof EntityWolf)
@@ -91,12 +114,15 @@ public class ItemSoulstone extends Item
 					EntityHorse horse = (EntityHorse)event.entityLiving; 
 					isTamedPet = horse.isTame();
 				}
+				*/
 				
-				if(isTamedPet == false)
+				
+				//if(isTamedPet == false)
+				if(event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_SINGLEUSE)
 				{
-					event.entityLiving.getEntityData().setBoolean(KEY_STONED, false);
-				}
-				//else, since pets are buggy and teleport/suicide all the time, just let it stay forever
+					//if it does not persist, then consume this use
+					event.entityLiving.getEntityData().setInteger(KEY_STONED, VALUE_EMPTY);
+				} 
 			}
 		} 
 	} 

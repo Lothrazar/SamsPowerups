@@ -56,6 +56,7 @@ public class ItemRegistry
 	public static ItemRespawnEggAnimal respawn_egg;
 	public static ItemWandPiston wand_piston;
 	 public static ItemSoulstone soulstone;
+	 public static ItemSoulstone soulstone_persist;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -72,6 +73,10 @@ public class ItemRegistry
 			soulstone = new ItemSoulstone();
 			ItemRegistry.registerItem(soulstone, "soulstone");
 			soulstone.addRecipe();
+
+			soulstone_persist = new ItemSoulstone();
+			ItemRegistry.registerItem(soulstone_persist, "soulstone");
+			soulstone_persist.addRecipe();
 		}
 		
 		if(ModMain.cfg.wandPiston)
