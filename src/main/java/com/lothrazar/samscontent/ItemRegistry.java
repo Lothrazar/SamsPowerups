@@ -55,8 +55,9 @@ public class ItemRegistry
 	public static ItemSnowballFrozen frozen_snowball; 
 	public static ItemRespawnEggAnimal respawn_egg;
 	public static ItemWandPiston wand_piston;
-	 public static ItemSoulstone soulstone;
-	 public static ItemSoulstone soulstone_persist;
+	public static ItemSoulstone soulstone;
+	public static ItemSoulstone soulstone_persist;
+	public static ItemFoodGhost apple_ghost;
 	
 	public static void registerItem(Item item, String name)
 	{ 
@@ -68,6 +69,10 @@ public class ItemRegistry
 	}
 	public static void registerItems()
 	{   
+		apple_ghost = new ItemFoodGhost();
+		ItemRegistry.registerItem(apple_ghost, "apple_ghost");
+		apple_ghost.addRecipe();
+		
 		if(ModMain.cfg.item_soulstone)
 		{
 			soulstone = new ItemSoulstone(false);
