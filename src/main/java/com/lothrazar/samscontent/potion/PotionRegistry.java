@@ -2,9 +2,12 @@ package com.lothrazar.samscontent.potion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier; 
+
 import com.lothrazar.samscontent.ModMain;
+import com.lothrazar.samscontent.item.ItemFoodGhost;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities; 
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
@@ -93,7 +96,7 @@ public class PotionRegistry
 	public static void onEnderTeleportEvent(EnderTeleportEvent event)
 	{  
 		if(event.entity instanceof EntityPlayer)
-		{
+		{ 
 			EntityPlayer p = (EntityPlayer)event.entity;
 			
 			if(p.isPotionActive(PotionRegistry.ender))
@@ -124,22 +127,7 @@ public class PotionRegistry
 	     //tickFlying(event);
 		if(event.entityLiving instanceof EntityPlayer)
 		{
-			EntityPlayer player = (EntityPlayer)event.entityLiving;
-			
-			int playerGhost = SamsUtilities.getPlayerIntegerNBT(player, "ghost_timer");
-			
-			if(playerGhost <= 0)
-			{
-//TODO: teleport back to source
-				player.setGameType(GameType.SURVIVAL);
-			}
-			else
-			{
-				System.out.println("ghost timer = "+playerGhost);
-				
-				SamsUtilities.incrementPlayerIntegerNBT(player, "ghost_timer",-1);
-				
-			}
+			ItemFoodGhost.onPlayerUpdate(event); 
 		}
 	  
 	     tickSlowfall(event);

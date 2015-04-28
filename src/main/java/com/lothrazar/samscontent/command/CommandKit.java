@@ -59,7 +59,7 @@ public class CommandKit implements ICommand
 	{ 
 		EntityPlayer p = (EntityPlayer)sender;
 		  
-		int kitsUsed = SamsUtilities.getPlayerIntegerNBT(p, getName());
+		int kitsUsed = p.getEntityData().getInteger(getName()); 
 		 
 		if(kitsUsed == 0) //has the player used this already (in this life)
 		{

@@ -274,17 +274,11 @@ public class SamsUtilities
 	
 	public static void incrementPlayerIntegerNBT(EntityPlayer player, String prop, int inc)
 	{
-		int prev = getPlayerIntegerNBT(player,prop);
-		prev += inc;//can be negative
-		if(prev < 0) {prev = 0;}
+		int prev = player.getEntityData().getInteger(prop);
+		prev += inc; 
 		player.getEntityData().setInteger(prop, prev);
 	}
-
-	public static int getPlayerIntegerNBT(EntityPlayer player, String prop)
-	{ 
-		return player.getEntityData().getInteger(prop);
-	}
-	
+ 
 	public static ArrayList<Block> getBlockListFromCSV(String csv)
 	{
 		 ArrayList<Block> blocks = new ArrayList<Block>();
@@ -370,6 +364,10 @@ public class SamsUtilities
 	public static String posToString(BlockPos position) 
 	{ 
 		return "["+ position.getX() + ", "+position.getY()+", "+position.getZ()+"]";
+	} 
+	public static String posToStringCSV(BlockPos position) 
+	{ 
+		return position.getX() + ","+position.getY()+","+position.getZ();
 	} 
 	
 	public static String lang(String name)
