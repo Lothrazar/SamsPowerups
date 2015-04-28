@@ -1,10 +1,12 @@
 package com.lothrazar.samscontent.item;
 
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.SamsUtilities;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
@@ -13,6 +15,7 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemFoodGhost extends ItemFood
 { 
@@ -22,7 +25,11 @@ public class ItemFoodGhost extends ItemFood
 		this.setAlwaysEdible(); //can eat even if full hunger
 		this.setCreativeTab(ModMain.tabSamsContent);
 	}
-
+	@Override
+    public boolean hasEffect(ItemStack par1ItemStack)
+    {
+    	return true;  
+    }
 	private static final String KEY_BOOLEAN = "ghost_on";
 	private static final String KEY_TIMER = "ghost_timer";
 	private static final String KEY_EATLOC = "ghost_location";
@@ -45,8 +52,15 @@ public class ItemFoodGhost extends ItemFood
 
 	public void addRecipe() 
 	{
+		//two alternate recipes
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.apple_ghost), 
+				new ItemStack(Items.ghast_tear),
+				new ItemStack(Items.apple));
 
-		//probably shapeless, apple + ghast tear
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.apple_ghost), 
+				new ItemStack(Items.bone),
+				new ItemStack(Items.golden_apple)); 
 	}
 
 	public static void onPlayerUpdate(LivingUpdateEvent event) 
