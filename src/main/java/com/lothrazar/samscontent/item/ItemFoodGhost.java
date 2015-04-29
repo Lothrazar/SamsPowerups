@@ -51,12 +51,12 @@ public class ItemFoodGhost extends ItemFood
 	public void addRecipe() 
 	{ 
 		//two alternate recipes
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ghost)
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ghost,8)
 			,"aaa","aga","aaa"  
 			,'g', Items.ghast_tear
 			,'a', Items.apple);
 
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ghost,8)
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ghost)
 			,"lll","lal","lll"  
 			,'l', Items.bone
 			,'a', Items.apple);
