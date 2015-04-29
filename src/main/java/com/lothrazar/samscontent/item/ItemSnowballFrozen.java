@@ -51,8 +51,8 @@ public class ItemSnowballFrozen  extends Item
 		 
 		 world.spawnEntityInWorld(snow);
 	 
-		SamsUtilities.playSoundAt(entityPlayer, Reference.sounds.bowtoss); 
+		Util.playSoundAt(entityPlayer, Reference.sounds.bowtoss); 
 		
-		SamsUtilities.decrHeldStackSize(entityPlayer); 
+		Util.decrHeldStackSize(entityPlayer); 
 	} 
 }

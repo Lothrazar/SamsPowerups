@@ -5,7 +5,7 @@ import java.util.List;
 
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockState;
@@ -189,7 +189,7 @@ public class SaplingDespawnGrowth
 				//overwrite the sapling. - we could set to Air first, but dont see much reason to
 				event.world.setBlockState(event.pos, Blocks.deadbush.getDefaultState());
 				
-				SamsUtilities.dropItemStackInWorld(event.world, event.pos, new ItemStack(Blocks.sapling,1,tree_type));
+				Util.dropItemStackInWorld(event.world, event.pos, new ItemStack(Blocks.sapling,1,tree_type));
 			}  
 		}//else a tree grew that was added by some mod
 	}

@@ -13,7 +13,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 

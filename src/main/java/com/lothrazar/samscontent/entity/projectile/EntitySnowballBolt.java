@@ -4,7 +4,7 @@ import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.potion.MessagePotion;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;

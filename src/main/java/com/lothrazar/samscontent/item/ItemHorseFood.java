@@ -5,7 +5,7 @@ import java.util.List;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
@@ -128,9 +128,9 @@ public class ItemHorseFood extends Item
 		 
 		if(success)
 		{ 
-			SamsUtilities.decrHeldStackSize(player); 
-			SamsUtilities.spawnParticle(horse.worldObj, EnumParticleTypes.SMOKE_LARGE, horse.getPosition());
-			SamsUtilities.playSoundAt(player, "random.eat"); 
+			Util.decrHeldStackSize(player); 
+			Util.spawnParticle(horse.worldObj, EnumParticleTypes.SMOKE_LARGE, horse.getPosition());
+			Util.playSoundAt(player, "random.eat"); 
 			horse.setEating(true); //makes horse animate and bend down to eat
 		}
 	}

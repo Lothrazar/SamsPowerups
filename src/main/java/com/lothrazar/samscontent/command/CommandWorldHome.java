@@ -2,7 +2,7 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -64,7 +64,7 @@ public class CommandWorldHome  implements ICommand
 		//this tends to always get something at y=64, regardless if there is AIR or not 
 		//so we need to safely push the player up out of any blocks they are in
 		
-		SamsUtilities.teleportWallSafe(player, world, world.getSpawnPoint()); 
+		Util.teleportWallSafe(player, world, world.getSpawnPoint()); 
 		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
 	}
  

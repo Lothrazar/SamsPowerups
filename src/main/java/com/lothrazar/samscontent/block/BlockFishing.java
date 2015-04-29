@@ -98,7 +98,7 @@ public class BlockFishing extends Block
 			 fishSpawned = pufferfish;
 		 }
 		 
-		 EntityItem ei = SamsUtilities.dropItemStackInWorld(worldObj, pos, fishSpawned);
+		 EntityItem ei = Util.dropItemStackInWorld(worldObj, pos, fishSpawned);
 		  
     	worldObj.playSoundAtEntity(ei,"game.neutral.swim.splash",1F,1F); 
     }

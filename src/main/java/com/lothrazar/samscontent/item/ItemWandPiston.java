@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -36,7 +36,7 @@ public class ItemWandPiston extends Item
 	
 	public static void seIgnoreBlocksFromString(String csv)
 	{ 
-		ignoreList = SamsUtilities.getBlockListFromCSV(csv); 
+		ignoreList = Util.getBlockListFromCSV(csv); 
 	} 
 	
 	public void addRecipe()
@@ -75,17 +75,17 @@ public class ItemWandPiston extends Item
 			{
 				if(world.isRemote) 
 				{
-					SamsUtilities.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
+					Util.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
 				}
 				else
 				{  
-					SamsUtilities.playSoundAt(player, "random.wood_click");
+					Util.playSoundAt(player, "random.wood_click");
 
 					//they swap places
 					world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
 					world.setBlockToAir(pos);
 					 
-					SamsUtilities.damageOrBreakHeld(player);
+					Util.damageOrBreakHeld(player);
 					
 					player.swingItem();
 				} 

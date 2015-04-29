@@ -121,7 +121,7 @@ public class ItemRespawnEggEmpty extends Item
 			entityPlayer.worldObj.removeEntity(target); 
 			
 			if(entityPlayer.worldObj.isRemote) 
-				SamsUtilities.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
+				Util.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
 			else
 			{
 				ItemStack stack = new ItemStack(ItemRegistry.respawn_egg,1,entity_id);
@@ -132,9 +132,9 @@ public class ItemRespawnEggEmpty extends Item
 				entityPlayer.dropPlayerItemWithRandomChoice(stack,true);
 
 			}
-			SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
+			Util.playSoundAt(entityPlayer, "mob.zombie.remedy");
 			 
-			SamsUtilities.decrHeldStackSize(entityPlayer);
+			Util.decrHeldStackSize(entityPlayer);
 			
 		} 
 	}

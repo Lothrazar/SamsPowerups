@@ -1,6 +1,6 @@
 package com.lothrazar.samscontent.potion;
 
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
@@ -68,7 +68,7 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 			//  http://www.minecraftforge.net/forum/index.php?topic=21195.0
 			World world = Minecraft.getMinecraft().thePlayer.worldObj;//Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
   
-			SamsUtilities.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y,message.z));
+			Util.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y,message.z));
 		}
 		 
 		return null;

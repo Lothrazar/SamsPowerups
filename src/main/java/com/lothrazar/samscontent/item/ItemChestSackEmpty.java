@@ -126,9 +126,9 @@ public class ItemChestSackEmpty extends Item
 		entityPlayer.swingItem();
 		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
  
-		SamsUtilities.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.CRIT, pos);
+		Util.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.CRIT, pos);
 		
-		SamsUtilities.playSoundAt(entityPlayer, "random.wood_click");
+		Util.playSoundAt(entityPlayer, "random.wood_click");
 	}
  
 

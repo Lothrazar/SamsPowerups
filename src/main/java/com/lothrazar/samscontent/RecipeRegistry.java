@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Logger;    
 
 import com.lothrazar.util.Reference;  
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.MapColor;
@@ -825,7 +825,7 @@ public class RecipeRegistry
  
 		removeRecipe(Items.stone_pickaxe); 
 		
-		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe,1,SamsUtilities.getMaxDmgFraction(Items.stone_pickaxe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe,1,Util.getMaxDmgFraction(Items.stone_pickaxe,4)), 
 				"sss",
 				" t ", 
 				" t ", 
@@ -840,7 +840,7 @@ public class RecipeRegistry
 
 		removeRecipe(Items.stone_sword);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_sword,1,SamsUtilities.getMaxDmgFraction(Items.stone_sword,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_sword,1,Util.getMaxDmgFraction(Items.stone_sword,4)), 
 				" s ",
 				" s ", 
 				" t ", 
@@ -855,13 +855,13 @@ public class RecipeRegistry
  
 		removeRecipe(Items.stone_axe);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,SamsUtilities.getMaxDmgFraction(Items.stone_axe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,Util.getMaxDmgFraction(Items.stone_axe,4)), 
 				"ss ",
 				"st ", 
 				" t ", 
 				's', Blocks.cobblestone,  
 				't', Items.stick );
-		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,SamsUtilities.getMaxDmgFraction(Items.stone_axe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,Util.getMaxDmgFraction(Items.stone_axe,4)), 
 				" ss", 
 				" ts", 
 				" t ", 
@@ -882,13 +882,13 @@ public class RecipeRegistry
 
 		removeRecipe(Items.stone_hoe);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,SamsUtilities.getMaxDmgFraction(Items.stone_hoe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,Util.getMaxDmgFraction(Items.stone_hoe,4)), 
 				"ss ",
 				" t ", 
 				" t ", 
 				's', Blocks.cobblestone,  
 				't', Items.stick ); 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,SamsUtilities.getMaxDmgFraction(Items.stone_hoe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,Util.getMaxDmgFraction(Items.stone_hoe,4)), 
 				" ss", 
 				" t ", 
 				" t ", 
@@ -909,7 +909,7 @@ public class RecipeRegistry
 
 		removeRecipe(Items.stone_shovel);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel,1,SamsUtilities.getMaxDmgFraction(Items.stone_shovel,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel,1,Util.getMaxDmgFraction(Items.stone_shovel,4)), 
 				" s ",
 				" t ", 
 				" t ", 

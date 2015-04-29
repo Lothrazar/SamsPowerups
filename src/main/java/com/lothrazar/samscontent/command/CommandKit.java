@@ -6,7 +6,7 @@ import java.util.List;
 import org.apache.logging.log4j.Level;
 
 import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.command.CommandException;
@@ -69,7 +69,7 @@ public class CommandKit implements ICommand
 			}
 			
 			//set the flag so we cannot run this again (unless we die)
-			SamsUtilities.incrementPlayerIntegerNBT(p, getName(),1);
+			Util.incrementPlayerIntegerNBT(p, getName(),1);
 		}
 		else
 		{
@@ -98,6 +98,6 @@ public class CommandKit implements ICommand
 	private static ArrayList<Item> giveItems = new ArrayList<Item>();
 	public static void setItemsFromString(String csv)
 	{ 
-		giveItems = SamsUtilities.getItemListFromCSV(csv); 
+		giveItems = Util.getItemListFromCSV(csv); 
 	} 
 }

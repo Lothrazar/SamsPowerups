@@ -107,13 +107,13 @@ public class ItemMagicHarvester extends Item
 		{ 
 			entityPlayer.swingItem();
 	
-			SamsUtilities.playSoundAt(entityPlayer, "mob.zombie.remedy");
+			Util.playSoundAt(entityPlayer, "mob.zombie.remedy");
 			 
 			if(world.isRemote) //client side 
-				SamsUtilities.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
+				Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
 			else 
 			{
-				SamsUtilities.decrHeldStackSize(entityPlayer);  
+				Util.decrHeldStackSize(entityPlayer);  
 			} 
 		}
 	}

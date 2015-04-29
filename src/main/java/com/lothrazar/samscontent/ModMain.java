@@ -335,9 +335,9 @@ public class ModMain
 			   ) 
 			{  
 				//item stack NBT needs the name enchanted onto it
-				ItemStack nameTag = SamsUtilities.buildEnchantedNametag(event.entity.getCustomNameTag());
+				ItemStack nameTag = Util.buildEnchantedNametag(event.entity.getCustomNameTag());
 			  
-				SamsUtilities.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
+				Util.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
 			}
 		}
 		
@@ -350,7 +350,7 @@ public class ModMain
            
 			//show message as if player, works since EntityLiving extends EntityLivingBase
 	 
-			SamsUtilities.printChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
+			Util.printChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
 		}
 		 
 		
@@ -380,7 +380,7 @@ public class ModMain
 				  
 				v.setCustomNameTag(held.getDisplayName()); 
 				
-				SamsUtilities.decrHeldStackSize(event.entityPlayer); 
+				Util.decrHeldStackSize(event.entityPlayer); 
 				
 				event.setCanceled(true);//stop the GUI inventory opening 
 			} 
@@ -475,7 +475,7 @@ public class ModMain
 			{ 
 				TileEntityChest chest = (TileEntityChest)event.entityPlayer.worldObj.getTileEntity(event.pos.up()); 
 					   
-				TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest); 
+				TileEntityChest teAdjacent = Util.getChestAdj(chest); 
 				
 		  		ItemChestSack.sortFromSackToChestEntity(chest,held,event);
 		  		
@@ -529,7 +529,7 @@ public class ModMain
 		  		ChestDeposit.sortFromPlayerToChestEntity(event.world,chest,event.entityPlayer);
 
 		  	  	//check for double chest 
-		  	    TileEntityChest teAdjacent = SamsUtilities.getChestAdj(chest);
+		  	    TileEntityChest teAdjacent = Util.getChestAdj(chest);
 		  		if(teAdjacent != null)
 		  		{
 		  			ChestDeposit.sortFromPlayerToChestEntity(event.world,teAdjacent,event.entityPlayer);
@@ -538,7 +538,7 @@ public class ModMain
 		}
 		
 		if(  event.action == event.action.RIGHT_CLICK_BLOCK && 
-  				SamsUtilities.isBonemeal(held)  && 
+  				Util.isBonemeal(held)  && 
   				blockClicked != null ) 
 		{    
 			BonemealExt.useBonemeal(event.world, event.entityPlayer, event.pos, blockClicked);
@@ -552,19 +552,19 @@ public class ModMain
 			{
 				event.world.setBlockState(event.pos, Blocks.lit_pumpkin.getDefaultState());
 				 
-				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
-				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
+				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
+				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
 			
-				SamsUtilities.playSoundAt(event.entityPlayer, "fire.ignite"); 
+				Util.playSoundAt(event.entityPlayer, "fire.ignite"); 
 			}
 			else if(blockClicked == Blocks.lit_pumpkin)//then un-light it
 			{
 				event.world.setBlockState(event.pos, Blocks.pumpkin.getDefaultState());
 				 
-				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
-				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
+				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
+				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
 				
-				SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
+				Util.playSoundAt(event.entityPlayer, "random.fizz"); 
 			}
 		}		
 		
@@ -609,7 +609,7 @@ public class ModMain
 		{			
 			if(event.world.isRemote == false)
 			{
-				SamsUtilities.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);
+				Util.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);
 			}
 
 			event.entityPlayer.addStat(achievements.beetrootSeed, 1);
@@ -647,7 +647,7 @@ public class ModMain
 		if( player.isPotionActive(PotionRegistry.ender) &&     //   why isnt this in potionregistry
 			player.posY < -50)
 		{  
-			SamsUtilities.teleportWallSafe(player, player.worldObj, player.getPosition().up(256)); 
+			Util.teleportWallSafe(player, player.worldObj, player.getPosition().up(256)); 
 		} 
 	} 
 	
@@ -684,7 +684,7 @@ public class ModMain
 			
 			if(bs != null && bs.getBlock() != null && event.entity.worldObj.isRemote == false)
 			{
-				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, mob.getPosition(), bs.getBlock());
+				Util.dropItemStackInWorld(event.entity.worldObj, mob.getPosition(), bs.getBlock());
 			} 
 		}
 		
@@ -694,15 +694,15 @@ public class ModMain
 			
 			if(ModMain.cfg.dropPlayerSkullOnDeath)
 			{  
-				ItemStack skull = SamsUtilities.buildNamedPlayerSkull(player);
+				ItemStack skull = Util.buildNamedPlayerSkull(player);
 				 
-				SamsUtilities.dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);
+				Util.dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);
 			}
 			
 			if(ModMain.cfg.playerDeathCoordinates)
 			{
-				String coordsStr = SamsUtilities.posToString(player.getPosition()); 
-				SamsUtilities.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
+				String coordsStr = Util.posToString(player.getPosition()); 
+				Util.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
 			}
 		}
 		

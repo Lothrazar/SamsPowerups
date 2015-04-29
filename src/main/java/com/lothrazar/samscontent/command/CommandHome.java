@@ -2,7 +2,7 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -59,11 +59,11 @@ public class CommandHome implements ICommand
 			 return;
 		}
 		
-		BlockPos realBedPos = SamsUtilities.getBedLocationSafe(world, player);
+		BlockPos realBedPos = Util.getBedLocationSafe(world, player);
 		 
 		if(realBedPos != null)
 		{ 
-			SamsUtilities.teleportWallSafe(player, world, realBedPos); 
+			Util.teleportWallSafe(player, world, realBedPos); 
 			world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
 		}
 		else

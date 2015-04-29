@@ -87,7 +87,7 @@ public class ItemEnderBook extends Item
     			,world.getBiomeGenForCoords(entityPlayer.getPosition()).biomeName  
     		);
     	 
-    	SamsUtilities.setItemStackNotNull(itemStack);
+    	Util.setItemStackNotNull(itemStack);
     	itemStack.getTagCompound().setString(KEY_LOC, loc.toCSV());		
 		entityPlayer.swingItem();
 	} 
@@ -109,21 +109,21 @@ public class ItemEnderBook extends Item
 		//do once before teleport
 		 
 		world.playSoundAtEntity(entityPlayer, "mob.endermen.portal", 1.0F, 1.0F);  
-		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition());
-		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing()));//they are suttle, so make extra
+		Util.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition());
+		Util.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing()));//they are suttle, so make extra
 		
-		SamsUtilities.teleportWallSafe(entityPlayer, world, new BlockPos(loc.X,loc.Y,loc.Z));
+		Util.teleportWallSafe(entityPlayer, world, new BlockPos(loc.X,loc.Y,loc.Z));
 
 		//and again at new location
 		world.playSoundAtEntity(entityPlayer, "mob.endermen.portal", 1.0F, 1.0F);  
-		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition());		
-		SamsUtilities.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing()));//they are suttle, so make extra
+		Util.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition());		
+		Util.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing()));//they are suttle, so make extra
 		
 	
 		entityPlayer.getCurrentEquippedItem().damageItem(1, entityPlayer);
 		entityPlayer.swingItem();
 		
-		SamsUtilities.decrHeldStackSize(entityPlayer);
+		Util.decrHeldStackSize(entityPlayer);
 	}
  
 	public static void rightClickBlock(World world, EntityPlayer entityPlayer,	ItemStack held) 

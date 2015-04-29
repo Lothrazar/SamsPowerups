@@ -796,15 +796,15 @@ public class ItemWandTransform extends Item
 			 
 			if(world.isRemote) // clientside
 			{
-				SamsUtilities.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
+				Util.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
 			}
 			else
 			{
-				SamsUtilities.playSoundAt(player, "random.wood_click");
+				Util.playSoundAt(player, "random.wood_click");
  
 				player.worldObj.setBlockState(pos,blockStateNew);
 				 
-				SamsUtilities.damageOrBreakHeld(player);
+				Util.damageOrBreakHeld(player);
 				 
 			} 
 		}

@@ -5,7 +5,7 @@ import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;   
 
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraftforge.fml.common.FMLCommonHandler; 
 import net.minecraft.command.ICommand;
@@ -88,21 +88,21 @@ public class CommandSearchItem  implements ICommand
 		HashMap<IInventory,BlockPos> dictionary = new HashMap<IInventory,BlockPos> ();
 		IInventory tile;
 		
-		ArrayList<BlockPos> foundChests = SamsUtilities.findBlocks(player, Blocks.chest, radius); 
+		ArrayList<BlockPos> foundChests = Util.findBlocks(player, Blocks.chest, radius); 
 		for (BlockPos pos : foundChests)
 		{  	
 			tile = (IInventory)player.worldObj.getTileEntity(pos);  
 			tilesToSearch.add(tile); 
 			dictionary.put(tile, pos);
 		}
-		ArrayList<BlockPos> foundTrapChests = SamsUtilities.findBlocks(player, Blocks.trapped_chest, radius); 
+		ArrayList<BlockPos> foundTrapChests = Util.findBlocks(player, Blocks.trapped_chest, radius); 
 		for (BlockPos pos : foundTrapChests)
 		{  	
 			tile = (IInventory)player.worldObj.getTileEntity(pos);  
 			tilesToSearch.add(tile); 
 			dictionary.put(tile, pos);
 		}
-		ArrayList<BlockPos> foundDisp = SamsUtilities.findBlocks(player, Blocks.dispenser, radius); 
+		ArrayList<BlockPos> foundDisp = Util.findBlocks(player, Blocks.dispenser, radius); 
 		for (BlockPos pos : foundDisp)
 		{  	
 			tile = (IInventory)player.worldObj.getTileEntity(pos);  
@@ -122,7 +122,7 @@ public class CommandSearchItem  implements ICommand
 			{ 
 				String totalsStr = foundQtyTotal + " found : "; 
 				
-				foundMessages.add(totalsStr + SamsUtilities.getCoordsOrReduced(player,dictionary.get(inventory)));
+				foundMessages.add(totalsStr + Util.getCoordsOrReduced(player,dictionary.get(inventory)));
 			}  
 		}
   

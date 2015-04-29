@@ -6,7 +6,7 @@ import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
@@ -95,7 +95,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		if(block.bucketItem != null)//yes thats not a mistake, the null check and <=
 		for(int i = 0; i <= container.getBuckets(); i++)//since they are not stackable
 		{
-			SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
+			Util.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
 		}
 	}
 
@@ -142,8 +142,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				event.world.setBlockState(event.pos, BlockRegistry.block_storeempty.getDefaultState());
 			}
 			event.world.updateComparatorOutputLevel(event.pos, blockClicked);
-			SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.out");
-			SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face)); 
+			Util.playSoundAt(event.entityPlayer, "tile.piston.out");
+			Util.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face)); 
 		}
 		
 		if(event.action.LEFT_CLICK_BLOCK == event.action) //LEFT CLICK DEPOSIT INTO block		 
@@ -173,16 +173,16 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 					
 					event.world.updateComparatorOutputLevel(event.pos, blockClicked);
 					
-					SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-					SamsUtilities.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face)); 
+					Util.playSoundAt(event.entityPlayer, "tile.piston.in"); 
+					Util.spawnParticleSixAround(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face)); 
 				}
 			}
 			else if(held != null &&  held.getItem() == block.bucketItem)
 			{  
 				addBucket(event.entityPlayer, event.world, container); 
 				event.world.updateComparatorOutputLevel(event.pos, blockClicked);
-				SamsUtilities.playSoundAt(event.entityPlayer, "tile.piston.in"); 
-				SamsUtilities.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face));  
+				Util.playSoundAt(event.entityPlayer, "tile.piston.in"); 
+				Util.spawnParticle(event.world,EnumParticleTypes.LAVA, event.pos.offset(event.face));  
 			} 
 		} 
   	}
@@ -191,7 +191,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	{ 
 		storage.removeBucket();
  
-		SamsUtilities.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(bucketItem)); 
+		Util.dropItemStackInWorld(world, entityPlayer.getPosition(), new ItemStack(bucketItem)); 
 	}
 
 	public void addBucket(EntityPlayer entityPlayer,	World world, TileEntityBucketStorage storage) 

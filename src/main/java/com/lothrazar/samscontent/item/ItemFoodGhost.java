@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.item;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities; 
+import com.lothrazar.util.Util; 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
@@ -41,9 +41,9 @@ public class ItemFoodGhost extends ItemFood
 		{ 
 			player.setGameType(GameType.SPECTATOR);
 			 
-			SamsUtilities.incrementPlayerIntegerNBT(player, KEY_TIMER, GHOST_SECONDS * Reference.TICKS_PER_SEC);
+			Util.incrementPlayerIntegerNBT(player, KEY_TIMER, GHOST_SECONDS * Reference.TICKS_PER_SEC);
 			player.getEntityData().setBoolean(KEY_BOOLEAN,true);
-			player.getEntityData().setString(KEY_EATLOC, SamsUtilities.posToStringCSV(player.getPosition()));
+			player.getEntityData().setString(KEY_EATLOC, Util.posToStringCSV(player.getPosition()));
 			player.getEntityData().setInteger(KEY_EATDIM, player.dimension);
 		}
     }
@@ -75,7 +75,7 @@ public class ItemFoodGhost extends ItemFood
 			
 			if(playerGhost > 0)
 			{
-				SamsUtilities.incrementPlayerIntegerNBT(player, KEY_TIMER,-1);
+				Util.incrementPlayerIntegerNBT(player, KEY_TIMER,-1);
 			}
 			else  
 			{

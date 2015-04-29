@@ -54,10 +54,10 @@ public class ItemPaperCarbon  extends Item
 
 	public static void copySign(World world, EntityPlayer entityPlayer,	TileEntitySign sign, ItemStack held) 
 	{  
-		SamsUtilities.setItemStackNBT(held, KEY_SIGN0, sign.signText[0].getUnformattedText());
-		SamsUtilities.setItemStackNBT(held, KEY_SIGN1, sign.signText[1].getUnformattedText());
-		SamsUtilities.setItemStackNBT(held, KEY_SIGN2, sign.signText[2].getUnformattedText());
-		SamsUtilities.setItemStackNBT(held, KEY_SIGN3, sign.signText[3].getUnformattedText());
+		Util.setItemStackNBT(held, KEY_SIGN0, sign.signText[0].getUnformattedText());
+		Util.setItemStackNBT(held, KEY_SIGN1, sign.signText[1].getUnformattedText());
+		Util.setItemStackNBT(held, KEY_SIGN2, sign.signText[2].getUnformattedText());
+		Util.setItemStackNBT(held, KEY_SIGN3, sign.signText[3].getUnformattedText());
 
 		held.getTagCompound().setByte(KEY_NOTE,(byte)-1); 
 		
@@ -66,10 +66,10 @@ public class ItemPaperCarbon  extends Item
 
 	public static void pasteSign(World world, EntityPlayer entityPlayer, TileEntitySign sign, ItemStack held) 
 	{   
-		sign.signText[0] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN0));
-		sign.signText[1] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN1));
-		sign.signText[2] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN2));
-		sign.signText[3] = new ChatComponentText(SamsUtilities.getItemStackNBT(held, KEY_SIGN3));
+		sign.signText[0] = new ChatComponentText(Util.getItemStackNBT(held, KEY_SIGN0));
+		sign.signText[1] = new ChatComponentText(Util.getItemStackNBT(held, KEY_SIGN1));
+		sign.signText[2] = new ChatComponentText(Util.getItemStackNBT(held, KEY_SIGN2));
+		sign.signText[3] = new ChatComponentText(Util.getItemStackNBT(held, KEY_SIGN3));
  
 		entityPlayer.swingItem();
 	 
@@ -105,20 +105,20 @@ public class ItemPaperCarbon  extends Item
 			return;
 		}
 		 
-		String sign = SamsUtilities.getItemStackNBT(held, KEY_SIGN0)
-				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN1)
-				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN2)
-				+ SamsUtilities.getItemStackNBT(held, KEY_SIGN3);
+		String sign = Util.getItemStackNBT(held, KEY_SIGN0)
+				+ Util.getItemStackNBT(held, KEY_SIGN1)
+				+ Util.getItemStackNBT(held, KEY_SIGN2)
+				+ Util.getItemStackNBT(held, KEY_SIGN3);
 		
 		if(sign.length() > 0)
 		{ 
-			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN0));
-			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN1));
-			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN2));
-			list.add(SamsUtilities.getItemStackNBT(held, KEY_SIGN3));
+			list.add(Util.getItemStackNBT(held, KEY_SIGN0));
+			list.add(Util.getItemStackNBT(held, KEY_SIGN1));
+			list.add(Util.getItemStackNBT(held, KEY_SIGN2));
+			list.add(Util.getItemStackNBT(held, KEY_SIGN3));
 		}
  
-		String s = SamsUtilities.noteToString(held.getTagCompound().getByte(KEY_NOTE));
+		String s = Util.noteToString(held.getTagCompound().getByte(KEY_NOTE));
 
 		if(s != null)
 		{
@@ -178,17 +178,17 @@ public class ItemPaperCarbon  extends Item
 		{
 			if(event.world.isRemote)
 			{	
-				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.PORTAL, event.pos); 
+				Util.spawnParticle(event.world, EnumParticleTypes.PORTAL, event.pos); 
 			}
 			else
 			{ 
 				if(wasCopy == false)//on paste, we consume the item
 				{
-					SamsUtilities.decrHeldStackSize(entityPlayer);
+					Util.decrHeldStackSize(entityPlayer);
 				}
 			}
 			
-			SamsUtilities.playSoundAt(event.entityPlayer, "random.fizz"); 
+			Util.playSoundAt(event.entityPlayer, "random.fizz"); 
 		}  
 	}  
 }

@@ -1,7 +1,7 @@
 package com.lothrazar.samscontent.event;
 
 import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -23,13 +23,13 @@ public class BonemealExt
   		{ 
 		 	if ( blockClicked.equals(Blocks.yellow_flower))//yellow flowers have no damage variations
 		 	{   
-		 		SamsUtilities.dropItemStackInWorld(world, pos,new ItemStack(Blocks.yellow_flower));
+		 		Util.dropItemStackInWorld(world, pos,new ItemStack(Blocks.yellow_flower));
 		
 			  	success = true;
 		 	}
 		 	else if ( blockClicked.equals(Blocks.red_flower)) 	//the red flower is ALL the flowers
 		 	{    
-				SamsUtilities.dropItemStackInWorld(world, pos, new ItemStack(Blocks.red_flower ,1,Blocks.red_flower.getMetaFromState(world.getBlockState(pos))));
+				Util.dropItemStackInWorld(world, pos, new ItemStack(Blocks.red_flower ,1,Blocks.red_flower.getMetaFromState(world.getBlockState(pos))));
 		
 			  	success = true; 
 		 	} 
@@ -37,7 +37,7 @@ public class BonemealExt
 	 	
 	 	if(ModMain.cfg.bonemealLilypads && blockClicked.equals(Blocks.waterlily))
 	 	{ 
-	 		SamsUtilities.dropItemStackInWorld(world, pos,new ItemStack(Blocks.waterlily));
+	 		Util.dropItemStackInWorld(world, pos,new ItemStack(Blocks.waterlily));
 	 	 
 		  	success = true;
 	 	} 
@@ -61,9 +61,9 @@ public class BonemealExt
 	 	if(success)
 	 	{ 
 	 		//the game also uses VILLAGER_HAPPY for their bonemeal events so i copy
-	 		SamsUtilities.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);
+	 		Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);
 	 		 
-			SamsUtilities.decrHeldStackSize(entityPlayer); 
+			Util.decrHeldStackSize(entityPlayer); 
 	 	} 
 	}
 }

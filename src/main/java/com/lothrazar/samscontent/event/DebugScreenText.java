@@ -18,7 +18,7 @@ import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities; 
+import com.lothrazar.util.Util; 
 import net.minecraft.client.Minecraft; 
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.util.BlockPos;
@@ -103,7 +103,7 @@ public class DebugScreenText
 		
 		addTodoCommandInfo(event, player);  
 
-	 	if(SamsUtilities.isShiftKeyDown())  
+	 	if(Util.isShiftKeyDown())  
 	 	{ 
 			addGameruleInfo(event, world); 
 		} 

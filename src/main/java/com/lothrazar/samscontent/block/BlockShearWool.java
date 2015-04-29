@@ -2,7 +2,7 @@ package com.lothrazar.samscontent.block;
 
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockPane;

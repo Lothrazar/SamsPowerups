@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Level;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
@@ -51,7 +51,7 @@ public class ItemChestSack extends Item
 	@Override
 	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
 	{
-		SamsUtilities.setItemStackNotNull(itemStack);
+		Util.setItemStackNotNull(itemStack);
 	  
 		String count = itemStack.getTagCompound().getString("count"); 
 		if(count == null ) {count = "0";}
@@ -66,7 +66,7 @@ public class ItemChestSack extends Item
 	  
 	public static void sortFromSackToChestEntity(TileEntityChest chest, ItemStack held, PlayerInteractEvent event)
   	{
-		SamsUtilities.setItemStackNotNull(held);
+		Util.setItemStackNotNull(held);
 	  
 		int[] itemids = held.getTagCompound().getIntArray(KEY_ITEMIDS);
 		int[] itemdmg = held.getTagCompound().getIntArray(KEY_ITEMDMG);
@@ -203,7 +203,7 @@ public class ItemChestSack extends Item
 		entityPlayer.destroyCurrentEquippedItem();
 		
 		//drop the empty sack now
-		SamsUtilities.dropItemStackInWorld(entityPlayer.worldObj, pos, ItemRegistry.wandChest);
+		Util.dropItemStackInWorld(entityPlayer.worldObj, pos, ItemRegistry.wandChest);
   	} 
 
 }

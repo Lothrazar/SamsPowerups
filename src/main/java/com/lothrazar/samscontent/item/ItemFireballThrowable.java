@@ -53,7 +53,7 @@ public class ItemFireballThrowable  extends Item //since ItemFireball is not thr
 				 ,entityPlayer.getLookVec().yCoord
 				 ,entityPlayer.getLookVec().zCoord));
 
-		SamsUtilities.playSoundAt(entityPlayer, Reference.sounds.bowtoss);
-		SamsUtilities.decrHeldStackSize(entityPlayer);
+		Util.playSoundAt(entityPlayer, Reference.sounds.bowtoss);
+		Util.decrHeldStackSize(entityPlayer);
 	} 
 }

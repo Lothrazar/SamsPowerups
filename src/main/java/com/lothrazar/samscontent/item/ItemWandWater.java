@@ -85,11 +85,11 @@ public class ItemWandWater  extends Item
 		if(success)
 		{ 
 			if(event.world.isRemote)
-				SamsUtilities.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, hit);
+				Util.spawnParticle(event.world, EnumParticleTypes.WATER_BUBBLE, hit);
 			else
-				SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
+				Util.damageOrBreakHeld(event.entityPlayer); 
 			
-			SamsUtilities.playSoundAt(event.entityPlayer, "liquid.water"); 
+			Util.playSoundAt(event.entityPlayer, "liquid.water"); 
 		}
 	}
 }

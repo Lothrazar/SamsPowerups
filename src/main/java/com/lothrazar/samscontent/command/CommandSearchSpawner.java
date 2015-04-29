@@ -14,7 +14,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.MathHelper; 
 
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 public class CommandSearchSpawner implements ICommand
 { 
@@ -67,13 +67,13 @@ public class CommandSearchSpawner implements ICommand
 		if(radius > 128) { radius = 128; }//Maximum // 
 		if(radius <= 0 ) { radius = 64;  }//default
 		
-		BlockPos found = SamsUtilities.findClosestBlock(player, Blocks.mob_spawner, radius);
+		BlockPos found = Util.findClosestBlock(player, Blocks.mob_spawner, radius);
 		
 		String m = "None Found with radius "+radius;
 		
 		if(found != null)
 		{ 
-			m = "Found at : "+SamsUtilities.getCoordsOrReduced(player, found);
+			m = "Found at : "+Util.getCoordsOrReduced(player, found);
 		}
 		
 		((EntityPlayer)sender).addChatMessage(new ChatComponentTranslation( m )); 

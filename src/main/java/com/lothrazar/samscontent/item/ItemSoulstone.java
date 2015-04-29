@@ -3,7 +3,7 @@ package com.lothrazar.samscontent.item;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
+import com.lothrazar.util.Util;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.passive.EntityHorse;
@@ -100,11 +100,11 @@ public class ItemSoulstone extends Item
 
 		event.target.getEntityData().setInteger(KEY_STONED, newValue);
 		
-		SamsUtilities.decrHeldStackSize(event.entityPlayer); 
+		Util.decrHeldStackSize(event.entityPlayer); 
 		
-		SamsUtilities.spawnParticle(event.target.worldObj, EnumParticleTypes.PORTAL, event.target.getPosition());
+		Util.spawnParticle(event.target.worldObj, EnumParticleTypes.PORTAL, event.target.getPosition());
 		
-		SamsUtilities.playSoundAt(event.target, "mob.endermen.death");
+		Util.playSoundAt(event.target, "mob.endermen.death");
 	}
 	 
 	public static void onLivingHurt(LivingHurtEvent event) 
@@ -122,7 +122,7 @@ public class ItemSoulstone extends Item
 				
 				//event.setCanceled(true);//this is possible but not needed
 				
-				SamsUtilities.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
+				Util.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
 
 				boolean isPersist = event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST;
 				/*

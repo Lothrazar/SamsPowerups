@@ -6,7 +6,7 @@ import java.lang.reflect.Modifier;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities; 
+import com.lothrazar.util.Util; 
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
@@ -162,7 +162,7 @@ public class PotionRegistry
 			
 			doPotionParticle(event.entityLiving.worldObj,event.entityLiving,EnumParticleTypes.SNOWBALL);
 
-			SamsUtilities.setBlockIfAir(event.entityLiving.worldObj, event.entityLiving.getPosition(), Blocks.snow_layer.getDefaultState());
+			Util.setBlockIfAir(event.entityLiving.worldObj, event.entityLiving.getPosition(), Blocks.snow_layer.getDefaultState());
      
 			if(event.entityLiving instanceof EntityPlayer)
 			{ 

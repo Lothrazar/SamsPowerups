@@ -50,7 +50,7 @@ public class ItemLightning  extends Item
 			EntityLightningballBolt ball = new EntityLightningballBolt(event.world,event.entityPlayer 	 );
 			 
 			event.world.spawnEntityInWorld(ball);
-			SamsUtilities.damageOrBreakHeld(event.entityPlayer); 
+			Util.damageOrBreakHeld(event.entityPlayer); 
 		}
 		
 		else if( event.action.RIGHT_CLICK_BLOCK == event.action)
@@ -63,7 +63,7 @@ public class ItemLightning  extends Item
 			event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
 		
 			//SamsUtilities.damageOrBreakHeld(event.entityPlayer);
-			SamsUtilities.decrHeldStackSize(event.entityPlayer);
+			Util.decrHeldStackSize(event.entityPlayer);
 		} 
 	} 
 }
