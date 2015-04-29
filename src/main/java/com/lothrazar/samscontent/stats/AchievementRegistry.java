@@ -39,8 +39,22 @@ public class AchievementRegistry
 
 	public Achievement appleGhost;
 	public Achievement appleNether;
+	public Achievement soulstone;
+	public Achievement scaffolding;
+	public Achievement lapisCarrot;
+	public Achievement emeraldCarrot;
+	public Achievement diamondCarrot;
+	public Achievement carbonPaper;
+	public Achievement wandWater;
+	public Achievement wandRotate;
+	public Achievement wandPiston;
+	public Achievement frostSnowball;
+	public Achievement lightningCharge;
+	public Achievement harvestCharge;
+	public Achievement throwFirecharge;
+	public Achievement enderBook;
 	
- 
+	
 	private void register(Achievement a)
 	{
 		a.registerStat();
@@ -99,7 +113,26 @@ public class AchievementRegistry
 			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder" ,xCurrent, yCurrent,ItemRegistry.apple_ender,null);
 			register(appleEnder);
 		} 
-		  
+
+		if(ItemRegistry.apple_ghost != null)
+		{ 
+			xCurrent += xSpacing;
+			appleGhost = new Achievement(Reference.MODID + "_appleGhost", "appleGhost" ,xCurrent, yCurrent,ItemRegistry.apple_ghost,null);
+			register(appleGhost);
+		} 
+
+		if(ItemRegistry.apple_nether_star != null)
+		{ 
+			xCurrent += xSpacing;
+			appleNether = new Achievement(Reference.MODID + "_appleNether", "appleNether" ,xCurrent, yCurrent,ItemRegistry.apple_nether_star,null);
+			register(appleNether);
+		} 
+		
+		//new row
+		xCurrent = xStart;
+		yCurrent = yStart + ySpacing;
+		
+		
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
 
 	 	AchievementPage.registerAchievementPage(page);
