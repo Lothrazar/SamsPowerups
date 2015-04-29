@@ -59,7 +59,7 @@ public class ItemEnderBook extends Item
 	{ 
 	     if(itemStack.getTagCompound() == null) 
 	     {  
-        	 list.add("Save your current location while sneaking.  Only works in the overworld.");
+        	 list.add("Save your current location while sneaking.");
 	    	 return;
 	     }
 	      
@@ -94,6 +94,7 @@ public class ItemEnderBook extends Item
 	  
 	public static void teleport(World world, EntityPlayer entityPlayer, ItemStack enderBookInstance) 
 	{  
+		if(enderBookInstance.getTagCompound() == null){return;}
 		String csv = enderBookInstance.getTagCompound().getString(KEY_LOC);
 		
 		if(csv == null || csv.isEmpty()) {return;}
