@@ -3,13 +3,11 @@ package com.lothrazar.samscontent.item;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.SamsUtilities;
-
+import com.lothrazar.util.SamsUtilities; 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
@@ -21,7 +19,7 @@ public class ItemFoodGhost extends ItemFood
 { 
 	public ItemFoodGhost()
 	{  
-		super(2,false);
+		super(4,false);
 		this.setAlwaysEdible(); //can eat even if full hunger
 		this.setCreativeTab(ModMain.tabSamsContent);
 	}
@@ -34,7 +32,7 @@ public class ItemFoodGhost extends ItemFood
 	private static final String KEY_TIMER = "ghost_timer";
 	private static final String KEY_EATLOC = "ghost_location";
 	private static final String KEY_EATDIM = "ghost_dim";
-	private static final int GHOST_TICKS = 30 * Reference.TICKS_PER_SEC;//so 30 seconds
+	private static final int GHOST_SECONDS = 10;//so 30 seconds
 	
 	@Override
 	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer player)
@@ -43,7 +41,7 @@ public class ItemFoodGhost extends ItemFood
 		{ 
 			player.setGameType(GameType.SPECTATOR);
 			 
-			SamsUtilities.incrementPlayerIntegerNBT(player, KEY_TIMER, GHOST_TICKS);
+			SamsUtilities.incrementPlayerIntegerNBT(player, KEY_TIMER, GHOST_SECONDS * Reference.TICKS_PER_SEC);
 			player.getEntityData().setBoolean(KEY_BOOLEAN,true);
 			player.getEntityData().setString(KEY_EATLOC, SamsUtilities.posToStringCSV(player.getPosition()));
 			player.getEntityData().setInteger(KEY_EATDIM, player.dimension);
@@ -52,15 +50,15 @@ public class ItemFoodGhost extends ItemFood
 
 	public void addRecipe() 
 	{
-		//two alternate recipes
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.apple_ghost), 
-				new ItemStack(Items.ghast_tear),
-				new ItemStack(Items.apple));
 
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.apple_ghost), 
-				new ItemStack(Items.bone),
-				new ItemStack(Items.golden_apple)); 
+//TODO: is there something powerful enough for a ghast tear apple? 
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ghost)
+			,"lll","lal","lll"  
+			,'l', Items.bone
+			,'a', Items.apple);
+	
+		if(ModMain.cfg.uncraftGeneral) 
+			GameRegistry.addSmelting(ItemRegistry.apple_ghost, new ItemStack(Items.bone, 8),	0);
 	}
 
 	public static void onPlayerUpdate(LivingUpdateEvent event) 
