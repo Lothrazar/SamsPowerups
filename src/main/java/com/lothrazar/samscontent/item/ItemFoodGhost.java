@@ -67,6 +67,8 @@ public class ItemFoodGhost extends ItemFood
 
 	public static void onPlayerUpdate(LivingUpdateEvent event) 
 	{
+		if(event.entityLiving instanceof EntityPlayer == false){return;}//just in case
+		
 		EntityPlayer player = (EntityPlayer)event.entityLiving;
 		
 		if(player.getEntityData().getBoolean(KEY_BOOLEAN))
