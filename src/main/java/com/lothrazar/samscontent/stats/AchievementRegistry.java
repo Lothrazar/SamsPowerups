@@ -20,6 +20,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent; 
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class AchievementRegistry 
 {
@@ -39,6 +40,7 @@ public class AchievementRegistry
 
 	public Achievement appleGhost;
 	public Achievement appleNether;
+	
 	public Achievement soulstone;
 	public Achievement scaffolding;
 	public Achievement lapisCarrot;
@@ -131,8 +133,26 @@ public class AchievementRegistry
 		//new row
 		xCurrent = xStart;
 		yCurrent = yStart + ySpacing;
-		
-		
+
+		if(ItemRegistry.horse_upgrade_health != null)//DIAMOND
+		{ 
+			xCurrent += xSpacing;
+			diamondCarrot = new Achievement(Reference.MODID + "_diamondCarrot", "diamondCarrot" ,xCurrent, yCurrent,ItemRegistry.horse_upgrade_health,null);
+			register(diamondCarrot);
+		} 
+		if(ItemRegistry.horse_upgrade_type != null)//DIAMOND
+		{ 
+			xCurrent += xSpacing;
+			emeraldCarrot = new Achievement(Reference.MODID + "_emeraldCarrot", "emeraldCarrot" ,xCurrent, yCurrent,ItemRegistry.horse_upgrade_type,null);
+			register(emeraldCarrot);
+		} 
+		if(ItemRegistry.horse_upgrade_variant != null)//DIAMOND
+		{ 
+			xCurrent += xSpacing;
+			lapisCarrot = new Achievement(Reference.MODID + "_lapisCarrot", "lapisCarrot" ,xCurrent, yCurrent,ItemRegistry.horse_upgrade_variant,null);
+			register(lapisCarrot);
+		} 
+ 
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
 
 	 	AchievementPage.registerAchievementPage(page);
@@ -203,6 +223,18 @@ public class AchievementRegistry
 		else if(item == ItemRegistry.apple_nether_star)
 		{ 
 			addStatSafe(appleNether,event.player);  
+		} 
+		else if(item == ItemRegistry.horse_upgrade_health)
+		{ 
+			addStatSafe(diamondCarrot,event.player);  
+		} 
+		else if(item == ItemRegistry.horse_upgrade_type)
+		{ 
+			addStatSafe(emeraldCarrot,event.player);  
+		} 
+		else if(item == ItemRegistry.horse_upgrade_variant)
+		{ 
+			addStatSafe(lapisCarrot,event.player);  
 		} 
 	}
 	
