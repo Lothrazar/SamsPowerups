@@ -33,13 +33,21 @@ import net.minecraft.util.MathHelper;
 public class ItemEnderBook extends Item
 { 
 	public final static String KEY_LOC = "location";  
+	public static int DURABILITY;
 	
 	public ItemEnderBook()
 	{  
 		super();  
 		this.setMaxStackSize(1); 
+		this.setMaxDamage(DURABILITY);
 		this.setCreativeTab(ModMain.tabSamsContent);
 	}
+
+	@Override
+    public boolean hasEffect(ItemStack par1ItemStack)
+    {
+    	return par1ItemStack.getTagCompound() != null; //give it shimmer, if saved loc
+    }
 	
 	public static void addRecipe() 
 	{
@@ -59,17 +67,18 @@ public class ItemEnderBook extends Item
 	{ 
 	     if(itemStack.getTagCompound() == null) 
 	     {  
-        	 list.add("Save your current location while sneaking.");
-	    	 return;
+        	 list.add(Util.lang("item.book_ender.info")); 
 	     }
-	      
- 		 String csv = itemStack.getTagCompound().getString(KEY_LOC);
+	     else
+	     {
+	 		 String csv = itemStack.getTagCompound().getString(KEY_LOC);
 
-		 if(csv != null && csv.isEmpty() == false) 
-		 {
-			 Location loc = new Location(csv);
-	    	 list.add(EnumChatFormatting.DARK_GREEN + loc.toDisplayNoCoords());//was toDisplayShort
-		 }  
+			 if(csv != null && csv.isEmpty() == false) 
+			 {
+				 Location loc = new Location(csv);
+		    	 list.add(EnumChatFormatting.DARK_GREEN + loc.toDisplayNoCoords());//was toDisplayShort
+			 }  
+	     } 
 	}
 
 	public static void saveCurrentLocation(World world, EntityPlayer entityPlayer, ItemStack itemStack) 
@@ -120,11 +129,9 @@ public class ItemEnderBook extends Item
 		Util.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition());		
 		Util.spawnParticle(world, EnumParticleTypes.PORTAL, entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing()));//they are suttle, so make extra
 		
-	
-		entityPlayer.getCurrentEquippedItem().damageItem(1, entityPlayer);
 		entityPlayer.swingItem();
 		
-		Util.decrHeldStackSize(entityPlayer);
+		Util.damageOrBreakHeld(entityPlayer);
 	}
  
 	public static void rightClickBlock(World world, EntityPlayer entityPlayer,	ItemStack held) 

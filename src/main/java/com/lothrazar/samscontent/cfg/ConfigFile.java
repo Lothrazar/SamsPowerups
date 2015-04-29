@@ -312,7 +312,10 @@ public class ConfigFile
 		  
 		enderBook = instance.getBoolean( "ender_book",category,true,
 				" Craft an ender book that lets you save a waypoint, and then teleport to it later (single use).  Do not use this outside the overworld.");
- 
+		
+		ItemEnderBook.DURABILITY  = instance.getInt("ender_book.durability",category, 16,1,64,
+    			"Durability of the book, after saving a location in the book.");
+		
 		chest_sack = instance.getBoolean("chest_sack",category, true,
     			"Craft an empty sack that can transport chests by turning them into sacks; place the full sack to re-create the full chest.  Items with NBT data (enchantments and more) will pop out on the ground.");
  

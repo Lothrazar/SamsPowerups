@@ -44,6 +44,7 @@ item.beetroot_item.name=Beetroot
 item.beetroot_seed.name=Beetroot Seeds
 item.beetroot_soup.name=Beetroot Soup 
 item.book_ender.name=Ender Book
+item.book_ender.info=Save your current location while sneaking
 item.chest_sack.name=Sack of Holding
 item.chest_sack_empty.name=Empty Sack of Holding
 item.wand_piston.name=Piston Wand
