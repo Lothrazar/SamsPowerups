@@ -196,6 +196,14 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(appleEnder,event.player);  
 		} 
+		else if(item == ItemRegistry.apple_ghost)
+		{ 
+			addStatSafe(appleGhost,event.player);  
+		} 
+		else if(item == ItemRegistry.apple_nether_star)
+		{ 
+			addStatSafe(appleNether,event.player);  
+		} 
 	}
 	
 	private void addStatSafe(Achievement stat, EntityPlayer player)
