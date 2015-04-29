@@ -65,9 +65,23 @@ public class RecipeRegistry
 		
    		RecipeRegistry.minecartsSimple();
    		
-   		RecipeRegistry.beetroot();
+   		RecipeRegistry.beetroot();//TODO: do seeds drop? should they be craftable from item just like pumpk/melon
+   		
+   		RecipeRegistry.experience_bottle();
 	}
 	
+	private static void experience_bottle() 
+	{
+		if(!ModMain.cfg.experience_bottle)  {return;}
+		
+		GameRegistry.addRecipe(new ItemStack(Items.experience_bottle),
+				"bxb",
+				"bxb",
+				"bxb",
+				'x', Items.rotten_flesh,
+				'b', Items.glass_bottle);
+	}
+
 	public static void beetroot()
 	{
 		if(!ModMain.cfg.beetroot)  {return;}

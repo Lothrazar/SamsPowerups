@@ -57,6 +57,7 @@ potion.lavawalk=Lavawalking
 potion.ender=Ender Aura
 potion.frozen=Frosted
 itemGroup.tabSamsContent=Sam's Content
+item.block_fragile.name=Fragile Scaffolding
 item.horse_upgrade_health.name=Diamond Carrot
 item.horse_upgrade_type.name=Emerald Carrot
 item.horse_upgrade_variant.name=Lapis Carrot
