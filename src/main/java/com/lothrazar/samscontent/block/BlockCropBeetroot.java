@@ -160,7 +160,10 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 			{
 				if (rand.nextInt(15) <= age) 
 				{
-					ret.add(new ItemStack(ItemRegistry.beetrootItem));
+					ret.add(new ItemStack(ItemRegistry.beetrootItem)); 
+					int seeds = rand.nextInt(3);//0,1,2 only
+					if(seeds > 0)
+						ret.add(new ItemStack(ItemRegistry.beetroot_seed,seeds)); 
 				}
 			}
 		}
