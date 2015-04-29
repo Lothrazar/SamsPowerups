@@ -49,14 +49,18 @@ public class ItemFoodGhost extends ItemFood
     }
 
 	public void addRecipe() 
-	{
-
-//TODO: is there something powerful enough for a ghast tear apple? 
+	{ 
+		//two alternate recipes
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ghost)
+			,"aaa","aga","aaa"  
+			,'g', Items.ghast_tear
+			,'a', Items.apple);
+
+		GameRegistry.addRecipe(new ItemStack(ItemRegistry.apple_ghost,8)
 			,"lll","lal","lll"  
 			,'l', Items.bone
 			,'a', Items.apple);
-	
+		
 		if(ModMain.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(ItemRegistry.apple_ghost, new ItemStack(Items.bone, 8),	0);
 	}
@@ -71,8 +75,6 @@ public class ItemFoodGhost extends ItemFood
 			
 			if(playerGhost > 0)
 			{
-				System.out.println("ghost timer = "+playerGhost);
-				
 				SamsUtilities.incrementPlayerIntegerNBT(player, KEY_TIMER,-1);
 			}
 			else  
