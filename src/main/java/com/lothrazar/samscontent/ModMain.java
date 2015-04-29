@@ -409,7 +409,15 @@ public class ModMain
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
 		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
 		TileEntity container = event.world.getTileEntity(event.pos);
-	  
+
+		if(held != null && held.getItem() == Items.experience_bottle  && 
+				event.action.RIGHT_CLICK_BLOCK == event.action && 
+				event.entityPlayer.capabilities.isCreativeMode == false && 
+				ModMain.cfg.experience_bottle_return)
+		{ 
+			Util.dropItemStackInWorld(event.world, event.pos, Items.glass_bottle);
+		}
+		
 		if(held != null && held.getItem() == ItemRegistry.wandWater )
 		{
 			ItemWandWater.cast(event);

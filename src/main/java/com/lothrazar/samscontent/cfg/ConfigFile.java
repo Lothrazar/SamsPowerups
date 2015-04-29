@@ -49,6 +49,9 @@ public class ConfigFile
 		fragileTorches = instance.getBoolean("fragile_torches",category, true,
 				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
 		 
+		experience_bottle_return = instance.getBoolean("experience_bottle_return",category, true,
+				"Experience bottles in survival mode return an empty glass bottle to you (if used on a block).");  
+		  
 		if(instance.hasChanged()){ instance.save(); }
 	}
 
@@ -628,4 +631,5 @@ public class ConfigFile
 	public boolean sleeping_hunger;
 	public boolean item_soulstone;
 	public boolean experience_bottle;
+	public boolean experience_bottle_return;
 }
