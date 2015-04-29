@@ -50,7 +50,7 @@ public class ItemLightning  extends Item
 			EntityLightningballBolt ball = new EntityLightningballBolt(event.world,event.entityPlayer 	 );
 			 
 			event.world.spawnEntityInWorld(ball);
-			Util.damageOrBreakHeld(event.entityPlayer); 
+			Util.decrHeldStackSize(event.entityPlayer);
 		}
 		
 		else if( event.action.RIGHT_CLICK_BLOCK == event.action)
