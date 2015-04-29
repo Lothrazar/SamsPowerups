@@ -41,7 +41,7 @@ public class RecipeRegistry
 	{ 
 		RecipeRegistry.netherwartPurple();
 		
-		RecipeRegistry.bookNoLeather(); 
+		//RecipeRegistry.bookNoLeather(); 
 		  
 		RecipeRegistry.mushroomBlocks(); 
 		
@@ -770,7 +770,7 @@ public class RecipeRegistry
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wool, 1, 0),
 				new ItemStack(Blocks.wool, 1, 15), new ItemStack(Items.dye, 1,				Reference.dye_bonemeal));
 	}
- 
+ /*
 	public static void bookNoLeather()
 	{ 
 		if(!ModMain.cfg.craftBooksWithoutLeather)  {return;}
@@ -780,7 +780,7 @@ public class RecipeRegistry
 				,new ItemStack(Items.paper)
 				,new ItemStack(Items.paper)  	);  
 	}
-
+*/
 	public static void repeaterSimple()
 	{ 
 		if(!ModMain.cfg.craftRepeaterSimple) {return;}

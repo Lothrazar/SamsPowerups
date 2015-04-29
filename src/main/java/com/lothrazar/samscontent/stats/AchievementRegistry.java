@@ -36,6 +36,10 @@ public class AchievementRegistry
 	public Achievement appleEnder;
 	public Achievement beetrootSeed;
 	//TODO: one for each of my items/blocks
+
+	public Achievement appleGhost;
+	public Achievement appleNether;
+	
  
 	private void register(Achievement a)
 	{

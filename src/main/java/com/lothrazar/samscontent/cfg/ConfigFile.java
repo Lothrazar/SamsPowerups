@@ -61,10 +61,10 @@ public class ConfigFile
 		
 		increasedStackSizes = instance.getBoolean("stack_size",category, true,
 			"While true, most vanilla items and blocks have their max stack size increased to 64 (not tools/armor/potions).  ");
-		
+		/*
 		potionStackSize = instance.getInt("stack_size_potion",category, 1,1,3,
     			"Potion stack size can be increased to three, but not by default.");
-		 
+		 */
 		swiftDeposit = instance.getBoolean("swift_deposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
 	}
@@ -411,10 +411,10 @@ public class ConfigFile
 		
 		simpleDispenser = instance.getBoolean( "simple_dispenser",category,true,
 				"Craft a dispenser with string in the center instead of a bow.  (Since string is stackable, this makes crafting tons of them much faster and cheaper).");
-		 
+		 /*
 		craftBooksWithoutLeather = instance.getBoolean( "books_without_leather",category,false,
 				"This allows use the old book crafting recipe from previous versions of the game; three paper but no leather needed.");
-		
+		*/
 		craftableTransmuteRecords = instance.getBoolean( "transmute_records",category,true,
 			"This allows you to surround any record in emeralds to transmute it into a different record.");
     
@@ -514,8 +514,7 @@ public class ConfigFile
 	public boolean moreFuel;
 	public boolean skullSignNames; 
 	public boolean craftableTransmuteRecords;    
-	public boolean craftableBonemealColouredWool;   
-	public boolean craftBooksWithoutLeather; 
+	public boolean craftableBonemealColouredWool;    
 	public boolean bonemealAllFlowers;
 	public boolean bonemealLilypads;
 	public boolean bonemealReeds;
@@ -614,7 +613,7 @@ public class ConfigFile
 	public boolean endermenDropCarryingBlock;
 	public boolean fire_charge_throw;
 	public boolean frozen_snowball;
-	public int potionStackSize;
+	//public int potionStackSize;
 	public int potionIdFrozen;
 	public int chanceZombieChildFeather;
 	public int chanceZombieVillagerEmerald;
