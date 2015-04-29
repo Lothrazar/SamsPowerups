@@ -99,7 +99,9 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
   
-@Mod(modid = Reference.MODID, version = Reference.VERSION	, canBeDeactivated = false, name = Reference.NAME, useMetadata = true ,guiFactory = "com.lothrazar.samscontent.cfg.ConfigGuiFactory") 
+//note:  canBeDeactivated = false,  does nothing, it should black out the 'disable' button, but this is a known unfixed issue, ref:  http://www.minecraftforge.net/forum/index.php?topic=16941.0
+//, canBeDeactivated = false, ,guiFactory = "com.lothrazar.samscontent.cfg.ConfigGuiFactory"
+@Mod(modid = Reference.MODID, version = Reference.VERSION,	name = Reference.NAME, useMetadata = true ) 
 public class ModMain
 {
 	@Instance(value = Reference.MODID)

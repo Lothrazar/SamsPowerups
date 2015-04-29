@@ -11,6 +11,7 @@ public class ConfigFile
 { 
 	private Configuration instance;
 	private String category = "";
+	public String GUI_CATEGORY = "mob_spawning";
 	
 	public Configuration instance()
 	{
@@ -20,6 +21,7 @@ public class ConfigFile
 	public ConfigFile(Configuration c)
 	{
 		instance = c; 
+		instance.load();
 
 		blocks();
 		commands();
