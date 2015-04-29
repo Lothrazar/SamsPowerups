@@ -401,7 +401,7 @@ public class ConfigFile
 		category = "recipes_new";
 		
 		experience_bottle = instance.getBoolean( "experience_bottle",category,true,
-				"Craft experience bottles from many (vanilla) mob drops and empty bottles.");
+				"Craft experience bottles from many (vanilla) mob drops and empty bottles.  Also fish.");
 		 
 		netherwartPurpleDye = instance.getBoolean( "netherwart_purple_dye",category,true,
 				"Craft bonemeal and netherwart into purple dye.");

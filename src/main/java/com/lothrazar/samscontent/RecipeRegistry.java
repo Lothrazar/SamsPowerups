@@ -74,13 +74,31 @@ public class RecipeRegistry
 	{
 		if(!ModMain.cfg.experience_bottle)  {return;}
 		
+		experience_stripe(Items.rotten_flesh);
+		experience_stripe(Items.bone);
+		experience_stripe(Items.spider_eye);
+		experience_stripe(Items.blaze_powder);
+		experience_stripe(Items.gunpowder);
+		experience_stripe(Items.feather);
+		experience_stripe(Items.fish);
+		experience_stripe(Items.magma_cream);
+		experience_stripe(Items.rabbit_hide); 
+		experience_stripe(Items.ender_pearl); 
+		experience_stripe(Items.slime_ball); 
+		experience_stripe(Items.ghast_tear); 
+		
+	} 
+	
+	private static void experience_stripe(Item drop) 
+	{
 		GameRegistry.addRecipe(new ItemStack(Items.experience_bottle),
 				"bxb",
 				"bxb",
 				"bxb",
-				'x', Items.rotten_flesh,
+				'x', drop,
 				'b', Items.glass_bottle);
 	}
+	
 
 	public static void beetroot()
 	{
