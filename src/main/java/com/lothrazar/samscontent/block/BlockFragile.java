@@ -47,12 +47,11 @@ public class BlockFragile extends Block
 	public void addRecipe()
 	{
 		GameRegistry.addShapedRecipe(new ItemStack(BlockRegistry.block_fragile), 
-				"s s",
-				" s ",
-				"s s",
+				"ss",
+				"ss", 
 				's',Items.stick);
 		
 		if(ModMain.cfg.uncraftGeneral)
-			GameRegistry.addShapelessRecipe(new ItemStack(Items.stick,5), BlockRegistry.block_fragile);
+			GameRegistry.addShapelessRecipe(new ItemStack(Items.stick,4), BlockRegistry.block_fragile);
 	}
 }
