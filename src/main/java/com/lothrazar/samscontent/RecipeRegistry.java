@@ -91,7 +91,7 @@ public class RecipeRegistry
 	
 	private static void experience_stripe(Item drop) 
 	{
-		GameRegistry.addRecipe(new ItemStack(Items.experience_bottle),
+		GameRegistry.addRecipe(new ItemStack(Items.experience_bottle,6),
 				"bxb",
 				"bxb",
 				"bxb",
