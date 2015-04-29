@@ -79,7 +79,7 @@ public class ConfigFile
 		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull_on_death",category, true,
     			"Players will drop their skull when they die for any reason.");
 		
-		sleeping_hunger = instance.getBoolean("sleeping_hunger",category, true,
+		sleeping_hunger = instance.getBoolean("sleeping_hunger",category, true,//TODO: change this to an integer?
     			"Passing the full night in a bed will make you hungry.");
 		
 	}
@@ -412,7 +412,7 @@ public class ConfigFile
 		simpleDispenser = instance.getBoolean( "simple_dispenser",category,true,
 				"Craft a dispenser with string in the center instead of a bow.  (Since string is stackable, this makes crafting tons of them much faster and cheaper).");
 		 
-		craftBooksWithoutLeather = instance.getBoolean( "books_without_leather",category,true,
+		craftBooksWithoutLeather = instance.getBoolean( "books_without_leather",category,false,
 				"This allows use the old book crafting recipe from previous versions of the game; three paper but no leather needed.");
 		
 		craftableTransmuteRecords = instance.getBoolean( "transmute_records",category,true,
@@ -450,13 +450,13 @@ public class ConfigFile
 		home = instance.getBoolean("home",category, true,
     			"Use /home to go to the players spawn point, as defined by a bed."); 
 		
-		CommandHome.REQUIRES_OP = instance.getBoolean("home.needs_op",category, false,
+		CommandHome.REQUIRES_OP = instance.getBoolean("home.needs_op",category, true,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 
 		worldhome = instance.getBoolean("worldhome",category, true,
     			"Use /worldhome to go to the worlds global spawn point.");  
 		
-		CommandWorldHome.REQUIRES_OP = instance.getBoolean("worldhomehome.needs_op",category, false,
+		CommandWorldHome.REQUIRES_OP = instance.getBoolean("worldhomehome.needs_op",category, true,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		
 		searchspawner = instance.getBoolean("searchspawner",category, true,
