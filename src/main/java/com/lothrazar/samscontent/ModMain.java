@@ -128,7 +128,7 @@ public class ModMain
 		mcinfo.modId = Reference.MODID;
 		mcinfo.name = Reference.NAME;
 		mcinfo.version = Reference.VERSION;
-		mcinfo.description = "Sam's content.";
+		mcinfo.description = "Sam's content.  See config file for a complete listing of features, and control over each.  ";
 		ArrayList<String> authorList = new ArrayList<String>();
 		authorList.add("Lothrazar");
 		mcinfo.authorList = authorList;
