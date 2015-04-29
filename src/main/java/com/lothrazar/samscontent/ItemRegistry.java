@@ -23,8 +23,8 @@ import com.lothrazar.util.Reference;
 public class ItemRegistry 
 { 
 	public static ItemEnderBook itemEnderBook;
-	public static ItemWandBuilding wandBuilding;
-	public static ItemChestSackEmpty wandChest; 
+	//public static ItemWandBuilding wandBuilding;
+	public static ItemChestSackEmpty itemChestSackEmpty; 
 	public static ItemChestSack itemChestSack;
 	public static ItemMagicHarvester harvest_charge;
 	public static ItemWandTransform wandTransform; 
@@ -46,9 +46,9 @@ public class ItemRegistry
 	public static Item beetrootItem;
 	public static Item beetrootSoup;	
 	
-	public static ItemHorseFood horse_upgrade_type; 
-	public static ItemHorseFood horse_upgrade_variant; 
-	public static ItemHorseFood horse_upgrade_health; 
+	public static ItemHorseFood emeraldCarrot; 
+	public static ItemHorseFood lapisCarrot; 
+	public static ItemHorseFood diamondCarrot; 
 	
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	public static ItemFireballThrowable fire_charge_throw;
@@ -94,14 +94,14 @@ public class ItemRegistry
 		
 		if(ModMain.cfg.horse_food_upgrades )
 		{  
-			horse_upgrade_type = new ItemHorseFood();
-			ItemRegistry.registerItem(horse_upgrade_type, "horse_upgrade_type");
+			emeraldCarrot = new ItemHorseFood();
+			ItemRegistry.registerItem(emeraldCarrot, "horse_upgrade_type");
 			
-			horse_upgrade_variant = new ItemHorseFood();
-			ItemRegistry.registerItem(horse_upgrade_variant, "horse_upgrade_variant");
+			lapisCarrot = new ItemHorseFood();
+			ItemRegistry.registerItem(lapisCarrot, "horse_upgrade_variant");
 			
-			horse_upgrade_health = new ItemHorseFood();
-			ItemRegistry.registerItem(horse_upgrade_health, "horse_upgrade_health"); 
+			diamondCarrot = new ItemHorseFood();
+			ItemRegistry.registerItem(diamondCarrot, "horse_upgrade_health"); 
 			
 			ItemHorseFood.addRecipes();
 		}
@@ -176,8 +176,8 @@ public class ItemRegistry
 			ItemRegistry.itemChestSack = new ItemChestSack();   
 			ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 			
-			ItemRegistry.wandChest = new ItemChestSackEmpty(); 
-			ItemRegistry.registerItem(ItemRegistry.wandChest, "chest_sack_empty");
+			ItemRegistry.itemChestSackEmpty = new ItemChestSackEmpty(); 
+			ItemRegistry.registerItem(ItemRegistry.itemChestSackEmpty, "chest_sack_empty");
 	 
 			ItemChestSackEmpty.addRecipe();  
 		}

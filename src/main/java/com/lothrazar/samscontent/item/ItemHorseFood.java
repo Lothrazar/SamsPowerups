@@ -27,15 +27,15 @@ public class ItemHorseFood extends Item
 	
 	public static void addRecipes() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_type)
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.emeraldCarrot)
 			,Items.carrot
 			,Items.emerald);
 
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_variant)
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.lapisCarrot)
 			,Items.carrot
 			,new ItemStack(Items.dye,1,Reference.dye_lapis)); 
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.horse_upgrade_health)
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.diamondCarrot)
 			,Items.carrot
 			,Items.diamond); 
 	}
@@ -55,7 +55,7 @@ public class ItemHorseFood extends Item
 		 ("owner = "+ownerID);
 		 ("player = "+player.getUniqueID().toString());
 		   */
-		if(held.getItem() == ItemRegistry.horse_upgrade_type)
+		if(held.getItem() == ItemRegistry.emeraldCarrot)
 		{ 
 			switch(horse.getHorseType())
 			{
@@ -74,7 +74,7 @@ public class ItemHorseFood extends Item
 				//donkey and mule ignored by design
 			}
 		} 
-		else if(held.getItem() == ItemRegistry.horse_upgrade_variant)
+		else if(held.getItem() == ItemRegistry.lapisCarrot)
 		{	 
 			int var = horse.getHorseVariant();
 			int var_reduced = 0;
@@ -114,7 +114,7 @@ public class ItemHorseFood extends Item
 
 			success = true;
 		}
-		else if(held.getItem() == ItemRegistry.horse_upgrade_health)
+		else if(held.getItem() == ItemRegistry.diamondCarrot)
 		{
 			float mh =  (float)horse.getEntityAttribute(SharedMonsterAttributes.maxHealth).getAttributeValue();
 		

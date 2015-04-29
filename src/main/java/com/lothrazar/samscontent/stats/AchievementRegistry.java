@@ -35,25 +35,25 @@ public class AchievementRegistry
 	public Achievement appleDiamond;
 	public Achievement appleEmerald; 
 	public Achievement appleEnder;
-	public Achievement beetrootSeed;
-	//TODO: one for each of my items/blocks
-
+	public Achievement beetrootSeed; 
 	public Achievement appleGhost;
 	public Achievement appleNether;
-	
-	public Achievement soulstone;
-	public Achievement scaffolding;
 	public Achievement lapisCarrot;
 	public Achievement emeraldCarrot;
 	public Achievement diamondCarrot;
-	public Achievement carbonPaper;
-	public Achievement wandWater;
-	public Achievement wandRotate;
-	public Achievement wandPiston;
+
 	public Achievement frostSnowball;
 	public Achievement lightningCharge;
 	public Achievement harvestCharge;
 	public Achievement throwFirecharge;
+	
+	public Achievement scaffolding;
+	public Achievement carbonPaper;
+	
+	public Achievement wandWater;
+	public Achievement wandTransform;
+	public Achievement wandPiston;
+	public Achievement soulstone;
 	public Achievement enderBook;
 	
 	
@@ -86,43 +86,37 @@ public class AchievementRegistry
 			xCurrent += xSpacing;
 			appleChoc = new Achievement(Reference.MODID + "_appleChoc", "appleChoc", xCurrent, yCurrent, ItemRegistry.apple_chocolate, null);
 			register(appleChoc);
-		} 
-		
+		}  
 		if(ItemRegistry.apple_lapis != null)
 		{ 
 			xCurrent += xSpacing;
 			appleLapis = new Achievement(Reference.MODID + "_appleLapis", "appleLapis", xCurrent, yCurrent, ItemRegistry.apple_lapis, null);
 			register(appleLapis);
-		} 
-		
+		}  
 		if(ItemRegistry.apple_diamond != null)
 		{ 
 			xCurrent += xSpacing;
 			appleDiamond = new Achievement(Reference.MODID + "_appleDiamond", "appleDiamond", xCurrent, yCurrent, ItemRegistry.apple_diamond, null);
 			register(appleDiamond); 
-		} 
-		
+		}  
 		if(ItemRegistry.apple_emerald != null)
 		{ 
 			xCurrent += xSpacing;
 			appleEmerald = new Achievement(Reference.MODID + "_appleEmerald", "appleEmerald", xCurrent, yCurrent, ItemRegistry.apple_emerald, null);
 			register(appleEmerald);
-		} 
-		
+		}  
 		if(ItemRegistry.apple_ender != null)
 		{ 
 			xCurrent += xSpacing;
 			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder" ,xCurrent, yCurrent,ItemRegistry.apple_ender,null);
 			register(appleEnder);
-		} 
-
+		}
 		if(ItemRegistry.apple_ghost != null)
 		{ 
 			xCurrent += xSpacing;
 			appleGhost = new Achievement(Reference.MODID + "_appleGhost", "appleGhost" ,xCurrent, yCurrent,ItemRegistry.apple_ghost,null);
 			register(appleGhost);
-		} 
-
+		}
 		if(ItemRegistry.apple_nether_star != null)
 		{ 
 			xCurrent += xSpacing;
@@ -130,29 +124,64 @@ public class AchievementRegistry
 			register(appleNether);
 		} 
 		
-		//new row
-		xCurrent = xStart;
-		yCurrent = yStart + ySpacing;
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
 
-		if(ItemRegistry.horse_upgrade_health != null)//DIAMOND
+		if(ItemRegistry.diamondCarrot != null)//DIAMOND
 		{ 
 			xCurrent += xSpacing;
-			diamondCarrot = new Achievement(Reference.MODID + "_diamondCarrot", "diamondCarrot" ,xCurrent, yCurrent,ItemRegistry.horse_upgrade_health,null);
+			diamondCarrot = new Achievement(Reference.MODID + "_diamondCarrot", "diamondCarrot" ,xCurrent, yCurrent,ItemRegistry.diamondCarrot,null);
 			register(diamondCarrot);
-		} 
-		if(ItemRegistry.horse_upgrade_type != null)//DIAMOND
+		}
+		if(ItemRegistry.emeraldCarrot != null)//DIAMOND
 		{ 
 			xCurrent += xSpacing;
-			emeraldCarrot = new Achievement(Reference.MODID + "_emeraldCarrot", "emeraldCarrot" ,xCurrent, yCurrent,ItemRegistry.horse_upgrade_type,null);
+			emeraldCarrot = new Achievement(Reference.MODID + "_emeraldCarrot", "emeraldCarrot" ,xCurrent, yCurrent,ItemRegistry.emeraldCarrot,null);
 			register(emeraldCarrot);
-		} 
-		if(ItemRegistry.horse_upgrade_variant != null)//DIAMOND
+		}
+		if(ItemRegistry.lapisCarrot != null)//DIAMOND
 		{ 
 			xCurrent += xSpacing;
-			lapisCarrot = new Achievement(Reference.MODID + "_lapisCarrot", "lapisCarrot" ,xCurrent, yCurrent,ItemRegistry.horse_upgrade_variant,null);
+			lapisCarrot = new Achievement(Reference.MODID + "_lapisCarrot", "lapisCarrot" ,xCurrent, yCurrent,ItemRegistry.lapisCarrot,null);
 			register(lapisCarrot);
 		} 
+
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
+
+		if(ItemRegistry.wandWater != null) 
+		{ 
+			xCurrent += xSpacing;
+			wandWater = new Achievement(Reference.MODID + "_wandWater", "wandWater" ,xCurrent, yCurrent,ItemRegistry.wandWater,null);
+			register(wandWater);
+		}
+		if(ItemRegistry.wandTransform != null) 
+		{ 
+			xCurrent += xSpacing;
+			wandTransform = new Achievement(Reference.MODID + "_wandTransform", "wandTransform" ,xCurrent, yCurrent,ItemRegistry.wandTransform,null);
+			register(wandTransform);
+		}
+		if(ItemRegistry.wand_piston != null) 
+		{ 
+			xCurrent += xSpacing;
+			wandPiston = new Achievement(Reference.MODID + "_wandPiston", "wandPiston" ,xCurrent, yCurrent,ItemRegistry.wand_piston,null);
+			register(wandPiston);
+		}	/*
+		if(ItemRegistry.itemEnderBook != null) 
+		{ 
+			xCurrent += xSpacing;
+			enderBook = new Achievement(Reference.MODID + "_enderBook", "_enderBook" ,xCurrent, yCurrent,ItemRegistry.itemEnderBook,null);
+			register(enderBook);
+		}
+
+	
  
+
+	public Achievement soulstone;
+*/
+		
+		
+		
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
 
 	 	AchievementPage.registerAchievementPage(page);
@@ -224,17 +253,29 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(appleNether,event.player);  
 		} 
-		else if(item == ItemRegistry.horse_upgrade_health)
+		else if(item == ItemRegistry.diamondCarrot)
 		{ 
 			addStatSafe(diamondCarrot,event.player);  
 		} 
-		else if(item == ItemRegistry.horse_upgrade_type)
+		else if(item == ItemRegistry.emeraldCarrot)
 		{ 
 			addStatSafe(emeraldCarrot,event.player);  
 		} 
-		else if(item == ItemRegistry.horse_upgrade_variant)
+		else if(item == ItemRegistry.lapisCarrot)
 		{ 
 			addStatSafe(lapisCarrot,event.player);  
+		} 
+		else if(item == ItemRegistry.wand_piston)
+		{ 
+			addStatSafe(wandPiston,event.player);  
+		} 
+		else if(item == ItemRegistry.wandTransform)
+		{ 
+			addStatSafe(wandTransform,event.player);  
+		} 
+		else if(item == ItemRegistry.wandWater)
+		{ 
+			addStatSafe(wandWater,event.player);  
 		} 
 	}
 	

@@ -47,13 +47,13 @@ public class ItemChestSackEmpty extends Item
 
 	public static void addRecipe() 
 	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wandChest),
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemChestSackEmpty),
 			Items.leather,
 			Items.string,
 			Blocks.chest  );
 		
 		if(ModMain.cfg.uncraftGeneral)
-			GameRegistry.addSmelting(ItemRegistry.wandChest, new ItemStack(Items.leather), 0);
+			GameRegistry.addSmelting(ItemRegistry.itemChestSackEmpty, new ItemStack(Items.leather), 0);
 	}
 
 	public static void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
