@@ -244,17 +244,20 @@ public class AchievementRegistry
 			xCurrent += xSpacing;
 			enderBook = new Achievement(Reference.MODID + "_enderBook", "enderBook" ,xCurrent, yCurrent,ItemRegistry.itemEnderBook,null);
 			register(enderBook);
-		}
-		
-		//TODO:  blocks
-		
+		} 
 		if(BlockRegistry.block_fragile != null) 
 		{ 
 			xCurrent += xSpacing;
 			block_fragile = new Achievement(Reference.MODID + "_block_fragile", "block_fragile" ,xCurrent, yCurrent,BlockRegistry.block_fragile,null);
 			register(block_fragile);
 		}
-
+		if(BlockRegistry.block_xray != null) 
+		{ 
+			xCurrent += xSpacing;
+			block_xray = new Achievement(Reference.MODID + "_block_xray", "block_xray" ,xCurrent, yCurrent,BlockRegistry.block_xray,null);
+			register(block_xray);
+		}
+		
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
 		
@@ -298,15 +301,8 @@ public class AchievementRegistry
 			command_block_weather = new Achievement(Reference.MODID + "_command_block_weather", "command_block_weather" ,xCurrent, yCurrent,BlockRegistry.command_block_weather,null);
 			register(command_block_weather);
 		}
-		if(BlockRegistry.block_xray != null) 
-		{ 
-			xCurrent += xSpacing;
-			block_xray = new Achievement(Reference.MODID + "_block_xray", "block_xray" ,xCurrent, yCurrent,BlockRegistry.block_xray,null);
-			register(block_xray);
-		}
-		
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
+		//xCurrent = xStart;//new row
+		//yCurrent += ySpacing;
 		
 		
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
@@ -447,7 +443,7 @@ public class AchievementRegistry
 		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_weather) 
 		{ 
 			addStatSafe(command_block_weather,event.player);  
-		}  
+		}   
 	}
 	
 	private void addStatSafe(Achievement stat, EntityPlayer player)
