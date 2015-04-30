@@ -7,6 +7,7 @@ import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Reference; 
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -52,12 +53,29 @@ public class AchievementRegistry
 	public Achievement harvestCharge;
 	public Achievement throwFirecharge;
 	
-	//public Achievement scaffolding;
 	public Achievement carbonPaper;
 	
 	public Achievement soulstone;
 	public Achievement enderBook;
+
 	
+	public Achievement scaffolding;
+
+	private Achievement command_block_weather;
+
+	private Achievement command_block_tpspawn;
+
+	private Achievement command_block_tpbed;
+
+	private Achievement block_fragile;
+
+	private Achievement block_fishing;
+
+	private Achievement block_shear_sheep;
+
+	private Achievement block_storeempty;
+
+	private Achievement block_xray;
 	
 	private void register(Achievement a)
 	{
@@ -101,6 +119,10 @@ public class AchievementRegistry
 			appleDiamond = new Achievement(Reference.MODID + "_appleDiamond", "appleDiamond", xCurrent, yCurrent, ItemRegistry.apple_diamond, null);
 			register(appleDiamond); 
 		}  
+		
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
+
 		if(ItemRegistry.apple_emerald != null)
 		{ 
 			xCurrent += xSpacing;
@@ -169,12 +191,6 @@ public class AchievementRegistry
 			wandPiston = new Achievement(Reference.MODID + "_wandPiston", "wandPiston" ,xCurrent, yCurrent,ItemRegistry.wand_piston,null);
 			register(wandPiston);
 		}	
-		if(ItemRegistry.itemEnderBook != null) 
-		{ 
-			xCurrent += xSpacing;
-			enderBook = new Achievement(Reference.MODID + "_enderBook", "enderBook" ,xCurrent, yCurrent,ItemRegistry.itemEnderBook,null);
-			register(enderBook);
-		}
  
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
@@ -191,11 +207,11 @@ public class AchievementRegistry
 			soulstone = new Achievement(Reference.MODID + "_soulstone", "soulstone" ,xCurrent, yCurrent,ItemRegistry.soulstone,null);
 			register(soulstone);
 		}
-		if(ItemRegistry.carbon_paper != null) 
+		if(ItemRegistry.fire_charge_throw != null) 
 		{ 
 			xCurrent += xSpacing;
-			carbonPaper = new Achievement(Reference.MODID + "_carbonPaper", "carbonPaper" ,xCurrent, yCurrent,ItemRegistry.carbon_paper,null);
-			register(carbonPaper);
+			throwFirecharge = new Achievement(Reference.MODID + "_throwFirecharge", "throwFirecharge" ,xCurrent, yCurrent,ItemRegistry.fire_charge_throw,null);
+			register(throwFirecharge);
 		}
 
 		xCurrent = xStart;//new row
@@ -213,20 +229,84 @@ public class AchievementRegistry
 			harvestCharge = new Achievement(Reference.MODID + "_harvestCharge", "harvestCharge" ,xCurrent, yCurrent,ItemRegistry.harvest_charge,null);
 			register(harvestCharge);
 		}
-		if(ItemRegistry.fire_charge_throw != null) 
+		if(ItemRegistry.carbon_paper != null) 
 		{ 
 			xCurrent += xSpacing;
-			throwFirecharge = new Achievement(Reference.MODID + "_throwFirecharge", "throwFirecharge" ,xCurrent, yCurrent,ItemRegistry.fire_charge_throw,null);
-			register(throwFirecharge);
+			carbonPaper = new Achievement(Reference.MODID + "_carbonPaper", "carbonPaper" ,xCurrent, yCurrent,ItemRegistry.carbon_paper,null);
+			register(carbonPaper);
 		}
-		/*
+
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
+		 
+		if(ItemRegistry.itemEnderBook != null) 
+		{ 
+			xCurrent += xSpacing;
+			enderBook = new Achievement(Reference.MODID + "_enderBook", "enderBook" ,xCurrent, yCurrent,ItemRegistry.itemEnderBook,null);
+			register(enderBook);
+		}
+		
+		//TODO:  blocks
+		
 		if(BlockRegistry.block_fragile != null) 
 		{ 
 			xCurrent += xSpacing;
-			scaffolding = new Achievement(Reference.MODID + "_scaffolding", "scaffolding" ,xCurrent, yCurrent,BlockRegistry.block_fragile,null);
-			register(scaffolding);
+			block_fragile = new Achievement(Reference.MODID + "_block_fragile", "block_fragile" ,xCurrent, yCurrent,BlockRegistry.block_fragile,null);
+			register(block_fragile);
 		}
-   */
+
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
+		
+		if(BlockRegistry.block_fishing != null) 
+		{ 
+			xCurrent += xSpacing;
+			block_fishing = new Achievement(Reference.MODID + "_block_fishing", "block_fishing" ,xCurrent, yCurrent,BlockRegistry.block_fishing,null);
+			register(block_fishing);
+		}
+		if(BlockRegistry.block_shear_sheep != null) 
+		{ 
+			xCurrent += xSpacing;
+			block_shear_sheep = new Achievement(Reference.MODID + "_block_shear_sheep", "block_shear_sheep" ,xCurrent, yCurrent,BlockRegistry.block_shear_sheep,null);
+			register(block_shear_sheep);
+		}
+		if(BlockRegistry.block_storeempty != null) 
+		{ 
+			xCurrent += xSpacing;
+			block_storeempty = new Achievement(Reference.MODID + "_block_storeempty", "block_storeempty" ,xCurrent, yCurrent,BlockRegistry.block_storeempty,null);
+			register(block_storeempty);
+		}
+		
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
+		
+		if(BlockRegistry.command_block_tpbed != null) 
+		{ 
+			xCurrent += xSpacing;
+			command_block_tpbed = new Achievement(Reference.MODID + "_command_block_tpbed", "command_block_tpbed" ,xCurrent, yCurrent,BlockRegistry.command_block_tpbed,null);
+			register(command_block_tpbed);
+		}
+		if(BlockRegistry.command_block_tpspawn != null) 
+		{ 
+			xCurrent += xSpacing;
+			command_block_tpspawn = new Achievement(Reference.MODID + "_command_block_tpspawn", "command_block_tpspawn" ,xCurrent, yCurrent,BlockRegistry.command_block_tpspawn,null);
+			register(command_block_tpspawn);
+		}
+		if(BlockRegistry.command_block_weather != null) 
+		{ 
+			xCurrent += xSpacing;
+			command_block_weather = new Achievement(Reference.MODID + "_command_block_weather", "command_block_weather" ,xCurrent, yCurrent,BlockRegistry.command_block_weather,null);
+			register(command_block_weather);
+		}
+		if(BlockRegistry.block_xray != null) 
+		{ 
+			xCurrent += xSpacing;
+			block_xray = new Achievement(Reference.MODID + "_block_xray", "block_xray" ,xCurrent, yCurrent,BlockRegistry.block_xray,null);
+			register(block_xray);
+		}
+		
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
 		
 		
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
@@ -336,6 +416,38 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(enderBook,event.player);  
 		} 
+		else if(Block.getBlockFromItem(item) == BlockRegistry.block_fishing) 
+		{ 
+			addStatSafe(block_fishing,event.player);  
+		} 
+		else if(Block.getBlockFromItem(item) == BlockRegistry.block_fragile) 
+		{ 
+			addStatSafe(block_fragile,event.player);  
+		} 	
+		else if(Block.getBlockFromItem(item) == BlockRegistry.block_shear_sheep) 
+		{ 
+			addStatSafe(block_shear_sheep,event.player);  
+		} 
+		else if(Block.getBlockFromItem(item) == BlockRegistry.block_storeempty) 
+		{ 
+			addStatSafe(block_storeempty,event.player);  
+		} 
+		else if(Block.getBlockFromItem(item) == BlockRegistry.block_xray) 
+		{ 
+			addStatSafe(block_xray,event.player);  
+		} 
+		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_tpbed) 
+		{ 
+			addStatSafe(command_block_tpbed,event.player);  
+		} 
+		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_tpspawn) 
+		{ 
+			addStatSafe(command_block_tpspawn,event.player);  
+		} 
+		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_weather) 
+		{ 
+			addStatSafe(command_block_weather,event.player);  
+		}  
 	}
 	
 	private void addStatSafe(Achievement stat, EntityPlayer player)
