@@ -2,6 +2,7 @@ package com.lothrazar.samscontent.stats;
 
 import java.util.ArrayList;
 
+import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Reference; 
@@ -41,18 +42,19 @@ public class AchievementRegistry
 	public Achievement lapisCarrot;
 	public Achievement emeraldCarrot;
 	public Achievement diamondCarrot;
+	public Achievement wandWater;
+	public Achievement wandTransform;
+	public Achievement wandPiston;
+	
 
 	public Achievement frostSnowball;
 	public Achievement lightningCharge;
 	public Achievement harvestCharge;
 	public Achievement throwFirecharge;
 	
-	public Achievement scaffolding;
+	//public Achievement scaffolding;
 	public Achievement carbonPaper;
 	
-	public Achievement wandWater;
-	public Achievement wandTransform;
-	public Achievement wandPiston;
 	public Achievement soulstone;
 	public Achievement enderBook;
 	
@@ -166,20 +168,65 @@ public class AchievementRegistry
 			xCurrent += xSpacing;
 			wandPiston = new Achievement(Reference.MODID + "_wandPiston", "wandPiston" ,xCurrent, yCurrent,ItemRegistry.wand_piston,null);
 			register(wandPiston);
-		}	/*
+		}	
 		if(ItemRegistry.itemEnderBook != null) 
 		{ 
 			xCurrent += xSpacing;
-			enderBook = new Achievement(Reference.MODID + "_enderBook", "_enderBook" ,xCurrent, yCurrent,ItemRegistry.itemEnderBook,null);
+			enderBook = new Achievement(Reference.MODID + "_enderBook", "enderBook" ,xCurrent, yCurrent,ItemRegistry.itemEnderBook,null);
 			register(enderBook);
 		}
-
-	
  
-
-	public Achievement soulstone;
-*/
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
 		
+		if(ItemRegistry.frozen_snowball != null) 
+		{ 
+			xCurrent += xSpacing;
+			frostSnowball = new Achievement(Reference.MODID + "_frostSnowball", "frostSnowball" ,xCurrent, yCurrent,ItemRegistry.frozen_snowball,null);
+			register(frostSnowball);
+		}
+		if(ItemRegistry.soulstone != null) 
+		{ 
+			xCurrent += xSpacing;
+			soulstone = new Achievement(Reference.MODID + "_soulstone", "soulstone" ,xCurrent, yCurrent,ItemRegistry.soulstone,null);
+			register(soulstone);
+		}
+		if(ItemRegistry.carbon_paper != null) 
+		{ 
+			xCurrent += xSpacing;
+			carbonPaper = new Achievement(Reference.MODID + "_carbonPaper", "carbonPaper" ,xCurrent, yCurrent,ItemRegistry.carbon_paper,null);
+			register(carbonPaper);
+		}
+
+		xCurrent = xStart;//new row
+		yCurrent += ySpacing;
+		
+		if(ItemRegistry.lightning_charge != null) 
+		{ 
+			xCurrent += xSpacing;
+			lightningCharge = new Achievement(Reference.MODID + "_lightningCharge", "lightningCharge" ,xCurrent, yCurrent,ItemRegistry.lightning_charge,null);
+			register(lightningCharge);
+		}
+		if(ItemRegistry.harvest_charge != null) 
+		{ 
+			xCurrent += xSpacing;
+			harvestCharge = new Achievement(Reference.MODID + "_harvestCharge", "harvestCharge" ,xCurrent, yCurrent,ItemRegistry.harvest_charge,null);
+			register(harvestCharge);
+		}
+		if(ItemRegistry.fire_charge_throw != null) 
+		{ 
+			xCurrent += xSpacing;
+			throwFirecharge = new Achievement(Reference.MODID + "_throwFirecharge", "throwFirecharge" ,xCurrent, yCurrent,ItemRegistry.fire_charge_throw,null);
+			register(throwFirecharge);
+		}
+		/*
+		if(BlockRegistry.block_fragile != null) 
+		{ 
+			xCurrent += xSpacing;
+			scaffolding = new Achievement(Reference.MODID + "_scaffolding", "scaffolding" ,xCurrent, yCurrent,BlockRegistry.block_fragile,null);
+			register(scaffolding);
+		}
+   */
 		
 		
 		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
@@ -276,6 +323,18 @@ public class AchievementRegistry
 		else if(item == ItemRegistry.wandWater)
 		{ 
 			addStatSafe(wandWater,event.player);  
+		} 
+		else if(item == ItemRegistry.frozen_snowball)
+		{ 
+			addStatSafe(frostSnowball,event.player);  
+		} 
+		else if(item == ItemRegistry.soulstone)//TODO: v2
+		{ 
+			addStatSafe(soulstone,event.player);  
+		} 
+		else if(item == ItemRegistry.itemEnderBook) 
+		{ 
+			addStatSafe(enderBook,event.player);  
 		} 
 	}
 	
