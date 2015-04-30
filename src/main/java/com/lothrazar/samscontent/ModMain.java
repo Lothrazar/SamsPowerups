@@ -77,6 +77,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
@@ -735,7 +736,7 @@ public class ModMain
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 
 	{
-		System.out.println("Cloning player extended properties");
+		//System.out.println("Cloning player extended properties");
 		PlayerPowerups.get(event.entityPlayer).copy(PlayerPowerups.get(event.original));
 	}
 	@SubscribeEvent
@@ -746,4 +747,9 @@ public class ModMain
  			PlayerPowerups.register((EntityPlayer) event.entity);
  		} 
  	}
+	@SubscribeEvent
+	public void onHarvestDropsEvent(HarvestDropsEvent event)
+	{
+		
+	}
 }

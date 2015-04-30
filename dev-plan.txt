@@ -1,4 +1,22 @@
-BUGS:bugreport; pickup beetroot seed achieve didnt fire.
+
+ 
+ 1.1.2:
+ MORE FUEL: Ladder, Boat
+ 
+ Exp Bottle crafting: 
+ add inc sac.
+ MAYBE string
+ maybe redstone
+ 
+ world tp blocks: add magic wands that do the same thing?
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ BUGS:bugreport; pickup beetroot seed achieve didnt fire.
  pickup beetroot seed achieve
  
  TODO: nerf or config the diamond armor into needing gold instead of chain

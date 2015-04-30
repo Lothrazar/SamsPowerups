@@ -84,6 +84,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
         return Item.getItemFromBlock(BlockRegistry.block_storeempty);
     }
 	
+	//??http://www.minecraftforge.net/forum/index.php?topic=23882.0 
+	//should be forge HarvestDropsEvent 
 	@Override
 	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) 
 	{
@@ -97,6 +99,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		{
 			Util.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
 		}
+		
+		
 	}
 
 	@SubscribeEvent
