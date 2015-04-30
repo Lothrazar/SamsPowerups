@@ -329,7 +329,7 @@ public class ConfigFile
 		appleLapis = instance.get(category, "apple_lapis",true).getBoolean();
 	  
 		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean();
-	  
+		apple_ghost = instance.get(category, "apple_ghost",true).getBoolean();
 		appleNetherStar = instance.get(category, "apple_netherwart",true).getBoolean();
 		
 		fire_charge_throw = instance.getBoolean("fire_charge_throw",category, true,
@@ -380,6 +380,9 @@ public class ConfigFile
 	{
 		category = "blocks";
 		 
+		block_fragile  = instance.getBoolean( "scaffolding",category,true,
+				"Scaffolding block that decays on its own over time, so its better than spamming dirt everywhere."); 		 
+				
 		storeBucketsBlock = instance.getBoolean( "store_buckets",category,true,
 				"A block that stores any number of milk/water/lava buckets (click to insert / withdraw)."); 
 	 
@@ -634,4 +637,6 @@ public class ConfigFile
 	public boolean item_soulstone;
 	public boolean experience_bottle;
 	public boolean experience_bottle_return;
+	public boolean block_fragile;
+	public boolean apple_ghost;
 }

@@ -69,9 +69,12 @@ public class ItemRegistry
 	}
 	public static void registerItems()
 	{   
-		apple_ghost = new ItemFoodGhost();
-		ItemRegistry.registerItem(apple_ghost, "apple_ghost");
-		apple_ghost.addRecipe();
+		if(ModMain.cfg.apple_ghost)
+		{
+			apple_ghost = new ItemFoodGhost();
+			ItemRegistry.registerItem(apple_ghost, "apple_ghost");
+			apple_ghost.addRecipe();
+		}
 		
 		if(ModMain.cfg.item_soulstone)
 		{

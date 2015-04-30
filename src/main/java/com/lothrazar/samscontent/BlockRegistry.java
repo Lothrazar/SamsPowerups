@@ -40,10 +40,12 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
-		block_fragile = new BlockFragile();
-		BlockRegistry.registerBlock(block_fragile, "block_fragile"); 
-		block_fragile.addRecipe();
-		
+		if(ModMain.cfg.block_fragile)
+		{
+			block_fragile = new BlockFragile();
+			BlockRegistry.registerBlock(block_fragile, "block_fragile"); 
+			block_fragile.addRecipe();
+		}
 		if(ModMain.cfg.beetroot)
 		{
 			beetroot_crop =  new BlockCropBeetroot();

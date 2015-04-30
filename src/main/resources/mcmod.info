@@ -4,7 +4,7 @@
     "modid": "samscontent",
     "name": "Sam's Content",
     "description": "New blocks and items, new and updated recipes, and many other features.  See the config file for a complete feature list, and full control to disable anything.",
-    "version": "1.1.0",
+    "version": "1.1.1",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
     "updateUrl": "",
