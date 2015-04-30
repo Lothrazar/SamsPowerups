@@ -41,11 +41,10 @@ public class BlockFishing extends Block
 	@Override
 	public void updateTick(World worldObj,  BlockPos pos, IBlockState state,  Random rand)
     {  
-		int xCoord = pos.getX();
-		int yCoord = pos.getY();
-		int zCoord = pos.getZ();
-		 
-		 if(worldObj.getBlockState(pos.down()).equals(Blocks.water) == false
+		if(worldObj.rand.nextInt(2) != 0){return;}//possible values are 0,1
+		//meaning we have a 1/2 chance of getting past this check
+		
+		if(worldObj.getBlockState(pos.down()).equals(Blocks.water) == false
 		 || worldObj.getBlockState(pos.down(2)).equals(Blocks.water) == false 
 		 || worldObj.getBlockState(pos.down(3)).equals(Blocks.water) == false //3 deep, and
 		 || worldObj.getBlockState(pos.north()).equals(Blocks.water) == false
