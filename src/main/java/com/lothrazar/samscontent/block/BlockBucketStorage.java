@@ -104,9 +104,10 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
     {
-        return Item.getItemFromBlock(BlockRegistry.block_storeempty);
+		return null;
+       // return Item.getItemFromBlock(BlockRegistry.block_storeempty);
     }
-	
+	/*
 	//??http://www.minecraftforge.net/forum/index.php?topic=23882.0 
 	//should be forge HarvestDropsEvent 
 	@Override
@@ -126,7 +127,10 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		} 
 		
 		
+		
 	}
+	*/
+	
 	/*
 	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
