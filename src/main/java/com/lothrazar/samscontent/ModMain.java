@@ -16,6 +16,7 @@ import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
 import com.lothrazar.samscontent.proxy.*; 
 import com.lothrazar.samscontent.stats.*;
+import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;
 import com.lothrazar.samscontent.world.*; 
 import com.lothrazar.util.*;
 
@@ -77,6 +78,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -752,4 +754,28 @@ public class ModMain
 	{
 		
 	}
+
+	@SubscribeEvent
+	public void onBreakEvent(BreakEvent event)
+	{
+		TileEntity ent = event.world.getTileEntity(event.pos);
+		
+		
+
+		System.out.println("breakevent");
+		System.out.println(ent==null);
+		
+		
+		if(ent!=null && ent instanceof TileEntityBucketStorage)
+		{
+			TileEntityBucketStorage t = (TileEntityBucketStorage)ent;
+			ItemStack stack = new ItemStack(event.state.getBlock());
+			
+			Util.setItemStackNBT(stack, "buckets", t.getBuckets());
+		
+			Util.dropItemStackInWorld(event.world, event.pos, stack);
+
+		}
+	}
+	
 }

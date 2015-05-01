@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.block;
 
+import java.util.List;
 import java.util.Random;
 
 import com.lothrazar.samscontent.BlockRegistry;
@@ -14,6 +15,7 @@ import net.minecraft.block.BlockContainer;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -25,6 +27,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.EnumWorldBlockLayer;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -44,8 +47,23 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		
 		this.setStepSound(soundTypeMetal);
 		this.setHarvestLevel("pickaxe", 1);
-		bucketItem = bucketIn;
+		bucketItem = bucketIn; 
+		 
 	}
+	
+	@Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) 
+	{
+		//(stack, "buckets", t.getBuckets()
+		if( stack.getTagCompound() != null)
+		{ 
+			int b = stack.getTagCompound().getInteger("buckets");
+			
+			System.out.println("on block placed by "+b);
+		}
+	}
+	//MAYBE THIS
+	//http://www.minecraftforge.net/forum/index.php?topic=18754.0
 
 	@Override
 	public boolean isOpaqueCube() 
@@ -100,11 +118,26 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		for(int i = 0; i <= container.getBuckets(); i++)//since they are not stackable
 		{
 			Util.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
-		}
+		} 
 		
 		
 	}
-
+	/*
+	@Override
+	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
+    { 
+	//SUPER() check what it does
+  
+		//IS NULL container, so no good
+		TileEntityBucketStorage container = (TileEntityBucketStorage)world.getTileEntity(pos);
+		
+		System.out.println("getDrops, containerisnull == "+(container==null));
+		
+        List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
+        
+		return ret;
+		
+    }   */
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{       
@@ -192,7 +225,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 			} 
 		} 
   	}
-
+//TODO: try override breakZBl
 	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage, Item bucketItem) 
 	{ 
 		storage.removeBucket();

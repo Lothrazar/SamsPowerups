@@ -252,9 +252,13 @@ public class Util
 	
 	public static void setItemStackNBT(ItemStack item,	String prop, String value) 
 	{
-		setItemStackNotNull(item);
-		 
+		setItemStackNotNull(item); 
 		item.getTagCompound().setString(prop, value);
+	} 
+	public static void setItemStackNBT(ItemStack item,	String prop, int value) 
+	{
+		setItemStackNotNull(item); 
+		item.getTagCompound().setInteger(prop, value);
 	} 
 	
 	public static void incrementItemStackIntegerNBT(ItemStack item,	String prop, int inc) 
