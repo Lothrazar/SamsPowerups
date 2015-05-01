@@ -43,31 +43,25 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	{
 		super(Material.iron);
 		this.setHardness(5F);
-		this.setResistance(5F);
-		
+		this.setResistance(5F); 
 		this.setStepSound(soundTypeMetal);
 		this.setHarvestLevel("pickaxe", 1);
-		bucketItem = bucketIn; 
-		 
+		bucketItem = bucketIn;  
 	}
 	
 	@Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) 
-	{
-		//System.out.println("   onBlockPlacedBy" );
-		//(stack, "buckets", t.getBuckets()
+	{ 
 		if( stack.getTagCompound() != null)
 		{ 
 			int b = stack.getTagCompound().getInteger("buckets");
-			
-			//System.out.println("on block placed by "+b);
-
+			 
 			TileEntityBucketStorage container = (TileEntityBucketStorage)worldIn.getTileEntity(pos);
 			
 			container.setBuckets(b);
 		}
 	}
-	//MAYBE THIS
+	
 	//http://www.minecraftforge.net/forum/index.php?topic=18754.0
 
 	@Override
@@ -107,46 +101,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		return null;
        // return Item.getItemFromBlock(BlockRegistry.block_storeempty);
     }
-	/*
-	//??http://www.minecraftforge.net/forum/index.php?topic=23882.0 
-	//should be forge HarvestDropsEvent 
-	@Override
-	public void onBlockHarvested(World world, BlockPos pos, IBlockState state, EntityPlayer player) 
-	{
-		TileEntityBucketStorage container = (TileEntityBucketStorage)world.getTileEntity(pos);
-
-		Block blockClicked = player.worldObj.getBlockState(pos).getBlock();
-		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
-		
-		
-		
-		if(block.bucketItem != null)//yes thats not a mistake, the null check and <=
-		for(int i = 0; i <= container.getBuckets(); i++)//since they are not stackable
-		{
-			Util.dropItemStackInWorld(world, pos, new ItemStack(block.bucketItem));
-		} 
-		
-		
-		
-	}
-	*/
-	
-	/*
-	@Override
-	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune)
-    { 
-	//SUPER() check what it does
   
-		//IS NULL container, so no good
-		TileEntityBucketStorage container = (TileEntityBucketStorage)world.getTileEntity(pos);
-		
-		System.out.println("getDrops, containerisnull == "+(container==null));
-		
-        List<ItemStack> ret = new java.util.ArrayList<ItemStack>();
-        
-		return ret;
-		
-    }   */
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{       
@@ -234,7 +189,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 			} 
 		} 
   	}
-//TODO: try override breakZBl
+
 	private void removeBucket(EntityPlayer entityPlayer,World world,TileEntityBucketStorage storage, Item bucketItem) 
 	{ 
 		storage.removeBucket();
@@ -260,5 +215,7 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 				'o', Blocks.obsidian, 
 				'i', Items.iron_ingot,
 				'g', Blocks.glass ); 
+		
+		//the filled ones are not crafted, only obtained when filled and then harvested
 	}
 }
