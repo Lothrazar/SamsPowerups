@@ -19,6 +19,12 @@ public class TileEntityBucketStorage extends TileEntity
 		buckets = in;
 	}
 	
+	@Override
+	public int getBlockMetadata()
+	{
+		return getBuckets();
+	}
+	
 	public void addBucket()
 	{
 		buckets++;

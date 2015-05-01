@@ -55,7 +55,8 @@ public class ItemWandPiston extends Item
 		BlockPos pos = event.pos;
 		World world = event.world;
 		IBlockState hit = world.getBlockState(pos);
-
+		
+		
 		if(hit == null || ignoreList.contains(hit.getBlock()))
 		{
 			return;
@@ -83,7 +84,46 @@ public class ItemWandPiston extends Item
 
 					//they swap places
 					world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
-					world.setBlockToAir(pos);
+
+					TileEntity hitTile = world.getTileEntity(pos);
+
+					if(hitTile != null)
+					{
+						//System.out.println("pwand move tile entity over" );
+						//world.setTileEntity(posMoveToHere, hitTile);
+					//	world.setTileEntity(pos, new TileEntity());
+						//world.removeTileEntity(pos);
+						/*??
+						//http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1433868-forge-picking-up-and-moving-blocks
+
+//- create a new block and te.
+//- set the new TEs variables to be equal to the old ones.
+//- remove the old te's inventory, then remove the Block.
+
+						TileEntity newTile = world.getTileEntity(posMoveToHere);
+						
+						if(newTile != null)
+						{
+							System.out.println("kkcopy/move" );
+							//newTile instanceof 
+							//newTile.readFromNBT(compound);
+						//	newTile.writeToNBT(hitTile.read);
+						//	newTile.getBlockMetadata()
+						}
+						else
+						{
+							System.out.println("newTile null, so how do we copy/move" );
+							
+						}
+						
+						hitTile.setPos(posMoveToHere);
+						*/
+					}
+
+
+				//	world.setTileEntity(pos, null);
+					//world.setBlockToAir(pos);
+					world.destroyBlock(pos, true);
 					 
 					Util.damageOrBreakHeld(player);
 					

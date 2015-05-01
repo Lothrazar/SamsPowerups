@@ -94,6 +94,8 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 		Block blockClicked = player.worldObj.getBlockState(pos).getBlock();
 		BlockBucketStorage block = (BlockBucketStorage)blockClicked;
 		
+		
+		
 		if(block.bucketItem != null)//yes thats not a mistake, the null check and <=
 		for(int i = 0; i <= container.getBuckets(); i++)//since they are not stackable
 		{
