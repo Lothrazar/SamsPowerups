@@ -34,6 +34,10 @@ public class TileEntityBucketStorage extends TileEntity
 	{
 		return buckets;
 	}
+	public void setBuckets(int b) 
+	{
+		buckets = b;
+	}
 	public boolean removeBucket()
 	{
 		if(buckets <= 0){return false;}

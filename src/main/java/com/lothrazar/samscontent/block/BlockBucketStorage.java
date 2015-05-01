@@ -54,12 +54,17 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider //e
 	@Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) 
 	{
+		//System.out.println("   onBlockPlacedBy" );
 		//(stack, "buckets", t.getBuckets()
 		if( stack.getTagCompound() != null)
 		{ 
 			int b = stack.getTagCompound().getInteger("buckets");
 			
-			System.out.println("on block placed by "+b);
+			//System.out.println("on block placed by "+b);
+
+			TileEntityBucketStorage container = (TileEntityBucketStorage)worldIn.getTileEntity(pos);
+			
+			container.setBuckets(b);
 		}
 	}
 	//MAYBE THIS

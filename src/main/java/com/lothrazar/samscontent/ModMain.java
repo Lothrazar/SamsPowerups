@@ -759,14 +759,11 @@ public class ModMain
 	public void onBreakEvent(BreakEvent event)
 	{
 		TileEntity ent = event.world.getTileEntity(event.pos);
-		
-		
-
-		System.out.println("breakevent");
-		System.out.println(ent==null);
-		
-		
-		if(ent!=null && ent instanceof TileEntityBucketStorage)
+		 
+		//System.out.println("breakevent");
+		//System.out.println(ent==null);
+		 
+		if(ent != null && ent instanceof TileEntityBucketStorage)
 		{
 			TileEntityBucketStorage t = (TileEntityBucketStorage)ent;
 			ItemStack stack = new ItemStack(event.state.getBlock());
@@ -775,6 +772,7 @@ public class ModMain
 		
 			Util.dropItemStackInWorld(event.world, event.pos, stack);
 
+			t.setBuckets(0);
 		}
 	}
 	
