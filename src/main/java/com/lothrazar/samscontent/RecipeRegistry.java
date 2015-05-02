@@ -42,6 +42,8 @@ public class RecipeRegistry
 		RecipeRegistry.netherwartPurple();
 		
 		//RecipeRegistry.bookNoLeather(); 
+		
+		RecipeRegistry.quartsFromPrismarine();
 		  
 		RecipeRegistry.mushroomBlocks(); 
 		
@@ -70,6 +72,20 @@ public class RecipeRegistry
    		RecipeRegistry.experience_bottle();
 	}
 	
+	private static void quartsFromPrismarine() 
+	{
+		if(!ModMain.cfg.quartz_from_prismarine)  {return;}
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(Items.quartz,4)
+			, new ItemStack(Items.prismarine_shard)
+			, new ItemStack(Items.blaze_powder)
+			, new ItemStack(Items.dye,1,Reference.dye_bonemeal)
+			, new ItemStack(Items.potato)
+		);
+		
+		
+	}
+
 	private static void experience_bottle() 
 	{
 		if(!ModMain.cfg.experience_bottle)  {return;}

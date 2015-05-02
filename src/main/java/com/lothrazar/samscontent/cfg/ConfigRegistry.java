@@ -3,9 +3,12 @@ package com.lothrazar.samscontent.cfg;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;  
+
 import com.lothrazar.samscontent.command.*;  
 import com.lothrazar.samscontent.item.*; 
+import com.lothrazar.util.Reference;
 
 public class ConfigRegistry
 { 
@@ -416,10 +419,10 @@ public class ConfigRegistry
 		
 		simpleDispenser = instance.getBoolean( "simple_dispenser",category,true,
 				"Craft a dispenser with string in the center instead of a bow.  (Since string is stackable, this makes crafting tons of them much faster and cheaper).");
-		 /*
-		craftBooksWithoutLeather = instance.getBoolean( "books_without_leather",category,false,
-				"This allows use the old book crafting recipe from previous versions of the game; three paper but no leather needed.");
-		*/
+		
+		quartz_from_prismarine = instance.getBoolean( "quartz_from_prismarine",category,true,
+				"Craft quartz from prismarine shards, blaze powder, bonemeal, and a potato.");			
+	    
 		craftableTransmuteRecords = instance.getBoolean( "transmute_records",category,true,
 			"This allows you to surround any record in emeralds to transmute it into a different record.");
     
@@ -638,4 +641,5 @@ public class ConfigRegistry
 	public boolean experience_bottle_return;
 	public boolean block_fragile;
 	public boolean apple_ghost;
+	public boolean quartz_from_prismarine;
 }
