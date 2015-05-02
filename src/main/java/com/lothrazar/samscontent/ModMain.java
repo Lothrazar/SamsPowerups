@@ -762,6 +762,8 @@ public class ModMain
 		 
 		//System.out.println("breakevent");
 		//System.out.println(ent==null);
+		
+		//TODO; check tool/pickaxe? if notHarvestable or whatever, drop the buckets and the ..glass?
 		 
 		if(ent != null && ent instanceof TileEntityBucketStorage)
 		{
