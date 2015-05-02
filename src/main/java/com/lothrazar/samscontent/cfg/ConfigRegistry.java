@@ -7,7 +7,7 @@ import net.minecraftforge.common.config.Configuration;
 import com.lothrazar.samscontent.command.*;  
 import com.lothrazar.samscontent.item.*; 
 
-public class ConfigFile
+public class ConfigRegistry
 { 
 	private Configuration instance;
 	private String category = "";
@@ -17,7 +17,7 @@ public class ConfigFile
 		return instance;
 	}
 	
-	public ConfigFile(Configuration c)
+	public ConfigRegistry(Configuration c)
 	{
 		instance = c; 
 		instance.load();

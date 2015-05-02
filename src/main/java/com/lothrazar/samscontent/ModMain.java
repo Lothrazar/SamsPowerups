@@ -8,7 +8,7 @@ import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;   
 
 import com.lothrazar.samscontent.block.*;
-import com.lothrazar.samscontent.cfg.ConfigFile;
+import com.lothrazar.samscontent.cfg.ConfigRegistry;
 import com.lothrazar.samscontent.command.*;
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.event.*;
@@ -112,7 +112,7 @@ public class ModMain
 	@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
 	public static CommonProxy proxy;   
 	public static Logger logger; 
-	public static ConfigFile cfg;
+	public static ConfigRegistry cfg;
 	public static SimpleNetworkWrapper network; 
 	public static AchievementRegistry achievements;  
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
@@ -129,7 +129,7 @@ public class ModMain
 	{ 
 		logger = event.getModLog();  
 		
-		cfg = new ConfigFile(new Configuration(event.getSuggestedConfigurationFile()));
+		cfg = new ConfigRegistry(new Configuration(event.getSuggestedConfigurationFile()));
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	
