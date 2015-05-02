@@ -3,44 +3,15 @@
  1.1.2:
  MORE FUEL: Ladder, Boat
  
- Exp Bottle crafting: 
- add inc sac.
+ Exp Bottle crafting:  
  MAYBE string
  maybe redstone
  
  world tp blocks: add magic wands that do the same thing?
- 
- 
- 
- 
   
- TODO: the clear right debug feature changed:
- IF gamerule reducedDebugInfo is TRUE THEN
-we clear left & right
-and add biome name
-MAYBE localDifficulty
-maybe Entities list
-fps if possible
- 
- 
-
 -Xmx3G
 coimmadn block recipes fixed
-
-beetroot soup missing recipe
-
-emerald apple rich recipe
-
-Wand of Rotation - fix recipe as diagonal like piston, but with endstone/diamond
-
-water wand - fix with lapis block and water bucket
-
-block_shear_sheep name missing in lang
-
-DUPLICATE LANG FILES
- 
-
-
+  
 
 SOUL STONE item.
 when used on an entity, sets an NBT so that it respawns (at world spawn) when it does.

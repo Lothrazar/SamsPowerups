@@ -81,9 +81,7 @@ public class RecipeRegistry
 			, new ItemStack(Items.blaze_powder)
 			, new ItemStack(Items.dye,1,Reference.dye_bonemeal)
 			, new ItemStack(Items.potato)
-		);
-		
-		
+		); 
 	}
 
 	private static void experience_bottle() 
