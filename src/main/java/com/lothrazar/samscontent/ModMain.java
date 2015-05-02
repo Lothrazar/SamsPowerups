@@ -701,14 +701,11 @@ public class ModMain
 				Util.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
 			}
 		}
-		
-		//ItemSoulstone.onEntityDeath(event);
 	}
 	
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 
-	{
-		//System.out.println("Cloning player extended properties");
+	{ 
 		PlayerPowerups.get(event.entityPlayer).copy(PlayerPowerups.get(event.original));
 	}
 	@SubscribeEvent
@@ -719,6 +716,7 @@ public class ModMain
  			PlayerPowerups.register((EntityPlayer) event.entity);
  		} 
  	}
+	
 	@SubscribeEvent
 	public void onHarvestDropsEvent(HarvestDropsEvent event)
 	{

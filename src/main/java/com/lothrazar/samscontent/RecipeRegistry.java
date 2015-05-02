@@ -86,10 +86,14 @@ public class RecipeRegistry
 		experience_stripe(Items.ender_pearl); 
 		experience_stripe(Items.slime_ball); 
 		experience_stripe(Items.ghast_tear); 
+		experience_stripe(new ItemStack(Items.dye,1,Reference.dye_incsac)); 
 		
 	} 
-	
 	private static void experience_stripe(Item drop) 
+	{
+		experience_stripe(new ItemStack(drop));
+	}
+	private static void experience_stripe(ItemStack drop) 
 	{
 		GameRegistry.addRecipe(new ItemStack(Items.experience_bottle,6),
 				"bxb",
@@ -98,6 +102,7 @@ public class RecipeRegistry
 				'x', drop,
 				'b', Items.glass_bottle);
 	}
+	
 	
 
 	public static void beetroot()
