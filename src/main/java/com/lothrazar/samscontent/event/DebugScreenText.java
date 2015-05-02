@@ -103,7 +103,7 @@ public class DebugScreenText
 		
 		addTodoCommandInfo(event, player);  
 
-	 	if(Util.isShiftKeyDown())  
+	 	if(Util.isShiftKeyDown() && ModMain.cfg.debugGameruleInfo)  
 	 	{ 
 			addGameruleInfo(event, world); 
 		} 

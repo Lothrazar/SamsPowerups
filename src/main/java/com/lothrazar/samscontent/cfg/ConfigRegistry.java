@@ -278,7 +278,10 @@ public class ConfigRegistry
 	private void debug_info() 
 	{
 		category = "debug_screen_f3";
-		  
+		
+		debugGameruleInfo = instance.getBoolean("gamerule_info_sneaking",category, true,
+    			"If you are sneaking, the right side shows all the game rules, on or off. " );
+		 
 		reducedDebugImproved = instance.getBoolean("reducedDebugInfo_improved",category, true,
     			"If this gamerule is turned on, then much more useless information is cleared away (with coordinates still hidden), but some is added back in such as the biome name. " );
 		
@@ -642,4 +645,5 @@ public class ConfigRegistry
 	public boolean block_fragile;
 	public boolean apple_ghost;
 	public boolean quartz_from_prismarine;
+	public boolean debugGameruleInfo;
 }
