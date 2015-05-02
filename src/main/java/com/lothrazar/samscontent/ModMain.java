@@ -313,18 +313,17 @@ public class ModMain
 			} 
 		} 
 		 
-		if(ModMain.cfg.petNametagDrops )//no need to restrict to pets && SamsUtilities.isPet(event.entity)
-		{ 
-			if(event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
-			   event.entity.getCustomNameTag() != ""   
-			   ) 
-			{  
-				//item stack NBT needs the name enchanted onto it
-				ItemStack nameTag = Util.buildEnchantedNametag(event.entity.getCustomNameTag());
-			  
-				Util.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
-			}
+		if(ModMain.cfg.petNametagDrops //no need to restrict to pets && SamsUtilities.isPet(event.entity)
+		  && event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
+		   event.entity.getCustomNameTag() != ""   
+		   ) 
+		{  
+			//item stack NBT needs the name enchanted onto it
+			ItemStack nameTag = Util.buildEnchantedNametag(event.entity.getCustomNameTag());
+		  
+			Util.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
 		}
+		
 		
 		if(ModMain.cfg.petNametagChat && 
 			event.entity instanceof EntityLivingBase && 
