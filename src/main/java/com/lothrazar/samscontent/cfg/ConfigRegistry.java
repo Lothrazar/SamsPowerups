@@ -214,7 +214,7 @@ public class ConfigRegistry
 		iron_armor_requires_leather = instance.getBoolean("iron_armor_requires_leather",category, true,
 				"Iron armor must be crafted on top of leather armor.");  
  
-		diamond_armor_requires_iron = instance.getBoolean("diamond_armor_requires_gold",category, true,
+		diamond_armor_requires_iron = instance.getBoolean("diamond_armor_requires_iron",category, true,
 				"Diamond armor must be crafted on top of iron armor.");  
 		
 	//	diamond_armor_requires_chain = instance.getBoolean("diamond_armor_requires_chain",category, true,

@@ -13,14 +13,7 @@
  
  
  
- 
- 
- 
- BUGS:bugreport; pickup beetroot seed achieve didnt fire.
- pickup beetroot seed achieve
- 
- TODO: nerf or config the diamond armor into needing gold instead of chain
- 
+  
  TODO: the clear right debug feature changed:
  IF gamerule reducedDebugInfo is TRUE THEN
 we clear left & right
