@@ -161,6 +161,7 @@ public class Reference
 	public static final int PURPLE = 2;
 	public static final int BLACK = 3;
 	public static final int WHITEAPRON = 4;
+	public static final int HEIGHT_MAX = 256;
   
 	public class Dimension
 	{

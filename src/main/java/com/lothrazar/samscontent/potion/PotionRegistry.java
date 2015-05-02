@@ -122,13 +122,11 @@ public class PotionRegistry
 	{  
 		if(event.entityLiving == null){return;}
 		
-	    // tickTired(event); 
-	        
-	     //tickFlying(event);
 		if(event.entityLiving instanceof EntityPlayer)
 		{
 			ItemFoodGhost.onPlayerUpdate(event); 
 		}
+		
 	  
 	     tickSlowfall(event);
 	     
@@ -184,6 +182,15 @@ public class PotionRegistry
 	    } 
 	}
 
+	public static void tickEnder(EntityPlayer player) 
+	{
+		if( player.isPotionActive(PotionRegistry.ender) &&     //this function is called from MainMod
+			player.posY < -50)
+		{   
+			Util.teleportWallSafe(player, player.worldObj, player.getPosition().up(Reference.HEIGHT_MAX)); 
+		} 
+	}
+	
 	private static void tickLavawalk(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.lavawalk)) 
@@ -229,8 +236,12 @@ public class PotionRegistry
 			 {
     			 EntityPlayer p = (EntityPlayer)event.entityLiving;
     			 if(p.isSneaking())
+    			 {
     				 return;//so fall normally for now
+    			 }
     		 }
+			 //else: so we are either a non-sneaking player, or a non player entity
+			  
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
 	    	 if(event.entityLiving.motionY < 0)
 	    	 { 
@@ -239,42 +250,5 @@ public class PotionRegistry
 				event.entityLiving.fallDistance = 0f; //for no fall damage
 	    	 } 
 	     }
-	}
-/*
-	private static void tickFlying(LivingUpdateEvent event) 
-	{
-		 if(event.entityLiving.isPotionActive(PotionRegistry.flying)) 
-	     { 
-	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote)
-        	 { 
-	    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
-	    		  
-			 	 player.capabilities.allowFlying = true; 
-			 	 
-				 if (player.capabilities.isFlying)
-				 { 
-					 player.fallDistance = 0F;
-				 } 
-        	 }  
-	     }
-	     else
-	     { 
-	    	 if(event.entityLiving instanceof EntityPlayer && event.entity.worldObj.isRemote  )
-	    	 {
-	    		 if( Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.ADVENTURE  || 
-	        		 Minecraft.getMinecraft().playerController.getCurrentGameType() == GameType.SURVIVAL )
-				 { 
-		    		 EntityPlayer player = (EntityPlayer)event.entityLiving;
-	
-		    		 if (player.capabilities.isFlying)
-					 { 
-						 player.fallDistance = 0F;
-					 	 player.capabilities.allowFlying = false;//when it times out, OR milk hits
-					 	 player.capabilities.isFlying = false;
-					 }
-				 }
-	    	 }
-	     }
-	}
- */
+	}	
 }
