@@ -453,7 +453,7 @@ public class ConfigRegistry
 
 		String csv = instance.getString("kit.items",category, "minecraft:wooden_pickaxe,minecraft:wooden_sword,samscontent:apple_ghost",
     			"Using /kit gives the following item.  Each must have minecraft:item or modname:item, no spaces and split by commas.");
-		CommandKit.setItemsFromString(csv);//TODO: does this even get items loaded from other mods??
+		CommandKit.setItemsFromString(csv); 
 		
 		CommandHome.REQUIRES_OP = instance.getBoolean("home.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");

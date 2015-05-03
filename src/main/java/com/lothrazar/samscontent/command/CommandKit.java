@@ -63,6 +63,7 @@ public class CommandKit implements ICommand
 		 
 		if(kitsUsed == 0) //has the player used this already (in this life)
 		{
+			translateCSV();
 			for(Item item : giveItems) //these were decided by the config file
 			{
 				p.dropItem(new ItemStack( item ), true, false);
@@ -95,9 +96,16 @@ public class CommandKit implements ICommand
 		return false;
 	}
 
+	private static void translateCSV()
+	{
+		//do this on the fly, could be items not around yet during config change
+		giveItems = Util.getItemListFromCSV(giveItemsFromConfig); 
+	}
 	private static ArrayList<Item> giveItems = new ArrayList<Item>();
+	private static String giveItemsFromConfig = "";
 	public static void setItemsFromString(String csv)
 	{ 
-		giveItems = Util.getItemListFromCSV(csv); 
+		giveItemsFromConfig = csv;
+		//giveItems = Util.getItemListFromCSV(csv); 
 	} 
 }

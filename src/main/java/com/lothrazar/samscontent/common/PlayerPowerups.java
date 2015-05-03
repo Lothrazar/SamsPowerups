@@ -63,6 +63,11 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public void loadNBTData(NBTTagCompound compound) 
 	{ 
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
+		if(properties == null)
+		{
+			//System.out.println("properties == null");
+			 properties = new NBTTagCompound(); 
+		}
 		
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
 		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
