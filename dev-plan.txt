@@ -4,14 +4,17 @@
  MORE FUEL: Ladder, Boat
  System.out removed
  Bucket storage: keep buckets in while mined//TODO: maybe silk touch
- Config file additions for existing features- ...
- 
- 
+ Config file additions for existing features- gamerule display
+ quartz recipe
+ new recipe using ink sac
  
  
   
 Possible Future Features:
  
+ placevertical, place horizontal.
+ 
+ emerald armor-just for decoration. same stats as gold
  
  Exp Bottle crafting:  
  MAYBE string
@@ -19,16 +22,10 @@ Possible Future Features:
  
  world tp blocks: add magic wands that do the same thing?
   
--Xmx3G
- 
 reinstate hunger-after-sleeping/wakeup
 
 //config file entry for waypoints // todo that switches left/right side
 
-temp/scaffold block, similar to angel block in EU, except you place it from an item with infinite use
-and it despawns/vanishes on its own randomly (onupdatetick) so it really is temporaroy 
- 
--
           hotkey to search through inventory and use enderpearl ingoring all else
           hotkey to eat first food found in inventory searching from topleft to right amd dpwm
           smart potion button
