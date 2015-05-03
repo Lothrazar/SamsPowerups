@@ -25,6 +25,7 @@ public class ItemWandPiston extends Item
 {
 	public static int DURABILITY;
 	public static ArrayList<Block> ignoreList = new ArrayList<Block>();
+	public static String ignoreListFromConfig = "";
 	
 	public ItemWandPiston()
 	{
@@ -33,10 +34,15 @@ public class ItemWandPiston extends Item
 		this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
 	}
-	
+
+	private static void translateCSV()
+	{
+		//do this on the fly, could be items not around yet during config change
+		ignoreList = Util.getBlockListFromCSV(ignoreListFromConfig); 
+	}
 	public static void seIgnoreBlocksFromString(String csv)
 	{ 
-		ignoreList = Util.getBlockListFromCSV(csv); 
+		ignoreListFromConfig = csv;
 	} 
 	
 	public void addRecipe()
@@ -56,7 +62,7 @@ public class ItemWandPiston extends Item
 		World world = event.world;
 		IBlockState hit = world.getBlockState(pos);
 		
-		
+		translateCSV();
 		if(hit == null || ignoreList.contains(hit.getBlock()))
 		{
 			return;
