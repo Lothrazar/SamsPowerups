@@ -2,6 +2,16 @@
  
  1.1.2:
  MORE FUEL: Ladder, Boat
+ System.out removed
+ Bucket storage: keep buckets in while mined//TODO: maybe silk touch
+ Config file additions for existing features- ...
+ 
+ 
+ 
+ 
+  
+Possible Future Features:
+ 
  
  Exp Bottle crafting:  
  MAYBE string
@@ -10,17 +20,8 @@
  world tp blocks: add magic wands that do the same thing?
   
 -Xmx3G
-coimmadn block recipes fixed
-  
-
-SOUL STONE item.
-when used on an entity, sets an NBT so that it respawns (at world spawn) when it does.
-
+ 
 reinstate hunger-after-sleeping/wakeup
-
-bug: wand piston and modded items: arent registered yetr when we do config.
-
-Possible Features:
 
 //config file entry for waypoints // todo that switches left/right side
 

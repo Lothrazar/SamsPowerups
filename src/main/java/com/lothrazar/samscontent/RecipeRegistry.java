@@ -78,7 +78,7 @@ public class RecipeRegistry
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.quartz,4)
 			, new ItemStack(Items.prismarine_shard)
-			, new ItemStack(Items.blaze_powder)
+			, new ItemStack(Items.iron_ingot)
 			, new ItemStack(Items.dye,1,Reference.dye_bonemeal)
 			, new ItemStack(Items.potato)
 		); 

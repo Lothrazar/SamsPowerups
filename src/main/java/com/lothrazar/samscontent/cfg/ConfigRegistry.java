@@ -424,7 +424,7 @@ public class ConfigRegistry
 				"Craft a dispenser with string in the center instead of a bow.  (Since string is stackable, this makes crafting tons of them much faster and cheaper).");
 		
 		quartz_from_prismarine = instance.getBoolean( "quartz_from_prismarine",category,true,
-				"Craft quartz from prismarine shards, blaze powder, bonemeal, and a potato.");			
+				"Craft quartz from prismarine shards, iron, bonemeal, and a potato.");			
 	    
 		craftableTransmuteRecords = instance.getBoolean( "transmute_records",category,true,
 			"This allows you to surround any record in emeralds to transmute it into a different record.");
