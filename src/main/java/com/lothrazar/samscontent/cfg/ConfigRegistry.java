@@ -451,7 +451,7 @@ public class ConfigRegistry
 		kit = instance.getBoolean("kit",category, true,
     			"Use /kit to give yourself kit items.  Can only be done once each time you die.");
 
-		String csv = instance.getString("kit.items",category, "minecraft:wooden_pickaxe,minecraft:wooden_sword;samscontent:apple_ghost",
+		String csv = instance.getString("kit.items",category, "minecraft:wooden_pickaxe,minecraft:wooden_sword,samscontent:apple_ghost",
     			"Using /kit gives the following item.  Each must have minecraft:item or modname:item, no spaces and split by commas.");
 		CommandKit.setItemsFromString(csv);//TODO: does this even get items loaded from other mods??
 		
