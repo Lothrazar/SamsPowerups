@@ -11,13 +11,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 {
 	public final static String EXT_PROP_NAME = "PlayerPowerups";
 	private final EntityPlayer player;//we get one of these powerup classes for each player
-	/*
-	public static final int SLEEP_WATCHER = 20;
-	private static final String NBT_SLEEP_CURRENT = "samNightBed";
 
-	public static final int AWAKE_WATCHER = 21;
-	private static final String NBT_AWAKE_CURRENT = "samNightUnslept"; 
-*/
 	public static final int WAYPOINT_WATCHER = 20;
 	private static final String NBT_WAYPOINT = "samWaypoints"; 
 
@@ -28,11 +22,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		this.player = player;  
 		this.player.getDataWatcher().addObject(WAYPOINT_WATCHER, 0);
-		this.player.getDataWatcher().addObject(TODO_WATCHER, 0);
-		/*
-		this.player.getDataWatcher().addObject(SLEEP_WATCHER, 0);
-		this.player.getDataWatcher().addObject(AWAKE_WATCHER, 0);
-		*/
+		this.player.getDataWatcher().addObject(TODO_WATCHER, 0); 
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -50,9 +40,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		// We need to create a new tag compound that will save everything for our Extended Properties
 		NBTTagCompound properties = new NBTTagCompound(); 
-		//properties.setInteger(NBT_SLEEP_CURRENT, this.player.getDataWatcher().getWatchableObjectInt(SLEEP_WATCHER)); 
-		//properties.setInteger(NBT_AWAKE_CURRENT, this.player.getDataWatcher().getWatchableObjectInt(AWAKE_WATCHER)); 
-		
+	
 		properties.setString(NBT_WAYPOINT, this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER)); 
 		properties.setString(NBT_TODO,     this.player.getDataWatcher().getWatchableObjectString(TODO_WATCHER)); 
 		
@@ -65,33 +53,16 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		if(properties == null)
 		{
-			//System.out.println("properties == null");
 			 properties = new NBTTagCompound(); 
 		}
 		
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
 		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
 		
-		//this.player.getDataWatcher().updateObject(SLEEP_WATCHER, properties.getInteger(NBT_SLEEP_CURRENT)); 
-		//this.player.getDataWatcher().updateObject(AWAKE_WATCHER, properties.getInteger(NBT_AWAKE_CURRENT));
  	}
 	public final String getStringTodo() 
 	{
 		return this.getStringSafe(TODO_WATCHER);
-		/*
-		try
-		{
-			//why is this giving  java.lang.Integer cannot be cast to java.lang.String
-			return this.player.getDataWatcher().getWatchableObjectString(TODO_WATCHER); 
-		}
-		catch(ClassCastException e)
-		{
-			int test = this.player.getDataWatcher().getWatchableObjectInt(TODO_WATCHER);
-			
-			System.out.println("why is it an integer "+test);
-			return "";
-		}
-		*/
 	}
 	public String getStringSafe(int WATCHER)
 	{
@@ -106,7 +77,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		{
 			//int test = this.player.getDataWatcher().getWatchableObjectInt(WATCHER);
 			
-			//System.out.println("why is it an integer "+test);
 			return "";
 		}
 	}
@@ -118,7 +88,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public final String getStringWaypoints() 
 	{
 		return this.getStringSafe(WAYPOINT_WATCHER);
-		//return this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER); 
 	}
 	public final void setStringWaypoints(String waypointsCSV) 
 	{
@@ -128,20 +97,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public void init(Entity entity, World world) 
 	{ 
 	}
-	/*
-	public final int getInt(int WATCHER) 
-	{
-		return this.player.getDataWatcher().getWatchableObjectInt(WATCHER);
-	}
-	public final void increment(int WATCHER)
-	{ 
-		setInt(WATCHER, getInt(WATCHER) + 1);
-	}
-	public final void setInt(int WATCHER, int amount)
-	{
-		this.player.getDataWatcher().updateObject(WATCHER, amount);
-	}
-	*/
+
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
 
 	public void copy(PlayerPowerups props) 

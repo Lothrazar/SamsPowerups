@@ -43,7 +43,6 @@ public class ItemChestSackEmpty extends Item
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ModMain.tabSamsContent);
 	}
-	//TODO:  make it also work with trapped chests/dispensers/droppers/ etc. set extra flag to identify
 
 	public static void addRecipe() 
 	{
@@ -57,7 +56,11 @@ public class ItemChestSackEmpty extends Item
 	}
 
 	public static void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
-	{ 
+	{ 	
+		//TODO:  make it also work with trapped chests/dispensers/droppers/ etc. set extra flag to identify
+		//means not just TileEntityChest
+		//chestTarget.getInventoryStackLimit()//=64
+		//chestContents.size internally is 27
 		ItemStack chestItem;  
 		int chestMax;
 		 
@@ -117,11 +120,11 @@ public class ItemChestSackEmpty extends Item
 		drop.getTagCompound().setString("count",""+count);
 		drop.getTagCompound().setString("stacks",""+stacks);
 	 	 
-		entityPlayer.entityDropItem(drop, 1);//quantity = 1
+		entityPlayer.entityDropItem(drop, 1); 
 			 
 		 //the 2 here is just a magic flag it passes to the world to propogate the event
 	
-		entityPlayer.worldObj.setBlockToAir(pos);//, Blocks.air, 0,2);	 
+		entityPlayer.worldObj.setBlockToAir(pos); 
 
 		entityPlayer.swingItem();
 		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);

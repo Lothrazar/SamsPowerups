@@ -9,11 +9,6 @@ public class StackSizeRegistry
 { 
 	public static void registerChanges()
 	{ 
-		/*
-		int pot = ModMain.cfg.potionStackSize;
-		
-		Items.potionitem.setMaxStackSize(pot);
-		*/
 		if(!ModMain.cfg.increasedStackSizes ) {return;}
 		
 		ArrayList<Item> to64 = new ArrayList<Item>();

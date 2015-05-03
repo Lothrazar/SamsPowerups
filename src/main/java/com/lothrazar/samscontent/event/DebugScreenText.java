@@ -71,16 +71,10 @@ public class DebugScreenText
 			event.right.clear();
 			event.left.clear();
 
-			//float localDiff = world.getDifficultyForLocation(player.getPosition()).func_180168_b();
-
-			//event.left.add(Minecraft.getDebugFPS()+" fps");
-			//event.left.add("E:"+world.loadedEntityList.size()); 
 			event.left.add("Biome: "+world.getBiomeGenForCoords(player.getPosition()).biomeName);
-			//event.left.add("Local Difficulty: "+localDiff+"");
-			//event.left.add("");
+			
 		}
 		
-		 
  
 		addDateTimeInfo(event, world);
 		  

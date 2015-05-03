@@ -41,7 +41,6 @@ public class ItemFireballThrowable  extends Item //since ItemFireball is not thr
 			Items.fire_charge );
 	}
 	
-
 	public static void cast(World world, EntityPlayer entityPlayer ) 
 	{ 
 		BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();

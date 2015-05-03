@@ -41,8 +41,6 @@ public class RecipeRegistry
 	{ 
 		RecipeRegistry.netherwartPurple();
 		
-		//RecipeRegistry.bookNoLeather(); 
-		
 		RecipeRegistry.quartsFromPrismarine();
 		  
 		RecipeRegistry.mushroomBlocks(); 
@@ -67,7 +65,7 @@ public class RecipeRegistry
 		
    		RecipeRegistry.minecartsSimple();
    		
-   		RecipeRegistry.beetroot();//TODO: do seeds drop? should they be craftable from item just like pumpk/melon
+   		RecipeRegistry.beetroot();
    		
    		RecipeRegistry.experience_bottle();
 	}
@@ -156,25 +154,6 @@ public class RecipeRegistry
 				"mm",
 				"mm",
 				'm', Blocks.brown_mushroom);
-		 
-		
-	//	http://minecraft.gamepedia.com/Mushroom_%28block%29#Block_state
-		/*
-		//item model data for these does not exist sadly
-		int otherSide = 0;
-		for (int side = 0; side < 16; side++)
-		{
-			otherSide = side + 1;
-			if(otherSide == 16){otherSide = 0;}
-			// since normally we have 2 wool making 3 carpet, we do the
-			// reverse here
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.red_mushroom_block, 1, side),
-					new ItemStack(Blocks.red_mushroom_block, 1,  otherSide));
-			 
-			GameRegistry.addShapelessRecipe(new ItemStack(Blocks.brown_mushroom_block, 1, side),
-					new ItemStack(Blocks.brown_mushroom_block, 1,  otherSide));
-		}
-		*/
 	}
 
 	public static void uncrafting()

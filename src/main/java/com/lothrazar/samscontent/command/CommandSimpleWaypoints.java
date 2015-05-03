@@ -25,8 +25,7 @@ import net.minecraftforge.common.DimensionManager;
 public class CommandSimpleWaypoints  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
-	//public static boolean showCoords;  
-	
+		
 	//it still functions with flat files if you turn this to false
 	//but set to true uses IExtended properties which is recommended
 	private static final boolean useProps = true; 

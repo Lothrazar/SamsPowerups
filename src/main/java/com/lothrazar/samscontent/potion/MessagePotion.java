@@ -63,7 +63,7 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 	@Override
 	public IMessage onMessage(MessagePotion message, MessageContext ctx)
 	{ 
-		if(ctx.side.isClient())// == Side.CLIENT
+		if(ctx.side.isClient()) 
 		{ 
 			//  http://www.minecraftforge.net/forum/index.php?topic=21195.0
 			World world = Minecraft.getMinecraft().thePlayer.worldObj;//Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();

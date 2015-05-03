@@ -102,8 +102,6 @@ import net.minecraftforge.fml.common.registry.VillagerRegistry;
 import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
   
-//note:  canBeDeactivated = false,  does nothing, it should black out the 'disable' button, but this is a known unfixed issue, ref:  http://www.minecraftforge.net/forum/index.php?topic=16941.0
-//, canBeDeactivated = false, ,guiFactory = "com.lothrazar.samscontent.cfg.ConfigGuiFactory"
 @Mod(modid = Reference.MODID, version = Reference.VERSION,	name = Reference.NAME, useMetadata = true )  
 public class ModMain
 {
@@ -725,10 +723,7 @@ public class ModMain
 	public void onBreakEvent(BreakEvent event)
 	{
 		TileEntity ent = event.world.getTileEntity(event.pos);
-		 
-		//System.out.println("breakevent");
-		//System.out.println(ent==null);
-		
+		  
 		//TODO; check tool/pickaxe? if notHarvestable or whatever, drop the buckets and the ..glass?
 		 
 		if(ent != null && ent instanceof TileEntityBucketStorage)

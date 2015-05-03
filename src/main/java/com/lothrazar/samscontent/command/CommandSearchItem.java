@@ -158,64 +158,12 @@ public class CommandSearchItem  implements ICommand
 				|| search.contains(invItemName)
 				|| invItemName.contains(search))
 			{  
-				//foundStacks++;
 				foundQty += invItem.stackSize; 
 			} 
 		} //end loop on current tile entity
 		return foundQty;
 	}
-	/*
-	private static String itemLocDisplay(	EntityPlayerMP player, BlockPos pos ,int foundQty )
-	{   
-		int xLoop = pos.getX();
-		int yLoop = pos.getY();
-		int zLoop = pos.getZ();
-		
-		
-		
-		if(showCoords )
-		{ 
-			return "(" + xLoop + ", " + yLoop + ", " + zLoop + ")" + " : "+ totalsStr;
-		}
-		//else do this other thing with directions
-		
-		int xDist,yDist,zDist;
-		
-		xDist = (int) player.posX - xLoop;
-		yDist = (int) player.posY - yLoop;
-		zDist = (int) player.posZ - zLoop;
-		
-		//in terms of directon copmass:
-		//North is -z;  south is +z		
-		//east is +x, west is -x
-		
-		//so for Distances: 
-		
-		boolean isNorth = (zDist > 0);
-		boolean isSouth = (zDist < 0);
-		
-		boolean isWest = (xDist > 0);
-		boolean isEast = (xDist < 0);
-
-		boolean isUp   = (yDist < 0);
-		boolean isDown = (zDist > 0);
-		
-		String xStr = "";
-		String yStr = "";
-		String zStr = "";
-
-		if(isWest) xStr = Math.abs(xDist) + " west ";
-		if(isEast) xStr = Math.abs(xDist) + " east ";
-		
-		if(isNorth) zStr = Math.abs(zDist) + " north ";
-		if(isSouth) zStr = Math.abs(zDist) + " south ";
-
-		if(isUp)   yStr = Math.abs(yDist) + " up ";
-		if(isDown) yStr = Math.abs(yDist) + " down ";
-		 
-		return xStr +  yStr +  zStr +": "+ totalsStr;
-	}*/
- 
+	
 	@Override
 	public int compareTo(Object arg0)
 	{ 

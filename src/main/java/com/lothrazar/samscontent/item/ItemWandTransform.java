@@ -57,8 +57,6 @@ public class ItemWandTransform extends Item
     	return true; //give it shimmer
     }
 	  
-	 
-
 	public static void addRecipe() 
 	{
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandTransform),

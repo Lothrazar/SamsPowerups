@@ -48,9 +48,7 @@ public class PotionRegistry
 	}
  
 	private static void registerNewPotionEffects() 
-	{ 
-		//PotionRegistry.tired = (new PotionCustom(ModSamsContent.configSettings.potionIdTired,  new ResourceLocation("tired"), false, 0)).setPotionName("potion.tired");
-		
+	{  
 		PotionRegistry.waterwalk = (new PotionCustom(ModMain.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
 		PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");

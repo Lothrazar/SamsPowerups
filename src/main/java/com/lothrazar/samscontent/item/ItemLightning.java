@@ -33,7 +33,7 @@ public class ItemLightning  extends Item
     	this.setMaxStackSize(64); 
 		this.setCreativeTab(ModMain.tabSamsContent);  
 	}
- //Lightning Spear?
+ 
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.lightning_charge,4),
@@ -43,7 +43,7 @@ public class ItemLightning  extends Item
 
 	public static void cast(PlayerInteractEvent event) 
 	{
-		if(  event.action.RIGHT_CLICK_AIR == event.action)
+		if( event.action.RIGHT_CLICK_AIR == event.action)
 		{
 			BlockPos up = event.entityPlayer.getPosition().offset(event.entityPlayer.getHorizontalFacing(), 1).up();
 			 
@@ -57,12 +57,10 @@ public class ItemLightning  extends Item
 		{
 			BlockPos hit = event.pos;
 			
-			if(event.face != null) {hit = event.pos.offset(event.face);}
-			
+			if(event.face != null) { hit = event.pos.offset(event.face); }
 			 
 			event.world.spawnEntityInWorld(new EntityLightningBolt(event.world, hit.getX(), hit.getY(), hit.getZ()));
-		
-			//SamsUtilities.damageOrBreakHeld(event.entityPlayer);
+		 
 			Util.decrHeldStackSize(event.entityPlayer);
 		} 
 	} 

@@ -81,7 +81,6 @@ public class ItemFoodGhost extends ItemFood
 			}
 			else  
 			{
-				
 				if(player.getEntityData().getInteger(KEY_EATDIM) != player.dimension)
 				{
 					//if the player changed dimension while a ghost, thats not allowed
@@ -94,8 +93,7 @@ public class ItemFoodGhost extends ItemFood
 					// : teleport back to source
 					String posCSV = player.getEntityData().getString(KEY_EATLOC); 
 					String[] p = posCSV.split(",");  
-					// new BlockPos(Integer.parseInt(p[0]),Integer.parseInt(p[1]),Integer.parseInt(p[2]));
-				  
+				
 					player.fallDistance = 0.0F;
 					player.setPositionAndUpdate(Double.parseDouble(p[0]),Double.parseDouble(p[1]),Double.parseDouble(p[2]));
 					player.setGameType(GameType.SURVIVAL);

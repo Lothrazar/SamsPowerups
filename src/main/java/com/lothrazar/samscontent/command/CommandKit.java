@@ -106,6 +106,5 @@ public class CommandKit implements ICommand
 	public static void setItemsFromString(String csv)
 	{ 
 		giveItemsFromConfig = csv;
-		//giveItems = Util.getItemListFromCSV(csv); 
 	} 
 }

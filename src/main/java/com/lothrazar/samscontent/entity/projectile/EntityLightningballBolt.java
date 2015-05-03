@@ -48,7 +48,6 @@ public class EntityLightningballBolt extends EntitySnowball
     	EntityLightningBolt ball = new EntityLightningBolt(this.worldObj, this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());
         this.worldObj.spawnEntityInWorld(ball);
 
-        this.setDead();
-         
+        this.setDead(); 
     }
 }

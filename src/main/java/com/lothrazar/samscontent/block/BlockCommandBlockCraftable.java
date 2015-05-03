@@ -48,7 +48,6 @@ public class BlockCommandBlockCraftable extends BlockCommandBlock
 		return true;//transparency stuff
 	}
 	
-	
 	public BlockCommandBlockCraftable(CommandType t)
 	{   
 		type = t;

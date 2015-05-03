@@ -79,9 +79,7 @@ public class ItemSoulstone extends Item
 		Item item = event.entityPlayer.getHeldItem() == null ? null : event.entityPlayer.getHeldItem().getItem();
 		
 		if(item != ItemRegistry.soulstone && item != ItemRegistry.soulstone_persist){return;}
-		
-		
-		
+		 
 		//getInteger by default returns zero if no value exists
 		if(item == ItemRegistry.soulstone  && 
 				event.target.getEntityData().getInteger(KEY_STONED) != VALUE_EMPTY)
@@ -96,8 +94,7 @@ public class ItemSoulstone extends Item
 		}
 		
 		int newValue = (item == ItemRegistry.soulstone_persist) ? VALUE_PERSIST : VALUE_SINGLEUSE;
-		
-
+		 
 		event.target.getEntityData().setInteger(KEY_STONED, newValue);
 		
 		Util.decrHeldStackSize(event.entityPlayer); 
@@ -125,32 +122,7 @@ public class ItemSoulstone extends Item
 				Util.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
 
 				boolean isPersist = event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST;
-				/*
-				boolean isTamedPet = false;
-				
-				
-				
-				
-				//functions are different since wolf/ocelot extend EntityTameable, but horse has its own way
-				if(event.entityLiving instanceof EntityWolf)
-				{
-					EntityWolf dog = (EntityWolf)event.entityLiving; 
-					isTamedPet = dog.isTamed();
-				}
-				if(event.entityLiving instanceof EntityOcelot)
-				{
-					EntityOcelot cat = (EntityOcelot)event.entityLiving; 
-					isTamedPet = cat.isTamed();
-				}
-				if(event.entityLiving instanceof EntityHorse)
-				{
-					EntityHorse horse = (EntityHorse)event.entityLiving; 
-					isTamedPet = horse.isTame();
-				}
-				*/
-				
-				
-				//if(isTamedPet == false)
+				 
 				if(event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_SINGLEUSE)
 				{
 					//if it does not persist, then consume this use

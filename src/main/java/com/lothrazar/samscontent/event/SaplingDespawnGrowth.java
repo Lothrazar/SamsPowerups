@@ -35,7 +35,6 @@ public class SaplingDespawnGrowth
 	
 	public SaplingDespawnGrowth()
 	{
-			
 		oakBiomes.add(BiomeGenBase.forest.biomeID);
 		oakBiomes.add(BiomeGenBase.forestHills.biomeID);
 		oakBiomes.add(132);  //Flower Forest

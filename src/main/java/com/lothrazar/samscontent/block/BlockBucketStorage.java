@@ -35,7 +35,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
-public class BlockBucketStorage extends Block implements ITileEntityProvider //extends BlockContainer
+public class BlockBucketStorage extends Block implements ITileEntityProvider
 { 
 	private Item bucketItem;
 	

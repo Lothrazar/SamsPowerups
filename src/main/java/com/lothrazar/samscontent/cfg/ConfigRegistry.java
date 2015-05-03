@@ -80,11 +80,6 @@ public class ConfigRegistry
 
 		sleeping_hunger_seconds = instance.getInt("sleeping_hunger_seconds",category, 60,0,999,
     		"Number of seconds of hunger effect you get if you skip the night in a bed (so 0 for vanilla).");
-		
-		//sleeping_hunger = instance.getBoolean("sleeping_hunger",category, true,
-				//TODO: change this to an integer = seconds?
-    		//	"Passing the full night in a bed will make you hungry.");
-		
 	}
 
 	public void pocket_edition() 
@@ -618,8 +613,7 @@ public class ConfigRegistry
 	public boolean canNameVillagers;
 	public boolean horse_food_upgrades;
 	public int cowExtraLeather;
-	public int sleeping_hunger_seconds;
-	//public boolean sleeping_hunger;
+	public int sleeping_hunger_seconds; 
 	public boolean item_soulstone;
 	public boolean experience_bottle;
 	public boolean experience_bottle_return;

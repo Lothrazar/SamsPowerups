@@ -18,8 +18,7 @@ import com.lothrazar.util.Util;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChestDeposit
-{    
- 
+{   
   	public static void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
   	{ 
   		int totalItemsMoved = 0; 
