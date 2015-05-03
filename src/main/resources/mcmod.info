@@ -3,8 +3,8 @@
   "modList": [{
     "modid": "samscontent",
     "name": "Sam's Content",
-    "description": "New blocks and items, new and updated recipes, and many other features.  See the config file for a complete feature list, and full control to disable anything.",
-    "version": "1.1.1",
+    "description": "Apples of slowfall, waterwalking, haste, ghost, piston wand, water wand, snowballs and soulstones; blocks for fishing, scaffolding, shearing, weather; changes to mob spawning, sapling growth, ocean floor generation, many recipes altered and added.  See the config file for a complete feature list, and full control to disable anything.",
+    "version": "1.1.2",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
     "updateUrl": "",
