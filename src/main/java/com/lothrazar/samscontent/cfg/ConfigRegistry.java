@@ -63,10 +63,7 @@ public class ConfigRegistry
 		
 		increasedStackSizes = instance.getBoolean("stack_size",category, true,
 			"While true, most vanilla items and blocks have their max stack size increased to 64 (not tools/armor/potions).  ");
-		/*
-		potionStackSize = instance.getInt("stack_size_potion",category, 1,1,3,
-    			"Potion stack size can be increased to three, but not by default.");
-		 */
+
 		swiftDeposit = instance.getBoolean("swift_deposit",category, true,
     			"Punch a chest while sneaking to merge items from your inventory into existing item stacks in the chest."	); 
 	}
@@ -80,9 +77,13 @@ public class ConfigRegistry
 		
 		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull_on_death",category, true,
     			"Players will drop their skull when they die for any reason.");
+
+		sleeping_hunger_seconds = instance.getInt("sleeping_hunger_seconds",category, 60,0,999,
+    		"Number of seconds of hunger effect you get if you skip the night in a bed (so 0 for vanilla).");
 		
-		sleeping_hunger = instance.getBoolean("sleeping_hunger",category, true,//TODO: change this to an integer?
-    			"Passing the full night in a bed will make you hungry.");
+		//sleeping_hunger = instance.getBoolean("sleeping_hunger",category, true,
+				//TODO: change this to an integer = seconds?
+    		//	"Passing the full night in a bed will make you hungry.");
 		
 	}
 
@@ -219,9 +220,6 @@ public class ConfigRegistry
  
 		diamond_armor_requires_iron = instance.getBoolean("diamond_armor_requires_iron",category, true,
 				"Diamond armor must be crafted on top of iron armor.");  
-		
-	//	diamond_armor_requires_chain = instance.getBoolean("diamond_armor_requires_chain",category, true,
-		//		"Diamond armor must be crafted on top of chain armor.");  
 	}
 
 	private void harvesting_changes() 
@@ -270,8 +268,7 @@ public class ConfigRegistry
 		spawnHorseExtremeHills = instance.get(category,"horse_extremehills", true).getBoolean(); 
     		
 		spawnVillagerExtremeHills = instance.get(category,"villagersingle_extremehills", true).getBoolean();
-    			//"Villagers pawn naturally in Extreme Hills (not village buildings, it just rarely spawns a villager instead of another passive mob). "); 
-    
+    	
 		spawnCaveSpiderJungle = instance.get(category,"cavespider_jungle", true).getBoolean(); 
 	}
 	 
@@ -327,12 +324,9 @@ public class ConfigRegistry
 		item_soulstone = instance.getBoolean("soulstone",category, true,
     			"Use a soulstone on a mob to give it an extra life.  The first time a soulstoned mob dies, it instead is healed and respawned at the world map spawn point.  Tamed pets (dogs/cats) when soulstoned once will keep this forever, so they will forever respawn.  Other mobs/entities will respawn once then lose the soulstone, and it will have to be re-applied.");
 		 
-		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();  
-		
-		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();
-	 
-		appleLapis = instance.get(category, "apple_lapis",true).getBoolean();
-	  
+		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();   
+		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean(); 
+		appleLapis = instance.get(category, "apple_lapis",true).getBoolean(); 
 		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean();
 		apple_ghost = instance.get(category, "apple_ghost",true).getBoolean();
 		appleNetherStar = instance.get(category, "apple_netherwart",true).getBoolean();
@@ -472,10 +466,7 @@ public class ConfigRegistry
 		
 		searchspawner = instance.getBoolean("searchspawner",category, true,
     			"Players can search for spawners placed in the world.  Result is only chat output.");
-
-	//	CommandSearchSpawner.showCoords = instance.getBoolean("searchspawner.show_coords",category, false,
-    	//		"Either show coordinates or directions.");
-		
+ 
 		CommandSearchSpawner.REQUIRES_OP = instance.getBoolean("searchspawner.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		
@@ -484,18 +475,12 @@ public class ConfigRegistry
 		
 		CommandSearchTrades.REQUIRES_OP = instance.getBoolean("searchtrade.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-
-	//	CommandSearchTrades.showCoords = instance.getBoolean("searchtrade.show_coords",category, false,
-    	//		"Either show coordinates or directions.");
-		
+ 
 		searchitem = instance.getBoolean("searchitem",category, true,
     			"Players can search nearby chests for items.   Result is only chat output."    		); 
 		
 		CommandSearchItem.REQUIRES_OP = instance.getBoolean("searchitem.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-
-//		CommandSearchItem.showCoords = instance.getBoolean("searchitem.show_coords",category, false,
-//    			"Either show coordinates or directions.");
  
 		enderchest = instance.getBoolean("enderchest",category, true,
     			"Players can open their enderchest with a command, no item needed."    		); 
@@ -508,10 +493,7 @@ public class ConfigRegistry
 		
 		CommandSimpleWaypoints.REQUIRES_OP = instance.getBoolean("simplewaypoint.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-
-//		CommandSimpleWaypoints.showCoords = instance.getBoolean("simplewaypoint.show_coords",category, false,
-//    			"Either show coordinates or directions.");
-		
+ 
 		todo = instance.getBoolean("todo",category, true,
     			"Command that lets players use /todo myreminder text, which will then show whatever text they put on the F3 debug screen."); 
 		
@@ -519,8 +501,7 @@ public class ConfigRegistry
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 	}
 	 
-	public boolean swiftDeposit;
-	//public boolean smartEnderchest;
+	public boolean swiftDeposit; 
 	public boolean increasedStackSizes;
 	public boolean moreFuel;
 	public boolean skullSignNames; 
@@ -623,8 +604,7 @@ public class ConfigRegistry
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;
 	public boolean fire_charge_throw;
-	public boolean frozen_snowball;
-	//public int potionStackSize;
+	public boolean frozen_snowball; 
 	public int potionIdFrozen;
 	public int chanceZombieChildFeather;
 	public int chanceZombieVillagerEmerald;
@@ -638,7 +618,8 @@ public class ConfigRegistry
 	public boolean canNameVillagers;
 	public boolean horse_food_upgrades;
 	public int cowExtraLeather;
-	public boolean sleeping_hunger;
+	public int sleeping_hunger_seconds;
+	//public boolean sleeping_hunger;
 	public boolean item_soulstone;
 	public boolean experience_bottle;
 	public boolean experience_bottle_return;

@@ -627,13 +627,11 @@ public class ModMain
 		{
 			boolean didSleepAllNight = !event.updateWorld;
 			
-			if(didSleepAllNight && ModMain.cfg.sleeping_hunger)
-			{
-				//TODO: seconds and/or levels in config file, instead of the boolean
-				int numSeconds = 60;
-				int levelBoost = 1;//1 means Hunger II. int = 2 means Hunger III, etc.
+			if(didSleepAllNight && ModMain.cfg.sleeping_hunger_seconds > 0)
+			{ 
+				int levelBoost = 0;//1 means Hunger II. int = 2 means Hunger III, etc.
 				
-				event.entityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id, numSeconds * Reference.TICKS_PER_SEC, levelBoost));
+				event.entityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id,  ModMain.cfg.sleeping_hunger_seconds * Reference.TICKS_PER_SEC, levelBoost));
 			}
 		}
 	}
