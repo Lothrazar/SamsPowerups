@@ -68,6 +68,11 @@ public class RecipeRegistry
    		RecipeRegistry.beetroot();
    		
    		RecipeRegistry.experience_bottle();
+   		
+   		if(ModMain.cfg.smelt_gravel)
+   		{
+   			GameRegistry.addSmelting(Blocks.gravel, new ItemStack(Items.flint),0);
+   		}
 	}
 	
 	private static void quartsFromPrismarine() 

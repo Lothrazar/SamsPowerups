@@ -25,7 +25,7 @@ Possible Future Features:
  -same for obsidian/lapis/redstone?. same stats as gold
  -make sure they can be repaired/uncrafted
  
- 
+ smelt gravel - in recipe-new config
  
  Exp Bottle crafting:  
  MAYBE string

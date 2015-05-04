@@ -402,6 +402,9 @@ public class ConfigRegistry
 	private void recipes_new() 
 	{
 		category = "recipes_new";
+
+		smelt_gravel = instance.getBoolean( "smelt_gravel",category,true,
+				"Smelt gravel into flint to save on mindless shovel digging.");
 		
 		experience_bottle = instance.getBoolean( "experience_bottle",category,true,
 				"Craft experience bottles from many (vanilla) mob drops and empty bottles.  Also fish.");
@@ -621,4 +624,5 @@ public class ConfigRegistry
 	public boolean apple_ghost;
 	public boolean quartz_from_prismarine;
 	public boolean debugGameruleInfo;
+	public boolean smelt_gravel;
 }
