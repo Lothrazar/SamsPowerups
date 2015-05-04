@@ -7,7 +7,8 @@
  Config file additions for existing features- gamerule display
  quartz recipe
  new recipe using ink sac
- 
+ gravel smelting in recipes_new
+ search spawner: show multiple results
  
  
  
