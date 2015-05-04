@@ -9,12 +9,23 @@
  new recipe using ink sac
  
  
+ 
+ 
+ 
   
 Possible Future Features:
  
- placevertical, place horizontal.
+ placevertical, place horizontal. uses whatever youre holding
+ with needsop flags
  
- emerald armor-just for decoration. same stats as gold
+ torch wand? 3 coal blocks is 27. so x 4 torches each is # uses
+ 
+ 
+ emerald armor-just for decoration-for keith
+ -same for obsidian/lapis/redstone?. same stats as gold
+ -make sure they can be repaired/uncrafted
+ 
+ 
  
  Exp Bottle crafting:  
  MAYBE string

@@ -97,7 +97,12 @@ public class RecipeRegistry
 		experience_stripe(Items.rabbit_hide); 
 		experience_stripe(Items.ender_pearl); 
 		experience_stripe(Items.slime_ball); 
-		experience_stripe(Items.ghast_tear); 
+		experience_stripe(Items.ghast_tear);  
+		experience_stripe(Items.mutton);
+		experience_stripe(Items.porkchop);
+		experience_stripe(Items.beef);
+		experience_stripe(Items.chicken);
+		experience_stripe(Items.rabbit);    
 		experience_stripe(new ItemStack(Items.dye,1,Reference.dye_incsac)); 
 		
 	} 
@@ -107,10 +112,10 @@ public class RecipeRegistry
 	}
 	private static void experience_stripe(ItemStack drop) 
 	{
-		GameRegistry.addRecipe(new ItemStack(Items.experience_bottle,6),
+		GameRegistry.addRecipe(new ItemStack(Items.experience_bottle,8),
+				"bbb",
 				"bxb",
-				"bxb",
-				"bxb",
+				"bbb",
 				'x', drop,
 				'b', Items.glass_bottle);
 	}
