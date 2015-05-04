@@ -28,9 +28,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
  
 public class FurnaceFuelRegistry implements IFuelHandler
 {    
-	private ArrayList<Item> burnAsStick = new ArrayList<Item>();
-	private ArrayList<Item> burnAsSlabs = new ArrayList<Item>();
-	private ArrayList<Item> burnAsTools = new ArrayList<Item>();
+	private ArrayList<ItemStack> burnAsStick = new ArrayList<ItemStack>();
+	private ArrayList<ItemStack> burnAsSlabs = new ArrayList<ItemStack>();
+	private ArrayList<ItemStack> burnAsTools = new ArrayList<ItemStack>();
 
 	public class FurnaceBurnTime  
 	{
@@ -46,51 +46,53 @@ public class FurnaceFuelRegistry implements IFuelHandler
 	
 	public FurnaceFuelRegistry()
 	{
-		burnAsStick.add(Item.getItemFromBlock(Blocks.deadbush));
-		burnAsStick.add(Items.wheat_seeds);
-		burnAsStick.add(Items.pumpkin_seeds);
-		burnAsStick.add(Items.melon_seeds);
-		burnAsStick.add(Item.getItemFromBlock(Blocks.leaves));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.leaves2));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.tallgrass));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.red_flower));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.yellow_flower));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.reeds));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.red_mushroom));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.brown_mushroom));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.brown_mushroom_block));
-		burnAsStick.add(Item.getItemFromBlock(Blocks.red_mushroom_block)); 
-		burnAsStick.add(Item.getItemFromBlock(Blocks.double_plant));
-		burnAsStick.add(Items.arrow);
-		burnAsStick.add(Items.paper);
-		
-		burnAsTools.add(Items.bow);
-		burnAsTools.add(Items.boat);
-		burnAsTools.add(Items.bed);
-		burnAsTools.add(Item.getItemFromBlock(Blocks.ladder));
-		
-		burnAsSlabs.add(Items.jungle_door);
-		burnAsSlabs.add(Items.acacia_door);
-		burnAsSlabs.add(Items.oak_door);
-		burnAsSlabs.add(Items.spruce_door);
-		burnAsSlabs.add(Items.birch_door);
-		burnAsSlabs.add(Items.dark_oak_door);
+		burnAsStick.add(new ItemStack(Blocks.deadbush));
+		burnAsStick.add(new ItemStack(Items.wheat_seeds));
+		burnAsStick.add(new ItemStack(Items.pumpkin_seeds));
+		burnAsStick.add(new ItemStack(Items.melon_seeds));
+		burnAsStick.add(new ItemStack(Blocks.leaves));
+		burnAsStick.add(new ItemStack(Blocks.leaves2));
+		burnAsStick.add(new ItemStack(Blocks.tallgrass));
+		burnAsStick.add(new ItemStack(Blocks.red_flower));
+		burnAsStick.add(new ItemStack(Blocks.yellow_flower));
+		burnAsStick.add(new ItemStack(Blocks.reeds));
+		burnAsStick.add(new ItemStack(Blocks.red_mushroom));
+		burnAsStick.add(new ItemStack(Blocks.brown_mushroom));
+		burnAsStick.add(new ItemStack(Blocks.brown_mushroom_block));
+		burnAsStick.add(new ItemStack(Blocks.red_mushroom_block)); 
+		burnAsStick.add(new ItemStack(Blocks.double_plant));
+		burnAsStick.add(new ItemStack(Items.arrow));
+		burnAsStick.add(new ItemStack(Items.paper)); 
+		burnAsTools.add(new ItemStack(Items.bow));
+		burnAsTools.add(new ItemStack(Items.boat));
+		burnAsTools.add(new ItemStack(Items.bed));
+		burnAsTools.add(new ItemStack(Blocks.ladder)); 
+		burnAsSlabs.add(new ItemStack(Items.jungle_door));
+		burnAsSlabs.add(new ItemStack(Items.acacia_door));
+		burnAsSlabs.add(new ItemStack(Items.oak_door));
+		burnAsSlabs.add(new ItemStack(Items.spruce_door));
+		burnAsSlabs.add(new ItemStack(Items.birch_door));
+		burnAsSlabs.add(new ItemStack(Items.dark_oak_door));
 	}
 	
 	@Override
 	public int getBurnTime(ItemStack fuel) 
-	{  
+	{    
 		if(fuel == null){return 0;}//I have never seen this happen, but just to be safe
+		//changed to loops instead of arraylist.contains, so that we can sue the isEqual function
 		
-		if(burnAsStick.contains(fuel.getItem()))
+		for(ItemStack i : burnAsStick)
+			if(i.isItemEqual(fuel))   
 		{
 			return FurnaceBurnTime.Sticks;
 		}
-		else if(burnAsTools.contains(fuel.getItem()))
+		for(ItemStack i : burnAsTools)
+			if(i.isItemEqual(fuel)) 
 		{
 			return FurnaceBurnTime.WoodenTools;
 		}
-		else if(burnAsSlabs.contains(fuel.getItem()))
+		for(ItemStack i : burnAsSlabs)
+			if(i.isItemEqual(fuel)) 
 		{
 			return FurnaceBurnTime.WoodenSlabs;
 		}
