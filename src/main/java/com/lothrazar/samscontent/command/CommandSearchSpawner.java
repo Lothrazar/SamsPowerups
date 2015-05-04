@@ -54,6 +54,8 @@ public class CommandSearchSpawner implements ICommand
 		return aliases;
 	}
 
+	public static final int MAXRADIUS = 128;// TODO: config file for these? yes no?
+	public static final int DEFAULTRADIUS = 64;
 	@Override
 	public void execute(ICommandSender sender, String[] args) throws CommandException 
 	{ 
@@ -64,19 +66,28 @@ public class CommandSearchSpawner implements ICommand
 			radius = Integer.parseInt(args[0]);
 		}
 		
-		if(radius > 128) { radius = 128; }//Maximum // 
-		if(radius <= 0 ) { radius = 64;  }//default
+		if(radius > MAXRADIUS) { radius = MAXRADIUS; }
+		if(radius <= 0 ) { radius = DEFAULTRADIUS;  }
 		
-		BlockPos found = Util.findClosestBlock(player, Blocks.mob_spawner, radius);
+		//BlockPos found = Util.findClosestBlock(player, Blocks.mob_spawner, radius);
 		
-		String m = "None Found with radius "+radius;
+		ArrayList<BlockPos> founds = Util.findBlocks(player, Blocks.mob_spawner, radius);
 		
-		if(found != null)
-		{ 
-			m = "Found at : "+Util.getCoordsOrReduced(player, found);
+		if(founds.size() == 0)
+		{
+			//TODO: lang file for this string
+			player.addChatMessage(new ChatComponentTranslation( "None Found with radius "+radius )); 
 		}
-		
-		((EntityPlayer)sender).addChatMessage(new ChatComponentTranslation( m )); 
+		else
+		{
+			String m;
+			for(BlockPos found : founds) //if(found != null)
+			{ 
+				//"Found at : "+
+				m = Util.getCoordsOrReduced(player, found);//TODO: lang file?
+				player.addChatMessage(new ChatComponentTranslation( m )); 
+			}
+		}
 	}
 
 	@Override
