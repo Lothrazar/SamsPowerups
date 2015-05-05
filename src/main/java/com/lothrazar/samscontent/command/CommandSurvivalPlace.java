@@ -103,13 +103,13 @@ public class CommandSurvivalPlace implements ICommand
 		if(state > -1 && pblock.getStateFromMeta(state) != null)
 			placing = pblock.getStateFromMeta(state);
 		*/
-		
+		//tick handlers?http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1430001-solved-1-5-forge-minecrafts-equivalent-to-thread
 		int want = player.inventory.getCurrentItem().stackSize;
         if(args.length > 0 && args[0] != null)
         	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
 		 
-        
-        
+       
+ 
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
@@ -122,7 +122,8 @@ public class CommandSurvivalPlace implements ICommand
 			
 			world.setBlockState(off, placing);
 			Util.decrHeldStackSize(player);
-		
+ 
+			Util.playSoundAt(player, pblock.stepSound.getPlaceSound());
 		}
 	}
 
