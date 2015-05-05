@@ -38,7 +38,7 @@ public class CommandSurvivalPlace implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName();
+		return "/"+getName() + "<qty>";
 	}
 
 	@Override
