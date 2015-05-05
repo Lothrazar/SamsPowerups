@@ -93,9 +93,19 @@ public class CommandSurvivalPlace implements ICommand
 6 = West
 7 = North West
 */
-		  
-		BlockPos off;
 		IBlockState placing = pblock.getDefaultState();
+        /*
+         //this works, but should be only in creative, or with config turn on? TODO? 
+        int state = -1;
+        if(args.length > 0 && args[0] != null)
+        	state = Integer.parseInt(args[0]);
+
+		
+		if(state > -1 && pblock.getStateFromMeta(state) != null)
+			placing = pblock.getStateFromMeta(state);
+		*/
+      
+		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
 		for(int i = 0; i < max; i++)
