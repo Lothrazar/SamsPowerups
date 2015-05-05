@@ -46,7 +46,7 @@ public class CommandSurvivalPlace implements ICommand
 	{
 		return aliases;
 	}
-	public static final int MaxPlace = 64;
+	
 	@Override
 	public void execute(ICommandSender sender, String[] args)	throws CommandException 
 	{
@@ -70,7 +70,6 @@ public class CommandSurvivalPlace implements ICommand
 		World world = player.worldObj;
 		
 	// http://www.minecraftforge.net/forum/index.php?topic=6514.0
-		int max = Math.min(MaxPlace, player.inventory.getCurrentItem().stackSize);
 		
 		///
 		int yaw = (int)player.rotationYaw;
@@ -104,11 +103,17 @@ public class CommandSurvivalPlace implements ICommand
 		if(state > -1 && pblock.getStateFromMeta(state) != null)
 			placing = pblock.getStateFromMeta(state);
 		*/
-      
+		
+		int want = player.inventory.getCurrentItem().stackSize;
+        if(args.length > 0 && args[0] != null)
+        	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
+		 
+        
+        
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
-		for(int i = 1; i < max; i++)
+		for(int i = 1; i < want + 1; i++)
 		{
 			off = player.getPosition().offset(efacing, i);
 			
