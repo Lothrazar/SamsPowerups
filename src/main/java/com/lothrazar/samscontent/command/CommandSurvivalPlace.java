@@ -108,7 +108,7 @@ public class CommandSurvivalPlace implements ICommand
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
-		for(int i = 0; i < max; i++)
+		for(int i = 1; i < max; i++)
 		{
 			off = player.getPosition().offset(efacing, i);
 			
