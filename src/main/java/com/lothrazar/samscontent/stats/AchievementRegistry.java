@@ -305,7 +305,7 @@ public class AchievementRegistry
 		//yCurrent += ySpacing;
 		
 		
-		page = new AchievementPage("Sam's Content",(Achievement[]) ach.toArray(new Achievement[0]));
+		page = new AchievementPage(Reference.NAME,(Achievement[]) ach.toArray(new Achievement[0]));
 
 	 	AchievementPage.registerAchievementPage(page);
 	}
