@@ -60,6 +60,7 @@ public class CommandSurvivalPlace implements ICommand
 		
 		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0){return;}
 		
+		//TODO: maybe delays; http://www.minecraftforge.net/forum/index.php?topic=22903.0
 
  
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
@@ -95,10 +96,11 @@ public class CommandSurvivalPlace implements ICommand
 		  
 		BlockPos off;
 		IBlockState placing = pblock.getDefaultState();
+		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
 		for(int i = 0; i < max; i++)
 		{
-			off = player.getPosition().offset(EnumFacing.getHorizontal( facing/2 ), i);
+			off = player.getPosition().offset(efacing, i);
 			
 			if(world.isAirBlock(off))
 			{
