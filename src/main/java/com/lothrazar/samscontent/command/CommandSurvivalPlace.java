@@ -112,11 +112,12 @@ public class CommandSurvivalPlace implements ICommand
 		{
 			off = player.getPosition().offset(efacing, i);
 			
-			if(world.isAirBlock(off))
-			{
-				world.setBlockState(off, placing);
-				Util.decrHeldStackSize(player);
-			}
+			if(world.isAirBlock(off) == false){break;}
+			//halted, do not continue the path
+			
+			world.setBlockState(off, placing);
+			Util.decrHeldStackSize(player);
+		
 		}
 	}
 
