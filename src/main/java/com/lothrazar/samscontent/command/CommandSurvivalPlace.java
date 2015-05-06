@@ -110,7 +110,7 @@ public class CommandSurvivalPlace implements ICommand
 		 
        //TODO: test with chests/torches/signs/etc
         System.out.println("tryDrainExperience");
-        boolean drained = Util.tryDrainExperience(player,1.0F);
+        boolean drained = Util.tryDrainExperience(player,10.0F);
  
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
