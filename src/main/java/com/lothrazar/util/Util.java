@@ -612,12 +612,27 @@ public class Util
 			totalExp = 4.5*level*level + 162.5*level + 2220;
 
 		System.out.println("level "+level);
+		
+		//so now we knwo how much was used to get to current level
 		System.out.println("totalExp "+totalExp);
 		System.out.println("player.experienceTotal "+player.experienceTotal);
 		System.out.println("player.experience "+player.experience);
 		
 		
 		
+		double nextLevelExp = 0;
+
+		if(level <= 15)
+			nextLevelExp = 2*level + 7;
+		else if(level <= 30)
+			nextLevelExp = 5*level - 38;
+		else //level >= 31 
+			nextLevelExp = 9*level - 158;
+
+		
+		double progress = nextLevelExp * player.experience;
+
+		System.out.println("progress "+progress);
 		
 		
 		
