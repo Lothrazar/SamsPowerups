@@ -109,12 +109,11 @@ public class CommandSurvivalPlace implements ICommand
         	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
 		 
        //TODO: test with chests/torches/signs/etc
-        System.out.println("tryDrainExperience");
-        boolean drained = Util.tryDrainExperience(player,10.0F);
  
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
+		int numPlaced = 0;
 		for(int i = 1; i < want + 1; i++)
 		{
 			off = player.getPosition().offset(efacing, i);
@@ -126,7 +125,12 @@ public class CommandSurvivalPlace implements ICommand
 			Util.decrHeldStackSize(player);
  
 			Util.playSoundAt(player, pblock.stepSound.getPlaceSound());
+			
+			numPlaced ++;
 		}
+		
+
+        Util.tryDrainXp(player,numPlaced);
 	}
 
 	@Override

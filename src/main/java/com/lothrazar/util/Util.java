@@ -592,7 +592,7 @@ public class Util
 		return xStr +  yStr +  zStr ;
 	}
 
-	public static boolean tryDrainExperience(EntityPlayer player, float f) 
+	public static void tryDrainXp(EntityPlayer player, float f) 
 	{
 
 		int level = player.experienceLevel;
@@ -603,48 +603,34 @@ public class Util
  
 		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
 		double totalExp = getXpForLevel(level);
-		/*
-		if(level <= 15)
-			totalExp = level*level + 6*level;
-		else if(level <= 30)
-			totalExp = 2.5*level*level - 40.5*level + 360;
-		else //level >= 31 
-			totalExp = 4.5*level*level + 162.5*level + 2220;
-*/
+ 
 		System.out.println("level "+level);
 		
 		//so now we knwo how much was used to get to current level
-		System.out.println("totalExp "+totalExp);
-		System.out.println("player.experienceTotal "+player.experienceTotal);
-		System.out.println("player.experience "+player.experience);
+		//System.out.println("totalExp "+totalExp);
+		//System.out.println("player.experienceTotal "+player.experienceTotal);
+		//System.out.println("player.experience "+player.experience);
 		
 		
 		
 		double nextLevelExp = getXpToGainLevel(level);
-/*
-		if(level <= 15)
-			nextLevelExp = 2*level + 7;
-		else if(level <= 30)
-			nextLevelExp = 5*level - 38;
-		else //level >= 31 
-			nextLevelExp = 9*level - 158;
-*/
-		
+ 
 		double progress = Math.round(nextLevelExp * player.experience);
 
-		System.out.println("progress "+progress);
-		System.out.println("getLevelForXp   "+getLevelForXp(level));
+		//System.out.println("progress "+progress);
 
 		totalExp += (int)progress;
 
 		//yep its equal. so now we know how much we should have so we can change all numbers safely
-		System.out.println("totalExp NEW "+totalExp);//should be == to player.experienceTotal
+		//System.out.println("totalExp NEW "+totalExp);//should be == to player.experienceTotal
 		
+
+		//System.out.println("getLevelForXp   "+getLevelForXp((int)totalExp));
 		
-		setPlayerXp(player, (int)(totalExp - f));
+		setXp(player, (int)(totalExp - f));
 		
-		return false;
 	}
+	
 	public static int getXpToGainLevel(int level)
 	{
 		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
@@ -678,17 +664,19 @@ public class Util
 	public static int getLevelForXp(int xp) 
 	{
 		int lev = 0;
-		while (getXpForLevel(lev) <= xp) 
+		while (getXpForLevel(lev) < xp) 
 		{
 			lev++;
 		}
 		return lev - 1;
 	}
-	public static void setPlayerXp(EntityPlayer player, int f)
+	public static void setXp(EntityPlayer player, int xp)
 	{
-		player.experienceTotal = f;
-
+		player.experienceTotal = xp;
+		player.experienceLevel = getLevelForXp(xp);
+		int next = getXpForLevel(player.experienceLevel);
 		
+		player.experience = (float)(player.experienceTotal - next) / (float)player.xpBarCap(); 
 	}
 	
 	
