@@ -591,6 +591,39 @@ public class Util
 		 
 		return xStr +  yStr +  zStr ;
 	}
+
+	public static boolean tryDrainExperience(EntityPlayer player, float f) 
+	{
+
+		int level = player.experienceLevel;
+		
+		//this is the exp between previous and last level, not the real total
+		float experience = player.experience;
+		//player.experienceTotal  
+ 
+		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
+		double totalExp = 0;
+		
+		if(level <= 15)
+			totalExp = level*level + 6*level;
+		else if(level <= 30)
+			totalExp = 2.5*level*level - 40.5*level + 360;
+		else //level >= 31 
+			totalExp = 4.5*level*level + 162.5*level + 2220;
+
+		System.out.println("level "+level);
+		System.out.println("totalExp "+totalExp);
+		System.out.println("player.experienceTotal "+player.experienceTotal);
+		System.out.println("player.experience "+player.experience);
+		
+		
+		
+		
+		
+		
+		
+		return false;
+	}
 	
 	
 	

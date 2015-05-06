@@ -108,7 +108,9 @@ public class CommandSurvivalPlace implements ICommand
         if(args.length > 0 && args[0] != null)
         	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
 		 
-       
+       //TODO: test with chests/torches/signs/etc
+        System.out.println("tryDrainExperience");
+        boolean drained = Util.tryDrainExperience(player,1.0F);
  
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
