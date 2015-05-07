@@ -207,9 +207,9 @@ public class ModMain
 		
 		if(ModMain.cfg.worldhome) 
 			event.registerServerCommand(new CommandHome());
-		
 
-		event.registerServerCommand(new CommandSurvivalPlace());
+		if(ModMain.cfg.place) 
+			event.registerServerCommand(new CommandSurvivalPlace());
 				 
 	}
   
