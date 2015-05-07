@@ -18,6 +18,7 @@ import net.minecraft.world.World;
 public class CommandSurvivalPlace implements ICommand
 {
 	public static boolean REQUIRES_OP=false; //TODO: FROM CONFIG
+	public static int XP_COST_PER_PLACE = 1;//TODO: FROM CONFIG
 	private ArrayList<String> aliases = new ArrayList<String>();
 	public CommandSurvivalPlace()
 	{
@@ -38,7 +39,7 @@ public class CommandSurvivalPlace implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + "<qty>";
+		return "/"+getName() + "<qty> <skip=1>";
 	}
 
 	@Override
@@ -50,19 +51,12 @@ public class CommandSurvivalPlace implements ICommand
 	@Override
 	public void execute(ICommandSender sender, String[] args)	throws CommandException 
 	{
-		// TODO Auto-generated method stub
-		
 		EntityPlayer player = (EntityPlayer)sender;
 		
-		
-		if(player == null){return;}//was sent by commadn block or something, ignore it
-		
+		if(player == null){return;}//was sent by command block or something, ignore it
 		
 		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0){return;}
 		
-		//TODO: maybe delays; http://www.minecraftforge.net/forum/index.php?topic=22903.0
-
- 
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
 		if(pblock == null){return;}
@@ -70,8 +64,7 @@ public class CommandSurvivalPlace implements ICommand
 		World world = player.worldObj;
 		
 	// http://www.minecraftforge.net/forum/index.php?topic=6514.0
-		
-		///
+	
 		int yaw = (int)player.rotationYaw;
 
         if (yaw<0)              //due to the yaw running a -360 to positive 360
@@ -81,40 +74,32 @@ public class CommandSurvivalPlace implements ICommand
         yaw%=360;  //and this one if you want a strict interpretation of the zones
 
         int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
-       // System.out.println("Yaw is " + yaw + "facing is " + facing);
-/*
-0 = North
-1 = North East
-2 = East
-3 = South East
-4 = South
-5 = South West
-6 = West
-7 = North West
-*/
+        //System.out.println("Yaw is " + yaw + "facing is " + facing);
+        //System.out.println("player.cameraPitch " + player.cameraPitch );
+        //System.out.println("lookVec . yCoord " + player.getLookVec().yCoord );
+        
+        boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
+        
 		IBlockState placing = pblock.getDefaultState();
-        /*
-         //this works, but should be only in creative, or with config turn on? TODO? 
-        int state = -1;
-        if(args.length > 0 && args[0] != null)
-        	state = Integer.parseInt(args[0]);
 
-		
-		if(state > -1 && pblock.getStateFromMeta(state) != null)
-			placing = pblock.getStateFromMeta(state);
-		*/
 		//tick handlers?http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1430001-solved-1-5-forge-minecrafts-equivalent-to-thread
 		int want = player.inventory.getCurrentItem().stackSize;
         if(args.length > 0 && args[0] != null)
         	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
 		 
+        int skip = 1;
+        if(args.length > 1 && args[1] != null)
+        	skip =  Math.max(Integer.parseInt(args[1]), 1);
+		 
+        
+        
        //TODO: test with chests/torches/signs/etc
  
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
 		int numPlaced = 0;
-		for(int i = 1; i < want + 1; i++)
+		for(int i = 1; i < want + 1; i = i + skip)
 		{
 			off = player.getPosition().offset(efacing, i);
 			
@@ -129,10 +114,9 @@ public class CommandSurvivalPlace implements ICommand
 			numPlaced ++;
 		}
 		
-
-        Util.tryDrainXp(player,numPlaced);
+        Util.tryDrainXp(player,numPlaced * XP_COST_PER_PLACE);
 	}
-
+	
 	@Override
 	public boolean canCommandSenderUse(ICommandSender ic) 
 	{
@@ -140,8 +124,8 @@ public class CommandSurvivalPlace implements ICommand
 	}
 
 	@Override
-	public List addTabCompletionOptions(ICommandSender sender, String[] args,			BlockPos pos) {
-
+	public List addTabCompletionOptions(ICommandSender sender, String[] args,			BlockPos pos) 
+	{
 		return null;
 	}
 
@@ -151,5 +135,4 @@ public class CommandSurvivalPlace implements ICommand
 
 		return false;
 	}
-
 }
