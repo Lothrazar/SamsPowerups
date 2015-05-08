@@ -208,9 +208,11 @@ public class ModMain
 		if(ModMain.cfg.worldhome) 
 			event.registerServerCommand(new CommandHome());
 
-		if(ModMain.cfg.place) 
+		if(ModMain.cfg.placeline) 
 			event.registerServerCommand(new CommandPlaceLine());
-		event.registerServerCommand(new CommandPlaceFloor());
+		
+		if(ModMain.cfg.placefloor) 
+			event.registerServerCommand(new CommandPlaceFloor());
 				 
 	}
   

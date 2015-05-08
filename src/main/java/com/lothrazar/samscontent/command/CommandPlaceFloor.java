@@ -22,10 +22,12 @@ public class CommandPlaceFloor implements ICommand
 	public static int XP_COST_PER_PLACE = 1; 
 	public static int RADIUS_MAX = 8; //from config file
 	private ArrayList<String> aliases = new ArrayList<String>();
+	
 	public CommandPlaceFloor()
 	{
 		this.aliases.add(getName().toUpperCase());
 	}
+	
 	@Override
 	public int compareTo(Object arg0) 
 	{
@@ -69,22 +71,12 @@ public class CommandPlaceFloor implements ICommand
         
 		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
-		//tick handlers?http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1430001-solved-1-5-forge-minecrafts-equivalent-to-thread
 		int radius = 2;
         if(args.length > 0 && args[0] != null)
+        {
         	radius =  Math.min(Integer.parseInt(args[0]), RADIUS_MAX);
-      
+        }
         
-        //
-        
-		 /*
-        int skip = 1;
-        if(args.length > 1 && args[1] != null)
-        	skip =  Math.max(Integer.parseInt(args[1]), 1);
-		 
-        */
-        
-       //TODO: test with chests/torches/signs/etc
         int x = (int)player.posX;
 		int z = (int)player.posZ;
 		
@@ -107,9 +99,7 @@ public class CommandPlaceFloor implements ICommand
 						|| player.inventory.getCurrentItem().stackSize == 0){break;}
 				
 				posCurrent = new BlockPos(xLoop, y, zLoop);
-				//IBlockState bs = world.getBlockState(posCurrent);
-				//Block blockCheck = bs.getBlock(); 
-
+				 
 				if(world.isAirBlock(posCurrent))
 				{ 
 					world.setBlockState(posCurrent, placing);
@@ -131,7 +121,7 @@ public class CommandPlaceFloor implements ICommand
 	}
 
 	@Override
-	public List addTabCompletionOptions(ICommandSender sender, String[] args,			BlockPos pos) 
+	public List addTabCompletionOptions(ICommandSender sender, String[] args,BlockPos pos) 
 	{
 		return null;
 	}
@@ -139,7 +129,6 @@ public class CommandPlaceFloor implements ICommand
 	@Override
 	public boolean isUsernameIndex(String[] args, int index) 
 	{
-
 		return false;
 	}
 }

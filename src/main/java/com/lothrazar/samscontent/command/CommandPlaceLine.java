@@ -20,11 +20,12 @@ public class CommandPlaceLine implements ICommand
 	public static boolean REQUIRES_OP=false;  
 	public static int XP_COST_PER_PLACE = 1; 
 	private ArrayList<String> aliases = new ArrayList<String>();
+	
 	public CommandPlaceLine()
 	{
 		this.aliases.add(getName().toUpperCase());
-		
 	}
+	
 	@Override
 	public int compareTo(Object arg0) 
 	{
@@ -75,28 +76,23 @@ public class CommandPlaceLine implements ICommand
         yaw%=360;  //and this one if you want a strict interpretation of the zones
 
         int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
-        //System.out.println("Yaw is " + yaw + "facing is " + facing);
-        //System.out.println("player.cameraPitch " + player.cameraPitch );
-        //System.out.println("lookVec . yCoord " + player.getLookVec().yCoord );
-        
+      
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
         
-		//IBlockState placing = pblock.getDefaultState();
 		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
-		//tick handlers?http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1430001-solved-1-5-forge-minecrafts-equivalent-to-thread
 		int want = player.inventory.getCurrentItem().stackSize;
         if(args.length > 0 && args[0] != null)
+        {
         	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
+        }
 		 
         int skip = 1;
         if(args.length > 1 && args[1] != null)
+        {
         	skip =  Math.max(Integer.parseInt(args[1]), 1);
+        }
 		 
-        
-        
-       //TODO: test with chests/torches/signs/etc
- 
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : EnumFacing.getHorizontal( facing/2 );
 		
@@ -134,7 +130,6 @@ public class CommandPlaceLine implements ICommand
 	@Override
 	public boolean isUsernameIndex(String[] args, int index) 
 	{
-
 		return false;
 	}
 }
