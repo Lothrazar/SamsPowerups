@@ -140,6 +140,8 @@ public class ModMain
 		
 		ItemRegistry.registerItems();
 		
+		ArmorRegistry.registerItems();
+		
 		achievements = new AchievementRegistry();
 		 
 		this.registerEventHandlers(); 
