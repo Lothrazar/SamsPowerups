@@ -440,6 +440,23 @@ public class ConfigRegistry
 	{
 		category = "commands";
 
+		placeline = instance.getBoolean("placeline",category, true,
+    			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
+
+		CommandPlaceLine.REQUIRES_OP = instance.getBoolean("placeline.needs_op",category, true,
+    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
+		CommandPlaceLine.XP_COST_PER_PLACE = instance.getInt("placeline.xp_cost", category, 1, 0, 64, 
+				"Experience drained each time a block is placed with this command.");
+		
+		placefloor = instance.getBoolean("placefloor",category, true,
+    			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
+		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placefloor.needs_op",category, true,
+    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
+		CommandPlaceFloor.XP_COST_PER_PLACE = instance.getInt("placefloor.xp_cost", category, 1, 0, 64, 
+				"Experience drained each time a block is placed with this command.");
+		CommandPlaceFloor.RADIUS_MAX = instance.getInt("placefloor.radius_max", category, 8, 1, 64, 
+				"Maximum radius that you can specify as an argument.");
+		
 		kit = instance.getBoolean("kit",category, true,
     			"Use /kit to give yourself kit items.  Can only be done once each time you die.");
 
@@ -625,4 +642,6 @@ public class ConfigRegistry
 	public boolean quartz_from_prismarine;
 	public boolean debugGameruleInfo;
 	public boolean smelt_gravel;
+	public boolean placeline;
+	public boolean placefloor;
 }

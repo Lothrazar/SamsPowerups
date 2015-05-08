@@ -591,9 +591,93 @@ public class Util
 		 
 		return xStr +  yStr +  zStr ;
 	}
+
+	public static void tryDrainXp(EntityPlayer player, float f) 
+	{
+
+		int level = player.experienceLevel;
+		
+		//this is the exp between previous and last level, not the real total
+		float experience = player.experience;
+		//player.experienceTotal  
+ 
+		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
+		double totalExp = getXpForLevel(level);
+ 
+		System.out.println("level "+level);
+		
+		//so now we knwo how much was used to get to current level
+		//System.out.println("totalExp "+totalExp);
+		//System.out.println("player.experienceTotal "+player.experienceTotal);
+		//System.out.println("player.experience "+player.experience);
+		
+		
+		
+		double nextLevelExp = getXpToGainLevel(level);
+ 
+		double progress = Math.round(nextLevelExp * player.experience);
+
+		//System.out.println("progress "+progress);
+
+		totalExp += (int)progress;
+
+		//yep its equal. so now we know how much we should have so we can change all numbers safely
+		//System.out.println("totalExp NEW "+totalExp);//should be == to player.experienceTotal
+		
+
+		//System.out.println("getLevelForXp   "+getLevelForXp((int)totalExp));
+		
+		setXp(player, (int)(totalExp - f));
+		
+	}
 	
-	
-	
+	public static int getXpToGainLevel(int level)
+	{
+		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
+		//so if our current level is 5, we pass in5 here and find out
+		//how much exp to get from 5 to 6
+		int nextLevelExp = 0;
+
+		if(level <= 15)
+			nextLevelExp = 2*level + 7;
+		else if(level <= 30)
+			nextLevelExp = 5*level - 38;
+		else //level >= 31 
+			nextLevelExp = 9*level - 158;
+		
+		return nextLevelExp;
+	}
+	public static int getXpForLevel(int level)
+	{
+		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
+		int totalExp = 0;
+		
+		if(level <= 15)
+			totalExp = level*level + 6*level;
+		else if(level <= 30)
+			totalExp = (int)(2.5*level*level - 40.5*level + 360);
+		else //level >= 31 
+			totalExp = (int)(4.5*level*level + 162.5*level + 2220);
+		
+		return totalExp;
+	}
+	public static int getLevelForXp(int xp) 
+	{
+		int lev = 0;
+		while (getXpForLevel(lev) < xp) 
+		{
+			lev++;
+		}
+		return lev - 1;
+	}
+	public static void setXp(EntityPlayer player, int xp)
+	{
+		player.experienceTotal = xp;
+		player.experienceLevel = getLevelForXp(xp);
+		int next = getXpForLevel(player.experienceLevel);
+		
+		player.experience = (float)(player.experienceTotal - next) / (float)player.xpBarCap(); 
+	}
 	
 	
 	

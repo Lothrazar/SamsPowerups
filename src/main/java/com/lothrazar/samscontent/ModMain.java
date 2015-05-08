@@ -207,6 +207,13 @@ public class ModMain
 		
 		if(ModMain.cfg.worldhome) 
 			event.registerServerCommand(new CommandHome());
+
+		if(ModMain.cfg.placeline) 
+			event.registerServerCommand(new CommandPlaceLine());
+		
+		if(ModMain.cfg.placefloor) 
+			event.registerServerCommand(new CommandPlaceFloor());
+				 
 	}
   
 	private void registerEventHandlers() 
