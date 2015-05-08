@@ -22,6 +22,15 @@ Possible Future Features:
  torch wand? 3 coal blocks is 27. so x 4 torches each is # uses
  
  
+ 
+ REPLACE WAND: click two blocks, it swaps second with first. has a timeout between.
+ 
+ 
+ Back in january i added custom slabs, doors, fences, trapdoors, and such. revisit these, if just for
+ the experience of the code, of having it done, even if I dont want to use it
+ 
+ Same with emerald/lapis armor, make sure works on armor stand.
+ 
  emerald armor-just for decoration-for keith
  -same for obsidian/lapis/redstone?. same stats as gold
  -make sure they can be repaired/uncrafted
