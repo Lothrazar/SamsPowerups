@@ -440,12 +440,12 @@ public class ConfigRegistry
 	{
 		category = "commands";
 
-		place = instance.getBoolean("place",category, true,
+		place = instance.getBoolean("placeline",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
 
-		CommandSurvivalPlace.REQUIRES_OP = instance.getBoolean("place.needs_op",category, true,
+		CommandSurvivalPlace.REQUIRES_OP = instance.getBoolean("placeline.needs_op",category, true,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-		CommandSurvivalPlace.XP_COST_PER_PLACE = instance.getInt("place.xp_cost", category, 1, 0, 64, 
+		CommandSurvivalPlace.XP_COST_PER_PLACE = instance.getInt("placeline.xp_cost", category, 1, 0, 64, 
 				"Experience drained each time a block is placed with this command.");
 		
 		kit = instance.getBoolean("kit",category, true,

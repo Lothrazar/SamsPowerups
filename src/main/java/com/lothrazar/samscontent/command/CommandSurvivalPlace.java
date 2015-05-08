@@ -17,12 +17,13 @@ import net.minecraft.world.World;
 
 public class CommandSurvivalPlace implements ICommand
 {
-	public static boolean REQUIRES_OP=false; //TODO: FROM CONFIG
-	public static int XP_COST_PER_PLACE = 1;//TODO: FROM CONFIG
+	public static boolean REQUIRES_OP=false;  
+	public static int XP_COST_PER_PLACE = 1; 
 	private ArrayList<String> aliases = new ArrayList<String>();
 	public CommandSurvivalPlace()
 	{
-		this.aliases.add("PLACE");
+		this.aliases.add(getName().toUpperCase());
+		
 	}
 	@Override
 	public int compareTo(Object arg0) 
@@ -33,7 +34,7 @@ public class CommandSurvivalPlace implements ICommand
 	@Override
 	public String getName() 
 	{
-		return "place";
+		return "placeline";
 	}
 
 	@Override
