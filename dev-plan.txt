@@ -1,4 +1,9 @@
-
+1.2
+ commands: placeline and placefloor
+ 
+ 
+ 
+ 
  
  1.1.2:
  MORE FUEL: Ladder, Boat
@@ -9,6 +14,7 @@
  new recipe using ink sac
  gravel smelting in recipes_new
  search spawner: show multiple results
+ 
  
  
  
