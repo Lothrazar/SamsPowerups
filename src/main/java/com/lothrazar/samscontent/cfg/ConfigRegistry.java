@@ -303,7 +303,10 @@ public class ConfigRegistry
 	private void items() 
 	{
 		category = "items";
-  
+		
+		emerald_armor = instance.getBoolean("emerald_armor",category, true,
+				"Adds a full set of emerald armor, that is functional the exact same as gold (same durability, enchantability, etc).");  
+		  
 		horse_food_upgrades = instance.getBoolean("horse_food_upgrades",category, true,
 				"Adds three items that let you upgrade a horses health, change its colour and change it into a zombie or skeleton horse.");  
 		  
@@ -644,4 +647,5 @@ public class ConfigRegistry
 	public boolean smelt_gravel;
 	public boolean placeline;
 	public boolean placefloor;
+	public boolean emerald_armor;
 }
