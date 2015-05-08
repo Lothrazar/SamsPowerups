@@ -81,7 +81,8 @@ public class CommandPlaceLine implements ICommand
         
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
         
-		IBlockState placing = pblock.getDefaultState();
+		//IBlockState placing = pblock.getDefaultState();
+		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
 		//tick handlers?http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1430001-solved-1-5-forge-minecrafts-equivalent-to-thread
 		int want = player.inventory.getCurrentItem().stackSize;

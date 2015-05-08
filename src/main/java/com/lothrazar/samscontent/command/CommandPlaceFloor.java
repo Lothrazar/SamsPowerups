@@ -67,7 +67,7 @@ public class CommandPlaceFloor implements ICommand
 		 
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
         
-		IBlockState placing = pblock.getDefaultState();
+		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
 		//tick handlers?http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1430001-solved-1-5-forge-minecrafts-equivalent-to-thread
 		int radius = 2;
@@ -103,7 +103,8 @@ public class CommandPlaceFloor implements ICommand
 		{ 
 			for (int zLoop = zMin; zLoop <= zMax; zLoop++)
 			{
-				if(player.inventory.getCurrentItem().stackSize == 0){break;}
+				if(player.inventory.getCurrentItem() == null 
+						|| player.inventory.getCurrentItem().stackSize == 0){break;}
 				
 				posCurrent = new BlockPos(xLoop, y, zLoop);
 				//IBlockState bs = world.getBlockState(posCurrent);
