@@ -15,12 +15,12 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public class CommandSurvivalPlace implements ICommand
+public class CommandPlaceLine implements ICommand
 {
 	public static boolean REQUIRES_OP=false;  
 	public static int XP_COST_PER_PLACE = 1; 
 	private ArrayList<String> aliases = new ArrayList<String>();
-	public CommandSurvivalPlace()
+	public CommandPlaceLine()
 	{
 		this.aliases.add(getName().toUpperCase());
 		

@@ -209,7 +209,8 @@ public class ModMain
 			event.registerServerCommand(new CommandHome());
 
 		if(ModMain.cfg.place) 
-			event.registerServerCommand(new CommandSurvivalPlace());
+			event.registerServerCommand(new CommandPlaceLine());
+		event.registerServerCommand(new CommandPlaceFloor());
 				 
 	}
   
