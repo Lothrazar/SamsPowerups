@@ -8,9 +8,12 @@ import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemAxe;
 import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemHoe;
 import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemSoup;
+import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemSword;
@@ -60,13 +63,32 @@ public class ItemRegistry
 	
 	public static void registerItems()
 	{   
-		//thanks for help: http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-tools-swords/
-		 
 		if(ModMain.cfg.emerald_armor)
 		{
+			//thanks for help: http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-tools-swords/
+			 
+			
 			ItemSword emerald_sword = new ItemSword(MATERIAL_EMERALD);
 			ItemRegistry.registerItem(emerald_sword, "emerald_sword");
 			emerald_sword.setCreativeTab(ModMain.tabSamsContent);
+
+ // gggg these Constructors are protected./ this is the only reason i have subclasses, need subclasses
+			
+			ItemSamPickaxe emerald_pickaxe = new ItemSamPickaxe(MATERIAL_EMERALD);
+			ItemRegistry.registerItem(emerald_pickaxe, "emerald_pickaxe");
+			emerald_pickaxe.setCreativeTab(ModMain.tabSamsContent);
+
+			ItemAxe emerald_axe = new ItemSamAxe(MATERIAL_EMERALD);
+			ItemRegistry.registerItem(emerald_axe, "emerald_axe");
+			emerald_axe.setCreativeTab(ModMain.tabSamsContent);
+			
+			ItemSpade emerald_spade = new ItemSpade(MATERIAL_EMERALD);
+			ItemRegistry.registerItem(emerald_spade, "emerald_spade");
+			emerald_spade.setCreativeTab(ModMain.tabSamsContent);
+			
+			ItemHoe emerald_hoe = new ItemHoe(MATERIAL_EMERALD);
+			ItemRegistry.registerItem(emerald_hoe, "emerald_hoe");
+			emerald_hoe.setCreativeTab(ModMain.tabSamsContent);
 		}
 		
 		if(ModMain.cfg.apple_ghost)
