@@ -31,6 +31,9 @@ public class ArmorRegistry
 			GameRegistry.addShapedRecipe(new ItemStack(emerald_helmet)
 				,"eee","e e","   "
 				,'e',new ItemStack(Items.emerald));
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_helmet)
+				,"   ","eee","e e"
+			,'e',new ItemStack(Items.emerald));
 			if(ModMain.cfg.uncraftGeneral)
 				GameRegistry.addSmelting(emerald_helmet, new ItemStack(Items.emerald,5), 0);
 			
@@ -54,6 +57,9 @@ public class ArmorRegistry
 			ItemRegistry.registerItem(emerald_boots, "emerald_boots");
 			GameRegistry.addShapedRecipe(new ItemStack(emerald_boots)
 				,"e e","e e","   "
+				,'e',new ItemStack(Items.emerald));
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_boots)
+				,"   ","e e","e e"
 				,'e',new ItemStack(Items.emerald));
 			if(ModMain.cfg.uncraftGeneral)
 				GameRegistry.addSmelting(emerald_boots, new ItemStack(Items.emerald,4), 0);
