@@ -13,7 +13,9 @@ import net.minecraft.item.ItemSeeds;
 import net.minecraft.item.ItemSoup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
+import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import com.lothrazar.samscontent.item.*; 
@@ -54,17 +56,19 @@ public class ItemRegistry
 	public static ItemSoulstone soulstone_persist;
 	public static ItemFoodGhost apple_ghost;
 	
-	public static void registerItem(Item item, String name)
-	{ 
-		 item.setUnlocalizedName(name);
-		 
-		 GameRegistry.registerItem(item, name);
-		 
-		 items.add(item);
-	}
+	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 2, 32, 12F, 0F, 22);
 	
 	public static void registerItems()
 	{   
+		//thanks for help: http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-tools-swords/
+		 
+		if(ModMain.cfg.emerald_armor)
+		{
+			ItemSword emerald_sword = new ItemSword(MATERIAL_EMERALD);
+			ItemRegistry.registerItem(emerald_sword, "emerald_sword");
+			emerald_sword.setCreativeTab(ModMain.tabSamsContent);
+		}
+		
 		if(ModMain.cfg.apple_ghost)
 		{
 			apple_ghost = new ItemFoodGhost();
@@ -281,5 +285,14 @@ public class ItemRegistry
 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl)) ;
 		}  
+	}
+	
+	public static void registerItem(Item item, String name)
+	{ 
+		 item.setUnlocalizedName(name);
+		 
+		 GameRegistry.registerItem(item, name);
+		 
+		 items.add(item);
 	}
 }
