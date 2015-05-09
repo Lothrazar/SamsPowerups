@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/apple_chocolate"
+        "layer0": "samscontent:items/emerald_hoe"
     },
     "display": {
         "thirdperson": {
