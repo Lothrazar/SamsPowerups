@@ -41,7 +41,7 @@ public class CommandPlaceStair implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + "<qty>";
+		return "/"+getName() + "<qty> <skip=1>";
 	}
 
 	@Override
@@ -71,7 +71,6 @@ public class CommandPlaceStair implements ICommand
 			return;
 		}
 		
-		
 		World world = player.worldObj;
 	 
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
@@ -83,7 +82,11 @@ public class CommandPlaceStair implements ICommand
         {
         	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
         }
-	
+        int skip = 1;
+        if(args.length > 1 && args[1] != null)
+        {
+        	skip =  Math.max(Integer.parseInt(args[1]), 1);
+        }
 		boolean goUp = true;	
 	
 		EnumFacing pfacing = Util.getPlayerFacing(player);
@@ -93,7 +96,7 @@ public class CommandPlaceStair implements ICommand
 		BlockPos off = player.getPosition().down().offset(pfacing);
 		
 		int numPlaced = 0;
-		for(int i = 1; i < want + 1; i = i + 1)
+		for(int i = 1; i < want + 1; i = i + skip)
 		{
 			if(goUp)
 			{
@@ -105,7 +108,7 @@ public class CommandPlaceStair implements ICommand
 			else
 				off = off.offset(pfacing);
 			
-			goUp = !goUp;
+			goUp = (i % 2 == 0);
 
 			if(world.isAirBlock(off) == false){break;}
 			//halted, do not continue the path
