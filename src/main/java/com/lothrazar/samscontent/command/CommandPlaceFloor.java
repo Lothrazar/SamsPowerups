@@ -59,8 +59,11 @@ public class CommandPlaceFloor implements ICommand
 		
 		if(player == null){return;}//was sent by command block or something, ignore it
 		
-		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0){return;}
-		
+		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
+		{
+			Util.addChatMessage(player, "command.place.empty"); 
+			return;
+		}
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
 		if(pblock == null){return;}

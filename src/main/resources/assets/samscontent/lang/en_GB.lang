@@ -56,6 +56,7 @@ achievement.command_block_weather=Weather Command Block
 achievement.command_block_weather.desc=Weather control in survival
 achievement.block_xray=Cheaty Block
 achievement.block_xray.desc=See through the world
+command.place.empty=Not holding blocks
 potion.slowfall=Slowfall
 potion.waterwalk=Waterwalking
 potion.lavawalk=Lavawalking

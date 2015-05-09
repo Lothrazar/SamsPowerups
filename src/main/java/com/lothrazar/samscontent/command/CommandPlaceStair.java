@@ -59,7 +59,7 @@ public class CommandPlaceStair implements ICommand
 		
 		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
 		{
-			Util.addChatMessage(player, "place.stair.empty");//TODO: lang file should get this
+			Util.addChatMessage(player, "command.place.empty"); 
 			return;
 		}
 		
@@ -67,7 +67,7 @@ public class CommandPlaceStair implements ICommand
 
 		if(pblock == null)
 		{
-			Util.addChatMessage(player, "place.stair.empty");//TODO: lang file should get this
+			Util.addChatMessage(player, "command.place.empty");//TODO: lang file should get this
 			return;
 		}
 		
