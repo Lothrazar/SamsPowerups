@@ -215,9 +215,12 @@ public class ModMain
 		
 		if(ModMain.cfg.placefloor) 
 			event.registerServerCommand(new CommandPlaceFloor());
+
+		if(ModMain.cfg.placestair) 
+			event.registerServerCommand(new CommandPlaceStair());
 		
-		event.registerServerCommand(new CommandPlaceStair());
-		event.registerServerCommand(new CommandPlaceCircle());
+		if(ModMain.cfg.placecircle) 
+			event.registerServerCommand(new CommandPlaceCircle());
 				 
 	}
   

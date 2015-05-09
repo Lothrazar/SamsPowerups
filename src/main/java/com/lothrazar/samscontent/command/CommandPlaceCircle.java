@@ -16,8 +16,8 @@ import net.minecraft.world.World;
 
 public class CommandPlaceCircle  implements ICommand
 {
-	public static boolean REQUIRES_OP=false;  
-	public static int XP_COST_PER_PLACE = 1; 
+	public static boolean REQUIRES_OP;  
+	public static int XP_COST_PER_PLACE; 
 	public static int RADIUS_MAX = 8; //TODOfrom config file
 	private ArrayList<String> aliases = new ArrayList<String>();
 

@@ -17,8 +17,8 @@ import net.minecraft.world.World;
 
 public class CommandPlaceStair implements ICommand
 {
-	public static boolean REQUIRES_OP=false;  
-	public static int XP_COST_PER_PLACE = 1; 
+	public static boolean REQUIRES_OP;  
+	public static int XP_COST_PER_PLACE; 
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandPlaceStair()

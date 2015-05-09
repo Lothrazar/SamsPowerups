@@ -460,6 +460,25 @@ public class ConfigRegistry
 		CommandPlaceFloor.RADIUS_MAX = instance.getInt("placefloor.radius_max", category, 8, 1, 64, 
 				"Maximum radius that you can specify as an argument.");
 		
+		placestair = instance.getBoolean("placestair",category, true,
+    			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
+		CommandPlaceStair.REQUIRES_OP = instance.getBoolean("placestair.needs_op",category, true,
+    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
+		CommandPlaceStair.XP_COST_PER_PLACE = instance.getInt("placestair.xp_cost", category, 1, 0, 64, 
+				"Experience drained each time a block is placed with this command.");
+		/*CommandPlaceStair.RADIUS_MAX = instance.getInt("placestair.radius_max", category, 8, 1, 64, 
+				"Maximum radius that you can specify as an argument.");
+		*/
+		placecircle = instance.getBoolean("placecircle",category, true,
+    			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
+		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placecircle.needs_op",category, true,
+    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
+		CommandPlaceFloor.XP_COST_PER_PLACE = instance.getInt("placecircle.xp_cost", category, 1, 0, 64, 
+				"Experience drained each time a block is placed with this command.");
+		CommandPlaceFloor.RADIUS_MAX = instance.getInt("placecircle.radius_max", category, 8, 1, 32, 
+				"Maximum radius that you can specify as an argument.");
+		
+		
 		kit = instance.getBoolean("kit",category, true,
     			"Use /kit to give yourself kit items.  Can only be done once each time you die.");
 
@@ -648,4 +667,6 @@ public class ConfigRegistry
 	public boolean placeline;
 	public boolean placefloor;
 	public boolean emerald_armor;
+	public boolean placestair;
+	public boolean placecircle;
 }
