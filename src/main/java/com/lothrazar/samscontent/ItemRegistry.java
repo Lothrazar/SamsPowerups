@@ -66,29 +66,69 @@ public class ItemRegistry
 		if(ModMain.cfg.emerald_armor)
 		{
 			//thanks for help: http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-tools-swords/
-			 
+			 int xp = 1;
 			
 			ItemSword emerald_sword = new ItemSword(MATERIAL_EMERALD);
 			ItemRegistry.registerItem(emerald_sword, "emerald_sword");
 			emerald_sword.setCreativeTab(ModMain.tabSamsContent);
+			
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_sword)
+				, " e "," e "," s "
+				,'e',new ItemStack(Items.emerald)
+				,'s',new ItemStack(Items.stick));
+			
 
  // gggg these Constructors are protected./ this is the only reason i have subclasses, need subclasses
 			
 			ItemSamPickaxe emerald_pickaxe = new ItemSamPickaxe(MATERIAL_EMERALD);
 			ItemRegistry.registerItem(emerald_pickaxe, "emerald_pickaxe");
 			emerald_pickaxe.setCreativeTab(ModMain.tabSamsContent);
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_pickaxe)
+				, "eee"," s "," s "
+				,'e',new ItemStack(Items.emerald)
+				,'s',new ItemStack(Items.stick));
 
 			ItemAxe emerald_axe = new ItemSamAxe(MATERIAL_EMERALD);
 			ItemRegistry.registerItem(emerald_axe, "emerald_axe");
 			emerald_axe.setCreativeTab(ModMain.tabSamsContent);
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_axe)
+				, "ee ","es "," s "
+				,'e',new ItemStack(Items.emerald)
+				,'s',new ItemStack(Items.stick));
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_axe)
+				, " ee"," se"," s "
+				,'e',new ItemStack(Items.emerald)
+				,'s',new ItemStack(Items.stick));
 			
 			ItemSpade emerald_spade = new ItemSpade(MATERIAL_EMERALD);
 			ItemRegistry.registerItem(emerald_spade, "emerald_spade");
 			emerald_spade.setCreativeTab(ModMain.tabSamsContent);
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_spade)
+				, " e "," s "," s "
+				,'e',new ItemStack(Items.emerald)
+				,'s',new ItemStack(Items.stick));
 			
 			ItemHoe emerald_hoe = new ItemHoe(MATERIAL_EMERALD);
 			ItemRegistry.registerItem(emerald_hoe, "emerald_hoe");
 			emerald_hoe.setCreativeTab(ModMain.tabSamsContent);
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_hoe)
+				, "ee "," s "," s "
+				,'e',new ItemStack(Items.emerald)
+				,'s',new ItemStack(Items.stick));
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_hoe)
+				, " ee"," s "," s "
+				,'e',new ItemStack(Items.emerald)
+				,'s',new ItemStack(Items.stick));
+			
+
+			if(ModMain.cfg.uncraftGeneral)
+			{
+				GameRegistry.addSmelting(emerald_spade, new ItemStack(Items.emerald,1), xp);
+				GameRegistry.addSmelting(emerald_sword, new ItemStack(Items.emerald,2), xp);
+				GameRegistry.addSmelting(emerald_hoe, new ItemStack(Items.emerald,2), xp);
+				GameRegistry.addSmelting(emerald_pickaxe, new ItemStack(Items.emerald,3), xp);
+				GameRegistry.addSmelting(emerald_axe, new ItemStack(Items.emerald,3), xp);
+			}
 		}
 		
 		if(ModMain.cfg.apple_ghost)
