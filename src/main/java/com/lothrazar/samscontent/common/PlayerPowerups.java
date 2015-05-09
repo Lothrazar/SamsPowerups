@@ -41,8 +41,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		// We need to create a new tag compound that will save everything for our Extended Properties
 		NBTTagCompound properties = new NBTTagCompound(); 
 	
-		properties.setString(NBT_WAYPOINT, this.player.getDataWatcher().getWatchableObjectString(WAYPOINT_WATCHER)); 
-		properties.setString(NBT_TODO,     this.player.getDataWatcher().getWatchableObjectString(TODO_WATCHER)); 
+		properties.setString(NBT_WAYPOINT, this.getStringSafe(WAYPOINT_WATCHER)); 
+		properties.setString(NBT_TODO,     this.getStringSafe(TODO_WATCHER)); 
 		
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
