@@ -64,18 +64,22 @@ public class Reference
 	public static final int CHEST_RARITY_GAPPLE = 1;
 	  
 	//import net.minecraftforge.common.ChestGenHooks;
-	public static String chest_mineshaftCorridor = "mineshaftCorridor"; 
-	public static String chest_pyramidJungleChest= "pyramidJungleChest"; 
-	public static String chest_pyramidDesertyChest= "pyramidDesertyChest"; 
-	public static String chest_pyramidJungleDispenser= "pyramidJungleDispenser"; 
-	public static String chest_strongholdCorridor= "strongholdCorridor"; 
-	public static String chest_strongholdLibrary= "strongholdLibrary"; 
-	public static String chest_strongholdCrossing= "strongholdCrossing";  
-	public static String chest_villageBlacksmith= "villageBlacksmith"; 
-	public static String chest_bonusChest= "bonusChest"; 
-	public static String chest_dungeonChest= "dungeonChest";
-	public static String toolClassShovel = "shovel";
-	public static String toolClassAxe = "axe";
+	public static final String chest_mineshaftCorridor = "mineshaftCorridor"; 
+	public static final String chest_pyramidJungleChest= "pyramidJungleChest"; 
+	public static final String chest_pyramidDesertyChest= "pyramidDesertyChest"; 
+	public static final String chest_pyramidJungleDispenser= "pyramidJungleDispenser"; 
+	public static final String chest_strongholdCorridor= "strongholdCorridor"; 
+	public static final String chest_strongholdLibrary= "strongholdLibrary"; 
+	public static final String chest_strongholdCrossing= "strongholdCrossing";  
+	public static final String chest_villageBlacksmith= "villageBlacksmith"; 
+	public static final String chest_bonusChest= "bonusChest"; 
+	public static final String chest_dungeonChest= "dungeonChest";
+	public static final String toolClassShovel = "shovel";
+	public static final String toolClassAxe = "axe";
+	public static final int armor_type_helmet = 0;
+	public static final int armor_type_chest = 1;
+	public static final int armor_type_leg = 2;
+	public static final int armor_type_boots = 3;
  
  
  
