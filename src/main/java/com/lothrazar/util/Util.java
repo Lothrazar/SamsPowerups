@@ -31,6 +31,7 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
@@ -680,6 +681,21 @@ public class Util
 		int next = getXpForLevel(player.experienceLevel);
 		
 		player.experience = (float)(player.experienceTotal - next) / (float)player.xpBarCap(); 
+	}
+
+	public static EnumFacing getPlayerFacing(EntityPlayer player) 
+	{
+    	int yaw = (int)player.rotationYaw;
+
+        if (yaw<0)              //due to the yaw running a -360 to positive 360
+           yaw+=360;    //not sure why it's that way
+
+        yaw += 22;     //centers coordinates you may want to drop this line
+        yaw %= 360;  //and this one if you want a strict interpretation of the zones
+
+        int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
+       
+		return EnumFacing.getHorizontal( facing/2 );
 	}
 	
 	

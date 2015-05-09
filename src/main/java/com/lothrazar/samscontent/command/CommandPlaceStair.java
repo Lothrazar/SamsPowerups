@@ -83,28 +83,14 @@ public class CommandPlaceStair implements ICommand
         {
         	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
         }
-		  
-        ////////////TODO SHARE CODE WITH PLACELINE
-        
-        
-    	int yaw = (int)player.rotationYaw;
-
-        if (yaw<0)              //due to the yaw running a -360 to positive 360
-           yaw+=360;    //not sure why it's that way
-
-        yaw+=22;     //centers coordinates you may want to drop this line
-        yaw%=360;  //and this one if you want a strict interpretation of the zones
-
-        int facing = yaw/45;   //  360degrees divided by 45 == 8 zones
-      
-        //TODO????????????????????end copypasta
-		 
+	
 		boolean goUp = true;	
-		EnumFacing efacing = EnumFacing.getHorizontal( facing/2 );
+	
+		EnumFacing pfacing = Util.getPlayerFacing(player);
 		//System.out.println(efacing.toString());
 
         //it starts at eye level, so do down and forward one first
-		BlockPos off = player.getPosition().down().offset(efacing);
+		BlockPos off = player.getPosition().down().offset(pfacing);
 		
 		int numPlaced = 0;
 		for(int i = 1; i < want + 1; i = i + 1)
@@ -117,7 +103,7 @@ public class CommandPlaceStair implements ICommand
 					off = off.down();
 			}
 			else
-				off = off.offset(efacing);
+				off = off.offset(pfacing);
 			
 			goUp = !goUp;
 
