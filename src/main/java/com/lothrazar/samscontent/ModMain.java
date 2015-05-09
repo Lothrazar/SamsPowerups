@@ -215,6 +215,8 @@ public class ModMain
 		
 		if(ModMain.cfg.placefloor) 
 			event.registerServerCommand(new CommandPlaceFloor());
+		
+		event.registerServerCommand(new CommandPlaceStair());
 				 
 	}
   
