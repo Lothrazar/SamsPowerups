@@ -608,7 +608,7 @@ public class Util
 		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
 		double totalExp = getXpForLevel(level);
  
-		System.out.println("level "+level);
+		//System.out.println("level "+level);
 		
 		//so now we knwo how much was used to get to current level
 		//System.out.println("totalExp "+totalExp);
