@@ -359,7 +359,10 @@ public class Util
 	{ 
 		printChatMessage(new ChatComponentTranslation(string)); 
 	}
-	
+	public static void addChatMessage(EntityPlayer player,String string) 
+	{ 
+		player.addChatMessage(new ChatComponentTranslation(string));
+	}
 	public static void printChatMessage(IChatComponent string) 
 	{ 
 		 Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(string); 

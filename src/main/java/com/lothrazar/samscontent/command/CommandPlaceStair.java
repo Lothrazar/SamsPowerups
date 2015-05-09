@@ -57,12 +57,21 @@ public class CommandPlaceStair implements ICommand
 		
 		if(player == null){return;}//was sent by command block or something, ignore it
 		
-		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0){return;}
+		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
+		{
+			Util.addChatMessage(player, "place.stair.empty");//TODO: lang file should get this
+			return;
+		}
 		
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
-		if(pblock == null){return;}
-			
+		if(pblock == null)
+		{
+			Util.addChatMessage(player, "place.stair.empty");//TODO: lang file should get this
+			return;
+		}
+		
+		
 		World world = player.worldObj;
 	 
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
@@ -90,11 +99,13 @@ public class CommandPlaceStair implements ICommand
       
         //TODO????????????????????end copypasta
 		 
-		BlockPos off = player.getPosition();
 		boolean goUp = true;	
 		EnumFacing efacing = EnumFacing.getHorizontal( facing/2 );
-		System.out.println(efacing.toString());
-		 
+		//System.out.println(efacing.toString());
+
+        //it starts at eye level, so do down and forward one first
+		BlockPos off = player.getPosition().down().offset(efacing);
+		
 		int numPlaced = 0;
 		for(int i = 1; i < want + 1; i = i + 1)
 		{
