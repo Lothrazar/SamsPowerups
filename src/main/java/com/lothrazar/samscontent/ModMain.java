@@ -217,6 +217,7 @@ public class ModMain
 			event.registerServerCommand(new CommandPlaceFloor());
 		
 		event.registerServerCommand(new CommandPlaceStair());
+		event.registerServerCommand(new CommandPlaceCircle());
 				 
 	}
   
