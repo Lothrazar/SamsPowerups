@@ -15,8 +15,8 @@ import net.minecraft.world.World;
 public class CommandPlaceCircle  implements ICommand
 {
 	public static boolean REQUIRES_OP;  
-	public static int XP_COST_PER_PLACE; 
-	public static int RADIUS_MAX = 8; //TODOfrom config file
+	public static int XP_COST_PER_PLACE=7; //TODO from config file
+	public static int RADIUS_MAX = 8; //TODO from config file
 	private ArrayList<String> aliases = new ArrayList<String>();
   
 	public CommandPlaceCircle()
@@ -67,73 +67,22 @@ public class CommandPlaceCircle  implements ICommand
 
 		if(pblock == null){return;}
 			
-		if(PlaceCmdLib.isAllowed(pblock) == false)
+		if(PlaceLib.isAllowed(pblock) == false)
 		{ 
 			Util.addChatMessage(player, "command.place.notallowed"); 
 			return;
 		}
-		
-		World world = player.worldObj;
-		
-		BlockPos posCurrent;
-		int centerX = (int)player.posX;
-		int centerZ = (int)player.posZ;
-		
-		int height = (int)player.posY - 1;
+
+		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
+
 		int radius = 2;
         if(args.length > 0 && args[0] != null)
         {
         	radius =  Math.min(Integer.parseInt(args[0]), RADIUS_MAX);
         }
-		
-		int z = radius;
-		int x = 0;
-		int d = 2 - (2 * radius);
-		
-		ArrayList<BlockPos> pos = new ArrayList<BlockPos>(); 
-		
-		do 
-		{
-			pos.add(new BlockPos(centerX + x, height, centerZ + z)); 
-	        pos.add(new BlockPos(centerX + x, height, centerZ - z));
-	        pos.add(new BlockPos(centerX - x, height, centerZ + z));
-	        pos.add(new BlockPos(centerX - x, height, centerZ - z));
-	        pos.add(new BlockPos(centerX + z, height, centerZ + x));
-	        pos.add(new BlockPos(centerX + z, height, centerZ - x));
-	        pos.add(new BlockPos(centerX - z, height, centerZ + x));
-	        pos.add(new BlockPos(centerX - z, height, centerZ - x));
-	        
-	        if (d < 0) 
-	        {
-	            d = d + (4 * x) + 6;
-	        } 
-	        else 
-	        {
-	            d = d + 4 * (x - z) + 10;
-	            z--;
-	        }
-	        
-	        x++;
-	    } 
-		while (x <= z);
-		
-		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
+        
+		PlaceLib.circle(sender.getEntityWorld(), player, player.getPosition(), placing, radius, XP_COST_PER_PLACE);
 
-		int numPlaced = 0;
-		
-		for(BlockPos p : pos)
-		{
-			if(world.isAirBlock(p))
-			{
-				world.setBlockState(p, placing);
-				Util.decrHeldStackSize(player);
-	 
-				Util.playSoundAt(player, pblock.stepSound.getPlaceSound());
-				numPlaced++;
-			}
-		}
-		
-        Util.tryDrainXp(player,numPlaced * XP_COST_PER_PLACE);
 	}
 
 	@Override

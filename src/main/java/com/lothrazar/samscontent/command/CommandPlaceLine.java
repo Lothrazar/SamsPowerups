@@ -67,7 +67,7 @@ public class CommandPlaceLine implements ICommand
 		if(pblock == null){return;}
 
 
-		if(PlaceCmdLib.isAllowed(pblock) == false)
+		if(PlaceLib.isAllowed(pblock) == false)
 		{ 
 			Util.addChatMessage(player, "command.place.notallowed"); 
 			return;
@@ -110,7 +110,7 @@ public class CommandPlaceLine implements ICommand
 			numPlaced ++;
 		}
 		
-        Util.tryDrainXp(player,numPlaced * XP_COST_PER_PLACE);
+        Util.drainExp(player,numPlaced * XP_COST_PER_PLACE);
 	}
 	
 	@Override

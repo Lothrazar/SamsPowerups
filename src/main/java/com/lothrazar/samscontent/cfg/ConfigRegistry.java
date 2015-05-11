@@ -455,7 +455,7 @@ public class ConfigRegistry
 		CommandPlaceLine.XP_COST_PER_PLACE = instance.getInt("placeline.xp_cost", category, 1, 0, 64, 
 				"Experience drained each time a block is placed with this command.");
 		
-		PlaceCmdLib.allowedFromConfig = instance.getString("place.filter",category, "minecraft:dirt,samscontent:block_fragile",
+		PlaceLib.allowedFromConfig = instance.getString("place.filter",category, "minecraft:dirt,samscontent:block_fragile",
     			"Filter which blocks can be placed with ALL place commands.  Empty string in this filter means everything is allowed.");
 		 
 		placefloor = instance.getBoolean("placefloor",category, true,

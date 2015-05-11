@@ -89,6 +89,10 @@ public class Util
 	{ 
 		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
 	}
+	public static void playSoundAt(World world,BlockPos pos, String sound)
+	{ 
+		world.playSound(pos.getX(), pos.getY(), pos.getZ(), sound, 1.0F, 1.0F, false);
+	}
 	public static void setBlockIfAir(World world, BlockPos pos, IBlockState state)
 	{
 		if(world.isAirBlock(pos))
@@ -527,9 +531,13 @@ public class Util
 
 	public static void decrHeldStackSize(EntityPlayer entityPlayer) 
 	{
+		decrHeldStackSize(entityPlayer,1);
+	}
+	public static void decrHeldStackSize(EntityPlayer entityPlayer, int by) 
+	{
 		if (entityPlayer.capabilities.isCreativeMode == false)
         {
-			entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
+			entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, by);
         }
 	}
 
@@ -596,7 +604,7 @@ public class Util
 		return xStr +  yStr +  zStr ;
 	}
 
-	public static void tryDrainXp(EntityPlayer player, float f) 
+	public static boolean drainExp(EntityPlayer player, float f) 
 	{
 
 		int level = player.experienceLevel;
@@ -630,8 +638,14 @@ public class Util
 		
 
 		//System.out.println("getLevelForXp   "+getLevelForXp((int)totalExp));
+		if(totalExp - f < 0)
+		{
+			return false;
+		}
 		
 		setXp(player, (int)(totalExp - f));
+		
+		return true;
 		
 	}
 	

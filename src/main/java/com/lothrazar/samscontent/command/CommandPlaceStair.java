@@ -70,7 +70,7 @@ public class CommandPlaceStair implements ICommand
 		}
 
 
-		if(PlaceCmdLib.isAllowed(pblock) == false)
+		if(PlaceLib.isAllowed(pblock) == false)
 		{ 
 			Util.addChatMessage(player, "command.place.notallowed"); 
 			return;
@@ -126,7 +126,7 @@ public class CommandPlaceStair implements ICommand
 			numPlaced ++;
 		}
 		
-        Util.tryDrainXp(player,numPlaced * XP_COST_PER_PLACE);
+        Util.drainExp(player,numPlaced * XP_COST_PER_PLACE);
 	}
 	
 	@Override
