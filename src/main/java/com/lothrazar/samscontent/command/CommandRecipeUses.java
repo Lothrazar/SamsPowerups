@@ -63,7 +63,8 @@ public class CommandRecipeUses  implements ICommand
 		{
 			Util.addChatMessage(player, "command.recipes.empty");
 		}
-		
+
+    	System.out.println("...searching  ");
 		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 		IRecipe recipe;
 		ItemStack recipeResult;
@@ -72,37 +73,56 @@ public class CommandRecipeUses  implements ICommand
 		    recipe = recipes.get(i);
         
 		    recipeResult = recipe.getRecipeOutput();
+		    
+			if( recipeResult == null){continue;}
+		    
+		   // System.out.println( recipeResult.getDisplayName());
 		 
-		    if( recipeResult != null && 
-		    	ItemStack.areItemStacksEqual(held, recipeResult))
-		    {
-		       // recipes.remove(i--); 
-		    	//TODO: need a Util.toRecipeString(tmpRecipe);
-		    
-		    	System.out.println(recipeResult.getDisplayName());
-		    }
-		    
+		    //if(ItemStack.areItemStacksEqual(held, recipeResult) == false) {continue;}
+		 
+		    //compare ignoring stack size
+		    if(held.getItem() == recipeResult.getItem() == false){continue;}
+	    	//TODO: need a Util.toRecipeString(tmpRecipe);...perhaps...
+
+
+    		Util.addChatMessage(player, recipeResult.getDisplayName());
+	    	//System.out.println(recipeResult.getDisplayName());
+	 
 		    if(recipe instanceof ShapedRecipes)
 		    {
-		    	ShapedRecipes shaped = (ShapedRecipes)recipe;
+		    	ShapedRecipes r = (ShapedRecipes)recipe;
 		    	
 		    	 
-		    	System.out.println("recipeHeight "+shaped.recipeHeight);
-		    	System.out.println("recipeWidth "+shaped.recipeWidth);
-		    	System.out.println("recipeItems  "+shaped.recipeItems.length);
+		    	//System.out.println("recipeHeight "+r.recipeHeight);
+		    	//System.out.println("recipeWidth "+r.recipeWidth);
+		    	System.out.println("recipeItems  "+r.recipeItems.length);
+		    	
+		    	for(ItemStack is : r.recipeItems)
+		    	{
+
+		    		Util.addChatMessage(player, is.getDisplayName());
+		    	}
 		    }
 		    else if(recipe instanceof ShapelessRecipes)
 			{
-		    	ShapelessRecipes sh = (ShapelessRecipes)recipe;
+		    	ShapelessRecipes r = (ShapelessRecipes)recipe;
 
-		    	System.out.println("shapeless");
+		    	//System.out.println("shapeless");
 		    	
-		    	System.out.println("SHAPELESS recipeItems  "+sh.recipeItems.size());
+		    	System.out.println("SHAPELESS recipeItems  "+r.recipeItems.size());
+		    	
+		    	for(Object o : r.recipeItems)
+		    	{
+		    		if(!(o instanceof ItemStack)){continue;}
+		    		
+		    		ItemStack is = (ItemStack)o;//insde the ShapelessRecipes class, they always cast it
+		    		
+		    		Util.addChatMessage(player, is.getDisplayName());
+		    		
+		    	}
 			}
-		    
-		    
-		}
-		
+		   // break;//because it was found
+	    }
 	}
 
 	@Override

@@ -4,8 +4,6 @@
   
  torch wand? 3 coal blocks is 27. so x 4 torches each is # uses
   
-gold nuggets into xp bottles
-
  world tp blocks: add magic wands that do the same thing?
  
  slabs/stairs for new stone types
@@ -13,6 +11,14 @@ gold nuggets into xp bottles
  netherbrick walls
  
 -command that tells recipes - is there an easy way to search and find them?
+
+
+1.2.1
+-OPTION for /place commands to restrict which blocks are allowed
+   empty filter means all are allowed. Default to My scaffolding, and Dirt, as allowed
+
+-gold nuggets into xp bottles
+
 
 1.2.0 - out
  commands: placeline and placefloor and placestair
