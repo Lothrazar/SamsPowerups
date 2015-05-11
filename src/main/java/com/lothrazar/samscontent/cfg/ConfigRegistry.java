@@ -405,7 +405,10 @@ public class ConfigRegistry
 	private void recipes_new() 
 	{
 		category = "recipes_new";
-
+		
+		cheaper_stairs = instance.getBoolean( "cheaper_stairs",category,true,
+				"Craft stairs in your inventory 2x2 grid.");
+		
 		smelt_gravel = instance.getBoolean( "smelt_gravel",category,true,
 				"Smelt gravel into flint to save on mindless shovel digging.");
 		
@@ -669,4 +672,5 @@ public class ConfigRegistry
 	public boolean emerald_armor;
 	public boolean placestair;
 	public boolean placecircle;
+	public boolean cheaper_stairs;
 }

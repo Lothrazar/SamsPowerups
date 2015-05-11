@@ -68,6 +68,8 @@ public class RecipeRegistry
    		RecipeRegistry.beetroot();
    		
    		RecipeRegistry.experience_bottle();
+
+   		RecipeRegistry.inventory_stairs();
    		
    		if(ModMain.cfg.smelt_gravel)
    		{
@@ -75,6 +77,45 @@ public class RecipeRegistry
    		}
 	}
 	
+	private static void inventory_stairs()//13
+	{
+		if(!ModMain.cfg.cheaper_stairs)  {return;}
+		//the suggestion http://www.reddit.com/r/minecraftsuggestions/comments/35hyg4/make_stairs_not_stupendously_expensive_to_craft/
+		//6 wood stairs
+		small_stairs(Blocks.acacia_stairs,new ItemStack(Blocks.planks,1,Reference.planks_acacia));
+		small_stairs(Blocks.jungle_stairs,new ItemStack(Blocks.planks,1,Reference.planks_jungle) );
+		small_stairs(Blocks.oak_stairs,new ItemStack(Blocks.planks,1,Reference.planks_oak) );
+		small_stairs(Blocks.dark_oak_stairs,new ItemStack(Blocks.planks,1,Reference.planks_darkoak));
+		small_stairs(Blocks.spruce_stairs,new ItemStack(Blocks.planks,1,Reference.planks_spruce) );
+		small_stairs(Blocks.birch_stairs,new ItemStack(Blocks.planks,1,Reference.planks_birch) );
+		
+		small_stairs(Blocks.stone_brick_stairs,new ItemStack(Blocks.stonebrick));
+		
+		small_stairs(Blocks.stone_stairs,new ItemStack(Blocks.cobblestone));
+		 
+		small_stairs(Blocks.brick_stairs,new ItemStack(Blocks.brick_block));
+		
+		small_stairs(Blocks.quartz_stairs,new ItemStack(Blocks.quartz_block));
+		
+		small_stairs(Blocks.nether_brick_stairs,new ItemStack(Blocks.nether_brick));
+		
+		small_stairs(Blocks.sandstone_stairs,new ItemStack(Blocks.sandstone));
+
+		small_stairs(Blocks.red_sandstone_stairs,new ItemStack(Blocks.red_sandstone));
+		
+	}
+	private static void small_stairs(Block stair, ItemStack input) 
+	{
+		GameRegistry.addRecipe(new ItemStack(stair,4),
+				"s ",
+				"ss", 
+				's', input);
+		GameRegistry.addRecipe(new ItemStack(stair,4),
+				" s",
+				"ss", 
+				's', input);
+	}
+
 	private static void quartsFromPrismarine() 
 	{
 		if(!ModMain.cfg.quartz_from_prismarine)  {return;}
