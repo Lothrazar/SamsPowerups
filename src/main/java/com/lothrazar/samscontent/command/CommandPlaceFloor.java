@@ -66,7 +66,8 @@ public class CommandPlaceFloor implements ICommand
 
 		if(pblock == null){return;}
 
-		if(PlaceCmdLib.allowed.size() > 0 && PlaceCmdLib.allowed.contains(pblock) == false)
+
+		if(PlaceCmdLib.isAllowed(pblock) == false)
 		{ 
 			Util.addChatMessage(player, "command.place.notallowed"); 
 			return;

@@ -18,4 +18,12 @@ public class PlaceCmdLib
 		if(PlaceCmdLib.allowed.size() == 0)
 			PlaceCmdLib.allowed = Util.getBlockListFromCSV(PlaceCmdLib.allowedFromConfig); 
 	}
+
+	public static boolean isAllowed(Block pblock)
+	{
+		return PlaceCmdLib.allowed.size() == 0 || PlaceCmdLib.allowed.contains(pblock);
+	}
+	
+	
+	
 }

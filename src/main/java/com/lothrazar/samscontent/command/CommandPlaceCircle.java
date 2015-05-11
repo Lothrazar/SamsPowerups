@@ -18,9 +18,7 @@ public class CommandPlaceCircle  implements ICommand
 	public static int XP_COST_PER_PLACE; 
 	public static int RADIUS_MAX = 8; //TODOfrom config file
 	private ArrayList<String> aliases = new ArrayList<String>();
-	private static ArrayList<Block> allowed = new ArrayList<Block>();
-	public static String allowedFromConfig = "";
-
+  
 	public CommandPlaceCircle()
 	{
 		this.aliases.add(getName().toUpperCase());
@@ -69,7 +67,7 @@ public class CommandPlaceCircle  implements ICommand
 
 		if(pblock == null){return;}
 			
-		if(PlaceCmdLib.allowed.size() > 0 && PlaceCmdLib.allowed.contains(pblock) == false)
+		if(PlaceCmdLib.isAllowed(pblock) == false)
 		{ 
 			Util.addChatMessage(player, "command.place.notallowed"); 
 			return;
