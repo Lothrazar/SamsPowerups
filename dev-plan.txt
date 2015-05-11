@@ -19,6 +19,8 @@
 
 -gold nuggets into xp bottles
 
+-inventory stairs (in crafting table, 3 blocks for 4 stairs)
+
 
 1.2.0 - out
  commands: placeline and placefloor and placestair
@@ -42,7 +44,10 @@
   
 Possible Future Features:
   
+  -craft packed ice with regular for more packed
+  -simlar with podzol
   
+  -beter placeable pumpkins/fence gates
   
  Back in january i added custom slabs, doors, fences, trapdoors, and such. revisit these, if just for
  the experience of the code, of having it done, even if I dont want to use it

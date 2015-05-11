@@ -7,6 +7,7 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
@@ -65,63 +66,57 @@ public class CommandRecipeUses  implements ICommand
 		}
 
     	System.out.println("...searching  ");
+		Util.addChatMessage(player, "0 1 2");
+		Util.addChatMessage(player, "3 4 5");
+		Util.addChatMessage(player, "6 7 8");
 		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
-		IRecipe recipe;
+
+		ArrayList<Item> displayed = new ArrayList<Item>();
+		
 		ItemStack recipeResult;
-		for (int i = 0; i < recipes.size(); i++)
+		for (IRecipe recipe : recipes)
 		{
-		    recipe = recipes.get(i);
-        
 		    recipeResult = recipe.getRecipeOutput();
-		    
-			if( recipeResult == null){continue;}
-		    
-		   // System.out.println( recipeResult.getDisplayName());
-		 
-		    //if(ItemStack.areItemStacksEqual(held, recipeResult) == false) {continue;}
-		 
-		    //compare ignoring stack size
+
+		    //compare ignoring stack size. not null, and the same item
+			if( recipeResult == null || recipeResult.getItem() == null){continue;} 
 		    if(held.getItem() == recipeResult.getItem() == false){continue;}
-	    	//TODO: need a Util.toRecipeString(tmpRecipe);...perhaps...
-
-
-    		Util.addChatMessage(player, recipeResult.getDisplayName());
-	    	//System.out.println(recipeResult.getDisplayName());
-	 
+	    	
+    		ItemStack is;
+    		
 		    if(recipe instanceof ShapedRecipes)
 		    {
 		    	ShapedRecipes r = (ShapedRecipes)recipe;
 		    	
-		    	 
-		    	//System.out.println("recipeHeight "+r.recipeHeight);
-		    	//System.out.println("recipeWidth "+r.recipeWidth);
-		    	System.out.println("recipeItems  "+r.recipeItems.length);
-		    	
-		    	for(ItemStack is : r.recipeItems)
-		    	{
+		    	//System.out.println("recipeItems  "+r.recipeItems.length);
 
-		    		Util.addChatMessage(player, is.getDisplayName());
+	    		Util.addChatMessage(player, recipeResult.getDisplayName());
+		    	for(int i = 0; i < r.recipeItems.length; i++)
+		    	{
+		    		is = r.recipeItems[i];
+		    		if(is != null)
+		    			Util.addChatMessage(player, i+" : "+is.getDisplayName());
 		    	}
 		    }
 		    else if(recipe instanceof ShapelessRecipes)
 			{
 		    	ShapelessRecipes r = (ShapelessRecipes)recipe;
-
-		    	//System.out.println("shapeless");
-		    	
-		    	System.out.println("SHAPELESS recipeItems  "+r.recipeItems.size());
-		    	
-		    	for(Object o : r.recipeItems)
+ 
+	    		Util.addChatMessage(player, recipeResult.getDisplayName());
+	    		
+		    	for(int i = 0; i < r.recipeItems.size(); i++) 
 		    	{
-		    		if(!(o instanceof ItemStack)){continue;}
+		    		Object o = r.recipeItems.get(i);
+		    		if(o == null || !(o instanceof ItemStack)){continue;}
 		    		
-		    		ItemStack is = (ItemStack)o;//insde the ShapelessRecipes class, they always cast it
+		    		is = (ItemStack)o;//insde the ShapelessRecipes class, they always cast it
 		    		
 		    		Util.addChatMessage(player, is.getDisplayName());
 		    		
 		    	}
 			}
-		   // break;//because it was found
+		    
+    		Util.addChatMessage(player, " --- ");
 	    }
 	}
 
