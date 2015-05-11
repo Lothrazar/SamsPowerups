@@ -22,6 +22,10 @@ import net.minecraft.util.ChatComponentTranslation;
 public class CommandKit implements ICommand
 { 
 	public static boolean REQUIRES_OP;
+	//public static ArrayList<String> contents = new ArrayList<String>();
+	private static ArrayList<Item> giveItems = new ArrayList<Item>();
+	private static String giveItemsFromConfig = "";
+	
 	private ArrayList<String> aliases = new ArrayList<String>();
 
 	public CommandKit()
@@ -51,8 +55,6 @@ public class CommandKit implements ICommand
 	{ 
 		return aliases;
 	}
-	
-	public static ArrayList<String> contents = new ArrayList<String>();
 
 	@Override
 	public void execute(ICommandSender sender, String[] args) throws CommandException
@@ -99,10 +101,10 @@ public class CommandKit implements ICommand
 	private static void translateCSV()
 	{
 		//do this on the fly, could be items not around yet during config change
-		giveItems = Util.getItemListFromCSV(giveItemsFromConfig); 
+		if(giveItems.size() == 0)
+			giveItems = Util.getItemListFromCSV(giveItemsFromConfig); 
 	}
-	private static ArrayList<Item> giveItems = new ArrayList<Item>();
-	private static String giveItemsFromConfig = "";
+	
 	public static void setItemsFromString(String csv)
 	{ 
 		giveItemsFromConfig = csv;

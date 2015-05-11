@@ -456,6 +456,9 @@ public class ConfigRegistry
 		CommandPlaceLine.XP_COST_PER_PLACE = instance.getInt("placeline.xp_cost", category, 1, 0, 64, 
 				"Experience drained each time a block is placed with this command.");
 		
+		CommandPlaceLine.allowedFromConfig = instance.getString("placeline.filter",category, "minecraft:dirt,samscontent:block_fragile",
+    			"Filter which blocks can be placed with this command.  Empty string in this filter means everything is allowed.");
+		 
 		placefloor = instance.getBoolean("placefloor",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
 		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placefloor.needs_op",category, true,
@@ -471,9 +474,7 @@ public class ConfigRegistry
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		CommandPlaceStair.XP_COST_PER_PLACE = instance.getInt("placestair.xp_cost", category, 1, 0, 64, 
 				"Experience drained each time a block is placed with this command.");
-		/*CommandPlaceStair.RADIUS_MAX = instance.getInt("placestair.radius_max", category, 8, 1, 64, 
-				"Maximum radius that you can specify as an argument.");
-		*/
+	
 		placecircle = instance.getBoolean("placecircle",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
 		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placecircle.needs_op",category, true,

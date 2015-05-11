@@ -2,15 +2,14 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.lothrazar.util.Util;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.Item;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -20,6 +19,8 @@ public class CommandPlaceLine implements ICommand
 	public static boolean REQUIRES_OP=false;  
 	public static int XP_COST_PER_PLACE = 1; 
 	private ArrayList<String> aliases = new ArrayList<String>();
+	private static ArrayList<Block> allowed = new ArrayList<Block>();
+	public static String allowedFromConfig = "";
 	
 	public CommandPlaceLine()
 	{
@@ -57,6 +58,7 @@ public class CommandPlaceLine implements ICommand
 		
 		if(player == null){return;}//was sent by command block or something, ignore it
 		
+		
 		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
 		{
 			Util.addChatMessage(player, "command.place.empty"); 
@@ -65,7 +67,15 @@ public class CommandPlaceLine implements ICommand
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
 		if(pblock == null){return;}
+
+		if(allowed.size() > 0 && allowed.contains(pblock) == false)
+		{
 			
+			//TODO: test here before pushing to all
+			Util.addChatMessage(player, "command.place.notallowed"); 
+			return;
+		}
+		
 		World world = player.worldObj;
 	
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
@@ -122,5 +132,11 @@ public class CommandPlaceLine implements ICommand
 	public boolean isUsernameIndex(String[] args, int index) 
 	{
 		return false;
+	}
+	private static void translateCSV()
+	{
+		//do this on the fly, could be items not around yet during config change
+		if(allowed.size() == 0)
+			allowed = Util.getBlockListFromCSV(allowedFromConfig); 
 	}
 }
