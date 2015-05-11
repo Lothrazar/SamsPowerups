@@ -19,8 +19,6 @@ public class CommandPlaceLine implements ICommand
 	public static boolean REQUIRES_OP=false;  
 	public static int XP_COST_PER_PLACE = 1; 
 	private ArrayList<String> aliases = new ArrayList<String>();
-	private static ArrayList<Block> allowed = new ArrayList<Block>();
-	public static String allowedFromConfig = "";
 	
 	public CommandPlaceLine()
 	{
@@ -68,10 +66,8 @@ public class CommandPlaceLine implements ICommand
 
 		if(pblock == null){return;}
 
-		if(allowed.size() > 0 && allowed.contains(pblock) == false)
-		{
-			
-			//TODO: test here before pushing to all
+		if(PlaceCmdLib.allowed.size() > 0 && PlaceCmdLib.allowed.contains(pblock) == false)
+		{ 
 			Util.addChatMessage(player, "command.place.notallowed"); 
 			return;
 		}
@@ -132,11 +128,5 @@ public class CommandPlaceLine implements ICommand
 	public boolean isUsernameIndex(String[] args, int index) 
 	{
 		return false;
-	}
-	private static void translateCSV()
-	{
-		//do this on the fly, could be items not around yet during config change
-		if(allowed.size() == 0)
-			allowed = Util.getBlockListFromCSV(allowedFromConfig); 
 	}
 }

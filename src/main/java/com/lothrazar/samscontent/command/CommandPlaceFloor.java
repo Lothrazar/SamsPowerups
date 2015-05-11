@@ -2,9 +2,7 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.lothrazar.util.Util;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
 import net.minecraft.block.state.IBlockState;
@@ -67,7 +65,13 @@ public class CommandPlaceFloor implements ICommand
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
 		if(pblock == null){return;}
-			
+
+		if(PlaceCmdLib.allowed.size() > 0 && PlaceCmdLib.allowed.contains(pblock) == false)
+		{ 
+			Util.addChatMessage(player, "command.place.notallowed"); 
+			return;
+		}
+		
 		World world = player.worldObj;
 		 
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 

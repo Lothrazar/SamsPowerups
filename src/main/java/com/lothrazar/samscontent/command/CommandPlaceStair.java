@@ -2,9 +2,7 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.lothrazar.util.Util;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.CommandException;
@@ -68,6 +66,12 @@ public class CommandPlaceStair implements ICommand
 		if(pblock == null)
 		{
 			Util.addChatMessage(player, "command.place.empty");//TODO: lang file should get this
+			return;
+		}
+
+		if(PlaceCmdLib.allowed.size() > 0 && PlaceCmdLib.allowed.contains(pblock) == false)
+		{ 
+			Util.addChatMessage(player, "command.place.notallowed"); 
 			return;
 		}
 		

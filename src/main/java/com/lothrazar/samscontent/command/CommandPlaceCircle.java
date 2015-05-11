@@ -2,9 +2,7 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import com.lothrazar.util.Util;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.CommandException;
@@ -20,6 +18,8 @@ public class CommandPlaceCircle  implements ICommand
 	public static int XP_COST_PER_PLACE; 
 	public static int RADIUS_MAX = 8; //TODOfrom config file
 	private ArrayList<String> aliases = new ArrayList<String>();
+	private static ArrayList<Block> allowed = new ArrayList<Block>();
+	public static String allowedFromConfig = "";
 
 	public CommandPlaceCircle()
 	{
@@ -69,6 +69,12 @@ public class CommandPlaceCircle  implements ICommand
 
 		if(pblock == null){return;}
 			
+		if(PlaceCmdLib.allowed.size() > 0 && PlaceCmdLib.allowed.contains(pblock) == false)
+		{ 
+			Util.addChatMessage(player, "command.place.notallowed"); 
+			return;
+		}
+		
 		World world = player.worldObj;
 		
 		BlockPos posCurrent;

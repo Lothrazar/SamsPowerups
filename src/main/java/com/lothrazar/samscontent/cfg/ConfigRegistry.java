@@ -5,7 +5,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;  
-
 import com.lothrazar.samscontent.command.*;  
 import com.lothrazar.samscontent.item.*; 
 import com.lothrazar.util.Reference;
@@ -456,8 +455,8 @@ public class ConfigRegistry
 		CommandPlaceLine.XP_COST_PER_PLACE = instance.getInt("placeline.xp_cost", category, 1, 0, 64, 
 				"Experience drained each time a block is placed with this command.");
 		
-		CommandPlaceLine.allowedFromConfig = instance.getString("placeline.filter",category, "minecraft:dirt,samscontent:block_fragile",
-    			"Filter which blocks can be placed with this command.  Empty string in this filter means everything is allowed.");
+		PlaceCmdLib.allowedFromConfig = instance.getString("place.filter",category, "minecraft:dirt,samscontent:block_fragile",
+    			"Filter which blocks can be placed with ALL place commands.  Empty string in this filter means everything is allowed.");
 		 
 		placefloor = instance.getBoolean("placefloor",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
