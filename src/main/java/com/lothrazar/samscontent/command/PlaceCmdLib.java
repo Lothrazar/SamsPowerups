@@ -21,6 +21,8 @@ public class PlaceCmdLib
 
 	public static boolean isAllowed(Block pblock)
 	{
+		translateCSV();
+		
 		return PlaceCmdLib.allowed.size() == 0 || PlaceCmdLib.allowed.contains(pblock);
 	}
 	
