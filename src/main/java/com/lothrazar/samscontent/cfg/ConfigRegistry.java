@@ -407,7 +407,7 @@ public class ConfigRegistry
 		category = "recipes_new";
 		
 		cheaper_stairs = instance.getBoolean( "cheaper_stairs",category,true,
-				"Craft stairs in your inventory 2x2 grid.");
+				"Craft stairs in your inventory 2x2 grid.  This recipe is cheaper and more logical than the original.");
 		
 		smelt_gravel = instance.getBoolean( "smelt_gravel",category,true,
 				"Smelt gravel into flint to save on mindless shovel digging.");
@@ -445,6 +445,8 @@ public class ConfigRegistry
 	private void commands() 
 	{
 		category = "commands";
+//TODO:-OPTION for /place commands to restrict which blocks are allowed
+//		   empty filter means all are allowed. Default to My scaffolding, and Dirt, as allowed
 
 		placeline = instance.getBoolean("placeline",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
