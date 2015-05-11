@@ -107,6 +107,7 @@ public class RecipeRegistry
 		experience_stripe(Items.porkchop);
 		experience_stripe(Items.beef);
 		experience_stripe(Items.chicken);
+		experience_stripe(Items.gold_nugget);    
 		experience_stripe(Items.rabbit);    
 		experience_stripe(new ItemStack(Items.dye,1,Reference.dye_incsac)); 
 		
