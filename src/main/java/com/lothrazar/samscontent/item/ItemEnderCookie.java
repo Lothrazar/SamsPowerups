@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -16,6 +17,7 @@ public class ItemEnderCookie  extends ItemFood
 	{ 
 		super(1,false); 
 		this.setCreativeTab(ModMain.tabSamsContent);
+		this.setPotionEffect(Potion.confusion.id, 30, 0, 0.5F);
 	}
 
 	@Override
