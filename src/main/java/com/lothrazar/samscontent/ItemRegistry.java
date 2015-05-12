@@ -58,11 +58,19 @@ public class ItemRegistry
 	public static ItemSoulstone soulstone;
 	public static ItemSoulstone soulstone_persist;
 	public static ItemFoodGhost apple_ghost;
+	public static ItemEnderCookie ender_cookie;
 	
 	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 2, 32, 12F, 0F, 22);
 	
 	public static void registerItems()
 	{   
+		if(ModMain.cfg.ender_cookie)
+		{
+			ender_cookie = new ItemEnderCookie();
+			ItemRegistry.registerItem(ender_cookie, "ender_cookie");
+			ItemEnderCookie.addRecipe();
+		}
+		
 		if(ModMain.cfg.emerald_armor)
 		{
 			//thanks for help: http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-tools-swords/

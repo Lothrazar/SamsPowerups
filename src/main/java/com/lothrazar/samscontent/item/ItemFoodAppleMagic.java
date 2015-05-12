@@ -30,7 +30,6 @@ import net.minecraftforge.common.config.Property;
 public class ItemFoodAppleMagic extends ItemFood
 {  
 	private boolean hasEffect = false;
-	//private static int FLYING_COUNT_PER_EAT = 1;//num of ticks
 	private ArrayList<Integer> potionIds;
 	private ArrayList<Integer> potionDurations;
 	private ArrayList<Integer> potionAmplifiers;

@@ -62,7 +62,7 @@ public class CommandWorldHome  implements ICommand
 		//so we need to safely push the player up out of any blocks they are in
 		
 		Util.teleportWallSafe(player, world, world.getSpawnPoint()); 
-		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);
+		Util.playSoundAt(player,  "mob.endermen.portal");
 	}
  
 	@Override

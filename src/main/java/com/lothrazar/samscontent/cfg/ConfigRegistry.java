@@ -303,6 +303,9 @@ public class ConfigRegistry
 	{
 		category = "items";
 		
+		ender_cookie = instance.getBoolean("ender_cookie",category, true,
+				"Teleports you to worldspawn when eaten.");  
+		  
 		emerald_armor = instance.getBoolean("emerald_armor",category, true,
 				"Adds a full set of emerald armor, that is functional the exact same as gold (same durability, enchantability, etc).");  
 		  
@@ -666,4 +669,5 @@ public class ConfigRegistry
 	public boolean placestair;
 	public boolean placecircle;
 	public boolean cheaper_stairs;
+	public boolean ender_cookie;
 }
