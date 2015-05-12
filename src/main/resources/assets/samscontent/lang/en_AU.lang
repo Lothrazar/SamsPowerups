@@ -65,6 +65,7 @@ potion.ender=Ender Aura
 potion.frozen=Frosted
 itemGroup.tabSamsContent=Builder's Powerups
 tile.block_fragile.name=Fragile Scaffolding
+item.ender_cookie.name=Ender Cookie
 item.emerald_sword.name=Emerald Sword
 item.emerald_helmet.name=Emerald Helmet
 item.emerald_chestplate.name=Emerald Chestplate
