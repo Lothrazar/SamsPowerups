@@ -24,6 +24,8 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	private WorldGenerator genClay;  
 	private WorldGenerator genSand;  
 	private WorldGenerator genDirt;  
+
+	private WorldGenerator genGold;  
 	
 	private final int MIN_HEIGHT = 20; 
 	private final int MAX_HEIGHT = 128;
@@ -33,6 +35,9 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModMain.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModMain.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	
+	    this.genGold = new WorldGenMinable(Blocks.gold_ore.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.netherrack));
+	   
 	}
 	 
 	@Override
@@ -47,6 +52,11 @@ public class WorldGeneratorOcean implements IWorldGenerator
 			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE,
 					ModMain.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
+		if(world.provider.getDimensionId() == Reference.Dimension.nether) 
+		{ 
+			this.run(this.genGold, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
+					ModMain.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT); 
+		}
 	}
 	
 	private void run(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) 
@@ -67,9 +77,11 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	        
 	        pos = new BlockPos(x, y, z);
 	        biome = world.getBiomeGenForCoords(pos);
- 
+	         
 	        if( biome == BiomeGenBase.ocean || 
-	        	biome == BiomeGenBase.deepOcean)
+	        	biome == BiomeGenBase.deepOcean 
+	        	||biome==BiomeGenBase.hell//TODO: a seperate way/class for the nether?
+	        	)
 	        {  
 	        	generator.generate(world, rand, pos);  
 	        }
