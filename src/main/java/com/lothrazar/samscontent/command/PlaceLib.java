@@ -178,7 +178,7 @@ public class PlaceLib
    
 	}
 
-	public static void stairway(World world, EntityPlayer player,BlockPos position, IBlockState placing, int want, int skip)
+	public static void stairway(World world, EntityPlayer player,BlockPos position, IBlockState placing, int want)
 	{ 
 		boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
     
@@ -189,7 +189,7 @@ public class PlaceLib
         //it starts at eye level, so do down and forward one first
 		BlockPos posCurrent = player.getPosition().down().offset(pfacing);
 		
-		for(int i = 1; i < want + 1; i = i + skip)
+		for(int i = 1; i < want + 1; i++)
 		{
 			if(goVert)
 			{

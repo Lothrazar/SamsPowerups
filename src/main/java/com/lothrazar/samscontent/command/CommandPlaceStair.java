@@ -39,7 +39,7 @@ public class CommandPlaceStair implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + " <qty> [skip]";
+		return "/"+getName() + " <qty>";
 	}
 
 	@Override
@@ -74,21 +74,7 @@ public class CommandPlaceStair implements ICommand
 			return;
 		}
 		 
-        int skip = 1;
-        if(args.length > 1 && args[1] != null)
-        {
-    		try
-    		{
-            	skip =  Math.max(Integer.parseInt(args[1]), 1);
-    		}
-    		catch (NumberFormatException e)
-    		{
-    			Util.addChatMessage(player, getCommandUsage(sender));
-    			return;
-    		}
-        }
-
-        PlaceLib.stairway(player.worldObj,player,player.getPosition(),placing,want,skip);       
+        PlaceLib.stairway(player.worldObj,player,player.getPosition(),placing,want);       
 	}
 	
 	@Override
