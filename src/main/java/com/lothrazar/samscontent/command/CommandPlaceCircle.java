@@ -9,13 +9,13 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 public class CommandPlaceCircle  implements ICommand
 {
-	public static boolean REQUIRES_OP;  
-	public static int XP_COST_PER_PLACE=7; //TODO from config file
+	public static boolean REQUIRES_OP;   
 	public static int RADIUS_MAX = 10; //TODO from config file
 	public static int RADIUS_MIN = 2; //TODO from config file
 	private ArrayList<String> aliases = new ArrayList<String>();
@@ -58,11 +58,12 @@ public class CommandPlaceCircle  implements ICommand
 		if(PlaceLib.canSenderPlace(sender) == false) {return;}
 
 		EntityPlayer player = (EntityPlayer)sender;
+		ItemStack held = player.inventory.getCurrentItem();
 
-		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
-		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
+		IBlockState placing = Block.getBlockFromItem(held.getItem()).getStateFromMeta(held.getMetadata());
 
 		int radius = 2;
+		
         if(args.length > 0 && args[0] != null)
         {
         	radius = Integer.parseInt(args[0]);
@@ -70,8 +71,7 @@ public class CommandPlaceCircle  implements ICommand
         	if(radius < RADIUS_MIN) radius = RADIUS_MIN;
         }
                 
-		PlaceLib.circle(player.worldObj, player, player.getPosition(), placing, radius, XP_COST_PER_PLACE);
-
+		PlaceLib.circle(player.worldObj, player, player.getPosition(), placing, radius);
 	}
 
 	@Override

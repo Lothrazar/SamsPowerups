@@ -9,14 +9,14 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class CommandPlaceStair implements ICommand
 {
-	public static boolean REQUIRES_OP;  
-	public static int XP_COST_PER_PLACE = 1;//TODO: CONFIG 
+	public static boolean REQUIRES_OP;   
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandPlaceStair()
@@ -54,15 +54,14 @@ public class CommandPlaceStair implements ICommand
 		if(PlaceLib.canSenderPlace(sender) == false) {return;}
 
 		EntityPlayer player = (EntityPlayer)sender;
+		ItemStack held = player.inventory.getCurrentItem();
 		
-		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
- 
-		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
+		IBlockState placing = Block.getBlockFromItem(held.getItem()).getStateFromMeta(held.getMetadata());
 
 		int want = player.inventory.getCurrentItem().stackSize;
         if(args.length > 0 && args[0] != null)
         {
-        	want =  Math.min(Integer.parseInt(args[0]), player.inventory.getCurrentItem().stackSize);
+        	want =  Math.min(Integer.parseInt(args[0]), held.stackSize);
         }
         int skip = 1;
         if(args.length > 1 && args[1] != null)
@@ -70,8 +69,7 @@ public class CommandPlaceStair implements ICommand
         	skip =  Math.max(Integer.parseInt(args[1]), 1);
         }
 
-        PlaceLib.stairway(player.worldObj,player,player.getPosition(),placing,want,skip,XP_COST_PER_PLACE);
-        
+        PlaceLib.stairway(player.worldObj,player,player.getPosition(),placing,want,skip);       
 	}
 	
 	@Override
@@ -81,7 +79,7 @@ public class CommandPlaceStair implements ICommand
 	}
 
 	@Override
-	public List addTabCompletionOptions(ICommandSender sender, String[] args,			BlockPos pos) 
+	public List addTabCompletionOptions(ICommandSender sender, String[] args, BlockPos pos) 
 	{
 		return null;
 	}

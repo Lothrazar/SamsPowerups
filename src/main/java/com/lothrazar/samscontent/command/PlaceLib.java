@@ -20,6 +20,7 @@ public class PlaceLib
 	//TODO: should xp cost be here as well?
 	public static ArrayList<Block> allowed = new ArrayList<Block>();
 	public static String allowedFromConfig = "";
+	public static int XP_COST_PER_PLACE;
 
 	public static boolean canSenderPlace(ICommandSender sender)
 	{
@@ -63,23 +64,21 @@ public class PlaceLib
 		return PlaceLib.allowed.size() == 0 || PlaceLib.allowed.contains(pblock);
 	}
 	
-	private static boolean tryDrainExp(World world, EntityPlayer player, BlockPos pos, int xpRequired)
+	private static boolean tryDrainExp(World world, EntityPlayer player, BlockPos pos)
 	{
-		if(xpRequired > 0) //do nothing if we cannot pay the cost
+		if(XP_COST_PER_PLACE > 0) //do nothing if we cannot pay the cost
 		{
-			if(Util.drainExp(player, xpRequired) == false)
+			if(Util.drainExp(player, XP_COST_PER_PLACE) == false)
 			{
 				Util.addChatMessage(player, "command.place.exp"); 
 				return false;//could not drain xp, so not valid
-			}
-			else
-				System.out.println(" drained xp "+xpRequired);
+			} 
 		}
 		
 		return true;
 	}
 	
-	public static void circle(World world, EntityPlayer player, BlockPos pos, IBlockState placing, int radius, int costPerBlock) 
+	public static void circle(World world, EntityPlayer player, BlockPos pos, IBlockState placing, int radius) 
 	{
 		int centerX = pos.getX();
 		int centerZ = pos.getZ();
@@ -125,7 +124,7 @@ public class PlaceLib
 			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
 			
 
-			if(tryDrainExp(world,player,p,costPerBlock) == false){break;}
+			if(tryDrainExp(world,player,p) == false){break;}
 			
 			world.setBlockState(p, placing);
 			
@@ -135,7 +134,7 @@ public class PlaceLib
 		}
 	}
 
-	public static void square(World world, EntityPlayer player, BlockPos pos, IBlockState placing, int radius, int costPerBlock)
+	public static void square(World world, EntityPlayer player, BlockPos pos, IBlockState placing, int radius)
 	{
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
@@ -164,7 +163,7 @@ public class PlaceLib
 				//but for the next 2 checks, halt if we run out of blocks/cost
 				if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
 				
-				if(tryDrainExp(world,player,posCurrent,costPerBlock) == false){break;}
+				if(tryDrainExp(world,player,posCurrent) == false){break;}
 				
 				world.setBlockState(posCurrent, placing);
 				Util.decrHeldStackSize(player);
@@ -176,7 +175,7 @@ public class PlaceLib
    
 	}
 
-	public static void stairway(World world, EntityPlayer player,BlockPos position, IBlockState placing, int want, int skip,int costPerBlock)
+	public static void stairway(World world, EntityPlayer player,BlockPos position, IBlockState placing, int want, int skip)
 	{ 
 		boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
     
@@ -206,7 +205,7 @@ public class PlaceLib
 			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
 			
 			
-			if(tryDrainExp(world,player,posCurrent,costPerBlock) == false){break;}
+			if(tryDrainExp(world,player,posCurrent) == false){break;}
 			
 			world.setBlockState(posCurrent, placing);
 			
@@ -216,7 +215,7 @@ public class PlaceLib
 		}
 	}
 	
-	public static void line(World world, EntityPlayer player,BlockPos pos, IBlockState placing, int want, int skip,int costPerBlock)
+	public static void line(World world, EntityPlayer player,BlockPos pos, IBlockState placing, int want, int skip)
 	{
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
  
@@ -233,7 +232,7 @@ public class PlaceLib
 			//but for the next 2 checks, halt if we run out of blocks/cost
 			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
 			
-			if(tryDrainExp(world,player,posCurrent,costPerBlock) == false){break;}
+			if(tryDrainExp(world,player,posCurrent) == false){break;}
 			
 			world.setBlockState(posCurrent, placing);
 			
