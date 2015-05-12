@@ -39,7 +39,7 @@ public class CommandPlaceStair implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + "<qty> <skip=1>";
+		return "/"+getName() + " <qty> [skip]";
 	}
 
 	@Override
@@ -56,10 +56,7 @@ public class CommandPlaceStair implements ICommand
 		EntityPlayer player = (EntityPlayer)sender;
 		
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
-
-		World world = player.worldObj;
-	 
-       
+ 
 		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
 		int want = player.inventory.getCurrentItem().stackSize;
@@ -73,7 +70,7 @@ public class CommandPlaceStair implements ICommand
         	skip =  Math.max(Integer.parseInt(args[1]), 1);
         }
 
-        PlaceLib.stairway(world,player,player.getPosition(),placing,want,skip,XP_COST_PER_PLACE);
+        PlaceLib.stairway(player.worldObj,player,player.getPosition(),placing,want,skip,XP_COST_PER_PLACE);
         
 	}
 	

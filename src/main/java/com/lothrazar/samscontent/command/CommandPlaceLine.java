@@ -40,7 +40,7 @@ public class CommandPlaceLine implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + "<qty> <skip=1>";
+		return "/"+getName() + " <qty> [skip]";
 	}
 
 	@Override

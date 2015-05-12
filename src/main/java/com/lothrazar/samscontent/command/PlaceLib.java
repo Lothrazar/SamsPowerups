@@ -34,7 +34,11 @@ public class PlaceLib
 		}
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
-		if(pblock == null){return false;}
+		if(pblock == null)
+		{
+			Util.addChatMessage(player, "command.place.empty"); 
+			return false;
+		}
 			
 		if(PlaceLib.isAllowed(pblock) == false)
 		{ 
@@ -73,6 +77,8 @@ public class PlaceLib
 				Util.addChatMessage(player, "command.place.exp"); 
 				return false;//could not drain xp, so not valid
 			}
+			else
+				System.out.println(" drained xp "+xpRequired);
 		}
 		
 		return true;
@@ -146,35 +152,28 @@ public class PlaceLib
 
 	public static void square(World world, EntityPlayer player, BlockPos pos, IBlockState placing, int radius, int costPerBlock)
 	{
-		//EntityPlayer player = (EntityPlayer)sender;
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
-		//World world = player.worldObj;
-		 
-        boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
-        
-		//IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
-
-	 
-        int x = (int)player.posX;
-		int z = (int)player.posZ;
-		
+        //boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
+     
 		//search in a cube
-		int xMin = x - radius;
-		int xMax = x + radius; 
-		int zMin = z - radius;
-		int zMax = z + radius;
+		int xMin = pos.getX() - radius;
+		int xMax = pos.getX() + radius; 
+		int zMin = pos.getZ() - radius;
+		int zMax = pos.getZ() + radius;
 
-		int y = (int)player.posY - 1;
+		int y = pos.getY();
 		
 		BlockPos posCurrent;
+		System.out.println("square start");
 
 		int numPlaced = 0;
-		for (int xLoop = xMin; xLoop <= xMax; xLoop++)
+		for (int x = xMin; x <= xMax; x++)
 		{ 
-			for (int zLoop = zMin; zLoop <= zMax; zLoop++)
+			for (int z = zMin; z <= zMax; z++)
 			{
-				posCurrent = new BlockPos(xLoop, y, zLoop);
+				System.out.println(x+" "+z);
+				posCurrent = new BlockPos(x, y, z);
 				
 				if(payExpAndCheckValid(world,player,posCurrent,costPerBlock) == false){break;}
 				 
@@ -234,24 +233,17 @@ public class PlaceLib
 		BlockPos off;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : Util.getPlayerFacing(player);
 		
-		int numPlaced = 0;
 		for(int i = 1; i < want + 1; i = i + skip)
 		{
 			off = player.getPosition().offset(efacing, i);
 			
-			if(world.isAirBlock(off) == false){break;}
-			//halted, do not continue the path
+			if(payExpAndCheckValid(world,player,off,costPerBlock) == false){break;}
 			
 			world.setBlockState(off, placing);
+			
 			Util.decrHeldStackSize(player);
  
 			Util.playSoundAt(player, pblock.stepSound.getPlaceSound());
-			
-			numPlaced ++;
 		}
-		
-        Util.drainExp(player,numPlaced * costPerBlock);
 	}
-
-
 }

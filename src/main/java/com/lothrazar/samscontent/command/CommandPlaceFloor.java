@@ -11,6 +11,7 @@ import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
@@ -41,7 +42,7 @@ public class CommandPlaceFloor implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + "<qty>";
+		return "/"+getName() + " <radius>";
 	}
 
 	@Override
@@ -56,21 +57,30 @@ public class CommandPlaceFloor implements ICommand
 		if(PlaceLib.canSenderPlace(sender) == false) {return;}
 
 		EntityPlayer player = (EntityPlayer)sender;
+		
+		if(args.length == 0)
+		{ 
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+		int radius = 0;
+		
+		try
+		{
+			radius =  Math.min(Integer.parseInt(args[0]), RADIUS_MAX);
+		}
+		catch (NumberFormatException e)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
 		World world = player.worldObj;
 		 
-      //  boolean isLookingUp = (player.getLookVec().yCoord >= 0); 
-        
 		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
-		int radius = 2;
-        if(args.length > 0 && args[0] != null)
-        {
-        	radius =  Math.min(Integer.parseInt(args[0]), RADIUS_MAX);
-        }
-         
-		PlaceLib.square(sender.getEntityWorld(), player, player.getPosition(), placing, radius, XP_COST_PER_PLACE);
+		PlaceLib.square(player.worldObj, player, player.getPosition().down(), placing, radius, XP_COST_PER_PLACE);
 	}
 	
 	@Override

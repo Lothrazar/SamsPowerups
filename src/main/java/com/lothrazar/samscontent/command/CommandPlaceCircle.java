@@ -40,7 +40,7 @@ public class CommandPlaceCircle  implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + "<qty>";
+		return "/"+getName() + " <qty>";
 	}
 
 	@Override
@@ -70,7 +70,7 @@ public class CommandPlaceCircle  implements ICommand
         	if(radius < RADIUS_MIN) radius = RADIUS_MIN;
         }
                 
-		PlaceLib.circle(sender.getEntityWorld(), player, player.getPosition(), placing, radius, XP_COST_PER_PLACE);
+		PlaceLib.circle(player.worldObj, player, player.getPosition(), placing, radius, XP_COST_PER_PLACE);
 
 	}
 
