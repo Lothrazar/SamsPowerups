@@ -25,7 +25,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	private WorldGenerator genSand;  
 	private WorldGenerator genDirt;  
 
-	private WorldGenerator genGold;  
+	//private WorldGenerator genGold;  
 	
 	private final int MIN_HEIGHT = 20; 
 	private final int MAX_HEIGHT = 128;
@@ -36,7 +36,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModMain.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	
-	    this.genGold = new WorldGenMinable(Blocks.gold_ore.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.netherrack));
+	   // this.genGold = new WorldGenMinable(Blocks.gold_ore.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.netherrack));
 	   
 	}
 	 
@@ -52,11 +52,12 @@ public class WorldGeneratorOcean implements IWorldGenerator
 			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE,
 					ModMain.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
+		/*//TODO: maybe oneday?
 		if(world.provider.getDimensionId() == Reference.Dimension.nether) 
 		{ 
 			this.run(this.genGold, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
 					ModMain.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT); 
-		}
+		}*/
 	}
 	
 	private void run(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) 
@@ -80,7 +81,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	         
 	        if( biome == BiomeGenBase.ocean || 
 	        	biome == BiomeGenBase.deepOcean 
-	        	||biome==BiomeGenBase.hell//TODO: a seperate way/class for the nether?
+	        	//||biome==BiomeGenBase.hell//TODO: a seperate way/class for the nether?
 	        	)
 	        {  
 	        	generator.generate(world, rand, pos);  
