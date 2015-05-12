@@ -81,18 +81,20 @@ public class PlaceLib
 		{
 			if(world.isAirBlock(p) == false){continue;}//do not break, fill what we can
 			
+			//but for the next 2 checks, halt if we run out of blocks/cost
+			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {break;}
+			
+			if(costPerBlock > 0) //do nothing if we cannot pay the cost
+			{
+				if(Util.drainExp(player, costPerBlock) == false)
+					break;
+			}
+			
 			world.setBlockState(p, placing);
 			
 			Util.decrHeldStackSize(player);
 
 			Util.playSoundAt(world, pos, placing.getBlock().stepSound.getPlaceSound());
-			
-			System.out.println("drain xp "+costPerBlock);
-			if(costPerBlock > 0)
-			{
-				if(Util.drainExp(player, costPerBlock) == false)
-					break;
-			}
 		}
 	}
 

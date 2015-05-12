@@ -53,26 +53,11 @@ public class CommandPlaceFloor implements ICommand
 	@Override
 	public void execute(ICommandSender sender, String[] args)	throws CommandException 
 	{
+		if(PlaceLib.canSenderPlace(sender) == false) {return;}
+
 		EntityPlayer player = (EntityPlayer)sender;
-		
-		if(player == null){return;}//was sent by command block or something, ignore it
-		
-		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
-		{
-			Util.addChatMessage(player, "command.place.empty"); 
-			return;
-		}
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
-		if(pblock == null){return;}
-
-
-		if(PlaceLib.isAllowed(pblock) == false)
-		{ 
-			Util.addChatMessage(player, "command.place.notallowed"); 
-			return;
-		}
-		
 		World world = player.worldObj;
 		 
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
