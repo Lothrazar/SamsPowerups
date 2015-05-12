@@ -69,7 +69,6 @@ public class CommandPlaceStair implements ICommand
 			return;
 		}
 
-
 		if(PlaceLib.isAllowed(pblock) == false)
 		{ 
 			Util.addChatMessage(player, "command.place.notallowed"); 

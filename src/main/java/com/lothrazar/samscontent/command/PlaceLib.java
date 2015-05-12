@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import com.lothrazar.util.Util;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -92,5 +93,29 @@ public class PlaceLib
 					break;
 			}
 		}
+	}
+
+	public static boolean canSenderPlace(ICommandSender sender)
+	{
+		EntityPlayer player = (EntityPlayer)sender;
+		
+		if(player == null){return false;}//was sent by command block or something, ignore it
+		
+		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
+		{
+			Util.addChatMessage(player, "command.place.empty"); 
+			return false;
+		}
+		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
+
+		if(pblock == null){return false;}
+			
+		if(PlaceLib.isAllowed(pblock) == false)
+		{ 
+			Util.addChatMessage(player, "command.place.notallowed"); 
+			return false;
+		}
+		
+		return true;
 	}
 }

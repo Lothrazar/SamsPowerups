@@ -16,7 +16,8 @@ public class CommandPlaceCircle  implements ICommand
 {
 	public static boolean REQUIRES_OP;  
 	public static int XP_COST_PER_PLACE=7; //TODO from config file
-	public static int RADIUS_MAX = 8; //TODO from config file
+	public static int RADIUS_MAX = 10; //TODO from config file
+	public static int RADIUS_MIN = 2; //TODO from config file
 	private ArrayList<String> aliases = new ArrayList<String>();
   
 	public CommandPlaceCircle()
@@ -54,33 +55,21 @@ public class CommandPlaceCircle  implements ICommand
 		// based on http://stackoverflow.com/questions/1022178/how-to-make-a-circle-on-a-grid
 		//also http://rosettacode.org/wiki/Bitmap/Midpoint_circle_algorithm
 				
+		if(PlaceLib.canSenderPlace(sender) == false) {return;}
+
 		EntityPlayer player = (EntityPlayer)sender;
-		
-		if(player == null){return;}//was sent by command block or something, ignore it
-		
-		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
-		{
-			Util.addChatMessage(player, "command.place.empty"); 
-			return;
-		}
+
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
-
-		if(pblock == null){return;}
-			
-		if(PlaceLib.isAllowed(pblock) == false)
-		{ 
-			Util.addChatMessage(player, "command.place.notallowed"); 
-			return;
-		}
-
 		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
 		int radius = 2;
         if(args.length > 0 && args[0] != null)
         {
-        	radius =  Math.min(Integer.parseInt(args[0]), RADIUS_MAX);
+        	radius = Integer.parseInt(args[0]);
+        	if(radius > RADIUS_MAX) radius = RADIUS_MAX;
+        	if(radius < RADIUS_MIN) radius = RADIUS_MIN;
         }
-        
+                
 		PlaceLib.circle(sender.getEntityWorld(), player, player.getPosition(), placing, radius, XP_COST_PER_PLACE);
 
 	}
