@@ -60,7 +60,7 @@ public class CommandPlaceFloor implements ICommand
 
 		World world = player.worldObj;
 		 
-        boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
+      //  boolean isLookingUp = (player.getLookVec().yCoord >= 0); 
         
 		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
@@ -69,42 +69,8 @@ public class CommandPlaceFloor implements ICommand
         {
         	radius =  Math.min(Integer.parseInt(args[0]), RADIUS_MAX);
         }
-        
-        int x = (int)player.posX;
-		int z = (int)player.posZ;
-		
-		//search in a cube
-		int xMin = x - RADIUS_MAX;
-		int xMax = x + RADIUS_MAX; 
-		int zMin = z - RADIUS_MAX;
-		int zMax = z + RADIUS_MAX;
-
-		int y = (int)player.posY - 1;
-		
-		BlockPos posCurrent;
-
-		int numPlaced = 0;
-		for (int xLoop = xMin; xLoop <= xMax; xLoop++)
-		{ 
-			for (int zLoop = zMin; zLoop <= zMax; zLoop++)
-			{
-				if(player.inventory.getCurrentItem() == null 
-						|| player.inventory.getCurrentItem().stackSize == 0){break;}
-				
-				posCurrent = new BlockPos(xLoop, y, zLoop);
-				 
-				if(world.isAirBlock(posCurrent))
-				{ 
-					world.setBlockState(posCurrent, placing);
-					Util.decrHeldStackSize(player);
-		 
-					Util.playSoundAt(player, pblock.stepSound.getPlaceSound());
-					numPlaced ++;
-				} 
-			}  
-		} //end of the outer loop
-  
-        Util.drainExp(player,numPlaced * XP_COST_PER_PLACE);
+         
+		PlaceLib.square(sender.getEntityWorld(), player, player.getPosition(), placing, radius, XP_COST_PER_PLACE);
 	}
 	
 	@Override

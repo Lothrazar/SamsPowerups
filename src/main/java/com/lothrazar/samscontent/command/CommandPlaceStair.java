@@ -73,7 +73,7 @@ public class CommandPlaceStair implements ICommand
         	skip =  Math.max(Integer.parseInt(args[1]), 1);
         }
 
-        PlaceLib.line(world,player,player.getPosition(),placing,want,skip,XP_COST_PER_PLACE);
+        PlaceLib.stairway(world,player,player.getPosition(),placing,want,skip,XP_COST_PER_PLACE);
         
 	}
 	
