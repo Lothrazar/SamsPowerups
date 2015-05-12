@@ -16,7 +16,7 @@ import net.minecraft.world.World;
 public class CommandPlaceStair implements ICommand
 {
 	public static boolean REQUIRES_OP;  
-	public static int XP_COST_PER_PLACE; 
+	public static int XP_COST_PER_PLACE = 1;//TODO: CONFIG 
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandPlaceStair()
@@ -51,34 +51,15 @@ public class CommandPlaceStair implements ICommand
 	@Override
 	public void execute(ICommandSender sender, String[] args)	throws CommandException 
 	{
+		if(PlaceLib.canSenderPlace(sender) == false) {return;}
+
 		EntityPlayer player = (EntityPlayer)sender;
-		
-		if(player == null){return;}//was sent by command block or something, ignore it
-		
-		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem().stackSize == 0)
-		{
-			Util.addChatMessage(player, "command.place.empty"); 
-			return;
-		}
 		
 		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
 
-		if(pblock == null)
-		{
-			Util.addChatMessage(player, "command.place.empty");//TODO: lang file should get this
-			return;
-		}
-
-		if(PlaceLib.isAllowed(pblock) == false)
-		{ 
-			Util.addChatMessage(player, "command.place.notallowed"); 
-			return;
-		}
-		
 		World world = player.worldObj;
 	 
-        boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
-        
+       
 		IBlockState placing = pblock.getStateFromMeta(player.inventory.getCurrentItem().getMetadata());
 
 		int want = player.inventory.getCurrentItem().stackSize;
@@ -91,41 +72,9 @@ public class CommandPlaceStair implements ICommand
         {
         	skip =  Math.max(Integer.parseInt(args[1]), 1);
         }
-		boolean goUp = true;	
-	
-		EnumFacing pfacing = Util.getPlayerFacing(player);
-		//System.out.println(efacing.toString());
 
-        //it starts at eye level, so do down and forward one first
-		BlockPos off = player.getPosition().down().offset(pfacing);
-		
-		int numPlaced = 0;
-		for(int i = 1; i < want + 1; i = i + skip)
-		{
-			if(goUp)
-			{
-				if(isLookingUp)
-					off = off.up();
-				else
-					off = off.down();
-			}
-			else
-				off = off.offset(pfacing);
-			
-			goUp = (i % 2 == 0);
-
-			if(world.isAirBlock(off) == false){break;}
-			//halted, do not continue the path
-			
-			world.setBlockState(off, placing);
-			Util.decrHeldStackSize(player);
- 
-			Util.playSoundAt(player, pblock.stepSound.getPlaceSound());
-			
-			numPlaced ++;
-		}
-		
-        Util.drainExp(player,numPlaced * XP_COST_PER_PLACE);
+        PlaceLib.line(world,player,player.getPosition(),placing,want,skip,XP_COST_PER_PLACE);
+        
 	}
 	
 	@Override

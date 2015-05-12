@@ -7,6 +7,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class PlaceLib
@@ -117,5 +118,47 @@ public class PlaceLib
 		}
 		
 		return true;
+	}
+
+	public static void line(World world, EntityPlayer player,BlockPos position, IBlockState placing, int want, int skip,int costPerBlock)
+	{ 
+		boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
+    
+
+		boolean goUp = true;	
+	
+		EnumFacing pfacing = Util.getPlayerFacing(player);
+		//System.out.println(efacing.toString());
+
+        //it starts at eye level, so do down and forward one first
+		BlockPos off = player.getPosition().down().offset(pfacing);
+		
+		int numPlaced = 0;
+		for(int i = 1; i < want + 1; i = i + skip)
+		{
+			if(goUp)
+			{
+				if(isLookingUp)
+					off = off.up();
+				else
+					off = off.down();
+			}
+			else
+				off = off.offset(pfacing);
+			
+			goUp = (i % 2 == 0);
+
+			if(world.isAirBlock(off) == false){break;}
+			//halted, do not continue the path
+			
+			world.setBlockState(off, placing);
+			Util.decrHeldStackSize(player);
+ 
+			Util.playSoundAt(player, placing.getBlock().stepSound.getPlaceSound());
+			
+			numPlaced ++;
+		}
+		
+        Util.drainExp(player,numPlaced * costPerBlock);
 	}
 }
