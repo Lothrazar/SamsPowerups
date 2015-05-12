@@ -43,7 +43,7 @@ public class CommandSearchTrades  implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender ic) 
 	{ 
-		return  "/" + getName()+" itemname <qty>";
+		return  "/" + getName()+" <item name> <qty>";
 	}
 
 	@Override
