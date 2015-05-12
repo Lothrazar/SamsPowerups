@@ -63,13 +63,8 @@ public class PlaceLib
 		return PlaceLib.allowed.size() == 0 || PlaceLib.allowed.contains(pblock);
 	}
 	
-	private static boolean payExpAndCheckValid(World world, EntityPlayer player, BlockPos pos, int xpRequired)
+	private static boolean tryDrainExp(World world, EntityPlayer player, BlockPos pos, int xpRequired)
 	{
-		if(world.isAirBlock(pos)){return false;}
-
-		//but for the next 2 checks, halt if we run out of blocks/cost
-		if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return false;}
-		
 		if(xpRequired > 0) //do nothing if we cannot pay the cost
 		{
 			if(Util.drainExp(player, xpRequired) == false)
@@ -124,23 +119,13 @@ public class PlaceLib
 		
 		for(BlockPos p : circleList)
 		{
-			/*
-			if(world.isAirBlock(p) == false){continue;}//do not break, fill what we can
-			
-			//but for the next 2 checks, halt if we run out of blocks/cost
-			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {break;}
-			
-			if(costPerBlock > 0) //do nothing if we cannot pay the cost
-			{
-				if(Util.drainExp(player, costPerBlock) == false)
-				{
-					
-					break;
-				}
-			}
-			*/
+			if(world.isAirBlock(pos) == false){continue;}
 
-			if(payExpAndCheckValid(world,player,p,costPerBlock) == false){break;}
+			//but for the next 2 checks, halt if we run out of blocks/cost
+			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
+			
+
+			if(tryDrainExp(world,player,p,costPerBlock) == false){break;}
 			
 			world.setBlockState(p, placing);
 			
@@ -172,18 +157,20 @@ public class PlaceLib
 		{ 
 			for (int z = zMin; z <= zMax; z++)
 			{
-				System.out.println(x+" "+z);
 				posCurrent = new BlockPos(x, y, z);
 				
-				if(payExpAndCheckValid(world,player,posCurrent,costPerBlock) == false){break;}
-				 
-				if(world.isAirBlock(posCurrent))
-				{ 
-					world.setBlockState(posCurrent, placing);
-					Util.decrHeldStackSize(player);
-		 
-					Util.playSoundAt(player, pblock.stepSound.getPlaceSound()); 
-				} 
+				if(world.isAirBlock(posCurrent) == false){continue;}
+				System.out.println(x+" "+z);
+				//but for the next 2 checks, halt if we run out of blocks/cost
+				if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
+				
+				if(tryDrainExp(world,player,posCurrent,costPerBlock) == false){break;}
+				
+				world.setBlockState(posCurrent, placing);
+				Util.decrHeldStackSize(player);
+	 
+				Util.playSoundAt(player, pblock.stepSound.getPlaceSound()); 
+				
 			}  
 		} //end of the outer loop
    
@@ -198,25 +185,30 @@ public class PlaceLib
 		EnumFacing pfacing = Util.getPlayerFacing(player);
 
         //it starts at eye level, so do down and forward one first
-		BlockPos off = player.getPosition().down().offset(pfacing);
+		BlockPos posCurrent = player.getPosition().down().offset(pfacing);
 		
 		for(int i = 1; i < want + 1; i = i + skip)
 		{
 			if(goVert)
 			{
 				if(isLookingUp)
-					off = off.up();
+					posCurrent = posCurrent.up();
 				else
-					off = off.down();
+					posCurrent = posCurrent.down();
 			}
 			else
-				off = off.offset(pfacing);
+				posCurrent = posCurrent.offset(pfacing);
 			
 			goVert = (i % 2 == 0);//alternate between going forward and going vertical
 			
-			if(payExpAndCheckValid(world,player,off,costPerBlock) == false){break;}
+			if(world.isAirBlock(posCurrent) == false){continue;}
+			//but for the next 2 checks, halt if we run out of blocks/cost
+			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
 			
-			world.setBlockState(off, placing);
+			
+			if(tryDrainExp(world,player,posCurrent,costPerBlock) == false){break;}
+			
+			world.setBlockState(posCurrent, placing);
 			
 			Util.decrHeldStackSize(player);
  
@@ -230,16 +222,20 @@ public class PlaceLib
  
         boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
         
-		BlockPos off;
+		BlockPos posCurrent;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : Util.getPlayerFacing(player);
 		
 		for(int i = 1; i < want + 1; i = i + skip)
 		{
-			off = player.getPosition().offset(efacing, i);
+			posCurrent = player.getPosition().offset(efacing, i);
 			
-			if(payExpAndCheckValid(world,player,off,costPerBlock) == false){break;}
+			if(world.isAirBlock(posCurrent) == false){continue;}
+			//but for the next 2 checks, halt if we run out of blocks/cost
+			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
 			
-			world.setBlockState(off, placing);
+			if(tryDrainExp(world,player,posCurrent,costPerBlock) == false){break;}
+			
+			world.setBlockState(posCurrent, placing);
 			
 			Util.decrHeldStackSize(player);
  

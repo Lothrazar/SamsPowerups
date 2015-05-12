@@ -73,7 +73,7 @@ public class CommandPlaceLine implements ICommand
         	skip =  Math.max(Integer.parseInt(args[1]), 1);
         }
         
-        PlaceLib.line(sender.getEntityWorld(), player, player.getPosition(), placing, want, skip, XP_COST_PER_PLACE);
+        PlaceLib.line(player.worldObj, player, player.getPosition(), placing, want, skip, XP_COST_PER_PLACE);
 	}
 	
 	@Override
