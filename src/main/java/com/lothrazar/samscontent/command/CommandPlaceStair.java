@@ -58,15 +58,34 @@ public class CommandPlaceStair implements ICommand
 		
 		IBlockState placing = Block.getBlockFromItem(held.getItem()).getStateFromMeta(held.getMetadata());
 
-		int want = player.inventory.getCurrentItem().stackSize;
-        if(args.length > 0 && args[0] != null)
-        {
+		if(args.length == 0)
+		{ 
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+		int want = held.stackSize;
+        try
+		{
         	want =  Math.min(Integer.parseInt(args[0]), held.stackSize);
-        }
+		}
+		catch (NumberFormatException e)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+		 
         int skip = 1;
         if(args.length > 1 && args[1] != null)
         {
-        	skip =  Math.max(Integer.parseInt(args[1]), 1);
+    		try
+    		{
+            	skip =  Math.max(Integer.parseInt(args[1]), 1);
+    		}
+    		catch (NumberFormatException e)
+    		{
+    			Util.addChatMessage(player, getCommandUsage(sender));
+    			return;
+    		}
         }
 
         PlaceLib.stairway(player.worldObj,player,player.getPosition(),placing,want,skip);       

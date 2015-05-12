@@ -40,7 +40,7 @@ public class CommandPlaceCircle  implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + " <qty>";
+		return "/"+getName() + " <radius>";
 	}
 
 	@Override
@@ -52,25 +52,34 @@ public class CommandPlaceCircle  implements ICommand
 	@Override
 	public void execute(ICommandSender sender, String[] args)		throws CommandException 
 	{
-		// based on http://stackoverflow.com/questions/1022178/how-to-make-a-circle-on-a-grid
-		//also http://rosettacode.org/wiki/Bitmap/Midpoint_circle_algorithm
-				
 		if(PlaceLib.canSenderPlace(sender) == false) {return;}
 
 		EntityPlayer player = (EntityPlayer)sender;
+		
+		if(args.length == 0)
+		{ 
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+		
 		ItemStack held = player.inventory.getCurrentItem();
 
 		IBlockState placing = Block.getBlockFromItem(held.getItem()).getStateFromMeta(held.getMetadata());
 
 		int radius = 2;
-		
-        if(args.length > 0 && args[0] != null)
-        {
+		try
+		{
         	radius = Integer.parseInt(args[0]);
-        	if(radius > RADIUS_MAX) radius = RADIUS_MAX;
-        	if(radius < RADIUS_MIN) radius = RADIUS_MIN;
-        }
-                
+		}
+		catch (NumberFormatException e)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+	
+    	if(radius > RADIUS_MAX) radius = RADIUS_MAX;
+    	if(radius < RADIUS_MIN) radius = RADIUS_MIN;
+       
 		PlaceLib.circle(player.worldObj, player, player.getPosition(), placing, radius);
 	}
 

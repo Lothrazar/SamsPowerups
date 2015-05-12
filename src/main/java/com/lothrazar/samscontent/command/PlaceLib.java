@@ -80,6 +80,9 @@ public class PlaceLib
 	
 	public static void circle(World world, EntityPlayer player, BlockPos pos, IBlockState placing, int radius) 
 	{
+		// based on http://stackoverflow.com/questions/1022178/how-to-make-a-circle-on-a-grid
+		//also http://rosettacode.org/wiki/Bitmap/Midpoint_circle_algorithm
+				
 		int centerX = pos.getX();
 		int centerZ = pos.getZ();
 		
