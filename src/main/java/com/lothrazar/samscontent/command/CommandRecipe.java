@@ -60,7 +60,13 @@ public class CommandRecipe  implements ICommand
 		if(! (sender instanceof EntityPlayer)){return;}//does not work from command blocks and such
 		
 		EntityPlayer player = (EntityPlayer)sender;
-		
+
+		/*
+		//TODO: a help/expl mode?
+			Util.addChatMessage(player, "0 1 2");
+			Util.addChatMessage(player, "3 4 5");
+			Util.addChatMessage(player, "6 7 8");
+		*/
 		ItemStack held = player.inventory.getCurrentItem();
 		
 		if(held == null && world.isRemote)
@@ -69,14 +75,10 @@ public class CommandRecipe  implements ICommand
 			return;
 		}
 
-    	//System.out.println("...searching  ");
 		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 
-		boolean wasShaped = false;
-		ArrayList<Item> displayed = new ArrayList<Item>();
-		
 		ItemStack recipeResult;
-		boolean isFirst = true;
+
 		for (IRecipe recipe : recipes)
 		{
 		    recipeResult = recipe.getRecipeOutput();
@@ -84,23 +86,22 @@ public class CommandRecipe  implements ICommand
 		    //compare ignoring stack size. not null, and the same item
 			if( recipeResult == null || recipeResult.getItem() == null){continue;} 
 		    if(held.getItem() == recipeResult.getItem() == false){continue;}
-	    	
-		    System.out.println("Found a matching recipe for this");
-    		ItemStack is;
-    		
-    		if(isFirst == false)Util.addChatMessage(player, " --- ");
-    		
+
+			//TODO  seperator btw recipes: one item can have multiple.
+		    
+		    //for each recipe, we need an array/list of the input, then we pass it off to get printed
+		    //recipe is either shaped or shapeless
+		    //on top of that, some use Forge ore dictionary, and some dont
+		    //so 4 cases total
+		    
 		    if(recipe instanceof ShapedRecipes)
-		    {
-			    System.out.println("Printing ShapedRecipes  ");
-		    	wasShaped=true;
+		    { 
 		    	Util.addChatShapedRecipe(player,((ShapedRecipes)recipe).recipeItems);
 		    }
 		    else if(recipe instanceof ShapedOreRecipe)
 		    {
 		    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
-			    System.out.println("Printing ShapedOreRecipe  "+r.getInput().length);
-
+			
 			    ItemStack[] recipeItems = new ItemStack[9];
 		    	
 		    	for(int i = 0; i < r.getInput().length; i++) 
@@ -119,7 +120,6 @@ public class CommandRecipe  implements ICommand
 					    {
 					    	recipeItems[i] = c.get(0);
 					    }
-					    else System.out.println("  cast failed its not an item stack list");
 		    		}
 		    	}
 		    	
@@ -127,10 +127,8 @@ public class CommandRecipe  implements ICommand
 		    } 
 		    else if(recipe instanceof ShapelessRecipes)
 			{
-			    System.out.println("Printing Shapeless");
 		    	ShapelessRecipes r = (ShapelessRecipes)recipe;
  
-		    	//ArrayList<String> list = new ArrayList<String>();
 		    	ArrayList<ItemStack> recipeItems = new ArrayList<ItemStack>();
 	    		
 		    	for(int i = 0; i < r.recipeItems.size(); i++) 
@@ -142,21 +140,20 @@ public class CommandRecipe  implements ICommand
 		    		}
 		    	}
 		    	
-
-		    	Util.addChatShapelessRecipe(player,recipeItems);
-	    		//Util.addChatMessage(player, "SHAPELESS " +String.join(" + ", list));
+		    	Util.addChatShapelessRecipe(player,recipeItems);;
 			}
 		    else if(recipe instanceof ShapelessOreRecipe)
 		    {
 		    	ShapelessOreRecipe r = (ShapelessOreRecipe)recipe;
-			    System.out.println("Printing ShapelessOreRecipe  "+r.getInput().size());
+			   // System.out.println("Printing ShapelessOreRecipe  "+r.getInput().size());
 			    
 			    ArrayList<ItemStack> recipeItems = new ArrayList<ItemStack>();
 	    		
 		    	for(int i = 0; i < r.getInput().size(); i++) 
 		    	{
 		    		Object o = r.getInput().get(i);
-		    		if(o != null && o instanceof ItemStack)
+		    		if(o == null){continue;}
+		    		if(o instanceof ItemStack)
 		    		{
 		    			recipeItems.add((ItemStack)o);
 		    		}
@@ -168,7 +165,6 @@ public class CommandRecipe  implements ICommand
 					    {
 					    	recipeItems.add(c.get(0));
 					    }
-					    else System.out.println("  cast failed its not an item stack list");
 		    		}
 		    	}
 
@@ -176,21 +172,14 @@ public class CommandRecipe  implements ICommand
 		    }
 		    else 
 		    {
+		    	//TODO: furnace?
+		    	//TODO: brewing stand?
 		    	
-		    	Util.addChatMessage(player, "Recipe not found, class = " + recipe.getClass().getName());
+		    	//for example, if its from some special crafting block/furnace from another mod
+		    	Util.addChatMessage(player, "Recipe type not supported, class = " + recipe.getClass().getName());
 		    	
 		    }
-		    
-		    
-	    	isFirst = false;
 	    }//end main recipe loop
-		if(wasShaped)
-		{
-
-			Util.addChatMessage(player, "0 1 2");
-			Util.addChatMessage(player, "3 4 5");
-			Util.addChatMessage(player, "6 7 8");
-		}
 	}
 
 	@Override
