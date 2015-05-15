@@ -65,6 +65,7 @@ public class CommandRecipe  implements ICommand
 		if(held == null && world.isRemote)
 		{
 			Util.addChatMessage(player, "command.recipes.empty");
+			return;
 		}
 
     	//System.out.println("...searching  ");
@@ -124,27 +125,49 @@ public class CommandRecipe  implements ICommand
 		    	}
 		    	
 		 
-	    		Util.addChatMessage(player, String.join(" + ", list));
+	    		Util.addChatMessage(player, "SHAPELESS " +String.join(" + ", list));
 			}
 		    else if(recipe instanceof ShapedOreRecipe)
 		    {
-			    System.out.println("Printing ShapedOreRecipe");
 		    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
+			    System.out.println("Printing ShapedOreRecipe  "+r.getInput().length);
 
 		    	ArrayList<String> list = new ArrayList<String>();
 		    	
 		    	for(int i = 0; i < r.getInput().length; i++) 
 		    	{
 		    		Object o = r.getInput()[i];
-		    		if(o == null || !(o instanceof ItemStack)){continue;}
+		    		if(o == null){continue;}
+		    		
+		    		if(!(o instanceof ItemStack))
+		    		{
+					    System.out.println(i+" its not an item stack, what the fuck is it");
+					    System.out.println(r.getInput()[i].getClass().getName());
+					    
+					     
+					    List<ItemStack> c = (List<ItemStack>)o;
+					    	
+					    if(c != null && c.size() > 0)
+					    {
+
+					    	is = c.get(0);
+						    System.out.println(" cast==true");
+
+				    		list.add(is.getDisplayName());
+					    }
+					    else System.out.println("  cast failed");
+					    
+		    			continue;
+		    		}
 		    		
 		    		is = (ItemStack)o;//insde the ShapelessRecipes class, they always cast it
 		    		
-		    		list.add(is.getDisplayName());
+		    		//list.add(is.getDisplayName());
+		    		Util.addChatMessage(player, i + " "+is.getDisplayName());
 		    		
 		    	}
-	    		Util.addChatMessage(player, String.join(" + ", list));
-		    }
+	    	//	Util.addChatMessage(player, String.join(" + ", list));
+		    } 
 		    else 
 		    {
 		    	
