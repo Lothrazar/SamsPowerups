@@ -85,7 +85,8 @@ public class CommandRecipe  implements ICommand
 		   
 		    //compare ignoring stack size. not null, and the same item
 			if( recipeResult == null || recipeResult.getItem() == null){continue;} 
-		    if(held.getItem() == recipeResult.getItem() == false){continue;}
+		    if(held.getItem() != recipeResult.getItem()){continue;}
+		    if(held.getMetadata() != recipeResult.getMetadata()){continue;}
 
 			//TODO  seperator btw recipes: one item can have multiple.
 		    
