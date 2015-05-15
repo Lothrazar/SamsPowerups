@@ -1,7 +1,6 @@
 package com.lothrazar.util;
 
 import java.util.ArrayList;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -37,10 +36,8 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;  
-
 import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard;  
-
 import com.lothrazar.samscontent.ModMain; 
 
 public class Util
@@ -711,7 +708,31 @@ public class Util
        
 		return EnumFacing.getHorizontal( facing/2 );
 	}
-	
-	
-	
+
+	public static void addChatShapedRecipe(EntityPlayer player,	ItemStack[] recipeItems)
+	{
+		for(int i = 0; i < recipeItems.length; i++)
+    	{
+    		if(recipeItems[i] != null)
+    		{
+    			Util.addChatMessage(player, i+" : "+recipeItems[i].getDisplayName());
+    		}
+    	}
+	}
+
+	public static void addChatShapelessRecipe(EntityPlayer player,	ArrayList<ItemStack> recipeItems)
+	{
+    	//ArrayList<String> list = new ArrayList<String>();
+		
+    	for(int i = 0; i < recipeItems.size(); i++) 
+    	{
+    		ItemStack is = recipeItems.get(i);
+    		
+    		//list.add(is.getDisplayName());
+        	Util.addChatMessage(player, " - "+is.getDisplayName());
+    		
+    	}
+    	//TODO: cleanup/make ncer,etc
+    	//Util.addChatMessage(player, "SHAPELESS " +String.join(" + ", list));
+	}
 }

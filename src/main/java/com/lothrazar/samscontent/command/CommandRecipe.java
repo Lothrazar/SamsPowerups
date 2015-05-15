@@ -17,6 +17,7 @@ import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 
 public class CommandRecipe  implements ICommand
 {
@@ -91,83 +92,88 @@ public class CommandRecipe  implements ICommand
     		
 		    if(recipe instanceof ShapedRecipes)
 		    {
+			    System.out.println("Printing ShapedRecipes  ");
 		    	wasShaped=true;
-		    	ShapedRecipes r = (ShapedRecipes)recipe;
-		    	
-		    	//System.out.println("recipeItems  "+r.recipeItems.length);
-
-			    System.out.println("Printing Shaped");
-		    	for(int i = 0; i < r.recipeItems.length; i++)
-		    	{
-		    		is = r.recipeItems[i];
-		    		if(is != null)
-		    			Util.addChatMessage(player, i+" : "+is.getDisplayName());
-		    	}
-		    	
-		    	
+		    	Util.addChatShapedRecipe(player,((ShapedRecipes)recipe).recipeItems);
 		    }
-		    else if(recipe instanceof ShapelessRecipes)
-			{
-			    System.out.println("Printing Shapeless");
-		    	ShapelessRecipes r = (ShapelessRecipes)recipe;
- 
-		    	ArrayList<String> list = new ArrayList<String>();
-	    		
-		    	for(int i = 0; i < r.recipeItems.size(); i++) 
-		    	{
-		    		Object o = r.recipeItems.get(i);
-		    		if(o == null || !(o instanceof ItemStack)){continue;}
-		    		
-		    		is = (ItemStack)o;//insde the ShapelessRecipes class, they always cast it
-		    		
-		    		list.add(is.getDisplayName());
-		    		
-		    	}
-		    	
-		 
-	    		Util.addChatMessage(player, "SHAPELESS " +String.join(" + ", list));
-			}
 		    else if(recipe instanceof ShapedOreRecipe)
 		    {
 		    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
 			    System.out.println("Printing ShapedOreRecipe  "+r.getInput().length);
 
-		    	ArrayList<String> list = new ArrayList<String>();
+			    ItemStack[] recipeItems = new ItemStack[9];
 		    	
 		    	for(int i = 0; i < r.getInput().length; i++) 
 		    	{
 		    		Object o = r.getInput()[i];
 		    		if(o == null){continue;}
-		    		
-		    		if(!(o instanceof ItemStack))
+		    		if(o instanceof ItemStack)
 		    		{
-					    System.out.println(i+" its not an item stack, what the fuck is it");
-					    System.out.println(r.getInput()[i].getClass().getName());
-					    
-					     
+		    			recipeItems[i] = (ItemStack)o;
+		    		}
+		    		else
+		    		{
 					    List<ItemStack> c = (List<ItemStack>)o;
 					    	
 					    if(c != null && c.size() > 0)
 					    {
-
-					    	is = c.get(0);
-						    System.out.println(" cast==true");
-
-				    		list.add(is.getDisplayName());
+					    	recipeItems[i] = c.get(0);
 					    }
-					    else System.out.println("  cast failed");
-					    
-		    			continue;
+					    else System.out.println("  cast failed its not an item stack list");
 		    		}
-		    		
-		    		is = (ItemStack)o;//insde the ShapelessRecipes class, they always cast it
-		    		
-		    		//list.add(is.getDisplayName());
-		    		Util.addChatMessage(player, i + " "+is.getDisplayName());
-		    		
 		    	}
-	    	//	Util.addChatMessage(player, String.join(" + ", list));
+		    	
+		    	Util.addChatShapedRecipe(player,recipeItems);
 		    } 
+		    else if(recipe instanceof ShapelessRecipes)
+			{
+			    System.out.println("Printing Shapeless");
+		    	ShapelessRecipes r = (ShapelessRecipes)recipe;
+ 
+		    	//ArrayList<String> list = new ArrayList<String>();
+		    	ArrayList<ItemStack> recipeItems = new ArrayList<ItemStack>();
+	    		
+		    	for(int i = 0; i < r.recipeItems.size(); i++) 
+		    	{
+		    		Object o = r.recipeItems.get(i);
+		    		if(o != null && o instanceof ItemStack)
+		    		{
+		    			recipeItems.add((ItemStack)o);
+		    		}
+		    	}
+		    	
+
+		    	Util.addChatShapelessRecipe(player,recipeItems);
+	    		//Util.addChatMessage(player, "SHAPELESS " +String.join(" + ", list));
+			}
+		    else if(recipe instanceof ShapelessOreRecipe)
+		    {
+		    	ShapelessOreRecipe r = (ShapelessOreRecipe)recipe;
+			    System.out.println("Printing ShapelessOreRecipe  "+r.getInput().size());
+			    
+			    ArrayList<ItemStack> recipeItems = new ArrayList<ItemStack>();
+	    		
+		    	for(int i = 0; i < r.getInput().size(); i++) 
+		    	{
+		    		Object o = r.getInput().get(i);
+		    		if(o != null && o instanceof ItemStack)
+		    		{
+		    			recipeItems.add((ItemStack)o);
+		    		}
+		    		else
+		    		{
+					    List<ItemStack> c = (List<ItemStack>)o;
+					    	
+					    if(c != null && c.size() > 0)
+					    {
+					    	recipeItems.add(c.get(0));
+					    }
+					    else System.out.println("  cast failed its not an item stack list");
+		    		}
+		    	}
+
+		    	Util.addChatShapelessRecipe(player,recipeItems);
+		    }
 		    else 
 		    {
 		    	
