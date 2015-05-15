@@ -59,11 +59,19 @@ public class ItemRegistry
 	public static ItemSoulstone soulstone_persist;
 	public static ItemFoodGhost apple_ghost;
 	public static ItemEnderCookie ender_cookie;
+	public static ItemWallCompass wall_compass;
 	
 	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 2, 32, 12F, 0F, 22);
 	
+	
 	public static void registerItems()
 	{   
+		
+
+		wall_compass = new ItemWallCompass();
+		ItemRegistry.registerItem(wall_compass, "wall_compass");
+		ItemWallCompass.addRecipe();
+		
 		if(ModMain.cfg.ender_cookie)
 		{
 			ender_cookie = new ItemEnderCookie();

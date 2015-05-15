@@ -1,7 +1,6 @@
 1.3.1 - plans
 
- world tp blocks: add magic wands/consumables that do the same thing? ender food?
- 
+
  slabs/stairs for new stone types
  
  netherbrick walls
@@ -12,16 +11,18 @@
  
  1.3.0-completed, not released
  
- -typo fix in command search trades
+-New Item: ender cookie - teleports you to worldspawn when eaten
  
--command that tells recipes - is there an easy way to search and find them?
+-Bugfix: typo in command search trades
+ 
+-New command that tells recipes - is there an easy way to search and find them?
 
--OPTION for /place commands to restrict which blocks are allowed
+-New config option : for /place commands to restrict which blocks are allowed
    empty filter means all are allowed. Default to My scaffolding, and Dirt, as allowed
 
--gold nuggets into xp bottles
+-New Recipe: gold nuggets into xp bottles
 
--inventory stairs (in crafting table, 3 blocks for 4 stairs)
+-New Recipe: inventory stairs (in crafting table, 3 blocks for 4 stairs)
 
 
 
