@@ -711,13 +711,28 @@ public class Util
 
 	public static void addChatShapedRecipe(EntityPlayer player,	ItemStack[] recipeItems)
 	{
+		String top = "";
+		String mid = "";
+		String bot = "";
+		
+		String[] grid = new String[9];
+		for(int i = 0; i < grid.length; i++)grid[i] = "";//??is this needed to avoid nulls?
+		
 		for(int i = 0; i < recipeItems.length; i++)
     	{
     		if(recipeItems[i] != null)
     		{
     			Util.addChatMessage(player, i+" : "+recipeItems[i].getDisplayName());
+    			grid[i] = " "+i+" ";
+    		}
+    		else
+    		{
+    			grid[i] = "   ";
     		}
     	}
+		Util.addChatMessage(player, grid[0]+grid[1]+grid[2]);
+		Util.addChatMessage(player, grid[3]+grid[4]+grid[5]);
+		Util.addChatMessage(player, grid[6]+grid[7]+grid[8]);
 	}
 
 	public static void addChatShapelessRecipe(EntityPlayer player,	ArrayList<ItemStack> recipeItems)
