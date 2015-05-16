@@ -709,30 +709,45 @@ public class Util
 		return EnumFacing.getHorizontal( facing/2 );
 	}
 
-	public static void addChatShapedRecipe(EntityPlayer player,	ItemStack[] recipeItems)
+	public static void addChatShapedRecipe(EntityPlayer player,	ItemStack[] recipeItems, boolean isInventory )
 	{
 		String top = "";
 		String mid = "";
 		String bot = "";
 		
-		String[] grid = new String[9];
+		String[] grid = new String[recipeItems.length];
 		for(int i = 0; i < grid.length; i++)grid[i] = "";//??is this needed to avoid nulls?
+		/*
+		if(recipeItems.length == 9)
+		{
+			//it is a 3x3. otherwise its 2x2
+			String[][] grid = new String[3][3];
+		}*/
 		
 		for(int i = 0; i < recipeItems.length; i++)
     	{
     		if(recipeItems[i] != null)
     		{
     			Util.addChatMessage(player, i+" : "+recipeItems[i].getDisplayName());
-    			grid[i] = " "+i+" ";
+    			grid[i] = i+" ";
     		}
     		else
     		{
-    			grid[i] = "   ";
+    			grid[i] = "_ ";
     		}
     	}
-		Util.addChatMessage(player, grid[0]+grid[1]+grid[2]);
-		Util.addChatMessage(player, grid[3]+grid[4]+grid[5]);
-		Util.addChatMessage(player, grid[6]+grid[7]+grid[8]);
+		
+		if(isInventory)
+		{
+			Util.addChatMessage(player, grid[0]+grid[1]);
+			Util.addChatMessage(player, grid[2]+grid[3]);
+		}
+		else
+		{
+			Util.addChatMessage(player, grid[0]+grid[1]+grid[2]);
+			Util.addChatMessage(player, grid[3]+grid[4]+grid[5]);
+			Util.addChatMessage(player, grid[6]+grid[7]+grid[8]);
+		}
 	}
 
 	public static void addChatShapelessRecipe(EntityPlayer player,	ArrayList<ItemStack> recipeItems)

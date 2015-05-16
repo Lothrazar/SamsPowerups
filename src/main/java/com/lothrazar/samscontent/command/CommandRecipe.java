@@ -2,6 +2,8 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.lang.reflect.Field;
+import java.lang.reflect.Modifier; 
 import scala.actors.threadpool.Arrays;
 import com.lothrazar.util.Util;
 import net.minecraft.command.CommandException;
@@ -97,13 +99,15 @@ public class CommandRecipe  implements ICommand
 		    
 		    if(recipe instanceof ShapedRecipes)
 		    { 
-		    	Util.addChatShapedRecipe(player,((ShapedRecipes)recipe).recipeItems);
+		    	ShapedRecipes r = ((ShapedRecipes)recipe);
+		    	boolean isInventory = (r.recipeHeight < 3 || r.recipeWidth < 3);
+		    	Util.addChatShapedRecipe(player, r.recipeItems, isInventory);
 		    }
 		    else if(recipe instanceof ShapedOreRecipe)
 		    {
 		    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
 			
-			    ItemStack[] recipeItems = new ItemStack[9];
+			    ItemStack[] recipeItems = new ItemStack[r.getInput().length];
 		    	
 		    	for(int i = 0; i < r.getInput().length; i++) 
 		    	{
@@ -123,8 +127,41 @@ public class CommandRecipe  implements ICommand
 					    }
 		    		}
 		    	}
+
+		    	//only because r.width//r.height is private
+		    	boolean isInventory = false;
+		    	for(Field f : ShapedOreRecipe.class.getDeclaredFields())
+		    	{
+
+			        f.setAccessible(true);
+			        //works since we know that the only integers in the class are the width/height
+			        if(f.getType() == int.class)
+			        {
+			        	try
+						{
+							isInventory = isInventory || f.getInt(r) < 3;
+							
+							//System.out.println("isInventory changed to "+isInventory);
+						}
+						catch (IllegalArgumentException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						catch (IllegalAccessException e)
+						{
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+			        }
+			        
+			        
+			        
+		    	}
 		    	
-		    	Util.addChatShapedRecipe(player,recipeItems);
+		    
+		    	//boolean isInventory = (r.height < 3 || r.width < 3);
+		    	Util.addChatShapedRecipe(player,recipeItems, isInventory);
 		    } 
 		    else if(recipe instanceof ShapelessRecipes)
 			{
@@ -146,8 +183,7 @@ public class CommandRecipe  implements ICommand
 		    else if(recipe instanceof ShapelessOreRecipe)
 		    {
 		    	ShapelessOreRecipe r = (ShapelessOreRecipe)recipe;
-			   // System.out.println("Printing ShapelessOreRecipe  "+r.getInput().size());
-			    
+		
 			    ArrayList<ItemStack> recipeItems = new ArrayList<ItemStack>();
 	    		
 		    	for(int i = 0; i < r.getInput().size(); i++) 
