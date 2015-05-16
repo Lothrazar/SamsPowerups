@@ -53,11 +53,8 @@ public class CommandUses implements ICommand
 		if(! (sender instanceof EntityPlayer)){return;}//does not work from command blocks and such
 		
 		EntityPlayer player = (EntityPlayer)sender;
-
-		
-		
-ItemStack held = player.inventory.getCurrentItem();
-		
+		ItemStack held = player.inventory.getCurrentItem();
+				
 		if(held == null && world.isRemote)
 		{
 			Util.addChatMessage(player, "command.recipes.empty");
@@ -77,34 +74,16 @@ ItemStack held = player.inventory.getCurrentItem();
 
 		    ItemStack[] ingred = Util.getRecipeInput(recipe);
 			
-	 
 			for(ItemStack is : ingred)
 			{
 				if(is != null && held.getItem() == is.getItem() && held.getMetadata() == is.getMetadata()) 
-				{
-
-					System.out.println("found a match");
-					System.out.println(recipeResult.getDisplayName());
+				{ 
+					Util.addChatMessage(player, recipeResult.getDisplayName());
+				
 					break;
 				}
 			} 
-			
-			/*
-		    if(held.getItem() != recipeResult.getItem()){continue;}
-		    if(held.getMetadata() != recipeResult.getMetadata()){continue;}
-*/
-		    
-		    
-		    
-			//TODO is to now look at all the ingeredients for the recipe and check for match with held
-		    
-		    
-		    
-		}
-		
-		
-		
-		
+		}//end loop
 	}
 
 	@Override
