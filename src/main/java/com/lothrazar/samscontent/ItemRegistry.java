@@ -72,6 +72,7 @@ public class ItemRegistry
 		ItemRegistry.registerItem(wall_compass, "wall_compass");
 		ItemWallCompass.addRecipe();
 		
+		
 		if(ModMain.cfg.ender_cookie)
 		{
 			ender_cookie = new ItemEnderCookie();

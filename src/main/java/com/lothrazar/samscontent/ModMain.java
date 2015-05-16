@@ -431,7 +431,12 @@ public class ModMain
 		{
 			ItemWandPiston.cast(event);
 		}
-		
+
+		if(held != null && held.getItem() == ItemRegistry.wall_compass && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{   
+			ItemWallCompass.onRightClick(event );   
+		}
 		if(held != null && held.getItem() == ItemRegistry.fire_charge_throw && 
 				event.action.RIGHT_CLICK_AIR == event.action)
 		{   
