@@ -723,10 +723,12 @@ public class Util
 		String bot = "";
 		
 		int size;
+		
+		//needed only becuase MC forge stores as a flat array not a 2D
 		if(isInventory) size = 4;
 		else size = 9;
 		String[] grid = new String[size];
-		for(int i = 0; i < grid.length; i++)grid[i] = "";//??is this needed to avoid nulls?
+		for(int i = 0; i < grid.length; i++)grid[i] = "- ";
 		/*
 		if(recipeItems.length == 9)
 		{
@@ -740,10 +742,6 @@ public class Util
     		{
     			Util.addChatMessage(player, i+" : "+recipeItems[i].getDisplayName());
     			grid[i] = i+" ";
-    		}
-    		else
-    		{
-    			grid[i] = "_ ";
     		}
     	}
 		
