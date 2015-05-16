@@ -722,7 +722,10 @@ public class Util
 		String mid = "";
 		String bot = "";
 		
-		String[] grid = new String[recipeItems.length];
+		int size;
+		if(recipeItems.length <= 4) size = 4;
+		else size = 9;
+		String[] grid = new String[size];
 		for(int i = 0; i < grid.length; i++)grid[i] = "";//??is this needed to avoid nulls?
 		/*
 		if(recipeItems.length == 9)
@@ -757,13 +760,11 @@ public class Util
 		}
 	}
 
-	public static void addChatShapelessRecipe(EntityPlayer player,	ArrayList<ItemStack> recipeItems)
+	public static void addChatShapelessRecipe(EntityPlayer player,	ItemStack[]  recipeItems)
 	{
-    	//ArrayList<String> list = new ArrayList<String>();
-		
-    	for(int i = 0; i < recipeItems.size(); i++) 
+    	for(int i = 0; i < recipeItems.length; i++) 
     	{
-    		ItemStack is = recipeItems.get(i);
+    		ItemStack is = recipeItems[i];
     		
     		//list.add(is.getDisplayName());
         	Util.addChatMessage(player, " - "+is.getDisplayName());

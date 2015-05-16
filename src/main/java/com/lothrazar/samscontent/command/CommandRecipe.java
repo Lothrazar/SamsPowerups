@@ -102,39 +102,22 @@ public class CommandRecipe  implements ICommand
 		    if(recipe instanceof ShapedRecipes)
 		    { 
 		    	ShapedRecipes r = ((ShapedRecipes)recipe);
-		    	boolean isInventory = (r.recipeHeight < 3 || r.recipeWidth < 3);
-		    	Util.addChatShapedRecipe(player, r.recipeItems, isInventory);
+		    	boolean isInventory = (r.recipeHeight < 3 && r.recipeWidth < 3);
+		    	
+		    	//System.out.println("isInventory is from : "+r.recipeHeight+" "+r.recipeWidth);
+		    	
+		    	Util.addChatShapedRecipe(player, Util.getRecipeInput(recipe), isInventory);
 		    }
 		    else if(recipe instanceof ShapedOreRecipe)
 		    {
 		    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
 			
-			    ItemStack[] recipeItems = new ItemStack[r.getInput().length];
-		    	
-		    	for(int i = 0; i < r.getInput().length; i++) 
-		    	{
-		    		Object o = r.getInput()[i];
-		    		if(o == null){continue;}
-		    		if(o instanceof ItemStack)
-		    		{
-		    			recipeItems[i] = (ItemStack)o;
-		    		}
-		    		else
-		    		{
-					    List<ItemStack> c = (List<ItemStack>)o;
-					    	
-					    if(c != null && c.size() > 0)
-					    {
-					    	recipeItems[i] = c.get(0);
-					    }
-		    		}
-		    	}
-
+			    ItemStack[] recipeItems = Util.getRecipeInput(recipe);// new ItemStack[r.getInput().length];
+	
 		    	//only because r.width//r.height is private
 		    	boolean isInventory = false;
 		    	for(Field f : ShapedOreRecipe.class.getDeclaredFields())
 		    	{
-
 			        f.setAccessible(true);
 			        //works since we know that the only integers in the class are the width/height
 			        if(f.getType() == int.class)
@@ -142,72 +125,23 @@ public class CommandRecipe  implements ICommand
 			        	try
 						{
 							isInventory = isInventory || f.getInt(r) < 3;
-							
-							//System.out.println("isInventory changed to "+isInventory);
 						}
 						catch (IllegalArgumentException e)
 						{
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 						catch (IllegalAccessException e)
 						{
-							// TODO Auto-generated catch block
 							e.printStackTrace();
 						}
 			        }
-			        
-			        
-			        
 		    	}
 		    	
-		    
-		    	//boolean isInventory = (r.height < 3 || r.width < 3);
 		    	Util.addChatShapedRecipe(player,recipeItems, isInventory);
 		    } 
-		    else if(recipe instanceof ShapelessRecipes)
+		    else if(recipe instanceof ShapelessRecipes || recipe instanceof ShapelessOreRecipe)
 			{
-		    	ShapelessRecipes r = (ShapelessRecipes)recipe;
- 
-		    	ArrayList<ItemStack> recipeItems = new ArrayList<ItemStack>();
-	    		
-		    	for(int i = 0; i < r.recipeItems.size(); i++) 
-		    	{
-		    		Object o = r.recipeItems.get(i);
-		    		if(o != null && o instanceof ItemStack)
-		    		{
-		    			recipeItems.add((ItemStack)o);
-		    		}
-		    	}
-		    	
-		    	Util.addChatShapelessRecipe(player,recipeItems);;
-			}
-		    else if(recipe instanceof ShapelessOreRecipe)
-		    {
-		    	ShapelessOreRecipe r = (ShapelessOreRecipe)recipe;
-		
-			    ArrayList<ItemStack> recipeItems = new ArrayList<ItemStack>();
-	    		
-		    	for(int i = 0; i < r.getInput().size(); i++) 
-		    	{
-		    		Object o = r.getInput().get(i);
-		    		if(o == null){continue;}
-		    		if(o instanceof ItemStack)
-		    		{
-		    			recipeItems.add((ItemStack)o);
-		    		}
-		    		else
-		    		{
-					    List<ItemStack> c = (List<ItemStack>)o;
-					    	
-					    if(c != null && c.size() > 0)
-					    {
-					    	recipeItems.add(c.get(0));
-					    }
-		    		}
-		    	}
-
-		    	Util.addChatShapelessRecipe(player,recipeItems);
+		    	Util.addChatShapelessRecipe(player,Util.getRecipeInput(recipe));
 		    }
 		    else 
 		    {
