@@ -723,7 +723,7 @@ public class Util
 		String bot = "";
 		
 		int size;
-		if(recipeItems.length <= 4) size = 4;
+		if(isInventory) size = 4;
 		else size = 9;
 		String[] grid = new String[size];
 		for(int i = 0; i < grid.length; i++)grid[i] = "";//??is this needed to avoid nulls?
