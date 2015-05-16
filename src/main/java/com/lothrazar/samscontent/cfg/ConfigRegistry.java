@@ -535,6 +535,14 @@ public class ConfigRegistry
 		
 		CommandTodoList.REQUIRES_OP = instance.getBoolean("todo.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
+	
+		cmd_recipe = instance.getBoolean("recipe",category, true,
+				"Command to display recipe of the players held item in chat."); 
+		
+		cmd_uses = instance.getBoolean("uses",category, true,
+				"Command to display uses of the players held item in chat.");
+	
+	
 	}
 	 
 	public boolean swiftDeposit; 
@@ -670,4 +678,6 @@ public class ConfigRegistry
 	public boolean placecircle;
 	public boolean cheaper_stairs;
 	public boolean ender_cookie;
+	public boolean cmd_recipe;
+	public boolean cmd_uses;
 }

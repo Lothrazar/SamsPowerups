@@ -222,8 +222,12 @@ public class ModMain
 		if(ModMain.cfg.placecircle) 
 			event.registerServerCommand(new CommandPlaceCircle());
 
-		event.registerServerCommand(new CommandRecipe());
-		event.registerServerCommand(new CommandUses());
+		if(ModMain.cfg.cmd_recipe) 
+			event.registerServerCommand(new CommandRecipe());
+
+		if(ModMain.cfg.cmd_uses) 
+			event.registerServerCommand(new CommandUses());
+	 
 	}
   
 	private void registerEventHandlers() 
