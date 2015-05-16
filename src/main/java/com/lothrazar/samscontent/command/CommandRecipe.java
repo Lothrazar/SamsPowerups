@@ -98,21 +98,22 @@ public class CommandRecipe  implements ICommand
 		    
 		    //TODO: refactor and use  ItemStack[] ingred = Util.getRecipeInput(recipe);
 		    //to save reuse
-		    
+
 		    if(recipe instanceof ShapedRecipes)
 		    { 
 		    	ShapedRecipes r = ((ShapedRecipes)recipe);
 		    	boolean isInventory = (r.recipeHeight < 3 && r.recipeWidth < 3);
 		    	
 		    	//System.out.println("isInventory is from : "+r.recipeHeight+" "+r.recipeWidth);
-		    	
+
+				Util.addChatMessage(player, "command.recipes.found");
 		    	Util.addChatShapedRecipe(player, Util.getRecipeInput(recipe), isInventory);
 		    }
-		    else if(recipe instanceof ShapedOreRecipe)
+		    else if(recipe instanceof ShapedOreRecipe) //it uses forge ore dictionary
 		    {
 		    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
 			
-			    ItemStack[] recipeItems = Util.getRecipeInput(recipe);// new ItemStack[r.getInput().length];
+			    ItemStack[] recipeItems = Util.getRecipeInput(recipe);
 	
 		    	//only because r.width//r.height is private
 		    	boolean isInventory = false;
@@ -136,11 +137,13 @@ public class CommandRecipe  implements ICommand
 						}
 			        }
 		    	}
-		    	
+
+				Util.addChatMessage(player, "command.recipes.found");
 		    	Util.addChatShapedRecipe(player,recipeItems, isInventory);
 		    } 
 		    else if(recipe instanceof ShapelessRecipes || recipe instanceof ShapelessOreRecipe)
 			{
+				Util.addChatMessage(player, "command.recipes.found");
 		    	Util.addChatShapelessRecipe(player,Util.getRecipeInput(recipe));
 		    }
 		    else 

@@ -717,11 +717,7 @@ public class Util
 	}
 
 	public static void addChatShapedRecipe(EntityPlayer player,	ItemStack[] recipeItems, boolean isInventory )
-	{
-		String top = "";
-		String mid = "";
-		String bot = "";
-		
+	{ 
 		int size;
 		
 		//needed only becuase MC forge stores as a flat array not a 2D
@@ -729,12 +725,7 @@ public class Util
 		else size = 9;
 		String[] grid = new String[size];
 		for(int i = 0; i < grid.length; i++)grid[i] = "- ";
-		/*
-		if(recipeItems.length == 9)
-		{
-			//it is a 3x3. otherwise its 2x2
-			String[][] grid = new String[3][3];
-		}*/
+ 
 		
 		for(int i = 0; i < recipeItems.length; i++)
     	{
