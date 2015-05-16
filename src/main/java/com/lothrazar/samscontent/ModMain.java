@@ -223,6 +223,7 @@ public class ModMain
 			event.registerServerCommand(new CommandPlaceCircle());
 
 		event.registerServerCommand(new CommandRecipe());
+		event.registerServerCommand(new CommandUses());
 	}
   
 	private void registerEventHandlers() 

@@ -74,15 +74,21 @@ ItemStack held = player.inventory.getCurrentItem();
 		    //compare ignoring stack size. not null, and the same item
 		    
 			if( recipeResult == null || recipeResult.getItem() == null){continue;} 
+
+		    ItemStack[] ingred = Util.getRecipeInput(recipe);
 			
-			
-			
-			ItemStack[] input = recipe.getRemainingItems(((ContainerPlayer)player.inventoryContainer).craftMatrix);
-			
-			for(ItemStack is : input)
+	 
+			for(ItemStack is : ingred)
 			{
-				System.out.println(is.getDisplayName());
-			}
+				if(is != null && held.getItem() == is.getItem() && held.getMetadata() == is.getMetadata()) 
+				{
+
+					System.out.println("found a match");
+					System.out.println(recipeResult.getDisplayName());
+					break;
+				}
+			} 
+			
 			/*
 		    if(held.getItem() != recipeResult.getItem()){continue;}
 		    if(held.getMetadata() != recipeResult.getMetadata()){continue;}

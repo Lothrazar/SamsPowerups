@@ -96,6 +96,9 @@ public class CommandRecipe  implements ICommand
 		    //on top of that, some use Forge ore dictionary, and some dont
 		    //so 4 cases total
 		    
+		    //TODO: refactor and use  ItemStack[] ingred = Util.getRecipeInput(recipe);
+		    //to save reuse
+		    
 		    if(recipe instanceof ShapedRecipes)
 		    { 
 		    	ShapedRecipes r = ((ShapedRecipes)recipe);

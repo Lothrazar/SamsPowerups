@@ -1,6 +1,8 @@
 package com.lothrazar.util;
 
+import java.lang.reflect.Field;
 import java.util.ArrayList;
+import java.util.List;
 import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
@@ -25,6 +27,9 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.IRecipe;
+import net.minecraft.item.crafting.ShapedRecipes;
+import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
@@ -36,6 +41,8 @@ import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;  
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard;  
 import com.lothrazar.samscontent.ModMain; 
@@ -764,5 +771,82 @@ public class Util
     	}
     	//TODO: cleanup/make ncer,etc
     	//Util.addChatMessage(player, "SHAPELESS " +String.join(" + ", list));
+	}
+
+	public static ItemStack[] getRecipeInput(IRecipe recipe)
+	{
+		ItemStack[] recipeItems = null;
+	    if(recipe instanceof ShapedRecipes)
+	    { 
+	    	ShapedRecipes r = ((ShapedRecipes)recipe);
+	    	recipeItems = r.recipeItems;
+	    }
+	    else if(recipe instanceof ShapedOreRecipe)
+	    {
+	    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
+		
+		    recipeItems = new ItemStack[r.getInput().length];
+	    	
+	    	for(int i = 0; i < r.getInput().length; i++) 
+	    	{
+	    		Object o = r.getInput()[i];
+	    		if(o == null){continue;}
+	    		if(o instanceof ItemStack)
+	    		{
+	    			recipeItems[i] = (ItemStack)o;
+	    		}
+	    		else
+	    		{
+				    List<ItemStack> c = (List<ItemStack>)o;
+				    	
+				    if(c != null && c.size() > 0)
+				    {
+				    	recipeItems[i] = c.get(0);
+				    }
+	    		}
+	    	} 
+	    } 
+	    else if(recipe instanceof ShapelessRecipes)
+		{
+	    	ShapelessRecipes r = (ShapelessRecipes)recipe;
+	    	
+	    	recipeItems = new ItemStack[r.recipeItems.size()];
+    		
+	    	for(int i = 0; i < r.recipeItems.size(); i++) 
+	    	{
+	    		Object o = r.recipeItems.get(i);
+	    		if(o != null && o instanceof ItemStack)
+	    		{
+	    			recipeItems[i] = (ItemStack)o;
+	    		}
+	    	} 
+		}
+	    else if(recipe instanceof ShapelessOreRecipe)
+	    {
+	    	ShapelessOreRecipe r = (ShapelessOreRecipe)recipe;
+
+	    	recipeItems = new ItemStack[r.getInput().size()];
+    		
+	    	for(int i = 0; i < r.getInput().size(); i++) 
+	    	{
+	    		Object o = r.getInput().get(i);
+	    		if(o == null){continue;}
+	    		if(o instanceof ItemStack)
+	    		{
+	    			recipeItems[i] = (ItemStack)o;
+	    		}
+	    		else
+	    		{
+				    List<ItemStack> c = (List<ItemStack>)o;
+				    	
+				    if(c != null && c.size() > 0)
+				    {
+				    	recipeItems[i] = c.get(0);
+				    }
+	    		}
+	    	} 
+	    }
+
+		return recipeItems;
 	}
 }
