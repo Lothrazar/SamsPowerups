@@ -24,7 +24,6 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 public class CommandRecipe  implements ICommand
 {
 	public static boolean REQUIRES_OP;  
-	public static int XP_COST_PER_PLACE; 
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandRecipe()
