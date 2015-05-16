@@ -15,7 +15,9 @@
  
 -Bugfix: typo in command search trades
  
--New command that tells recipes - is there an easy way to search and find them?
+-New command that tells recipes
+
+-new command that tells uses (in a recipe)
 
 -New config option : for /place commands to restrict which blocks are allowed
    empty filter means all are allowed. Default to My scaffolding, and Dirt, as allowed
