@@ -63,7 +63,7 @@ public class CommandUses implements ICommand
 
 		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 		ItemStack recipeResult;
-
+		boolean foundSomething = false;
 		for (IRecipe recipe : recipes)
 		{
 		    recipeResult = recipe.getRecipeOutput();
@@ -80,10 +80,17 @@ public class CommandUses implements ICommand
 				{ 
 					Util.addChatMessage(player, recipeResult.getDisplayName());
 				
+					foundSomething = true;
+					//break only the inner loop, keep looking for other recipes
 					break;
 				}
 			} 
 		}//end loop
+		
+		if(foundSomething == false)
+		{
+			Util.addChatMessage(player, "command.recipes.notfound");
+		}
 	}
 
 	@Override

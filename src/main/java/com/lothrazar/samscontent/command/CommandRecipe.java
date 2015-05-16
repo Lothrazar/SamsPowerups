@@ -61,13 +61,6 @@ public class CommandRecipe  implements ICommand
 		if(! (sender instanceof EntityPlayer)){return;}//does not work from command blocks and such
 		
 		EntityPlayer player = (EntityPlayer)sender;
-
-		/*
-		//TODO: a help/expl mode?
-			Util.addChatMessage(player, "0 1 2");
-			Util.addChatMessage(player, "3 4 5");
-			Util.addChatMessage(player, "6 7 8");
-		*/
 		ItemStack held = player.inventory.getCurrentItem();
 		
 		if(held == null && world.isRemote)
@@ -79,6 +72,8 @@ public class CommandRecipe  implements ICommand
 		List<IRecipe> recipes = CraftingManager.getInstance().getRecipeList();
 
 		ItemStack recipeResult;
+
+		boolean foundSomething = false;
 
 		for (IRecipe recipe : recipes)
 		{
@@ -108,6 +103,7 @@ public class CommandRecipe  implements ICommand
 
 				Util.addChatMessage(player, "command.recipes.found");
 		    	Util.addChatShapedRecipe(player, Util.getRecipeInput(recipe), isInventory);
+		    	foundSomething = true;
 		    }
 		    else if(recipe instanceof ShapedOreRecipe) //it uses forge ore dictionary
 		    {
@@ -140,11 +136,13 @@ public class CommandRecipe  implements ICommand
 
 				Util.addChatMessage(player, "command.recipes.found");
 		    	Util.addChatShapedRecipe(player,recipeItems, isInventory);
+		    	foundSomething = true;
 		    } 
 		    else if(recipe instanceof ShapelessRecipes || recipe instanceof ShapelessOreRecipe)
 			{
 				Util.addChatMessage(player, "command.recipes.found");
 		    	Util.addChatShapelessRecipe(player,Util.getRecipeInput(recipe));
+		    	foundSomething = true;
 		    }
 		    else 
 		    {
@@ -152,10 +150,15 @@ public class CommandRecipe  implements ICommand
 		    	//TODO: brewing stand?
 		    	
 		    	//for example, if its from some special crafting block/furnace from another mod
-		    	Util.addChatMessage(player, "Recipe type not supported, class = " + recipe.getClass().getName());
+		    	//Util.addChatMessage(player, "Recipe type not supported, class = " + recipe.getClass().getName());
 		    	
 		    }
 	    }//end main recipe loop
+		
+		if(foundSomething == false)
+		{
+			Util.addChatMessage(player, "command.recipes.notfound");
+		}
 	}
 
 	@Override
@@ -175,5 +178,4 @@ public class CommandRecipe  implements ICommand
 	{
 		return false;
 	}
-
 }
