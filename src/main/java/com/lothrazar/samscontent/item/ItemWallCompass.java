@@ -1,14 +1,18 @@
 package com.lothrazar.samscontent.item;
 
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.Util;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWallCompass extends Item
 {
@@ -23,7 +27,11 @@ public class ItemWallCompass extends Item
 
 	public static void addRecipe()
 	{
-
+		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wall_compass)
+			, new ItemStack(Items.compass)
+			, new ItemStack(Items.ender_eye)
+			, new ItemStack(Items.diamond)
+			, new ItemStack(Items.emerald));
 		
 	}
 
@@ -31,6 +39,8 @@ public class ItemWallCompass extends Item
 	{
 		if(event.face == null){return;}//means we clicked into air, not on a block
 		
+		//TODO: we could detect block clicked, what type it is,and check some blacklist from config
+		//ex, disable bedrock or something
 		BlockPos pos = event.pos;
 		World world = event.world;
 		EntityPlayer player = event.entityPlayer;
