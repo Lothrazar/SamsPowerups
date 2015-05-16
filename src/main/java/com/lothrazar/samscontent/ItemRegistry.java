@@ -68,9 +68,12 @@ public class ItemRegistry
 	{   
 		
 
-		wall_compass = new ItemWallCompass();
-		ItemRegistry.registerItem(wall_compass, "wall_compass");
-		ItemWallCompass.addRecipe();
+		if(ModMain.cfg.wall_compass)
+		{
+			wall_compass = new ItemWallCompass();
+			ItemRegistry.registerItem(wall_compass, "wall_compass");
+			ItemWallCompass.addRecipe();
+		}
 		
 		
 		if(ModMain.cfg.ender_cookie)

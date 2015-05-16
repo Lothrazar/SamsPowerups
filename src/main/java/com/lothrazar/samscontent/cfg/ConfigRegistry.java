@@ -305,7 +305,12 @@ public class ConfigRegistry
 		
 		ender_cookie = instance.getBoolean("ender_cookie",category, true,
 				"Teleports you to worldspawn when eaten.");  
-		  
+		
+		wall_compass  = instance.getBoolean("wall_phasing_compass",category, true,
+				"Click this item on a block to teleport to the other side, if it is a 1-thick wall.  Works very similar to (and inspired by) Bukkit Essentials compass teleportation.");   
+		ItemWallCompass.DURABILITY  = instance.getInt("wall_compass.durability",category, 100,1,900,
+    			"Durability of the phasing compass.");
+		
 		emerald_armor = instance.getBoolean("emerald_armor",category, true,
 				"Adds a full set of emerald armor, that is functional the exact same as gold (same durability, enchantability, etc).");  
 		  
@@ -680,4 +685,5 @@ public class ConfigRegistry
 	public boolean ender_cookie;
 	public boolean cmd_recipe;
 	public boolean cmd_uses;
+	public boolean wall_compass;
 }

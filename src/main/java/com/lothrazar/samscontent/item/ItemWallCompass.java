@@ -16,7 +16,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ItemWallCompass extends Item
 {
-	public static int DURABILITY=5;//TODO CONFIG
+	public static int DURABILITY;
 	
 	public ItemWallCompass()
 	{
@@ -32,7 +32,6 @@ public class ItemWallCompass extends Item
 			, new ItemStack(Items.ender_eye)
 			, new ItemStack(Items.diamond)
 			, new ItemStack(Items.emerald));
-		
 	}
 
 	public static void onRightClick(PlayerInteractEvent event)
