@@ -68,7 +68,7 @@ public class ItemRegistry
 	{   
 		
 
-		if(ModMain.cfg.wall_compass)
+		if(ModMain.cfg.phasing_compass)
 		{
 			wall_compass = new ItemWallCompass();
 			ItemRegistry.registerItem(wall_compass, "wall_compass");
