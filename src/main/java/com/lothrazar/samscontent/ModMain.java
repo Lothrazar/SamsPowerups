@@ -266,6 +266,7 @@ public class ModMain
 	{  
 		PotionRegistry.onEntityUpdate(event);
 		
+		//TODO: make class/event handler for fragile torches
 		if(ModMain.cfg.fragileTorches && 
 				event.entityLiving.worldObj.getBlockState(event.entityLiving.getPosition()).getBlock() == Blocks.torch) 
 		{ 
