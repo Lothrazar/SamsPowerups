@@ -15,7 +15,7 @@ import net.minecraft.util.BlockPos;
 public class CommandEffectPay implements ICommand
 {
 	public static boolean REQUIRES_OP;  //TODO:CONFIG
-	public static int XP_COST_PER_SECOND=5;//TODO:CONFIG
+	public static int XP_COST_PER_SECOND;//TODO:CONFIG
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandEffectPay()
