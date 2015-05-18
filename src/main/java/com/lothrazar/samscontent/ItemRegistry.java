@@ -60,6 +60,7 @@ public class ItemRegistry
 	public static ItemFoodGhost apple_ghost;
 	public static ItemEnderCookie ender_cookie;
 	public static ItemWallCompass wall_compass;
+	public static ItemSuperfood food_super;
 	
 	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 2, 32, 12F, 0F, 22);
 	
@@ -193,6 +194,7 @@ public class ItemRegistry
 		
 		if(ModMain.cfg.beetroot)
 		{  
+			
 			beetroot_seed = new ItemSeeds(BlockRegistry.beetroot_crop, Blocks.farmland).setCreativeTab(ModMain.tabSamsContent);
 			ItemRegistry.registerItem(beetroot_seed, "beetroot_seed");
 			
@@ -209,8 +211,16 @@ public class ItemRegistry
 					'b', beetrootItem, 
 					'u', Items.bowl
 					);
+			
+
 		}
-		 
+
+		if(ModMain.cfg.superfood)
+		{  
+			food_super = new ItemSuperfood();
+			ItemRegistry.registerItem(food_super, "food_super");
+			food_super.addRecipe();
+		}
 		if(ModMain.cfg.fire_charge_throw)
 		{ 
 			ItemRegistry.fire_charge_throw = new ItemFireballThrowable();
