@@ -4,6 +4,8 @@
 
 -item superfood
 
+-upgarde /searchtrade and /searchitem commands : spawn particles at the found location
+
 
 
 Possible Future Features (1.4 + ):

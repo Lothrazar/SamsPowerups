@@ -2,8 +2,10 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List; 
+import com.lothrazar.util.Util;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityAgeable;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.IMerchant;
@@ -14,6 +16,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 
@@ -84,7 +87,7 @@ public class CommandSearchTrades  implements ICommand
 				Z + 0.5D + range);
 		 
 
-		 List merchants = ic.getEntityWorld().getEntitiesWithinAABB(EntityVillager.class, searchRange);
+		 List<Entity> merchants = ic.getEntityWorld().getEntitiesWithinAABB(EntityVillager.class, searchRange);
 
 		 //List merchants = ic.getEntityWorld().getEntitiesWithinAABB(IMerchant.class, searchRange);
 		 List<IMerchant> villagers = new ArrayList();
@@ -92,7 +95,7 @@ public class CommandSearchTrades  implements ICommand
 		 //double check that it should be an adult villager
 		 //recall that 
 		 // public class EntityVillager extends EntityAgeable implements INpc, IMerchant
-		 for (Object m : merchants) 
+		 for (Entity m : merchants) 
 		 {
 		     if(m instanceof EntityLiving && ((EntityLiving)m).isChild() == false && (IMerchant)m != null)
 		     { 
@@ -152,6 +155,11 @@ public class CommandSearchTrades  implements ICommand
 							 " :: "+
 							 buy.stackSize+" "+buy.getDisplayName();
 					 messages.add(m); 
+					 
+					 
+					 Util.spawnParticlePacketByID(((Entity)villagers.get(i)).getPosition()
+							 ,EnumParticleTypes.CRIT_MAGIC.getParticleID());
+					
 				 }
 			 } 
 		 }

@@ -46,6 +46,7 @@ import net.minecraftforge.oredict.ShapelessOreRecipe;
 import org.apache.logging.log4j.Level;
 import org.lwjgl.input.Keyboard;  
 import com.lothrazar.samscontent.ModMain; 
+import com.lothrazar.samscontent.potion.MessagePotion;
 
 public class Util
 {    
@@ -838,5 +839,15 @@ public class Util
 	    }
 
 		return recipeItems;
+	}
+
+	//IMPORTANT: if you are on the client side already, DO NOT use this, use the regular one
+	//this sends a packet from server to client, telling what particle to use
+	public static void spawnParticlePacketByID(BlockPos position, int particleID)
+	{
+		//this. fires only on server side. so send packet for client to spawn particles and so on
+		ModMain.network.sendToAll(new MessagePotion(position, particleID));
+    	
+		
 	}
 }

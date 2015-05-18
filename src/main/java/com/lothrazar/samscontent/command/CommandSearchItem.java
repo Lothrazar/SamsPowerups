@@ -4,9 +4,7 @@ import java.util.ArrayList;
 import java.util.Dictionary;
 import java.util.HashMap;
 import java.util.List;   
-
 import com.lothrazar.util.Util;
-
 import net.minecraftforge.fml.common.FMLCommonHandler; 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -17,6 +15,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.common.config.Property;
 
@@ -27,7 +26,7 @@ public class CommandSearchItem  implements ICommand
 	
 	public CommandSearchItem()
 	{
-		aliases.add("SEARCHITEM");
+		aliases.add(getName().toUpperCase());
 		aliases.add("searchi");
 		aliases.add("SEARCHI");
 	}
@@ -112,7 +111,7 @@ public class CommandSearchItem  implements ICommand
 		
 		int foundQtyTotal;
 		ArrayList<String> foundMessages = new ArrayList<String>();
-	 
+		
 		for(IInventory inventory : tilesToSearch)
 		{ 
 			foundQtyTotal = 0;
@@ -121,6 +120,10 @@ public class CommandSearchItem  implements ICommand
 			if(foundQtyTotal > 0)
 			{ 
 				String totalsStr = foundQtyTotal + " found : "; 
+				
+				//TODO we COULD have configs for each of these, that is, one config flag for SEND_CHAT
+				//and one for SEND_PARTICLES
+				Util.spawnParticlePacketByID(dictionary.get(inventory),EnumParticleTypes.CRIT_MAGIC.getParticleID());
 				
 				foundMessages.add(totalsStr + Util.getCoordsOrReduced(player,dictionary.get(inventory)));
 			}  

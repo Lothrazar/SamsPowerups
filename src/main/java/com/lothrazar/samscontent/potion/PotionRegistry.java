@@ -141,8 +141,7 @@ public class PotionRegistry
 	{
 		if(world.getTotalWorldTime() % Reference.TICKS_PER_SEC/2 == 0) // every half second
     	{
-    		//this. fires only on server side. so send packet for client to spawn particles and so on
-    		ModMain.network.sendToAll(new MessagePotion(living.getPosition(), particle.getParticleID()));
+    		Util.spawnParticlePacketByID(living.getPosition(), particle.getParticleID());
     	}
 	}
 
