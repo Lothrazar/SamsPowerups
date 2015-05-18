@@ -2,17 +2,20 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 
 public class CommandEffectPay implements ICommand
 {
 	public static boolean REQUIRES_OP;  //TODO:CONFIG
-	public static int XP_COST_PER_SECOND;
+	public static int XP_COST_PER_SECOND=10;
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandEffectPay()
@@ -58,9 +61,60 @@ public class CommandEffectPay implements ICommand
 			return;
 		}
 		
-//
+ 
+		int pid = 0;
+		try
+		{
+        	pid = Integer.parseInt(args[0]);
+        	
+        	
+
+    		Potion p = Potion.potionTypes[pid];
+    		
+    		if(p == null)//if invalid id
+    		{
+    			Util.addChatMessage(player, getCommandUsage(sender));
+    			return;
+    		}
+		}
+		catch (Exception e)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+
+		 
+		int sec = 0;
+		try
+		{
+        	sec = Integer.parseInt(args[1]);
+		}
+		catch (Exception e)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
 		
+		if(pid <= 0 || sec <= 0)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
 		
+		//TODO: getr cost, check, and deduct
+		
+		int xpCost = sec * XP_COST_PER_SECOND;
+		
+		if(player.experienceTotal < xpCost)
+		{
+			Util.addChatMessage(player, "command.effect.xp "+ xpCost);
+			return;
+		}
+		Util.drainExp(player, xpCost);
+		
+		int ticks = sec * Reference.TICKS_PER_SEC;
+	 
+		player.addPotionEffect(new PotionEffect(pid,ticks));
 		
 		
 	}

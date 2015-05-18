@@ -225,7 +225,8 @@ public class ModMain
 
 		if(ModMain.cfg.cmd_uses) 
 			event.registerServerCommand(new CommandUses());
-	 
+
+		event.registerServerCommand(new CommandEffectPay());
 	}
   
 	private void registerEventHandlers() 
