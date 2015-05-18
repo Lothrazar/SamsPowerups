@@ -211,8 +211,6 @@ public class ItemRegistry
 					'b', beetrootItem, 
 					'u', Items.bowl
 					);
-			
-
 		}
 
 		if(ModMain.cfg.superfood)

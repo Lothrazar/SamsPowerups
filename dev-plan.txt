@@ -1,17 +1,16 @@
-1.3.2 - plans
+1.3.2 - done so far
 
-command place line : fixed bug with needs_op
+-fixed bug with needs_op in /place commands
 
 -item superfood
 
-1.4 + Possible Future Features:
+
+
+Possible Future Features (1.4 + ):
   
 -version checker
 
 -possible refactoring
-
--a SuperFood - brain food, or something: bread,pig,cow,sheep,salmon,carrot,potato,egg,sugar
-  
 
 ?? placefloor as spiralling outward.
 

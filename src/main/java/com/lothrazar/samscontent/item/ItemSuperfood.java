@@ -18,6 +18,7 @@ public class ItemSuperfood extends ItemFood
 	}
 	public void addRecipe() 
 	{
+		//can be made with any meat
 		addMeatRecipe(Items.cooked_beef);
 		addMeatRecipe(Items.cooked_mutton);
 		addMeatRecipe(Items.cooked_porkchop);
