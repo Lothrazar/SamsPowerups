@@ -462,24 +462,24 @@ public class ConfigRegistry
 		placeline = instance.getBoolean("placeline",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
 
-		CommandPlaceLine.REQUIRES_OP = instance.getBoolean("placeline.needs_op",category, true,
+		CommandPlaceLine.REQUIRES_OP = instance.getBoolean("placeline.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 	
 		placefloor = instance.getBoolean("placefloor",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
-		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placefloor.needs_op",category, true,
+		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placefloor.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		CommandPlaceFloor.RADIUS_MAX = instance.getInt("placefloor.radius_max", category, 8, 1, 64, 
 				"Maximum radius that you can specify as an argument.");
 		
 		placestair = instance.getBoolean("placestair",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
-		CommandPlaceStair.REQUIRES_OP = instance.getBoolean("placestair.needs_op",category, true,
+		CommandPlaceStair.REQUIRES_OP = instance.getBoolean("placestair.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		
 		placecircle = instance.getBoolean("placecircle",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
-		CommandPlaceCircle.REQUIRES_OP = instance.getBoolean("placecircle.needs_op",category, true,
+		CommandPlaceCircle.REQUIRES_OP = instance.getBoolean("placecircle.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		CommandPlaceCircle.RADIUS_MAX = instance.getInt("placecircle.radius_max", category, 8, 1, 32, 
 				"Maximum radius that you can specify as an argument.");

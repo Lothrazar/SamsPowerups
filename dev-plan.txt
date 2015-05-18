@@ -6,6 +6,7 @@
 
 -upgarde /searchtrade and /searchitem commands : spawn particles at the found location
 
+- By default, the place commands no longer require OP
 
 
 Possible Future Features (1.4 + ):
