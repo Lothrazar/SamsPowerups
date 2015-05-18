@@ -3,10 +3,8 @@ package com.lothrazar.samscontent;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 import java.util.ArrayList; 
-
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;   
-
 import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.cfg.ConfigRegistry;
 import com.lothrazar.samscontent.command.*;
@@ -19,7 +17,6 @@ import com.lothrazar.samscontent.stats.*;
 import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;
 import com.lothrazar.samscontent.world.*; 
 import com.lothrazar.util.*;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.BlockDoor;
@@ -88,6 +85,7 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLInterModComms;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
@@ -232,8 +230,6 @@ public class ModMain
   
 	private void registerEventHandlers() 
 	{ 
-		//FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
-		 
     	ArrayList<Object> handlers = new ArrayList<Object>();
   
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
@@ -765,5 +761,4 @@ public class ModMain
 			t.setBuckets(0);
 		}
 	}
-	
 }

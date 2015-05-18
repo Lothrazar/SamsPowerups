@@ -55,7 +55,7 @@ public class CommandPlaceCircle  implements ICommand
 		if(PlaceLib.canSenderPlace(sender) == false) {return;}
 
 		EntityPlayer player = (EntityPlayer)sender;
-		
+		if(player == null){return;}
 		if(args.length == 0)
 		{ 
 			Util.addChatMessage(player, getCommandUsage(sender));
