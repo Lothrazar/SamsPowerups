@@ -15,7 +15,7 @@ import net.minecraft.util.BlockPos;
 public class CommandEffectPay implements ICommand
 {
 	public static boolean REQUIRES_OP;  //TODO:CONFIG
-	public static int XP_COST_PER_SECOND=10;
+	public static int XP_COST_PER_SECOND=5;//TODO:CONFIG
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandEffectPay()
@@ -107,9 +107,10 @@ public class CommandEffectPay implements ICommand
 		
 		if(player.experienceTotal < xpCost)
 		{
-			Util.addChatMessage(player, "command.effect.xp "+ xpCost);
+			Util.addChatMessage(player, Util.lang("command.effect.xp")+" "+ xpCost);
 			return;
 		}
+		
 		Util.drainExp(player, xpCost);
 		
 		int ticks = sec * Reference.TICKS_PER_SEC;

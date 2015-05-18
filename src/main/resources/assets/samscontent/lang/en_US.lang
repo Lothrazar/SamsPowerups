@@ -61,6 +61,7 @@ command.place.notallowed=Block not allowed, see the filter in config file
 command.recipes.empty=Your hands are empty
 command.recipes.found=Recipe Found:
 command.recipes.notfound=No recipes found
+command.effect.xp=Not enough Exp, requires 
 potion.slowfall=Slowfall
 potion.waterwalk=Waterwalking
 potion.lavawalk=Lavawalking
