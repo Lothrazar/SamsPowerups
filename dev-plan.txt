@@ -1,4 +1,4 @@
-1.3.3
+1.3.3 - WIP
 
 -effectpay bugfixes: was not calculating and blocking/draining experience correctly
 
@@ -7,18 +7,9 @@
     simply run /bind /toggledownfall or /bind /effectpay 41 10, or any other command
     and that key is now bound to the macro key (default G)
 
-1.3.2 - done so far
+/ping
 
--fixed bug with needs_op in /place commands
-
--item superfood
-
--upgarde /searchtrade and /searchitem commands : spawn particles at the found location
-
-- By default, the place commands no longer require OP
-
--effectpay : new command that gives potion effects at the cost of experience
-
+ 
 Possible Future Features (1.4 + ):
   
 -version checker

@@ -227,9 +227,14 @@ public class ModMain
 			event.registerServerCommand(new CommandUses());
 
 		if(ModMain.cfg.cmd_effectpay) 
-			event.registerServerCommand(new CommandBindMacro());
+			event.registerServerCommand(new CommandEffectPay());
+		
+		//TODO:CONFIGS
+		
+		event.registerServerCommand(new CommandBindMacro());
 
-		event.registerServerCommand(new CommandEffectPay());
+		
+		event.registerServerCommand(new CommandPing());
 	}
   
 	private void registerEventHandlers() 
