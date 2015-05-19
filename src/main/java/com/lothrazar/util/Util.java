@@ -621,9 +621,9 @@ public class Util
  
 		//so now we knwo how much was used to get to current level
 
-		double nextLevelExp = getXpToGainLevel(level);
+		//double nextLevelExp = getXpToGainLevel(level);
  
-		double progress = Math.round(nextLevelExp * player.experience);
+		double progress = Math.round(player.xpBarCap() * player.experience);
 
 		totalExp += (int)progress;
 		
@@ -634,6 +634,8 @@ public class Util
 	{  
 		double totalExp = getExpTotal(player);
   
+		//System.out.println("Drain from total = "+totalExp+" - "+f);
+		
 		if(totalExp - f < 0)
 		{
 			return false;
@@ -671,7 +673,7 @@ public class Util
 		else if(level <= 30)
 			totalExp = (int)(2.5*level*level - 40.5*level + 360);
 		else //level >= 31 
-			totalExp = (int)(4.5*level*level + 162.5*level + 2220);
+			totalExp = (int)(4.5*level*level - 162.5*level + 2220);//fixed. was +162... by mistake
 		
 		return totalExp;
 	}
@@ -689,8 +691,18 @@ public class Util
 		player.experienceTotal = xp;
 		player.experienceLevel = getLevelForXp(xp);
 		int next = getXpForLevel(player.experienceLevel);
+
+		//System.out.println("getXpForLevel =    "+ player.experienceLevel+" => " + next);
 		
 		player.experience = (float)(player.experienceTotal - next) / (float)player.xpBarCap(); 
+		
+		
+//should be always less than one...
+		//System.out.println("experience =    "+ player.experience);
+
+		//System.out.println("experienceTotal =    "+ player.experienceTotal);
+
+		//System.out.println("experienceLevel =    "+ player.experienceLevel);
 	}
 
 	public static EnumFacing getPlayerFacing(EntityPlayer player) 

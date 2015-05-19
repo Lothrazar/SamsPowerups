@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.command.CommandBindMacro;
+import com.lothrazar.util.Util;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -86,6 +87,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			
 
 			//System.out.println("w..   "+player.worldObj.isRemote);
+			Util.addChatMessage(player, "."+cmd);
 			
 			MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
 	 	}
