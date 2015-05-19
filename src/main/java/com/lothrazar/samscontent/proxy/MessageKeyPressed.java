@@ -80,11 +80,12 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		else if( message.keyPressed == ClientProxy.keyBind.getKeyCode())
 	 	{
 			String cmd = CommandBindMacro.getPlayerMacro(player);
-			System.out.println("bindkey..   "+cmd);
+			
+			//System.out.println("bindkey..   "+cmd);
 			
 			
 
-			System.out.println("w..   "+player.worldObj.isRemote);
+			//System.out.println("w..   "+player.worldObj.isRemote);
 			
 			MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
 	 	}

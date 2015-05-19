@@ -14,8 +14,8 @@ import net.minecraft.util.BlockPos;
 
 public class CommandEffectPay implements ICommand
 {
-	public static boolean REQUIRES_OP;  //TODO:CONFIG
-	public static int XP_COST_PER_SECOND;//TODO:CONFIG
+	public static boolean REQUIRES_OP;  
+	public static int XP_COST_PER_SECOND;
 	private ArrayList<String> aliases = new ArrayList<String>();
 	
 	public CommandEffectPay()
@@ -101,14 +101,10 @@ public class CommandEffectPay implements ICommand
 			return;
 		}
 		
-		//TODO: getr cost, check, and deduct
-		
 		int xpCost = sec * XP_COST_PER_SECOND;
-		
 		
 		if(Util.getExpTotal(player) < xpCost)
 		{
-			System.out.println(player.experienceTotal);
 			Util.addChatMessage(player, Util.lang("command.effect.xp")+" "+ xpCost);
 			return;
 		}
@@ -118,8 +114,6 @@ public class CommandEffectPay implements ICommand
 		int ticks = sec * Reference.TICKS_PER_SEC;
 	 
 		player.addPotionEffect(new PotionEffect(pid,ticks));
-		
-		
 	}
 
 	@Override
