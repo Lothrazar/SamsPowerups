@@ -227,7 +227,9 @@ public class ModMain
 			event.registerServerCommand(new CommandUses());
 
 		if(ModMain.cfg.cmd_effectpay) 
-			event.registerServerCommand(new CommandEffectPay());
+			event.registerServerCommand(new CommandBindMacro());
+
+		event.registerServerCommand(new CommandEffectPay());
 	}
   
 	private void registerEventHandlers() 
@@ -687,6 +689,10 @@ public class ModMain
         { 	      
         	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
         }   
+        else if(ClientProxy.keyBind.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind.getKeyCode()));
+        }
     } 
 	
 	@SubscribeEvent

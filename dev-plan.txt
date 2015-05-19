@@ -1,3 +1,10 @@
+1.3.3
+
+-effectpay bugfix: was not calculating and blocking totalXP correctly
+
+-/bind for macros
+
+
 1.3.2 - done so far
 
 -fixed bug with needs_op in /place commands
@@ -8,6 +15,7 @@
 
 - By default, the place commands no longer require OP
 
+-effectpay : new command that gives potion effects at the cost of experience
 
 Possible Future Features (1.4 + ):
   

@@ -105,8 +105,10 @@ public class CommandEffectPay implements ICommand
 		
 		int xpCost = sec * XP_COST_PER_SECOND;
 		
-		if(player.experienceTotal < xpCost)
+		
+		if(Util.getExpTotal(player) < xpCost)
 		{
+			System.out.println(player.experienceTotal);
 			Util.addChatMessage(player, Util.lang("command.effect.xp")+" "+ xpCost);
 			return;
 		}

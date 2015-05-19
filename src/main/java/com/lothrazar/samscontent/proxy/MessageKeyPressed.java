@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.proxy;
   
+import com.lothrazar.samscontent.command.CommandBindMacro;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -7,6 +8,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 
 public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPressed, IMessage>
@@ -75,6 +77,17 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
 	 	} 
+		else if( message.keyPressed == ClientProxy.keyBind.getKeyCode())
+	 	{
+			String cmd = CommandBindMacro.getPlayerMacro(player);
+			System.out.println("bindkey..   "+cmd);
+			
+			
+
+			System.out.println("w..   "+player.worldObj.isRemote);
+			
+			MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
+	 	}
  
 
 		return null;

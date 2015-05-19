@@ -608,41 +608,32 @@ public class Util
 		 
 		return xStr +  yStr +  zStr ;
 	}
-
-	public static boolean drainExp(EntityPlayer player, float f) 
+	
+	public static double getExpTotal(EntityPlayer player)
 	{
-
 		int level = player.experienceLevel;
 		
 		//this is the exp between previous and last level, not the real total
 		float experience = player.experience;
-		//player.experienceTotal  
- 
+	
 		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
 		double totalExp = getXpForLevel(level);
  
-		//System.out.println("level "+level);
-		
 		//so now we knwo how much was used to get to current level
-		//System.out.println("totalExp "+totalExp);
-		//System.out.println("player.experienceTotal "+player.experienceTotal);
-		//System.out.println("player.experience "+player.experience);
-		
-		
-		
+
 		double nextLevelExp = getXpToGainLevel(level);
  
 		double progress = Math.round(nextLevelExp * player.experience);
 
-		//System.out.println("progress "+progress);
-
 		totalExp += (int)progress;
-
-		//yep its equal. so now we know how much we should have so we can change all numbers safely
-		//System.out.println("totalExp NEW "+totalExp);//should be == to player.experienceTotal
 		
+		return totalExp;
+	}
 
-		//System.out.println("getLevelForXp   "+getLevelForXp((int)totalExp));
+	public static boolean drainExp(EntityPlayer player, float f) 
+	{  
+		double totalExp = getExpTotal(player);
+  
 		if(totalExp - f < 0)
 		{
 			return false;

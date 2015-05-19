@@ -29,6 +29,7 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyShiftDown; 
 	public static KeyBinding keyBarUp;
 	public static KeyBinding keyBarDown; 
+	public static KeyBinding keyBind;
   
     @Override
     public void registerRenderers() 
@@ -85,5 +86,8 @@ public class ClientProxy extends CommonProxy
          
         keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
+        
+        keyBind = new KeyBinding(Reference.keyBindName, Keyboard.KEY_G, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind);
 	} 
 }
