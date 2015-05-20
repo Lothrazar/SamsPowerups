@@ -12,6 +12,11 @@
 
 /enderchest cmd bugfix (config file entries existed but not hooked up)
 
+SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
+
+/effectpay: add option to pump levels (ex haste2, jump3) , make sure we default=1, and multiply XP cost by that
+(then -1 since 1 = II)
+
 Possible Future Features (1.4 + ):
   
 -version checker
