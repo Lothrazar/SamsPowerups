@@ -84,6 +84,8 @@ public class CommandBindMacro implements ICommand
 
 		Util.addChatMessage(player, Util.lang("command.bind.done")+" "+full);
 		
+		//System.out.println(KEY_MACRO_base + mac);
+		
 	}
 	  
 	public static String getPlayerMacro(EntityPlayer player,String macro)
@@ -94,8 +96,14 @@ public class CommandBindMacro implements ICommand
 	public static void tryExecuteMacro(EntityPlayer player,String macro)
 	{
 		String cmd = CommandBindMacro.getPlayerMacro(player,macro);
+
+		//System.out.println("execute : "+KEY_MACRO_base + macro);
 		
-		if(cmd==null||cmd.isEmpty()){return;}
+		if(cmd==null||cmd.isEmpty())
+		{
+			Util.addChatMessage(player, Util.lang("command.bind.empty"));
+			return;
+		}
 		
 		Util.addChatMessage(player, "."+cmd);
 		
