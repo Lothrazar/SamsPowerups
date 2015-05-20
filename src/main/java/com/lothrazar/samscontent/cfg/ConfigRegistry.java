@@ -494,7 +494,7 @@ public class ConfigRegistry
 		CommandPlaceCircle.RADIUS_MAX = instance.getInt("placecircle.radius_max", category, 8, 1, 32, 
 				"Maximum radius that you can specify as an argument.");
 		
-		kit = instance.getBoolean("kit",category, true,
+		cmd_kit = instance.getBoolean("kit",category, true,
     			"Use /kit to give yourself kit items.  Can only be done once each time you die.");
 
 		String csv = instance.getString("kit.items",category, "minecraft:wooden_pickaxe,minecraft:wooden_axe,minecraft:crafting_table",
@@ -504,7 +504,7 @@ public class ConfigRegistry
 		CommandHome.REQUIRES_OP = instance.getBoolean("home.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 
-		home = instance.getBoolean("home",category, true,
+		cmd_home = instance.getBoolean("home",category, true,
     			"Use /home to go to the players spawn point, as defined by a bed."); 
 		
 		CommandHome.REQUIRES_OP = instance.getBoolean("home.needs_op",category, true,
@@ -516,37 +516,37 @@ public class ConfigRegistry
 		CommandWorldHome.REQUIRES_OP = instance.getBoolean("worldhomehome.needs_op",category, true,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		
-		searchspawner = instance.getBoolean("searchspawner",category, true,
+		cmd_searchspawner = instance.getBoolean("searchspawner",category, true,
     			"Players can search for spawners placed in the world.  Result is only chat output.");
  
 		CommandSearchSpawner.REQUIRES_OP = instance.getBoolean("searchspawner.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		
-		searchtrade = instance.getBoolean("searchtrade",category, true,
+		cmd_searchtrade = instance.getBoolean("searchtrade",category, true,
     			"Players can search the trades of nearby villagers.  Result is only chat output.");
 		
 		CommandSearchTrades.REQUIRES_OP = instance.getBoolean("searchtrade.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
  
-		searchitem = instance.getBoolean("searchitem",category, true,
+		cmd_searchitem = instance.getBoolean("searchitem",category, true,
     			"Players can search nearby chests for items.   Result is only chat output."    		); 
 		
 		CommandSearchItem.REQUIRES_OP = instance.getBoolean("searchitem.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
  
-		enderchest = instance.getBoolean("enderchest",category, true,
+		cmd_enderchest = instance.getBoolean("enderchest",category, true,
     			"Players can open their enderchest with a command, no item needed."    		); 
 		
-		CommandEnderChest.REQUIRES_OP = instance.getBoolean("enderchest.needs_op",category, true,
+		CommandEnderChest.REQUIRES_OP = instance.getBoolean("enderchest.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		 
-		simplewaypoint = instance.getBoolean("simplewaypoint",category, true,
+		cmd_simplewaypoint = instance.getBoolean("simplewaypoint",category, true,
     			"Command that lets players save waypoints that then show up in the F3 debug screen, so we can navigate back to it (no tp)."    		); 
 		
 		CommandSimpleWaypoints.REQUIRES_OP = instance.getBoolean("simplewaypoint.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
  
-		todo = instance.getBoolean("todo",category, true,
+		cmd_todo = instance.getBoolean("todo",category, true,
     			"Command that lets players use /todo myreminder text, which will then show whatever text they put on the F3 debug screen."); 
 		
 		CommandTodoList.REQUIRES_OP = instance.getBoolean("todo.needs_op",category, false,
@@ -577,14 +577,14 @@ public class ConfigRegistry
 	public boolean enderBook;
 	public boolean weatherBlock; 
 	public boolean craftableMushroomBlocks;
-	public boolean searchtrade;
-	public boolean searchitem;
+	public boolean cmd_searchtrade;
+	public boolean cmd_searchitem;
 	public boolean killall;
-	public boolean enderchest;
-	public boolean simplewaypoint;
-	public boolean todo;
-	public boolean kit; 
-	public boolean home;
+	public boolean cmd_enderchest;
+	public boolean cmd_simplewaypoint;
+	public boolean cmd_todo;
+	public boolean cmd_kit; 
+	public boolean cmd_home;
 	public boolean worldhome;
 	public boolean lootObsidian;
 	public boolean lootAllRecords;
@@ -624,7 +624,7 @@ public class ConfigRegistry
 	public boolean wandPiston;
 	public boolean simpleDispenser; 
 	public boolean dropPlayerSkullOnDeath;
-	public boolean searchspawner; 
+	public boolean cmd_searchspawner; 
 	public boolean mushroomBlocksCreativeInventory;
 	public boolean barrierCreativeInventory;
 	public boolean dragonEggCreativeInventory;

@@ -10,6 +10,7 @@
 
 /ping : shows coordinates in chat.
 
+/enderchest cmd bugfix (config file entries existed but not hooked up)
 
 Possible Future Features (1.4 + ):
   

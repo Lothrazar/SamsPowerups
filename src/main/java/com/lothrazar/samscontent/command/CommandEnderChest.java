@@ -24,7 +24,7 @@ public class CommandEnderChest implements ICommand
 	public CommandEnderChest()
 	{ 
 		this.aliases.add("ec"); 
-		this.aliases.add("ENDERCHEST");
+		this.aliases.add(getName().toUpperCase());
 	}
 
 	@Override

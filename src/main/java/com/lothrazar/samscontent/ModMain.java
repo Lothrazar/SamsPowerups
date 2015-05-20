@@ -184,25 +184,28 @@ public class ModMain
 	@EventHandler
 	public void onServerStarting(FMLServerStartingEvent event)
 	{
-		if(ModMain.cfg.searchtrade) 
+		if(ModMain.cfg.cmd_searchtrade) 
 			event.registerServerCommand(new CommandSearchTrades()); 
 		
-		if(ModMain.cfg.searchitem) 
+		if(ModMain.cfg.cmd_searchitem) 
 			event.registerServerCommand(new CommandSearchItem()); 
 		
-		if(ModMain.cfg.searchspawner) 
+		if(ModMain.cfg.cmd_searchspawner) 
 			event.registerServerCommand(new CommandSearchSpawner()); 
 		 
-		if(ModMain.cfg.simplewaypoint) 
+		if(ModMain.cfg.cmd_simplewaypoint) 
 			event.registerServerCommand(new CommandSimpleWaypoints()); 
 		
-		if(ModMain.cfg.todo) 
+		if(ModMain.cfg.cmd_enderchest) 
+			event.registerServerCommand(new CommandEnderChest()); 
+		
+		if(ModMain.cfg.cmd_todo) 
 			event.registerServerCommand(new CommandTodoList());  
 		 
-		if(ModMain.cfg.kit)  
+		if(ModMain.cfg.cmd_kit)  
 			event.registerServerCommand(new CommandKit()); 
   
-		if(ModMain.cfg.home) 
+		if(ModMain.cfg.cmd_home) 
 			event.registerServerCommand(new CommandWorldHome()); 
 		
 		if(ModMain.cfg.worldhome) 
