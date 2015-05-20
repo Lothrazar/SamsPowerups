@@ -3,13 +3,14 @@
 -effectpay bugfixes: was not calculating and blocking/draining experience correctly
 
 -new command /bind for macros
-
+    four key bindings and a command so you can bind any command to any key.  These are 
+    saved per character/world, and get reset on death.
     simply run /bind /toggledownfall or /bind /effectpay 41 10, or any other command
     and that key is now bound to the macro key (default G)
 
-/ping
+/ping : shows coordinates in chat.
 
- 
+
 Possible Future Features (1.4 + ):
   
 -version checker

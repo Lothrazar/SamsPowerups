@@ -12,7 +12,7 @@ import net.minecraft.util.BlockPos;
 
 public class CommandBindMacro implements ICommand
 {
-	public static boolean REQUIRES_OP;  //TODO:CONFIG
+	public static boolean REQUIRES_OP = false;//not in config on purpose
 	private static String KEY_MACRO_base = "macro";
 	public static String KEY_MACRO1 = "macro1";
 	public static String KEY_MACRO2 = "macro2";
@@ -40,7 +40,7 @@ public class CommandBindMacro implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
-		return "/"+getName();
+		return "/"+getName() +" <index> <command> <args>";
 	}
 
 	@Override
