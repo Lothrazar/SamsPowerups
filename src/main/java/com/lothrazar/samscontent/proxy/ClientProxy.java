@@ -29,7 +29,10 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyShiftDown; 
 	public static KeyBinding keyBarUp;
 	public static KeyBinding keyBarDown; 
-	public static KeyBinding keyBind;
+	public static KeyBinding keyBind1;
+	public static KeyBinding keyBind2;
+	public static KeyBinding keyBind3;
+	public static KeyBinding keyBind4;
   
     @Override
     public void registerRenderers() 
@@ -87,7 +90,17 @@ public class ClientProxy extends CommonProxy
         keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
         
-        keyBind = new KeyBinding(Reference.keyBindName, Keyboard.KEY_G, Reference.keyCategory); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind);
+        keyBind1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_H, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind1);
+
+        keyBind2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_J, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind2);
+
+        keyBind3 = new KeyBinding(Reference.keyBind3Name, Keyboard.KEY_K, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind3);
+
+        keyBind4 = new KeyBinding(Reference.keyBind4Name, Keyboard.KEY_L, Reference.keyCategory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind4);
+ 
 	} 
 }

@@ -7,12 +7,17 @@ import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
 
 public class CommandBindMacro implements ICommand
 {
 	public static boolean REQUIRES_OP;  //TODO:CONFIG
-	public static String KEY_MACRO = "macro";
+	private static String KEY_MACRO_base = "macro";
+	public static String KEY_MACRO1 = "macro1";
+	public static String KEY_MACRO2 = "macro2";
+	public static String KEY_MACRO3 = "macro3";
+	public static String KEY_MACRO4 = "macro4";
 	private ArrayList<String> aliases = new ArrayList<String>();
 
 	public CommandBindMacro()
@@ -55,24 +60,46 @@ public class CommandBindMacro implements ICommand
 			Util.addChatMessage(player, getCommandUsage(sender));
 			return;
 		}
+		
+		int mac = 0;
+		
+		try
+		{
+			mac = Integer.parseInt(args[0]);
+		}
+		catch (Exception e)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+		
 		String full = "/";
-		for(int i = 0; i < args.length; i++)
+		for(int i = 1; i < args.length; i++)
 		{
 			full += args[i]+" ";
 		}
-		
+		 
 		full = full.replace("//", "/");//in case it is typed in for us
-		player.getEntityData().setString(KEY_MACRO, full);
+		player.getEntityData().setString(KEY_MACRO_base + mac, full);
 
 		Util.addChatMessage(player, Util.lang("command.bind.done")+" "+full);
 		
-		
-		System.out.println("bind. = "+full);
 	}
-	
-	public static String getPlayerMacro(EntityPlayer player)
+	  
+	public static String getPlayerMacro(EntityPlayer player,String macro)
 	{
-		return player.getEntityData().getString(KEY_MACRO);
+		return player.getEntityData().getString(macro);
+	}
+
+	public static void tryExecuteMacro(EntityPlayer player,String macro)
+	{
+		String cmd = CommandBindMacro.getPlayerMacro(player,macro);
+		
+		if(cmd==null||cmd.isEmpty()){return;}
+		
+		Util.addChatMessage(player, "."+cmd);
+		
+		MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
 	}
 
 	@Override

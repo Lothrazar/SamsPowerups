@@ -21,7 +21,10 @@ public class Reference
 	public static final String keyBarUpName = "key.columnbarup";
 	public static final String keyBarDownName = "key.columnbardown"; 
 	public static final String keyPlayerFlipName = "key.playerflip";
-	public static final String keyBindName = "key.macro";
+	public static final String keyBind1Name = "key.macro1";
+	public static final String keyBind2Name = "key.macro2";
+	public static final String keyBind3Name = "key.macro3";
+	public static final String keyBind4Name = "key.macro4";
 	
 	public static final String keyCategory = "key.categories.inventory";
 	

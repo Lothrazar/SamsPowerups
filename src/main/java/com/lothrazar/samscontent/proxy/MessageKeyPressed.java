@@ -78,18 +78,21 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
 	 	} 
-		else if( message.keyPressed == ClientProxy.keyBind.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBind1.getKeyCode())
 	 	{
-			String cmd = CommandBindMacro.getPlayerMacro(player);
-			
-			//System.out.println("bindkey..   "+cmd);
-			
-			
-
-			//System.out.println("w..   "+player.worldObj.isRemote);
-			Util.addChatMessage(player, "."+cmd);
-			
-			MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
+			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO1);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind2.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO2);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind3.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO3);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind4.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO4);
 	 	}
  
 

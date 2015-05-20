@@ -228,13 +228,15 @@ public class ModMain
 
 		if(ModMain.cfg.cmd_effectpay) 
 			event.registerServerCommand(new CommandEffectPay());
+
+		if(ModMain.cfg.cmd_ping) 
+			event.registerServerCommand(new CommandPing());
 		
-		//TODO:CONFIGS
-		
+		//these ones are always here. no reason to disable.
+	
 		event.registerServerCommand(new CommandBindMacro());
 
-		
-		event.registerServerCommand(new CommandPing());
+
 	}
   
 	private void registerEventHandlers() 
@@ -694,9 +696,9 @@ public class ModMain
         { 	      
         	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
         }   
-        else if(ClientProxy.keyBind.isPressed())
+        else if(ClientProxy.keyBind1.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind1.getKeyCode()));
         }
     } 
 	

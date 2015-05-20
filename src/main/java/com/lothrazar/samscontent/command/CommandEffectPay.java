@@ -67,8 +67,6 @@ public class CommandEffectPay implements ICommand
 		{
         	pid = Integer.parseInt(args[0]);
         	
-        	
-
     		Potion p = Potion.potionTypes[pid];
     		
     		if(p == null)//if invalid id
