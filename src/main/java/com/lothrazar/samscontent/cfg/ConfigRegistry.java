@@ -455,7 +455,7 @@ public class ConfigRegistry
 		category = "commands";
  
 		cmd_ping = instance.getBoolean("ping",category, true,
-    			"A command that simply displays your coordinates in chat.  Useful only if your F3 coordinates are hidden, for example with reducedDebugInfo = true gamerule.");
+    			"A command that simply displays your coordinates in chat.  Also use '/ping nether' to show the nether version of your coords.  Useful only if your F3 coordinates are hidden, for example with reducedDebugInfo = true gamerule.");
 		
 		PlaceLib.allowedFromConfig = instance.getString("place.filter",category, "minecraft:dirt,samscontent:block_fragile",
     			"Filter which blocks can be placed with ALL place commands.  Empty string in this filter means everything is allowed.");

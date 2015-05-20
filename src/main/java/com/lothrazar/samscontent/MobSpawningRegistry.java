@@ -59,5 +59,6 @@ public class MobSpawningRegistry
 		//WOLVES only spawn naturally in forest, taiga, mega taiga, cold taiga, and cold taiga M
 
 		//irongolem - rare in jungle/?? 
+	 
 	}
 }
