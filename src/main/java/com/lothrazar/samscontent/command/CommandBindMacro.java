@@ -40,7 +40,7 @@ public class CommandBindMacro implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
-		return "/"+getName() +" <index> <command> <args>";
+		return "/"+getName() +" <list|1,2,3,4> <command> <args>";
 	}
 
 	@Override
@@ -53,11 +53,27 @@ public class CommandBindMacro implements ICommand
 	public void execute(ICommandSender sender, String[] args)		throws CommandException
 	{ 
 		EntityPlayer player = (EntityPlayer)sender;
-		if(player == null){return;}
+		if(player == null){return;}//not allowed for command blocks
 
-		if(args.length == 0)
+		if(args.length == 0 || args[0] == null)
 		{ 
 			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+		System.out.println(args[0]);
+		if(args[0].equalsIgnoreCase("list"))
+		{
+			String mList;
+			for(int m = 1; m <= 4; m++)
+			{
+				mList = getPlayerMacro(player,KEY_MACRO_base + m);
+				if(mList==null || mList.isEmpty()) mList = Util.lang("command.bind.empty");
+				
+			
+				Util.addChatMessage(player, m+" : "+mList);
+			
+			}
+			
 			return;
 		}
 		
