@@ -60,7 +60,7 @@ public class CommandBindMacro implements ICommand
 			Util.addChatMessage(player, getCommandUsage(sender));
 			return;
 		}
-		System.out.println(args[0]);
+		
 		if(args[0].equalsIgnoreCase("list"))
 		{
 			String mList;
@@ -69,9 +69,7 @@ public class CommandBindMacro implements ICommand
 				mList = getPlayerMacro(player,KEY_MACRO_base + m);
 				if(mList==null || mList.isEmpty()) mList = Util.lang("command.bind.empty");
 				
-			
 				Util.addChatMessage(player, m+" : "+mList);
-			
 			}
 			
 			return;
@@ -100,8 +98,6 @@ public class CommandBindMacro implements ICommand
 
 		Util.addChatMessage(player, Util.lang("command.bind.done")+" "+full);
 		
-		//System.out.println(KEY_MACRO_base + mac);
-		
 	}
 	  
 	public static String getPlayerMacro(EntityPlayer player,String macro)
@@ -113,8 +109,6 @@ public class CommandBindMacro implements ICommand
 	{
 		String cmd = CommandBindMacro.getPlayerMacro(player,macro);
 
-		//System.out.println("execute : "+KEY_MACRO_base + macro);
-		
 		if(cmd==null||cmd.isEmpty())
 		{
 			Util.addChatMessage(player, Util.lang("command.bind.empty"));
