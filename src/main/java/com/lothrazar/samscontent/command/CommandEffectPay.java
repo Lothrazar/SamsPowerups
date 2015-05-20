@@ -40,7 +40,7 @@ public class CommandEffectPay implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
-		return "/"+getName() + " <potionid> <seconds> <lvl>";
+		return "/"+getName() + " <potionid> <seconds> [lvl]";
 	}
 
 	@Override
@@ -96,16 +96,13 @@ public class CommandEffectPay implements ICommand
 		int lvl = 1;
 		try
 		{
-			lvl = Integer.parseInt(args[1]);
+			lvl = Integer.parseInt(args[2]);
 		}
 		catch (Exception e)
 		{
 			Util.addChatMessage(player, getCommandUsage(sender));
 			return;
 		}
-		
-		
-		
 		
 		if(pid < 0 || sec <= 0 || lvl < 1)
 		{
