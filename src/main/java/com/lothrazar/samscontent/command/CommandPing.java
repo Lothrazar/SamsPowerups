@@ -34,7 +34,7 @@ public class CommandPing implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
-		return "/"+getName();
+		return "/"+getName() + "[nether]";
 	}
 
 	@Override
@@ -49,9 +49,21 @@ public class CommandPing implements ICommand
 		EntityPlayer player = (EntityPlayer)sender;
 		if(player == null){return;}
 		
+		if(args.length > 0 && args[0] != null && args[0].equalsIgnoreCase("nether"))
+		{
+			BlockPos p = player.getPosition();
+			//force doubles, otherwise int rounding makes it act like _/10
+			double netherRatio = 8.0;
+			double x = p.getX();
+			double z = p.getZ();
+			BlockPos n = new BlockPos(x/netherRatio,p.getY(),z/netherRatio);
+			
+			Util.addChatMessage(player, Util.posToString(n));
+			
+			return;
+		}
 		
 		Util.addChatMessage(player, Util.posToString(player.getPosition()));
-		
 	}
 
 	@Override
