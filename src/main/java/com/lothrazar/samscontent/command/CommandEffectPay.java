@@ -40,7 +40,7 @@ public class CommandEffectPay implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
-		return "/"+getName() + " <potionid> <seconds>";
+		return "/"+getName() + " <potionid> <seconds> <lvl>";
 	}
 
 	@Override
@@ -93,13 +93,29 @@ public class CommandEffectPay implements ICommand
 			return;
 		}
 		
-		if(pid <= 0 || sec <= 0)
+		int lvl = 1;
+		try
+		{
+			lvl = Integer.parseInt(args[1]);
+		}
+		catch (Exception e)
 		{
 			Util.addChatMessage(player, getCommandUsage(sender));
 			return;
 		}
 		
-		int xpCost = sec * XP_COST_PER_SECOND;
+		
+		
+		
+		if(pid < 0 || sec <= 0 || lvl < 1)
+		{
+			Util.addChatMessage(player, getCommandUsage(sender));
+			return;
+		}
+		
+		int xpCost = sec * XP_COST_PER_SECOND * lvl;
+		
+		lvl--;//previously, it cannot be smaller than 1, but it could be 1
 		
 		if(Util.getExpTotal(player) < xpCost)
 		{
@@ -111,7 +127,7 @@ public class CommandEffectPay implements ICommand
 		
 		int ticks = sec * Reference.TICKS_PER_SEC;
 	 
-		player.addPotionEffect(new PotionEffect(pid,ticks));
+		player.addPotionEffect(new PotionEffect(pid,ticks,lvl));
 	}
 
 	@Override
