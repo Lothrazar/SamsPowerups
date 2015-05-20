@@ -63,6 +63,7 @@ command.recipes.found=Recipe Found:
 command.recipes.notfound=No recipes found
 command.effect.xp=Not enough Exp, requires
 command.bind.done=Command Bound
+command.bind.empty=Macro not bound; first use /bind
 potion.slowfall=Slowfall
 potion.waterwalk=Waterwalking
 potion.lavawalk=Lavawalking
