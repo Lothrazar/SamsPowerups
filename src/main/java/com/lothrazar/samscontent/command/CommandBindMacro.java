@@ -2,6 +2,7 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.lothrazar.samscontent.proxy.ClientProxy;
 import com.lothrazar.util.Util;
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
@@ -64,12 +65,13 @@ public class CommandBindMacro implements ICommand
 		if(args[0].equalsIgnoreCase("list"))
 		{
 			String mList;
-			for(int m = 1; m <= 4; m++)
+			for(int k = 1; k <= 4; k++)
 			{
-				mList = getPlayerMacro(player,KEY_MACRO_base + m);
+				mList = getPlayerMacro(player,KEY_MACRO_base + k);
 				if(mList==null || mList.isEmpty()) mList = Util.lang("command.bind.empty");
-				
-				Util.addChatMessage(player, m+" : "+mList);
+				// ClientProxy.keyBind1 real name not number
+				String keyname = ClientProxy.getKeyDescription(k);
+				Util.addChatMessage(player, keyname+" : "+mList);
 			}
 			
 			return;
@@ -115,7 +117,7 @@ public class CommandBindMacro implements ICommand
 			return;
 		}
 		
-		Util.addChatMessage(player, "."+cmd);
+		//Util.addChatMessage(player, "."+cmd);
 		
 		MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
 	}

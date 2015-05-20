@@ -3,22 +3,20 @@ package com.lothrazar.samscontent.proxy;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Map;
-
 import org.lwjgl.input.Keyboard;   
-
 import  net.minecraft.item.Item;
-
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
-
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.model.ModelResourceLocation;
+import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityList;
 import net.minecraft.item.Item;
@@ -101,6 +99,44 @@ public class ClientProxy extends CommonProxy
 
         keyBind4 = new KeyBinding(Reference.keyBind4Name, Keyboard.KEY_L, Reference.keyCategory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind4);
- 
+  
 	} 
+	
+	public static String getKeyDescription(int key)
+	{
+		//getKeyDescription gets something like 'key.macro1' like lang file data
+		//TODO:...maybe find better way. switch for now
+		//thanks http://stackoverflow.com/questions/10893455/getting-keytyped-from-the-keycode
+	 
+		KeyBinding binding = null;
+		switch(key)
+		{
+		case 1:
+			
+			binding = keyBind1;
+		
+			//return keyBind1.getKeyDescription()+keyBind1.getKeyCategory();
+			break;
+		case 2:
+			binding = keyBind2;
+			break;
+		case 3:
+			binding = keyBind3;
+			break;
+		case 4:
+			binding = keyBind4;
+			//return java.awt.event.KeyEvent.getKeyText(keyBind4.getKeyCode());
+			break;
+		}
+		
+		 
+		if(binding == null)
+			return "";
+		else
+			return GameSettings.getKeyDisplayString(binding.getKeyCode());
+			//return I18n.format(binding.getKeyDescription(), new Object[0]);
+			//return java.awt.event.KeyEvent.getKeyText(binding.getKeyCode());
+	}
+	//
+  //  keyBind4.getKeyDescription()
 }
