@@ -238,18 +238,16 @@ public class DebugScreenText
 		     
 		    int rep = closest.getReputationForPlayer(player.getName());
   
-		    event.left.add("");
-		   // event.left.add("Village Data");
-		    event.left.add(String.format("Village Pop: %d",villagers));
-		    event.left.add(String.format(" Reputation: %d",rep));
-		    event.left.add(String.format(" Valid Doors: %d",doors));
+		    event.left.add(Util.lang("debug.villagepop")+String.format("%d",villagers));
+		    event.left.add(Util.lang("debug.villagerep")+String.format("%d",rep));
+		    event.left.add(Util.lang("debug.villagedoors")+String.format("%d",doors));
  
 		    dX = playerX - closest.getCenter().getX();
 		    dZ = playerZ - closest.getCenter().getZ();
 		    
 		    int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
 
-		    event.left.add(String.format("Distance from Center:  %d", dist)); 
+		    event.left.add(Util.lang("debug.villagedistcenter")+String.format("%d", dist)); 
 		 }
 	}
 
@@ -270,7 +268,7 @@ public class DebugScreenText
     
 		if(isSlimeChunk)
 		{
-			event.left.add("Slime Chunk"); 
+			event.left.add(Util.lang("debug.slimechunk")); 
 		}
 	}
  
@@ -303,7 +301,6 @@ public class DebugScreenText
 		 
 		Date curr = addDays(start,days);
  
-
 		event.left.add(Util.lang("debug.days") + days +", "+detail);
 		event.left.add(sdf.format(curr));
 	}
