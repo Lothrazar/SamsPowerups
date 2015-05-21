@@ -71,7 +71,7 @@ public class DebugScreenText
 			event.right.clear();
 			event.left.clear();
 
-			event.left.add("Biome: "+world.getBiomeGenForCoords(player.getPosition()).biomeName);
+			event.left.add(Util.lang("debug.biome")+world.getBiomeGenForCoords(player.getPosition()).biomeName);
 			
 		}
 		
@@ -185,6 +185,7 @@ public class DebugScreenText
 		
 		switch( var )
 		{
+			
 			case Reference.horse.variant_white: variant = "White";break; 
 			case Reference.horse.variant_creamy: variant = "Creamy";break;
 			case Reference.horse.variant_chestnut: variant = "Chestnut";break;
@@ -208,15 +209,15 @@ public class DebugScreenText
 		if(spots != null) type += " ("+spots+")";
 
 		//event.left.add("");
-		event.left.add("Riding "+type); 
+		event.left.add(Util.lang("debug.horsetype")+type); 
 
 		DecimalFormat df = new DecimalFormat("0.0000");
 		
-		event.left.add("  "+ df.format(speed) + " Speed"  ); 
+		event.left.add(Util.lang("debug.horsespeed")+"  "+ df.format(speed)   ); 
 		
 		df = new DecimalFormat("0.0");
 		
-		event.left.add("  "+ df.format(jumpHeight) + " Jump"  );
+		event.left.add(Util.lang("debug.horsejump") +"  "+ df.format(jumpHeight) );
 	}
 
 	private void addVillageInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player, World world) 
