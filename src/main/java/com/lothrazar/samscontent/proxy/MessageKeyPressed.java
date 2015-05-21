@@ -45,15 +45,15 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		EntityPlayer player = ctx.getServerHandler().playerEntity; 
 		//THANKS TO THIS
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
-		int currentItem = player.inventory.currentItem;
- 
+
+ System.out.println("onMessage");
 		if( message.keyPressed == ClientProxy.keyShiftUp.getKeyCode())
  	    {    
-			shiftSlotUp(player, currentItem); 
+			shiftSlotUp(player, player.inventory.currentItem); 
 		} 
 		else if( message.keyPressed == ClientProxy.keyShiftDown.getKeyCode())
 	 	{  
-			shiftSlotDown(player, currentItem); 
+			shiftSlotDown(player, player.inventory.currentItem); 
 		} 
 		else if( message.keyPressed == ClientProxy.keyBarUp.getKeyCode())
 	 	{   
@@ -85,7 +85,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBind2.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind1Name);
+			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind2Name);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBind3.getKeyCode())
 	 	{

@@ -2,7 +2,7 @@
 
 -effectpay bugfixes: was not calculating and blocking/draining experience correctly
 
--new command /bind for macros
+-10 new macro keybindings, used with new command /bind for macros
     four key bindings and a command so you can bind any command to any key.  These are 
     saved per character/world, and get reset on death.
     simply run /bind /toggledownfall or /bind /effectpay 41 10, or any other command

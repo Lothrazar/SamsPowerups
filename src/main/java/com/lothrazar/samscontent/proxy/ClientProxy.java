@@ -126,7 +126,7 @@ public class ClientProxy extends CommonProxy
      
 	} 
 	
-	public static int getKey(String descr)
+	/*public static int getKey(String descr)
 	{
 		// input and search from this, instead of 1-9
 		if(getKeyDescription(keyBind1.getKeyCode()).toLowerCase() == descr.toLowerCase())
@@ -135,7 +135,7 @@ public class ClientProxy extends CommonProxy
 		}
 		
 		return Keyboard.getKeyIndex(descr);
-	}
+	}*/
 	public static String getKeyDescription(int key)
 	{
 		//getKeyDescription gets something like 'key.macro1' like lang file data
