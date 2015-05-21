@@ -19,6 +19,15 @@ SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
 
 Possible Future Features (1.4 + ):
   
+  ??  try altered max health
+  @SubscribeEvent
+   public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
+  {
+      event.entity.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(maxHealth);
+      entity.setHealth(startHealth);
+ 
+  
+  
 -version checker
 
 -possible refactoring
