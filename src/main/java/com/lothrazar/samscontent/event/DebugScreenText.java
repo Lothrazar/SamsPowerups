@@ -71,7 +71,7 @@ public class DebugScreenText
 			event.right.clear();
 			event.left.clear();
 
-			event.left.add(Util.lang("debug.biome")+world.getBiomeGenForCoords(player.getPosition()).biomeName);
+			event.left.add(Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName);
 			
 		}
 		
@@ -209,7 +209,7 @@ public class DebugScreenText
 		if(spots != null) type += " ("+spots+")";
 
 		//event.left.add("");
-		event.left.add(Util.lang("debug.horsetype")+type); 
+		event.left.add(Util.lang("debug.horsetype")+"  "+type); 
 
 		DecimalFormat df = new DecimalFormat("0.0000");
 		
@@ -222,7 +222,7 @@ public class DebugScreenText
 
 	private void addVillageInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player, World world) 
 	{
-		int playerX = MathHelper.floor_double(player.posX);
+		 int playerX = MathHelper.floor_double(player.posX);
 		 int playerY = MathHelper.floor_double(player.posY);
 		 int playerZ = MathHelper.floor_double(player.posZ);
 		 
@@ -239,16 +239,16 @@ public class DebugScreenText
 		     
 		    int rep = closest.getReputationForPlayer(player.getName());
   
-		    event.left.add(Util.lang("debug.villagepop")+String.format("%d",villagers));
-		    event.left.add(Util.lang("debug.villagerep")+String.format("%d",rep));
-		    event.left.add(Util.lang("debug.villagedoors")+String.format("%d",doors));
+		    event.left.add(Util.lang("debug.villagepop")+"  "+String.format("%d",villagers));
+		    event.left.add(Util.lang("debug.villagerep")+"  "+String.format("%d",rep));
+		    event.left.add(Util.lang("debug.villagedoors")+"  "+String.format("%d",doors));
  
 		    dX = playerX - closest.getCenter().getX();
 		    dZ = playerZ - closest.getCenter().getZ();
 		    
 		    int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
 
-		    event.left.add(Util.lang("debug.villagedistcenter")+String.format("%d", dist)); 
+		    event.left.add(Util.lang("debug.villagedistcenter")+"  "+String.format("%d", dist)); 
 		 }
 	}
 
