@@ -76,46 +76,73 @@ public class ClientProxy extends CommonProxy
 
 	private void registerKeyBindings() 
 	{
-		keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_C, Reference.keyCategory);
+		keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_C, Reference.keyCategoryInventory);
         ClientRegistry.registerKeyBinding(ClientProxy.keyShiftUp);
      
-		keyShiftDown = new KeyBinding(Reference.keyDownName, Keyboard.KEY_V, Reference.keyCategory); 
+		keyShiftDown = new KeyBinding(Reference.keyDownName, Keyboard.KEY_V, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyShiftDown); 
 
-        keyBarUp = new KeyBinding(Reference.keyBarUpName, Keyboard.KEY_N, Reference.keyCategory);
+        keyBarUp = new KeyBinding(Reference.keyBarUpName, Keyboard.KEY_N, Reference.keyCategoryInventory);
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarUp);
          
-        keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategory); 
+        keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
         
-        keyBind1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_H, Reference.keyCategory); 
+        keyBind1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_H, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind1);
 
-        keyBind2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_J, Reference.keyCategory); 
+        keyBind2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_J, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind2);
 
-        keyBind3 = new KeyBinding(Reference.keyBind3Name, Keyboard.KEY_K, Reference.keyCategory); 
+        keyBind3 = new KeyBinding(Reference.keyBind3Name, Keyboard.KEY_K, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind3);
 
-        keyBind4 = new KeyBinding(Reference.keyBind4Name, Keyboard.KEY_L, Reference.keyCategory); 
+        keyBind4 = new KeyBinding(Reference.keyBind4Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind4);
+        
+      /*  
+        keyBind5 = new KeyBinding(Reference.keyBind5Name, Keyboard.KEY_H, Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind5);
+
+        keyBind6 = new KeyBinding(Reference.keyBind6Name, Keyboard.KEY_J, Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind6);
+
+        keyBind7 = new KeyBinding(Reference.keyBind7Name, Keyboard.KEY_K, Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind7);
+
+        keyBind8 = new KeyBinding(Reference.keyBind8Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind8);
+        
+        keyBind9 = new KeyBinding(Reference.keyBind9Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind9);
+        
+        keyBind0 = new KeyBinding(Reference.keyBind0Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBind0);
+        */
+        
   
 	} 
-	
+	public static int getKey(String descr)
+	{
+		// input and search from this, instead of 1-9
+		if(getKeyDescription(keyBind1.getKeyCode()).toLowerCase() == descr.toLowerCase())
+		{
+			return 1;
+		}
+		
+		return Keyboard.getKeyIndex(descr);
+	}
 	public static String getKeyDescription(int key)
 	{
 		//getKeyDescription gets something like 'key.macro1' like lang file data
-		//TODO:...maybe find better way. switch for now
+		
 		//thanks http://stackoverflow.com/questions/10893455/getting-keytyped-from-the-keycode
 	 
 		KeyBinding binding = null;
-		switch(key)
+		switch(key)//TODO:...maybe find better way. switch for now
 		{
 		case 1:
-			
 			binding = keyBind1;
-		
-			//return keyBind1.getKeyDescription()+keyBind1.getKeyCategory();
 			break;
 		case 2:
 			binding = keyBind2;
@@ -125,7 +152,6 @@ public class ClientProxy extends CommonProxy
 			break;
 		case 4:
 			binding = keyBind4;
-			//return java.awt.event.KeyEvent.getKeyText(keyBind4.getKeyCode());
 			break;
 		}
 		
@@ -137,6 +163,4 @@ public class ClientProxy extends CommonProxy
 			//return I18n.format(binding.getKeyDescription(), new Object[0]);
 			//return java.awt.event.KeyEvent.getKeyText(binding.getKeyCode());
 	}
-	//
-  //  keyBind4.getKeyDescription()
 }

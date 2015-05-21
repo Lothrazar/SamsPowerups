@@ -26,7 +26,8 @@ public class Reference
 	public static final String keyBind3Name = "key.macro3";
 	public static final String keyBind4Name = "key.macro4";
 	
-	public static final String keyCategory = "key.categories.inventory";
+	public static final String keyCategoryInventory = "key.categories.inventory";
+	public static final String keyCategoryMacro = "key.categories.macro";
 	
 	public static final int TICKS_PER_SEC = 20;
 	public static final int CHUNK_SIZE = 16;

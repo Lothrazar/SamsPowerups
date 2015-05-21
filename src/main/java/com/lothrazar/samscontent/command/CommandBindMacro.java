@@ -14,11 +14,11 @@ import net.minecraft.util.BlockPos;
 public class CommandBindMacro implements ICommand
 {
 	public static boolean REQUIRES_OP = false;//not in config on purpose
-	private static String KEY_MACRO_base = "macro";
-	public static String KEY_MACRO1 = "macro1";
-	public static String KEY_MACRO2 = "macro2";
-	public static String KEY_MACRO3 = "macro3";
-	public static String KEY_MACRO4 = "macro4";
+	private static String KEY_MACRO_base = "key.macro";
+	public static String KEY_MACRO1 = "key.macro1";
+	public static String KEY_MACRO2 = "key.macro2";
+	public static String KEY_MACRO3 = "key.macro3";
+	public static String KEY_MACRO4 = "key.macro4";
 	private ArrayList<String> aliases = new ArrayList<String>();
 
 	public CommandBindMacro()
@@ -76,18 +76,15 @@ public class CommandBindMacro implements ICommand
 			
 			return;
 		}
+		//so it wasnt list, and not empty
+		String inKey = args[0];
 		
-		int mac = 0;
-		
-		try
-		{
-			mac = Integer.parseInt(args[0]);
-		}
-		catch (Exception e)
+		if(inKey.length() != 1)
 		{
 			Util.addChatMessage(player, getCommandUsage(sender));
 			return;
 		}
+	 
 		
 		String full = "/";
 		for(int i = 1; i < args.length; i++)
@@ -96,9 +93,44 @@ public class CommandBindMacro implements ICommand
 		}
 		 
 		full = full.replace("//", "/");//in case it is typed in for us
-		player.getEntityData().setString(KEY_MACRO_base + mac, full);
+		
+		
+		//todo match it up
+		/*inKey
+		 * 	} 
+	public static int getKey(inKey)
+	{
+		//Keyboard.isKeyDown(p_100015_0_.getKeyCode()
+		
+		//TODO: input and search from this, instead of 1-9
+		if(getKeyDescription(keyBind1.getKeyCode()).toLowerCase() == inKey.toLowerCase())
+		{
+			return 1;
+		}*/
+		
+		int match = 0;
+		//String oldLetter = KEY_MACRO_base + mac;
+		String s;
+		for(int k = 1; k <= 4; k++)
+		{
+			if(inKey.equalsIgnoreCase( ClientProxy.getKeyDescription(k)))
+			{
+				match = k;
+				break;//end loop
+			}
+		}
+		 
+		if(match == 0)
+		{
+			//letter not bound
+			Util.lang("command.bind.empty");
+			return;
+		}
+		
+		
+		player.getEntityData().setString(KEY_MACRO_base + match, full);
 
-		Util.addChatMessage(player, Util.lang("command.bind.done")+" "+full);
+		Util.addChatMessage(player, Util.lang("command.bind.done")+" "+inKey+" "+full);
 		
 	}
 	  
