@@ -31,6 +31,12 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBind2;
 	public static KeyBinding keyBind3;
 	public static KeyBinding keyBind4;
+	public static KeyBinding keyBind5;
+	public static KeyBinding keyBind6;
+	public static KeyBinding keyBind7;
+	public static KeyBinding keyBind8;
+	public static KeyBinding keyBind9;
+	public static KeyBinding keyBind0;
   
     @Override
     public void registerRenderers() 
@@ -88,40 +94,38 @@ public class ClientProxy extends CommonProxy
         keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
         
-        keyBind1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_H, Reference.keyCategoryMacro); 
+        keyBind1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_Y, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind1);
 
-        keyBind2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_J, Reference.keyCategoryMacro); 
+        keyBind2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_U, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind2);
 
-        keyBind3 = new KeyBinding(Reference.keyBind3Name, Keyboard.KEY_K, Reference.keyCategoryMacro); 
+        keyBind3 = new KeyBinding(Reference.keyBind3Name, Keyboard.KEY_I, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind3);
 
-        keyBind4 = new KeyBinding(Reference.keyBind4Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
+        keyBind4 = new KeyBinding(Reference.keyBind4Name, Keyboard.KEY_O,  Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind4);
-        
-      /*  
-        keyBind5 = new KeyBinding(Reference.keyBind5Name, Keyboard.KEY_H, Reference.keyCategoryMacro); 
+         
+        keyBind5 = new KeyBinding(Reference.keyBind5Name, Keyboard.KEY_P, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind5);
 
-        keyBind6 = new KeyBinding(Reference.keyBind6Name, Keyboard.KEY_J, Reference.keyCategoryMacro); 
+        keyBind6 = new KeyBinding(Reference.keyBind6Name, Keyboard.KEY_H, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind6);
 
-        keyBind7 = new KeyBinding(Reference.keyBind7Name, Keyboard.KEY_K, Reference.keyCategoryMacro); 
+        keyBind7 = new KeyBinding(Reference.keyBind7Name, Keyboard.KEY_J, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind7);
 
-        keyBind8 = new KeyBinding(Reference.keyBind8Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
+        keyBind8 = new KeyBinding(Reference.keyBind8Name, Keyboard.KEY_K,  Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind8);
         
         keyBind9 = new KeyBinding(Reference.keyBind9Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind9);
         
-        keyBind0 = new KeyBinding(Reference.keyBind0Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
+        keyBind0 = new KeyBinding(Reference.keyBind0Name, Keyboard.KEY_SEMICOLON,  Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind0);
-        */
-        
-  
+     
 	} 
+	
 	public static int getKey(String descr)
 	{
 		// input and search from this, instead of 1-9
@@ -152,6 +156,24 @@ public class ClientProxy extends CommonProxy
 			break;
 		case 4:
 			binding = keyBind4;
+			break;
+		case 5:
+			binding = keyBind5;
+			break;
+		case 6:
+			binding = keyBind6;
+			break;
+		case 7:
+			binding = keyBind7;
+			break;
+		case 8:
+			binding = keyBind8;
+			break;
+		case 9:
+			binding = keyBind9;
+			break;
+		case 0:
+			binding = keyBind0;
 			break;
 		}
 		

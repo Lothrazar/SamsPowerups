@@ -15,12 +15,9 @@ public class CommandBindMacro implements ICommand
 {
 	public static boolean REQUIRES_OP = false;//not in config on purpose
 	private static String KEY_MACRO_base = "key.macro";
-	public static String KEY_MACRO1 = "key.macro1";
-	public static String KEY_MACRO2 = "key.macro2";
-	public static String KEY_MACRO3 = "key.macro3";
-	public static String KEY_MACRO4 = "key.macro4";
 	private ArrayList<String> aliases = new ArrayList<String>();
-
+	private static int KMIN=0;
+	private static int KMAX=9;
 	public CommandBindMacro()
 	{
 		this.aliases.add(getName().toUpperCase());
@@ -65,7 +62,7 @@ public class CommandBindMacro implements ICommand
 		if(args[0].equalsIgnoreCase("list"))
 		{
 			String mList;
-			for(int k = 1; k <= 4; k++)
+			for(int k = KMIN; k <= KMAX; k++)
 			{
 				mList = getPlayerMacro(player,KEY_MACRO_base + k);
 				if(mList==null || mList.isEmpty()) mList = Util.lang("command.bind.empty");
@@ -111,7 +108,7 @@ public class CommandBindMacro implements ICommand
 		int match = 0;
 		//String oldLetter = KEY_MACRO_base + mac;
 		String s;
-		for(int k = 1; k <= 4; k++)
+		for(int k = KMIN; k <= KMAX; k++)
 		{
 			if(inKey.equalsIgnoreCase( ClientProxy.getKeyDescription(k)))
 			{

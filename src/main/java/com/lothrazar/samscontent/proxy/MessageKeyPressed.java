@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.command.CommandBindMacro;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
@@ -78,23 +79,46 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
 	 	} 
-		else if( message.keyPressed == ClientProxy.keyBind1.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBind1.getKeyCode())//TODO: better code structure here?
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO1);
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind1Name);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBind2.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO2);
+			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind1Name);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBind3.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO3);
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind3Name);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBind4.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,CommandBindMacro.KEY_MACRO4);
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind4Name);
 	 	}
- 
+		else if( message.keyPressed == ClientProxy.keyBind5.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind5Name);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind6.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind6Name);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind7.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind7Name);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind8.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind8Name);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind9.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind9Name);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyBind0.getKeyCode())
+	 	{
+			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind0Name);
+	 	}
 
 		return null;
 	}
