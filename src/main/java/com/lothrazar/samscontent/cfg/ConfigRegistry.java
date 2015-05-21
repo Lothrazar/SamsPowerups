@@ -41,6 +41,7 @@ public class ConfigRegistry
 		potions(); 
 	    recipes_new();   
 		recipes_changes();
+		
 		  
 		category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
@@ -92,7 +93,18 @@ public class ConfigRegistry
 	private void mob_changes() 
 	{
 		category = "mob_changes";
-
+		
+		//default 20
+		healthPlayer = instance.getInt("health_player",category, 41,1,100,
+    			"Change the number of hearts a player has.  20 = 10 hearts is regular.");
+		
+		//default 4 hearts so 8
+		healthWolfTamed = instance.getInt("health_tamed_wolf",category, 40,1,100,
+    			"Change the number of hearts a tamed wolf has.  8 = 4 hearts is regular.");
+		
+		healthVillager = instance.getInt("health_villager",category, 100,1,100,
+    			"Change the number of hearts a tamed wolf has.  20 = 10 hearts is regular.");
+		
 		canNameVillagers = instance.get(category, "nametag_usable_on_villagers",true).getBoolean();
 		  
 		petNametagDrops = instance.getBoolean("nametag_drops",category, true,
@@ -699,5 +711,8 @@ public class ConfigRegistry
 	public boolean phasing_compass;
 	public boolean superfood;
 	public boolean cmd_effectpay;
-	public boolean cmd_ping; 
+	public boolean cmd_ping;
+	public int healthPlayer;
+	public int healthWolfTamed;
+	public int healthVillager;
 }

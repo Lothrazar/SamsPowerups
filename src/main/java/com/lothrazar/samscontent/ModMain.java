@@ -35,6 +35,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.EnumCreatureType;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
@@ -64,6 +65,7 @@ import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
@@ -814,5 +816,37 @@ public class ModMain
 
 			t.setBuckets(0);
 		}
+	}
+	
+
+	@SubscribeEvent
+	public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
+	{
+		int startHealth = ModMain.cfg.healthPlayer;
+		
+		if(event.entity instanceof EntityLivingBase)
+		{
+			EntityLivingBase living = (EntityLivingBase)event.entity;
+			
+			if(living instanceof EntityPlayer)
+			{
+				setMaxHealth(living,ModMain.cfg.healthPlayer);
+			}
+		
+			if(living instanceof EntityWolf && ((EntityWolf)living).isTamed())
+			{
+				setMaxHealth(living,ModMain.cfg.healthWolfTamed);
+			}
+			//TODO: tamed cats
+			
+			if(living instanceof EntityWolf && ((EntityVillager)living).isChild() == false)
+			{
+				setMaxHealth(living,ModMain.cfg.healthVillager);			
+			}
+		}
+	}
+	private void setMaxHealth(EntityLivingBase living,int max)
+	{	
+		living.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(max);
 	}
 }
