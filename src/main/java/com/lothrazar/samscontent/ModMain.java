@@ -837,9 +837,12 @@ public class ModMain
 			{
 				setMaxHealth(living,ModMain.cfg.healthWolfTamed);
 			}
-			//TODO: tamed cats
+			if(living instanceof EntityOcelot && ((EntityOcelot)living).isTamed())
+			{
+				setMaxHealth(living,ModMain.cfg.healthCatTamed);
+			}
 			
-			if(living instanceof EntityWolf && ((EntityVillager)living).isChild() == false)
+			if(living instanceof EntityVillager && ((EntityVillager)living).isChild() == false)
 			{
 				setMaxHealth(living,ModMain.cfg.healthVillager);			
 			}

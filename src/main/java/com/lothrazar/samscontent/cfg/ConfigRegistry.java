@@ -94,13 +94,13 @@ public class ConfigRegistry
 	{
 		category = "mob_changes";
 		
-		healthPlayer = instance.getInt("health_player",category, 41,1,100,
+		healthPlayer = instance.getInt("health_player",category, 40,1,100,
     			"Change the number of hearts a player has.  20 = 10 hearts is regular.");
 		
-		healthWolfTamed = instance.getInt("health_tamed_wolf",category, 40,1,100,
+		healthWolfTamed = instance.getInt("health_tamed_wolf",category, 100,1,100,
     			"Change the number of hearts a tamed wolf has.  8 = 4 hearts is regular.");
 		
-		healthCatTamed = instance.getInt("health_tamed_wolf",category, 40,1,100,
+		healthCatTamed = instance.getInt("health_tamed_cat",category, 100,1,100,
     			"Change the number of hearts a tamed cat has.  8 = 4 hearts is regular.");
 		
 		healthVillager = instance.getInt("health_villager",category, 100,1,100,

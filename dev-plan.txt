@@ -1,5 +1,9 @@
 1.3.3 - WIP
 
+-health change configs
+
+-debug date screen text from lang file, and better arrangement
+
 -effectpay bugfixes: was not calculating and blocking/draining experience correctly
 
 -10 new macro keybindings, used with new command /bind for macros

@@ -284,11 +284,11 @@ public class DebugScreenText
 		
 		String detail = "";
 	
-		if(remainder < 5000) detail = "Morning";
-		else if(remainder < 7000) detail = "Mid-day";//midd ay is exactly 6k, so go one on each side
-		else if(remainder < 12000) detail = "Afternoon";
-		else detail = "Moon Phase " + world.getMoonPhase();
-	   
+		if(remainder < 5000) detail = Util.lang("debug.morning");
+		else if(remainder < 7000) detail = Util.lang("debug.midday");//midd ay is exactly 6k, so go one on each side
+		else if(remainder < 12000) detail = Util.lang("debug.afternoon");
+		else detail = Util.lang("debug.moonphase") + " " + world.getMoonPhase();
+
 		// a 365 day calendar. Day Zero is January 1st of year zero?``
 		 //http://stackoverflow.com/questions/8263220/calendar-set-year-issue
 		//event.left.add("Day "+days +" ("+detail+")");  
@@ -303,7 +303,8 @@ public class DebugScreenText
 		 
 		Date curr = addDays(start,days);
  
-		
-		event.left.add(sdf.format(curr)  + " ("+detail+")" );
+
+		event.left.add(Util.lang("debug.days") + days +", "+detail);
+		event.left.add(sdf.format(curr));
 	}
 }

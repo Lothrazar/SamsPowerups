@@ -1,3 +1,8 @@
+debug.days=Day #
+debug.afternoon=Afternoon
+debug.midday=Midday
+debug.morning=Morning
+debug.moonphase=Moon Phase
 achievement.appleChoc=Chocolate Apple
 achievement.appleChoc.desc=Wrap an apple in chocolate
 achievement.appleDiamond=Diamond Apple
