@@ -22,6 +22,8 @@ import net.minecraft.world.World;
 
 public class EntitySnowballBolt extends EntitySnowball
 { 
+	public static int secondsFrozenOnHit;
+	
     public EntitySnowballBolt(World worldIn)
     {
         super(worldIn);
@@ -55,7 +57,7 @@ public class EntitySnowballBolt extends EntitySnowball
             {
             	EntityLivingBase e = (EntityLivingBase)mop.entityHit;
             	
-            	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id,5 * Reference.TICKS_PER_SEC,0));
+            	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id, secondsFrozenOnHit * Reference.TICKS_PER_SEC,0));
             } 
       }
 

@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;  
 import com.lothrazar.samscontent.command.*;  
+import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.samscontent.item.*; 
 import com.lothrazar.util.Reference;
 
@@ -355,7 +356,8 @@ public class ConfigRegistry
  
 		frozen_snowball = instance.getBoolean("frozen_snowball",category, true,
     			"Throw a frozen snowball that freezes water and causes a short icy potion effect to anything it hits.");
-		
+		EntitySnowballBolt.secondsFrozenOnHit = instance.getInt("frozen_snowball.duration_on_hit",category, 25,1,600,
+    			"When something hit by one of these snowballs, it gets the snow effect for this many seconds.");
 		carbon_paper = instance.getBoolean("carbon_paper",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
  
