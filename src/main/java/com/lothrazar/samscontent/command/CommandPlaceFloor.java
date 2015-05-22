@@ -15,7 +15,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-
+/*
 public class CommandPlaceFloor implements ICommand
 {
 	public static boolean REQUIRES_OP=false;   
@@ -99,4 +99,4 @@ public class CommandPlaceFloor implements ICommand
 	{
 		return false;
 	}
-}
+}*/

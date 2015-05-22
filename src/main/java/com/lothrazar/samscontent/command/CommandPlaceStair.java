@@ -13,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
-
+/*
 public class CommandPlaceStair implements ICommand
 {
 	public static boolean REQUIRES_OP;   
@@ -94,4 +94,4 @@ public class CommandPlaceStair implements ICommand
 	{
 		return false;
 	}
-}
+}*/

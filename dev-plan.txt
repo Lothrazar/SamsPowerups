@@ -24,6 +24,13 @@ SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
 (then -1 since 1 = II)
 
 Possible Future Features (1.4 + ):
+
+
+place circle
+place floor
+place line
+place stair    [radius|distance] [halt]
+
   
   ??  try altered max health
   @SubscribeEvent
@@ -32,7 +39,7 @@ Possible Future Features (1.4 + ):
       event.entity.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(maxHealth);
       entity.setHealth(startHealth);
  
-  
+  ?flag-ghasts always drop tears- in config, check mob drops
   
 -version checker
 

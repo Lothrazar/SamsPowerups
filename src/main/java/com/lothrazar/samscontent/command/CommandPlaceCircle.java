@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
+/*
 public class CommandPlaceCircle  implements ICommand
 {
 	public static boolean REQUIRES_OP;   
@@ -100,4 +101,4 @@ public class CommandPlaceCircle  implements ICommand
 	{
 		return false;
 	}
-}
+}*/

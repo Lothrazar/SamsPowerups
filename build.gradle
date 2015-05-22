@@ -19,7 +19,7 @@ apply plugin: 'forge'
 
 version = "1.8-1.4.0"
 group= "com.lothrazar.samscontent" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "builderspowerups"
+archivesBaseName = "samscontent"
 
 minecraft {
     version = "1.8-11.14.1.1334"

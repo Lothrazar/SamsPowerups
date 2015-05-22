@@ -213,18 +213,9 @@ public class ModMain
 		if(ModMain.cfg.worldhome) 
 			event.registerServerCommand(new CommandHome());
 
-		if(ModMain.cfg.placeline) 
-			event.registerServerCommand(new CommandPlaceLine());
-		
-		if(ModMain.cfg.placefloor) 
-			event.registerServerCommand(new CommandPlaceFloor());
-
-		if(ModMain.cfg.placestair) 
-			event.registerServerCommand(new CommandPlaceStair());
-		
-		if(ModMain.cfg.placecircle) 
-			event.registerServerCommand(new CommandPlaceCircle());
-
+		if(ModMain.cfg.cmd_place_blocks) 
+			event.registerServerCommand(new CommandPlaceBlocks());
+	 
 		if(ModMain.cfg.cmd_recipe) 
 			event.registerServerCommand(new CommandRecipe());
 

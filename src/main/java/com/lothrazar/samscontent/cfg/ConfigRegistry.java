@@ -484,12 +484,12 @@ public class ConfigRegistry
 		CommandEffectPay.REQUIRES_OP = instance.getBoolean("effectpay.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 	
-		placeline = instance.getBoolean("placeline",category, true,
+		cmd_place_blocks = instance.getBoolean("place",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
 
-		CommandPlaceLine.REQUIRES_OP = instance.getBoolean("placeline.needs_op",category, false,
+		CommandPlaceBlocks.REQUIRES_OP = instance.getBoolean("place.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-	
+	/*
 		placefloor = instance.getBoolean("placefloor",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
 		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placefloor.needs_op",category, false,
@@ -508,7 +508,7 @@ public class ConfigRegistry
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
 		CommandPlaceCircle.RADIUS_MAX = instance.getInt("placecircle.radius_max", category, 8, 1, 32, 
 				"Maximum radius that you can specify as an argument.");
-		
+		*/
 		cmd_kit = instance.getBoolean("kit",category, true,
     			"Use /kit to give yourself kit items.  Can only be done once each time you die.");
 
@@ -702,11 +702,8 @@ public class ConfigRegistry
 	public boolean quartz_from_prismarine;
 	public boolean debugGameruleInfo;
 	public boolean smelt_gravel;
-	public boolean placeline;
-	public boolean placefloor;
-	public boolean emerald_armor;
-	public boolean placestair;
-	public boolean placecircle;
+	public boolean cmd_place_blocks; 
+	public boolean emerald_armor; 
 	public boolean cheaper_stairs;
 	public boolean ender_cookie;
 	public boolean cmd_recipe;

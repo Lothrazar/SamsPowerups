@@ -15,12 +15,13 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
-public class CommandPlaceLine implements ICommand
+public class CommandPlaceBlocks implements ICommand
 {
 	public static boolean REQUIRES_OP=false;   
 	private ArrayList<String> aliases = new ArrayList<String>();
+	public static int VERTICAL_MAX = 5; //TODO from config file 
 	
-	public CommandPlaceLine()
+	public CommandPlaceBlocks()
 	{
 		this.aliases.add(getName().toUpperCase());
 	}
@@ -34,13 +35,13 @@ public class CommandPlaceLine implements ICommand
 	@Override
 	public String getName() 
 	{
-		return "placeline";
+		return "place";
 	}
 
 	@Override
 	public String getCommandUsage(ICommandSender sender) 
 	{
-		return "/"+getName() + " <qty> [skip]";
+		return "/"+getName() + "<line|stair|floor|circle> <dist|radius> [skip] [voffset]";
 	}
 
 	@Override
@@ -64,24 +65,28 @@ public class CommandPlaceLine implements ICommand
 			Util.addChatMessage(player, getCommandUsage(sender));
 			return;
 		}
-		int want = 0;//is required
+		
+		String type = args[0];
+		
+		
+		int distOrRadius = 0;//is required
        
         try
 		{
-        	want =  Math.min(Integer.parseInt(args[0]), held.stackSize);
+        	distOrRadius =  Math.min(Integer.parseInt(args[1]), held.stackSize);
 		}
-		catch (NumberFormatException e)
+		catch (Exception e)
 		{
 			Util.addChatMessage(player, getCommandUsage(sender));
 			return;
 		}
-		 
+
         int skip = 1;
-        if(args.length > 1 && args[1] != null)
+        if(args.length > 2 && args[2] != null)
         {
             try
     		{
-            	skip =  Math.max(Integer.parseInt(args[1]), 1);
+            	skip =  Math.max(Integer.parseInt(args[2]), 1);
     		}
     		catch (NumberFormatException e)
     		{
@@ -89,9 +94,53 @@ public class CommandPlaceLine implements ICommand
     			return;
     		}
         }
-        
-        PlaceLib.line(player.worldObj, player, player.getPosition(), placing, want, skip);
-	}
+		int vertOffset = 0;//is required
+		if(args.length > 3 && args[3] != null)
+        {
+	        try
+			{
+	        	vertOffset =  Math.min(Integer.parseInt(args[3]), held.stackSize);
+			}
+			catch (NumberFormatException e)
+			{
+    			Util.addChatMessage(player, getCommandUsage(sender));
+    			return;
+			}
+        }
+		
+		BlockPos startPos = player.getPosition();
+
+		//System.out.println("distOrRadius"+distOrRadius);
+		///System.out.println("skip"+skip);
+		//System.out.println("voff"+vertOffset);
+		
+		if( vertOffset > VERTICAL_MAX ||
+			vertOffset < VERTICAL_MAX*-1) 
+		{
+			Util.addChatMessage(player, Util.lang("command.place.vertical"+VERTICAL_MAX));
+			return;
+		}
+		
+		if(vertOffset > 0) startPos = startPos.up(vertOffset);
+		if(vertOffset < 0) startPos = startPos.down(vertOffset*-1);//so use puts -2 means go down 2
+		
+		if(type.equalsIgnoreCase("line"))
+		{
+			PlaceLib.line(player.worldObj, player, startPos, placing, distOrRadius, skip);//,vertOffset
+		}
+		if(type.equalsIgnoreCase("stair"))
+		{ 
+			PlaceLib.stairway(player.worldObj, player, startPos, placing, distOrRadius);//, skip,vertOffset
+		}
+		if(type.equalsIgnoreCase("floor"))
+		{
+			PlaceLib.square(player.worldObj, player, startPos, placing, distOrRadius);//, skip,vertOffset
+		}
+		if(type.equalsIgnoreCase("circle"))
+		{
+			PlaceLib.circle(player.worldObj, player, startPos, placing, distOrRadius);//, skip,vertOffset
+		}
+    }
 	
 	@Override
 	public boolean canCommandSenderUse(ICommandSender ic) 
