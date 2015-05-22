@@ -2,13 +2,12 @@ package com.lothrazar.samscontent.potion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier; 
-
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
-
 import net.minecraft.block.Block;
+import net.minecraft.block.BlockPumpkin;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -17,6 +16,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
@@ -149,23 +149,16 @@ public class PotionRegistry
 	{ 
 		if(event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
 	    { 
-			event.entityLiving.motionX = event.entityLiving.motionX / 5;
-			event.entityLiving.motionY = event.entityLiving.motionY / 5;
-			event.entityLiving.motionZ = event.entityLiving.motionZ / 5;
-			
-			event.entityLiving.setInWeb(); 
-			
-			doPotionParticle(event.entityLiving.worldObj,event.entityLiving,EnumParticleTypes.SNOWBALL);
+			World world = event.entityLiving.worldObj;
+			BlockPos pos = event.entityLiving.getPosition();
 
-			Util.setBlockIfAir(event.entityLiving.worldObj, event.entityLiving.getPosition(), Blocks.snow_layer.getDefaultState());
-     
-			if(event.entityLiving instanceof EntityPlayer)
-			{ 
-				EntityPlayer p = (EntityPlayer)event.entityLiving;
-   			 	if(p.isSprinting())
-   			 	{
-   			 		p.setSprinting(false);
-   			 	}
+			if(world.rand.nextDouble() < 0.9)
+				doPotionParticle(world,event.entityLiving,EnumParticleTypes.SNOWBALL);
+
+			if(world.rand.nextDouble() < 0.5 && 
+				world.getBlockState(pos).getBlock().isReplaceable(world, pos) )
+			{
+				Util.setBlockIfAir(world, pos, Blocks.snow_layer.getDefaultState());
 			}
 	    } 
 	}

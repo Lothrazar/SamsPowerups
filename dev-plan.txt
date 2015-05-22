@@ -1,5 +1,7 @@
 1.3.3 - WIP
 
+-frozen potion improvements
+
 -health change configs
 
 -debug date screen text from lang file, and better arrangement
