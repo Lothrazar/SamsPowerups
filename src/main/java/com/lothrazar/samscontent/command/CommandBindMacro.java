@@ -38,7 +38,7 @@ public class CommandBindMacro implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
-		return "/"+getName() +" <list|1,2,3,4> <command> <args>";
+		return "/"+getName() +" list OR /"+getName()+" <letter> <command> [args]";
 	}
 
 	@Override
@@ -91,20 +91,6 @@ public class CommandBindMacro implements ICommand
 		 
 		full = full.replace("//", "/");//in case it is typed in for us
 		
-		
-		//todo match it up
-		/*inKey
-		 * 	} 
-	public static int getKey(inKey)
-	{
-		//Keyboard.isKeyDown(p_100015_0_.getKeyCode()
-		
-		//TODO: input and search from this, instead of 1-9
-		if(getKeyDescription(keyBind1.getKeyCode()).toLowerCase() == inKey.toLowerCase())
-		{
-			return 1;
-		}*/
-		
 		int match = 0;
 		//String oldLetter = KEY_MACRO_base + mac;
 		String s;
@@ -123,7 +109,6 @@ public class CommandBindMacro implements ICommand
 			Util.lang("command.bind.empty");
 			return;
 		}
-		
 		
 		player.getEntityData().setString(KEY_MACRO_base + match, full);
 
