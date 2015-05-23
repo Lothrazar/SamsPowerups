@@ -120,6 +120,9 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind0Name);
 	 	}
 
+		
+		
+		
 		return null;
 	}
 

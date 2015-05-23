@@ -60,23 +60,42 @@ public class DebugScreenText
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
 	{ 
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false){return;}
-
+		
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
- 
+		//World world = Minecraft.getMinecraft().getIntegratedServer().getSpawnProtectionSize()
+		
+	 
 		if(ModMain.cfg.reducedDebugImproved && 
 				world.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo) )
 		{ 
 			//then replace all existing text with just this
 			event.right.clear();
 			event.left.clear();
+			int blockLight = world.getLightFromNeighbors(player.getPosition()) + 1;
+			
+			String firstLine = Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName;
 
-			event.left.add(Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName);
+			String light = Util.lang("debug.light")+"  "+blockLight;
+				//	+"  "+world.getLight(player.getPosition(), true)
+				//	+"  "+world.getLightBrightness(player.getPosition())
+					
+			
+			
+			if(player.isSneaking()) // L for light
+				firstLine = firstLine +"  "+light;
+			
+			//Minecraft.getMinecraft().getDebugFPS()
+			
+			event.left.add(firstLine);
+			
+			
 			
 		}
 		
  
 		addDateTimeInfo(event, world);
+		
 		  
 	 	if(ModMain.cfg.debugSlime && player.dimension == Reference.Dimension.overworld)
 	 	{ 
@@ -93,6 +112,7 @@ public class DebugScreenText
 	 		addHorseInfo(event, player);   
 	 	} 
 
+	
 		CommandSimpleWaypoints.AddWaypointInfo(event); 
 		
 		addTodoCommandInfo(event, player);  

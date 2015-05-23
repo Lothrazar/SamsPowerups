@@ -853,4 +853,24 @@ public class Util
     	
 		
 	}
+	
+	public static final String power_slowfall = "power.slowfall";
+	
+	public static void addPowerup(EntityPlayer player, String powerid)
+	{
+		Util.incrementPlayerIntegerNBT(player, powerid, 1);
+		//player.getEntityData().setInteger(key, value);
+		
+	}
+	
+	public static void addPowerSlowfall(EntityPlayer player)
+	{
+		addPowerup(player,power_slowfall);
+	}
+	
+	public static boolean hasPowerup(EntityPlayer player, String powerid)
+	{
+		return  player.getEntityData().hasKey(powerid) && 
+				player.getEntityData().getInteger(powerid) > 0;
+	}
 }
