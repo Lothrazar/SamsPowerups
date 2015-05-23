@@ -229,7 +229,7 @@ public class PlaceLib
 		
 		for(int i = 1; i < want + 1; i = i + skip)
 		{
-			posCurrent = player.getPosition().offset(efacing, i);
+			posCurrent = pos.offset(efacing, i);
 			
 			if(world.isAirBlock(posCurrent) == false){continue;}
 			//but for the next 2 checks, halt if we run out of blocks/cost
