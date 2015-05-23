@@ -117,7 +117,7 @@ public class CommandPlaceBlocks implements ICommand
 		if( vertOffset > VERTICAL_MAX ||
 			vertOffset < VERTICAL_MAX*-1) 
 		{
-			Util.addChatMessage(player, Util.lang("command.place.vertical"+VERTICAL_MAX));
+			Util.addChatMessage(player, Util.lang("command.place.vertical"));
 			return;
 		}
 		
