@@ -203,6 +203,6 @@ public class ItemChestSack extends Item
 		entityPlayer.destroyCurrentEquippedItem();
 		
 		//drop the empty sack now
-		Util.dropItemStackInWorld(entityPlayer.worldObj, pos, ItemRegistry.itemChestSackEmpty);
+		//Util.dropItemStackInWorld(entityPlayer.worldObj, pos, ItemRegistry.itemChestSackEmpty);
   	} 
 }

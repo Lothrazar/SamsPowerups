@@ -2,6 +2,9 @@ package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.command.CommandBindMacro;
+import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
+import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
+import com.lothrazar.samscontent.item.ItemChestSackEmpty;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
 import com.lothrazar.samscontent.item.ItemWallCompass;
 import com.lothrazar.samscontent.item.ItemWandPiston;
@@ -16,14 +19,17 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 
 public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPressed, IMessage>
 {
@@ -55,8 +61,11 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	public IMessage onMessage(MessageKeyPressed message, MessageContext ctx)
 	{  
 		EntityPlayer player = ctx.getServerHandler().playerEntity; 
+		World world = player.worldObj;
+		BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
 		//THANKS TO THIS
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
+		int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
  
 		if( message.keyPressed == ClientProxy.keyShiftUp.getKeyCode())
  	    {    
@@ -100,11 +109,6 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keyPhasing.getKeyCode())
 	 	{
-			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
-			 
-			
-			//player.getHorizontalFacing()
-			 
 			EnumFacing facing = EnumFacing.getFacingFromVector(
 					(float)player.getLookVec().xCoord
 					, (float)player.getLookVec().yCoord
@@ -116,64 +120,78 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 
 			ItemWallCompass.wallPhase(player.worldObj,player,posMouse,facing);
 		
-			
 	 	}
 		else if( message.keyPressed == ClientProxy.keyPush.getKeyCode())
 	 	{
-			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
-			 
 			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
-			
 	 	}
 		else if( message.keyPressed == ClientProxy.keyPull.getKeyCode())
-	 	{ 
-			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
-			
+	 	{  
 			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing().getOpposite()),false);
-			
 	 	}
 		else if( message.keyPressed == ClientProxy.keyTransform.getKeyCode())
-	 	{
-			/* http://www.minecraftforge.net/forum/index.php?topic=17860.0
-			*/
-			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
- 
+	 	{ 
 			ItemWandTransform.transformBlock(player, player.worldObj, null, posMouse);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyWaterwalk.getKeyCode())
-	 	{
-			int seconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
-		 
-			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,seconds,0));
+	 	{ 
+			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindGhostmode.getKeyCode())
 	 	{
 			ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindJumpboost.getKeyCode())
-	 	{
-			int seconds = Reference.TICKS_PER_SEC * 3;//TODO : config? reference? cost?
-		//	CommandBindMacro.tryExecuteMacro(player,Reference.keyJumpboostName);
-			Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,seconds,4));
-			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBindEnderName);
+	 	{ 
+			Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindEnder.getKeyCode())
 	 	{ 
 			player.displayGUIChest(player.getInventoryEnderChest()); 
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindSlowfall.getKeyCode())
-	 	{
-			int seconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
-		 
-			//Util.execute(player, "/effectpay "+PotionRegistry.slowfall.id + " "+seconds+" "+level);
-			
-			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,seconds,0));
+	 	{ 
+			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,fiveSeconds,0));
 	 	}
+		else if( message.keyPressed == ClientProxy.keyBindChestMover.getKeyCode())
+	 	{
+			ItemChestSackEmpty.convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(posMouse), posMouse);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyFirebolt.getKeyCode())
+	 	{
+			BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
 
+			world.spawnEntityInWorld(new EntitySmallFireball(world,up.getX(),up.getY(),up.getZ()
+					 ,player.getLookVec().xCoord
+					 ,player.getLookVec().yCoord
+					 ,player.getLookVec().zCoord));
+
+			Util.playSoundAt(player, Reference.sounds.bowtoss);
+	 	}
+		else if( message.keyPressed == ClientProxy.keyFrostbolt.getKeyCode())
+	 	{
+			BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
+			 
+			EntitySnowballBolt snow = new EntitySnowballBolt(world,player);
+			 
+			 world.spawnEntityInWorld(snow);
+		 
+			Util.playSoundAt(player, Reference.sounds.bowtoss); 
+			
+			Util.decrHeldStackSize(player); 
+	 	}
+		else if( message.keyPressed == ClientProxy.keyLightningbolt.getKeyCode())
+	 	{
+			System.out.println("lightningballbolt");
+			EntityLightningballBolt ball = new EntityLightningballBolt(world,player 	 );
+			 
+			world.spawnEntityInWorld(ball);
+	 	}
 		
 		return null;
 	}
 
+	//TODO: move function to spellbook
 	private void shiftSlotDown(EntityPlayer player, int currentItem) 
 	{
 		int topNumber = currentItem + 9;

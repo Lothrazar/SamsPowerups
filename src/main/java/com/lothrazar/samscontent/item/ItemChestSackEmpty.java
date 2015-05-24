@@ -57,6 +57,8 @@ public class ItemChestSackEmpty extends Item
 
 	public static void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
 	{ 	
+		if(chestTarget == null){return;}//wrong type of tile entity
+		
 		//TODO:  make it also work with trapped chests/dispensers/droppers/ etc. set extra flag to identify
 		//means not just TileEntityChest
 		//chestTarget.getInventoryStackLimit()//=64
@@ -127,7 +129,9 @@ public class ItemChestSackEmpty extends Item
 		entityPlayer.worldObj.setBlockToAir(pos); 
 
 		entityPlayer.swingItem();
-		entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
+		
+		if(heldWand != null)
+			entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
  
 		Util.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.CRIT, pos);
 		

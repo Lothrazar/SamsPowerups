@@ -43,6 +43,7 @@ public class EntityLightningballBolt extends EntitySnowball
     @Override
     protected void onImpact(MovingObjectPosition mop)
     { 
+    	
     	//happens ONLY for isRemote == false. which means server side.
     	//thats great but, isremote=true means client, so how to make entity show in clident side.
     	EntityLightningBolt ball = new EntityLightningBolt(this.worldObj, this.getPosition().getX(), this.getPosition().getY(), this.getPosition().getZ());

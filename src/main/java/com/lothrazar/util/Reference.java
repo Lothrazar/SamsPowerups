@@ -31,6 +31,10 @@ public class Reference
 	public static final String keyBindEnderName = "key.spell.enderinventory";
 	public static final String keyBindSlowName = "key.spell.slowfall";
 	public static final String keyPhasingName = "key.spell.phase";
+	public static final String keyChestName = "key.spell.chest";
+	public static final String keyLightningboltName = "key.spell.lightning";
+	public static final String keyFireboltName = "key.spell.fire";
+	public static final String keyFrostboltName = "key.spell.ice";
 	
 	public static final String keyCategoryInventory = "key.categories.inventory";
 	public static final String keyCategoryMacro = "key.categories.macro";

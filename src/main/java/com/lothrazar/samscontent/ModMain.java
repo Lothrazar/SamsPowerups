@@ -736,6 +736,22 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPhasing.getKeyCode()));
         }
+        else if(ClientProxy.keyBindChestMover.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindChestMover.getKeyCode()));
+        }
+        else if(ClientProxy.keyFrostbolt.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyFrostbolt.getKeyCode()));
+        }
+        else if(ClientProxy.keyFirebolt.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyFirebolt.getKeyCode()));
+        }
+        else if(ClientProxy.keyLightningbolt.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyLightningbolt.getKeyCode()));
+        }
     } 
 	
 	@SubscribeEvent

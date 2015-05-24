@@ -37,7 +37,11 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBindJumpboost;
 	public static KeyBinding keyBindEnder;
 	public static KeyBinding keyBindSlowfall;
-	public static KeyBinding keyPhasing; 
+	public static KeyBinding keyPhasing;
+	public static KeyBinding keyBindChestMover; 
+	public static KeyBinding keyFirebolt; 
+	public static KeyBinding keyFrostbolt; 
+	public static KeyBinding keyLightningbolt; 
 	//public static ArrayList<KeyBinding> bindings;
     @Override
     public void registerRenderers() 
@@ -131,18 +135,17 @@ public class ClientProxy extends CommonProxy
         keyPhasing = new KeyBinding(Reference.keyPhasingName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPhasing);
         
+        keyBindChestMover = new KeyBinding(Reference.keyChestName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBindChestMover);
+
+        keyLightningbolt = new KeyBinding(Reference.keyLightningboltName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyLightningbolt);
+        keyFirebolt = new KeyBinding(Reference.keyFireboltName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyFirebolt);
+        keyFrostbolt = new KeyBinding(Reference.keyFrostboltName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyFrostbolt);
 	} 
-	
-	/*public static int getKey(String descr)
-	{
-		// input and search from this, instead of 1-9
-		if(getKeyDescription(keyBind1.getKeyCode()).toLowerCase() == descr.toLowerCase())
-		{
-			return 1;
-		}
-		
-		return Keyboard.getKeyIndex(descr);
-	}*/
+
 	public static String getKeyDescription(int key)
 	{
 		//getKeyDescription gets something like 'key.macro1' like lang file data
@@ -157,25 +160,7 @@ public class ClientProxy extends CommonProxy
 			break;
 		case 2:
 			binding = keyBindMacro2;
-			break;/*
-		case 3:
-			binding = keyPush;
 			break;
-		case 4:
-			binding = keyPull;
-			break;
-		case 5:
-			binding = keyTransform;
-			break;
-		case 6:
-			binding = keyWaterwalk;
-			break;
-		case 7:
-			binding = keyBindGhostmode;
-			break;
-		case 8:
-			binding = keyBindJumpboost;
-			break; */
 		}
 		
 		 

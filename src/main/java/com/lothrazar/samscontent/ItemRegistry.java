@@ -312,6 +312,8 @@ public class ItemRegistry
 		{
 			int timeInSeconds = 60 * 60; //one hour
 			
+			//potion effects
+			
 			ItemRegistry.apple_emerald = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);
 			ItemRegistry.apple_emerald.addEffect(PotionRegistry.slowfall.id, timeInSeconds, PotionRegistry.I);  
 			
