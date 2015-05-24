@@ -366,7 +366,7 @@ public class ItemRegistry
 	 
 		if(ModMain.cfg.appleEmerald) 
 		{ 
-			int timeInSeconds = 60 * 60; //one hour
+			int timeInSeconds = 60 * 60; //TODO:one hour
 			
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);   
 			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, timeInSeconds, PotionRegistry.I);  

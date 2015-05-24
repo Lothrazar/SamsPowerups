@@ -29,8 +29,8 @@ public class Reference
 	public static final String keyBind6Name = "key.macro6";
 	public static final String keyBind7Name = "key.macro7";
 	public static final String keyBind8Name = "key.macro8";
-	public static final String keyBind9Name = "key.macro9";
-	public static final String keyBindSlowName = "key.macro0";
+	public static final String keyBindEnderName = "key.spell.enderinventory";
+	public static final String keyBindSlowName = "key.spell.slowfall";
 	
 	public static final String keyCategoryInventory = "key.categories.inventory";
 	public static final String keyCategoryMacro = "key.categories.macro";

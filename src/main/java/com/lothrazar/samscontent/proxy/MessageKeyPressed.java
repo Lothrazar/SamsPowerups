@@ -112,13 +112,15 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind8Name);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind9.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBindEnder.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind9Name);
+			
+			player.displayGUIChest(player.getInventoryEnderChest());
+			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBindEnderName);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindSlowfall.getKeyCode())
 	 	{
-			int seconds = Reference.TICKS_PER_SEC * 30;//TODO : config? reference? cost?
+			int seconds = Reference.TICKS_PER_SEC * 10;//TODO : config? reference? cost?
 		 
 			//Util.execute(player, "/effectpay "+PotionRegistry.slowfall.id + " "+seconds+" "+level);
 			

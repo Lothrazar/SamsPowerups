@@ -724,9 +724,9 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind8.getKeyCode()));
         }
-        else if(ClientProxy.keyBind9.isPressed())
+        else if(ClientProxy.keyBindEnder.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind9.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindEnder.getKeyCode()));
         }
         else if(ClientProxy.keyBindSlowfall.isPressed())
         {
