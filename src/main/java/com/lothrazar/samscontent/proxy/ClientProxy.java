@@ -28,7 +28,7 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBarUp;
 	public static KeyBinding keyBarDown; 
 	public static KeyBinding keyBindMacro1;
-	public static KeyBinding keyBind2;
+	public static KeyBinding keyBindMacro2;
 	public static KeyBinding keyPush;
 	public static KeyBinding keyPull;
 	public static KeyBinding keyTransform;
@@ -101,8 +101,8 @@ public class ClientProxy extends CommonProxy
         keyBindMacro1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_Y, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBindMacro1);
 
-        keyBind2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_U, Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind2);
+        keyBindMacro2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_U, Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBindMacro2);
 
         keyPush = new KeyBinding(Reference.keyPushName, Keyboard.KEY_L, Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPush);
@@ -156,7 +156,7 @@ public class ClientProxy extends CommonProxy
 			binding = keyBindMacro1;
 			break;
 		case 2:
-			binding = keyBind2;
+			binding = keyBindMacro2;
 			break;/*
 		case 3:
 			binding = keyPush;

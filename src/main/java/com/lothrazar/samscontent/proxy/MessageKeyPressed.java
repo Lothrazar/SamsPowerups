@@ -94,7 +94,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind1Name);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind2.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBindMacro2.getKeyCode())
 	 	{
 			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind2Name);
 	 	}

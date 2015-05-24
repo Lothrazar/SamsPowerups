@@ -16,8 +16,8 @@ public class CommandBindMacro implements ICommand
 	public static boolean REQUIRES_OP = false;//not in config on purpose
 	private static String KEY_MACRO_base = "key.macro";
 	private ArrayList<String> aliases = new ArrayList<String>();
-	private static int KMIN=0;
-	private static int KMAX=9;
+	private static int KMIN=1;
+	private static int KMAX=2;
 	public CommandBindMacro()
 	{
 		this.aliases.add(getName().toUpperCase());

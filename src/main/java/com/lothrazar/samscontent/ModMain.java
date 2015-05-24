@@ -696,9 +696,9 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindMacro1.getKeyCode()));
         }
-        else if(ClientProxy.keyBind2.isPressed())
+        else if(ClientProxy.keyBindMacro2.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind2.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindMacro2.getKeyCode()));
         }
         else if(ClientProxy.keyPush.isPressed())
         {
