@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.item.ItemStack;
@@ -182,10 +183,9 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keyLightningbolt.getKeyCode())
 	 	{
-			System.out.println("lightningballbolt");
-			EntityLightningballBolt ball = new EntityLightningballBolt(world,player 	 );
-			 
-			world.spawnEntityInWorld(ball);
+			world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
+			
+			world.spawnEntityInWorld(new EntityLightningBolt(world, posMouse.getX(), posMouse.getY(), posMouse.getZ()));
 	 	}
 		
 		return null;
