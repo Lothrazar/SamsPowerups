@@ -32,9 +32,9 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBind3;
 	public static KeyBinding keyBind4;
 	public static KeyBinding keyBind5;
-	public static KeyBinding keyBind6;
-	public static KeyBinding keyBind7;
-	public static KeyBinding keyBind8;
+	public static KeyBinding keyWaterwalk;
+	public static KeyBinding keyBindGhostmode;
+	public static KeyBinding keyBindJumpboost;
 	public static KeyBinding keyBindEnder;
 	public static KeyBinding keyBindSlowfall; 
   
@@ -109,14 +109,14 @@ public class ClientProxy extends CommonProxy
         keyBind5 = new KeyBinding(Reference.keyBind5Name, Keyboard.KEY_P, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind5);
 
-        keyBind6 = new KeyBinding(Reference.keyBind6Name, Keyboard.KEY_H, Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind6);
+        keyWaterwalk = new KeyBinding(Reference.keyBind6Name, Keyboard.KEY_H, Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyWaterwalk);
 
-        keyBind7 = new KeyBinding(Reference.keyBind7Name, Keyboard.KEY_J, Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind7);
+        keyBindGhostmode = new KeyBinding(Reference.keyGhostmodeName, Keyboard.KEY_J, Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBindGhostmode);
 
-        keyBind8 = new KeyBinding(Reference.keyBind8Name, Keyboard.KEY_K,  Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind8);
+        keyBindJumpboost = new KeyBinding(Reference.keyJumpboostName, Keyboard.KEY_K,  Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBindJumpboost);
         
         keyBindEnder = new KeyBinding(Reference.keyBindEnderName, Keyboard.KEY_I,  Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBindEnder);
@@ -161,13 +161,13 @@ public class ClientProxy extends CommonProxy
 			binding = keyBind5;
 			break;
 		case 6:
-			binding = keyBind6;
+			binding = keyWaterwalk;
 			break;
 		case 7:
-			binding = keyBind7;
+			binding = keyBindGhostmode;
 			break;
 		case 8:
-			binding = keyBind8;
+			binding = keyBindJumpboost;
 			break; 
 		}
 		

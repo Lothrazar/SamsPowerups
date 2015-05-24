@@ -26,9 +26,9 @@ public class Reference
 	public static final String keyBind3Name = "key.macro3";
 	public static final String keyBind4Name = "key.macro4";
 	public static final String keyBind5Name = "key.macro5";
-	public static final String keyBind6Name = "key.macro6";
-	public static final String keyBind7Name = "key.macro7";
-	public static final String keyBind8Name = "key.macro8";
+	public static final String keyWaterwalkName = "key.spell.waterwalk";
+	public static final String keyGhostmodeName = "key.spell.ghost";
+	public static final String keyJumpboostName = "key.spell.jump";
 	public static final String keyBindEnderName = "key.spell.enderinventory";
 	public static final String keyBindSlowName = "key.spell.slowfall";
 	

@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.command.CommandBindMacro;
+import com.lothrazar.samscontent.item.ItemFoodGhost;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -11,6 +12,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
@@ -100,27 +102,33 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind5Name);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind6.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyWaterwalk.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind6Name);
+			int seconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
+		 
+			//Util.execute(player, "/effectpay "+PotionRegistry.slowfall.id + " "+seconds+" "+level);
+			
+			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,seconds,0));
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind7.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBindGhostmode.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind7Name);
+
+			ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind8.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBindJumpboost.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind8Name);
+			int seconds = Reference.TICKS_PER_SEC * 3;//TODO : config? reference? cost?
+		//	CommandBindMacro.tryExecuteMacro(player,Reference.keyJumpboostName);
+			Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,seconds,4));
+			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBindEnderName);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindEnder.getKeyCode())
-	 	{
-			
-			player.displayGUIChest(player.getInventoryEnderChest());
-			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBindEnderName);
+	 	{ 
+			player.displayGUIChest(player.getInventoryEnderChest()); 
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindSlowfall.getKeyCode())
 	 	{
-			int seconds = Reference.TICKS_PER_SEC * 10;//TODO : config? reference? cost?
+			int seconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
 		 
 			//Util.execute(player, "/effectpay "+PotionRegistry.slowfall.id + " "+seconds+" "+level);
 			

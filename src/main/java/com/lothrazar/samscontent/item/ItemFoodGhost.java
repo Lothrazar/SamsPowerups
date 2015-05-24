@@ -37,6 +37,11 @@ public class ItemFoodGhost extends ItemFood
 	@Override
 	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer player)
     {     
+		setPlayerGhostMode(player,par2World);
+    }
+	
+	public static void setPlayerGhostMode(EntityPlayer player, World par2World)
+	{
 		if(par2World.isRemote == false)  //false means serverside
 		{ 
 			player.setGameType(GameType.SPECTATOR);
@@ -46,7 +51,7 @@ public class ItemFoodGhost extends ItemFood
 			player.getEntityData().setString(KEY_EATLOC, Util.posToStringCSV(player.getPosition()));
 			player.getEntityData().setInteger(KEY_EATDIM, player.dimension);
 		}
-    }
+	}
 
 	public void addRecipe() 
 	{ 
