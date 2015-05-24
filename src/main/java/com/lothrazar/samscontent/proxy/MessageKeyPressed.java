@@ -22,6 +22,8 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.MathHelper;
 
 public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPressed, IMessage>
 {
@@ -100,9 +102,19 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
 			 
-			System.out.println("phase");
+			
+			//player.getHorizontalFacing()
+			 
+			EnumFacing facing = EnumFacing.getFacingFromVector(
+					(float)player.getLookVec().xCoord
+					, (float)player.getLookVec().yCoord
+					, (float)player.getLookVec().zCoord);
 
-			ItemWallCompass.wallPhase(player.worldObj,player,posMouse,player.getHorizontalFacing().getOpposite());
+			System.out.println("phase  "+facing.getName());
+			
+			//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
+
+			ItemWallCompass.wallPhase(player.worldObj,player,posMouse,facing);
 		
 			
 	 	}
