@@ -56,17 +56,55 @@ public class ItemWandPiston extends Item
 			'b',Items.blaze_rod); 
 	}
  
-	public static void cast(PlayerInteractEvent event) 
+	public static void moveBlockTo(World world, EntityPlayer player,BlockPos pos, BlockPos posMoveToHere,boolean useItem)
 	{
-		BlockPos pos = event.pos;
-		World world = event.world;
 		IBlockState hit = world.getBlockState(pos);
-		
 		translateCSV();
 		if(hit == null || ignoreList.contains(hit.getBlock()))
 		{
 			return;
 		}
+		
+		if(world.isAirBlock(posMoveToHere) && world.isBlockModifiable(player, pos)) 
+		{
+			if(world.isRemote) 
+			{
+				Util.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
+			}
+			else
+			{  
+				Util.playSoundAt(player, "random.wood_click");
+
+				//they swap places
+				world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
+
+				TileEntity hitTile = world.getTileEntity(pos);
+
+				if(hitTile != null)
+				{
+					 //here we tried to MOVE the tile entity, did not work
+					//world.setTileEntity(posMoveToHere, hitTile);
+				//	world.setTileEntity(pos, new TileEntity());
+					//world.removeTileEntity(pos);
+					 
+					//http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1433868-forge-picking-up-and-moving-blocks
+
+				}
+
+				world.destroyBlock(pos, true);
+				 
+				if(useItem)
+					Util.damageOrBreakHeld(player);
+				
+				player.swingItem();
+			} 
+		} 
+	}
+	public static void cast(PlayerInteractEvent event) 
+	{
+		BlockPos pos = event.pos;
+		World world = event.world;
+		IBlockState hit = world.getBlockState(pos);
 		
 		if(event.face != null)
 		{
@@ -78,39 +116,8 @@ public class ItemWandPiston extends Item
 			 
 			BlockPos posMoveToHere = player.isSneaking() ? posTowardsPlayer : posAwayPlayer;
 			
-			if(world.isAirBlock(posMoveToHere) && world.isBlockModifiable(player, pos)) 
-			{
-				if(world.isRemote) 
-				{
-					Util.spawnParticle(world, EnumParticleTypes.CRIT_MAGIC, pos); 
-				}
-				else
-				{  
-					Util.playSoundAt(player, "random.wood_click");
-
-					//they swap places
-					world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
-
-					TileEntity hitTile = world.getTileEntity(pos);
-
-					if(hitTile != null)
-					{
-						 //here we tried to MOVE the tile entity, did not work
-						//world.setTileEntity(posMoveToHere, hitTile);
-					//	world.setTileEntity(pos, new TileEntity());
-						//world.removeTileEntity(pos);
-						 
-						//http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1433868-forge-picking-up-and-moving-blocks
- 
-					}
- 
-					world.destroyBlock(pos, true);
-					 
-					Util.damageOrBreakHeld(player);
-					
-					player.swingItem();
-				} 
-			} 
+			moveBlockTo(world,player,pos,posMoveToHere,true);
+			
 		}
 	}
 }

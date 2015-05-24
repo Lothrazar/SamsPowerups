@@ -82,6 +82,7 @@ public class Util
 	
 	public static void damageOrBreakHeld(EntityPlayer player)
 	{ 
+		//if(player.getCurrentEquippedItem()==null){return;}//better than crashing
 		if(player.getCurrentEquippedItem().getItemDamage() < player.getCurrentEquippedItem().getMaxDamage()) 
 		{
 			player.getCurrentEquippedItem().damageItem(1, player);

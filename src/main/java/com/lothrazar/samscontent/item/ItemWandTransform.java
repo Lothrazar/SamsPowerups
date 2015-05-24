@@ -802,7 +802,8 @@ public class ItemWandTransform extends Item
  
 				player.worldObj.setBlockState(pos,blockStateNew);
 				 
-				Util.damageOrBreakHeld(player);
+				if(heldWand != null)
+					Util.damageOrBreakHeld(player);
 				 
 			} 
 		}

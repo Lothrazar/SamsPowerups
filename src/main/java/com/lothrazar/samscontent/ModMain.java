@@ -708,9 +708,9 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind4.getKeyCode()));
         }
-        else if(ClientProxy.keyBind5.isPressed())
+        else if(ClientProxy.keyTransform.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind5.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyTransform.getKeyCode()));
         }
         else if(ClientProxy.keyWaterwalk.isPressed())
         {

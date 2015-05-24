@@ -1,7 +1,10 @@
 package com.lothrazar.samscontent.proxy;
   
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.command.CommandBindMacro;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
+import com.lothrazar.samscontent.item.ItemWandPiston;
+import com.lothrazar.samscontent.item.ItemWandTransform;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -9,12 +12,14 @@ import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 
 public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPressed, IMessage>
@@ -92,27 +97,45 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBind3.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind3Name);
+			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+			
+			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBind4Name);
+			
+			System.out.println("PUSHHHH");
+			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
+			
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBind4.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind4Name);
+			
+			
+
+			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+			
+			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBind4Name);
+			
+			System.out.println("PULLL");
+			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing().getOpposite()),false);
+			
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind5.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyTransform.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind5Name);
+/* http://www.minecraftforge.net/forum/index.php?topic=17860.0
+*/
+			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+ 
+			
+			
+			ItemWandTransform.transformBlock(player, player.worldObj, null, posMouse);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyWaterwalk.getKeyCode())
 	 	{
 			int seconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
 		 
-			//Util.execute(player, "/effectpay "+PotionRegistry.slowfall.id + " "+seconds+" "+level);
-			
 			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,seconds,0));
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindGhostmode.getKeyCode())
 	 	{
-
 			ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindJumpboost.getKeyCode())
