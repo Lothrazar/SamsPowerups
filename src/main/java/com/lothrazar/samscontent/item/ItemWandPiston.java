@@ -76,6 +76,7 @@ public class ItemWandPiston extends Item
 				Util.playSoundAt(player, "random.wood_click");
 
 				//they swap places
+				world.destroyBlock(pos, true);
 				world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
 
 				TileEntity hitTile = world.getTileEntity(pos);
@@ -91,7 +92,7 @@ public class ItemWandPiston extends Item
 
 				}
 
-				world.destroyBlock(pos, true);
+				world.destroyBlock(pos, false);
 				 
 				if(useItem)
 					Util.damageOrBreakHeld(player);
