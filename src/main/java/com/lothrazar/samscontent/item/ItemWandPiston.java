@@ -76,24 +76,10 @@ public class ItemWandPiston extends Item
 				Util.playSoundAt(player, "random.wood_click");
 
 				//they swap places
-				world.destroyBlock(pos, true);
-				world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
-
-				TileEntity hitTile = world.getTileEntity(pos);
-
-				if(hitTile != null)
-				{
-					 //here we tried to MOVE the tile entity, did not work
-					//world.setTileEntity(posMoveToHere, hitTile);
-				//	world.setTileEntity(pos, new TileEntity());
-					//world.removeTileEntity(pos);
-					 
-					//http://www.minecraftforum.net/forums/mapping-and-modding/minecraft-mods/modification-development/1433868-forge-picking-up-and-moving-blocks
-
-				}
-
+				//world.destroyBlock(posMoveToHere, false);
 				world.destroyBlock(pos, false);
-				 
+				world.setBlockState(posMoveToHere, hit);//pulls the block towards the player
+				
 				if(useItem)
 					Util.damageOrBreakHeld(player);
 				

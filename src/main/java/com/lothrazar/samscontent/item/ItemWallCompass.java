@@ -44,24 +44,28 @@ public class ItemWallCompass extends Item
 		World world = event.world;
 		EntityPlayer player = event.entityPlayer;
 		
+		wallPhase(world,player,pos,event.face);
+
+		if(world.isRemote == false)
+			Util.damageOrBreakHeld(player);
+	}
+	public static void wallPhase(World world, EntityPlayer player,BlockPos pos ,EnumFacing face)
+	{
 		int dist = 1;
-		if(event.face.getOpposite() == EnumFacing.DOWN)
+		if(face.getOpposite() == EnumFacing.DOWN)
 		{
 			 dist = 2;//only move two when going down - player is 2 tall
 		}
 		
-		BlockPos offs = pos.offset(event.face.getOpposite(), dist);
+		BlockPos offs = pos.offset(face.getOpposite(), dist);
 		
 		//not 2, depends on block pos?
-		if(event.world.isAirBlock(offs) && event.world.isAirBlock(offs.up()))
+		if(world.isAirBlock(offs) && world.isAirBlock(offs.up()))
 		{
 			player.setPositionAndUpdate(offs.getX(), offs.getY(), offs.getZ()); 
 
-			event.world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);  
+			world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);  
 			Util.spawnParticle(world, EnumParticleTypes.PORTAL, offs);
-
-			if(event.world.isRemote == false)
-				Util.damageOrBreakHeld(player);
 		}
 	}
 }

@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.proxy;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.command.CommandBindMacro;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
+import com.lothrazar.samscontent.item.ItemWallCompass;
 import com.lothrazar.samscontent.item.ItemWandPiston;
 import com.lothrazar.samscontent.item.ItemWandTransform;
 import com.lothrazar.samscontent.potion.PotionRegistry;
@@ -87,7 +88,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			shiftSlotDown(player, 7); 
 			shiftSlotDown(player, 8); 
 	 	} 
-		else if( message.keyPressed == ClientProxy.keyBind1.getKeyCode())//TODO: better code structure here?
+		else if( message.keyPressed == ClientProxy.keyBindMacro1.getKeyCode())//TODO: better code structure here?
 	 	{
 			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind1Name);
 	 	}
@@ -95,37 +96,36 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind2Name);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind3.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyPhasing.getKeyCode())
 	 	{
 			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+			 
+			System.out.println("phase");
+
+			ItemWallCompass.wallPhase(player.worldObj,player,posMouse,player.getHorizontalFacing().getOpposite());
+		
 			
-			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBind4Name);
-			
-			System.out.println("PUSHHHH");
+	 	}
+		else if( message.keyPressed == ClientProxy.keyPush.getKeyCode())
+	 	{
+			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+			 
 			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
 			
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind4.getKeyCode())
-	 	{
-			
-			
-
+		else if( message.keyPressed == ClientProxy.keyPull.getKeyCode())
+	 	{ 
 			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
 			
-			//CommandBindMacro.tryExecuteMacro(player,Reference.keyBind4Name);
-			
-			System.out.println("PULLL");
 			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing().getOpposite()),false);
 			
 	 	}
 		else if( message.keyPressed == ClientProxy.keyTransform.getKeyCode())
 	 	{
-/* http://www.minecraftforge.net/forum/index.php?topic=17860.0
-*/
+			/* http://www.minecraftforge.net/forum/index.php?topic=17860.0
+			*/
 			BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
  
-			
-			
 			ItemWandTransform.transformBlock(player, player.worldObj, null, posMouse);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyWaterwalk.getKeyCode())

@@ -692,21 +692,21 @@ public class ModMain
         { 	      
         	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
         }   
-        else if(ClientProxy.keyBind1.isPressed())
+        else if(ClientProxy.keyBindMacro1.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind1.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindMacro1.getKeyCode()));
         }
         else if(ClientProxy.keyBind2.isPressed())
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind2.getKeyCode()));
         }
-        else if(ClientProxy.keyBind3.isPressed())
+        else if(ClientProxy.keyPush.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind3.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPush.getKeyCode()));
         }
-        else if(ClientProxy.keyBind4.isPressed())
+        else if(ClientProxy.keyPull.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBind4.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPull.getKeyCode()));
         }
         else if(ClientProxy.keyTransform.isPressed())
         {
@@ -731,6 +731,10 @@ public class ModMain
         else if(ClientProxy.keyBindSlowfall.isPressed())
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindSlowfall.getKeyCode()));
+        }
+        else if(ClientProxy.keyPhasing.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPhasing.getKeyCode()));
         }
     } 
 	

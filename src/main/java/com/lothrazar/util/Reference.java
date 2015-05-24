@@ -1,7 +1,6 @@
 package com.lothrazar.util;
 
 import java.util.ArrayList;
-
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
@@ -23,14 +22,15 @@ public class Reference
 	public static final String keyPlayerFlipName = "key.playerflip";
 	public static final String keyBind1Name = "key.macro1";
 	public static final String keyBind2Name = "key.macro2";
-	public static final String keyBind3Name = "key.macro3";
-	public static final String keyBind4Name = "key.macro4";
-	public static final String keyBind5Name = "key.macro5";
+	public static final String keyPushName = "key.spell.push";
+	public static final String keyPullName = "key.spell.pull";
+	public static final String keyTransformName = "key.spell.transform";
 	public static final String keyWaterwalkName = "key.spell.waterwalk";
 	public static final String keyGhostmodeName = "key.spell.ghost";
 	public static final String keyJumpboostName = "key.spell.jump";
 	public static final String keyBindEnderName = "key.spell.enderinventory";
 	public static final String keyBindSlowName = "key.spell.slowfall";
+	public static final String keyPhasingName = "key.spell.phase";
 	
 	public static final String keyCategoryInventory = "key.categories.inventory";
 	public static final String keyCategoryMacro = "key.categories.macro";

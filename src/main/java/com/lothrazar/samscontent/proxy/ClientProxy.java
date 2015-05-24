@@ -27,17 +27,18 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyShiftDown; 
 	public static KeyBinding keyBarUp;
 	public static KeyBinding keyBarDown; 
-	public static KeyBinding keyBind1;
+	public static KeyBinding keyBindMacro1;
 	public static KeyBinding keyBind2;
-	public static KeyBinding keyBind3;
-	public static KeyBinding keyBind4;
+	public static KeyBinding keyPush;
+	public static KeyBinding keyPull;
 	public static KeyBinding keyTransform;
 	public static KeyBinding keyWaterwalk;
 	public static KeyBinding keyBindGhostmode;
 	public static KeyBinding keyBindJumpboost;
 	public static KeyBinding keyBindEnder;
-	public static KeyBinding keyBindSlowfall; 
-  
+	public static KeyBinding keyBindSlowfall;
+	public static KeyBinding keyPhasing; 
+	//public static ArrayList<KeyBinding> bindings;
     @Override
     public void registerRenderers() 
     {  
@@ -82,8 +83,11 @@ public class ClientProxy extends CommonProxy
 
 	private void registerKeyBindings() 
 	{
+		//bindings = new ArrayList<KeyBinding>();
+		
 		keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_C, Reference.keyCategoryInventory);
         ClientRegistry.registerKeyBinding(ClientProxy.keyShiftUp);
+        //bindings.add(ClientProxy.keyShiftUp)
      
 		keyShiftDown = new KeyBinding(Reference.keyDownName, Keyboard.KEY_V, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyShiftDown); 
@@ -94,19 +98,19 @@ public class ClientProxy extends CommonProxy
         keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
         
-        keyBind1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_Y, Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind1);
+        keyBindMacro1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_Y, Reference.keyCategoryMacro); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBindMacro1);
 
         keyBind2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_U, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind2);
 
-        keyBind3 = new KeyBinding(Reference.keyBind3Name, Keyboard.KEY_L, Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind3);
+        keyPush = new KeyBinding(Reference.keyPushName, Keyboard.KEY_L, Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyPush);
 
-        keyBind4 = new KeyBinding(Reference.keyBind4Name, Keyboard.KEY_O,  Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind4);
+        keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_O,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyPull);
          
-        keyTransform = new KeyBinding(Reference.keyBind5Name, Keyboard.KEY_P, Reference.keyCategoryMacro); 
+        keyTransform = new KeyBinding(Reference.keyTransformName, Keyboard.KEY_P, Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyTransform);
 
         keyWaterwalk = new KeyBinding(Reference.keyWaterwalkName, Keyboard.KEY_H, Reference.keyCategorySpell); 
@@ -124,6 +128,9 @@ public class ClientProxy extends CommonProxy
         keyBindSlowfall = new KeyBinding(Reference.keyBindSlowName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBindSlowfall);
      
+        keyPhasing = new KeyBinding(Reference.keyPhasingName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyPhasing);
+        
 	} 
 	
 	/*public static int getKey(String descr)
@@ -146,16 +153,16 @@ public class ClientProxy extends CommonProxy
 		switch(key)//TODO:...maybe find better way. switch for now
 		{
 		case 1:
-			binding = keyBind1;
+			binding = keyBindMacro1;
 			break;
 		case 2:
 			binding = keyBind2;
-			break;
+			break;/*
 		case 3:
-			binding = keyBind3;
+			binding = keyPush;
 			break;
 		case 4:
-			binding = keyBind4;
+			binding = keyPull;
 			break;
 		case 5:
 			binding = keyTransform;
@@ -168,7 +175,7 @@ public class ClientProxy extends CommonProxy
 			break;
 		case 8:
 			binding = keyBindJumpboost;
-			break; 
+			break; */
 		}
 		
 		 
