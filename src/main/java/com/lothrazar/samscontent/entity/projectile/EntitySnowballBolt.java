@@ -59,6 +59,8 @@ public class EntitySnowballBolt extends EntitySnowball
             	
             	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id, secondsFrozenOnHit * Reference.TICKS_PER_SEC,0));
             } 
+            
+            
       }
 
         for (int i = 0; i < 10; ++i)
@@ -93,6 +95,26 @@ public class EntitySnowballBolt extends EntitySnowball
             		this.worldObj.setBlockState(waterPos, Blocks.ice.getDefaultState()); 
             	}
 	        }
+        	else
+        	{
+        		//on land, so snow?
+        		System.out.println("try to set snow layer?");
+        		if(
+        				this.worldObj.isAirBlock(this.getPosition().down()) == false //one below us cannot be air
+        				&& //and we landed at air or replaceable
+        				this.worldObj.getBlockState(this.getPosition()).getBlock().isReplaceable(this.worldObj, this.getPosition()))
+        		{
+
+            		this.worldObj.setBlockState(this.getPosition(), Blocks.snow_layer.getDefaultState()); 
+        		}
+        		
+        		if(this.worldObj.getBlockState(this.getPosition()).getBlock() == Blocks.snow_layer)
+        		{
+
+            		System.out.println("LANDED on snow layer, increase it by +1?");
+        		}
+        		
+        	}
         	 
             this.setDead();
         }
