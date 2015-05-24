@@ -36,7 +36,7 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBind7;
 	public static KeyBinding keyBind8;
 	public static KeyBinding keyBind9;
-	public static KeyBinding keyBind0;
+	public static KeyBinding keyBindSlowfall; 
   
     @Override
     public void registerRenderers() 
@@ -121,8 +121,8 @@ public class ClientProxy extends CommonProxy
         keyBind9 = new KeyBinding(Reference.keyBind9Name, Keyboard.KEY_L,  Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBind9);
         
-        keyBind0 = new KeyBinding(Reference.keyBind0Name, Keyboard.KEY_SEMICOLON,  Reference.keyCategoryMacro); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBind0);
+        keyBindSlowfall = new KeyBinding(Reference.keyBindSlowName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBindSlowfall);
      
 	} 
 	
@@ -171,10 +171,7 @@ public class ClientProxy extends CommonProxy
 			break;
 		case 9:
 			binding = keyBind9;
-			break;
-		case 0:
-			binding = keyBind0;
-			break;
+			break; 
 		}
 		
 		 

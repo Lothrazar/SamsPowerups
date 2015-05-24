@@ -133,7 +133,8 @@ public class CommandBindMacro implements ICommand
 		
 		//Util.addChatMessage(player, "."+cmd);
 		
-		MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
+		
+		Util.execute(player,cmd);
 	}
 
 	@Override

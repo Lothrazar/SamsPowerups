@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.command.CommandBindMacro;
+import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -10,6 +11,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.util.ChatComponentTranslation;
 
@@ -45,8 +47,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		EntityPlayer player = ctx.getServerHandler().playerEntity; 
 		//THANKS TO THIS
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
-
- System.out.println("onMessage");
+ 
 		if( message.keyPressed == ClientProxy.keyShiftUp.getKeyCode())
  	    {    
 			shiftSlotUp(player, player.inventory.currentItem); 
@@ -115,13 +116,15 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind9Name);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBind0.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBindSlowfall.getKeyCode())
 	 	{
-			CommandBindMacro.tryExecuteMacro(player,Reference.keyBind0Name);
+			int seconds = Reference.TICKS_PER_SEC * 30;//TODO : config? reference? cost?
+		 
+			//Util.execute(player, "/effectpay "+PotionRegistry.slowfall.id + " "+seconds+" "+level);
+			
+			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,seconds,0));
 	 	}
 
-		
-		
 		
 		return null;
 	}

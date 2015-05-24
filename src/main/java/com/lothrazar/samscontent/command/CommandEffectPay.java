@@ -2,6 +2,7 @@ package com.lothrazar.samscontent.command;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 import net.minecraft.command.CommandException;
@@ -122,9 +123,9 @@ public class CommandEffectPay implements ICommand
 		
 		Util.drainExp(player, xpCost);
 		
-		int ticks = sec * Reference.TICKS_PER_SEC;
-	 
-		player.addPotionEffect(new PotionEffect(pid,ticks,lvl));
+		PotionEffect newp = new PotionEffect(pid,sec * Reference.TICKS_PER_SEC,lvl);
+		
+		Util.addOrMergePotionEffect(player,newp);
 	}
 
 	@Override

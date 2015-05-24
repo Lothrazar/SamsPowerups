@@ -31,6 +31,9 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.server.MinecraftServer;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
@@ -853,7 +856,7 @@ public class Util
     	
 		
 	}
-	
+	/*
 	public static final String power_slowfall = "power.slowfall";
 	
 	public static void addPowerup(EntityPlayer player, String powerid)
@@ -872,5 +875,29 @@ public class Util
 	{
 		return  player.getEntityData().hasKey(powerid) && 
 				player.getEntityData().getInteger(powerid) > 0;
+	}
+*/
+	public static void execute(EntityPlayer player, String cmd)
+	{
+		MinecraftServer.getServer().getCommandManager().executeCommand(player, cmd);
+	}
+
+	public static void addOrMergePotionEffect(EntityPlayer player, PotionEffect newp)
+	{
+		if(player.isPotionActive(newp.getPotionID()))
+		{
+			//do not use built in 'combine' function, just add up duration myself
+			PotionEffect p = player.getActivePotionEffect(Potion.potionTypes[newp.getPotionID()]);
+			
+			int ampMax = Math.max(p.getAmplifier(), newp.getAmplifier());
+		
+			player.addPotionEffect(new PotionEffect(newp.getPotionID()
+					,newp.getDuration()+p.getDuration()
+					,ampMax));
+		}
+		else
+		{
+			player.addPotionEffect(newp);
+		}
 	}
 }

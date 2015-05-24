@@ -30,10 +30,11 @@ public class Reference
 	public static final String keyBind7Name = "key.macro7";
 	public static final String keyBind8Name = "key.macro8";
 	public static final String keyBind9Name = "key.macro9";
-	public static final String keyBind0Name = "key.macro0";
+	public static final String keyBindSlowName = "key.macro0";
 	
 	public static final String keyCategoryInventory = "key.categories.inventory";
 	public static final String keyCategoryMacro = "key.categories.macro";
+	public static final String keyCategorySpell = "key.categories.spell";
 	
 	public static final int TICKS_PER_SEC = 20;
 	public static final int CHUNK_SIZE = 16;

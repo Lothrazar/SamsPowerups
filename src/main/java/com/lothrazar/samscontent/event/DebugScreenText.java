@@ -63,7 +63,6 @@ public class DebugScreenText
 		
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
-		//World world = Minecraft.getMinecraft().getIntegratedServer().getSpawnProtectionSize()
 		
 	 
 		if(ModMain.cfg.reducedDebugImproved && 
