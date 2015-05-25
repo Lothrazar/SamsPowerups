@@ -49,9 +49,7 @@ public class AchievementRegistry
 	
 
  
-	public Achievement harvestCharge;
  
-	
 	public Achievement carbonPaper;
 	
 	public Achievement soulstone;
@@ -190,12 +188,7 @@ public class AchievementRegistry
 		yCurrent += ySpacing;
 		
 	 
-		if(ItemRegistry.harvest_charge != null) 
-		{ 
-			xCurrent += xSpacing;
-			harvestCharge = new Achievement(Reference.MODID + "_harvestCharge", "harvestCharge" ,xCurrent, yCurrent,ItemRegistry.harvest_charge,null);
-			register(harvestCharge);
-		}
+		 
 		if(ItemRegistry.carbon_paper != null) 
 		{ 
 			xCurrent += xSpacing;
