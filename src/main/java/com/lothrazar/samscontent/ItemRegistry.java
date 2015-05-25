@@ -3,7 +3,6 @@ package com.lothrazar.samscontent;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -20,7 +19,6 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-
 import com.lothrazar.samscontent.item.*; 
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference; 
@@ -32,7 +30,7 @@ public class ItemRegistry
 	public static ItemEnderBook itemEnderBook;
 	//public static ItemChestSackEmpty itemChestSackEmpty; 
 	//public static ItemChestSack itemChestSack;
-	public static ItemMagicHarvester harvest_charge;
+	//public static ItemMagicHarvester harvest_charge;
 	//public static ItemWandTransform wandTransform; 
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
@@ -62,15 +60,23 @@ public class ItemRegistry
 	public static ItemEnderCookie ender_cookie;
 	//public static ItemWallCompass wall_compass;
 	public static ItemSuperfood food_super;
-	
-	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 2, 32, 12F, 0F, 22);
+	public static int emerald_harvestLevel=2;
+	public static int emerald_maxUses=32;
+	public static float emerald_efficiency=12F;
+	public static float emerald_damage=0F;
+	public static int emerald_enchantability=22;
+	//String name, int harvestLevel, int maxUses, float efficiency, float damage, int enchantability)
+	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 
+			emerald_harvestLevel, 
+			emerald_maxUses, 
+			emerald_efficiency, 
+			emerald_damage, 
+			emerald_enchantability);
 	public static int timePotionShort = 90; // 1:30
 	public static int timePotionLong = 8 * 60;// 8:00
 	
 	public static void registerItems()
 	{   
-		
- 
 		if(ModMain.cfg.ender_cookie)
 		{
 			ender_cookie = new ItemEnderCookie();
@@ -220,16 +226,7 @@ public class ItemRegistry
 
 			ItemPaperCarbon.addRecipe();  
 		}
-		
 	 
-		if(ModMain.cfg.harvest_charge)
-		{   
-			ItemRegistry.harvest_charge = new ItemMagicHarvester();
-			ItemRegistry.registerItem(ItemRegistry.harvest_charge, "harvest_charge");
-
-			ItemMagicHarvester.addRecipe();  
-		}
-		
 		if(ModMain.cfg.respawn_egg)
 		{   
 			respawn_egg = new ItemRespawnEggAnimal();

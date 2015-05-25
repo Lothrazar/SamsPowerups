@@ -361,11 +361,7 @@ public class ConfigRegistry
 		carbon_paper = instance.getBoolean("carbon_paper",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
  
-		ItemMagicHarvester.RADIUS  = instance.getInt("harvest_charge.radius",category, 16,1,64,
-    			"Range in all directions.");
-		
-		harvest_charge = instance.getBoolean("harvest_charge",category, true,
-    			"This harvests a large area of crops at once while also replanting for you.");
+	 
  
 		respawn_egg = instance.getBoolean("respawn_egg",category, true,
     			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
@@ -655,7 +651,7 @@ public class ConfigRegistry
 	public int spawnerHardness; 
  
 	public boolean carbon_paper;
-	public boolean harvest_charge;
+ 
 	public boolean respawn_egg;
  
 	public int potionIdWaterwalk;

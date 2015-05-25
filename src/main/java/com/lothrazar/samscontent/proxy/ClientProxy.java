@@ -42,6 +42,8 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyFirebolt; 
 	public static KeyBinding keyFrostbolt; 
 	public static KeyBinding keyLightningbolt; 
+	public static KeyBinding keyHarvest;
+ 
 	//public static ArrayList<KeyBinding> bindings;
     @Override
     public void registerRenderers() 
@@ -144,6 +146,8 @@ public class ClientProxy extends CommonProxy
         ClientRegistry.registerKeyBinding(ClientProxy.keyFirebolt);
         keyFrostbolt = new KeyBinding(Reference.keyFrostboltName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyFrostbolt);
+        keyHarvest = new KeyBinding(Reference.keyHarvestName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyHarvest);
 	} 
 
 	public static String getKeyDescription(int key)

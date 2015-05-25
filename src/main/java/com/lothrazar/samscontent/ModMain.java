@@ -752,6 +752,11 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyLightningbolt.getKeyCode()));
         }
+        else if(ClientProxy.keyHarvest.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyHarvest.getKeyCode()));
+        }
+        
     } 
 	
 	@SubscribeEvent

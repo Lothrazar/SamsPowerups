@@ -42,7 +42,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemMagicHarvester extends Item
 {
-	public static int RADIUS; //from config file
+	public static int RADIUS=8; //from config file
 	
 	public ItemMagicHarvester( )
 	{   
@@ -50,14 +50,14 @@ public class ItemMagicHarvester extends Item
     	this.setMaxStackSize(64); 
 		this.setCreativeTab(ModMain.tabSamsContent);
 	}
-	 
+	 /*
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.harvest_charge,4),
 			Items.ender_eye, 
 			Blocks.hay_block  );
 	}
-	   
+	   */
 	public static void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
 	{  
 		//http://www.minecraftforge.net/wiki/Plants
@@ -113,7 +113,8 @@ public class ItemMagicHarvester extends Item
 				Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
 			else 
 			{
-				Util.decrHeldStackSize(entityPlayer);  
+				if(heldWand != null)
+					Util.decrHeldStackSize(entityPlayer);  
 			} 
 		}
 	}

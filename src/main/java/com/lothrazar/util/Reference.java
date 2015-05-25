@@ -35,6 +35,7 @@ public class Reference
 	public static final String keyLightningboltName = "key.spell.lightning";
 	public static final String keyFireboltName = "key.spell.fire";
 	public static final String keyFrostboltName = "key.spell.ice";
+	public static final String keyHarvestName = "key.spell.harvest";
 	
 	public static final String keyCategoryInventory = "key.categories.inventory";
 	public static final String keyCategoryMacro = "key.categories.macro";
@@ -42,7 +43,7 @@ public class Reference
 	
 	public static final int TICKS_PER_SEC = 20;
 	public static final int CHUNK_SIZE = 16;
-	public static long ticksPerDay = 24000 ;
+	public static final long ticksPerDay = 24000 ;
 	 
 	public static final int face_bottom = 0;	
 	public static final int face_top = 1;

@@ -6,6 +6,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.samscontent.item.ItemChestSackEmpty;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
+import com.lothrazar.samscontent.item.ItemMagicHarvester;
 import com.lothrazar.samscontent.item.ItemWallCompass;
 import com.lothrazar.samscontent.item.ItemWandPiston;
 import com.lothrazar.samscontent.item.ItemWandTransform;
@@ -187,6 +188,17 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			
 			world.spawnEntityInWorld(new EntityLightningBolt(world, posMouse.getX(), posMouse.getY(), posMouse.getZ()));
 	 	}
+		else if( message.keyPressed == ClientProxy.keyHarvest.getKeyCode())
+	 	{
+			ItemMagicHarvester.replantField(world, player, null, posMouse);
+			//ItemMagicHarvester.replantField(world, player, null, posMouse.up());
+			//ItemMagicHarvester.replantField(world, player, null, posMouse.down());
+			
+			//world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
+			
+		//	world.spawnEntityInWorld(new EntityLightningBolt(world, posMouse.getX(), posMouse.getY(), posMouse.getZ()));
+	 	}
+		//TODO: search spawner??? with particle directors?
 		
 		return null;
 	}
