@@ -27,11 +27,13 @@ import com.lothrazar.util.Reference;
 
 public class ItemRegistry 
 { 
+	public static ArrayList<Item> items = new ArrayList<Item>();
+	
 	public static ItemEnderBook itemEnderBook;
-	public static ItemChestSackEmpty itemChestSackEmpty; 
-	public static ItemChestSack itemChestSack;
+	//public static ItemChestSackEmpty itemChestSackEmpty; 
+	//public static ItemChestSack itemChestSack;
 	public static ItemMagicHarvester harvest_charge;
-	public static ItemWandTransform wandTransform; 
+	//public static ItemWandTransform wandTransform; 
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
 	public static ItemFoodAppleMagic apple_diamond; 
@@ -50,16 +52,15 @@ public class ItemRegistry
 	public static ItemHorseFood lapisCarrot; 
 	public static ItemHorseFood diamondCarrot; 
 	
-	public static ArrayList<Item> items = new ArrayList<Item>();
-	public static ItemFireballThrowable fire_charge_throw;
-	public static ItemSnowballFrozen frozen_snowball; 
+	//public static ItemFireballThrowable fire_charge_throw;
+	//public static ItemSnowballFrozen frozen_snowball; 
 	public static ItemRespawnEggAnimal respawn_egg;
-	public static ItemWandPiston wand_piston;
+	//public static ItemWandPiston wand_piston;
 	public static ItemSoulstone soulstone;
 	public static ItemSoulstone soulstone_persist;
 	public static ItemFoodGhost apple_ghost;
 	public static ItemEnderCookie ender_cookie;
-	public static ItemWallCompass wall_compass;
+	//public static ItemWallCompass wall_compass;
 	public static ItemSuperfood food_super;
 	
 	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 2, 32, 12F, 0F, 22);
@@ -68,15 +69,7 @@ public class ItemRegistry
 	public static void registerItems()
 	{   
 		
-
-		if(ModMain.cfg.phasing_compass)
-		{
-			wall_compass = new ItemWallCompass();
-			ItemRegistry.registerItem(wall_compass, "wall_compass");
-			ItemWallCompass.addRecipe();
-		}
-		
-		
+ 
 		if(ModMain.cfg.ender_cookie)
 		{
 			ender_cookie = new ItemEnderCookie();
@@ -169,14 +162,7 @@ public class ItemRegistry
 			ItemRegistry.registerItem(soulstone_persist, "soulstone_persist");
 			soulstone_persist.addRecipe();
 		}
-		
-		if(ModMain.cfg.wandPiston)
-		{
-			wand_piston = new ItemWandPiston();
-			ItemRegistry.registerItem(wand_piston, "wand_piston");
  
-			wand_piston.addRecipe();
-		}
 		
 		if(ModMain.cfg.horse_food_upgrades )
 		{  
@@ -219,23 +205,7 @@ public class ItemRegistry
 			ItemRegistry.registerItem(food_super, "food_super");
 			food_super.addRecipe();
 		}
-		if(ModMain.cfg.fire_charge_throw)
-		{ 
-			ItemRegistry.fire_charge_throw = new ItemFireballThrowable();
-
-			registerItem(ItemRegistry.fire_charge_throw, "fire_charge_throw");
 	 
-			ItemFireballThrowable.addRecipe();		 
-		}
-		 
-		if(ModMain.cfg.frozen_snowball)
-		{ 
-			ItemRegistry.frozen_snowball = new ItemSnowballFrozen();
-
-			registerItem(ItemRegistry.frozen_snowball, "frozen_snowball");
-	 
-			ItemSnowballFrozen.addRecipe();		 
-		}
 		 
 		if(ModMain.cfg.wandWater)
 		{  
@@ -264,25 +234,7 @@ public class ItemRegistry
 			ItemPaperCarbon.addRecipe();  
 		}
 		
-		if(ModMain.cfg.chest_sack)
-		{   
-			ItemRegistry.itemChestSack = new ItemChestSack();   
-			ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
-			
-			ItemRegistry.itemChestSackEmpty = new ItemChestSackEmpty(); 
-			ItemRegistry.registerItem(ItemRegistry.itemChestSackEmpty, "chest_sack_empty");
 	 
-			ItemChestSackEmpty.addRecipe();  
-		}
-
-		if(ModMain.cfg.wandTransform)
-		{   
-			ItemRegistry.wandTransform = new ItemWandTransform(); 
-			ItemRegistry.registerItem(ItemRegistry.wandTransform, "wand_transform");
-
-			ItemWandTransform.addRecipe();  
-		}
-
 		if(ModMain.cfg.harvest_charge)
 		{   
 			ItemRegistry.harvest_charge = new ItemMagicHarvester();
