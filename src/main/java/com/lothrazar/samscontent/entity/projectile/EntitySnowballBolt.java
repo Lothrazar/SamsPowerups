@@ -5,7 +5,8 @@ import com.lothrazar.samscontent.potion.MessagePotion;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
-
+import net.minecraft.block.state.BlockState;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -68,9 +69,19 @@ public class EntitySnowballBolt extends EntitySnowball
             this.worldObj.spawnParticle(EnumParticleTypes.SNOWBALL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
             this.worldObj.spawnParticle(EnumParticleTypes.SNOW_SHOVEL, this.posX, this.posY, this.posZ, 0.0D, 0.0D, 0.0D, new int[0]);
         }
-  
-        if (this.worldObj.isRemote == false)
+        BlockPos pos = mop.getBlockPos();
+        System.out.println("test "+this.posX+"  "+this.posZ);
+        System.out.println("hit at "+Util.posToString(pos));
+        
+        if( mop.sideHit  != null)
         {
+            System.out.println("Face"+  mop.sideHit.name());
+            //BlockPos posOffset = mop.getBlockPos().offset(mop.sideHit);
+        	
+        }
+  
+      //  if (this.worldObj.isRemote == false)
+       // {
             if( mop.sideHit != null && this.getThrower() instanceof EntityPlayer)
             {
             	this.worldObj.extinguishFire((EntityPlayer)this.getThrower(), mop.getBlockPos(), mop.sideHit);
@@ -78,45 +89,82 @@ public class EntitySnowballBolt extends EntitySnowball
             
         	if(this.isInWater() )
 	        { 
-        		BlockPos waterPos = this.getPosition();
+        		BlockPos posWater = this.getPosition();
         		
-        		if(this.worldObj.getBlockState(waterPos) != Blocks.water.getDefaultState() ) 
+        		if(this.worldObj.getBlockState(posWater) != Blocks.water.getDefaultState() ) 
         		{
-        			waterPos = null;//look for the closest water source, sometimes it was air and we got ice right above the water if we dont do this check
+        			posWater = null;//look for the closest water source, sometimes it was air and we got ice right above the water if we dont do this check
         			 
         			if(this.worldObj.getBlockState(mop.getBlockPos()) == Blocks.water.getDefaultState())
-        				waterPos = mop.getBlockPos();
+        				posWater = mop.getBlockPos();
         			else if(this.worldObj.getBlockState(mop.getBlockPos().offset(mop.sideHit)) == Blocks.water.getDefaultState())
-        				waterPos = mop.getBlockPos().offset(mop.sideHit); 
+        				posWater = mop.getBlockPos().offset(mop.sideHit); 
         		}
 
-            	if(waterPos != null) //rarely happens but it does
+            	if(posWater != null) //rarely happens but it does
             	{
-            		this.worldObj.setBlockState(waterPos, Blocks.ice.getDefaultState()); 
+            		this.worldObj.setBlockState(posWater, Blocks.ice.getDefaultState()); 
             	}
 	        }
         	else
         	{
         		//on land, so snow?
-        		System.out.println("try to set snow layer?");
-        		if(
-        				this.worldObj.isAirBlock(this.getPosition().down()) == false //one below us cannot be air
+        		BlockPos hit = pos;
+        		BlockPos hitDown = hit.down();
+        		BlockPos hitUp = hit.up();
+
+        		IBlockState hitState = this.worldObj.getBlockState(hit);
+        		if(this.worldObj.getBlockState(hit).getBlock() == Blocks.snow_layer)
+        		{
+        			setMoreSnow(this.worldObj,hit);
+
+        		}//these other cases do not really fire, i think. unless the entity goes inside a block before despawning
+        		else if(this.worldObj.getBlockState(hitDown).getBlock() == Blocks.snow_layer)
+        		{
+        			setMoreSnow(this.worldObj,hitDown);
+        		}
+        		else if(this.worldObj.getBlockState(hitUp).getBlock() == Blocks.snow_layer)
+        		{
+        			setMoreSnow(this.worldObj,hitUp);
+        		}
+        		else if(
+        				this.worldObj.isAirBlock(hit) == false //one below us cannot be air
         				&& //and we landed at air or replaceable
-        				this.worldObj.getBlockState(this.getPosition()).getBlock().isReplaceable(this.worldObj, this.getPosition()))
+        				this.worldObj.isAirBlock(hitUp) == true )
+        				//this.worldObj.getBlockState(this.getPosition()).getBlock().isReplaceable(this.worldObj, this.getPosition()))
         		{
 
-            		this.worldObj.setBlockState(this.getPosition(), Blocks.snow_layer.getDefaultState()); 
-        		}
-        		
-        		if(this.worldObj.getBlockState(this.getPosition()).getBlock() == Blocks.snow_layer)
+        			setNewSnow(this.worldObj,hitUp);
+        		}  
+        		else if(
+        				this.worldObj.isAirBlock(hit) == false //one below us cannot be air
+        				&& //and we landed at air or replaceable
+        				this.worldObj.isAirBlock(hitUp) == true )
+        				//this.worldObj.getBlockState(this.getPosition()).getBlock().isReplaceable(this.worldObj, this.getPosition()))
         		{
-
-            		System.out.println("LANDED on snow layer, increase it by +1?");
-        		}
-        		
+        			setNewSnow(this.worldObj,hitUp);
+        		} 
         	}
         	 
             this.setDead();
-        }
+       // }
+    } 
+    private static void setMoreSnow(World world, BlockPos pos)
+    { 		
+    	//so of the block hit, get metadata, and add +1 to it, unless its full like 8 or more
+    	
+    	IBlockState hitState = world.getBlockState(pos);
+		int m = hitState.getBlock().getMetaFromState(hitState);
+		//when it hits 7, same size as full block
+		if(m+1 < 8)
+			world.setBlockState(pos, Blocks.snow_layer.getStateFromMeta(m+1));
+		
+	
+    }
+    private static void setNewSnow(World world, BlockPos pos)
+    {
+
+    	world.setBlockState(pos, Blocks.snow_layer.getDefaultState()); 
+    	
     }
 }
