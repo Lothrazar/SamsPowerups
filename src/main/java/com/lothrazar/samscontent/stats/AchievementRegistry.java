@@ -141,10 +141,10 @@ public class AchievementRegistry
 			appleGhost = new Achievement(Reference.MODID + "_appleGhost", "appleGhost" ,xCurrent, yCurrent,ItemRegistry.apple_ghost,null);
 			register(appleGhost);
 		}
-		if(ItemRegistry.apple_nether_star != null)
+		if(ItemRegistry.apple_netherwart != null)
 		{ 
 			xCurrent += xSpacing;
-			appleNether = new Achievement(Reference.MODID + "_appleNether", "appleNether" ,xCurrent, yCurrent,ItemRegistry.apple_nether_star,null);
+			appleNether = new Achievement(Reference.MODID + "_appleNether", "appleNether" ,xCurrent, yCurrent,ItemRegistry.apple_netherwart,null);
 			register(appleNether);
 		} 
 		
@@ -372,7 +372,7 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(appleGhost,event.player);  
 		} 
-		else if(item == ItemRegistry.apple_nether_star)
+		else if(item == ItemRegistry.apple_netherwart)
 		{ 
 			addStatSafe(appleNether,event.player);  
 		} 

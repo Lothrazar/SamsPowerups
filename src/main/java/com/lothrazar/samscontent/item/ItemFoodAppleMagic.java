@@ -83,8 +83,7 @@ public class ItemFoodAppleMagic extends ItemFood
 			 return EnumRarity.RARE;
 	} 
 	 
-	public static int timeShort = 90; // 1:30
-	public static int timeLong = 8 * 60;// 8:00
+	
 
 	public static int hungerSmall = 1;
 	public static int hungerLarge = 4; //how much it fills us up

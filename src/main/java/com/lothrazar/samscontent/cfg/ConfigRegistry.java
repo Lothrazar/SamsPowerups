@@ -348,7 +348,7 @@ public class ConfigRegistry
 		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean(); 
 		appleLapis = instance.get(category, "apple_lapis",true).getBoolean(); 
 		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean();
-		apple_ghost = instance.get(category, "apple_ghost",true).getBoolean();
+		apple_ender = instance.get(category, "apple_ender",true).getBoolean();
 		appleNetherStar = instance.get(category, "apple_netherwart",true).getBoolean();
 		
 		//fire_charge_throw = instance.getBoolean("fire_charge_throw",category, true,
@@ -697,7 +697,7 @@ public class ConfigRegistry
 	public boolean experience_bottle;
 	public boolean experience_bottle_return;
 	public boolean block_fragile;
-	public boolean apple_ghost;
+	public boolean apple_ender;
 	public boolean quartz_from_prismarine;
 	public boolean debugGameruleInfo;
 	public boolean smelt_gravel;
