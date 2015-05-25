@@ -43,7 +43,7 @@ public class ItemRegistry
 	public static ItemPaperCarbon carbon_paper;  
 	public static ItemFoodAppleMagic apple_ender;
 	public static ItemWandWater wandWater;
-	public static ItemLightning lightning_charge;
+ 
 	public static Item beetroot_seed ;
 	public static Item beetrootItem;
 	public static Item beetrootSoup;	
@@ -210,14 +210,7 @@ public class ItemRegistry
 			ItemWandWater.addRecipe();		 
 		}
 		
-		if(ModMain.cfg.lightning_charge)
-		{  
-			ItemRegistry.lightning_charge = new ItemLightning();
-
-			ItemRegistry.registerItem(ItemRegistry.lightning_charge, "lightning_charge");
 	 
-			ItemLightning.addRecipe();		 
-		}
 
 		if(ModMain.cfg.carbon_paper)
 		{ 
@@ -286,7 +279,7 @@ public class ItemRegistry
 		{ 
 			ItemRegistry.apple_lapis = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);
 			ItemRegistry.apple_lapis.addEffect(Potion.absorption.id, timePotionLong, PotionRegistry.I); 
-			ItemRegistry.apple_chocolate.addEffect(Potion.weakness.id, timePotionShort, PotionRegistry.I);
+			ItemRegistry.apple_lapis.addEffect(Potion.weakness.id, timePotionShort, PotionRegistry.I);
 			ItemRegistry.apple_lapis.addEffect(Potion.digSpeed.id, timePotionLong, PotionRegistry.II); 
 			 
 			ItemRegistry.registerItem(ItemRegistry.apple_lapis, "apple_lapis");

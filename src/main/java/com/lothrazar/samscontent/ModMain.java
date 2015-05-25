@@ -430,7 +430,7 @@ public class ModMain
 		{
 			ItemWandWater.cast(event);
 		}
-		
+		/*
 		if(held != null && held.getItem() == ItemRegistry.wand_piston )
 		{
 			ItemWandPiston.cast(event);
@@ -458,24 +458,24 @@ public class ModMain
 		{  
 			ItemSnowballFrozen.cast(event.world,event.entityPlayer );  
 		}
-		
+		*/
 		if(held != null && held.getItem() == ItemRegistry.harvest_charge && 
 				event.action.RIGHT_CLICK_BLOCK == event.action    )
 		{ 
 			ItemMagicHarvester.replantField(event.world,event.entityPlayer,held,event.pos); 
 		}
-		
+		/*
 		if(held != null && held.getItem() == ItemRegistry.lightning_charge )
 		{     
 			ItemLightning.cast(event); 
 		} 
-	 
+	 */
 		if(held != null && held.getItem() == ItemRegistry.carbon_paper &&   
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{   
 			ItemPaperCarbon.rightClickBlock(event); 
 		}
-	 
+	 /*
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack &&  //how to get this all into its own class
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
@@ -521,7 +521,7 @@ public class ModMain
 					ItemChestSack.createAndFillChest(event.entityPlayer,held,  chestPos);
 				} 
 			}
-		}  
+		}  */
 		
 		if (held != null && 
 			held.getItem() != null && 

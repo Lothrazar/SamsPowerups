@@ -392,8 +392,8 @@ public class ConfigRegistry
 		ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
     			"Durability (number of uses in survival).");
 		
-		lightning_charge = instance.getBoolean("lightning_charge",category, true,
-    			"Works like a fire charge, but it spawns lightning instead of fire.");
+		///lightning_charge = instance.getBoolean("lightning_charge",category, true,
+    	//		"Works like a fire charge, but it spawns lightning instead of fire.");
 	}
 	
 	private void blocks() 
@@ -672,7 +672,7 @@ public class ConfigRegistry
 	public int potionIdEnder; 
 	public boolean wandWater;
 	public boolean harvestGlassPickaxe;
-	public boolean lightning_charge;
+ 
 	public boolean shearSheepBlock; 
 	public boolean storeBucketsBlock;
 	public boolean beetroot;

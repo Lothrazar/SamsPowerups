@@ -38,20 +38,19 @@ public class AchievementRegistry
 	public Achievement appleEmerald; 
 	public Achievement appleEnder;
 	public Achievement beetrootSeed; 
-	public Achievement appleGhost;
+	 
 	public Achievement appleNether;
 	public Achievement lapisCarrot;
 	public Achievement emeraldCarrot;
 	public Achievement diamondCarrot;
 	public Achievement wandWater;
-	public Achievement wandTransform;
-	public Achievement wandPiston;
+ 
+ 
 	
 
-	public Achievement frostSnowball;
-	public Achievement lightningCharge;
+ 
 	public Achievement harvestCharge;
-	public Achievement throwFirecharge;
+ 
 	
 	public Achievement carbonPaper;
 	
@@ -135,12 +134,7 @@ public class AchievementRegistry
 			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder" ,xCurrent, yCurrent,ItemRegistry.apple_ender,null);
 			register(appleEnder);
 		}
-		if(ItemRegistry.apple_ghost != null)
-		{ 
-			xCurrent += xSpacing;
-			appleGhost = new Achievement(Reference.MODID + "_appleGhost", "appleGhost" ,xCurrent, yCurrent,ItemRegistry.apple_ghost,null);
-			register(appleGhost);
-		}
+	 
 		if(ItemRegistry.apple_netherwart != null)
 		{ 
 			xCurrent += xSpacing;
@@ -179,50 +173,23 @@ public class AchievementRegistry
 			wandWater = new Achievement(Reference.MODID + "_wandWater", "wandWater" ,xCurrent, yCurrent,ItemRegistry.wandWater,null);
 			register(wandWater);
 		}
-		if(ItemRegistry.wandTransform != null) 
-		{ 
-			xCurrent += xSpacing;
-			wandTransform = new Achievement(Reference.MODID + "_wandTransform", "wandTransform" ,xCurrent, yCurrent,ItemRegistry.wandTransform,null);
-			register(wandTransform);
-		}
-		if(ItemRegistry.wand_piston != null) 
-		{ 
-			xCurrent += xSpacing;
-			wandPiston = new Achievement(Reference.MODID + "_wandPiston", "wandPiston" ,xCurrent, yCurrent,ItemRegistry.wand_piston,null);
-			register(wandPiston);
-		}	
+ 
  
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
-		
-		if(ItemRegistry.frozen_snowball != null) 
-		{ 
-			xCurrent += xSpacing;
-			frostSnowball = new Achievement(Reference.MODID + "_frostSnowball", "frostSnowball" ,xCurrent, yCurrent,ItemRegistry.frozen_snowball,null);
-			register(frostSnowball);
-		}
+ 
 		if(ItemRegistry.soulstone != null) 
 		{ 
 			xCurrent += xSpacing;
 			soulstone = new Achievement(Reference.MODID + "_soulstone", "soulstone" ,xCurrent, yCurrent,ItemRegistry.soulstone,null);
 			register(soulstone);
 		}
-		if(ItemRegistry.fire_charge_throw != null) 
-		{ 
-			xCurrent += xSpacing;
-			throwFirecharge = new Achievement(Reference.MODID + "_throwFirecharge", "throwFirecharge" ,xCurrent, yCurrent,ItemRegistry.fire_charge_throw,null);
-			register(throwFirecharge);
-		}
+ 
 
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
 		
-		if(ItemRegistry.lightning_charge != null) 
-		{ 
-			xCurrent += xSpacing;
-			lightningCharge = new Achievement(Reference.MODID + "_lightningCharge", "lightningCharge" ,xCurrent, yCurrent,ItemRegistry.lightning_charge,null);
-			register(lightningCharge);
-		}
+	 
 		if(ItemRegistry.harvest_charge != null) 
 		{ 
 			xCurrent += xSpacing;
@@ -368,10 +335,7 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(appleEnder,event.player);  
 		} 
-		else if(item == ItemRegistry.apple_ghost)
-		{ 
-			addStatSafe(appleGhost,event.player);  
-		} 
+ 
 		else if(item == ItemRegistry.apple_netherwart)
 		{ 
 			addStatSafe(appleNether,event.player);  
@@ -388,22 +352,12 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(lapisCarrot,event.player);  
 		} 
-		else if(item == ItemRegistry.wand_piston)
-		{ 
-			addStatSafe(wandPiston,event.player);  
-		} 
-		else if(item == ItemRegistry.wandTransform)
-		{ 
-			addStatSafe(wandTransform,event.player);  
-		} 
+	 
 		else if(item == ItemRegistry.wandWater)
 		{ 
 			addStatSafe(wandWater,event.player);  
 		} 
-		else if(item == ItemRegistry.frozen_snowball)
-		{ 
-			addStatSafe(frostSnowball,event.player);  
-		} 
+		 
 		else if(item == ItemRegistry.soulstone)//TODO: v2
 		{ 
 			addStatSafe(soulstone,event.player);  

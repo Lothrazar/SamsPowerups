@@ -58,12 +58,13 @@ public class ItemFoodAppleMagic extends ItemFood
 	}
 	
 	@Override
-	protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer)
+	protected void onFoodEaten(ItemStack par1ItemStack, World world, EntityPlayer player)
     {     
-		if(par2World.isRemote == false)  //false means serverside
+		if(world.isRemote == false)  //false means serverside
 	  		for(int i = 0; i < potionIds.size(); i++)  
 	  		{ 
-	  			par3EntityPlayer.addPotionEffect(new PotionEffect(potionIds.get(i) ,potionDurations.get(i),potionAmplifiers.get(i)));
+	  			Util.addOrMergePotionEffect(player, new PotionEffect(potionIds.get(i) ,potionDurations.get(i),potionAmplifiers.get(i)));
+	  		//	par3EntityPlayer.addPotionEffect();
 	  		}  
     }
 	

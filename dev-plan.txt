@@ -25,7 +25,12 @@ SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
 /effectpay: add option to pump levels (ex haste2, jump3) , make sure we default=1, and multiply XP cost by that
 (then -1 since 1 = II)
 
-Possible Future Features (1.4 + ):
+DOne 1.4
+
+rebalanced all apples
+
+added spellbooks
+
 
 
 place circle
@@ -33,13 +38,9 @@ place floor
 place line
 place stair    [radius|distance] [halt]
 
-  
-  ??  try altered max health
-  @SubscribeEvent
-   public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
-  {
-      event.entity.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(maxHealth);
-      entity.setHealth(startHealth);
+Possible Future Features (1.4 + ):
+
+
  
   ?flag-ghasts always drop tears- in config, check mob drops
   
@@ -49,7 +50,6 @@ place stair    [radius|distance] [halt]
 
 ?? placefloor as spiralling outward.
 
- idea-frozensnowball- make eatable, to give SELF that froz potion
  
  command to place vertical? 
  
