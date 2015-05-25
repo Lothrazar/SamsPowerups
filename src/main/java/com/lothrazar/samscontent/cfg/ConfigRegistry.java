@@ -316,8 +316,8 @@ public class ConfigRegistry
 	private void items() 
 	{
 		category = "items";
-		superfood = instance.getBoolean("superfood",category, true,
-				"Combine beetroot with other food to create a super food (bread, beetroot, carrot, cooked potato, and one cooked meat).");  
+		//superfood = instance.getBoolean("superfood",category, true,
+		//		"Combine beetroot with other food to create a super food (bread, beetroot, carrot, cooked potato, and one cooked meat).");  
 		ender_cookie = instance.getBoolean("ender_cookie",category, true,
 				"Teleports you to worldspawn when eaten.");  
 		
@@ -704,7 +704,7 @@ public class ConfigRegistry
 	public boolean cmd_recipe;
 	public boolean cmd_uses;
 	//public boolean phasing_compass;
-	public boolean superfood;
+ 
 	public boolean cmd_effectpay;
 	public boolean cmd_ping;
 	public int healthPlayer;

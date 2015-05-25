@@ -15,8 +15,12 @@ public class ArmorRegistry
 {
 	//from tutorial : http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-armor/
 	
-	//identical to gold properties
-	public static ArmorMaterial MATERIAL_EMERALD = EnumHelper.addArmorMaterial("emerald","emerald", 7, new int[]{2, 5, 3, 1} , 25);
+	//identical to gold properties for now
+
+	public static int emerald_durability=7;
+	public static int[] reductionAmounts =  new int[]{2, 5, 3, 1};
+	public static int emerald_enchantability = 25;
+	public static ArmorMaterial MATERIAL_EMERALD;
 	
 	public static Item emerald_helmet;
 	public static Item emerald__chestplate;
@@ -25,6 +29,7 @@ public class ArmorRegistry
 
 	public static void registerItems()
 	{
+		MATERIAL_EMERALD = EnumHelper.addArmorMaterial("emerald","emerald", emerald_durability, reductionAmounts , emerald_enchantability);
 		if(ModMain.cfg.emerald_armor)
 		{
 			emerald_helmet = new ItemEmeraldArmor(Reference.armor_type_helmet);//TODO: Reference.armor_type_helmet

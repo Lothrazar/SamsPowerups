@@ -59,24 +59,20 @@ public class ItemRegistry
  
 	public static ItemEnderCookie ender_cookie;
 	//public static ItemWallCompass wall_compass;
-	public static ItemSuperfood food_super;
+	//public static ItemSuperfood food_super;
 	public static int emerald_harvestLevel=2;
 	public static int emerald_maxUses=32;
 	public static float emerald_efficiency=12F;
 	public static float emerald_damage=0F;
 	public static int emerald_enchantability=22;
 	//String name, int harvestLevel, int maxUses, float efficiency, float damage, int enchantability)
-	public static ToolMaterial MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 
-			emerald_harvestLevel, 
-			emerald_maxUses, 
-			emerald_efficiency, 
-			emerald_damage, 
-			emerald_enchantability);
+	public static ToolMaterial MATERIAL_EMERALD;
 	public static int timePotionShort = 90; // 1:30
 	public static int timePotionLong = 8 * 60;// 8:00
 	
 	public static void registerItems()
 	{   
+		
 		if(ModMain.cfg.ender_cookie)
 		{
 			ender_cookie = new ItemEnderCookie();
@@ -86,6 +82,12 @@ public class ItemRegistry
 		
 		if(ModMain.cfg.emerald_armor)
 		{
+			MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 
+					emerald_harvestLevel, 
+					emerald_maxUses, 
+					emerald_efficiency, 
+					emerald_damage, 
+					emerald_enchantability);
 			//thanks for help: http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-tools-swords/
 			 int xp = 1;
 			
@@ -198,14 +200,7 @@ public class ItemRegistry
 					'u', Items.bowl
 					);
 		}
-
-		if(ModMain.cfg.superfood)
-		{  
-			food_super = new ItemSuperfood();
-			ItemRegistry.registerItem(food_super, "food_super");
-			food_super.addRecipe();
-		}
-	 
+ 
 		 
 		if(ModMain.cfg.wandWater)
 		{  
