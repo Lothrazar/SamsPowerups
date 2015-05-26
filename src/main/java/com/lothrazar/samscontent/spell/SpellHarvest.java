@@ -45,13 +45,25 @@ public class SpellHarvest implements ISpell
 {
 	public static int RADIUS=8; //from config file
  
-	private void replantField(World world, EntityPlayer entityPlayer, BlockPos pos)
-	{  
+ 
+	@Override
+	public EnumSpellType getSpellType()
+	{ 
+		return EnumSpellType.harvest;
+	}
+
+	@Override
+	public void cast(World world, EntityPlayer player, BlockPos pos)
+	{
+		if(canPlayerCast(player) == false) {return;}
+		
+		drainExpCost(player);
+		
 		//http://www.minecraftforge.net/wiki/Plants
  
-		int x = (int)entityPlayer.posX;
-		int y = (int)entityPlayer.posY;
-		int z = (int)entityPlayer.posZ;
+		int x = (int)player.posX;
+		int y = (int)player.posY;
+		int z = (int)player.posZ;
 		
 		//search in a cube
 		int xMin = x - RADIUS;
@@ -92,9 +104,9 @@ public class SpellHarvest implements ISpell
  
 		if(countHarvested > 0)//something happened
 		{ 
-			entityPlayer.swingItem();
+			player.swingItem();
 	
-			Util.playSoundAt(entityPlayer, "mob.zombie.remedy");
+			Util.playSoundAt(player, "mob.zombie.remedy");
 			 
 			if(world.isRemote) //client side 
 				Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
@@ -104,23 +116,6 @@ public class SpellHarvest implements ISpell
 				//	Util.decrHeldStackSize(entityPlayer);  
 			} 
 		}
-	}
-
-	
-	@Override
-	public EnumSpellType getSpellType()
-	{ 
-		return EnumSpellType.harvest;
-	}
-
-	@Override
-	public void cast(World world, EntityPlayer player, BlockPos pos)
-	{
-		if(canPlayerCast(player) == false) {return;}
-		
-		drainExpCost(player);
-		
-		replantField(world, player, pos);
 	}
 
 	@Override
@@ -139,7 +134,7 @@ public class SpellHarvest implements ISpell
 		 Util.drainExp(player, getExpCost());
 	}
 
-	private int cost=10;
+	private int cost = 10;
 	@Override
 	public void setExpCost(int c)
 	{

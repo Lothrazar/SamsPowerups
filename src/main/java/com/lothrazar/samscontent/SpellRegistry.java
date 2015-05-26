@@ -9,7 +9,7 @@ import com.lothrazar.samscontent.item.ItemFoodGhost;
 import com.lothrazar.samscontent.spell.SpellHarvest;
 import com.lothrazar.samscontent.item.ItemWallCompass;
 import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.samscontent.spell.ISpell;
+import com.lothrazar.samscontent.spell.*;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 import net.minecraft.entity.effect.EntityLightningBolt;
@@ -32,12 +32,34 @@ public class SpellRegistry
 	
 	public static void setup()
 	{
+		chest = new SpellChest();
+		firebolt = new SpellFirebolt();
+		frostbolt = new SpellFrostbolt();
+		ghost = new SpellGhost();
 		harvest = new SpellHarvest();
+		hud = new SpellHud();
+		jump = new SpellJump();
+		pearl = new SpellEnderpearl();
+		phase = new SpellPhasing();
+		lightningbolt = new SpellLightningbolt();
+		slowfall = new SpellSlowfall();
+		waterwalk = new SpellWaterwalk();
 	}
-	public ISpell chest;
+
+	public static ISpell chest;
+	public static ISpell firebolt;
+	public static ISpell frostbolt;
+	public static ISpell ghost;
 	public static ISpell harvest;
+	public static ISpell hud;
+	public static ISpell jump;
+	public static ISpell lightningbolt;
+	public static ISpell pearl;
+	public static ISpell phase;
+	public static ISpell slowfall;
+	public static ISpell waterwalk;
 	
-	public enum EnumSpellType{
+	public enum EnumSpellType {
 		chest,
 		harvest,
 		hud,
@@ -52,9 +74,7 @@ public class SpellRegistry
 		waterwalk 
 	};
 	
-	
-	
-	public enum EnumHudType{
+	public enum EnumHudType {
 		none,
 		clock,
 		compass,
@@ -69,8 +89,7 @@ public class SpellRegistry
 			cast_chest(world,player,pos);
 			break;
 		case harvest:
-
-System.out.println("SpellRegistry.harvest.cast");
+ 
 			SpellRegistry.harvest.cast(world, player,  pos);
 			
 			break;
