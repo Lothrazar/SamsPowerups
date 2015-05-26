@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent;
 
+import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.samscontent.item.ItemChestSackEmpty;
@@ -278,12 +279,20 @@ public class SpellRegistry
 	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)
 	{
 		System.out.println("setPlayerCurrentSpell   "+current.name());
-		player.getEntityData().setString(KEY_PLAYER, current.name());
+		//player.getEntityData().setString(KEY_PLAYER, current.name());
+
+		PlayerPowerups props = PlayerPowerups.get(player);
+		
+		props.setStringSpell(current.name());
 	}
 	public static EnumSpellType getPlayerCurrentSpell(EntityPlayer player)
 	{
-		if(player.getEntityData().getString(KEY_PLAYER) == "")
+		PlayerPowerups props = PlayerPowerups.get(player);
+		
+		//if(player.getEntityData().getString(KEY_PLAYER) == "")
+		if(props.getStringSpell() == "")
 			setPlayerCurrentSpell(player, EnumSpellType.chest);//default
-		return EnumSpellType.valueOf(player.getEntityData().getString(KEY_PLAYER));
+		//return EnumSpellType.valueOf(player.getEntityData().getString(KEY_PLAYER));
+		return EnumSpellType.valueOf(props.getStringSpell());
 	}
 }

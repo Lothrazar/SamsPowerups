@@ -18,11 +18,15 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public static final int TODO_WATCHER = 21;
 	private static final String NBT_TODO = "samTodo"; 
 	
+	public static final int SPELL_WATCHER = 22;
+	private static final String NBT_SPELL = "samSpell"; 
+	
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;  
 		this.player.getDataWatcher().addObject(WAYPOINT_WATCHER, 0);
 		this.player.getDataWatcher().addObject(TODO_WATCHER, 0); 
+		this.player.getDataWatcher().addObject(SPELL_WATCHER, 0); 
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -43,6 +47,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	
 		properties.setString(NBT_WAYPOINT, this.getStringSafe(WAYPOINT_WATCHER)); 
 		properties.setString(NBT_TODO,     this.getStringSafe(TODO_WATCHER)); 
+		properties.setString(NBT_SPELL,     this.getStringSafe(SPELL_WATCHER)); 
 		
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
@@ -58,8 +63,14 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
 		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
+		this.player.getDataWatcher().updateObject(SPELL_WATCHER,    properties.getString(NBT_SPELL)); 
 		
  	}
+
+	public final String getStringSpell() 
+	{
+		return this.getStringSafe(SPELL_WATCHER);
+	}
 	public final String getStringTodo() 
 	{
 		return this.getStringSafe(TODO_WATCHER);
@@ -80,7 +91,11 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			return "";
 		}
 	}
-	
+
+	public final void setStringSpell(String todo) 
+	{
+		this.player.getDataWatcher().updateObject(SPELL_WATCHER, todo);
+	}
 	public final void setStringTodo(String todo) 
 	{
 		this.player.getDataWatcher().updateObject(TODO_WATCHER, todo);
@@ -107,9 +122,11 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		//set in the player
 		player.getDataWatcher().updateObject(WAYPOINT_WATCHER, props.getStringWaypoints());
 		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo());
+		player.getDataWatcher().updateObject(SPELL_WATCHER, props.getStringTodo());
 		//set here
 		this.setStringWaypoints(props.getStringWaypoints());
 		this.setStringTodo(props.getStringTodo());  
+		this.setStringSpell(props.getStringSpell());  
 	}
 
 }

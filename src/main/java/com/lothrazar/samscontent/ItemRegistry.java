@@ -78,7 +78,7 @@ public class ItemRegistry
 		//ItemRegistry.itemChestSackEmpty = new ItemChestSackEmpty(); 
 		//ItemRegistry.registerItem(ItemRegistry.itemChestSackEmpty, "chest_sack_empty");
 	//
-		ItemChestSackEmpty.addRecipe();  
+		//ItemChestSackEmpty.addRecipe();  
 	
 		if(ModMain.cfg.ender_cookie)
 		{
