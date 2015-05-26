@@ -203,7 +203,9 @@ public class DebugScreenText
 			//renderItemAt(new ItemStack(Item.getItemFromBlock(Blocks.chest)),x,y);
 			renderItemAt(new ItemStack(ItemRegistry.itemChestSack),x,y);
 			break;
-			//TODO: spell clock/compass
+		case hud: 
+			renderItemAt(new ItemStack(Items.iron_ingot),x,y);
+			break;
 		case harvest: 
 			renderItemAt(new ItemStack(Items.wheat),x,y);
 			break;
