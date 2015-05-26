@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.ItemRegistry;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.command.CommandBindMacro;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
@@ -20,6 +21,7 @@ import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.item.ItemStack;
@@ -109,6 +111,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind2Name);
 	 	}
+		/*
 		else if( message.keyPressed == ClientProxy.keyPhasing.getKeyCode())
 	 	{
 			EnumFacing facing = EnumFacing.getFacingFromVector(
@@ -122,7 +125,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 
 			ItemWallCompass.wallPhase(player.worldObj,player,posMouse,facing);
 		
-	 	}
+	 	}*/
 		else if( message.keyPressed == ClientProxy.keyPush.getKeyCode())
 	 	{
 			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
@@ -135,22 +138,28 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{ 
 			ItemWandTransform.transformBlock(player, player.worldObj, null, posMouse);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyWaterwalk.getKeyCode())
-	 	{ 
-			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
-	 	}
-		else if( message.keyPressed == ClientProxy.keyBindGhostmode.getKeyCode())
-	 	{
-			ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
-	 	}
-		else if( message.keyPressed == ClientProxy.keyBindJumpboost.getKeyCode())
-	 	{ 
-			Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
-	 	}
 		else if( message.keyPressed == ClientProxy.keyBindEnder.getKeyCode())
 	 	{ 
 			player.displayGUIChest(player.getInventoryEnderChest()); 
 	 	}
+		else if( message.keyPressed == ClientProxy.keySpell1.getKeyCode())
+	 	{ 
+			
+			SpellRegistry.cast(SpellRegistry.EnumSpellType.frostbolt, world, player);
+			
+			//Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
+	 	
+	 	
+	 	
+	 	}
+		else if( message.keyPressed == ClientProxy.keySpell2.getKeyCode())
+	 	{
+			//ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
+	 	}
+		else if( message.keyPressed == ClientProxy.keySpell3.getKeyCode())
+	 	{ 
+			//Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
+	 	}/*
 		else if( message.keyPressed == ClientProxy.keyBindSlowfall.getKeyCode())
 	 	{ 
 			Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,fiveSeconds,0));
@@ -187,18 +196,27 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
 			
 			world.spawnEntityInWorld(new EntityLightningBolt(world, posMouse.getX(), posMouse.getY(), posMouse.getZ()));
+	 	
+	 	
+			
+	 	
 	 	}
 		else if( message.keyPressed == ClientProxy.keyHarvest.getKeyCode())
 	 	{
 			ItemMagicHarvester.replantField(world, player, null, posMouse);
-			//ItemMagicHarvester.replantField(world, player, null, posMouse.up());
-			//ItemMagicHarvester.replantField(world, player, null, posMouse.down());
+
+//just testing
 			
-			//world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
 			
-		//	world.spawnEntityInWorld(new EntityLightningBolt(world, posMouse.getX(), posMouse.getY(), posMouse.getZ()));
-	 	}
+	 	}*/
+		/*
+		else if( message.keyPressed == ClientProxy.keyEnderPearl.getKeyCode())
+	 	{
+			//we could search inventory heere, if you are holding one then just use it
+			world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
+	 	}*/
 		//TODO: search spawner??? with particle directors?
+
 		
 		return null;
 	}

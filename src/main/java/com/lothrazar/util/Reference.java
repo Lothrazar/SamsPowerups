@@ -25,9 +25,9 @@ public class Reference
 	public static final String keyPushName = "key.spell.push";
 	public static final String keyPullName = "key.spell.pull";
 	public static final String keyTransformName = "key.spell.transform";
-	public static final String keyWaterwalkName = "key.spell.waterwalk";
-	public static final String keyGhostmodeName = "key.spell.ghost";
-	public static final String keyJumpboostName = "key.spell.jump";
+	public static final String keySpell1Name = "key.spell1";
+	public static final String keySpell2Name = "key.spell2";
+	public static final String keySpell3Name = "key.spell3";/*
 	public static final String keyBindEnderName = "key.spell.enderinventory";
 	public static final String keyBindSlowName = "key.spell.slowfall";
 	public static final String keyPhasingName = "key.spell.phase";
@@ -36,10 +36,12 @@ public class Reference
 	public static final String keyFireboltName = "key.spell.fire";
 	public static final String keyFrostboltName = "key.spell.ice";
 	public static final String keyHarvestName = "key.spell.harvest";
+	public static final String keyEnderPearlName = "key.spell.pearl";*/
 	
 	public static final String keyCategoryInventory = "key.categories.inventory";
 	public static final String keyCategoryMacro = "key.categories.macro";
 	public static final String keyCategorySpell = "key.categories.spell";
+	public static final String keyCategoryBlocks = "key.categories.blocks";
 	
 	public static final int TICKS_PER_SEC = 20;
 	public static final int CHUNK_SIZE = 16;
@@ -274,6 +276,12 @@ public class Reference
 	{
 		public final static String bowtoss = "random.bow";
 	}
+
+
+
+
+
+
 	
 	
 	/*

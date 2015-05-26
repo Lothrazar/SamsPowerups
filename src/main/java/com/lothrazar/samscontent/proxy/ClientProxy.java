@@ -31,20 +31,13 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBindMacro2;
 	public static KeyBinding keyPush;
 	public static KeyBinding keyPull;
-	public static KeyBinding keyTransform;
-	public static KeyBinding keyWaterwalk;
-	public static KeyBinding keyBindGhostmode;
-	public static KeyBinding keyBindJumpboost;
 	public static KeyBinding keyBindEnder;
-	public static KeyBinding keyBindSlowfall;
-	public static KeyBinding keyPhasing;
-	public static KeyBinding keyBindChestMover; 
-	public static KeyBinding keyFirebolt; 
-	public static KeyBinding keyFrostbolt; 
-	public static KeyBinding keyLightningbolt; 
-	public static KeyBinding keyHarvest;
+	public static KeyBinding keyTransform;
+	 
+	public static KeyBinding keySpell1;
+	public static KeyBinding keySpell2;
+	public static KeyBinding keySpell3;
  
-	//public static ArrayList<KeyBinding> bindings;
     @Override
     public void registerRenderers() 
     {  
@@ -103,6 +96,9 @@ public class ClientProxy extends CommonProxy
          
         keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_M, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
+
+        keyBindEnder = new KeyBinding(Reference.keyBindEnderName, Keyboard.KEY_I,  Reference.keyCategoryInventory); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keyBindEnder);
         
         keyBindMacro1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_Y, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBindMacro1);
@@ -110,44 +106,25 @@ public class ClientProxy extends CommonProxy
         keyBindMacro2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_U, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBindMacro2);
 
-        keyPush = new KeyBinding(Reference.keyPushName, Keyboard.KEY_L, Reference.keyCategorySpell); 
+        keyPush = new KeyBinding(Reference.keyPushName, Keyboard.KEY_L, Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPush);
 
-        keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_O,  Reference.keyCategorySpell); 
+        keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_O,  Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPull);
          
-        keyTransform = new KeyBinding(Reference.keyTransformName, Keyboard.KEY_P, Reference.keyCategorySpell); 
+        keyTransform = new KeyBinding(Reference.keyTransformName, Keyboard.KEY_P, Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyTransform);
 
-        keyWaterwalk = new KeyBinding(Reference.keyWaterwalkName, Keyboard.KEY_H, Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyWaterwalk);
+        keySpell1 = new KeyBinding(Reference.keySpell1Name, Keyboard.KEY_H, Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keySpell1);
 
-        keyBindGhostmode = new KeyBinding(Reference.keyGhostmodeName, Keyboard.KEY_J, Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBindGhostmode);
+        keySpell2 = new KeyBinding(Reference.keySpell2Name, Keyboard.KEY_J, Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keySpell2);
 
-        keyBindJumpboost = new KeyBinding(Reference.keyJumpboostName, Keyboard.KEY_K,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBindJumpboost);
+        keySpell3 = new KeyBinding(Reference.keySpell3Name, Keyboard.KEY_K,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keySpell3);
         
-        keyBindEnder = new KeyBinding(Reference.keyBindEnderName, Keyboard.KEY_I,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBindEnder);
-        
-        keyBindSlowfall = new KeyBinding(Reference.keyBindSlowName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBindSlowfall);
-     
-        keyPhasing = new KeyBinding(Reference.keyPhasingName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyPhasing);
-        
-        keyBindChestMover = new KeyBinding(Reference.keyChestName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBindChestMover);
-
-        keyLightningbolt = new KeyBinding(Reference.keyLightningboltName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyLightningbolt);
-        keyFirebolt = new KeyBinding(Reference.keyFireboltName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyFirebolt);
-        keyFrostbolt = new KeyBinding(Reference.keyFrostboltName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyFrostbolt);
-        keyHarvest = new KeyBinding(Reference.keyHarvestName, Keyboard.KEY_ADD,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyHarvest);
+         
 	} 
 
 	public static String getKeyDescription(int key)

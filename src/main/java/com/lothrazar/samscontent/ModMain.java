@@ -459,11 +459,7 @@ public class ModMain
 			ItemSnowballFrozen.cast(event.world,event.entityPlayer );  
 		}
 		*/
-		if(held != null && held.getItem() == ItemRegistry.harvest_charge && 
-				event.action.RIGHT_CLICK_BLOCK == event.action    )
-		{ 
-			ItemMagicHarvester.replantField(event.world,event.entityPlayer,held,event.pos); 
-		}
+	 
 		/*
 		if(held != null && held.getItem() == ItemRegistry.lightning_charge )
 		{     
@@ -712,23 +708,23 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyTransform.getKeyCode()));
         }
-        else if(ClientProxy.keyWaterwalk.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyWaterwalk.getKeyCode()));
-        }
-        else if(ClientProxy.keyBindGhostmode.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindGhostmode.getKeyCode()));
-        }
-        else if(ClientProxy.keyBindJumpboost.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindJumpboost.getKeyCode()));
-        }
         else if(ClientProxy.keyBindEnder.isPressed())
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindEnder.getKeyCode()));
         }
-        else if(ClientProxy.keyBindSlowfall.isPressed())
+        else if(ClientProxy.keySpell1.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpell1.getKeyCode()));
+        }
+        else if(ClientProxy.keySpell2.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpell2.getKeyCode()));
+        }
+        else if(ClientProxy.keySpell3.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpell3.getKeyCode()));
+        }
+       /* else if(ClientProxy.keyBindSlowfall.isPressed())
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindSlowfall.getKeyCode()));
         }
@@ -755,7 +751,7 @@ public class ModMain
         else if(ClientProxy.keyHarvest.isPressed())
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyHarvest.getKeyCode()));
-        }
+        }*/
         
     } 
 	
