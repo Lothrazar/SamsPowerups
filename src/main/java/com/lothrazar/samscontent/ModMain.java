@@ -471,7 +471,7 @@ public class ModMain
 		{   
 			ItemPaperCarbon.rightClickBlock(event); 
 		}
-	 /*
+	
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack &&  //how to get this all into its own class
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
@@ -486,7 +486,7 @@ public class ModMain
 				
 			} 
 		}
-		
+		/*
 		if(held != null && ItemRegistry.itemChestSack != null &&  //how to get this all into its own class
 				held.getItem() == ItemRegistry.itemChestSack && 
 				event.action.RIGHT_CLICK_BLOCK == event.action)
