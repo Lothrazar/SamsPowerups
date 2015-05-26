@@ -25,10 +25,10 @@ public class Reference
 	public static final String keyPushName = "key.spell.push";
 	public static final String keyPullName = "key.spell.pull";
 	public static final String keyTransformName = "key.spell.transform";
-	public static final String keySpell1Name = "key.spell1";
-	public static final String keySpell2Name = "key.spell2";
-	public static final String keySpell3Name = "key.spell3";/*
-	public static final String keyBindEnderName = "key.spell.enderinventory";
+	public static final String keySpellCastName = "key.spell.cast";
+	public static final String keySpellUpName = "key.spell.up";
+	public static final String keySpellDownName = "key.spell.down";
+	public static final String keyBindEnderName = "key.spell.enderinventory";/*
 	public static final String keyBindSlowName = "key.spell.slowfall";
 	public static final String keyPhasingName = "key.spell.phase";
 	public static final String keyChestName = "key.spell.chest";

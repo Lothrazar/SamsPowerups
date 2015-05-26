@@ -142,7 +142,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{ 
 			player.displayGUIChest(player.getInventoryEnderChest()); 
 	 	}
-		else if( message.keyPressed == ClientProxy.keySpell1.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
 			
 			SpellRegistry.cast(SpellRegistry.EnumSpellType.frostbolt, world, player);
@@ -152,11 +152,11 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	
 	 	
 	 	}
-		else if( message.keyPressed == ClientProxy.keySpell2.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{
 			//ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
 	 	}
-		else if( message.keyPressed == ClientProxy.keySpell3.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
 	 	{ 
 			//Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
 	 	}/*

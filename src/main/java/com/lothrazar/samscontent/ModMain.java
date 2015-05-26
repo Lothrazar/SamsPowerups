@@ -712,17 +712,17 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindEnder.getKeyCode()));
         }
-        else if(ClientProxy.keySpell1.isPressed())
+        else if(ClientProxy.keySpellCast.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpell1.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
         }
-        else if(ClientProxy.keySpell2.isPressed())
+        else if(ClientProxy.keySpellUp.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpell2.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellUp.getKeyCode()));
         }
-        else if(ClientProxy.keySpell3.isPressed())
+        else if(ClientProxy.keySpellDown.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpell3.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellDown.getKeyCode()));
         }
        /* else if(ClientProxy.keyBindSlowfall.isPressed())
         {
