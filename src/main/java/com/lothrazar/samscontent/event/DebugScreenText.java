@@ -45,6 +45,7 @@ import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.DimensionManager;  
 import net.minecraftforge.common.MinecraftForge;
@@ -117,13 +118,20 @@ public class DebugScreenText
 			switch(spell)
 			{
 			case chest:
-				renderBlockAt(Blocks.chest,x,y);
+				//renderBlockAt(Blocks.tripwire_hook,x,y);
+				//doing it the way below crashes
+				//renderItemAt(new ItemStack(Item.getItemFromBlock(Blocks.chest)),x,y);
+				renderItemAt(new ItemStack(ItemRegistry.itemChestSack),x,y);
 				break;
+				//TODO: spell clock/compass
 			case harvest: 
 				renderItemAt(new ItemStack(Items.wheat),x,y);
 				break;
 			case firebolt: 
 				renderItemAt(new ItemStack(Items.fire_charge),x,y);
+				break;
+			case frostbolt: 
+				renderItemAt(new ItemStack(Items.snowball),x,y);
 				break;
 			case ghost: 
 				renderItemAt(new ItemStack(Items.ghast_tear),x,y);
@@ -132,13 +140,14 @@ public class DebugScreenText
 				renderItemAt(new ItemStack(Items.slime_ball),x,y);
 				break;
 			case lightningbolt: 
-				renderItemAt(new ItemStack(Items.blaze_rod),x,y);
+				//renderItemAt(new ItemStack(Items.skull,1,Reference.skull_creeper),x,y);
+				renderItemAt(new ItemStack(Items.gunpowder),x,y);
 				break;
 			case pearl: 
 				renderItemAt(new ItemStack(Items.ender_pearl),x,y);
 				break;
 			case phase: 
-				renderItemAt(new ItemStack(Items.compass),x,y);
+				renderItemAt(new ItemStack(Items.bed),x,y);
 				break;
 			case slowfall: 
 				renderItemAt(new ItemStack(Items.feather),x,y);
@@ -164,6 +173,9 @@ public class DebugScreenText
 			//then replace all existing text with just this
 			event.right.clear();
 			event.left.clear();
+			
+			
+			
 			int blockLight = world.getLightFromNeighbors(player.getPosition()) + 1;
 			
 			String firstLine = Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName;
@@ -182,7 +194,7 @@ public class DebugScreenText
 			event.left.add(firstLine);
 			
 			
-			
+
 		}
 		
  
@@ -213,6 +225,15 @@ public class DebugScreenText
 	 	{ 
 			addGameruleInfo(event, world); 
 		} 
+	 	
+	 	
+	 	
+	 	//TESTING OUT PLAYER COMPASS CLOCKS PELLS
+	 	//System.out.println("width"+ Minecraft.getMinecraft().displayWidth);
+		int xMiddle = Minecraft.getMinecraft().displayWidth/4;
+		//System.out.println(" xMiddle "+ xMiddle);
+		renderItemAt(new ItemStack(Items.compass),xMiddle,16);
+		renderItemAt(new ItemStack(Items.clock),xMiddle,35);
 	}
 
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 
