@@ -15,9 +15,11 @@ import org.apache.logging.log4j.Logger;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.SpellRegistry;
+import com.lothrazar.samscontent.SpellRegistry.EnumHudType;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
+import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
@@ -108,59 +110,9 @@ public class DebugScreenText
 		
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
 		{
-			//EnumChatFormatting.GREEN + 
-			event.left.add(SpellRegistry.getPlayerCurrentSpell(player).name());
-			 
-			int x = 12, y = 15;
-		 
-			EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
-			  
-			switch(spell)
-			{
-			case chest:
-				//renderBlockAt(Blocks.tripwire_hook,x,y);
-				//doing it the way below crashes
-				//renderItemAt(new ItemStack(Item.getItemFromBlock(Blocks.chest)),x,y);
-				renderItemAt(new ItemStack(ItemRegistry.itemChestSack),x,y);
-				break;
-				//TODO: spell clock/compass
-			case harvest: 
-				renderItemAt(new ItemStack(Items.wheat),x,y);
-				break;
-			case firebolt: 
-				renderItemAt(new ItemStack(Items.fire_charge),x,y);
-				break;
-			case frostbolt: 
-				renderItemAt(new ItemStack(Items.snowball),x,y);
-				break;
-			case ghost: 
-				renderItemAt(new ItemStack(Items.ghast_tear),x,y);
-				break;
-			case jump: 
-				renderItemAt(new ItemStack(Items.slime_ball),x,y);
-				break;
-			case lightningbolt: 
-				//renderItemAt(new ItemStack(Items.skull,1,Reference.skull_creeper),x,y);
-				renderItemAt(new ItemStack(Items.gunpowder),x,y);
-				break;
-			case pearl: 
-				renderItemAt(new ItemStack(Items.ender_pearl),x,y);
-				break;
-			case phase: 
-				renderItemAt(new ItemStack(Items.bed),x,y);
-				break;
-			case slowfall: 
-				renderItemAt(new ItemStack(Items.feather),x,y);
-				break;
-			case waterwalk: 
-				renderItemAt(new ItemStack(Items.chainmail_boots),x,y);
-				break;
-			default:
-				//System.out.println("unknown spell");
-				//next = EnumSpellType.chest;//default
-				break;
-			} 
-			
+			drawSpell(event); 
+
+		 	drawHud(player);
 			return;
 		}
 		
@@ -180,6 +132,7 @@ public class DebugScreenText
 			
 			String firstLine = Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName;
 
+			//EnumChatFormatting.GREEN + 
 			String light = Util.lang("debug.light")+"  "+blockLight;
 				//	+"  "+world.getLight(player.getPosition(), true)
 				//	+"  "+world.getLightBrightness(player.getPosition())
@@ -228,14 +181,102 @@ public class DebugScreenText
 	 	
 	 	
 	 	
-	 	//TESTING OUT PLAYER COMPASS CLOCKS PELLS
+		
+		
+	}
+
+	private void drawSpell(RenderGameOverlayEvent.Text event)
+	{
+
+		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
+		event.left.add(SpellRegistry.getPlayerCurrentSpell(player).name());
+		 
+		int x = 12, y = 15;
+ 
+		EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
+		  
+		switch(spell)
+		{
+		case chest:
+			//renderBlockAt(Blocks.tripwire_hook,x,y);
+			//doing it the way below crashes
+			//renderItemAt(new ItemStack(Item.getItemFromBlock(Blocks.chest)),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.itemChestSack),x,y);
+			break;
+			//TODO: spell clock/compass
+		case harvest: 
+			renderItemAt(new ItemStack(Items.wheat),x,y);
+			break;
+		case firebolt: 
+			renderItemAt(new ItemStack(Items.fire_charge),x,y);
+			break;
+		case frostbolt: 
+			renderItemAt(new ItemStack(Items.snowball),x,y);
+			break;
+		case ghost: 
+			renderItemAt(new ItemStack(Items.ghast_tear),x,y);
+			break;
+		case jump: 
+			renderItemAt(new ItemStack(Items.slime_ball),x,y);
+			break;
+		case lightningbolt: 
+			//renderItemAt(new ItemStack(Items.skull,1,Reference.skull_creeper),x,y);
+			renderItemAt(new ItemStack(Items.gunpowder),x,y);
+			break;
+		case pearl: 
+			renderItemAt(new ItemStack(Items.ender_pearl),x,y);
+			break;
+		case phase: 
+			renderItemAt(new ItemStack(Items.bed),x,y);
+			break;
+		case slowfall: 
+			renderItemAt(new ItemStack(Items.feather),x,y);
+			break;
+		case waterwalk: 
+			renderItemAt(new ItemStack(Items.chainmail_boots),x,y);
+			break;
+		default:
+			//System.out.println("unknown spell");
+			//next = EnumSpellType.chest;//default
+			break;
+		}
+	}
+
+	private void drawHud(EntityPlayerSP player)
+	{
+		//TESTING OUT PLAYER COMPASS CLOCKS PELLS
 	 	//System.out.println("width"+ Minecraft.getMinecraft().displayWidth);
 		int xMiddle = Minecraft.getMinecraft().displayWidth/4;
 		int yMiddle = Minecraft.getMinecraft().displayHeight/4;
 		int yBottom = Minecraft.getMinecraft().displayHeight/2 - 32;
+		int xRight = Minecraft.getMinecraft().displayWidth/2 - 32;
 		//System.out.println(" xMiddle "+ xMiddle);
-		renderItemAt(new ItemStack(Items.compass),xMiddle,16);//works at mid top
-		renderItemAt(new ItemStack(Items.clock),20,yBottom);//works at mid left
+		
+		
+		PlayerPowerups props = PlayerPowerups.get(player);
+		
+		String hudCurr = props.getStringHUD();
+		if(hudCurr == null || hudCurr=="") hudCurr = EnumHudType.none.name();
+	 
+		switch(EnumHudType.valueOf(hudCurr))
+		{
+		case clock: 
+			renderItemAt(new ItemStack(Items.clock),20,yBottom);//works at mid left
+		break;
+
+		case compass: 
+			renderItemAt(new ItemStack(Items.compass),xRight,16);//works at mid top
+		break;
+
+		case both: 
+			renderItemAt(new ItemStack(Items.clock),20,yBottom);//works at mid left
+			renderItemAt(new ItemStack(Items.compass),xMiddle,16);//works at mid top
+		break;
+		case none: 
+		default:
+			//neither
+			break;
+		}
 	}
 
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 

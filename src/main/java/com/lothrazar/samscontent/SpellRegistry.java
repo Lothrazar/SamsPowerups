@@ -32,6 +32,7 @@ public class SpellRegistry
 	public enum EnumSpellType{
 		chest,
 		harvest,
+		hud,
 		firebolt,
 		frostbolt,
 		ghost,
@@ -41,6 +42,12 @@ public class SpellRegistry
 		phase,
 		slowfall,
 		waterwalk 
+	};
+	public enum EnumHudType{
+		none,
+		clock,
+		compass,
+		both
 	};
 	
 	public static void cast(EnumSpellType spell, World world, EntityPlayer player,BlockPos pos)
@@ -52,6 +59,9 @@ public class SpellRegistry
 			break;
 		case harvest:
 			cast_harvest(world,player,pos);
+			break;
+		case hud:
+			cast_hud(world,player,pos);
 			break;
 		case firebolt:
 			cast_firebolt(world,player,pos);
@@ -83,6 +93,44 @@ public class SpellRegistry
 		}
 	}
 	
+	private static void cast_hud(World world, EntityPlayer player, BlockPos pos)
+	{
+		// TODO Auto-generated method stub
+		
+
+		PlayerPowerups props = PlayerPowerups.get(player);
+		
+		String hudCurr = props.getStringHUD();
+		if(hudCurr == null || hudCurr=="") hudCurr = EnumHudType.none.name();
+		EnumHudType hudNew;
+		
+		switch(EnumHudType.valueOf(hudCurr))
+		{
+		case none: 
+			hudNew = EnumHudType.clock;
+		break;
+
+		case clock: 
+			hudNew = EnumHudType.compass;
+		break;
+
+		case compass: 
+			hudNew = EnumHudType.both;
+		break;
+
+		case both: 
+			hudNew = EnumHudType.none;
+		break;
+		default:
+			hudNew = EnumHudType.none;
+			break;
+		}
+		
+		System.out.println("setnewhud  "+hudNew.name());
+		props.setStringHUD(hudNew.name());
+		
+	}
+
 	private static void cast_waterwalk(World world, EntityPlayer player,BlockPos pos)
 	{ 
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
@@ -98,8 +146,6 @@ public class SpellRegistry
 
 	private static void cast_phase(World world, EntityPlayer player,BlockPos pos)
 	{
-	 
-	 
 		EnumFacing facing = EnumFacing.getFacingFromVector(
 				(float)player.getLookVec().xCoord
 				, (float)player.getLookVec().yCoord
@@ -185,8 +231,10 @@ public class SpellRegistry
 		switch(current)
 		{
 		case chest:
-			next = EnumSpellType.harvest;
+			next = EnumSpellType.hud;
 			break;
+		case hud:
+			next = EnumSpellType.harvest;
 		case harvest:
 			next = EnumSpellType.firebolt;
 			break;
@@ -231,8 +279,11 @@ public class SpellRegistry
 		case chest:
 			next = EnumSpellType.waterwalk;
 			break;
-		case harvest:
+		case hud:
 			next = EnumSpellType.chest;
+			break;
+		case harvest:
+			next = EnumSpellType.hud;
 			break;
 		case firebolt:
 			next = EnumSpellType.harvest;
