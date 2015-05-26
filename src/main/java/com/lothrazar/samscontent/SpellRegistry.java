@@ -6,7 +6,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.samscontent.item.ItemChestSackEmpty;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
-import com.lothrazar.samscontent.item.ItemMagicHarvester;
+import com.lothrazar.samscontent.item.SpellHarvest;
 import com.lothrazar.samscontent.item.ItemWallCompass;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
@@ -29,6 +29,13 @@ public class SpellRegistry
 { 
 	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
 	
+	public static void setup()
+	{
+		harvest = new SpellHarvest();
+	}
+	public ISpell chest;
+	public static ISpell harvest;
+	
 	public enum EnumSpellType{
 		chest,
 		harvest,
@@ -43,6 +50,9 @@ public class SpellRegistry
 		slowfall,
 		waterwalk 
 	};
+	
+	
+	
 	public enum EnumHudType{
 		none,
 		clock,
@@ -58,7 +68,10 @@ public class SpellRegistry
 			cast_chest(world,player,pos);
 			break;
 		case harvest:
-			cast_harvest(world,player,pos);
+
+System.out.println("SpellRegistry.harvest.cast");
+			SpellRegistry.harvest.cast(world, player,  pos);
+			
 			break;
 		case hud:
 			cast_hud(world,player,pos);
@@ -88,7 +101,6 @@ public class SpellRegistry
 			cast_waterwalk(world,player,pos);
 			break;
 		default:
-			System.out.println("unknown spell");
 			break;
 		}
 	}
@@ -126,7 +138,6 @@ public class SpellRegistry
 			break;
 		}
 		
-		System.out.println("setnewhud  "+hudNew.name());
 		props.setStringHUD(hudNew.name());
 		
 	}
@@ -151,7 +162,7 @@ public class SpellRegistry
 				, (float)player.getLookVec().yCoord
 				, (float)player.getLookVec().zCoord);
 
-		System.out.println("phase  "+facing.getName());
+		System.out.println("TODO: bugfix phase  "+facing.getName()+"  "+Util.posToString(pos));
 		
 		//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
 
@@ -196,19 +207,11 @@ public class SpellRegistry
 
 		Util.playSoundAt(player, Reference.sounds.bowtoss);
 	}
-
-	private static void cast_harvest(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("harvest spell");
-		ItemMagicHarvester.replantField(world, player, null, pos);
-
-	}
+ 
 
 	private static void cast_chest(World world, EntityPlayer player,BlockPos pos)
 	{
-		System.out.println("cast_chest spell");
 		ItemChestSackEmpty.convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(pos), pos);
-		 
 	}
 
 	private static void cast_frostbolt(World world, EntityPlayer player,BlockPos pos)
@@ -263,7 +266,6 @@ public class SpellRegistry
 			next = EnumSpellType.chest;
 			break;
 		default:
-			System.out.println("unknown spell");
 			next = EnumSpellType.chest;//default
 			break;
 		}
@@ -310,7 +312,6 @@ public class SpellRegistry
 			next = EnumSpellType.slowfall;
 			break;
 		default:
-			System.out.println("unknown spell");
 			next = EnumSpellType.chest;//default
 			break;
 		}
@@ -318,11 +319,8 @@ public class SpellRegistry
 		setPlayerCurrentSpell(player,next);
 	}
 	
-	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)
 	{
-		//System.out.println("setPlayerCurrentSpell   "+current.name());
-  
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
 		props.setStringSpell(current.name());
@@ -336,5 +334,4 @@ public class SpellRegistry
 
 		return EnumSpellType.valueOf(props.getStringSpell());
 	}
-
 }

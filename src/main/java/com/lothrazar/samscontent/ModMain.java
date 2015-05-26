@@ -147,6 +147,8 @@ public class ModMain
 		this.registerEventHandlers(); 
 		
 		BlockHardnessRegistry.registerChanges(); 
+		
+		SpellRegistry.setup();
 	}
         
 	@EventHandler

@@ -1,10 +1,11 @@
 package com.lothrazar.samscontent.item;
 
 import com.google.common.collect.Sets;  
+import com.lothrazar.samscontent.ISpell;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
+import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.*;
-
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -40,25 +41,11 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemMagicHarvester extends Item
+public class SpellHarvest implements ISpell
 {
 	public static int RADIUS=8; //from config file
-	
-	public ItemMagicHarvester( )
-	{   
-		super(); 
-    	this.setMaxStackSize(64); 
-		this.setCreativeTab(ModMain.tabSamsContent);
-	}
-	 /*
-	public static void addRecipe() 
-	{
-		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.harvest_charge,4),
-			Items.ender_eye, 
-			Blocks.hay_block  );
-	}
-	   */
-	public static void replantField(World world, EntityPlayer entityPlayer, ItemStack heldWand, BlockPos pos)
+ 
+	private void replantField(World world, EntityPlayer entityPlayer, BlockPos pos)
 	{  
 		//http://www.minecraftforge.net/wiki/Plants
  
@@ -113,10 +100,55 @@ public class ItemMagicHarvester extends Item
 				Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
 			else 
 			{
-				if(heldWand != null)
-					Util.decrHeldStackSize(entityPlayer);  
+				//if(heldWand != null)
+				//	Util.decrHeldStackSize(entityPlayer);  
 			} 
 		}
+	}
+
+	
+	@Override
+	public EnumSpellType getSpellType()
+	{ 
+		return EnumSpellType.harvest;
+	}
+
+	@Override
+	public void cast(World world, EntityPlayer player, BlockPos pos)
+	{
+		if(canPlayerCast(player) == false) {return;}
+		
+		drainExpCost(player);
+		
+		replantField(world, player, pos);
+	}
+
+	@Override
+	public boolean canPlayerCast(EntityPlayer player)
+	{
+		//TODO: in future, we can check if its locked/unlocked here
+		
+		if(Util.getExpTotal(player) < getExpCost()) return false;
+		
+		return true;
+	}
+
+	@Override
+	public void drainExpCost(EntityPlayer player)
+	{ 
+		 Util.drainExp(player, getExpCost());
+	}
+
+	private int cost=10;
+	@Override
+	public void setExpCost(int c)
+	{
+		cost = c;
+	}
+	@Override
+	public int getExpCost()
+	{
+		return cost;
 	}
 	 
 }

@@ -252,8 +252,7 @@ public class DebugScreenText
 		int yMiddle = Minecraft.getMinecraft().displayHeight/4;
 		int yBottom = Minecraft.getMinecraft().displayHeight/2 - 32;
 		int xRight = Minecraft.getMinecraft().displayWidth/2 - 32;
-		//System.out.println(" xMiddle "+ xMiddle);
-		
+	 
 		
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
