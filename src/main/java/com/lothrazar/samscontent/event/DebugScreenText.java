@@ -13,6 +13,7 @@ import java.util.Date;
 import java.util.Random;  
 import org.apache.logging.log4j.Logger;  
 import com.lothrazar.samscontent.ModMain;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.potion.PotionRegistry;
@@ -59,9 +60,15 @@ public class DebugScreenText
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
 	{ 
-		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false){return;}
-		
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
+		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
+		{
+			//EnumChatFormatting.GREEN + 
+			event.right.add(SpellRegistry.getPlayerCurrentSpell(player).name());
+	 
+			return;
+		}
+		
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
 		
 	 

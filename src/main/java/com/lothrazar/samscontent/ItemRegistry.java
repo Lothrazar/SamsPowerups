@@ -29,7 +29,7 @@ public class ItemRegistry
 	
 	public static ItemEnderBook itemEnderBook;
 	//public static ItemChestSackEmpty itemChestSackEmpty; 
-	//public static ItemChestSack itemChestSack;
+	public static ItemChestSack itemChestSack;
 	//public static ItemMagicHarvester harvest_charge;
 	//public static ItemWandTransform wandTransform; 
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
@@ -72,7 +72,14 @@ public class ItemRegistry
 	
 	public static void registerItems()
 	{   
+		ItemRegistry.itemChestSack = new ItemChestSack();   
+		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 		
+		//ItemRegistry.itemChestSackEmpty = new ItemChestSackEmpty(); 
+		//ItemRegistry.registerItem(ItemRegistry.itemChestSackEmpty, "chest_sack_empty");
+	//
+		ItemChestSackEmpty.addRecipe();  
+	
 		if(ModMain.cfg.ender_cookie)
 		{
 			ender_cookie = new ItemEnderCookie();

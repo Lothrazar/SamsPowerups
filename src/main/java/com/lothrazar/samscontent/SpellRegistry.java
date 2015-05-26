@@ -236,34 +236,34 @@ public class SpellRegistry
 		switch(current)
 		{
 		case chest:
-			next = EnumSpellType.harvest;
-			break;
-		case harvest:
-			next = EnumSpellType.firebolt;
-			break;
-		case firebolt:
-			next = EnumSpellType.ghost;
-			break;
-		case ghost:
-			next = EnumSpellType.jump;
-			break;
-		case jump:
-			next = EnumSpellType.lightningbolt;
-			break;
-		case lightningbolt:
-			next = EnumSpellType.pearl;
-			break;
-		case pearl:
-			next = EnumSpellType.phase;
-			break;
-		case phase:
-			next = EnumSpellType.slowfall;
-			break;
-		case slowfall:
 			next = EnumSpellType.waterwalk;
 			break;
-		case waterwalk:
+		case harvest:
 			next = EnumSpellType.chest;
+			break;
+		case firebolt:
+			next = EnumSpellType.harvest;
+			break;
+		case ghost:
+			next = EnumSpellType.firebolt;
+			break;
+		case jump:
+			next = EnumSpellType.ghost;
+			break;
+		case lightningbolt:
+			next = EnumSpellType.jump;
+			break;
+		case pearl:
+			next = EnumSpellType.lightningbolt;
+			break;
+		case phase:
+			next = EnumSpellType.pearl;
+			break;
+		case slowfall:
+			next = EnumSpellType.phase;
+			break;
+		case waterwalk:
+			next = EnumSpellType.slowfall;
 			break;
 		default:
 			System.out.println("unknown spell");

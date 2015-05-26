@@ -43,7 +43,7 @@ public class ItemChestSackEmpty extends Item
 		this.setMaxStackSize(64);
 		this.setCreativeTab(ModMain.tabSamsContent);
 	}
-
+/*
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.itemChestSackEmpty),
@@ -54,7 +54,7 @@ public class ItemChestSackEmpty extends Item
 		if(ModMain.cfg.uncraftGeneral)
 			GameRegistry.addSmelting(ItemRegistry.itemChestSackEmpty, new ItemStack(Items.leather), 0);
 	}
-
+*/
 	public static void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
 	{ 	
 		if(chestTarget == null){return;}//wrong type of tile entity
