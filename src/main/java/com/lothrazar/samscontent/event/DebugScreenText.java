@@ -12,6 +12,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;  
 import org.apache.logging.log4j.Logger;  
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
@@ -22,6 +23,11 @@ import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
 import net.minecraft.client.Minecraft; 
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
@@ -35,6 +41,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.DimensionManager;  
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;  
@@ -60,12 +67,29 @@ public class DebugScreenText
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
 	{ 
+	 
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
 		{
 			//EnumChatFormatting.GREEN + 
-			event.right.add(SpellRegistry.getPlayerCurrentSpell(player).name());
+			event.left.add(SpellRegistry.getPlayerCurrentSpell(player).name());
+			
+			
+			ItemStack spellStack = SpellRegistry.getStackForSpell(SpellRegistry.getPlayerCurrentSpell(player));
 	 
+			int height = 16, x = 15, y = 15, width = 16;
+			IBakedModel iBakedModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(spellStack);
+			TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(iBakedModel.getTexture().getIconName());
+			Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);//TextureMap.locationBlocksTexture
+			Tessellator tessellator = Tessellator.getInstance();
+			WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+			worldrenderer.startDrawingQuads();
+			worldrenderer.addVertexWithUV((double)(x),          (double)(y + height),  0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMaxV());
+			worldrenderer.addVertexWithUV((double)(x + width),  (double)(y + height),  0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMaxV());
+			worldrenderer.addVertexWithUV((double)(x + width),  (double)(y),           0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMinV());
+			worldrenderer.addVertexWithUV((double)(x),          (double)(y),           0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMinV());
+			tessellator.draw();
+			
 			return;
 		}
 		

@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent;
 
+import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
@@ -14,6 +15,9 @@ import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntityChest;
@@ -294,5 +298,51 @@ public class SpellRegistry
 			setPlayerCurrentSpell(player, EnumSpellType.chest);//default
 		//return EnumSpellType.valueOf(player.getEntityData().getString(KEY_PLAYER));
 		return EnumSpellType.valueOf(props.getStringSpell());
+	}
+
+	public static ItemStack getStackForSpell(EnumSpellType playerCurrentSpell)
+	{
+		ItemStack def = new ItemStack(ItemRegistry.apple_chocolate);
+	 
+		switch(playerCurrentSpell)
+		{
+		case chest:
+			def = new ItemStack(Items.water_bucket);
+			break;
+		case harvest:
+			def = new ItemStack(Items.wheat);
+			break;
+		case firebolt:
+			def = new ItemStack(Items.fire_charge);
+			break;
+		case ghost:
+			def = new ItemStack(Items.ghast_tear);
+			break;
+		case jump:
+			def = new ItemStack(Items.slime_ball);
+			break;
+		case lightningbolt:
+			def = new ItemStack(Items.blaze_rod);
+			break;
+		case pearl:
+			def = new ItemStack(Items.ender_pearl);
+			break;
+		case phase:
+			def = new ItemStack(Items.wheat);
+			break;
+		case slowfall:
+			def = new ItemStack(Items.feather);
+			break;
+		case waterwalk:
+			def = new ItemStack(Items.chainmail_boots);
+			break;
+		default:
+			//System.out.println("unknown spell");
+			//next = EnumSpellType.chest;//default
+			break;
+		}
+
+		
+		return def;
 	}
 }
