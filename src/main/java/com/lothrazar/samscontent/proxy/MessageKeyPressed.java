@@ -111,21 +111,6 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{
 			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind2Name);
 	 	}
-		/*
-		else if( message.keyPressed == ClientProxy.keyPhasing.getKeyCode())
-	 	{
-			EnumFacing facing = EnumFacing.getFacingFromVector(
-					(float)player.getLookVec().xCoord
-					, (float)player.getLookVec().yCoord
-					, (float)player.getLookVec().zCoord);
-
-			System.out.println("phase  "+facing.getName());
-			
-			//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
-
-			ItemWallCompass.wallPhase(player.worldObj,player,posMouse,facing);
-		
-	 	}*/
 		else if( message.keyPressed == ClientProxy.keyPush.getKeyCode())
 	 	{
 			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
@@ -144,10 +129,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
-			
 			SpellRegistry.cast(SpellRegistry.getPlayerCurrentSpell(player), world, player,posMouse);
-	 
-	 	
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{
@@ -155,66 +137,11 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
 	 	{ 
-
 			SpellRegistry.shiftDown(player);
-		}/*
-		else if( message.keyPressed == ClientProxy.keyBindSlowfall.getKeyCode())
-	 	{ 
-			}
-		else if( message.keyPressed == ClientProxy.keyBindChestMover.getKeyCode())
-	 	{
-			ItemChestSackEmpty.convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(posMouse), posMouse);
-	 	}
-		else if( message.keyPressed == ClientProxy.keyFirebolt.getKeyCode())
-	 	{
-			BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
-
-			world.spawnEntityInWorld(new EntitySmallFireball(world,up.getX(),up.getY(),up.getZ()
-					 ,player.getLookVec().xCoord
-					 ,player.getLookVec().yCoord
-					 ,player.getLookVec().zCoord));
-
-			Util.playSoundAt(player, Reference.sounds.bowtoss);
-	 	}
-		else if( message.keyPressed == ClientProxy.keyFrostbolt.getKeyCode())
-	 	{
-			BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
-			 
-			EntitySnowballBolt snow = new EntitySnowballBolt(world,player);
-			 
-			 world.spawnEntityInWorld(snow);
-		 
-			Util.playSoundAt(player, Reference.sounds.bowtoss); 
-			
-			Util.decrHeldStackSize(player); 
-	 	}
-		else if( message.keyPressed == ClientProxy.keyLightningbolt.getKeyCode())
-	 	{
-			world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
-			
-			world.spawnEntityInWorld(new EntityLightningBolt(world, posMouse.getX(), posMouse.getY(), posMouse.getZ()));
-	 	
-	 	
-			
-	 	
-	 	}
-		else if( message.keyPressed == ClientProxy.keyHarvest.getKeyCode())
-	 	{
-			ItemMagicHarvester.replantField(world, player, null, posMouse);
-
-//just testing
-			
-			
-	 	}*/
-		/*
-		else if( message.keyPressed == ClientProxy.keyEnderPearl.getKeyCode())
-	 	{
-			//we could search inventory heere, if you are holding one then just use it
-			world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
-	 	}*/
+		}
+	 
 		//TODO: search spawner??? with particle directors?
 
-		
 		return null;
 	}
 

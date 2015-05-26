@@ -1,21 +1,30 @@
 package com.lothrazar.samscontent;
 
+import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
+import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.samscontent.item.ItemChestSackEmpty;
 import com.lothrazar.samscontent.item.ItemFoodGhost;
+import com.lothrazar.samscontent.item.ItemMagicHarvester;
+import com.lothrazar.samscontent.item.ItemWallCompass;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
+import net.minecraft.entity.effect.EntityLightningBolt;
+import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class SpellRegistry
 {
-	private static final String KEY_PLAYER = "SPELL";
+	private static final String KEY_PLAYER = "SPELL";	
+	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
+	
 	public enum EnumSpellType{
 		chest,
 		harvest,
@@ -27,11 +36,8 @@ public class SpellRegistry
 		pearl,
 		phase,
 		slowfall,
-		waterwalk
-		
-		
+		waterwalk 
 	};
-	
 	
 	public static void cast(EnumSpellType spell, World world, EntityPlayer player,BlockPos pos)
 	{
@@ -76,13 +82,14 @@ public class SpellRegistry
 	private static void cast_waterwalk(World world, EntityPlayer player,BlockPos pos)
 	{
 		System.out.println("cast_waterwalk spell");
-		
+		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
+		 
 	}
-	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
-	 
+ 
 	private static void cast_slowfall(World world, EntityPlayer player,BlockPos pos)
 	{
 		System.out.println("cast_slowfall spell");	
+		
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,fiveSeconds,0));
 		 
 		
@@ -91,19 +98,35 @@ public class SpellRegistry
 	private static void cast_phase(World world, EntityPlayer player,BlockPos pos)
 	{
 		System.out.println("cast_phase spell");
+
+	 
+		EnumFacing facing = EnumFacing.getFacingFromVector(
+				(float)player.getLookVec().xCoord
+				, (float)player.getLookVec().yCoord
+				, (float)player.getLookVec().zCoord);
+
+		System.out.println("phase  "+facing.getName());
 		
+		//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
+
+		ItemWallCompass.wallPhase(player.worldObj,player,pos,facing);
+ 
 	}
 
 	private static void cast_pearl(World world, EntityPlayer player,BlockPos pos)
 	{
 		System.out.println("cast_pearl spell");
-		
+		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
 	}
 
 	private static void cast_lightningbolt(World world, EntityPlayer player,BlockPos pos)
 	{
 		System.out.println("cast_lightningbolt spell");
+		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
 		
+		world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
+ 	
+ 	
 	}
 
 	private static void cast_jump(World world, EntityPlayer player,BlockPos pos)
@@ -136,7 +159,8 @@ public class SpellRegistry
 	private static void cast_harvest(World world, EntityPlayer player,BlockPos pos)
 	{
 		System.out.println("harvest spell");
-		
+		ItemMagicHarvester.replantField(world, player, null, pos);
+
 	}
 
 	private static void cast_chest(World world, EntityPlayer player,BlockPos pos)
@@ -148,8 +172,16 @@ public class SpellRegistry
 
 	private static void cast_frostbolt(World world, EntityPlayer player,BlockPos pos)
 	{
-
 		System.out.println("cast_frostbolt spell");
+		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
+		 
+		EntitySnowballBolt snow = new EntitySnowballBolt(world,player);
+		 
+		world.spawnEntityInWorld(snow);
+	 
+		Util.playSoundAt(player, Reference.sounds.bowtoss); 
+		
+		Util.decrHeldStackSize(player); 
 	}
 
 	public static void shiftUp(EntityPlayer player)
@@ -196,6 +228,7 @@ public class SpellRegistry
 		
 		setPlayerCurrentSpell(player,next);
 	}
+	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)
 	{
 		System.out.println("setPlayerCurrentSpell   "+current.name());
