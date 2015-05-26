@@ -15,7 +15,7 @@ public class ItemSuperfood extends ItemFood
 		super(32,32.0F,false);
 	 
 		this.setCreativeTab(ModMain.tabSamsContent);
-	}
+	}/*
 	public void addRecipe() 
 	{
 		//can be made with any meat
@@ -38,5 +38,5 @@ public class ItemSuperfood extends ItemFood
 			,new ItemStack(Items.carrot)
 			,new ItemStack(Items.baked_potato)
 			,new ItemStack(ItemRegistry.beetrootItem));
-	}
+	}*/
 }

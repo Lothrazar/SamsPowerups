@@ -52,7 +52,7 @@ public class ItemFoodGhost extends ItemFood
 			player.getEntityData().setInteger(KEY_EATDIM, player.dimension);
 		}
 	}
-
+/*
 	public void addRecipe() 
 	{ 
 		//two alternate recipes
@@ -69,7 +69,7 @@ public class ItemFoodGhost extends ItemFood
 		if(ModMain.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(ItemRegistry.apple_ghost, new ItemStack(Items.bone, 8),	0);
 	}
-
+*/
 	public static void onPlayerUpdate(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving instanceof EntityPlayer == false){return;}//just in case

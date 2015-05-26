@@ -26,8 +26,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class SpellRegistry
-{
-	private static final String KEY_PLAYER = "SPELL";	
+{ 
 	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
 	
 	public enum EnumSpellType{
@@ -85,16 +84,13 @@ public class SpellRegistry
 	}
 	
 	private static void cast_waterwalk(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_waterwalk spell");
+	{ 
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
 		 
 	}
  
 	private static void cast_slowfall(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_slowfall spell");	
-		
+	{ 
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,fiveSeconds,0));
 		 
 		
@@ -102,8 +98,7 @@ public class SpellRegistry
 
 	private static void cast_phase(World world, EntityPlayer player,BlockPos pos)
 	{
-		System.out.println("cast_phase spell");
-
+	 
 	 
 		EnumFacing facing = EnumFacing.getFacingFromVector(
 				(float)player.getLookVec().xCoord
@@ -119,14 +114,12 @@ public class SpellRegistry
 	}
 
 	private static void cast_pearl(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_pearl spell");
+	{ 
 		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
 	}
 
 	private static void cast_lightningbolt(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_lightningbolt spell");
+	{ 
 		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
 		
 		world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
@@ -135,22 +128,19 @@ public class SpellRegistry
 	}
 
 	private static void cast_jump(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_jump spell");
+	{ 
 		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
 		 
 	}
 
 	private static void cast_ghost(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_ghost spell");
+	{ 
 
 		ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
 	}
 
 	private static void cast_firebolt(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_firebolt spell");
+	{ 
 		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
 
 		world.spawnEntityInWorld(new EntitySmallFireball(world,up.getX(),up.getY(),up.getZ()
@@ -176,8 +166,7 @@ public class SpellRegistry
 	}
 
 	private static void cast_frostbolt(World world, EntityPlayer player,BlockPos pos)
-	{
-		System.out.println("cast_frostbolt spell");
+	{ 
 		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
 		 
 		EntitySnowballBolt snow = new EntitySnowballBolt(world,player);
@@ -234,8 +223,7 @@ public class SpellRegistry
 		setPlayerCurrentSpell(player,next);
 	}
 	public static void shiftDown(EntityPlayer player)
-	{
-		System.out.println("shiftDown");
+	{ 
 		EnumSpellType current = getPlayerCurrentSpell(player);
 		EnumSpellType next;
 		switch(current)
@@ -282,9 +270,8 @@ public class SpellRegistry
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)
 	{
-		System.out.println("setPlayerCurrentSpell   "+current.name());
-		//player.getEntityData().setString(KEY_PLAYER, current.name());
-
+		//System.out.println("setPlayerCurrentSpell   "+current.name());
+  
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
 		props.setStringSpell(current.name());
@@ -292,57 +279,11 @@ public class SpellRegistry
 	public static EnumSpellType getPlayerCurrentSpell(EntityPlayer player)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
-		
-		//if(player.getEntityData().getString(KEY_PLAYER) == "")
+		 
 		if(props.getStringSpell() == "")
 			setPlayerCurrentSpell(player, EnumSpellType.chest);//default
-		//return EnumSpellType.valueOf(player.getEntityData().getString(KEY_PLAYER));
+
 		return EnumSpellType.valueOf(props.getStringSpell());
 	}
 
-	public static ItemStack getStackForSpell(EnumSpellType playerCurrentSpell)
-	{
-		ItemStack def = new ItemStack(ItemRegistry.apple_chocolate);
-	 
-		switch(playerCurrentSpell)
-		{
-		case chest:
-			def = new ItemStack(Items.water_bucket);
-			break;
-		case harvest:
-			def = new ItemStack(Items.wheat);
-			break;
-		case firebolt:
-			def = new ItemStack(Items.fire_charge);
-			break;
-		case ghost:
-			def = new ItemStack(Items.ghast_tear);
-			break;
-		case jump:
-			def = new ItemStack(Items.slime_ball);
-			break;
-		case lightningbolt:
-			def = new ItemStack(Items.blaze_rod);
-			break;
-		case pearl:
-			def = new ItemStack(Items.ender_pearl);
-			break;
-		case phase:
-			def = new ItemStack(Items.wheat);
-			break;
-		case slowfall:
-			def = new ItemStack(Items.feather);
-			break;
-		case waterwalk:
-			def = new ItemStack(Items.chainmail_boots);
-			break;
-		default:
-			//System.out.println("unknown spell");
-			//next = EnumSpellType.chest;//default
-			break;
-		}
-
-		
-		return def;
-	}
 }

@@ -33,13 +33,13 @@ public class ItemLightning  extends Item
     	this.setMaxStackSize(64); 
 		this.setCreativeTab(ModMain.tabSamsContent);  
 	}
- 
+ /*
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.lightning_charge,4),
 			Items.ghast_tear,   
 			Items.ender_eye ); 
-	}
+	}*/
 
 	public static void cast(PlayerInteractEvent event) 
 	{

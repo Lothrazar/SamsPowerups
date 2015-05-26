@@ -56,7 +56,7 @@ public class ItemWandTransform extends Item
     {
     	return true; //give it shimmer
     }
-	  
+	  /*
 	public static void addRecipe() 
 	{
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandTransform),
@@ -66,7 +66,7 @@ public class ItemWandTransform extends Item
 				'p',Items.diamond,
 				'i',Blocks.end_stone,
 				'b',Items.blaze_rod); 
-	}
+	}*/
  
 	private static int INVALID = -1;
 	public static void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)

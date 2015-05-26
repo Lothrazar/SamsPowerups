@@ -33,14 +33,14 @@ public class ItemFireballThrowable  extends Item //since ItemFireball is not thr
 		this.setCreativeTab(ModMain.tabSamsContent); 
 		this.setMaxStackSize(64);
 	}
- 
+ /*
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.fire_charge_throw,4),
 			Items.ender_eye, 
 			Items.fire_charge );
 	}
-	
+	*/
 	public static void cast(World world, EntityPlayer entityPlayer ) 
 	{ 
 		BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();

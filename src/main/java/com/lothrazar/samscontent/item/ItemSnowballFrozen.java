@@ -32,7 +32,7 @@ public class ItemSnowballFrozen  extends Item
 		this.setCreativeTab(ModMain.tabSamsContent);
 		this.setMaxStackSize(64);   
 	}
- 
+ /*
 	public static void addRecipe() 
 	{
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.frozen_snowball,8),
@@ -41,7 +41,7 @@ public class ItemSnowballFrozen  extends Item
 				"sss",
 				'i',Blocks.ice,
 				's',Items.snowball );
-	}
+	}*/
 	 
 	public static void cast(World world, EntityPlayer entityPlayer ) 
 	{ 

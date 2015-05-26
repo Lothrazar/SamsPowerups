@@ -24,7 +24,7 @@ public class ItemWallCompass extends Item
 		this.setMaxDamage(DURABILITY);
 		this.setMaxStackSize(1);
 	}
-
+/*
 	public static void addRecipe()
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.wall_compass)
@@ -32,7 +32,7 @@ public class ItemWallCompass extends Item
 			, new ItemStack(Items.ender_eye)
 			, new ItemStack(Items.diamond)
 			, new ItemStack(Items.emerald));
-	}
+	}*/
 
 	public static void onRightClick(PlayerInteractEvent event)
 	{

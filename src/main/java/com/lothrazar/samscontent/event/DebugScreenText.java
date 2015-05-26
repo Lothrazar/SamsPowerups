@@ -15,12 +15,14 @@ import org.apache.logging.log4j.Logger;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.SpellRegistry;
+import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft; 
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.Tessellator;
@@ -41,6 +43,8 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.DimensionManager;  
 import net.minecraftforge.common.MinecraftForge;
@@ -64,31 +68,89 @@ public class DebugScreenText
         return calendar.getTime();
 	}
 	 
+	private static void renderItemAt(ItemStack stack, int x, int y)
+	{
+		int height = 16, width = 16;
+
+		IBakedModel iBakedModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(stack);
+		TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(iBakedModel.getTexture().getIconName());
+		
+		renderTexture( textureAtlasSprite, x, y);
+	}
+	public static void renderBlockAt(Block block, int x, int y)
+	{ 
+	     TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getTexture(block.getDefaultState());
+		    
+	     renderTexture( textureAtlasSprite, x, y);
+	}
+	private static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y)
+	{	
+		//special thanks to http://www.minecraftforge.net/forum/index.php?topic=26613.0
+		
+        Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
+		Tessellator tessellator = Tessellator.getInstance();
+
+		int height = 16, width = 16;
+		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+		worldrenderer.startDrawingQuads();
+		worldrenderer.addVertexWithUV((double)(x),          (double)(y + height),  0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMaxV());
+		worldrenderer.addVertexWithUV((double)(x + width),  (double)(y + height),  0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMaxV());
+		worldrenderer.addVertexWithUV((double)(x + width),  (double)(y),           0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMinV());
+		worldrenderer.addVertexWithUV((double)(x),          (double)(y),           0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMinV());
+		tessellator.draw();
+		
+	}
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
-	{ 
-	 
+	{  
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
+		
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
 		{
 			//EnumChatFormatting.GREEN + 
 			event.left.add(SpellRegistry.getPlayerCurrentSpell(player).name());
-			
-			
-			ItemStack spellStack = SpellRegistry.getStackForSpell(SpellRegistry.getPlayerCurrentSpell(player));
-	 
-			int height = 16, x = 15, y = 15, width = 16;
-			IBakedModel iBakedModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(spellStack);
-			TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(iBakedModel.getTexture().getIconName());
-			Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);//TextureMap.locationBlocksTexture
-			Tessellator tessellator = Tessellator.getInstance();
-			WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-			worldrenderer.startDrawingQuads();
-			worldrenderer.addVertexWithUV((double)(x),          (double)(y + height),  0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMaxV());
-			worldrenderer.addVertexWithUV((double)(x + width),  (double)(y + height),  0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMaxV());
-			worldrenderer.addVertexWithUV((double)(x + width),  (double)(y),           0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMinV());
-			worldrenderer.addVertexWithUV((double)(x),          (double)(y),           0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMinV());
-			tessellator.draw();
+			 
+			int x = 12, y = 15;
+		 
+			EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
+			  
+			switch(spell)
+			{
+			case chest:
+				renderBlockAt(Blocks.chest,x,y);
+				break;
+			case harvest: 
+				renderItemAt(new ItemStack(Items.wheat),x,y);
+				break;
+			case firebolt: 
+				renderItemAt(new ItemStack(Items.fire_charge),x,y);
+				break;
+			case ghost: 
+				renderItemAt(new ItemStack(Items.ghast_tear),x,y);
+				break;
+			case jump: 
+				renderItemAt(new ItemStack(Items.slime_ball),x,y);
+				break;
+			case lightningbolt: 
+				renderItemAt(new ItemStack(Items.blaze_rod),x,y);
+				break;
+			case pearl: 
+				renderItemAt(new ItemStack(Items.ender_pearl),x,y);
+				break;
+			case phase: 
+				renderItemAt(new ItemStack(Items.compass),x,y);
+				break;
+			case slowfall: 
+				renderItemAt(new ItemStack(Items.feather),x,y);
+				break;
+			case waterwalk: 
+				renderItemAt(new ItemStack(Items.chainmail_boots),x,y);
+				break;
+			default:
+				//System.out.println("unknown spell");
+				//next = EnumSpellType.chest;//default
+				break;
+			} 
 			
 			return;
 		}

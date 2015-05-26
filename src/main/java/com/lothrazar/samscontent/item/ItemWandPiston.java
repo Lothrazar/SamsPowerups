@@ -44,7 +44,7 @@ public class ItemWandPiston extends Item
 	{ 
 		ignoreListFromConfig = csv;
 	} 
-	
+	/*
 	public void addRecipe()
 	{
 		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wand_piston),
@@ -54,7 +54,7 @@ public class ItemWandPiston extends Item
 			'p',Blocks.piston,
 			'i',Blocks.iron_block,
 			'b',Items.blaze_rod); 
-	}
+	}*/
  
 	public static void moveBlockTo(World world, EntityPlayer player,BlockPos pos, BlockPos posMoveToHere,boolean useItem)
 	{
