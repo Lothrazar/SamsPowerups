@@ -145,7 +145,9 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
 			
-			SpellRegistry.cast(SpellRegistry.EnumSpellType.frostbolt, world, player);
+			SpellRegistry.EnumSpellType t = SpellRegistry.getPlayerCurrentSpell(player);
+			
+			SpellRegistry.cast(t, world, player);
 			
 			//Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
 	 	
@@ -154,10 +156,13 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{
+			SpellRegistry.shiftUp(player);
 			//ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
 	 	{ 
+
+			SpellRegistry.shiftDown(player);
 			//Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
 	 	}/*
 		else if( message.keyPressed == ClientProxy.keyBindSlowfall.getKeyCode())

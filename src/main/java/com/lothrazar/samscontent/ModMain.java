@@ -672,6 +672,7 @@ public class ModMain
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
     {   
+		//TODO: key handler class? maybe a better way to do this than copying the same code??
         if(ClientProxy.keyShiftUp.isPressed() )
         { 	     
         	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyShiftUp.getKeyCode()));  
@@ -724,34 +725,7 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellDown.getKeyCode()));
         }
-       /* else if(ClientProxy.keyBindSlowfall.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindSlowfall.getKeyCode()));
-        }
-        else if(ClientProxy.keyPhasing.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPhasing.getKeyCode()));
-        }
-        else if(ClientProxy.keyBindChestMover.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindChestMover.getKeyCode()));
-        }
-        else if(ClientProxy.keyFrostbolt.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyFrostbolt.getKeyCode()));
-        }
-        else if(ClientProxy.keyFirebolt.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyFirebolt.getKeyCode()));
-        }
-        else if(ClientProxy.keyLightningbolt.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyLightningbolt.getKeyCode()));
-        }
-        else if(ClientProxy.keyHarvest.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyHarvest.getKeyCode()));
-        }*/
+      
         
     } 
 	
