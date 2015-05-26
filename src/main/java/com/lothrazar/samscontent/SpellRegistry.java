@@ -228,6 +228,52 @@ public class SpellRegistry
 		
 		setPlayerCurrentSpell(player,next);
 	}
+	public static void shiftDown(EntityPlayer player)
+	{
+		System.out.println("shiftDown");
+		EnumSpellType current = getPlayerCurrentSpell(player);
+		EnumSpellType next;
+		switch(current)
+		{
+		case chest:
+			next = EnumSpellType.harvest;
+			break;
+		case harvest:
+			next = EnumSpellType.firebolt;
+			break;
+		case firebolt:
+			next = EnumSpellType.ghost;
+			break;
+		case ghost:
+			next = EnumSpellType.jump;
+			break;
+		case jump:
+			next = EnumSpellType.lightningbolt;
+			break;
+		case lightningbolt:
+			next = EnumSpellType.pearl;
+			break;
+		case pearl:
+			next = EnumSpellType.phase;
+			break;
+		case phase:
+			next = EnumSpellType.slowfall;
+			break;
+		case slowfall:
+			next = EnumSpellType.waterwalk;
+			break;
+		case waterwalk:
+			next = EnumSpellType.chest;
+			break;
+		default:
+			System.out.println("unknown spell");
+			next = EnumSpellType.chest;//default
+			break;
+		}
+		
+		setPlayerCurrentSpell(player,next);
+	}
+	
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)
 	{
@@ -240,11 +286,4 @@ public class SpellRegistry
 			setPlayerCurrentSpell(player, EnumSpellType.chest);//default
 		return EnumSpellType.valueOf(player.getEntityData().getString(KEY_PLAYER));
 	}
-	public static void shiftDown(EntityPlayer player)
-	{
-		System.out.println("shiftDown");
-		// TODO Auto-generated method stub
-		
-	}
-	
 }
