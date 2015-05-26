@@ -1,5 +1,6 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samscontent.spell;
 
+import com.lothrazar.samscontent.SpellRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;

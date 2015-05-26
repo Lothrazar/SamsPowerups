@@ -1,7 +1,7 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samscontent.spell;
 
 import com.google.common.collect.Sets;  
-import com.lothrazar.samscontent.ISpell;
+import com.lothrazar.samscontent.spell.ISpell;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
