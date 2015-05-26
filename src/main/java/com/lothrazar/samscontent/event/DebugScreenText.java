@@ -231,9 +231,11 @@ public class DebugScreenText
 	 	//TESTING OUT PLAYER COMPASS CLOCKS PELLS
 	 	//System.out.println("width"+ Minecraft.getMinecraft().displayWidth);
 		int xMiddle = Minecraft.getMinecraft().displayWidth/4;
+		int yMiddle = Minecraft.getMinecraft().displayHeight/4;
+		int yBottom = Minecraft.getMinecraft().displayHeight/2 - 32;
 		//System.out.println(" xMiddle "+ xMiddle);
-		renderItemAt(new ItemStack(Items.compass),xMiddle,16);
-		renderItemAt(new ItemStack(Items.clock),xMiddle,35);
+		renderItemAt(new ItemStack(Items.compass),xMiddle,16);//works at mid top
+		renderItemAt(new ItemStack(Items.clock),20,yBottom);//works at mid left
 	}
 
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 
