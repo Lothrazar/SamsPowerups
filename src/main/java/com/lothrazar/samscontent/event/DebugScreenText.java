@@ -265,12 +265,12 @@ public class DebugScreenText
 		break;
 
 		case compass: 
-			renderItemAt(new ItemStack(Items.compass),xRight,16);//works at mid top
+			renderItemAt(new ItemStack(Items.compass),xRight,yBottom);//works at mid top//was ,16
 		break;
 
 		case both: 
 			renderItemAt(new ItemStack(Items.clock),20,yBottom);//works at mid left
-			renderItemAt(new ItemStack(Items.compass),xMiddle,16);//works at mid top
+			renderItemAt(new ItemStack(Items.compass),xRight,yBottom);
 		break;
 		case none: 
 		default:
