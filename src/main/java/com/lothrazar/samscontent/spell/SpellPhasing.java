@@ -2,8 +2,10 @@ package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.item.ItemWallCompass;
 import com.lothrazar.util.Util;
 
 public class SpellPhasing implements ISpell
@@ -17,7 +19,17 @@ public class SpellPhasing implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		// TODO Auto-generated method stub
+		EnumFacing facing = EnumFacing.getFacingFromVector(
+				(float)player.getLookVec().xCoord
+				, (float)player.getLookVec().yCoord
+				, (float)player.getLookVec().zCoord);
+
+		System.out.println("TODO: bugfix phase  "+facing.getName()+"  "+Util.posToString(pos));
+		
+		//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
+
+		ItemWallCompass.wallPhase(player.worldObj,player,pos,facing);
+ 
 		
 	}
 

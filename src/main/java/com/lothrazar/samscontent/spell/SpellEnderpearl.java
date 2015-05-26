@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.spell;
 
+import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -17,8 +18,8 @@ public class SpellEnderpearl implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		// TODO Auto-generated method stub
-		
+		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
+		 
 	}
 
 	@Override

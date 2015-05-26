@@ -1,9 +1,11 @@
 package com.lothrazar.samscontent.spell;
 
+import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.util.Util;
 
 public class SpellLightningbolt implements ISpell
@@ -18,7 +20,11 @@ public class SpellLightningbolt implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
 		// TODO Auto-generated method stub
+		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
 		
+		world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
+ 	
+ 
 	}
 
 	@Override

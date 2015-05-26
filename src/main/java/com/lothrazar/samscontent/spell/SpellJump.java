@@ -1,13 +1,17 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellJump implements ISpell
-{ 
+{ private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
+
 	@Override
 	public EnumSpellType getSpellType()
 	{
@@ -17,7 +21,8 @@ public class SpellJump implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		// TODO Auto-generated method stub
+		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
+		 
 		
 	}
 

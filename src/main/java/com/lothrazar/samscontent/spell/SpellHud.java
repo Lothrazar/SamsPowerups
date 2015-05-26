@@ -3,7 +3,9 @@ package com.lothrazar.samscontent.spell;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+import com.lothrazar.samscontent.SpellRegistry.EnumHudType;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Util;
 
 public class SpellHud implements ISpell
@@ -16,9 +18,37 @@ public class SpellHud implements ISpell
 
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
-	{
-		// TODO Auto-generated method stub
+	{ 
+		PlayerPowerups props = PlayerPowerups.get(player);
 		
+		String hudCurr = props.getStringHUD();
+		if(hudCurr == null || hudCurr=="") hudCurr = EnumHudType.none.name();
+		EnumHudType hudNew;
+		
+		switch(EnumHudType.valueOf(hudCurr))
+		{
+		case none: 
+			hudNew = EnumHudType.clock;
+		break;
+
+		case clock: 
+			hudNew = EnumHudType.compass;
+		break;
+
+		case compass: 
+			hudNew = EnumHudType.both;
+		break;
+
+		case both: 
+			hudNew = EnumHudType.none;
+		break;
+		default:
+			hudNew = EnumHudType.none;
+			break;
+		}
+		
+		props.setStringHUD(hudNew.name());
+		 
 	}
 
 	@Override

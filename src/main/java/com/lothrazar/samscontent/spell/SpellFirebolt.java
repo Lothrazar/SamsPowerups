@@ -1,9 +1,11 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellFirebolt implements ISpell
@@ -17,7 +19,16 @@ public class SpellFirebolt implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		// TODO Auto-generated method stub
+
+		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
+
+		world.spawnEntityInWorld(new EntitySmallFireball(world,up.getX(),up.getY(),up.getZ()
+				 ,player.getLookVec().xCoord
+				 ,player.getLookVec().yCoord
+				 ,player.getLookVec().zCoord));
+
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
+
 		
 	}
 

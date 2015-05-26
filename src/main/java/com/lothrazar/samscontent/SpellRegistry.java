@@ -28,8 +28,6 @@ import net.minecraft.world.World;
 
 public class SpellRegistry
 { 
-	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
-	
 	public static void setup()
 	{
 		chest = new SpellChest();
@@ -86,154 +84,58 @@ public class SpellRegistry
 		switch(spell)
 		{
 		case chest:
-			cast_chest(world,player,pos);
+			chest.cast(world, player, pos);
 			break;
 		case harvest:
- 
-			SpellRegistry.harvest.cast(world, player,  pos);
-			
+			harvest.cast(world, player,  pos);
 			break;
 		case hud:
-			cast_hud(world,player,pos);
+			hud.cast(world,player,pos);
 			break;
 		case firebolt:
-			cast_firebolt(world,player,pos);
+			firebolt.cast(world,player,pos);
 			break;
 		case ghost:
-			cast_ghost(world,player,pos);
+
+			ghost.cast(player.worldObj,player,pos);
+			
 			break;
 		case jump:
-			cast_jump(world,player,pos);
+		  
+			jump.cast(world,player,pos);
+			
 			break;
 		case lightningbolt:
-			cast_lightningbolt(world,player,pos);
+		 
+			lightningbolt.cast(world, player, pos);
+			 
 			break;
 		case pearl:
-			cast_pearl(world,player,pos);
+
+			pearl.cast(world, player, pos);
+			 
 			break;
 		case phase:
-			cast_phase(world,player,pos);
+
+			phase.cast(world, player, pos);
+		 
 			break;
 		case slowfall:
-			cast_slowfall(world,player,pos);
+
+			slowfall.cast(world, player, pos);
+			 
 			break;
 		case waterwalk:
-			cast_waterwalk(world,player,pos);
+
+			waterwalk.cast(world, player, pos);
+			 
 			break;
 		default:
 			break;
 		}
 	}
 	
-	private static void cast_hud(World world, EntityPlayer player, BlockPos pos)
-	{
-		// TODO Auto-generated method stub
-		
-
-		PlayerPowerups props = PlayerPowerups.get(player);
-		
-		String hudCurr = props.getStringHUD();
-		if(hudCurr == null || hudCurr=="") hudCurr = EnumHudType.none.name();
-		EnumHudType hudNew;
-		
-		switch(EnumHudType.valueOf(hudCurr))
-		{
-		case none: 
-			hudNew = EnumHudType.clock;
-		break;
-
-		case clock: 
-			hudNew = EnumHudType.compass;
-		break;
-
-		case compass: 
-			hudNew = EnumHudType.both;
-		break;
-
-		case both: 
-			hudNew = EnumHudType.none;
-		break;
-		default:
-			hudNew = EnumHudType.none;
-			break;
-		}
-		
-		props.setStringHUD(hudNew.name());
-		
-	}
-
-	private static void cast_waterwalk(World world, EntityPlayer player,BlockPos pos)
-	{ 
-		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
-		 
-	}
- 
-	private static void cast_slowfall(World world, EntityPlayer player,BlockPos pos)
-	{ 
-		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,fiveSeconds,0));
-		 
-		
-	}
-
-	private static void cast_phase(World world, EntityPlayer player,BlockPos pos)
-	{
-		EnumFacing facing = EnumFacing.getFacingFromVector(
-				(float)player.getLookVec().xCoord
-				, (float)player.getLookVec().yCoord
-				, (float)player.getLookVec().zCoord);
-
-		System.out.println("TODO: bugfix phase  "+facing.getName()+"  "+Util.posToString(pos));
-		
-		//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
-
-		ItemWallCompass.wallPhase(player.worldObj,player,pos,facing);
- 
-	}
-
-	private static void cast_pearl(World world, EntityPlayer player,BlockPos pos)
-	{ 
-		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
-	}
-
-	private static void cast_lightningbolt(World world, EntityPlayer player,BlockPos pos)
-	{ 
-		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
-		
-		world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
- 	
- 	
-	}
-
-	private static void cast_jump(World world, EntityPlayer player,BlockPos pos)
-	{ 
-		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
-		 
-	}
-
-	private static void cast_ghost(World world, EntityPlayer player,BlockPos pos)
-	{ 
-
-		ItemFoodGhost.setPlayerGhostMode(player,player.worldObj);
-	}
-
-	private static void cast_firebolt(World world, EntityPlayer player,BlockPos pos)
-	{ 
-		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
-
-		world.spawnEntityInWorld(new EntitySmallFireball(world,up.getX(),up.getY(),up.getZ()
-				 ,player.getLookVec().xCoord
-				 ,player.getLookVec().yCoord
-				 ,player.getLookVec().zCoord));
-
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
-	}
- 
-
-	private static void cast_chest(World world, EntityPlayer player,BlockPos pos)
-	{
-		ItemChestSackEmpty.convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(pos), pos);
-	}
-
+	 
 	private static void cast_frostbolt(World world, EntityPlayer player,BlockPos pos)
 	{ 
 		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
