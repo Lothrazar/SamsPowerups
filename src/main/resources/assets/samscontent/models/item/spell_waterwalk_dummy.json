@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/food_super"
+        "layer0": "samscontent:items/spell_waterwalk_dummy"
     },
     "display": {
         "thirdperson": {

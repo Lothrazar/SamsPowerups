@@ -61,18 +61,29 @@ public class ItemRegistry
 	public static int timePotionShort = 90; // 1:30
 	public static int timePotionLong = 8 * 60;// 8:00
 	
-	public static Item dummy_water_spell;
+	public static Item spell_water_dummy;
+	public static Item spell_frostbolt_dummy;
+	public static Item spell_waterwalk_dummy;
+	public static Item spell_harvest_dummy;
+	public static Item spell_lightning_dummy;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 		
-		dummy_water_spell = new Item();
-		ItemRegistry.registerItem(dummy_water_spell, "wand_water");
-		//dummy_water_spell.setCreativeTab(ModMain.tabSamsContent);
+		spell_water_dummy = new Item();
+		ItemRegistry.registerItem(spell_water_dummy, "spell_water_dummy");
+
+		spell_frostbolt_dummy = new Item();
+		ItemRegistry.registerItem(spell_frostbolt_dummy, "spell_frostbolt_dummy");
+
+		spell_waterwalk_dummy = new Item();
+		ItemRegistry.registerItem(spell_waterwalk_dummy, "spell_waterwalk_dummy");
+		spell_harvest_dummy = new Item();
+		ItemRegistry.registerItem(spell_harvest_dummy, "spell_harvest_dummy");
+		spell_lightning_dummy = new Item();
+		ItemRegistry.registerItem(spell_lightning_dummy, "spell_lightning_dummy");
 		
-		
-  
 		if(ModMain.cfg.emerald_armor)
 		{
 			MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 

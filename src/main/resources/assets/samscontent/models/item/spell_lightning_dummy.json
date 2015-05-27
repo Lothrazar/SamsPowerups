@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/lightning_charge"
+        "layer0": "samscontent:items/spell_lightning_dummy"
     },
     "display": {
         "thirdperson": {

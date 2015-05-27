@@ -205,13 +205,13 @@ public class DebugScreenText
 			renderItemAt(new ItemStack(Items.iron_ingot),x,y);
 			break;
 		case harvest: 
-			renderItemAt(new ItemStack(Items.wheat),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.spell_harvest_dummy),x,y);
 			break;
 		case firebolt: 
 			renderItemAt(new ItemStack(Items.fire_charge),x,y);
 			break;
 		case frostbolt: 
-			renderItemAt(new ItemStack(Items.snowball),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.spell_frostbolt_dummy),x,y);
 			break;
 		case ghost: 
 			renderItemAt(new ItemStack(Items.ghast_tear),x,y);
@@ -221,7 +221,7 @@ public class DebugScreenText
 			break;
 		case lightningbolt: 
 			//renderItemAt(new ItemStack(Items.skull,1,Reference.skull_creeper),x,y);
-			renderItemAt(new ItemStack(Items.gunpowder),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.spell_lightning_dummy),x,y);
 			break;
 		case pearl: 
 			renderItemAt(new ItemStack(Items.ender_pearl),x,y);
@@ -233,10 +233,12 @@ public class DebugScreenText
 			renderItemAt(new ItemStack(Items.feather),x,y);
 			break;
 		case waterwalk: 
-			renderItemAt(new ItemStack(Items.chainmail_boots),x,y);
+
+			renderItemAt(new ItemStack(ItemRegistry.spell_waterwalk_dummy),x,y);
+			
 			break;
 		case waterbolt:
-			renderItemAt(new ItemStack(ItemRegistry.dummy_water_spell),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.spell_water_dummy),x,y);
 		break;
 		default:
 			//System.out.println("unknown spell");
