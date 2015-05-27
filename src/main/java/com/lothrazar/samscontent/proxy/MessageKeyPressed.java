@@ -121,13 +121,14 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{ 
 			UtilBlockTransform.transformBlock(player, player.worldObj, null, posMouse);
 	 	}
-		else if( message.keyPressed == ClientProxy.keyBindEnder.getKeyCode())
+		else if( message.keyPressed == ClientProxy.keyBindEnderInventory.getKeyCode())
 	 	{ 
 			player.displayGUIChest(player.getInventoryEnderChest()); 
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
-			System.out.println("cast current spell isremote = "+player.worldObj.isRemote);
+			//isRemote == false always
+			//System.out.println("cast current spell isremote = "+player.worldObj.isRemote);
 			EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
 			//ISpell//TODO:
 			

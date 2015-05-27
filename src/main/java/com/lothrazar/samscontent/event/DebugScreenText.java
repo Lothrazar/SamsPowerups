@@ -178,18 +178,16 @@ public class DebugScreenText
 	 	{ 
 			addGameruleInfo(event, world); 
 		} 
-	 	
-	 	
-	 	
-		
-		
+	 	 
 	}
 
 	private void drawSpell(RenderGameOverlayEvent.Text event)
-	{
-
+	{ 
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
-		event.left.add(SpellRegistry.getPlayerCurrentSpell(player).name());
+		
+		String spellname = SpellRegistry.getPlayerCurrentSpell(player).name().trim();
+		
+		event.left.add(Util.lang("key.spell."+spellname));
 		 
 		int x = 12, y = 15;
  

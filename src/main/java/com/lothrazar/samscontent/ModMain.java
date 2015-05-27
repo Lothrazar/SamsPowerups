@@ -717,14 +717,14 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyTransform.getKeyCode()));
         }
-        else if(ClientProxy.keyBindEnder.isPressed())
+        else if(ClientProxy.keyBindEnderInventory.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindEnder.getKeyCode()));
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindEnderInventory.getKeyCode()));
         }
         else if(ClientProxy.keySpellCast.isPressed())
         {
     		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
-			System.out.println("keySpellCast.isPressed() ;  isremote = "+world.isRemote);
+			System.out.println("ModMain.keySpellCast.isPressed() ;  isremote = "+world.isRemote);
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
         }
         else if(ClientProxy.keySpellUp.isPressed())
