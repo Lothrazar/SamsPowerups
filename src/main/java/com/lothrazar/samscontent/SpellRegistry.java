@@ -55,6 +55,7 @@ public class SpellRegistry
 		spellbook.add(lightningbolt);
 		spellbook.add(slowfall );
 		spellbook.add(waterwalk );
+		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 	}
 
 	public static ArrayList<ISpell> spellbook;
@@ -83,7 +84,20 @@ public class SpellRegistry
 		pearl,
 		phase,
 		slowfall,
-		waterwalk 
+		waterwalk ;
+		//thanks to http://digitaljoel.nerd-herders.com/2011/04/05/get-the-next-value-in-a-java-enum/
+		public EnumSpellType next() 
+		{
+		     return this.ordinal() < EnumSpellType.values().length - 1
+		         ? EnumSpellType.values()[this.ordinal() + 1]
+		         : EnumSpellType.values()[0];
+		}
+		public EnumSpellType prev() 
+		{
+		     return this.ordinal() > 0
+		         ? EnumSpellType.values()[this.ordinal() - 1]
+		         : EnumSpellType.values()[EnumSpellType.values().length - 1];
+		}
 	};
 	
 	public enum EnumHudType {
@@ -105,24 +119,11 @@ public class SpellRegistry
 		} 
 	}
 	
-	 
-	private static void cast_frostbolt(World world, EntityPlayer player,BlockPos pos)
-	{ 
-		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
-		 
-		EntitySnowballBolt snow = new EntitySnowballBolt(world,player);
-		 
-		world.spawnEntityInWorld(snow);
-	 
-		Util.playSoundAt(player, Reference.sounds.bowtoss); 
-		
-		Util.decrHeldStackSize(player); 
-	}
-
 	public static void shiftUp(EntityPlayer player)
 	{
 		EnumSpellType current = getPlayerCurrentSpell(player);
-		EnumSpellType next;
+		EnumSpellType next = current.next();
+		/*
 		switch(current)
 		{
 		case chest:
@@ -160,14 +161,15 @@ public class SpellRegistry
 		default:
 			next = EnumSpellType.chest;//default
 			break;
-		}
+		}*/
 		
 		setPlayerCurrentSpell(player,next);
 	}
 	public static void shiftDown(EntityPlayer player)
 	{ 
 		EnumSpellType current = getPlayerCurrentSpell(player);
-		EnumSpellType next;
+		EnumSpellType next = current.prev();
+		/*
 		switch(current)
 		{
 		case chest:
@@ -206,7 +208,7 @@ public class SpellRegistry
 		default:
 			next = EnumSpellType.chest;//default
 			break;
-		}
+		}*/
 		
 		setPlayerCurrentSpell(player,next);
 	}
@@ -226,4 +228,19 @@ public class SpellRegistry
 
 		return EnumSpellType.valueOf(props.getStringSpell());
 	}
+
+	public static ISpell getPlayerCurrentISpell(EntityPlayer player)
+	{
+		EnumSpellType s = getPlayerCurrentSpell(player);
+		for(ISpell sp : spellbook)
+		{ 
+			if(sp.getSpellType() == s)
+			{
+				return sp;
+			}
+		} 
+		
+		return null;
+	}
+	/**/
 }

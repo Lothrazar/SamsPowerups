@@ -21,21 +21,12 @@ public class SpellFrostbolt implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		// TODO Auto-generated method stub
 		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
 
 		world.spawnEntityInWorld(new EntitySnowballBolt(world,player));
 
 		this.onCastSuccess(world, player, pos);
-		/*BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();
- 
-		EntitySnowballBolt snow = new EntitySnowballBolt(world,entityPlayer 	 );
-		 
-		 world.spawnEntityInWorld(snow);
-	 
-		Util.playSoundAt(entityPlayer, Reference.sounds.bowtoss); 
-		
-		Util.decrHeldStackSize(entityPlayer); */
+	
 	}
 
 	@Override
