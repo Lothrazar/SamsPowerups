@@ -68,6 +68,7 @@ public class ItemRegistry
 	public static Item spell_lightning_dummy;
 	public static Item spell_jump_dummy;
 	public static Item spell_ghost_dummy;
+	public static Item spell_enderinv_dummy;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
@@ -87,6 +88,8 @@ public class ItemRegistry
 		ItemRegistry.registerItem(spell_lightning_dummy, "spell_lightning_dummy");
 		spell_ghost_dummy = new Item();
 		ItemRegistry.registerItem(spell_ghost_dummy, "spell_ghost_dummy");
+		spell_enderinv_dummy = new Item();
+		ItemRegistry.registerItem(spell_enderinv_dummy, "spell_enderinv_dummy");
 		
 		if(ModMain.cfg.emerald_armor)
 		{

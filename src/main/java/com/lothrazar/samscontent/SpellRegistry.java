@@ -2,9 +2,7 @@ package com.lothrazar.samscontent;
 
 import java.util.ArrayList;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
-import com.lothrazar.samscontent.common.PlayerPowerups;
-import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
-import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt; 
+import com.lothrazar.samscontent.common.PlayerPowerups; 
 import com.lothrazar.samscontent.spell.SpellHarvest; 
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.spell.*;
@@ -12,8 +10,7 @@ import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityEnderPearl;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.entity.player.EntityPlayer; 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -31,6 +28,7 @@ public class SpellRegistry
 		spellbook = new ArrayList<ISpell>();
 		
 		chest = new SpellChest();
+		enderinv = new SpellEnderInventory();
 		firebolt = new SpellFirebolt();
 		frostbolt = new SpellFrostbolt();
 		ghost = new SpellGhost();
@@ -44,6 +42,7 @@ public class SpellRegistry
 		waterwalk = new SpellWaterwalk();
 		waterbolt = new SpellWaterBolt();
 		spellbook.add(chest);
+		spellbook.add(enderinv);
 		spellbook.add(firebolt);
 		spellbook.add(frostbolt);
 		spellbook.add(ghost);
@@ -61,6 +60,7 @@ public class SpellRegistry
 
 	public static ArrayList<ISpell> spellbook;
 	public static ISpell chest;
+	public static ISpell enderinv;
 	public static ISpell firebolt;
 	public static ISpell frostbolt;
 	public static ISpell ghost;
@@ -76,6 +76,7 @@ public class SpellRegistry
 	
 	public enum EnumSpellType {
 		chest,
+		enderinv,
 		harvest,
 		hud,
 		firebolt,

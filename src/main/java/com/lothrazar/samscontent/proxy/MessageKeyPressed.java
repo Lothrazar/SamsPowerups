@@ -120,11 +120,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		else if( message.keyPressed == ClientProxy.keyTransform.getKeyCode())
 	 	{ 
 			UtilBlockTransform.transformBlock(player, player.worldObj, null, posMouse);
-	 	}
-		else if( message.keyPressed == ClientProxy.keyBindEnderInventory.getKeyCode())
-	 	{ 
-			player.displayGUIChest(player.getInventoryEnderChest()); 
-	 	}
+	 	} 
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
 			//isRemote == false always

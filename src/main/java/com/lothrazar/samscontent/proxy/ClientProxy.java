@@ -30,8 +30,7 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyBindMacro1;
 	public static KeyBinding keyBindMacro2;
 	public static KeyBinding keyPush;
-	public static KeyBinding keyPull;
-	public static KeyBinding keyBindEnderInventory;
+	public static KeyBinding keyPull; 
 	public static KeyBinding keyTransform; 
 	public static KeyBinding keySpellCast;
 	public static KeyBinding keySpellUp;
@@ -101,8 +100,7 @@ public class ClientProxy extends CommonProxy
 
         keyTransform = new KeyBinding(Reference.keyTransformName, Keyboard.KEY_U, Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyTransform);
-        keyBindEnderInventory = new KeyBinding(Reference.keyBindEnderName, Keyboard.KEY_I,  Reference.keyCategoryInventory); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyBindEnderInventory);
+ 
         keyPush = new KeyBinding(Reference.keyPushName, Keyboard.KEY_O, Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPush);
         keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_P,  Reference.keyCategoryBlocks); 

@@ -216,6 +216,7 @@ public class DebugScreenText
 		case ghost: 
 			renderItemAt(new ItemStack(ItemRegistry.spell_ghost_dummy),x,y);
 			break;
+			//TODO: spell ender inventory
 		case jump: 
 			renderItemAt(new ItemStack(ItemRegistry.spell_jump_dummy),x,y);
 			break;
@@ -226,6 +227,7 @@ public class DebugScreenText
 		case pearl: 
 			renderItemAt(new ItemStack(Items.ender_pearl),x,y);
 			break;
+			//TODO: ender eye & chicken?
 		case phase: 
 			renderItemAt(new ItemStack(Items.bed),x,y);
 			break;

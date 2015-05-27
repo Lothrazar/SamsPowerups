@@ -28,7 +28,8 @@ public class Reference
 	public static final String keySpellCastName = "key.spell.cast";
 	public static final String keySpellUpName = "key.spell.up";
 	public static final String keySpellDownName = "key.spell.down";
-	public static final String keyBindEnderName = "key.spell.enderinventory";/*
+	/*
+	public static final String keyBindEnderName = "key.spell.enderinventory";
 	public static final String keyBindSlowName = "key.spell.slowfall";
 	public static final String keyPhasingName = "key.spell.phase";
 	public static final String keyChestName = "key.spell.chest";
