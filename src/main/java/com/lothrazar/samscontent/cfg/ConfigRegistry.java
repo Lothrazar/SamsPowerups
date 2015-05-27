@@ -384,11 +384,11 @@ public class ConfigRegistry
 		UtilPistonSpell.DURABILITY = instance.getInt("wand_piston.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 
-		wandWater = instance.getBoolean("wand_water",category, true,
-    			"Craft a wand that places water.");
+		//wandWater = instance.getBoolean("wand_water",category, true,
+    	//		"Craft a wand that places water.");
 
-		ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
-    			"Durability (number of uses in survival).");
+		//ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
+    	//		"Durability (number of uses in survival).");
 		
 		///lightning_charge = instance.getBoolean("lightning_charge",category, true,
     	//		"Works like a fire charge, but it spawns lightning instead of fire.");
@@ -668,7 +668,7 @@ public class ConfigRegistry
 	public boolean saplingAllNether;
 	public boolean saplingAllEnd;
 	public int potionIdEnder; 
-	public boolean wandWater;
+	//public boolean wandWater;
 	public boolean harvestGlassPickaxe;
  
 	public boolean shearSheepBlock; 

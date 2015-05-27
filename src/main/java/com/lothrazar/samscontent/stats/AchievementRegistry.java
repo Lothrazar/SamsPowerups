@@ -43,7 +43,7 @@ public class AchievementRegistry
 	public Achievement lapisCarrot;
 	public Achievement emeraldCarrot;
 	public Achievement diamondCarrot;
-	public Achievement wandWater;
+	//public Achievement wandWater;
  
  
 	
@@ -164,13 +164,6 @@ public class AchievementRegistry
 
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
-
-		if(ItemRegistry.wandWater != null) 
-		{ 
-			xCurrent += xSpacing;
-			wandWater = new Achievement(Reference.MODID + "_wandWater", "wandWater" ,xCurrent, yCurrent,ItemRegistry.wandWater,null);
-			register(wandWater);
-		}
  
  
 		xCurrent = xStart;//new row
@@ -345,12 +338,7 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(lapisCarrot,event.player);  
 		} 
-	 
-		else if(item == ItemRegistry.wandWater)
-		{ 
-			addStatSafe(wandWater,event.player);  
-		} 
-		 
+	  
 		else if(item == ItemRegistry.soulstone)//TODO: v2
 		{ 
 			addStatSafe(soulstone,event.player);  

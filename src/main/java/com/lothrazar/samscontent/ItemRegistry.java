@@ -37,7 +37,7 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_netherwart; 
 	public static ItemPaperCarbon carbon_paper;  
 	public static ItemFoodAppleMagic apple_ender;
-	public static ItemWandWater wandWater;
+	//public static ItemWandWater wandWater;
  
 	public static Item beetroot_seed ;
 	public static Item beetrootItem;
@@ -187,18 +187,7 @@ public class ItemRegistry
 					'u', Items.bowl
 					);
 		}
- 
-		 
-		if(ModMain.cfg.wandWater)
-		{  
-			ItemRegistry.wandWater = new ItemWandWater();
-
-			ItemRegistry.registerItem(ItemRegistry.wandWater, "wand_water");
-	 
-			ItemWandWater.addRecipe();		 
-		}
-		
-	 
+  
 
 		if(ModMain.cfg.carbon_paper)
 		{ 

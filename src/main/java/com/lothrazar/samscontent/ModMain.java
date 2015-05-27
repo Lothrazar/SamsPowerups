@@ -428,10 +428,10 @@ public class ModMain
 			Util.dropItemStackInWorld(event.world, event.pos, Items.glass_bottle);
 		}
 		
-		if(held != null && held.getItem() == ItemRegistry.wandWater )
-		{
-			ItemWandWater.cast(event);
-		}
+		//if(held != null && held.getItem() == ItemRegistry.wandWater )
+	//	{
+		//	ItemWandWater.cast(event);
+		//}
 		/*
 		if(held != null && held.getItem() == ItemRegistry.wand_piston )
 		{
