@@ -477,6 +477,7 @@ public class ModMain
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack &&  //how to get this all into its own class
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{ 
+			/*
 			if(blockClicked instanceof BlockChest && container instanceof TileEntityChest)// && event.entityPlayer.isSneaking()
 			{    
 				 
@@ -488,9 +489,10 @@ public class ModMain
 			} 
 			else
 			{
+				*/
 				if(event.face != null && event.world.isAirBlock(event.pos.offset(event.face)) == false)
 					ItemChestSack.createAndFillChest(event.entityPlayer, held, event.pos.offset(event.face));
-			}
+			//}
 		}
 		/*
 		if(held != null && ItemRegistry.itemChestSack != null &&  //how to get this all into its own class
