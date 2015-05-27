@@ -11,12 +11,12 @@ import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellFrostbolt implements ISpell
+public class SpellWaterBolt implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.frostbolt;
+		return EnumSpellType.waterbolt;
 	}
 
 	@Override
@@ -24,7 +24,7 @@ public class SpellFrostbolt implements ISpell
 	{
 		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
 
-		world.spawnEntityInWorld(new EntitySnowballBolt(world,player));
+		world.spawnEntityInWorld(new EntityWaterBolt(world,player));
 
 		this.onCastSuccess(world, player, pos);
 	

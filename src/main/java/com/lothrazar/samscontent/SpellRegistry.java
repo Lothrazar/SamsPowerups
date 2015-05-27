@@ -42,7 +42,7 @@ public class SpellRegistry
 		lightningbolt = new SpellLightningbolt();
 		slowfall = new SpellSlowfall();
 		waterwalk = new SpellWaterwalk();
-		
+		waterbolt = new SpellWaterBolt();
 		spellbook.add(chest);
 		spellbook.add(firebolt);
 		spellbook.add(frostbolt);
@@ -55,6 +55,7 @@ public class SpellRegistry
 		spellbook.add(lightningbolt);
 		spellbook.add(slowfall );
 		spellbook.add(waterwalk );
+		spellbook.add(waterbolt );
 		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 	}
 
@@ -71,6 +72,7 @@ public class SpellRegistry
 	public static ISpell phase;
 	public static ISpell slowfall;
 	public static ISpell waterwalk;
+	public static ISpell waterbolt;
 	
 	public enum EnumSpellType {
 		chest,
@@ -84,7 +86,8 @@ public class SpellRegistry
 		pearl,
 		phase,
 		slowfall,
-		waterwalk ;
+		waterwalk,
+		waterbolt;
 		//thanks to http://digitaljoel.nerd-herders.com/2011/04/05/get-the-next-value-in-a-java-enum/
 		public EnumSpellType next() 
 		{
@@ -123,93 +126,14 @@ public class SpellRegistry
 	{
 		EnumSpellType current = getPlayerCurrentSpell(player);
 		EnumSpellType next = current.next();
-		/*
-		switch(current)
-		{
-		case chest:
-			next = EnumSpellType.hud;
-			break;
-		case hud:
-			next = EnumSpellType.harvest;
-		case harvest:
-			next = EnumSpellType.firebolt;
-			break;
-		case firebolt:
-			next = EnumSpellType.ghost;
-			break;
-		case ghost:
-			next = EnumSpellType.jump;
-			break;
-		case jump:
-			next = EnumSpellType.lightningbolt;
-			break;
-		case lightningbolt:
-			next = EnumSpellType.pearl;
-			break;
-		case pearl:
-			next = EnumSpellType.phase;
-			break;
-		case phase:
-			next = EnumSpellType.slowfall;
-			break;
-		case slowfall:
-			next = EnumSpellType.waterwalk;
-			break;
-		case waterwalk:
-			next = EnumSpellType.chest;
-			break;
-		default:
-			next = EnumSpellType.chest;//default
-			break;
-		}*/
-		
+		 
 		setPlayerCurrentSpell(player,next);
 	}
 	public static void shiftDown(EntityPlayer player)
 	{ 
 		EnumSpellType current = getPlayerCurrentSpell(player);
 		EnumSpellType next = current.prev();
-		/*
-		switch(current)
-		{
-		case chest:
-			next = EnumSpellType.waterwalk;
-			break;
-		case hud:
-			next = EnumSpellType.chest;
-			break;
-		case harvest:
-			next = EnumSpellType.hud;
-			break;
-		case firebolt:
-			next = EnumSpellType.harvest;
-			break;
-		case ghost:
-			next = EnumSpellType.firebolt;
-			break;
-		case jump:
-			next = EnumSpellType.ghost;
-			break;
-		case lightningbolt:
-			next = EnumSpellType.jump;
-			break;
-		case pearl:
-			next = EnumSpellType.lightningbolt;
-			break;
-		case phase:
-			next = EnumSpellType.pearl;
-			break;
-		case slowfall:
-			next = EnumSpellType.phase;
-			break;
-		case waterwalk:
-			next = EnumSpellType.slowfall;
-			break;
-		default:
-			next = EnumSpellType.chest;//default
-			break;
-		}*/
-		
+		 
 		setPlayerCurrentSpell(player,next);
 	}
 	

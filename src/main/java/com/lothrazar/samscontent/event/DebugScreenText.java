@@ -235,6 +235,9 @@ public class DebugScreenText
 		case waterwalk: 
 			renderItemAt(new ItemStack(Items.chainmail_boots),x,y);
 			break;
+		case waterbolt:
+			renderItemAt(new ItemStack(Items.water_bucket),x,y);
+		break;
 		default:
 			//System.out.println("unknown spell");
 			//next = EnumSpellType.chest;//default
