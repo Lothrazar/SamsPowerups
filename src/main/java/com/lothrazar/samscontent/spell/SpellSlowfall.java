@@ -1,6 +1,8 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -72,6 +74,12 @@ public class SpellSlowfall implements ISpell
 	{
 
 		
+	}
+
+	@Override
+	public ItemStack getIconDisplay()
+	{ 
+		return new ItemStack(Items.feather);
 	}
 
 }

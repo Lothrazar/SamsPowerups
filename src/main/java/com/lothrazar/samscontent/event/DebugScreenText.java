@@ -21,6 +21,7 @@ import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.potion.PotionRegistry;
+import com.lothrazar.samscontent.spell.ISpell;
 import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
@@ -184,76 +185,24 @@ public class DebugScreenText
 	private void drawSpell(RenderGameOverlayEvent.Text event)
 	{ 
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
-		
-		String spellname = SpellRegistry.getPlayerCurrentSpell(player).name().trim();
-		
-		event.left.add(Util.lang("key.spell."+spellname));
 		 
+		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
  
-		EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
-		
+		int x = 10, y = 2;
 
-		renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),3,15);
+		renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),10,2);
 
-		int x = 12, y = 15;
+		//Util.lang("key.spell.cost")
+		//event.left.add("");
+		event.left.add(spell.getExpCost()+"" );
 		
-		switch(spell)
+		if(spell.getIconDisplay() != null)
 		{
-		case chest:
-			//renderBlockAt(Blocks.tripwire_hook,x,y);
-			//doing it the way below crashes
-			//renderItemAt(new ItemStack(Item.getItemFromBlock(Blocks.chest)),x,y);
-			renderItemAt(new ItemStack(ItemRegistry.itemChestSack),x,y);
-			break;
-		case enderinv: 
-			renderItemAt(new ItemStack(ItemRegistry.spell_enderinv_dummy),x,y);
-			break;
-		case hud: 
-			renderItemAt(new ItemStack(Items.iron_ingot),x,y);
-			break;
-		case harvest: 
-			renderItemAt(new ItemStack(ItemRegistry.spell_harvest_dummy),x,y);
-			break;
-		case firebolt: 
-			renderItemAt(new ItemStack(Items.fire_charge),x,y);
-			break;
-		case frostbolt: 
-			renderItemAt(new ItemStack(ItemRegistry.spell_frostbolt_dummy),x,y);
-			break;
-		case ghost: 
-			renderItemAt(new ItemStack(ItemRegistry.spell_ghost_dummy),x,y);
-			break;
-			//TODO: spell ender inventory
-		case jump: 
-			renderItemAt(new ItemStack(ItemRegistry.spell_jump_dummy),x,y);
-			break;
-		case lightningbolt: 
-			//renderItemAt(new ItemStack(Items.skull,1,Reference.skull_creeper),x,y);
-			renderItemAt(new ItemStack(ItemRegistry.spell_lightning_dummy),x,y);
-			break;
-		case pearl: 
-			renderItemAt(new ItemStack(Items.ender_pearl),x,y);
-			break;
-			//TODO: ender eye & chicken?
-		case phase: 
-			renderItemAt(new ItemStack(Items.bed),x,y);
-			break;
-		case slowfall: 
-			renderItemAt(new ItemStack(Items.feather),x,y);
-			break;
-		case waterwalk: 
-
-			renderItemAt(new ItemStack(ItemRegistry.spell_waterwalk_dummy),x,y);
-			
-			break;
-		case waterbolt:
-			renderItemAt(new ItemStack(ItemRegistry.spell_water_dummy),x,y);
-		break;
-		default:
-			//System.out.println("unknown spell");
-			//next = EnumSpellType.chest;//default
-			break;
+			x = 18; 
+			y = 2;
+			renderItemAt(spell.getIconDisplay(),x,y);
 		}
+	 
 	}
 
 	private void drawHud(EntityPlayerSP player)

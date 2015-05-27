@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
@@ -90,6 +91,13 @@ public class SpellPhasing implements ISpell
 	{
 
 		
+	}
+
+	@Override
+	public ItemStack getIconDisplay()
+	{
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

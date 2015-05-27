@@ -157,5 +157,11 @@ public class SpellHarvest implements ISpell
 		
 	}
 
+	@Override
+	public ItemStack getIconDisplay()
+	{ 
+		return new ItemStack(ItemRegistry.spell_harvest_dummy);
+	}
+
 	 
 }

@@ -129,6 +129,8 @@ public class SpellRegistry
 		EnumSpellType next = current.next();
 		 
 		setPlayerCurrentSpell(player,next);
+		
+		Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
 	}
 	public static void shiftDown(EntityPlayer player)
 	{ 
@@ -136,6 +138,8 @@ public class SpellRegistry
 		EnumSpellType next = current.prev();
 		 
 		setPlayerCurrentSpell(player,next);
+
+		Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
 	}
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)

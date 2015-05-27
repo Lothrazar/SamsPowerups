@@ -2,6 +2,8 @@ package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
@@ -69,6 +71,12 @@ public class SpellEnderpearl implements ISpell
 	{
 
 		
+	}
+
+	@Override
+	public ItemStack getIconDisplay()
+	{
+		return new ItemStack(Items.ender_pearl);
 	}
 
 }

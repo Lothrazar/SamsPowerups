@@ -2,9 +2,11 @@ package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.util.Reference;
@@ -72,6 +74,12 @@ public class SpellLightningbolt implements ISpell
 	{
 
 		
+	}
+
+	@Override
+	public ItemStack getIconDisplay()
+	{
+		return new ItemStack(ItemRegistry.spell_lightning_dummy);
 	}
 
 }

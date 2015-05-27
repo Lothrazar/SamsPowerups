@@ -1,12 +1,14 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType; 
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -126,6 +128,12 @@ public class SpellGhost implements ISpell
 	{
 
 		
+	}
+
+	@Override
+	public ItemStack getIconDisplay()
+	{
+		return new ItemStack(ItemRegistry.spell_ghost_dummy);
 	}
 
 }

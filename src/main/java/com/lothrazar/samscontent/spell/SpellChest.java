@@ -151,4 +151,10 @@ public class SpellChest implements ISpell
 		
 	}
 
+	@Override
+	public ItemStack getIconDisplay()
+	{
+		return new ItemStack(ItemRegistry.itemChestSack);
+	}
+
 }

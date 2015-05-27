@@ -1,10 +1,12 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
@@ -71,6 +73,12 @@ public class SpellWaterwalk implements ISpell
 	{
 
 		
+	}
+
+	@Override
+	public ItemStack getIconDisplay()
+	{
+		return new ItemStack(ItemRegistry.spell_waterwalk_dummy);
 	}
 
 }

@@ -2,6 +2,8 @@ package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
@@ -80,6 +82,12 @@ public class SpellFirebolt implements ISpell
 	{
 
 		
+	}
+
+	@Override
+	public ItemStack getIconDisplay()
+	{
+		return new ItemStack(Items.fire_charge);
 	}
 
 }
