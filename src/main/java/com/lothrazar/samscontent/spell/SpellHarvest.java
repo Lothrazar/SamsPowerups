@@ -102,20 +102,10 @@ public class SpellHarvest implements ISpell
 			}  
 		} //end of the outer loop
  
-		if(countHarvested > 0)//something happened
-		{ 
-			player.swingItem();
-	
-			Util.playSoundAt(player, "mob.zombie.remedy");
-			 
-			if(world.isRemote) //client side 
-				Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
-			else 
-			{
-				//if(heldWand != null)
-				//	Util.decrHeldStackSize(entityPlayer);  
-			} 
-		}
+		if(countHarvested > 0)//something happened 
+			this.onCastSuccess(world, player, pos); 
+		else
+			this.onCastFailure(world, player, pos);
 	}
 
 	@Override
@@ -148,7 +138,13 @@ public class SpellHarvest implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-
+		player.swingItem();
+		
+		Util.playSoundAt(player, "mob.zombie.remedy");
+		 
+		if(world.isRemote) //client side 
+			Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
+		 
 		
 	}
 

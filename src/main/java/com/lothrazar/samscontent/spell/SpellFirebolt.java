@@ -28,12 +28,12 @@ public class SpellFirebolt implements ISpell
 				 ,player.getLookVec().zCoord));*/
 		world.spawnEntityInWorld(new EntitySmallFireball(world,player
 		 ,player.getLookVec().xCoord
-		 ,player.getLookVec().yCoord
+		 ,player.getLookVec().yCoord + 1
 		 ,player.getLookVec().zCoord));
 
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
 
-		
+
+		this.onCastSuccess(world, player, pos);
 	}
 
 	@Override
@@ -67,6 +67,7 @@ public class SpellFirebolt implements ISpell
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
 
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
 		
 	}
 

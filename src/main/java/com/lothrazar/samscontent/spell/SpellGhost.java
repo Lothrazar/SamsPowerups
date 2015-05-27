@@ -29,7 +29,8 @@ public class SpellGhost implements ISpell
 	{
 
 		setPlayerGhostMode(player,player.worldObj);
-		
+
+		this.onCastSuccess(world, player, pos);
 	}
 	private void setPlayerGhostMode(EntityPlayer player, World par2World)
 	{

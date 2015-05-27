@@ -20,6 +20,7 @@ public class SpellEnderpearl implements ISpell
 	{
 		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
 		 
+		this.onCastSuccess(world, player, pos);
 	}
 
 	@Override

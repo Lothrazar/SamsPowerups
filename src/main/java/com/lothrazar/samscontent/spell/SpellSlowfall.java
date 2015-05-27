@@ -24,7 +24,8 @@ public class SpellSlowfall implements ISpell
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,fiveSeconds,0));
 		 
 		
-		
+
+		this.onCastSuccess(world, player, pos);
 	}
 
 	@Override

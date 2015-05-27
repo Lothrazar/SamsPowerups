@@ -25,7 +25,7 @@ public class SpellFrostbolt implements ISpell
 
 		world.spawnEntityInWorld(new EntitySnowballBolt(world,player));
 
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
+		this.onCastSuccess(world, player, pos);
 		/*BlockPos up = entityPlayer.getPosition().offset(entityPlayer.getHorizontalFacing(), 1).up();
  
 		EntitySnowballBolt snow = new EntitySnowballBolt(world,entityPlayer 	 );
@@ -67,6 +67,7 @@ public class SpellFrostbolt implements ISpell
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
 
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
 		
 	}
 

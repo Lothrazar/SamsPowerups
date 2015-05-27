@@ -30,7 +30,8 @@ public class SpellPhasing implements ISpell
 
 		ItemWallCompass.wallPhase(player.worldObj,player,pos,facing);
  
-		
+
+		this.onCastSuccess(world, player, pos);
 	}
 
 	@Override

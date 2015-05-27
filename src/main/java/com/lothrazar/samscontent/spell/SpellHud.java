@@ -48,7 +48,8 @@ public class SpellHud implements ISpell
 		}
 		
 		props.setStringHUD(hudNew.name());
-		 
+
+		this.onCastSuccess(world, player, pos);
 	}
 
 	@Override
