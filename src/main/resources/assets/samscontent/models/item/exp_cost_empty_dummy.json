@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/fire_charge_throw"
+        "layer0": "samscontent:items/exp_cost_empty_dummy"
     },
     "display": {
         "thirdperson": {

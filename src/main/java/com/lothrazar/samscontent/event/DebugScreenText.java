@@ -189,10 +189,14 @@ public class DebugScreenText
 		
 		event.left.add(Util.lang("key.spell."+spellname));
 		 
-		int x = 12, y = 15;
  
 		EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
-		  
+		
+
+		renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),3,15);
+
+		int x = 12, y = 15;
+		
 		switch(spell)
 		{
 		case chest:
@@ -200,6 +204,9 @@ public class DebugScreenText
 			//doing it the way below crashes
 			//renderItemAt(new ItemStack(Item.getItemFromBlock(Blocks.chest)),x,y);
 			renderItemAt(new ItemStack(ItemRegistry.itemChestSack),x,y);
+			break;
+		case enderinv: 
+			renderItemAt(new ItemStack(ItemRegistry.spell_enderinv_dummy),x,y);
 			break;
 		case hud: 
 			renderItemAt(new ItemStack(Items.iron_ingot),x,y);

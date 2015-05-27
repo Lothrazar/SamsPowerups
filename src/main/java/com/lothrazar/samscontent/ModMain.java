@@ -717,10 +717,7 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyTransform.getKeyCode()));
         }
-        else if(ClientProxy.keyBindEnderInventory.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindEnderInventory.getKeyCode()));
-        }
+     
         else if(ClientProxy.keySpellCast.isPressed())
         {
     		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();

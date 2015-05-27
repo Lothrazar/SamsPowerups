@@ -69,10 +69,17 @@ public class ItemRegistry
 	public static Item spell_jump_dummy;
 	public static Item spell_ghost_dummy;
 	public static Item spell_enderinv_dummy;
+	public static Item exp_cost_dummy;
+	public static Item exp_cost_empty_dummy;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
+
+		exp_cost_dummy = new Item();
+		ItemRegistry.registerItem(exp_cost_dummy, "exp_cost_dummy");
+		exp_cost_empty_dummy = new Item();
+		ItemRegistry.registerItem(exp_cost_empty_dummy, "exp_cost_empty_dummy");
 		
 		spell_water_dummy = new Item();
 		ItemRegistry.registerItem(spell_water_dummy, "spell_water_dummy"); 
