@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samscontent.spell;
 
 import java.util.ArrayList;
 
@@ -21,20 +21,12 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-public class ItemWandPiston extends Item
+public class UtilPistonSpell 
 {
 	public static int DURABILITY;
 	public static ArrayList<Block> ignoreList = new ArrayList<Block>();
 	public static String ignoreListFromConfig = "";
-	
-	public ItemWandPiston()
-	{
-		super();
-		this.setCreativeTab(ModMain.tabSamsContent);
-		this.setMaxDamage(DURABILITY);
-		this.setMaxStackSize(1);
-	}
-
+	 
 	private static void translateCSV()
 	{
 		//do this on the fly, could be items not around yet during config change
@@ -44,17 +36,7 @@ public class ItemWandPiston extends Item
 	{ 
 		ignoreListFromConfig = csv;
 	} 
-	/*
-	public void addRecipe()
-	{
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wand_piston),
-			"  p",
-			" i ",
-			"b  ",
-			'p',Blocks.piston,
-			'i',Blocks.iron_block,
-			'b',Items.blaze_rod); 
-	}*/
+ 
  
 	public static void moveBlockTo(World world, EntityPlayer player,BlockPos pos, BlockPos posMoveToHere,boolean useItem)
 	{

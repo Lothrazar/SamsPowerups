@@ -275,6 +275,8 @@ public class Reference
 	public static class sounds
 	{
 		public final static String bowtoss = "random.bow";
+		public final static String wood_click = "random.wood_click";
+		
 	}
 
 

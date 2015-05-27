@@ -27,11 +27,8 @@ public class ItemRegistry
 { 
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	
-	public static ItemEnderBook itemEnderBook;
-	//public static ItemChestSackEmpty itemChestSackEmpty; 
-	public static ItemChestSack itemChestSack;
-	//public static ItemMagicHarvester harvest_charge;
-	//public static ItemWandTransform wandTransform; 
+	public static ItemEnderBook itemEnderBook; 
+	public static ItemChestSack itemChestSack; 
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
 	public static ItemFoodAppleMagic apple_diamond; 
@@ -49,17 +46,11 @@ public class ItemRegistry
 	public static ItemHorseFood emeraldCarrot; 
 	public static ItemHorseFood lapisCarrot; 
 	public static ItemHorseFood diamondCarrot; 
-	
-	//public static ItemFireballThrowable fire_charge_throw;
-	//public static ItemSnowballFrozen frozen_snowball; 
-	public static ItemRespawnEggAnimal respawn_egg;
-	//public static ItemWandPiston wand_piston;
+	 
+	public static ItemRespawnEggAnimal respawn_egg; 
 	public static ItemSoulstone soulstone;
 	public static ItemSoulstone soulstone_persist;
- 
-	public static ItemEnderCookie ender_cookie;
-	//public static ItemWallCompass wall_compass;
-	//public static ItemSuperfood food_super;
+   
 	public static int emerald_harvestLevel=2;
 	public static int emerald_maxUses=32;
 	public static float emerald_efficiency=12F;
@@ -75,18 +66,7 @@ public class ItemRegistry
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 		
-		//ItemRegistry.itemChestSackEmpty = new ItemChestSackEmpty(); 
-		//ItemRegistry.registerItem(ItemRegistry.itemChestSackEmpty, "chest_sack_empty");
-	//
-		//ItemChestSackEmpty.addRecipe();  
-	
-		if(ModMain.cfg.ender_cookie)
-		{
-			ender_cookie = new ItemEnderCookie();
-			ItemRegistry.registerItem(ender_cookie, "ender_cookie");
-			ItemEnderCookie.addRecipe();
-		}
-		
+  
 		if(ModMain.cfg.emerald_armor)
 		{
 			MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 

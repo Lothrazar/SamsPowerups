@@ -8,6 +8,8 @@ import net.minecraftforge.common.config.Configuration;
 import com.lothrazar.samscontent.command.*;  
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.samscontent.item.*; 
+import com.lothrazar.samscontent.spell.UtilBlockTransform;
+import com.lothrazar.samscontent.spell.UtilPistonSpell;
 import com.lothrazar.util.Reference;
 
 public class ConfigRegistry
@@ -318,8 +320,8 @@ public class ConfigRegistry
 		category = "items";
 		//superfood = instance.getBoolean("superfood",category, true,
 		//		"Combine beetroot with other food to create a super food (bread, beetroot, carrot, cooked potato, and one cooked meat).");  
-		ender_cookie = instance.getBoolean("ender_cookie",category, true,
-				"Teleports you to worldspawn when eaten.");  
+		//ender_cookie = instance.getBoolean("ender_cookie",category, true,
+	//			"Teleports you to worldspawn when eaten.");  
 		
 		//phasing_compass  = instance.getBoolean("phasing_compass",category, true,
 		//		"Click this item on a block to teleport to the other side, if it is a 1-thick wall.  Works very similar to (and inspired by) Bukkit Essentials compass teleportation.");   
@@ -366,7 +368,7 @@ public class ConfigRegistry
 		respawn_egg = instance.getBoolean("respawn_egg",category, true,
     			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
  
-		ItemWandTransform.DURABILITY  = instance.getInt("wand_transform.durability",category, 200,1,999,
+		UtilBlockTransform.DURABILITY  = instance.getInt("wand_transform.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 		
 		//wandTransform = instance.getBoolean("wand_transform",category, true,
@@ -377,9 +379,9 @@ public class ConfigRegistry
 	
 		String csv = instance.getString("wand_piston.ignored",category, "minecraft:cactus,minecraft:piston_head,minecraft:piston_extension,minecraft:lit_furnace,minecraft:melon_stem,minecraft:pumpkin_stem,minecraft:wheat,samscontent:beetroot_crop,wooden_door,minecraft:spruce_door,minecraft:birch_door,minecraft:jungle_door,minecraft:acacia_door,minecraft:dark_oak_door,minecraft:iron_door,minecraft:bedrock,minecraft:tripwire,minecraft:tripwire_hook,minecraft:stone_button,minecraft:wooden_button,minecraft:stone_pressure_plate,minecraft:wooden_pressure_plate,minecraft:heavy_weighted_pressure_plate,minecraft:light_weighted_pressure_plate,minecraft:redstone_wire,minecraft:mob_spawner,minecraft:ladder",
     			"List of ignored blocks that will not be moved.");
-		ItemWandPiston.seIgnoreBlocksFromString(csv);
+		UtilPistonSpell.seIgnoreBlocksFromString(csv);
 		
-		ItemWandPiston.DURABILITY = instance.getInt("wand_piston.durability",category, 200,1,999,
+		UtilPistonSpell.DURABILITY = instance.getInt("wand_piston.durability",category, 200,1,999,
     			"Durability (number of uses in survival).");
 
 		wandWater = instance.getBoolean("wand_water",category, true,
@@ -699,8 +701,7 @@ public class ConfigRegistry
 	public boolean smelt_gravel;
 	public boolean cmd_place_blocks; 
 	public boolean emerald_armor; 
-	public boolean cheaper_stairs;
-	public boolean ender_cookie;
+	public boolean cheaper_stairs; 
 	public boolean cmd_recipe;
 	public boolean cmd_uses;
 	//public boolean phasing_compass;

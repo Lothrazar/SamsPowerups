@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samscontent.spell;
 
 import java.util.List;
 
@@ -39,34 +39,11 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class ItemWandTransform extends Item
+public class UtilBlockTransform 
 { 
 	public static int DURABILITY;
   
-	public ItemWandTransform( )
-	{   
-		super(); 
-    	this.setMaxDamage(DURABILITY);
-    	this.setMaxStackSize(1); 
-		this.setCreativeTab(ModMain.tabSamsContent);  
-	}
-	  
-	@Override
-    public boolean hasEffect(ItemStack par1ItemStack)
-    {
-    	return true; //give it shimmer
-    }
-	  /*
-	public static void addRecipe() 
-	{
-		GameRegistry.addRecipe(new ItemStack(ItemRegistry.wandTransform),
-				"  p",
-				" i ",
-				"b  ",
-				'p',Items.diamond,
-				'i',Blocks.end_stone,
-				'b',Items.blaze_rod); 
-	}*/
+	
  
 	private static int INVALID = -1;
 	public static void transformBlock(EntityPlayer player, World world, ItemStack heldWand, BlockPos pos)
@@ -809,9 +786,5 @@ public class ItemWandTransform extends Item
 		}
 	}
 	
-	@Override
-	public void addInformation(ItemStack itemStack, EntityPlayer player, List list, boolean par4) 
-	{         
-        list.add("Cycles the blockstate of some blocks");//TODO lang file         
-	}
+ 
 }

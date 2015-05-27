@@ -2,15 +2,14 @@ package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry;
+import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.command.CommandBindMacro;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
-import com.lothrazar.samscontent.item.ItemChestSackEmpty;
-import com.lothrazar.samscontent.item.ItemFoodGhost; 
-import com.lothrazar.samscontent.item.ItemWallCompass;
-import com.lothrazar.samscontent.item.ItemWandPiston;
-import com.lothrazar.samscontent.item.ItemWandTransform;
 import com.lothrazar.samscontent.potion.PotionRegistry;
+import com.lothrazar.samscontent.spell.ISpell;
+import com.lothrazar.samscontent.spell.UtilBlockTransform;
+import com.lothrazar.samscontent.spell.UtilPistonSpell;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -112,15 +111,15 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keyPush.getKeyCode())
 	 	{
-			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
+			UtilPistonSpell.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyPull.getKeyCode())
 	 	{  
-			ItemWandPiston.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing().getOpposite()),false);
+			UtilPistonSpell.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing().getOpposite()),false);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyTransform.getKeyCode())
 	 	{ 
-			ItemWandTransform.transformBlock(player, player.worldObj, null, posMouse);
+			UtilBlockTransform.transformBlock(player, player.worldObj, null, posMouse);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyBindEnder.getKeyCode())
 	 	{ 
@@ -128,7 +127,11 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
-			SpellRegistry.cast(SpellRegistry.getPlayerCurrentSpell(player), world, player,posMouse);
+			System.out.println("cast current spell isremote = "+player.worldObj.isRemote);
+			EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
+			//ISpell//TODO:
+			
+			SpellRegistry.cast(spell, world, player,posMouse);
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{

@@ -88,7 +88,7 @@ public class SpellHud implements ISpell
 		
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
+		Util.playSoundAt(player, Reference.sounds.wood_click);
 		
 	}
 

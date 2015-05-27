@@ -10,6 +10,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellChest implements ISpell
@@ -140,7 +141,7 @@ public class SpellChest implements ISpell
 		
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
-		Util.playSoundAt(player, "random.wood_click");
+		Util.playSoundAt(player, Reference.sounds.wood_click);
 	}
 
 	@Override

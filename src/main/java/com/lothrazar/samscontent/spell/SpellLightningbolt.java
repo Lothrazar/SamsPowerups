@@ -23,7 +23,7 @@ public class SpellLightningbolt implements ISpell
 	{ 
 		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
 		
-		world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
+		//world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
  	
 
 		this.onCastSuccess(world, player, pos);

@@ -7,8 +7,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
-import com.lothrazar.samscontent.item.ItemFoodGhost;
+import com.lothrazar.samscontent.SpellRegistry.EnumSpellType; 
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 

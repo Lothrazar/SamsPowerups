@@ -723,6 +723,8 @@ public class ModMain
         }
         else if(ClientProxy.keySpellCast.isPressed())
         {
+    		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
+			System.out.println("keySpellCast.isPressed() ;  isremote = "+world.isRemote);
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
         }
         else if(ClientProxy.keySpellUp.isPressed())
