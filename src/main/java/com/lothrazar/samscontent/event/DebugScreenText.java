@@ -214,10 +214,10 @@ public class DebugScreenText
 			renderItemAt(new ItemStack(ItemRegistry.spell_frostbolt_dummy),x,y);
 			break;
 		case ghost: 
-			renderItemAt(new ItemStack(Items.ghast_tear),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.spell_ghost_dummy),x,y);
 			break;
 		case jump: 
-			renderItemAt(new ItemStack(Items.slime_ball),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.spell_jump_dummy),x,y);
 			break;
 		case lightningbolt: 
 			//renderItemAt(new ItemStack(Items.skull,1,Reference.skull_creeper),x,y);

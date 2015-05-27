@@ -66,23 +66,27 @@ public class ItemRegistry
 	public static Item spell_waterwalk_dummy;
 	public static Item spell_harvest_dummy;
 	public static Item spell_lightning_dummy;
+	public static Item spell_jump_dummy;
+	public static Item spell_ghost_dummy;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 		
 		spell_water_dummy = new Item();
-		ItemRegistry.registerItem(spell_water_dummy, "spell_water_dummy");
-
+		ItemRegistry.registerItem(spell_water_dummy, "spell_water_dummy"); 
+		spell_jump_dummy = new Item();
+		ItemRegistry.registerItem(spell_jump_dummy, "spell_jump_dummy");
 		spell_frostbolt_dummy = new Item();
 		ItemRegistry.registerItem(spell_frostbolt_dummy, "spell_frostbolt_dummy");
-
 		spell_waterwalk_dummy = new Item();
 		ItemRegistry.registerItem(spell_waterwalk_dummy, "spell_waterwalk_dummy");
 		spell_harvest_dummy = new Item();
 		ItemRegistry.registerItem(spell_harvest_dummy, "spell_harvest_dummy");
 		spell_lightning_dummy = new Item();
 		ItemRegistry.registerItem(spell_lightning_dummy, "spell_lightning_dummy");
+		spell_ghost_dummy = new Item();
+		ItemRegistry.registerItem(spell_ghost_dummy, "spell_ghost_dummy");
 		
 		if(ModMain.cfg.emerald_armor)
 		{
