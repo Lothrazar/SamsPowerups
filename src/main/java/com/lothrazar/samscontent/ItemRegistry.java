@@ -61,10 +61,16 @@ public class ItemRegistry
 	public static int timePotionShort = 90; // 1:30
 	public static int timePotionLong = 8 * 60;// 8:00
 	
+	public static Item dummy_water_spell;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
+		
+		dummy_water_spell = new Item();
+		ItemRegistry.registerItem(dummy_water_spell, "wand_water");
+		//dummy_water_spell.setCreativeTab(ModMain.tabSamsContent);
+		
 		
   
 		if(ModMain.cfg.emerald_armor)

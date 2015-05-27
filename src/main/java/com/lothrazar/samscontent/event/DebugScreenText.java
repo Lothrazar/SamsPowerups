@@ -236,7 +236,7 @@ public class DebugScreenText
 			renderItemAt(new ItemStack(Items.chainmail_boots),x,y);
 			break;
 		case waterbolt:
-			renderItemAt(new ItemStack(Items.water_bucket),x,y);
+			renderItemAt(new ItemStack(ItemRegistry.dummy_water_spell),x,y);
 		break;
 		default:
 			//System.out.println("unknown spell");
