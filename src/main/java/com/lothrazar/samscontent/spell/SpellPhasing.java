@@ -14,7 +14,7 @@ public class SpellPhasing implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.phase;
 	}
 
 	@Override

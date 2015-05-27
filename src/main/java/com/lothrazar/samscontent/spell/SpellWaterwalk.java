@@ -17,7 +17,7 @@ public class SpellWaterwalk implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.waterwalk;
 	}
 
 	@Override

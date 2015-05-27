@@ -14,7 +14,7 @@ public class SpellFirebolt implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.firebolt;
 	}
 
 	@Override

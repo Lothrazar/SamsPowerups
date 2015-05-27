@@ -14,7 +14,7 @@ public class SpellEnderpearl implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.pearl;
 	}
 
 	@Override

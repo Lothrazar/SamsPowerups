@@ -16,7 +16,7 @@ public class SpellSlowfall implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.slowfall;
 	}
 
 	@Override

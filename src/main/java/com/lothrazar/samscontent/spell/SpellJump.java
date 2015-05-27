@@ -16,7 +16,7 @@ public class SpellJump implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.jump;
 	}
 
 	@Override

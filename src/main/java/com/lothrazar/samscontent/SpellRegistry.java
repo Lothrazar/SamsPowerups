@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent;
 
+import java.util.ArrayList;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
@@ -27,6 +28,8 @@ public class SpellRegistry
 { 
 	public static void setup()
 	{
+		spellbook = new ArrayList<ISpell>();
+		
 		chest = new SpellChest();
 		firebolt = new SpellFirebolt();
 		frostbolt = new SpellFrostbolt();
@@ -39,8 +42,22 @@ public class SpellRegistry
 		lightningbolt = new SpellLightningbolt();
 		slowfall = new SpellSlowfall();
 		waterwalk = new SpellWaterwalk();
+		
+		spellbook.add(chest);
+		spellbook.add(firebolt);
+		spellbook.add(frostbolt);
+		spellbook.add(ghost);
+		spellbook.add(harvest);
+		spellbook.add(hud);
+		spellbook.add(jump );
+		spellbook.add(pearl );
+		spellbook.add(phase );
+		spellbook.add(lightningbolt);
+		spellbook.add(slowfall );
+		spellbook.add(waterwalk );
 	}
 
+	public static ArrayList<ISpell> spellbook;
 	public static ISpell chest;
 	public static ISpell firebolt;
 	public static ISpell frostbolt;
@@ -78,58 +95,14 @@ public class SpellRegistry
 	
 	public static void cast(EnumSpellType spell, World world, EntityPlayer player,BlockPos pos)
 	{
-		switch(spell)
-		{
-		case chest:
-			chest.cast(world, player, pos);
-			break;
-		case harvest:
-			harvest.cast(world, player,  pos);
-			break;
-		case hud:
-			hud.cast(world,player,pos);
-			break;
-		case firebolt:
-			firebolt.cast(world,player,pos);
-			break;
-		case ghost:
-
-			ghost.cast(player.worldObj,player,pos);
-			
-			break;
-		case jump:
-		  
-			jump.cast(world,player,pos);
-			
-			break;
-		case lightningbolt:
-		 
-			lightningbolt.cast(world, player, pos);
-			 
-			break;
-		case pearl:
-
-			pearl.cast(world, player, pos);
-			 
-			break;
-		case phase:
-
-			phase.cast(world, player, pos);
-		 
-			break;
-		case slowfall:
-
-			slowfall.cast(world, player, pos);
-			 
-			break;
-		case waterwalk:
-
-			waterwalk.cast(world, player, pos);
-			 
-			break;
-		default:
-			break;
-		}
+		for(ISpell sp : spellbook)
+		{ 
+			if(sp.getSpellType() == spell)
+			{
+				sp.cast(world, player, pos);
+				break;
+			}
+		} 
 	}
 	
 	 

@@ -15,7 +15,7 @@ public class SpellFrostbolt implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.frostbolt;
 	}
 
 	@Override

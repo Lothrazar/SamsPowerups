@@ -15,7 +15,7 @@ public class SpellLightningbolt implements ISpell
 	@Override
 	public EnumSpellType getSpellType()
 	{
-		return EnumSpellType.chest;
+		return EnumSpellType.lightningbolt;
 	}
 
 	@Override
