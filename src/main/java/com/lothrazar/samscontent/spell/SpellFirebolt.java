@@ -21,11 +21,15 @@ public class SpellFirebolt implements ISpell
 	{
 
 		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
-
+/*
 		world.spawnEntityInWorld(new EntitySmallFireball(world,up.getX(),up.getY(),up.getZ()
 				 ,player.getLookVec().xCoord
 				 ,player.getLookVec().yCoord
-				 ,player.getLookVec().zCoord));
+				 ,player.getLookVec().zCoord));*/
+		world.spawnEntityInWorld(new EntitySmallFireball(world,player
+		 ,player.getLookVec().xCoord
+		 ,player.getLookVec().yCoord
+		 ,player.getLookVec().zCoord));
 
 		Util.playSoundAt(player, Reference.sounds.bowtoss);
 

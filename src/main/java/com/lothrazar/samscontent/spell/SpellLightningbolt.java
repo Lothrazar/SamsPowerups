@@ -18,8 +18,7 @@ public class SpellLightningbolt implements ISpell
 
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
-	{
-		// TODO Auto-generated method stub
+	{ 
 		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
 		
 		world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
