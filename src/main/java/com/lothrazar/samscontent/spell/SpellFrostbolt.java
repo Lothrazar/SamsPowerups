@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.spell;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
@@ -67,6 +68,10 @@ public class SpellFrostbolt implements ISpell
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
 
+		player.swingItem();
+		
+		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
+		
 		Util.playSoundAt(player, Reference.sounds.bowtoss);
 		
 	}

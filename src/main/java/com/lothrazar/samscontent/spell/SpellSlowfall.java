@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.spell;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.potion.PotionRegistry;
@@ -58,7 +59,11 @@ public class SpellSlowfall implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-
+		player.swingItem();
+		
+		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
+		
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
 		
 	}
 

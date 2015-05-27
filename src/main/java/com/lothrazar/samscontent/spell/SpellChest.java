@@ -136,8 +136,8 @@ public class SpellChest implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-
 		player.swingItem();
+		
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
 		Util.playSoundAt(player, "random.wood_click");
