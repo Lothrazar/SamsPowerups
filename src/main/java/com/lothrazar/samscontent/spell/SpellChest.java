@@ -24,16 +24,14 @@ public class SpellChest implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
 		// TODO Auto-generated method stub
-		convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(pos), pos);
-	}
-
-	
-	
-	public void convertChestToSack(EntityPlayer entityPlayer, ItemStack heldWand, TileEntityChest chestTarget, BlockPos pos)
-	{ 	
-		////ItemChestSackEmpty.convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(pos), pos);
+		TileEntityChest chestTarget = (TileEntityChest)world.getTileEntity(pos);
+		//convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(pos), pos);
 		
-		if(chestTarget == null){return;}//wrong type of tile entity
+		if(chestTarget == null)
+		{
+			onCastFailure(world,player,pos);
+			return;
+		}//wrong type of tile entity
 		
 		//TODO:  make it also work with trapped chests/dispensers/droppers/ etc. set extra flag to identify
 		//means not just TileEntityChest
@@ -73,7 +71,7 @@ public class SpellChest implements ISpell
 			if(chestItem.getTagCompound() != null)
 			{
 				//probably has an enchantment
-				entityPlayer.dropPlayerItemWithRandomChoice(chestItem, false); 
+				player.dropPlayerItemWithRandomChoice(chestItem, false); 
 			}
 			else
 			{
@@ -98,24 +96,15 @@ public class SpellChest implements ISpell
 		drop.getTagCompound().setString("count",""+count);
 		drop.getTagCompound().setString("stacks",""+stacks);
 	 	 
-		entityPlayer.entityDropItem(drop, 1); 
+		player.entityDropItem(drop, 1); 
 			 
 		 //the 2 here is just a magic flag it passes to the world to propogate the event
 	
-		entityPlayer.worldObj.setBlockToAir(pos); 
+		world.setBlockToAir(pos); 
 
-		entityPlayer.swingItem();
-		
-		if(heldWand != null)
-			entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, 1);
- 
-		Util.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(entityPlayer, "random.wood_click");
+		onCastSuccess(world,player,pos);
 	}
-	
-	
-	
+
 	@Override
 	public boolean canPlayerCast(EntityPlayer player)
 	{
@@ -145,14 +134,17 @@ public class SpellChest implements ISpell
 	}
 
 	@Override
-	public void onCastSuccess(World world, EntityPlayer player)
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
 
+		player.swingItem();
+		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
+		Util.playSoundAt(player, "random.wood_click");
 	}
 
 	@Override
-	public void onCastFailure(World world, EntityPlayer player)
+	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
 
 		

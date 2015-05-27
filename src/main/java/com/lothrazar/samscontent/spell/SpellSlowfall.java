@@ -55,14 +55,14 @@ public class SpellSlowfall implements ISpell
 		return cost;
 	}
 	@Override
-	public void onCastSuccess(World world, EntityPlayer player)
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
 
 		
 	}
 
 	@Override
-	public void onCastFailure(World world, EntityPlayer player)
+	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
 
 		
