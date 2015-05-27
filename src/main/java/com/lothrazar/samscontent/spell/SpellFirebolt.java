@@ -63,5 +63,18 @@ public class SpellFirebolt implements ISpell
 	{
 		return cost;
 	}
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player)
+	{
+
+		
+	}
+
+	@Override
+	public void onCastFailure(World world, EntityPlayer player)
+	{
+
+		
+	}
 
 }

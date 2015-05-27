@@ -11,6 +11,11 @@ public interface ISpell
 	
 	public void cast(World world, EntityPlayer player, BlockPos pos);
 	
+	public void onCastSuccess(World world, EntityPlayer player);
+	
+	public void onCastFailure(World world, EntityPlayer player);
+	
+	
 	public boolean canPlayerCast(EntityPlayer player);
 
 	public void setExpCost(int cost);
