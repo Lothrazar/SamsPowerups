@@ -47,7 +47,7 @@ public class SpellJump implements ISpell
 		 Util.drainExp(player, getExpCost());
 	}
 
-	private int cost = 10;
+	private int cost = 50;
 	@Override
 	public void setExpCost(int c)
 	{

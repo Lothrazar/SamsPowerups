@@ -46,7 +46,7 @@ public class SpellWaterwalk implements ISpell
 		 Util.drainExp(player, getExpCost());
 	}
 
-	private int cost = 10;
+	private int cost = 1;
 	@Override
 	public void setExpCost(int c)
 	{

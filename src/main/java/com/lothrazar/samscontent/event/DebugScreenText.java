@@ -188,17 +188,23 @@ public class DebugScreenText
 		 
 		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
  
-		int x = 10, y = 2;
+		int x = 22, y = 2;
 
-		renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),10,2);
-
+		boolean canAfford = (Util.getExpTotal(player) <= spell.getExpCost());
+		
+		if(canAfford)
+			renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),x,y);
+		else
+			renderItemAt(new ItemStack(ItemRegistry.exp_cost_empty_dummy),x,y);
+			
 		//Util.lang("key.spell.cost")
-		//event.left.add("");
+		event.left.add("");
 		event.left.add(spell.getExpCost()+"" );
+		
 		
 		if(spell.getIconDisplay() != null)
 		{
-			x = 18; 
+			x = 25; 
 			y = 2;
 			renderItemAt(spell.getIconDisplay(),x,y);
 		}

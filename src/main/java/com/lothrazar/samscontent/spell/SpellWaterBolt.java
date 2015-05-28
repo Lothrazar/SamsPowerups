@@ -47,7 +47,7 @@ public class SpellWaterBolt implements ISpell
 		 Util.drainExp(player, getExpCost());
 	}
 
-	private int cost = 10;
+	private int cost = 200;
 	@Override
 	public void setExpCost(int c)
 	{
