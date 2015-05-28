@@ -121,68 +121,70 @@ public class DebugScreenText
 		}
 
 		drawSpell(event); 
+		
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
 		{
 
-		 	drawHud(player);
-			return;
+		 	drawHud(player); 
 		}
-		
-		
-	 
-		if(ModMain.cfg.reducedDebugImproved && 
-				world.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo) )
-		{ 
-			int blockLight = world.getLightFromNeighbors(player.getPosition()) + 1;
-			
-			String firstLine = Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName;
-
-			//EnumChatFormatting.GREEN + 
-			String light = Util.lang("debug.light")+"  "+blockLight;
-				//	+"  "+world.getLight(player.getPosition(), true)
-				//	+"  "+world.getLightBrightness(player.getPosition())
-					
-			
-			
-			if(player.isSneaking()) // L for light
-				firstLine = firstLine +"  "+light;
-			
-			//Minecraft.getMinecraft().getDebugFPS()
-			
-			event.left.add(firstLine);
-			
-			
-
-		}
-		
- 
-		addDateTimeInfo(event, world);
-		
-		  
-	 	if(ModMain.cfg.debugSlime && player.dimension == Reference.Dimension.overworld)
-	 	{ 
-	 		addSlimeChunkInfo(event, player, world); 
-	 	}
-	 	
-	 	if(ModMain.cfg.debugVillageInfo && world.villageCollectionObj != null)
-	 	{   
-	 		addVillageInfo(event, player, world);	 
-		}
-	 	
-	 	if(ModMain.cfg.debugHorseInfo && player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
-	 	{ 
-	 		addHorseInfo(event, player);   
-	 	} 
-
+		else
+		{
+			 
+			if(ModMain.cfg.reducedDebugImproved && 
+					world.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo) )
+			{ 
+				int blockLight = world.getLightFromNeighbors(player.getPosition()) + 1;
+				
+				String firstLine = Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName;
 	
-		CommandSimpleWaypoints.AddWaypointInfo(event); 
+				//EnumChatFormatting.GREEN + 
+				String light = Util.lang("debug.light")+"  "+blockLight;
+					//	+"  "+world.getLight(player.getPosition(), true)
+					//	+"  "+world.getLightBrightness(player.getPosition())
+						
+				
+				
+				if(player.isSneaking()) // L for light
+					firstLine = firstLine +"  "+light;
+				
+				//Minecraft.getMinecraft().getDebugFPS()
+				
+				event.left.add(firstLine);
+				
+				
+	
+			}
+			
+	 
+			addDateTimeInfo(event, world);
+			
+			  
+		 	if(ModMain.cfg.debugSlime && player.dimension == Reference.Dimension.overworld)
+		 	{ 
+		 		addSlimeChunkInfo(event, player, world); 
+		 	}
+		 	
+		 	if(ModMain.cfg.debugVillageInfo && world.villageCollectionObj != null)
+		 	{   
+		 		addVillageInfo(event, player, world);	 
+			}
+		 	
+		 	if(ModMain.cfg.debugHorseInfo && player.ridingEntity != null && player.ridingEntity instanceof EntityHorse)
+		 	{ 
+		 		addHorseInfo(event, player);   
+		 	} 
+	
 		
-		addTodoCommandInfo(event, player);  
-
-	 	if(Util.isShiftKeyDown() && ModMain.cfg.debugGameruleInfo)  
-	 	{ 
-			addGameruleInfo(event, world); 
-		} 
+			CommandSimpleWaypoints.AddWaypointInfo(event); 
+			
+			addTodoCommandInfo(event, player);  
+	
+		 	if(Util.isShiftKeyDown() && ModMain.cfg.debugGameruleInfo)  
+		 	{ 
+				addGameruleInfo(event, world); 
+			}
+		}
+		 
 	 	 
 	}
 
