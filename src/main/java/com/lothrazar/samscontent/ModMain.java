@@ -9,6 +9,7 @@ import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.cfg.ConfigRegistry;
 import com.lothrazar.samscontent.command.*;
 import com.lothrazar.samscontent.common.PlayerPowerups;
+import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
 import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
@@ -31,6 +32,7 @@ import net.minecraft.block.BlockTrapDoor;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EntityLiving;
@@ -81,6 +83,7 @@ import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
 import net.minecraftforge.fml.client.event.ConfigChangedEvent;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -150,6 +153,7 @@ public class ModMain
 		BlockHardnessRegistry.registerChanges(); 
 		
 		SpellRegistry.setup();
+		
 	}
         
 	@EventHandler
@@ -177,13 +181,19 @@ public class ModMain
   			int weight = 0;
 			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
 		}
+  		//TODO:
+		//Minecraft.getMinecraft().getRenderManager().entityRenderMap.put(EntitySoulstoneBolt.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), ItemRegistry.soulstone, Minecraft.getMinecraft().getRenderItem()));
 
+
+        EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModMain.instance, 64, 1, true);
+		
 		proxy.registerRenderers();
 	}
 	
 	@EventHandler 
 	public void onPostInit(FMLPostInitializationEvent event)
-	{ 
+	{ 		
+	
 	}
 	
 	@EventHandler

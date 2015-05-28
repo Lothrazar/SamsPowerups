@@ -8,12 +8,16 @@ import  net.minecraft.item.Item;
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
+import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
 import com.lothrazar.util.*;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.client.registry.RenderingRegistry;
+import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.client.settings.GameSettings;
@@ -42,6 +46,10 @@ public class ClientProxy extends CommonProxy
     	registerKeyBindings(); 
 
         registerModels(); 
+        
+
+		RenderingRegistry.registerEntityRenderingHandler(EntitySoulstoneBolt.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), ItemRegistry.soulstone, Minecraft.getMinecraft().getRenderItem()));
+		
     }
 
 	private void registerModels() 
