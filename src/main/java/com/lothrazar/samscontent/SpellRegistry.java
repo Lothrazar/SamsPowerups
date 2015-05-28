@@ -157,10 +157,22 @@ public class SpellRegistry
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 		 
-		if(props.getStringSpell() == "")
-			setPlayerCurrentSpell(player, EnumSpellType.chest);//default
+	//	if(props.getStringSpell() == "")//didnt work
 
-		return EnumSpellType.valueOf(props.getStringSpell());
+		
+		 EnumSpellType newOrDefault =  EnumSpellType.chest;
+		 
+		 try{
+			 newOrDefault = EnumSpellType.valueOf(props.getStringSpell());
+		 }
+		 catch (Exception e)
+		 {
+			 //in case blank wasnt caught already
+			 setPlayerCurrentSpell(player, EnumSpellType.chest);//default
+			 newOrDefault = EnumSpellType.chest; 
+		 }
+		
+		return newOrDefault;
 	}
 
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)

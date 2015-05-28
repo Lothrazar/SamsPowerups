@@ -125,14 +125,13 @@ public class DebugScreenText
 		if(props.getSpellToggle() == 1)
 		{
 			drawSpell(event); 
+			
+			
+		 	drawHud(player); 
+		
 		}
 		
-		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
-		{
-
-		 	drawHud(player); 
-		}
-		else
+		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
 		{
 			 
 			if(ModMain.cfg.reducedDebugImproved && 
@@ -271,7 +270,20 @@ public class DebugScreenText
 		String hudCurr = props.getStringHUD();
 		if(hudCurr == null || hudCurr.trim()=="") hudCurr = EnumHudType.none.name();
 	
-		switch(EnumHudType.valueOf(hudCurr))
+		EnumHudType newhud = null;
+		
+		
+		try{
+			newhud = EnumHudType.valueOf(hudCurr);
+		}
+		catch(Exception e)
+		{
+			//its ok, stay to none by default
+			newhud = EnumHudType.none;
+		}
+		
+		
+		switch(newhud)
 		{
 		case clock: 
 			renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
