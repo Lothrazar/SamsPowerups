@@ -27,7 +27,7 @@ public class SpellPhasing implements ISpell
 				, (float)player.getLookVec().yCoord
 				, (float)player.getLookVec().zCoord);
 
-		System.out.println("TODO: bugfix phase  "+face.getName()+"  "+Util.posToString(pos));
+		//System.out.println(": bugfix phase  "+face.getName()+"  "+Util.posToString(pos));
 		
 		//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
 
