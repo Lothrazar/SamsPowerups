@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -102,9 +103,8 @@ public class SpellHud implements ISpell
 
 	@Override
 	public ItemStack getIconDisplay()
-	{
-		// TODO Auto-generated method stub
-		return null;
+	{ 
+		return new ItemStack(Items.map);
 	}
 
 }

@@ -188,7 +188,7 @@ public class DebugScreenText
 		 
 		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
  
-		int x = 22, y = 2;
+		int x = 8, y = 2;
 
 		boolean canAfford = (Util.getExpTotal(player) <= spell.getExpCost());
 		
@@ -198,8 +198,8 @@ public class DebugScreenText
 			renderItemAt(new ItemStack(ItemRegistry.exp_cost_empty_dummy),x,y);
 			
 		//Util.lang("key.spell.cost")
-		event.left.add("");
-		event.left.add(spell.getExpCost()+"" );
+		//event.left.add("");
+		//event.left.add(spell.getExpCost()+"" );
 		
 		
 		if(spell.getIconDisplay() != null)

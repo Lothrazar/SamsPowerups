@@ -13,6 +13,7 @@ import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
 import com.lothrazar.samscontent.proxy.*; 
+import com.lothrazar.samscontent.spell.*;
 import com.lothrazar.samscontent.stats.*;
 import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;
 import com.lothrazar.samscontent.world.*; 
@@ -298,7 +299,7 @@ public class ModMain
 	@SubscribeEvent
 	public void onLivingHurt(LivingHurtEvent event) 
 	{ 
-		ItemSoulstone.onLivingHurt(event);
+		SpellSoulstone.onLivingHurt(event);
 	}
 	
 	@SubscribeEvent
@@ -405,12 +406,12 @@ public class ModMain
 				event.setCanceled(true);//stop the GUI inventory opening
 			}  
 		}  
-		
+		/*
 		if(held != null && held.getItem() instanceof ItemSoulstone)
 		{      
 			ItemSoulstone.onEntityInteract(event);   
 		}  
-		
+		*/
   	} 
 	 
 	@SubscribeEvent

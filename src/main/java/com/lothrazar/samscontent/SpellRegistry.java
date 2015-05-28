@@ -41,6 +41,7 @@ public class SpellRegistry
 		slowfall = new SpellSlowfall();
 		waterwalk = new SpellWaterwalk();
 		waterbolt = new SpellWaterBolt();
+		soulstone = new SpellSoulstone();
 		spellbook.add(chest);
 		spellbook.add(enderinv);
 		spellbook.add(firebolt);
@@ -55,6 +56,7 @@ public class SpellRegistry
 		spellbook.add(slowfall );
 		spellbook.add(waterwalk );
 		spellbook.add(waterbolt );
+		spellbook.add(soulstone);
 		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 	}
 
@@ -73,6 +75,7 @@ public class SpellRegistry
 	public static ISpell slowfall;
 	public static ISpell waterwalk;
 	public static ISpell waterbolt;
+	public static ISpell soulstone;
 	
 	public enum EnumSpellType {
 		chest,
@@ -87,6 +90,7 @@ public class SpellRegistry
 		pearl,
 		phase,
 		slowfall,
+		soulstone,
 		waterwalk,
 		waterbolt;
 		//thanks to http://digitaljoel.nerd-herders.com/2011/04/05/get-the-next-value-in-a-java-enum/
@@ -130,7 +134,7 @@ public class SpellRegistry
 		 
 		setPlayerCurrentSpell(player,next);
 		
-		Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
+		//Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
 	}
 	public static void shiftDown(EntityPlayer player)
 	{ 
@@ -139,7 +143,7 @@ public class SpellRegistry
 		 
 		setPlayerCurrentSpell(player,next);
 
-		Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
+		//Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
 	}
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)

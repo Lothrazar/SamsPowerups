@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
@@ -31,10 +32,11 @@ public class SpellPhasing implements ISpell
 		//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
 
 		//ItemWallCompass.wallPhase(player.worldObj,player,pos,facing);
-		int dist = 1;
+		
+		int dist = 2;
 		if(face.getOpposite() == EnumFacing.DOWN)
 		{
-			 dist = 2;//only move two when going down - player is 2 tall
+			 dist = 3;//only move two when going down - player is 2 tall
 		}
 		
 		BlockPos offs = pos.offset(face.getOpposite(), dist);
@@ -96,8 +98,7 @@ public class SpellPhasing implements ISpell
 	@Override
 	public ItemStack getIconDisplay()
 	{
-		// TODO Auto-generated method stub
-		return null;
+		return new ItemStack(Items.brick);
 	}
 
 }

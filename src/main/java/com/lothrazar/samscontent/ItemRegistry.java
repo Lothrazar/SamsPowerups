@@ -48,8 +48,8 @@ public class ItemRegistry
 	public static ItemHorseFood diamondCarrot; 
 	 
 	public static ItemRespawnEggAnimal respawn_egg; 
-	public static ItemSoulstone soulstone;
-	public static ItemSoulstone soulstone_persist;
+	public static Item soulstone;
+	//public static ItemSoulstone soulstone_persist;
    
 	public static int emerald_harvestLevel=2;
 	public static int emerald_maxUses=32;
@@ -75,7 +75,10 @@ public class ItemRegistry
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
-
+	
+		soulstone = new Item();
+		ItemRegistry.registerItem(soulstone, "soulstone");
+		
 		exp_cost_dummy = new Item();
 		ItemRegistry.registerItem(exp_cost_dummy, "exp_cost_dummy");
 		exp_cost_empty_dummy = new Item();
@@ -171,19 +174,8 @@ public class ItemRegistry
 				GameRegistry.addSmelting(emerald_axe, new ItemStack(Items.emerald,3), xp);
 			}
 		}
- 
-		if(ModMain.cfg.item_soulstone)
-		{
-			soulstone = new ItemSoulstone(false);
-			ItemRegistry.registerItem(soulstone, "soulstone");
-			soulstone.addRecipe();
 
-			soulstone_persist = new ItemSoulstone(true);
-			ItemRegistry.registerItem(soulstone_persist, "soulstone_persist");
-			soulstone_persist.addRecipe();
-		}
- 
-		
+	
 		if(ModMain.cfg.horse_food_upgrades )
 		{  
 			emeraldCarrot = new ItemHorseFood();

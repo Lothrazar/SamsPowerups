@@ -30,8 +30,6 @@ public class SpellEnderpearl implements ISpell
 	@Override
 	public boolean canPlayerCast(EntityPlayer player)
 	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
 		if(Util.getExpTotal(player) < getExpCost()) return false;
 		
 		return true;

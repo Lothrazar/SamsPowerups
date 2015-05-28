@@ -178,3 +178,5 @@ key.spell.harvest=Harvest
 key.spell.hud=Toggle HUD
 key.spell.waterbolt=Water bolt
 key.spell.enderinv=Ender Inventory
+key.spell.soulstone=Soulstone
+spell.soulstone.complete=Soulstone Applied 

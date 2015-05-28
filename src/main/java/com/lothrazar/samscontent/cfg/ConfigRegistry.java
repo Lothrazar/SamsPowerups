@@ -691,7 +691,7 @@ public class ConfigRegistry
 	public boolean horse_food_upgrades;
 	public int cowExtraLeather;
 	public int sleeping_hunger_seconds; 
-	public boolean item_soulstone;
+	//public boolean item_soulstone;
 	public boolean experience_bottle;
 	public boolean experience_bottle_return;
 	public boolean block_fragile;
