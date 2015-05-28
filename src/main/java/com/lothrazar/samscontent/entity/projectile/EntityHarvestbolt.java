@@ -47,15 +47,14 @@ public class EntityHarvestbolt extends EntityThrowable//EntitySnowball
     @Override
     protected void onImpact(MovingObjectPosition mop)
     {
-         
-    	BlockPos pos = mop.getBlockPos().offset(mop.sideHit);
-    	System.out.println("Harvest landing?" + Util.posToString(pos));
-    	
     	if(this.getThrower() instanceof EntityPlayer && mop.sideHit != null)
     	{
-
-        	SpellHarvest.harvestArea(this.worldObj, (EntityPlayer)this.getThrower(), pos);
-        	SpellHarvest.harvestArea(this.worldObj, (EntityPlayer)this.getThrower(), pos.up());
+        	BlockPos offset = mop.getBlockPos().offset(mop.sideHit);
+        	
+    		//it harvests a horizontal slice each time
+        	SpellHarvest.harvestArea(this.worldObj, (EntityPlayer)this.getThrower(), mop.getBlockPos(),4);
+        	SpellHarvest.harvestArea(this.worldObj, (EntityPlayer)this.getThrower(), offset,6);
+        	SpellHarvest.harvestArea(this.worldObj, (EntityPlayer)this.getThrower(), offset.up(),4);
     	}
 		 
         this.setDead();

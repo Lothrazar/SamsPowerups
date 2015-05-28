@@ -45,9 +45,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class SpellHarvest implements ISpell
 {
-	public static int RADIUS=8; //from config file
- 
- 
 	@Override
 	public EnumSpellType getSpellType()
 	{ 
@@ -76,17 +73,17 @@ public class SpellHarvest implements ISpell
 		//	this.onCastFailure(world, player, pos);
 	}
 
-	public static int harvestArea(World world, EntityPlayer player, BlockPos pos)
+	public static int harvestArea(World world, EntityPlayer player, BlockPos pos, int radius)
 	{
 		int x = (int)player.posX;
 		int y = (int)player.posY;
 		int z = (int)player.posZ;
 		
 		//search in a cube
-		int xMin = x - RADIUS;
-		int xMax = x + RADIUS; 
-		int zMin = z - RADIUS;
-		int zMax = z + RADIUS;
+		int xMin = x - radius;
+		int xMax = x + radius; 
+		int zMin = z - radius;
+		int zMax = z + radius;
 		
 		int eventy = pos.getY();
 		
