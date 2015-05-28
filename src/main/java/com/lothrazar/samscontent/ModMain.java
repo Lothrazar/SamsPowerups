@@ -188,7 +188,10 @@ public class ModMain
         EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModMain.instance, 64, 1, true);
         EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModMain.instance, 64, 1, true);
         EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModMain.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityWaterBolt.class, "waterbolt",1002, ModMain.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModMain.instance, 64, 1, true);
 		
+        
 		proxy.registerRenderers();
 	}
 	

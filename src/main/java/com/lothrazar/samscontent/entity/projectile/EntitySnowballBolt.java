@@ -21,7 +21,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World; 
 
-public class EntitySnowballBolt extends EntitySnowball
+public class EntitySnowballBolt extends EntityThrowable
 { 
 	public static int secondsFrozenOnHit;
 	public static int damageToNormal = 0;//TODO CONFIG

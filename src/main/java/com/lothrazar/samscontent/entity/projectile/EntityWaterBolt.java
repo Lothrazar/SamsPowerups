@@ -23,7 +23,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World; 
 
-public class EntityWaterBolt extends EntitySnowball
+public class EntityWaterBolt extends EntityThrowable
 { 
 	public static int secondsFrozenOnHit;
 	public static int damageToNormal = 0;//TODO CONFIG
