@@ -8,6 +8,7 @@ import  net.minecraft.item.Item;
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
+import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
 import com.lothrazar.util.*;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
@@ -60,6 +61,7 @@ public class ClientProxy extends CommonProxy
     	//Minecraft.getMinecraft().getRenderManager().entityRenderMap.put(EntitySoulstoneBolt.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), ItemRegistry.soulstone, Minecraft.getMinecraft().getRenderItem()));
 
     	RenderingRegistry.registerEntityRenderingHandler(EntitySoulstoneBolt.class, new RenderSnowball(rm, ItemRegistry.soulstone, ri));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityLightningballBolt.class, new RenderSnowball(rm, ItemRegistry.spell_lightning_dummy, ri));
 		
     }
 

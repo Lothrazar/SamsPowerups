@@ -11,7 +11,6 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
-import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
 import com.lothrazar.util.Util;
 
