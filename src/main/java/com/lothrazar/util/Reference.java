@@ -28,6 +28,7 @@ public class Reference
 	public static final String keySpellCastName = "key.spell.cast";
 	public static final String keySpellUpName = "key.spell.up";
 	public static final String keySpellDownName = "key.spell.down";
+	public static final String keySpellToggleName = "key.spell.toggle";
 	/*
 	public static final String keyBindEnderName = "key.spell.enderinventory";
 	public static final String keyBindSlowName = "key.spell.slowfall";
@@ -279,6 +280,12 @@ public class Reference
 		public final static String wood_click = "random.wood_click";
 		
 	}
+
+
+
+
+
+
 
 
 

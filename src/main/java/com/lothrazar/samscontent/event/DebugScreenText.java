@@ -120,7 +120,12 @@ public class DebugScreenText
 			
 		}
 
-		drawSpell(event); 
+		PlayerPowerups props = PlayerPowerups.get(player);
+		
+		if(props.getSpellToggle() == 1)
+		{
+			drawSpell(event); 
+		}
 		
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
 		{

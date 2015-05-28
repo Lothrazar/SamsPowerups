@@ -23,7 +23,9 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 	public static final int SPELLHUD_WATCHER = 23;
 	private static final String NBT_SPELLHUD = "samSpellHUD"; 
-	
+
+	public static final int SPELLTOG_WATCHER = 24;
+	private static final String NBT_SPELLTOG = "samSpellToggle"; 
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;  
@@ -31,6 +33,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().addObject(TODO_WATCHER, 0); 
 		this.player.getDataWatcher().addObject(SPELL_WATCHER, 0); 
 		this.player.getDataWatcher().addObject(SPELLHUD_WATCHER, 0);
+		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0);
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -53,6 +56,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		properties.setString(NBT_TODO,     this.getStringSafe(TODO_WATCHER)); 
 		properties.setString(NBT_SPELL,     this.getStringSafe(SPELL_WATCHER)); 
 		properties.setString(NBT_SPELLHUD,     this.getStringSafe(SPELLHUD_WATCHER)); 
+		properties.setInteger(NBT_SPELLTOG,    this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
+		
 		
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
@@ -69,7 +74,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
 		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
 		this.player.getDataWatcher().updateObject(SPELL_WATCHER,    properties.getString(NBT_SPELL)); 
-		this.player.getDataWatcher().updateObject(SPELLHUD_WATCHER,    properties.getString(NBT_SPELLHUD)); 
+		this.player.getDataWatcher().updateObject(SPELLHUD_WATCHER,    properties.getString(NBT_SPELLHUD));
+		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,    properties.getInteger(NBT_SPELLTOG));  
 		
  	}
 
@@ -126,6 +132,14 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public void init(Entity entity, World world) 
 	{ 
 	}
+	public final void setSpellToggle(int onoff) 
+	{
+		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, onoff);
+	}
+	public final int getSpellToggle() 
+	{
+		return this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER);
+	}
 
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
 
@@ -138,11 +152,13 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo());
 		player.getDataWatcher().updateObject(SPELL_WATCHER, props.getStringTodo());
 		player.getDataWatcher().updateObject(SPELLHUD_WATCHER, props.getStringHUD());
+		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle());
 		//set here
 		this.setStringWaypoints(props.getStringWaypoints());
 		this.setStringTodo(props.getStringTodo());  
 		this.setStringSpell(props.getStringSpell());  
 		this.setStringHUD(props.getStringHUD());  
+		this.setSpellToggle(props.getSpellToggle());  
 	}
 
 }

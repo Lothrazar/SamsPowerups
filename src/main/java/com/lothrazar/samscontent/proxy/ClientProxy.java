@@ -40,6 +40,7 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keySpellCast;
 	public static KeyBinding keySpellUp;
 	public static KeyBinding keySpellDown;
+	public static KeyBinding keySpellToggle;
  
     @Override
     public void registerRenderers() 
@@ -139,7 +140,8 @@ public class ClientProxy extends CommonProxy
         keySpellDown = new KeyBinding(Reference.keySpellDownName, Keyboard.KEY_NUMPAD3,  Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keySpellDown);
         
-         
+        keySpellToggle = new KeyBinding(Reference.keySpellToggleName, Keyboard.KEY_NUMPAD2,  Reference.keyCategorySpell); 
+        ClientRegistry.registerKeyBinding(ClientProxy.keySpellToggle);
 	} 
 
 	public static String getKeyDescription(int key)

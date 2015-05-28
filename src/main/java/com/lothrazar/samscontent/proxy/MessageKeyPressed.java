@@ -4,6 +4,7 @@ import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.command.CommandBindMacro;
+import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.entity.projectile.*;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.spell.ISpell;
@@ -62,6 +63,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	public IMessage onMessage(MessageKeyPressed message, MessageContext ctx)
 	{  
 		EntityPlayer player = ctx.getServerHandler().playerEntity; 
+		PlayerPowerups props = PlayerPowerups.get(player);
 		World world = player.worldObj;
 		BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
 		//THANKS TO THIS
@@ -122,25 +124,39 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	} 
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
-			//isRemote == false always
-			//System.out.println("cast current spell isremote = "+player.worldObj.isRemote);
-			EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
-			//ISpell//TODO:
 			
-			SpellRegistry.cast(spell, world, player,posMouse);
+			if(props.getSpellToggle() == 1)
+			{
+				EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
+	
+				SpellRegistry.cast(spell, world, player,posMouse);
+			}
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{
-			SpellRegistry.shiftUp(player);
-			
-			Util.playSoundAt(player, "random.orb");
+			if(props.getSpellToggle() == 1)
+			{
+				SpellRegistry.shiftUp(player);
+				
+				Util.playSoundAt(player, "random.orb");
+			}
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
 	 	{ 
-			SpellRegistry.shiftDown(player);
-			Util.playSoundAt(player, "random.orb");
+			if(props.getSpellToggle() == 1)
+			{
+				SpellRegistry.shiftDown(player);
+				Util.playSoundAt(player, "random.orb");
+			}
+			
 		}
-	 
+		else if( message.keyPressed == ClientProxy.keySpellToggle.getKeyCode())
+	 	{ 
+			System.out.println("keySpellToggle "+props.getSpellToggle());
+			int tog = props.getSpellToggle() == 0 ? 1 : 0;
+			props.setSpellToggle(tog);
+		}
+		
 		//TODO: search spawner??? with particle directors?
 
 		return null;

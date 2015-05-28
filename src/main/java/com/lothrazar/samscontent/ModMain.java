@@ -733,11 +733,12 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyTransform.getKeyCode()));
         }
-     
+        else if(ClientProxy.keySpellToggle.isPressed())
+        {
+       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellToggle.getKeyCode()));
+        }
         else if(ClientProxy.keySpellCast.isPressed())
         {
-    		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
-			System.out.println("ModMain.keySpellCast.isPressed() ;  isremote = "+world.isRemote);
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
         }
         else if(ClientProxy.keySpellUp.isPressed())
@@ -748,8 +749,6 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellDown.getKeyCode()));
         }
-      
-        
     } 
 	
 	@SubscribeEvent
