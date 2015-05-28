@@ -3,6 +3,7 @@ package com.lothrazar.samscontent;
 import java.util.ArrayList;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.common.PlayerPowerups; 
+import com.lothrazar.samscontent.spell.ISpell;
 import com.lothrazar.samscontent.spell.SpellHarvest; 
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.spell.*;
@@ -176,4 +177,17 @@ public class SpellRegistry
 		return null;
 	}
 	/**/
+
+	public static ISpell getSpellFromType(EnumSpellType next)
+	{
+		for(ISpell sp : spellbook)
+		{ 
+			if(sp.getSpellType() == next)
+			{
+				return sp;
+			}
+		} 
+		
+		return null;
+	}
 }

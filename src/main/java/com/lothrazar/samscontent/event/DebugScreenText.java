@@ -72,29 +72,30 @@ public class DebugScreenText
         return calendar.getTime();
 	}
 	 
-	private static void renderItemAt(ItemStack stack, int x, int y)
+	private static void renderItemAt(ItemStack stack, int x, int y, int dim)
 	{
-		int height = 16, width = 16;
+		//int height = dim, width = dim;
 
 		IBakedModel iBakedModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(stack);
 		TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(iBakedModel.getTexture().getIconName());
 		
-		renderTexture( textureAtlasSprite, x, y);
+		renderTexture( textureAtlasSprite, x, y, dim);
 	}
-	public static void renderBlockAt(Block block, int x, int y)
+	/*
+	public static void renderBlockAt(Block block, int x, int y, int dim)
 	{ 
 	     TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getBlockRendererDispatcher().getBlockModelShapes().getTexture(block.getDefaultState());
 		    
-	     renderTexture( textureAtlasSprite, x, y);
-	}
-	private static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y)
+	     renderTexture( textureAtlasSprite, x, y, dim);
+	}*/
+	private static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y, int dim)
 	{	
 		//special thanks to http://www.minecraftforge.net/forum/index.php?topic=26613.0
 		
         Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
 		Tessellator tessellator = Tessellator.getInstance();
 
-		int height = 16, width = 16;
+		int height = dim, width = dim;
 		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
 		worldrenderer.startDrawingQuads();
 		worldrenderer.addVertexWithUV((double)(x),          (double)(y + height),  0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMaxV());
@@ -107,19 +108,9 @@ public class DebugScreenText
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
 	{  
-		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
-		
-		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
-		{
-			drawSpell(event); 
-
-		 	drawHud(player);
-			return;
-		}
-		
 		World world = Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
-		
-	 
+		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
+
 		if(ModMain.cfg.reducedDebugImproved && 
 				world.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo) )
 		{ 
@@ -127,8 +118,21 @@ public class DebugScreenText
 			event.right.clear();
 			event.left.clear();
 			
-			
-			
+		}
+
+		drawSpell(event); 
+		if(Minecraft.getMinecraft().gameSettings.showDebugInfo == false)
+		{
+
+		 	drawHud(player);
+			return;
+		}
+		
+		
+	 
+		if(ModMain.cfg.reducedDebugImproved && 
+				world.getGameRules().getGameRuleBooleanValue(Reference.gamerule.reducedDebugInfo) )
+		{ 
 			int blockLight = world.getLightFromNeighbors(player.getPosition()) + 1;
 			
 			String firstLine = Util.lang("debug.biome")+"  "+world.getBiomeGenForCoords(player.getPosition()).biomeName;
@@ -187,28 +191,62 @@ public class DebugScreenText
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 		 
 		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
- 
-		int x = 8, y = 2;
-
-		boolean canAfford = (Util.getExpTotal(player) <= spell.getExpCost());
-		
-		if(canAfford)
-			renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),x,y);
-		else
-			renderItemAt(new ItemStack(ItemRegistry.exp_cost_empty_dummy),x,y);
-			
-		//Util.lang("key.spell.cost")
-		//event.left.add("");
-		//event.left.add(spell.getExpCost()+"" );
-		
-		
-		if(spell.getIconDisplay() != null)
+		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
 		{
-			x = 25; 
-			y = 2;
-			renderItemAt(spell.getIconDisplay(),x,y);
+			String name = spell.getSpellType().name();
+			
+			event.left.add(spell.getExpCost()+" : "+Util.lang("key.spell."+name));
 		}
+		else
+		{
+			int ymain = 12;
+			int dim = 12;
+				
 	 
+			int x = 12, y = 2;
+			
+	
+			boolean canAfford = (Util.getExpTotal(player) <= spell.getExpCost());
+			
+			if(canAfford)
+				renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),x,y,dim);
+			else
+				renderItemAt(new ItemStack(ItemRegistry.exp_cost_empty_dummy),x,y,dim);
+				
+			//Util.lang("key.spell.cost")
+			//event.left.add("");
+			//event.left.add(spell.getExpCost()+"" );
+			
+			
+			ISpell sLeft = SpellRegistry.getSpellFromType(spell.getSpellType().next());
+			ISpell sRight = SpellRegistry.getSpellFromType(spell.getSpellType().prev());
+			
+			//int ysmall = ymain - 3;
+			int xmain = 10;
+			ymain = 14;
+			if(spell.getIconDisplay() != null)
+			{
+				x = xmain; 
+				y = ymain;
+				dim = 16;
+				renderItemAt(spell.getIconDisplay(),x,y,dim);
+			}
+			if(sLeft.getIconDisplay() != null)
+			{
+				x = xmain-3; 
+				y = ymain + 16;
+				dim = 16/2;
+				renderItemAt(sLeft.getIconDisplay(),x,y,dim);
+			}
+			if(sRight.getIconDisplay() != null)
+			{
+				x = xmain+6; 
+				y = ymain + 16;
+				dim = 16/2;
+				renderItemAt(sRight.getIconDisplay(),x,y,dim);
+			}
+			
+		}
 	}
 
 	private void drawHud(EntityPlayerSP player)
@@ -224,21 +262,21 @@ public class DebugScreenText
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
 		String hudCurr = props.getStringHUD();
-		if(hudCurr == null || hudCurr=="") hudCurr = EnumHudType.none.name();
-	 
+		if(hudCurr == null || hudCurr.trim()=="") hudCurr = EnumHudType.none.name();
+	
 		switch(EnumHudType.valueOf(hudCurr))
 		{
 		case clock: 
-			renderItemAt(new ItemStack(Items.clock),20,yBottom);//works at mid left
+			renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
 		break;
 
 		case compass: 
-			renderItemAt(new ItemStack(Items.compass),xRight,yBottom);//works at mid top//was ,16
+			renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);//works at mid top//was ,16
 		break;
 
 		case both: 
-			renderItemAt(new ItemStack(Items.clock),20,yBottom);//works at mid left
-			renderItemAt(new ItemStack(Items.compass),xRight,yBottom);
+			renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
+			renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);
 		break;
 		case none: 
 		default:
