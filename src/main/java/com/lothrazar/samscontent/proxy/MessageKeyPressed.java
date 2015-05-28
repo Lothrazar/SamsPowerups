@@ -132,10 +132,13 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{
 			SpellRegistry.shiftUp(player);
+			
+			Util.playSoundAt(player, "random.orb");
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
 	 	{ 
 			SpellRegistry.shiftDown(player);
+			Util.playSoundAt(player, "random.orb");
 		}
 	 
 		//TODO: search spawner??? with particle directors?

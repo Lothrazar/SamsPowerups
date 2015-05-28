@@ -9,8 +9,7 @@ import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.cfg.ConfigRegistry;
 import com.lothrazar.samscontent.command.*;
 import com.lothrazar.samscontent.common.PlayerPowerups;
-import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
-import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
+import com.lothrazar.samscontent.entity.projectile.*; 
 import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
@@ -188,6 +187,7 @@ public class ModMain
   		//TODO: Entity ids are the 999,1000,1001 -> config file
         EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModMain.instance, 64, 1, true);
         EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModMain.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModMain.instance, 64, 1, true);
 		
 		proxy.registerRenderers();
 	}

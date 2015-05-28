@@ -1,6 +1,8 @@
 package com.lothrazar.samscontent.spell;
 
 import com.google.common.collect.Sets;  
+import com.lothrazar.samscontent.entity.projectile.EntityHarvestbolt;
+import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.samscontent.spell.ISpell;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
@@ -61,8 +63,21 @@ public class SpellHarvest implements ISpell
 		
 		drainExpCost(player);
 		
+		world.spawnEntityInWorld(new EntityHarvestbolt(world,player));
+
+		
 		//http://www.minecraftforge.net/wiki/Plants
  
+		//int countHarvested = harvestArea(world, player, pos);
+ 
+		//if(countHarvested > 0)//something happened 
+			this.onCastSuccess(world, player, pos); 
+		//else
+		//	this.onCastFailure(world, player, pos);
+	}
+
+	public static int harvestArea(World world, EntityPlayer player, BlockPos pos)
+	{
 		int x = (int)player.posX;
 		int y = (int)player.posY;
 		int z = (int)player.posZ;
@@ -103,11 +118,7 @@ public class SpellHarvest implements ISpell
 				} 
 			}  
 		} //end of the outer loop
- 
-		if(countHarvested > 0)//something happened 
-			this.onCastSuccess(world, player, pos); 
-		else
-			this.onCastFailure(world, player, pos);
+		return countHarvested;
 	}
 
 	@Override

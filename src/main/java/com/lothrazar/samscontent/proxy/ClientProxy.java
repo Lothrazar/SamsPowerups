@@ -7,9 +7,8 @@ import org.lwjgl.input.Keyboard;
 import  net.minecraft.item.Item;
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
-import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
+import com.lothrazar.samscontent.ModMain; 
+import com.lothrazar.samscontent.entity.projectile.*;
 import com.lothrazar.util.*;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.client.registry.RenderingRegistry;
@@ -62,6 +61,7 @@ public class ClientProxy extends CommonProxy
 
     	RenderingRegistry.registerEntityRenderingHandler(EntitySoulstoneBolt.class, new RenderSnowball(rm, ItemRegistry.soulstone, ri));
     	RenderingRegistry.registerEntityRenderingHandler(EntityLightningballBolt.class, new RenderSnowball(rm, ItemRegistry.spell_lightning_dummy, ri));
+    	RenderingRegistry.registerEntityRenderingHandler(EntityHarvestbolt.class, new RenderSnowball(rm, ItemRegistry.spell_harvest_dummy, ri));
 		
     }
 
