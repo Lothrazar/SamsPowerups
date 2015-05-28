@@ -181,10 +181,10 @@ public class ModMain
   			int weight = 0;
 			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
 		}
-  		//TODO:
-		//Minecraft.getMinecraft().getRenderManager().entityRenderMap.put(EntitySoulstoneBolt.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), ItemRegistry.soulstone, Minecraft.getMinecraft().getRenderItem()));
-
-
+  		 
+  		//TODO: we could make our own custom projectileRegistry, that acts as our other ones above do.
+  		
+  		//TODO: Entity ids are the 999,1000,1001 -> config file
         EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModMain.instance, 64, 1, true);
 		
 		proxy.registerRenderers();
