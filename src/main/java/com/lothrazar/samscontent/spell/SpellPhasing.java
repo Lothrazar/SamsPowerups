@@ -33,13 +33,13 @@ public class SpellPhasing implements ISpell
 
 		//ItemWallCompass.wallPhase(player.worldObj,player,pos,facing);
 		
-		int dist = 2;
+		int dist = 1;
 		if(face.getOpposite() == EnumFacing.DOWN)
 		{
-			 dist = 3;//only move two when going down - player is 2 tall
+			 dist = 2;//only move two when going down - player is 2 tall
 		}
 		
-		BlockPos offs = pos.offset(face.getOpposite(), dist);
+		BlockPos offs = pos.offset(face, dist);//was .getOpposite()
 		
 		//not 2, depends on block pos?
 		if(world.isAirBlock(offs) && world.isAirBlock(offs.up()))
