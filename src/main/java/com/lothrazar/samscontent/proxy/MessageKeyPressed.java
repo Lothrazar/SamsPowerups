@@ -111,7 +111,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			CommandBindMacro.tryExecuteMacro(player, Reference.keyBind2Name);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyPush.getKeyCode())
-	 	{
+	 	{ 
 			UtilPistonSpell.moveBlockTo(player.worldObj, player, posMouse, posMouse.offset(player.getHorizontalFacing()),false);
 	 	}
 		else if( message.keyPressed == ClientProxy.keyPull.getKeyCode())

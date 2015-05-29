@@ -26,7 +26,7 @@ public class SpellHeart extends BaseSpell implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
 	 
-		player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(player.getMaxHealth()+1);
+		player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(player.getMaxHealth()+2);
  
 	}
  
