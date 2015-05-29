@@ -11,9 +11,14 @@
     at io.netty.cha*/
 
 
-EntityProjectile Water?
 
 EntityProjectileTorch?
++spell
+
+Ender Eye spell
+
+SpellHasteTradeoff(both haste and weakness)
+
 
 
 ?Show light level+ when shifting?
