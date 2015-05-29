@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.spell;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -27,7 +28,7 @@ public class SpellHaste implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
-		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
+		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.digSpeed.id,fiveSeconds,0));
 		
 		
 		this.onCastSuccess(world, player, pos);
