@@ -40,12 +40,7 @@ public class SpellJump implements ISpell
 		
 		return true;
 	}
-
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
+ 
 
 	private int cost = 50;
 	@Override
@@ -66,7 +61,8 @@ public class SpellJump implements ISpell
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
 		Util.playSoundAt(player, Reference.sounds.bowtoss);
-		
+
+		Util.drainExp(player, getExpCost());
 	}
 
 	@Override

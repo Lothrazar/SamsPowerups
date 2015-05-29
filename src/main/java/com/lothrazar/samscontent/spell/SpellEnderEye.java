@@ -23,7 +23,8 @@ public class SpellEnderEye implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
-		world.spawnEntityInWorld(new EntityEnderEye(world	 )); 
+		System.out.println("EntityEnderEye");
+		world.spawnEntityInWorld(new EntityEnderEye(world,pos.getX(),pos.getY(),pos.getZ()	 )); 
 		  
 		this.onCastSuccess(world, player, pos);
 	}
@@ -38,12 +39,7 @@ public class SpellEnderEye implements ISpell
 		return true;
 	}
 
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
-
+ 
 	private int cost = 10;
 	@Override
 	public void setExpCost(int c)
@@ -64,6 +60,8 @@ public class SpellEnderEye implements ISpell
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
 		Util.playSoundAt(player, Reference.sounds.bowtoss);
+
+		Util.drainExp(player, getExpCost());
 	}
 
 	@Override

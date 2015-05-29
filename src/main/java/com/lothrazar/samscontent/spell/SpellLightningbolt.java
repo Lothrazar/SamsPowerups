@@ -40,12 +40,7 @@ public class SpellLightningbolt implements ISpell
 		
 		return true;
 	}
-
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
+ 
 
 	private int cost = 10;
 	@Override
@@ -67,6 +62,7 @@ public class SpellLightningbolt implements ISpell
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
 		Util.playSoundAt(player, Reference.sounds.bowtoss);
+		Util.drainExp(player, getExpCost());
 	}
 
 	@Override

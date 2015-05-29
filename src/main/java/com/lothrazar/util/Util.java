@@ -109,7 +109,8 @@ public class Util
 	}
 	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
 	{
-		spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
+		if(pos != null)
+			spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
     }
 	public static void spawnParticleSixAround(World world, EnumParticleTypes type, BlockPos pos)
 	{

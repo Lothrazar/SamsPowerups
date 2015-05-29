@@ -22,6 +22,4 @@ public interface ISpell
 
 	public void setExpCost(int cost);
 	public int getExpCost();
-	
-	public void drainExpCost(EntityPlayer player);
 }

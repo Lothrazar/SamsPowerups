@@ -54,11 +54,14 @@ public class SpellHarvest implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
+		/*TODO:revisit this
+		if(canPlayerCast(player) == false) 
+		{
+			Util.addChatMessage(player, "spell.xp");
+			return;
+		}
 		
-		if(canPlayerCast(player) == false) {return;}
-		
-		
-		drainExpCost(player);
+		*/
 		
 		world.spawnEntityInWorld(new EntityHarvestbolt(world,player));
 
@@ -128,12 +131,7 @@ public class SpellHarvest implements ISpell
 		return true;
 	}
 
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
-
+ 
 	private int cost = 10;
 	@Override
 	public void setExpCost(int c)
@@ -155,7 +153,8 @@ public class SpellHarvest implements ISpell
 		if(world.isRemote) //client side 
 			Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
 		 
-		
+
+		Util.drainExp(player, getExpCost());
 	}
 
 	@Override

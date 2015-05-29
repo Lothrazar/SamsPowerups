@@ -78,7 +78,8 @@ public class SpellSoulstone implements ISpell
 	{
 
 
-		
+
+		Util.drainExp(player, getExpCost());
 		
 		
 	}
@@ -106,12 +107,7 @@ public class SpellSoulstone implements ISpell
 		
 		return true;
 	}
-
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
+ 
 
 	private int cost = 10;
 	@Override

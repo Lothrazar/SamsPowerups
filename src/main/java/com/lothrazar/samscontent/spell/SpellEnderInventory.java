@@ -41,11 +41,7 @@ public class SpellEnderInventory implements ISpell
 		return true;
 	}
 
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
+ 
 
 	private int cost = 10;
 	@Override
@@ -68,6 +64,8 @@ public class SpellEnderInventory implements ISpell
 
 		Util.playSoundAt(player, Reference.sounds.wood_click);
 		//Util.playSoundAt(player, "random.wood_click");
+
+		Util.drainExp(player, getExpCost());
 	}
 
 	@Override

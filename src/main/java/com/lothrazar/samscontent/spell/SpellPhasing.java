@@ -61,12 +61,6 @@ public class SpellPhasing implements ISpell
 		return true;
 	}
 
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
-
 	private int cost = 10;
 	@Override
 	public void setExpCost(int c)
@@ -85,7 +79,8 @@ public class SpellPhasing implements ISpell
 		 
 		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);  
 		Util.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
-		
+
+		Util.drainExp(player, getExpCost());
 	}
 
 	@Override

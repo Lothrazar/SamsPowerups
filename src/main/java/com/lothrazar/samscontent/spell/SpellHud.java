@@ -75,13 +75,7 @@ public class SpellHud implements ISpell
 		
 		return true;
 	}
-
-	@Override
-	public void drainExpCost(EntityPlayer player)
-	{ 
-		 Util.drainExp(player, getExpCost());
-	}
-
+ 
 	private int cost = 10;
 	@Override
 	public void setExpCost(int c)
@@ -101,7 +95,8 @@ public class SpellHud implements ISpell
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 		
 		Util.playSoundAt(player, Reference.sounds.wood_click);
-		
+
+		Util.drainExp(player, getExpCost());
 	}
 
 	@Override
