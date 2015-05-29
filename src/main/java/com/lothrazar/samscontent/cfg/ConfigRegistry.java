@@ -96,10 +96,7 @@ public class ConfigRegistry
 	private void mob_changes() 
 	{
 		category = "mob_changes";
-		
-		healthPlayer = instance.getInt("health_player",category, 40,1,100,
-    			"Change the number of hearts a player has.  20 = 10 hearts is regular.");
-		
+		 
 		healthWolfTamed = instance.getInt("health_tamed_wolf",category, 100,1,100,
     			"Change the number of hearts a tamed wolf has.  8 = 4 hearts is regular.");
 		
@@ -708,7 +705,7 @@ public class ConfigRegistry
  
 	public boolean cmd_effectpay;
 	public boolean cmd_ping;
-	public int healthPlayer;
+	//public int healthPlayer;
 	public int healthWolfTamed;
 	public int healthVillager;
 	public int healthCatTamed;

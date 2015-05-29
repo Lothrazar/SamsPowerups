@@ -830,18 +830,11 @@ public class ModMain
 
 	@SubscribeEvent
 	public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
-	{
-		int startHealth = ModMain.cfg.healthPlayer;
-		
+	{ 
 		if(event.entity instanceof EntityLivingBase)
 		{
 			EntityLivingBase living = (EntityLivingBase)event.entity;
-			
-			if(living instanceof EntityPlayer)
-			{
-				setMaxHealth(living,ModMain.cfg.healthPlayer);
-			}
-		
+			 
 			if(living instanceof EntityWolf && ((EntityWolf)living).isTamed())
 			{
 				setMaxHealth(living,ModMain.cfg.healthWolfTamed);
