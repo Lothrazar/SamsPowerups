@@ -221,12 +221,7 @@ public class ConfigRegistry
 		
 		smoothstoneTools = instance.getBoolean("smoothstone_tools",category, true,
 				"Making stone tools out of cobblestone gives damaged tools.  Making stone tools out of smoothstone gives the fully repaired tool.");  
-
-		iron_armor_requires_leather = instance.getBoolean("iron_armor_requires_leather",category, true,
-				"Iron armor must be crafted on top of leather armor.");  
  
-		diamond_armor_requires_iron = instance.getBoolean("diamond_armor_requires_iron",category, true,
-				"Diamond armor must be crafted on top of iron armor.");  
 	}
 
 	private void harvesting_changes() 
@@ -604,8 +599,7 @@ public class ConfigRegistry
 	public boolean appleLapis;
 	public boolean appleChocolate;
 	public boolean appleEmerald;
-	public boolean iron_armor_requires_leather; 
-	public boolean diamond_armor_requires_iron;
+ 
 	public boolean debugSlime;
 	public boolean debugHorseInfo;
 	public boolean reducedDebugImproved;

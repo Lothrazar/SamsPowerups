@@ -56,9 +56,7 @@ public class RecipeRegistry
    		RecipeRegistry.smoothstoneRequired();
    		
    		RecipeRegistry.furnaceNeedsCoal();  
-   		
-   		RecipeRegistry.tieredArmor();
-		  
+   		 
    		RecipeRegistry.woolDyeSavings();
 		  
    		RecipeRegistry.repeaterSimple();
@@ -1005,81 +1003,7 @@ public class RecipeRegistry
 				't', Items.stick );
 	} 
  
-	public static void tieredArmor() 
-	{ 
-		if(ModMain.cfg.iron_armor_requires_leather)
-		{ 
-			removeRecipe(Items.iron_chestplate);
-			removeRecipe(Items.iron_boots);
-			removeRecipe(Items.iron_leggings);
-			removeRecipe(Items.iron_helmet);
-			
-			GameRegistry.addRecipe(new ItemStack(Items.iron_chestplate), 
-					"ixi",
-					"iii", 
-					"iii", 
-					'i', Items.iron_ingot,  
-					'x', new ItemStack(Items.leather_chestplate ,1,OreDictionary.WILDCARD_VALUE));
-	
-			GameRegistry.addRecipe(new ItemStack(Items.iron_boots), 
-					"   ",
-					"i i", 
-					"ixi", 
-					'i', Items.iron_ingot,  
-					'x', new ItemStack(Items.leather_boots ,1,OreDictionary.WILDCARD_VALUE));
-	
-			GameRegistry.addRecipe(new ItemStack(Items.iron_leggings), 
-					"iii",
-					"ixi", 
-					"i i", 
-					'i', Items.iron_ingot,  
-					'x', new ItemStack(Items.leather_leggings,1,OreDictionary.WILDCARD_VALUE));
-	
-			GameRegistry.addRecipe(new ItemStack(Items.iron_helmet), 
-					"iii",
-					"ixi", 
-					"   ", 
-					'i', Items.iron_ingot,  
-					'x', new ItemStack(Items.leather_helmet,1,OreDictionary.WILDCARD_VALUE)); 
-		}
-		
-		if(ModMain.cfg.diamond_armor_requires_iron)
-		{ 
-			removeRecipe(Items.diamond_chestplate);
-			removeRecipe(Items.diamond_boots);
-			removeRecipe(Items.diamond_leggings);
-			removeRecipe(Items.diamond_helmet);
-			
-			GameRegistry.addRecipe(new ItemStack(Items.diamond_chestplate), 
-					"ixi",
-					"iii", 
-					"iii", 
-					'i', Items.diamond,  
-					'x', new ItemStack(Items.iron_chestplate ,1,OreDictionary.WILDCARD_VALUE));
-	
-			GameRegistry.addRecipe(new ItemStack(Items.diamond_boots), 
-					"   ",
-					"i i", 
-					"ixi", 
-					'i', Items.diamond,  
-					'x', new ItemStack(Items.iron_boots ,1,OreDictionary.WILDCARD_VALUE));
-	
-			GameRegistry.addRecipe(new ItemStack(Items.diamond_leggings), 
-					"iii",
-					"ixi", 
-					"i i", 
-					'i', Items.diamond,  
-					'x', new ItemStack(Items.iron_leggings ,1,OreDictionary.WILDCARD_VALUE));
-	
-			GameRegistry.addRecipe(new ItemStack(Items.diamond_helmet), 
-					"iii",
-					"ixi", 
-					"   ", 
-					'i', Items.diamond,  
-					'x', new ItemStack(Items.iron_helmet ,1,OreDictionary.WILDCARD_VALUE)); 
-		
-		}
-	}
+	 
 	
 	public static void simpleDispenser() 
 	{
