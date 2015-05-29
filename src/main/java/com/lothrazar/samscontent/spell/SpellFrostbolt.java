@@ -30,7 +30,12 @@ public class SpellFrostbolt extends BaseSpell implements ISpell
 
 	
 	}
-  
+
+	@Override
+	public int getExpCost()
+	{
+		return 5;
+	}
 
 	@Override
 	public ItemStack getIconDisplay()

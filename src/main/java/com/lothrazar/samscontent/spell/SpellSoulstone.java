@@ -75,7 +75,12 @@ public class SpellSoulstone extends BaseSpell implements ISpell
 	{
 		return new ItemStack(ItemRegistry.soulstone);
 	}
-  
+
+	@Override
+	public int getExpCost()
+	{
+		return 200;
+	}
 	public static void onLivingHurt(LivingHurtEvent event) 
 	{
 		//called from ModMain event handler

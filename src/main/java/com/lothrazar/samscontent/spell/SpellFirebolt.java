@@ -34,7 +34,12 @@ public class SpellFirebolt extends BaseSpell implements ISpell
         world.spawnEntityInWorld(f);
 
 	}
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 70;
+	}
 	@Override
 	public ItemStack getIconDisplay()
 	{

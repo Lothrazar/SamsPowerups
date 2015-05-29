@@ -34,6 +34,11 @@ public class SpellEnderpearl extends BaseSpell implements ISpell
 	}
 
 	@Override
+	public int getExpCost()
+	{
+		return 50;
+	}
+	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(Items.ender_pearl);

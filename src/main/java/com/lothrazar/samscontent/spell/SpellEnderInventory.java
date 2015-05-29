@@ -25,7 +25,12 @@ public class SpellEnderInventory extends BaseSpell implements ISpell
 		player.displayGUIChest(player.getInventoryEnderChest()); 
 		
 	}
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 1;
+	}
 	@Override
 	public ItemStack getIconDisplay()
 	{

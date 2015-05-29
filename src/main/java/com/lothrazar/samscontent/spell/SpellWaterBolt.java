@@ -39,6 +39,11 @@ public class SpellWaterBolt extends BaseSpell implements ISpell
 	}
 
 	@Override
+	public int getExpCost()
+	{
+		return 200;
+	}
+	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_water_dummy);

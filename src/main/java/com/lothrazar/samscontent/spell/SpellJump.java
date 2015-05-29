@@ -29,7 +29,12 @@ public class SpellJump extends BaseSpell implements ISpell
 		  
 	}
 
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 30;
+	}
 
 	@Override
 	public ItemStack getIconDisplay()

@@ -38,7 +38,12 @@ public class SpellSlowfall extends BaseSpell implements ISpell
 		return true;
 	}
  
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 5;
+	}
 	@Override
 	public ItemStack getIconDisplay()
 	{ 

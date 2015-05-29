@@ -29,8 +29,12 @@ public class SpellHeart extends BaseSpell implements ISpell
 		player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(player.getMaxHealth()+2);
  
 	}
- 
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 1000;
+	}
 
 	@Override
 	public ItemStack getIconDisplay()

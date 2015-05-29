@@ -31,7 +31,12 @@ public class SpellHaste extends BaseSpell implements ISpell
 		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.digSpeed.id,fiveSeconds,0));
 		 
 	}
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 20;
+	}
 	@Override
 	public ItemStack getIconDisplay()
 	{

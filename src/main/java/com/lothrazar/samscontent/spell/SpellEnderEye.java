@@ -27,6 +27,13 @@ public class SpellEnderEye extends BaseSpell implements ISpell
 		   
 	}
   
+
+	@Override
+	public int getExpCost()
+	{
+		return 500;
+	}
+	
 	@Override
 	public ItemStack getIconDisplay()
 	{

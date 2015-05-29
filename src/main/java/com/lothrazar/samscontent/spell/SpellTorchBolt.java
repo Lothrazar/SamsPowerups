@@ -27,7 +27,12 @@ public class SpellTorchBolt extends BaseSpell  implements ISpell
 		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
 	}
  
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 100;
+	}
 
 	@Override
 	public ItemStack getIconDisplay()

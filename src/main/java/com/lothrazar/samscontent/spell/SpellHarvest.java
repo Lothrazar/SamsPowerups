@@ -130,5 +130,10 @@ public class SpellHarvest extends BaseSpell implements ISpell
 		return new ItemStack(ItemRegistry.spell_harvest_dummy);
 	}
 
-	 
+
+	@Override
+	public int getExpCost()
+	{
+		return 75;
+	}
 }

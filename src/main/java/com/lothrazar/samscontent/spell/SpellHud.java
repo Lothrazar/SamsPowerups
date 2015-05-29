@@ -64,7 +64,12 @@ public class SpellHud extends BaseSpell implements ISpell
 		props.setStringHUD(hudNew.name());
  
 	}
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 1;
+	}
  
 	@Override
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)

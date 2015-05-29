@@ -54,7 +54,12 @@ public class SpellPhasing extends BaseSpell implements ISpell
 
 		Util.drainExp(player, getExpCost());
 	}
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 2;
+	}
 	@Override
 	public ItemStack getIconDisplay()
 	{

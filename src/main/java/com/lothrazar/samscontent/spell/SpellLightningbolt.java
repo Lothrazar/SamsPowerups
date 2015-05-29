@@ -36,7 +36,12 @@ public class SpellLightningbolt extends BaseSpell implements ISpell
 		
 		return true;
 	}
- 
+
+	@Override
+	public int getExpCost()
+	{
+		return 300;
+	}
  
 
 	@Override

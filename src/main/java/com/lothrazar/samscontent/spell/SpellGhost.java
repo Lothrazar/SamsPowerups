@@ -90,4 +90,9 @@ public class SpellGhost extends BaseSpell  implements ISpell
 		return new ItemStack(ItemRegistry.spell_ghost_dummy);
 	}
 
+	@Override
+	public int getExpCost()
+	{
+		return 200;
+	}
 }

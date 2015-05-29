@@ -28,7 +28,12 @@ public class SpellWaterwalk extends BaseSpell implements ISpell
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
 
 	}
-   
+
+	@Override
+	public int getExpCost()
+	{
+		return 30;
+	}
 
 	@Override
 	public ItemStack getIconDisplay()
