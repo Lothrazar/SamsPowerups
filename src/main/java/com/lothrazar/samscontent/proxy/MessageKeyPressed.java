@@ -124,7 +124,6 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	} 
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
-			
 			if(props.getSpellToggle() == 1)
 			{
 				EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
@@ -151,8 +150,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			
 		}
 		else if( message.keyPressed == ClientProxy.keySpellToggle.getKeyCode())
-	 	{ 
-			System.out.println("keySpellToggle "+props.getSpellToggle());
+	 	{  
 			int tog = props.getSpellToggle() == 0 ? 1 : 0;
 			props.setSpellToggle(tog);
 		}
