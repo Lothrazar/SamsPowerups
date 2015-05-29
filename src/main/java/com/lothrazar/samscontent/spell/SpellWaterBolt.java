@@ -39,11 +39,7 @@ public class SpellWaterBolt implements ISpell
 	}
  
 	private int cost = 200;
-	@Override
-	public void setExpCost(int c)
-	{
-		cost = c;
-	}
+ 
 	@Override
 	public int getExpCost()
 	{

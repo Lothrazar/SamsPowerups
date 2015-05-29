@@ -41,11 +41,7 @@ public class SpellJump implements ISpell
  
 
 	private int cost = 50;
-	@Override
-	public void setExpCost(int c)
-	{
-		cost = c;
-	}
+ 
 	@Override
 	public int getExpCost()
 	{

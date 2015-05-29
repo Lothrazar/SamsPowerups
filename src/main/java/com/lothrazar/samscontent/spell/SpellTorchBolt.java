@@ -39,11 +39,7 @@ public class SpellTorchBolt implements ISpell
  
 
 	private int cost = 10;
-	@Override
-	public void setExpCost(int c)
-	{
-		cost = c;
-	}
+ 
 	@Override
 	public int getExpCost()
 	{

@@ -40,11 +40,7 @@ public class SpellWaterwalk implements ISpell
 	}
  
 	private int cost = 1;
-	@Override
-	public void setExpCost(int c)
-	{
-		cost = c;
-	}
+ 
 	@Override
 	public int getExpCost()
 	{
