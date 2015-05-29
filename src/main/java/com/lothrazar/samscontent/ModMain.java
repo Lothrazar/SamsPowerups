@@ -282,7 +282,7 @@ public class ModMain
 	@SubscribeEvent
 	public void onEnderTeleportEvent(EnderTeleportEvent event)
 	{ 
-		PotionRegistry.onEnderTeleportEvent(event); 
+		//PotionRegistry.onEnderTeleportEvent(event); 
 	}
 	
 	@SubscribeEvent
@@ -483,14 +483,14 @@ public class ModMain
 			ItemEnderBook.rightClickBlock(event.world,event.entityPlayer, held);
 			
 		}
-		
+		/*
 		if(event.action == event.action.LEFT_CLICK_BLOCK && 
 			event.entityPlayer.isPotionActive(PotionRegistry.ender) && 
 			event.entityPlayer.getCurrentEquippedItem() != null && 
 			event.entityPlayer.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.ender_chest))
 		{
 			event.entityPlayer.displayGUIChest(event.entityPlayer.getInventoryEnderChest()); 
-		} 
+		} */
 		
 		if(ModMain.cfg.swiftDeposit  &&  //how to get this all into its own class
 				event.action == event.action.LEFT_CLICK_BLOCK && 
@@ -614,7 +614,7 @@ public class ModMain
 			}
 		}
 	}
-	
+	/*
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event)
 	{     
@@ -622,7 +622,7 @@ public class ModMain
 		
 		//this one only applies to players
 		PotionRegistry.tickEnder(player); 
-	} 
+	} */
 	
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 

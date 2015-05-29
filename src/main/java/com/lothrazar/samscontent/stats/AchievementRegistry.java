@@ -33,10 +33,10 @@ public class AchievementRegistry
 	private ArrayList<Achievement> ach = new ArrayList<Achievement>();
 	
 	public Achievement appleChoc;
-	public Achievement appleLapis;
+ 
 	public Achievement appleDiamond;
 	public Achievement appleEmerald; 
-	public Achievement appleEnder;
+ 
 	public Achievement beetrootSeed; 
 	 
 	public Achievement appleNether;
@@ -103,12 +103,7 @@ public class AchievementRegistry
 			appleChoc = new Achievement(Reference.MODID + "_appleChoc", "appleChoc", xCurrent, yCurrent, ItemRegistry.apple_chocolate, null);
 			register(appleChoc);
 		}  
-		if(ItemRegistry.apple_lapis != null)
-		{ 
-			xCurrent += xSpacing;
-			appleLapis = new Achievement(Reference.MODID + "_appleLapis", "appleLapis", xCurrent, yCurrent, ItemRegistry.apple_lapis, null);
-			register(appleLapis);
-		}  
+  
 		if(ItemRegistry.apple_diamond != null)
 		{ 
 			xCurrent += xSpacing;
@@ -125,12 +120,6 @@ public class AchievementRegistry
 			appleEmerald = new Achievement(Reference.MODID + "_appleEmerald", "appleEmerald", xCurrent, yCurrent, ItemRegistry.apple_emerald, null);
 			register(appleEmerald);
 		}  
-		if(ItemRegistry.apple_ender != null)
-		{ 
-			xCurrent += xSpacing;
-			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder" ,xCurrent, yCurrent,ItemRegistry.apple_ender,null);
-			register(appleEnder);
-		}
 	 
 		if(ItemRegistry.apple_netherwart != null)
 		{ 
@@ -297,11 +286,7 @@ public class AchievementRegistry
 		if(item == ItemRegistry.apple_chocolate)
 		{ 
 			addStatSafe(appleChoc,event.player);
-		}
-		else if(item == ItemRegistry.apple_lapis)
-		{ 
-			addStatSafe(appleLapis,event.player); 
-		}
+		} 
 		else if(item == ItemRegistry.apple_emerald)
 		{ 
 			addStatSafe(appleEmerald,event.player); 
@@ -309,12 +294,7 @@ public class AchievementRegistry
 		else if(item == ItemRegistry.apple_diamond)
 		{ 
 			addStatSafe(appleDiamond,event.player);  
-		}
-		else if(item == ItemRegistry.apple_ender)
-		{ 
-			addStatSafe(appleEnder,event.player);  
 		} 
- 
 		else if(item == ItemRegistry.apple_netherwart)
 		{ 
 			addStatSafe(appleNether,event.player);  

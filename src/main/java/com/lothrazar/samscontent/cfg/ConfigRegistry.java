@@ -189,10 +189,8 @@ public class ConfigRegistry
 		potionIdFlying = instance.get(category,"flying_id", 42).getInt();
 		
 		potionIdLavawalk = instance.get(category,"lavawalk_id", 43).getInt();
-		
-		potionIdEnder = instance.get(category,"ender_id", 44).getInt();
-		
-		potionIdFrozen = instance.get(category,"frost_id", 45).getInt();
+ 
+		potionIdFrozen = instance.get(category,"frost_id", 44).getInt();
 
 		category = "potion_effect_tweaks";
 		
@@ -327,11 +325,9 @@ public class ConfigRegistry
     			"Durability of the book, after saving a location in the book.");
 	 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();   
-		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean(); 
-		appleLapis = instance.get(category, "apple_lapis",true).getBoolean(); 
-		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean();
-		apple_ender = instance.get(category, "apple_ender",true).getBoolean();
-		appleNetherStar = instance.get(category, "apple_netherwart",true).getBoolean();
+		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();  
+		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean(); 
+		appleNetherwart = instance.get(category, "apple_netherwart",true).getBoolean();
 		
 	
 		carbon_paper = instance.getBoolean("carbon_paper",category, true,
@@ -444,26 +440,7 @@ public class ConfigRegistry
 
 		CommandPlaceBlocks.REQUIRES_OP = instance.getBoolean("place.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-	/*
-		placefloor = instance.getBoolean("placefloor",category, true,
-    			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
-		CommandPlaceFloor.REQUIRES_OP = instance.getBoolean("placefloor.needs_op",category, false,
-    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-		CommandPlaceFloor.RADIUS_MAX = instance.getInt("placefloor.radius_max", category, 8, 1, 64, 
-				"Maximum radius that you can specify as an argument.");
-		
-		placestair = instance.getBoolean("placestair",category, true,
-    			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
-		CommandPlaceStair.REQUIRES_OP = instance.getBoolean("placestair.needs_op",category, false,
-    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-		
-		placecircle = instance.getBoolean("placecircle",category, true,
-    			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
-		CommandPlaceCircle.REQUIRES_OP = instance.getBoolean("placecircle.needs_op",category, false,
-    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-		CommandPlaceCircle.RADIUS_MAX = instance.getInt("placecircle.radius_max", category, 8, 1, 32, 
-				"Maximum radius that you can specify as an argument.");
-		*/
+ 
 		cmd_kit = instance.getBoolean("kit",category, true,
     			"Use /kit to give yourself kit items.  Can only be done once each time you die.");
 
@@ -560,7 +537,7 @@ public class ConfigRegistry
 	public boolean lootGlowstone;
 	public boolean lootQuartz;
 	public boolean appleDiamond;
-	public boolean appleLapis;
+	//public boolean appleLapis;
 	public boolean appleChocolate;
 	public boolean appleEmerald;
  
@@ -585,7 +562,7 @@ public class ConfigRegistry
 	public boolean teleportBedBlock;
 	public boolean teleportSpawnBlock;
 	public boolean spawnCaveSpiderJungle;
-	public boolean appleNetherStar;
+	public boolean appleNetherwart;
 	public boolean smoothstoneTools; 
 	public boolean furnaceNeedsCoal;  
 	public boolean plantDespawningSaplings; 
@@ -621,9 +598,7 @@ public class ConfigRegistry
 	public boolean worldGenOceansNotUgly;
 	public boolean saplingGrowthRestricted;
 	public boolean saplingAllNether;
-	public boolean saplingAllEnd;
-	public int potionIdEnder; 
-	//public boolean wandWater;
+	public boolean saplingAllEnd; 
 	public boolean harvestGlassPickaxe;
  
 	public boolean shearSheepBlock; 
@@ -645,12 +620,10 @@ public class ConfigRegistry
 	public boolean canNameVillagers;
 	public boolean horse_food_upgrades;
 	public int cowExtraLeather;
-	public int sleeping_hunger_seconds; 
-	//public boolean item_soulstone;
+	public int sleeping_hunger_seconds;  
 	public boolean experience_bottle;
 	public boolean experience_bottle_return;
-	public boolean block_fragile;
-	public boolean apple_ender;
+	public boolean block_fragile; 
 	public boolean quartz_from_prismarine;
 	public boolean debugGameruleInfo;
 	public boolean smelt_gravel;
@@ -658,9 +631,7 @@ public class ConfigRegistry
 	public boolean emerald_armor; 
 	public boolean cheaper_stairs; 
 	public boolean cmd_recipe;
-	public boolean cmd_uses;
-	//public boolean phasing_compass;
- 
+	public boolean cmd_uses; 
 	public boolean cmd_effectpay;
 	public boolean cmd_ping;
 	public int heartsPlayerStart;

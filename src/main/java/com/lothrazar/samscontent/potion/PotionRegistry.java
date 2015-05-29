@@ -31,7 +31,7 @@ public class PotionRegistry
 	public static Potion waterwalk;
 	public static Potion slowfall; 
 	public static Potion lavawalk;
-	public static Potion ender;
+	//public static Potion ender;
 	public static Potion frozen;
 	
 	public final static int I = 0; 
@@ -55,7 +55,7 @@ public class PotionRegistry
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModMain.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		 
-		PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
+		//PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 		
 		PotionRegistry.frozen = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
 	}
@@ -90,7 +90,7 @@ public class PotionRegistry
 	        }
 	    }
 	}
-	 
+	 /*
 	public static void onEnderTeleportEvent(EnderTeleportEvent event)
 	{  
 		if(event.entity instanceof EntityPlayer)
@@ -114,7 +114,7 @@ public class PotionRegistry
 				} 
 			}
 		}
-	} 
+	} */
 	 
 	public static void onEntityUpdate(LivingUpdateEvent event) 
 	{  
@@ -131,7 +131,7 @@ public class PotionRegistry
 	     
 	    tickLavawalk(event);
 
-	    tickEnder(event); 
+	    //tickEnder(event); 
 	     
 	    tickFrozen(event); 
 	}
@@ -161,7 +161,7 @@ public class PotionRegistry
 			}
 	    } 
 	}
-	
+	/*
 	private static void tickEnder(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
@@ -169,8 +169,8 @@ public class PotionRegistry
 			//also  see HandlerEnderpearlTeleport, and handlerPlayerFall 
 			doPotionParticle(event.entityLiving.worldObj,event.entityLiving,EnumParticleTypes.PORTAL); 
 	    } 
-	}
-
+	}*/
+/*
 	public static void tickEnder(EntityPlayer player) 
 	{
 		if( player.isPotionActive(PotionRegistry.ender) &&     //this function is called from MainMod
@@ -178,7 +178,7 @@ public class PotionRegistry
 		{   
 			Util.teleportWallSafe(player, player.worldObj, player.getPosition().up(Reference.HEIGHT_MAX)); 
 		} 
-	}
+	}*/
 	
 	private static void tickLavawalk(LivingUpdateEvent event) 
 	{
