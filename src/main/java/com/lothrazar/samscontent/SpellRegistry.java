@@ -46,7 +46,7 @@ public class SpellRegistry
 		
 
 		torch = new SpellTorchBolt();
-		heart = new SpellHeart();
+		//heart = new SpellHeart();
 		endereye = new SpellEnderEye();
 		haste = new SpellHaste();
 		 
@@ -66,7 +66,7 @@ public class SpellRegistry
 		spellbook.add(waterbolt );
 		spellbook.add(soulstone);
 		spellbook.add(torch);
-		spellbook.add(heart);
+		//spellbook.add(heart);
 		spellbook.add(endereye);
 		spellbook.add(haste);
 		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
@@ -89,7 +89,7 @@ public class SpellRegistry
 	public static ISpell waterbolt;
 	public static ISpell soulstone;
 	public static ISpell torch;
-	public static ISpell heart;
+	//public static ISpell heart;
 	public static ISpell endereye;
 	public static ISpell haste;
 	
@@ -102,7 +102,7 @@ public class SpellRegistry
 		frostbolt,
 		ghost,
 		jump,
-		heart,
+		//heart,
 		lightningbolt,
 		pearl,
 		phase,

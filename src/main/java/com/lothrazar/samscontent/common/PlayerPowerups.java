@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.common;
 
 
+import com.lothrazar.util.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -26,6 +27,10 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 	public static final int SPELLTOG_WATCHER = 24;
 	private static final String NBT_SPELLTOG = "samSpellToggle"; 
+
+	public static final int HEALTH_WATCHER = 25;
+	private static final String NBT_HEALTH = "samHealth"; 
+	
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;  
@@ -34,6 +39,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().addObject(SPELL_WATCHER, 0); 
 		this.player.getDataWatcher().addObject(SPELLHUD_WATCHER, 0);
 		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0);
+		this.player.getDataWatcher().addObject(HEALTH_WATCHER, 0);
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -57,6 +63,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		properties.setString(NBT_SPELL,     this.getStringSafe(SPELL_WATCHER)); 
 		properties.setString(NBT_SPELLHUD,     this.getStringSafe(SPELLHUD_WATCHER)); 
 		properties.setInteger(NBT_SPELLTOG,    this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
+		properties.setInteger(NBT_HEALTH,    this.player.getDataWatcher().getWatchableObjectInt(HEALTH_WATCHER) ); 
 		
 		
 		compound.setTag(EXT_PROP_NAME, properties); 
@@ -76,6 +83,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(SPELL_WATCHER,    properties.getString(NBT_SPELL)); 
 		this.player.getDataWatcher().updateObject(SPELLHUD_WATCHER,    properties.getString(NBT_SPELLHUD));
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,    properties.getInteger(NBT_SPELLTOG));  
+		this.player.getDataWatcher().updateObject(HEALTH_WATCHER,    properties.getInteger(NBT_HEALTH));  
 		
  	}
 
@@ -140,7 +148,16 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		return this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER);
 	}
+	public final void setHealthMaxCustom(int newmax) 
+	{
+		this.player.getDataWatcher().updateObject(HEALTH_WATCHER, newmax);
 
+		Util.setMaxHealth(player,newmax);
+	}
+	public final int getHealthMaxCustom() 
+	{
+		return this.player.getDataWatcher().getWatchableObjectInt(HEALTH_WATCHER);
+	}
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
 
 	public void copy(PlayerPowerups props) 
@@ -153,12 +170,14 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		player.getDataWatcher().updateObject(SPELL_WATCHER, props.getStringTodo());
 		player.getDataWatcher().updateObject(SPELLHUD_WATCHER, props.getStringHUD());
 		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle());
+		player.getDataWatcher().updateObject(HEALTH_WATCHER, props.getHealthMaxCustom());
 		//set here
 		this.setStringWaypoints(props.getStringWaypoints());
 		this.setStringTodo(props.getStringTodo());  
 		this.setStringSpell(props.getStringSpell());  
 		this.setStringHUD(props.getStringHUD());  
 		this.setSpellToggle(props.getSpellToggle());  
+		this.setHealthMaxCustom(props.getHealthMaxCustom());  
 	}
 
 }

@@ -74,6 +74,7 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
@@ -97,6 +98,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
 import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
@@ -445,46 +447,6 @@ public class ModMain
 			Util.dropItemStackInWorld(event.world, event.pos, Items.glass_bottle);
 		}
 		
-		//if(held != null && held.getItem() == ItemRegistry.wandWater )
-	//	{
-		//	ItemWandWater.cast(event);
-		//}
-		/*
-		if(held != null && held.getItem() == ItemRegistry.wand_piston )
-		{
-			ItemWandPiston.cast(event);
-		}
-
-		if(held != null && held.getItem() == ItemRegistry.wall_compass && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{   
-			ItemWallCompass.onRightClick(event );   
-		}
-		if(held != null && held.getItem() == ItemRegistry.fire_charge_throw && 
-				event.action.RIGHT_CLICK_AIR == event.action)
-		{   
-			ItemFireballThrowable.cast(event.world,event.entityPlayer );   
-		}
-
-		if(held != null && held.getItem() == ItemRegistry.wandTransform && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			ItemWandTransform.transformBlock(event.entityPlayer, event.world, held, event.pos); 
-		}
-		
-		if(held != null && held.getItem() == ItemRegistry.frozen_snowball && 
-				event.action.RIGHT_CLICK_AIR == event.action)
-		{  
-			ItemSnowballFrozen.cast(event.world,event.entityPlayer );  
-		}
-		*/
-	 
-		/*
-		if(held != null && held.getItem() == ItemRegistry.lightning_charge )
-		{     
-			ItemLightning.cast(event); 
-		} 
-	 */
 		if(held != null && held.getItem() == ItemRegistry.carbon_paper &&   
 				event.action.RIGHT_CLICK_BLOCK == event.action)
 		{   
@@ -511,39 +473,7 @@ public class ModMain
 					ItemChestSack.createAndFillChest(event.entityPlayer, held, event.pos.offset(event.face));
 			//}
 		}
-		/*
-		if(held != null && ItemRegistry.itemChestSack != null &&  //how to get this all into its own class
-				held.getItem() == ItemRegistry.itemChestSack && 
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			TileEntity teUp = (TileEntityChest)event.entityPlayer.worldObj.getTileEntity(event.pos.up());
-			if(blockClicked == Blocks.chest && teUp instanceof TileEntityChest)//extra check before we cast it
-			{ 
-				TileEntityChest chest = (TileEntityChest)teUp; 
-
-				//TODO: other containers could go here: dispenser, trapped chest. 
-				TileEntityChest teAdjacent = Util.getChestAdj(chest); 
-				
-		  		ItemChestSack.sortFromSackToChestEntity(chest,held,event);
-		  		
-		  		if(teAdjacent != null)
-		  		{
-		  			ItemChestSack.sortFromSackToChestEntity(teAdjacent,held,event); 
-		  		} 	
-			}
-			else
-			{
-				BlockPos chestPos;
-				if(event.face != null) { chestPos = event.pos.offset(event.face); }
-				else { chestPos = event.pos.up(); }
-				//if the up one is air, then build a chest at this spot 
-				if(event.entityPlayer.worldObj.isAirBlock(chestPos)) 
-				{
-					ItemChestSack.createAndFillChest(event.entityPlayer,held,  chestPos);
-				} 
-			}
-		}  */
-		
+	
 		if (held != null && 
 			held.getItem() != null && 
 			ItemRegistry.itemEnderBook != null &&
@@ -826,32 +756,56 @@ public class ModMain
 			t.setBuckets(0);
 		}
 	}
-	
+	@SubscribeEvent
+	public void onLogin(PlayerLoggedInEvent event)
+	{
+		//every time the player joins the world
+		//Util.addChatMessage(event.player, "login.new.first");
+
+	}
+
 
 	@SubscribeEvent
 	public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
 	{ 
-		if(event.entity instanceof EntityLivingBase)
+		if(event.entity instanceof EntityLivingBase && event.world.isRemote)
 		{
 			EntityLivingBase living = (EntityLivingBase)event.entity;
-			 
+			if(living instanceof EntityPlayer)// && ((EntityPlayer)living).
+			{
+				EntityPlayer player = ((EntityPlayer)living);
+				PlayerPowerups props = PlayerPowerups.get(player);
+				//max health
+				//Hearts to Health ratio is 2:1
+				//so config file might say 3 which is 6 health points (6 half-hearts)
+				
+				int max = props.getHealthMaxCustom();
+
+		//	System.out.println("EntityPlayer spawn event max="+max);
+			//	System.out.println("healthPlayerStart="+ModMain.cfg.heartsPlayerStart);
+				
+				//start at whatever config file says is min health.  do nothing if already upgraded
+				if(max < ModMain.cfg.heartsPlayerStart)
+				{
+					props.setHealthMaxCustom(ModMain.cfg.heartsPlayerStart*2);
+				}
+				
+			} 
 			if(living instanceof EntityWolf && ((EntityWolf)living).isTamed())
 			{
-				setMaxHealth(living,ModMain.cfg.healthWolfTamed);
+				Util.setMaxHealth(living,ModMain.cfg.heartsWolfTamed*2);
 			}
 			if(living instanceof EntityOcelot && ((EntityOcelot)living).isTamed())
 			{
-				setMaxHealth(living,ModMain.cfg.healthCatTamed);
+				Util.setMaxHealth(living,ModMain.cfg.heartsCatTamed*2);
 			}
 			
 			if(living instanceof EntityVillager && ((EntityVillager)living).isChild() == false)
 			{
-				setMaxHealth(living,ModMain.cfg.healthVillager);			
+				//??living.getMaxHealth()
+				Util.setMaxHealth(living,ModMain.cfg.heartsVillager*2);			
 			}
 		}
 	}
-	private void setMaxHealth(EntityLivingBase living,int max)
-	{	
-		living.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(max);
-	}
+	
 }

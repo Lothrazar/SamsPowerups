@@ -9,6 +9,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityBat;
 import net.minecraft.entity.passive.EntityChicken;
@@ -53,6 +54,10 @@ import com.lothrazar.samscontent.potion.MessagePotion;
 
 public class Util
 {    
+	public static void setMaxHealth(EntityLivingBase living,int max)
+	{	
+		living.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(max);
+	}
 	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Block block)
 	{
 		return dropItemStackInWorld(worldObj, pos, new ItemStack(block));  

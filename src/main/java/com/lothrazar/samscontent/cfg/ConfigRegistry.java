@@ -96,15 +96,18 @@ public class ConfigRegistry
 	private void mob_changes() 
 	{
 		category = "mob_changes";
-		 
-		healthWolfTamed = instance.getInt("health_tamed_wolf",category, 100,1,100,
-    			"Change the number of hearts a tamed wolf has.  8 = 4 hearts is regular.");
 		
-		healthCatTamed = instance.getInt("health_tamed_cat",category, 100,1,100,
-    			"Change the number of hearts a tamed cat has.  8 = 4 hearts is regular.");
+		heartsPlayerStart = instance.getInt("health_player_start",category, 3,1,100,
+    			"Change the number of hearts a player starts with.  10 hearts is the vanilla default.");
 		
-		healthVillager = instance.getInt("health_villager",category, 100,1,100,
-    			"Change the number of hearts a tamed wolf has.  20 = 10 hearts is regular.");
+		heartsWolfTamed = instance.getInt("health_tamed_wolf",category, 40,1,900,
+    			"Change the number of hearts a tamed wolf has.  4 hearts is the vanilla default.");
+		
+		heartsCatTamed = instance.getInt("health_tamed_cat",category, 40,1,900,
+    			"Change the number of hearts a tamed cat has.  4 hearts is the vanilla default.");
+		
+		heartsVillager = instance.getInt("health_villager",category, 80,1,900,
+    			"Change the number of hearts a tamed wolf has.  10 hearts is the vanilla default.");
 		
 		canNameVillagers = instance.get(category, "nametag_usable_on_villagers",true).getBoolean();
 		  
@@ -660,8 +663,8 @@ public class ConfigRegistry
  
 	public boolean cmd_effectpay;
 	public boolean cmd_ping;
-	//public int healthPlayer;
-	public int healthWolfTamed;
-	public int healthVillager;
-	public int healthCatTamed;
+	public int heartsPlayerStart;
+	public int heartsWolfTamed;
+	public int heartsVillager;
+	public int heartsCatTamed;
 }

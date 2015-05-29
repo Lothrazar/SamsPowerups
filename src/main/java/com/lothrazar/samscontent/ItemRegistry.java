@@ -31,7 +31,7 @@ public class ItemRegistry
 	public static ItemChestSack itemChestSack; 
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
-	public static ItemFoodAppleMagic apple_diamond; 
+	public static ItemFoodAppleHeart apple_diamond; 
 	public static ItemFoodAppleMagic apple_lapis;
 	public static ItemFoodAppleMagic apple_chocolate;
 	public static ItemFoodAppleMagic apple_netherwart; 
@@ -248,7 +248,10 @@ public class ItemRegistry
 		 
 		if(ModMain.cfg.appleEmerald) 
 		{
-	 
+	 //TODO: pick one out that does 
+//			player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(player.getMaxHealth()+2);
+	//probably diamond
+			
 			//potion effects
 			
 			ItemRegistry.apple_emerald = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);
@@ -264,13 +267,13 @@ public class ItemRegistry
 		 
 		if(ModMain.cfg.appleDiamond) 
 		{  
-			ItemRegistry.apple_diamond = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false);
+			ItemRegistry.apple_diamond = new ItemFoodAppleHeart();
 			//ItemRegistry.apple_diamond.addEffect(PotionRegistry.flying.id, ItemFoodAppleMagic.timeShort, PotionRegistry.I);  
-			ItemRegistry.apple_diamond.addEffect(Potion.resistance.id, timePotionLong, PotionRegistry.IV);   
-			ItemRegistry.apple_diamond.addEffect(Potion.absorption.id, timePotionLong, PotionRegistry.V);  
+			//ItemRegistry.apple_diamond.addEffect(Potion.resistance.id, timePotionLong, PotionRegistry.IV);   
+			//ItemRegistry.apple_diamond.addEffect(Potion.absorption.id, timePotionLong, PotionRegistry.V);  
 			ItemRegistry.registerItem(ItemRegistry.apple_diamond, "apple_diamond");
 			
-			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_diamond,new ItemStack(Items.diamond));
+			ItemFoodAppleHeart.addRecipe(ItemRegistry.apple_diamond);
 
 		}
  

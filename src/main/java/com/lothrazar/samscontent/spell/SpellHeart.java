@@ -13,6 +13,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
+/*
 public class SpellHeart extends BaseSpell implements ISpell
 {
 
@@ -41,5 +42,6 @@ public class SpellHeart extends BaseSpell implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_heart_dummy);
 	}
-
+ 
 }
+*/
