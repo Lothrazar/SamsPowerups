@@ -24,8 +24,7 @@ public class SpellWaterBolt implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
-
+	 
 		world.spawnEntityInWorld(new EntityWaterBolt(world,player));
 
 		this.onCastSuccess(world, player, pos);

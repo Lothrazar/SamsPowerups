@@ -7,6 +7,8 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.entity.projectile.EntityTorchBolt;
+import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
@@ -22,7 +24,7 @@ public class SpellTorchBolt implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
-		System.out.println("torch");
+		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
 
 		this.onCastSuccess(world, player, pos);
 	}
