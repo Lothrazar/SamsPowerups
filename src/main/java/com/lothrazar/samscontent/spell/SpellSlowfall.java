@@ -12,7 +12,7 @@ import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellSlowfall implements ISpell
+public class SpellSlowfall extends BaseSpell implements ISpell
 { 
 	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
 	@Override
@@ -38,32 +38,7 @@ public class SpellSlowfall implements ISpell
 		return true;
 	}
  
-	private int cost = 10;
-	 
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-	@Override
-	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-		player.swingItem();
-		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
-
-		Util.drainExp(player, getExpCost());
-	}
-
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
-	}
-
+ 
 	@Override
 	public ItemStack getIconDisplay()
 	{ 

@@ -13,7 +13,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellHeart implements ISpell
+public class SpellHeart extends BaseSpell implements ISpell
 {
 
 	@Override
@@ -29,42 +29,8 @@ public class SpellHeart implements ISpell
 		player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(player.getMaxHealth()+1);
  
 	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
  
-	private int cost = 10;
  
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-	@Override
-	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		player.swingItem();
-		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
-		Util.drainExp(player, getExpCost());
-	}
-
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
-	}
 
 	@Override
 	public ItemStack getIconDisplay()

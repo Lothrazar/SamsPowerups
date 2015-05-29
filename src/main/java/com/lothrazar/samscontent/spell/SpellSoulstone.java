@@ -14,7 +14,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
 import com.lothrazar.util.Util;
 
-public class SpellSoulstone implements ISpell
+public class SpellSoulstone extends BaseSpell implements ISpell
 {
 	
 
@@ -68,43 +68,14 @@ public class SpellSoulstone implements ISpell
 		Util.playSoundAt(player, "mob.endermen.death");
 		//Util.decrHeldStackSize(event.entityPlayer); 
 	}
-
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-
-		
-		
-		
-	}
+ 
 
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.soulstone);
 	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
- 
-
-	private int cost = 10;
- 
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-
-	
-	
-
+  
 	public static void onLivingHurt(LivingHurtEvent event) 
 	{
 		//called from ModMain event handler

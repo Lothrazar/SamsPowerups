@@ -12,7 +12,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellLightningbolt implements ISpell
+public class SpellLightningbolt extends BaseSpell implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()
@@ -37,32 +37,7 @@ public class SpellLightningbolt implements ISpell
 		return true;
 	}
  
-
-	private int cost = 10;
  
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-	@Override
-	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		player.swingItem();
-		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
-		Util.drainExp(player, getExpCost());
-	}
-
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
-	}
 
 	@Override
 	public ItemStack getIconDisplay()

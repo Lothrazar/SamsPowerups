@@ -43,7 +43,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class SpellHarvest implements ISpell
+public class SpellHarvest extends BaseSpell implements ISpell
 {
 	@Override
 	public EnumSpellType getSpellType()
@@ -102,24 +102,7 @@ public class SpellHarvest implements ISpell
 		return countHarvested;
 	}
 
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
-
  
-	private int cost = 10;
- 
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{

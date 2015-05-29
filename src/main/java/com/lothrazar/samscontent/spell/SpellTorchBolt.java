@@ -12,7 +12,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellTorchBolt implements ISpell
+public class SpellTorchBolt extends BaseSpell  implements ISpell
 {
 
 	@Override
@@ -26,43 +26,8 @@ public class SpellTorchBolt implements ISpell
 	{ 
 		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
 	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
  
-
-	private int cost = 10;
  
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-	@Override
-	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		player.swingItem();
-		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
-		Util.drainExp(player, getExpCost());
-	}
-
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
-	}
 
 	@Override
 	public ItemStack getIconDisplay()

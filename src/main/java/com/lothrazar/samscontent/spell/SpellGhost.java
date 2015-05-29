@@ -13,7 +13,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellGhost implements ISpell
+public class SpellGhost extends BaseSpell  implements ISpell
 { 
 	private static final String KEY_BOOLEAN = "ghost_on";
 	private static final String KEY_TIMER = "ghost_timer";
@@ -44,27 +44,7 @@ public class SpellGhost implements ISpell
 			player.getEntityData().setString(KEY_EATLOC, Util.posToStringCSV(player.getPosition()));
 			player.getEntityData().setInteger(KEY_EATDIM, player.dimension);
 		}
-	}
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
-
- 
-
-	private int cost = 10;
- 
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-
+	} 
 	public static void onPlayerUpdate(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving instanceof EntityPlayer == false){return;}//just in case
@@ -102,25 +82,7 @@ public class SpellGhost implements ISpell
 				player.getEntityData().setBoolean(KEY_BOOLEAN, false);//then we are done
 			}  
 		}
-	} 
-	@Override
-	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		player.swingItem();
-		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
-		Util.drainExp(player, getExpCost());
-	}
-
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
-	}
+	}  
 
 	@Override
 	public ItemStack getIconDisplay()

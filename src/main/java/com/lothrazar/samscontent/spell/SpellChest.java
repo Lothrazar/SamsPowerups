@@ -13,7 +13,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellChest implements ISpell
+public class SpellChest extends BaseSpell implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()
@@ -24,10 +24,8 @@ public class SpellChest implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		// TODO Auto-generated method stub
 		TileEntityChest chestTarget = (TileEntityChest)world.getTileEntity(pos);
-		//convertChestToSack(player, null, (TileEntityChest)player.worldObj.getTileEntity(pos), pos);
-		
+	
 		if(chestTarget == null)
 		{
 			onCastFailure(world,player,pos);
@@ -103,43 +101,6 @@ public class SpellChest implements ISpell
 	
 		world.setBlockToAir(pos); 
  
-	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
-
-	 
-	private int cost = 10;
-	 
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-
-	@Override
-	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-		player.swingItem();
-		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.wood_click);
-		Util.drainExp(player, getExpCost());
-	}
-
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
 	}
 
 	@Override

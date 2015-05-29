@@ -11,7 +11,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellEnderpearl implements ISpell
+public class SpellEnderpearl extends BaseSpell implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()
@@ -25,37 +25,7 @@ public class SpellEnderpearl implements ISpell
 		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
 		 
 	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
-
  
-	private int cost = 10;
- 
-	@Override
-	public int getExpCost()
-	{
-		return cost;
-	}
-	@Override
-	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		player.swingItem();
-		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
-		//Util.playSoundAt(player, "random.wood_click");
-
-		Util.drainExp(player, getExpCost());
-	}
-
 	@Override
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
