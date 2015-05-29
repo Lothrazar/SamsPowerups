@@ -22,23 +22,22 @@ public class SpellFirebolt extends BaseSpell implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-
-		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
+		//so you don't burn yourself
+		BlockPos infront = player.getPosition().offset(player.getHorizontalFacing(), 2).up();
  
-		world.spawnEntityInWorld(new EntitySmallFireball(world,player
-		 ,player.getLookVec().xCoord
-		 ,player.getLookVec().yCoord// + 1
-		 ,player.getLookVec().zCoord));
+		EntitySmallFireball f = new EntitySmallFireball(world,player
+				 ,player.getLookVec().xCoord
+				 ,player.getLookVec().yCoord// + 1
+				 ,player.getLookVec().zCoord);
+        f.setLocationAndAngles(infront.getX(), infront.getY(), infront.getZ(), player.rotationYaw, player.rotationPitch);
+		
+        world.spawnEntityInWorld(f);
 
- 
 	}
  
- 
-
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(Items.fire_charge);
 	}
-
 }
