@@ -107,42 +107,42 @@ public class ClientProxy extends CommonProxy
 
 	private void registerKeyBindings() 
 	{
-		keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_UP, Reference.keyCategoryInventory);
+		keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_Y, Reference.keyCategoryInventory);
         ClientRegistry.registerKeyBinding(ClientProxy.keyShiftUp);
     
-		keyShiftDown = new KeyBinding(Reference.keyDownName, Keyboard.KEY_DOWN, Reference.keyCategoryInventory); 
+		keyShiftDown = new KeyBinding(Reference.keyDownName, Keyboard.KEY_H, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyShiftDown); 
 
-        keyBarUp = new KeyBinding(Reference.keyBarUpName, Keyboard.KEY_LEFT, Reference.keyCategoryInventory);
+        keyBarUp = new KeyBinding(Reference.keyBarUpName, Keyboard.KEY_U, Reference.keyCategoryInventory);
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarUp);
          
-        keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_RIGHT, Reference.keyCategoryInventory); 
+        keyBarDown = new KeyBinding(Reference.keyBarDownName, Keyboard.KEY_J, Reference.keyCategoryInventory); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBarDown);
 
-        keyBindMacro1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_COMMA, Reference.keyCategoryMacro); 
+        keyBindMacro1 = new KeyBinding(Reference.keyBind1Name, Keyboard.KEY_N, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBindMacro1);
 
-        keyBindMacro2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_PERIOD, Reference.keyCategoryMacro); 
+        keyBindMacro2 = new KeyBinding(Reference.keyBind2Name, Keyboard.KEY_M, Reference.keyCategoryMacro); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyBindMacro2);
 
-        keyTransform = new KeyBinding(Reference.keyTransformName, Keyboard.KEY_U, Reference.keyCategoryBlocks); 
+        keyTransform = new KeyBinding(Reference.keyTransformName, Keyboard.KEY_V, Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyTransform);
  
-        keyPush = new KeyBinding(Reference.keyPushName, Keyboard.KEY_O, Reference.keyCategoryBlocks); 
+        keyPush = new KeyBinding(Reference.keyPushName, Keyboard.KEY_G, Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPush);
-        keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_P,  Reference.keyCategoryBlocks); 
+        keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_B,  Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPull);
         
-        keySpellCast = new KeyBinding(Reference.keySpellCastName, Keyboard.KEY_NUMPAD0, Reference.keyCategorySpell); 
+        keySpellCast = new KeyBinding(Reference.keySpellCastName, Keyboard.KEY_X, Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keySpellCast);
 
-        keySpellUp = new KeyBinding(Reference.keySpellUpName, Keyboard.KEY_NUMPAD1, Reference.keyCategorySpell); 
+        keySpellUp = new KeyBinding(Reference.keySpellUpName, Keyboard.KEY_Z, Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keySpellUp);
 
-        keySpellDown = new KeyBinding(Reference.keySpellDownName, Keyboard.KEY_NUMPAD3,  Reference.keyCategorySpell); 
+        keySpellDown = new KeyBinding(Reference.keySpellDownName, Keyboard.KEY_C,  Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keySpellDown);
         
-        keySpellToggle = new KeyBinding(Reference.keySpellToggleName, Keyboard.KEY_NUMPAD2,  Reference.keyCategorySpell); 
+        keySpellToggle = new KeyBinding(Reference.keySpellToggleName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
         ClientRegistry.registerKeyBinding(ClientProxy.keySpellToggle);
 	} 
 

@@ -40,7 +40,7 @@ public class Reference
 	public static final String keyHarvestName = "key.spell.harvest";
 	public static final String keyEnderPearlName = "key.spell.pearl";*/
 	
-	public static final String keyCategoryInventory = "key.categories.inventory";
+	public static final String keyCategoryInventory = "key.categories.inventorycontrol";
 	public static final String keyCategoryMacro = "key.categories.macro";
 	public static final String keyCategorySpell = "key.categories.spell";
 	public static final String keyCategoryBlocks = "key.categories.blocks";
