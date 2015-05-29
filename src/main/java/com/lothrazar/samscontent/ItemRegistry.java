@@ -66,6 +66,7 @@ public class ItemRegistry
 	public static Item spell_enderinv_dummy;
 	public static Item exp_cost_dummy;
 	public static Item exp_cost_empty_dummy;
+	public static Item spell_heart_dummy;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
@@ -73,7 +74,8 @@ public class ItemRegistry
 	
 		soulstone = new Item();
 		ItemRegistry.registerItem(soulstone, "soulstone");
-		
+		spell_heart_dummy = new Item();
+		ItemRegistry.registerItem(spell_heart_dummy, "spell_heart_dummy");
 		exp_cost_dummy = new Item();
 		ItemRegistry.registerItem(exp_cost_dummy, "exp_cost_dummy");
 		exp_cost_empty_dummy = new Item();

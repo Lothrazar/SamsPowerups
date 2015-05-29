@@ -26,10 +26,20 @@ public class SpellHud implements ISpell
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
 		String hudCurr = props.getStringHUD();
-		if(hudCurr == null || hudCurr=="") hudCurr = EnumHudType.none.name();
-		EnumHudType hudNew;
+		//if(hudCurr == null || hudCurr=="") hudCurr = EnumHudType.none.name();
 		
-		switch(EnumHudType.valueOf(hudCurr))
+		EnumHudType hudCurrent = null;
+		EnumHudType hudNew = null;
+		
+		try{
+			hudCurrent = EnumHudType.valueOf(hudCurr);//always crashes if empty
+		}
+		catch(Exception e)
+		{
+			hudCurrent = EnumHudType.none;
+		}
+		
+		switch(hudCurrent)
 		{
 		case none: 
 			hudNew = EnumHudType.clock;

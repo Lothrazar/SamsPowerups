@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -79,7 +80,7 @@ public class SpellHeart implements ISpell
 	@Override
 	public ItemStack getIconDisplay()
 	{
-		return new ItemStack(Items.ender_eye);
+		return new ItemStack(ItemRegistry.spell_heart_dummy);
 	}
 
 }

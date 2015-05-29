@@ -67,11 +67,11 @@ public class EntityTorchBolt extends EntityThrowable
    
     	if(this.isInWater() == false )
         {  
-    		if(this.worldObj.isAirBlock(pos)  ) 
+    		/*if(this.worldObj.isAirBlock(pos)  ) 
     		{
         		this.worldObj.setBlockState(pos, Blocks.torch.getDefaultState()); 
     		}
-    		else if(offset != null && this.worldObj.isAirBlock(offset)  ) 
+    		else */if(offset != null && this.worldObj.isAirBlock(offset)  ) 
     		{
         		this.worldObj.setBlockState(offset, Blocks.torch.getDefaultState()); 
         	}
