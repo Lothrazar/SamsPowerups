@@ -3,18 +3,21 @@ package com.lothrazar.samscontent.spell;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
+import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellHaste implements ISpell
 {
-
+	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
+	 
 	@Override
 	public EnumSpellType getSpellType()
 	{
@@ -24,11 +27,9 @@ public class SpellHaste implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
-		//world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
+		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
 		
-		//world.spawnEntityInWorld(new EntityLightningBolt(world, pos.getX(), pos.getY(), pos.getZ()));
- 	
-
+		
 		this.onCastSuccess(world, player, pos);
 	}
 
@@ -61,8 +62,7 @@ public class SpellHaste implements ISpell
 	}
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
-	{
-
+	{ 
 		player.swingItem();
 		
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
@@ -81,6 +81,5 @@ public class SpellHaste implements ISpell
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(Items.sugar);
-	}
-
+	} 
 }

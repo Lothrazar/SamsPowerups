@@ -54,7 +54,7 @@ public class SpellHarvest implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		System.out.println("cast harvest");
+		
 		if(canPlayerCast(player) == false) {return;}
 		
 		

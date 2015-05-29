@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.spell;
 
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityEnderEye;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -24,7 +25,8 @@ public class SpellHeart implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
 		//world.spawnEntityInWorld(new EntityEnderEye(world	 ));//,player 
-		 
+
+		player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(player.getMaxHealth()+1);
 
 		this.onCastSuccess(world, player, pos);
 	}
