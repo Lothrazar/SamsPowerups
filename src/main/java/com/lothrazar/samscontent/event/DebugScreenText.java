@@ -124,11 +124,8 @@ public class DebugScreenText
 		
 		if(props.getSpellToggle() == 1)
 		{
-			drawSpell(event); 
+			drawSpell(event) ;
 			
-			
-		 	drawHud(player); 
-		
 		}
 		
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
@@ -187,6 +184,12 @@ public class DebugScreenText
 		 	{ 
 				addGameruleInfo(event, world); 
 			}
+		}
+		else
+		{
+
+		 	drawHud(player); 
+			
 		}
 		 
 	 	 

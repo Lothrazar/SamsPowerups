@@ -1,3 +1,16 @@
+/*java.lang.IllegalArgumentException: No enum constant com.lothrazar.samscontent.SpellRegistry.EnumHudType.
+    at java.lang.Enum.valueOf(Enum.java:238) ~[?:1.8.0_25]
+    at com.lothrazar.samscontent.SpellRegistry$EnumHudType.valueOf(SpellRegistry.java:112) ~[SpellRegistry$EnumHudType.class:?]
+    at com.lothrazar.samscontent.spell.SpellHud.cast(SpellHud.java:32) ~[SpellHud.class:?]
+    at com.lothrazar.samscontent.SpellRegistry.cast(SpellRegistry.java:125) ~[SpellRegistry.class:?]
+    at com.lothrazar.samscontent.proxy.MessageKeyPressed.onMessage(MessageKeyPressed.java:132) ~[MessageKeyPressed.class:?]
+    at com.lothrazar.samscontent.proxy.MessageKeyPressed.onMessage(MessageKeyPressed.java:36) ~[MessageKeyPressed.class:?]
+    at net.minecraftforge.fml.common.network.simpleimpl.SimpleChannelHandlerWrapper.channelRead0(SimpleChannelHandlerWrapper.java:37) ~[SimpleChannelHandlerWrapper.class:?]
+    at net.minecraftforge.fml.common.network.simpleimpl.SimpleChannelHandlerWrapper.channelRead0(SimpleChannelHandlerWrapper.java:17) ~[SimpleChannelHandlerWrapper.class:?]
+    at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103) ~[SimpleChannelInboundHandler.class:4.0.15.Final]
+    at io.netty.cha*/
+
+
 EntityProjectile Water?
 
 EntityProjectileTorch?
