@@ -25,8 +25,6 @@ public class SpellTorchBolt implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
 		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
-
-		this.onCastSuccess(world, player, pos);
 	}
 
 	@Override

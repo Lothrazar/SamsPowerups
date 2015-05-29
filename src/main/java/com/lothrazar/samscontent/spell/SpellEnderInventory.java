@@ -22,13 +22,8 @@ public class SpellEnderInventory implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-
-
-
 		player.displayGUIChest(player.getInventoryEnderChest()); 
 		
-		
-		this.onCastSuccess(world, player, pos);
 	}
 
 	@Override

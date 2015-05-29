@@ -28,7 +28,6 @@ public class SpellFrostbolt implements ISpell
 
 		world.spawnEntityInWorld(new EntitySnowballBolt(world,player));
 
-		this.onCastSuccess(world, player, pos);
 	
 	}
 

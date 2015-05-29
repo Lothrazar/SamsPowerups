@@ -26,13 +26,7 @@ public class SpellPhasing implements ISpell
 				(float)player.getLookVec().xCoord
 				, (float)player.getLookVec().yCoord
 				, (float)player.getLookVec().zCoord);
-
-		//System.out.println(": bugfix phase  "+face.getName()+"  "+Util.posToString(pos));
-		
-		//.getHorizontal(MathHelper.floor_double((double)(this.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3);
-
-		//ItemWallCompass.wallPhase(player.worldObj,player,pos,facing);
-		
+ 
 		int dist = 1;
 		if(face.getOpposite() == EnumFacing.DOWN)
 		{
@@ -45,8 +39,7 @@ public class SpellPhasing implements ISpell
 		if(world.isAirBlock(offs) && world.isAirBlock(offs.up()))
 		{
 			player.setPositionAndUpdate(offs.getX(), offs.getY(), offs.getZ()); 
-
-			this.onCastSuccess(world, player, pos);
+ 
 		}
 
 	}

@@ -102,8 +102,7 @@ public class SpellChest implements ISpell
 		 //the 2 here is just a magic flag it passes to the world to propogate the event
 	
 		world.setBlockToAir(pos); 
-
-		onCastSuccess(world,player,pos);
+ 
 	}
 
 	@Override

@@ -25,11 +25,9 @@ public class SpellHeart implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
-		//world.spawnEntityInWorld(new EntityEnderEye(world	 ));//,player 
-
+	 
 		player.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(player.getMaxHealth()+1);
-
-		this.onCastSuccess(world, player, pos);
+ 
 	}
 
 	@Override

@@ -137,14 +137,23 @@ public class SpellRegistry
 	
 	public static void cast(EnumSpellType spell, World world, EntityPlayer player,BlockPos pos)
 	{
-		for(ISpell sp : spellbook)
-		{ 
-			if(sp.getSpellType() == spell)
+		ISpell sp = SpellRegistry.getSpellFromType(spell);
+		
+		if(sp != null)
+		{
+			
+			if(sp.canPlayerCast(player))
 			{
 				sp.cast(world, player, pos);
-				break;
+				sp.onCastSuccess(world, player, pos);
 			}
-		} 
+			else
+			{
+				sp.onCastFailure(world, player, pos);
+			}
+			
+			
+		}
 	}
 	
 	public static void shiftUp(EntityPlayer player)

@@ -53,27 +53,8 @@ public class SpellHarvest implements ISpell
 
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
-	{
-		/*TODO:revisit this
-		if(canPlayerCast(player) == false) 
-		{
-			Util.addChatMessage(player, "spell.xp");
-			return;
-		}
-		
-		*/
-		
-		world.spawnEntityInWorld(new EntityHarvestbolt(world,player));
-
-		
-		//http://www.minecraftforge.net/wiki/Plants
- 
-		//int countHarvested = harvestArea(world, player, pos);
- 
-		//if(countHarvested > 0)//something happened 
-			this.onCastSuccess(world, player, pos); 
-		//else
-		//	this.onCastFailure(world, player, pos);
+	{ 
+		world.spawnEntityInWorld(new EntityHarvestbolt(world,player)); 
 	}
 
 	public static int harvestArea(World world, EntityPlayer player, BlockPos pos, int radius)

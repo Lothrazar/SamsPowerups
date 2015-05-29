@@ -29,9 +29,7 @@ public class SpellHaste implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
 		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.digSpeed.id,fiveSeconds,0));
-		
-		
-		this.onCastSuccess(world, player, pos);
+		 
 	}
 
 	@Override

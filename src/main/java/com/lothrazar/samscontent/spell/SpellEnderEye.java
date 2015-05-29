@@ -22,11 +22,9 @@ public class SpellEnderEye implements ISpell
 
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
-	{ 
-		System.out.println("EntityEnderEye");
+	{  
 		world.spawnEntityInWorld(new EntityEnderEye(world,pos.getX(),pos.getY(),pos.getZ()	 )); 
-		  
-		this.onCastSuccess(world, player, pos);
+		   
 	}
 
 	@Override

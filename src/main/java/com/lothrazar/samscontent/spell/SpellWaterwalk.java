@@ -27,8 +27,6 @@ public class SpellWaterwalk implements ISpell
 	{
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,fiveSeconds,0));
 
-		this.onCastSuccess(world, player, pos);
-		
 	}
 
 	@Override

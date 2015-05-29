@@ -27,8 +27,6 @@ public class SpellWaterBolt implements ISpell
 	 
 		world.spawnEntityInWorld(new EntityWaterBolt(world,player));
 
-		this.onCastSuccess(world, player, pos);
-	
 	}
 
 	@Override

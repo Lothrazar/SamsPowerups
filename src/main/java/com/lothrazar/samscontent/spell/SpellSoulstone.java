@@ -37,51 +37,36 @@ public class SpellSoulstone implements ISpell
 		
 		world.spawnEntityInWorld(new EntitySoulstoneBolt(world,player 	 ));
 		
-
-		
-		
-		this.onCastSuccess(world,player,pos);
+ 
 	}
 	public static void addEntitySoulstone(EntityLivingBase e) 
-	{ 
-		//Item item = event.entityPlayer.getHeldItem() == null ? null : event.entityPlayer.getHeldItem().getItem();
-		
-		//if(item != ItemRegistry.soulstone && item != ItemRegistry.soulstone_persist){return;}
-		 
+	{  
 		//getInteger by default returns zero if no value exists
 		if(e.getEntityData().getInteger(KEY_STONED) != VALUE_EMPTY)
 		{ 
 			return;//for single use, only apply if existing is empty (do not overwrite persist)
 		}
-		/*
-		if(item == ItemRegistry.soulstone_persist  && 
-				event.target.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST)
-		{ 
-			return;//if we are using a persisting soulstone, it can overwrite single use or empty
-			//just do not overwrite if we already have a persisting one applied
-		}*/
+ 
 		
 		//(item == ItemRegistry.soulstone_persist) ? 
 		int newValue = VALUE_PERSIST;// : VALUE_SINGLEUSE;
 		 
 		e.getEntityData().setInteger(KEY_STONED, newValue);
 		
-		//Util.decrHeldStackSize(event.entityPlayer); 
 		
-		Util.spawnParticle(e.worldObj, EnumParticleTypes.PORTAL, e.getPosition());
-		
-		
-		Util.playSoundAt(e, "mob.endermen.death");
 	} 
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
 
-
-
 		Util.drainExp(player, getExpCost());
 		
+
+		Util.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
 		
+		
+		Util.playSoundAt(player, "mob.endermen.death");
+		//Util.decrHeldStackSize(event.entityPlayer); 
 	}
 
 	@Override
