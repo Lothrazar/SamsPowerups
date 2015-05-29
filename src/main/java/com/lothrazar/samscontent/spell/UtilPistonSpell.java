@@ -22,8 +22,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class UtilPistonSpell 
-{
-	public static int DURABILITY;
+{ 
 	public static ArrayList<Block> ignoreList = new ArrayList<Block>();
 	public static String ignoreListFromConfig = "";
 	 

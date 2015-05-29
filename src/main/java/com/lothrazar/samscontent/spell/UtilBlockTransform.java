@@ -41,8 +41,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class UtilBlockTransform 
 { 
-	public static int DURABILITY;
-  
+ 
 	
  
 	private static int INVALID = -1;

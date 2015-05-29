@@ -72,7 +72,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
  
 		if( message.keyPressed == ClientProxy.keyShiftUp.getKeyCode())
  	    {    
-			//System.out.println("shiftup...");
+			System.out.println("shiftup...");
 			shiftSlotUp(player, player.inventory.currentItem); 
 		} 
 		else if( message.keyPressed == ClientProxy.keyShiftDown.getKeyCode())

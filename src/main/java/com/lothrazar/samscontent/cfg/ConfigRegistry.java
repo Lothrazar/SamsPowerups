@@ -310,18 +310,9 @@ public class ConfigRegistry
 	private void items() 
 	{
 		category = "items";
-		//superfood = instance.getBoolean("superfood",category, true,
-		//		"Combine beetroot with other food to create a super food (bread, beetroot, carrot, cooked potato, and one cooked meat).");  
-		//ender_cookie = instance.getBoolean("ender_cookie",category, true,
-	//			"Teleports you to worldspawn when eaten.");  
-		
-		//phasing_compass  = instance.getBoolean("phasing_compass",category, true,
-		//		"Click this item on a block to teleport to the other side, if it is a 1-thick wall.  Works very similar to (and inspired by) Bukkit Essentials compass teleportation.");   
-		//ItemWallCompass.DURABILITY  = instance.getInt("phasing_compass.durability",category, 100,1,900,
-    	//		"Durability of the phasing compass.");
-		//
+ 
 		emerald_armor = instance.getBoolean("emerald_armor",category, true,
-				"Adds a full set of emerald armor, that is functional the exact same as gold (same durability, enchantability, etc).");  
+				"Adds a full set of emerald armor and tools.  Better enchantability than gold, and better stats than diamond, but requires emerald blocks.");  
 		  
 		horse_food_upgrades = instance.getBoolean("horse_food_upgrades",category, true,
 				"Adds three items that let you upgrade a horses health, change its colour and change it into a zombie or skeleton horse.");  
@@ -331,13 +322,7 @@ public class ConfigRegistry
 		
 		ItemEnderBook.DURABILITY  = instance.getInt("ender_book.durability",category, 16,1,64,
     			"Durability of the book, after saving a location in the book.");
-		
-		//chest_sack = instance.getBoolean("chest_sack",category, true,
-    	//		"Craft an empty sack that can transport chests by turning them into sacks; place the full sack to re-create the full chest.  Items with NBT data (enchantments and more) will pop out on the ground.");
-        //
-		//item_soulstone = instance.getBoolean("soulstone",category, true,
-    	//		"Use a soulstone on a mob to give it an extra life.  The first time a soulstoned mob dies, it instead is healed and respawned at the world map spawn point.  Tamed pets (dogs/cats) when soulstoned once will keep this forever, so they will forever respawn.  Other mobs/entities will respawn once then lose the soulstone, and it will have to be re-applied.");
-		 
+	 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();   
 		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean(); 
 		appleLapis = instance.get(category, "apple_lapis",true).getBoolean(); 
@@ -345,13 +330,7 @@ public class ConfigRegistry
 		apple_ender = instance.get(category, "apple_ender",true).getBoolean();
 		appleNetherStar = instance.get(category, "apple_netherwart",true).getBoolean();
 		
-		//fire_charge_throw = instance.getBoolean("fire_charge_throw",category, true,
-    	//		"Craft new version of the fire charge that is throwable (as if it came out of a dispenser).");
-        //
-		//frozen_snowball = instance.getBoolean("frozen_snowball",category, true,
-    	//		"Throw a frozen snowball that freezes water and causes a short icy potion effect to anything it hits.");
-		EntitySnowballBolt.secondsFrozenOnHit = instance.getInt("frozen_snowball.duration_on_hit",category, 25,1,600,
-    			"When something hit by one of these snowballs, it gets the snow effect for this many seconds.");
+	
 		carbon_paper = instance.getBoolean("carbon_paper",category, true,
     			"Craft a wand that can copy and paste note blocks and signs.");
  
@@ -359,31 +338,17 @@ public class ConfigRegistry
  
 		respawn_egg = instance.getBoolean("respawn_egg",category, true,
     			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
- 
-		UtilBlockTransform.DURABILITY  = instance.getInt("wand_transform.durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
+  
 		
-		//wandTransform = instance.getBoolean("wand_transform",category, true,
-    	//		"Craft a wand that will transform the targeted block by its metadata value.  Does not work on every block in the game, but it does allow you to use otherwise obtainable values (mushroom blocks, logs, etc).  ");
-        //
-		//wandPiston = instance.getBoolean( "wand_piston", category,true,
-		//		"Pulls the targeted block towards you, if there is an air block available.  Ignores anything given by ignore list in this config file.");  
-	
-		String csv = instance.getString("wand_piston.ignored",category, "minecraft:cactus,minecraft:piston_head,minecraft:piston_extension,minecraft:lit_furnace,minecraft:melon_stem,minecraft:pumpkin_stem,minecraft:wheat,samscontent:beetroot_crop,wooden_door,minecraft:spruce_door,minecraft:birch_door,minecraft:jungle_door,minecraft:acacia_door,minecraft:dark_oak_door,minecraft:iron_door,minecraft:bedrock,minecraft:tripwire,minecraft:tripwire_hook,minecraft:stone_button,minecraft:wooden_button,minecraft:stone_pressure_plate,minecraft:wooden_pressure_plate,minecraft:heavy_weighted_pressure_plate,minecraft:light_weighted_pressure_plate,minecraft:redstone_wire,minecraft:mob_spawner,minecraft:ladder",
+		
+		//TODO: Spell Configs
+		EntitySnowballBolt.secondsFrozenOnHit = instance.getInt("frozen_snowball.duration_on_hit",category, 25,1,600,
+    			"When something hit by one of these snowballs, it gets the snow effect for this many seconds.");
+		
+		String csv = instance.getString("spell_piston.ignored",category, "minecraft:cactus,minecraft:piston_head,minecraft:piston_extension,minecraft:lit_furnace,minecraft:melon_stem,minecraft:pumpkin_stem,minecraft:wheat,samscontent:beetroot_crop,wooden_door,minecraft:spruce_door,minecraft:birch_door,minecraft:jungle_door,minecraft:acacia_door,minecraft:dark_oak_door,minecraft:iron_door,minecraft:bedrock,minecraft:tripwire,minecraft:tripwire_hook,minecraft:stone_button,minecraft:wooden_button,minecraft:stone_pressure_plate,minecraft:wooden_pressure_plate,minecraft:heavy_weighted_pressure_plate,minecraft:light_weighted_pressure_plate,minecraft:redstone_wire,minecraft:mob_spawner,minecraft:ladder",
     			"List of ignored blocks that will not be moved.");
 		UtilPistonSpell.seIgnoreBlocksFromString(csv);
-		
-		UtilPistonSpell.DURABILITY = instance.getInt("wand_piston.durability",category, 200,1,999,
-    			"Durability (number of uses in survival).");
-
-		//wandWater = instance.getBoolean("wand_water",category, true,
-    	//		"Craft a wand that places water.");
-
-		//ItemWandWater.DURABILITY  = instance.getInt("wand_water.durability",category, 50,1,999,
-    	//		"Durability (number of uses in survival).");
-		
-		///lightning_charge = instance.getBoolean("lightning_charge",category, true,
-    	//		"Works like a fire charge, but it spawns lightning instead of fire.");
+ 
 	}
 	
 	private void blocks() 
@@ -401,10 +366,7 @@ public class ConfigRegistry
 		 
 		fishingNetBlock = instance.getBoolean( "fishing_net",category,true,
 				"Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
-		 
-		xRayBlock = instance.getBoolean( "chunk_error_xray",category,true,
-				"An xray block to through the world at the block location, in the same way a chunk error would.  Intended for single player, not for cheating on servers."); 
-
+	 
 		weatherBlock = instance.getBoolean( "weather",category,true,
 				"Block that will run /toggledownfall whenever it gets a redstone signal.  Uses command block functions but is not editable by players."); 
 		
@@ -577,8 +539,7 @@ public class ConfigRegistry
 	public boolean bonemealReeds;
 	public boolean decorativeBlocks;  
 	public boolean uncraftGeneral; 
-	public boolean fishingNetBlock;
-	public boolean xRayBlock; 
+	public boolean fishingNetBlock; 
 	public boolean enderBook;
 	public boolean weatherBlock; 
 	public boolean craftableMushroomBlocks;

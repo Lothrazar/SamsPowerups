@@ -17,8 +17,7 @@ public class BlockRegistry
 	public static BlockCommandBlockCraftable command_block_weather ;
 	public static BlockCommandBlockCraftable command_block_tpspawn;
 	public static BlockCommandBlockCraftable command_block_tpbed; 
-	public static BlockFishing block_fishing ;
-	public static BlockXRay block_xray ;
+	public static BlockFishing block_fishing ; 
 	public static BlockShearWool block_shear_sheep;
 	public static BlockBucketStorage block_storelava;
 	public static BlockBucketStorage block_storewater;
@@ -118,13 +117,13 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.bed));
 		} 
 		
-		if(ModMain.cfg.xRayBlock)
+		/*if(ModMain.cfg.xRayBlock)
 		{ 
 			BlockRegistry.block_xray = new BlockXRay(); 
 			
 			BlockRegistry.registerBlock(BlockRegistry.block_xray,"block_xray");
  
 			BlockXRay.addRecipe();
-		}
+		}*/
 	}
 }

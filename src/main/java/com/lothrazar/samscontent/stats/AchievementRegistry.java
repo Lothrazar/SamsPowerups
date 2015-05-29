@@ -71,8 +71,7 @@ public class AchievementRegistry
 	private Achievement block_shear_sheep;
 
 	private Achievement block_storeempty;
-
-	private Achievement block_xray;
+ 
 	
 	private void register(Achievement a)
 	{
@@ -204,13 +203,7 @@ public class AchievementRegistry
 			block_fragile = new Achievement(Reference.MODID + "_block_fragile", "block_fragile" ,xCurrent, yCurrent,BlockRegistry.block_fragile,null);
 			register(block_fragile);
 		}
-		if(BlockRegistry.block_xray != null) 
-		{ 
-			xCurrent += xSpacing;
-			block_xray = new Achievement(Reference.MODID + "_block_xray", "block_xray" ,xCurrent, yCurrent,BlockRegistry.block_xray,null);
-			register(block_xray);
-		}
-		
+	 
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
 		
@@ -362,10 +355,6 @@ public class AchievementRegistry
 		else if(Block.getBlockFromItem(item) == BlockRegistry.block_storeempty) 
 		{ 
 			addStatSafe(block_storeempty,event.player);  
-		} 
-		else if(Block.getBlockFromItem(item) == BlockRegistry.block_xray) 
-		{ 
-			addStatSafe(block_xray,event.player);  
 		} 
 		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_tpbed) 
 		{ 
