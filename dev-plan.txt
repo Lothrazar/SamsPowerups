@@ -1,29 +1,4 @@
-/*java.lang.IllegalArgumentException: No enum constant com.lothrazar.samscontent.SpellRegistry.EnumHudType.
-    at java.lang.Enum.valueOf(Enum.java:238) ~[?:1.8.0_25]
-    at com.lothrazar.samscontent.SpellRegistry$EnumHudType.valueOf(SpellRegistry.java:112) ~[SpellRegistry$EnumHudType.class:?]
-    at com.lothrazar.samscontent.spell.SpellHud.cast(SpellHud.java:32) ~[SpellHud.class:?]
-    at com.lothrazar.samscontent.SpellRegistry.cast(SpellRegistry.java:125) ~[SpellRegistry.class:?]
-    at com.lothrazar.samscontent.proxy.MessageKeyPressed.onMessage(MessageKeyPressed.java:132) ~[MessageKeyPressed.class:?]
-    at com.lothrazar.samscontent.proxy.MessageKeyPressed.onMessage(MessageKeyPressed.java:36) ~[MessageKeyPressed.class:?]
-    at net.minecraftforge.fml.common.network.simpleimpl.SimpleChannelHandlerWrapper.channelRead0(SimpleChannelHandlerWrapper.java:37) ~[SimpleChannelHandlerWrapper.class:?]
-    at net.minecraftforge.fml.common.network.simpleimpl.SimpleChannelHandlerWrapper.channelRead0(SimpleChannelHandlerWrapper.java:17) ~[SimpleChannelHandlerWrapper.class:?]
-    at io.netty.channel.SimpleChannelInboundHandler.channelRead(SimpleChannelInboundHandler.java:103) ~[SimpleChannelInboundHandler.class:4.0.15.Final]
-    at io.netty.cha*/
-
-
-
-EntityProjectileTorch?
-+spell
-
-Ender Eye spell
-
-SpellHasteTradeoff(both haste and weakness)
-
-
-
-?Show light level+ when shifting?
-
-1.3.3 - WIP
+DONE THINGS
 
 -frozen potion improvements
 
@@ -43,19 +18,13 @@ SpellHasteTradeoff(both haste and weakness)
 
 /enderchest cmd bugfix (config file entries existed but not hooked up)
 
-SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
+
 
 /effectpay: add option to pump levels (ex haste2, jump3) , make sure we default=1, and multiply XP cost by that
 (then -1 since 1 = II)
 
-DOne 1.4
 
-rebalanced all apples
-
-added spellbooks
-
-
-
+ 
 place circle
 place floor
 place line
@@ -64,20 +33,16 @@ place stair    [radius|distance] [halt]
 Possible Future Features (1.4 + ):
 
 
- 
   ?flag-ghasts always drop tears- in config, check mob drops
   
 -version checker
-
--possible refactoring
 
 ?? placefloor as spiralling outward.
 
  
  command to place vertical? 
  
- torch wand? 3 coal blocks is 27. so x 4 torches each is # uses
-  
+
  REPLACE WAND: click two blocks, it swaps second with first. has a timeout between.
   
   -craft packed ice with regular for more packed
@@ -85,18 +50,6 @@ Possible Future Features (1.4 + ):
   
   -beter placeable pumpkins/fence gates
   -placing rail in bad spots
-  
- Back in january i added custom slabs, doors, fences, trapdoors, and such. revisit these, if just for
- the experience of the code, of having it done, even if I dont want to use it
- 
- Same with emerald/lapis armor, make sure works on armor stand.
- 
- -same for obsidian/lapis/redstone armor?. same stats as gold
-
- Exp Bottle crafting:  
-     MAYBE string
-     maybe redstone
- 
 
 //config file entry for waypoints // todo that switches left/right side
 
@@ -107,10 +60,9 @@ Possible Future Features (1.4 + ):
           shrink to 1 height if possible
           crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
           far reach place hotkey. use player look vectors and trickery 
-          
--MAYBE revisit achievemnts if i find easier way          
 
--command OR wand to play random song
+
+- play random song
 
 
 -EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
@@ -126,9 +78,7 @@ Possible Future Features (1.4 + ):
 -investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
 
 -   show spawn chunk [true/false] in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
-
--bonemeal on vines?
-
+ 
 --waiting on forge to update for VillagerTradeRegistry// implements IVillageTradeHandler
     
 -  beetroot  breeds pigs - no forge way exists - unless im wrong??
@@ -137,9 +87,7 @@ Possible Future Features (1.4 + ):
 an item (maybe nametag maybe3 not) for pet respawning block/spot , set their NBT or something
 
 -   horse upgrades: only let the OWNER change the types ?? maybe one day
-
-- add more blocks to ocean?
-
+ 
 - add reeds/existing plants to ocean?
 
 -disable digging stuff by hand?
@@ -150,6 +98,8 @@ an item (maybe nametag maybe3 not) for pet respawning block/spot , set their NBT
         HandlerPlayerHarvest.setShovelFromCSV(csv);
      
          */
+   
+   SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
          
 one day we could do a  version checker
         //FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");

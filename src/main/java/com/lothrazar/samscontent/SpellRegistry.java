@@ -43,6 +43,13 @@ public class SpellRegistry
 		waterwalk = new SpellWaterwalk();
 		waterbolt = new SpellWaterBolt();
 		soulstone = new SpellSoulstone();
+		
+
+		torch = new SpellTorchBolt();
+		heart = new SpellHeart();
+		endereye = new SpellEnderEye();
+		haste = new SpellHaste();
+		 
 		spellbook.add(chest);
 		spellbook.add(enderinv);
 		spellbook.add(firebolt);
@@ -58,6 +65,10 @@ public class SpellRegistry
 		spellbook.add(waterwalk );
 		spellbook.add(waterbolt );
 		spellbook.add(soulstone);
+		spellbook.add(torch);
+		spellbook.add(heart);
+		spellbook.add(endereye);
+		spellbook.add(haste);
 		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 	}
 
@@ -77,6 +88,10 @@ public class SpellRegistry
 	public static ISpell waterwalk;
 	public static ISpell waterbolt;
 	public static ISpell soulstone;
+	public static ISpell torch;
+	public static ISpell heart;
+	public static ISpell endereye;
+	public static ISpell haste;
 	
 	public enum EnumSpellType {
 		chest,
@@ -87,13 +102,17 @@ public class SpellRegistry
 		frostbolt,
 		ghost,
 		jump,
+		heart,
 		lightningbolt,
 		pearl,
 		phase,
 		slowfall,
 		soulstone,
 		waterwalk,
-		waterbolt;
+		waterbolt,
+		haste,
+		endereye,
+		torch;
 		//thanks to http://digitaljoel.nerd-herders.com/2011/04/05/get-the-next-value-in-a-java-enum/
 		public EnumSpellType next() 
 		{
