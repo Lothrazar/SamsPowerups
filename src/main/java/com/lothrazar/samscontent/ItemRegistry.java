@@ -50,13 +50,8 @@ public class ItemRegistry
 	public static ItemRespawnEggAnimal respawn_egg; 
 	public static Item soulstone;
 	//public static ItemSoulstone soulstone_persist;
-   
-	public static int emerald_harvestLevel=2;
-	public static int emerald_maxUses=32;
-	public static float emerald_efficiency=12F;
-	public static float emerald_damage=0F;
-	public static int emerald_enchantability=22;
-	//String name, int harvestLevel, int maxUses, float efficiency, float damage, int enchantability)
+
+	//String name,
 	public static ToolMaterial MATERIAL_EMERALD;
 	public static int timePotionShort = 90; // 1:30
 	public static int timePotionLong = 8 * 60;// 8:00
@@ -102,13 +97,24 @@ public class ItemRegistry
 		ItemRegistry.registerItem(spell_enderinv_dummy, "spell_enderinv_dummy");
 		
 		if(ModMain.cfg.emerald_armor)
-		{
+		{ 
 			MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 
-					emerald_harvestLevel, 
-					emerald_maxUses, 
-					emerald_efficiency, 
-					emerald_damage, 
-					emerald_enchantability);
+					3, //harvestLevel 3 same as diamond
+					1600, //maxUses more than diamond
+					15.0F, //efficiency more than gold
+					3.5F, //damage more than diamond
+					5+25 );//enchantability more than gold 
+			    
+		 /* REFERENCE: TO COMPARE:   public static enum ToolMaterial
+		    {
+		 // int harvestLevel, int maxUses, float efficiency, float damage, int enchantability)
+		        WOOD(0, 59, 2.0F, 0.0F, 15),
+		        STONE(1, 131, 4.0F, 1.0F, 5),
+		        IRON(2, 250, 6.0F, 2.0F, 14),
+		        GOLD(0, 32, 12.0F, 0.0F, 22);
+		        DIAMOND(3, 1561, 8.0F, 3.0F, 10),
+		      */
+			 
 			//thanks for help: http://bedrockminer.jimdo.com/modding-tutorials/basic-modding-1-7/custom-tools-swords/
 			 int xp = 1;
 			
