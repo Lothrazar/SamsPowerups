@@ -14,7 +14,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
 import com.lothrazar.util.Util;
 
-public class SpellSoulstone extends BaseSpell implements ISpell
+public class SpellSoulstone extends BaseSpellExp implements ISpell
 {
 	
 

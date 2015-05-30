@@ -1,5 +1,5 @@
 TODO: back up to 4 macros again?
-
+//spell types: some use items from EI others use EXP
 
 EXP FROM BUILDING
 25% each time you place any block/thing, you get 1-3 xp randomly!?!?!?

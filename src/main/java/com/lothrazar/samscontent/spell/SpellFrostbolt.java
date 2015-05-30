@@ -13,7 +13,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellFrostbolt extends BaseSpell implements ISpell
+public class SpellFrostbolt extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()

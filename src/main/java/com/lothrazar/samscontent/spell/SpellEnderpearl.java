@@ -11,7 +11,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellEnderpearl extends BaseSpell implements ISpell
+public class SpellEnderpearl extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()

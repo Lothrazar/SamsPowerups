@@ -71,24 +71,26 @@ public class SpellRegistry
 	}
 
 	public static ArrayList<ISpell> spellbook;
-	public static ISpell chest;
-	//public static ISpell enderinv;
-	public static ISpell firebolt;
-	public static ISpell frostbolt;
-	public static ISpell ghost;
-	public static ISpell harvest; 
-	public static ISpell jump;
+	public static ISpell chest;//exp//??//TODO: make the "transform" button redirect and instead do this for chests
+	public static ISpell firebolt;//item-fire charge
+	public static ISpell frostbolt;//item-snowball
+	public static ISpell ghost;//exp
+	public static ISpell harvest; //exp
+	public static ISpell jump;//exp
 	public static ISpell lightningbolt;
-	public static ISpell pearl;
-	public static ISpell phase;
-	public static ISpell slowfall;
-	public static ISpell waterwalk;
-	public static ISpell waterbolt;
-	public static ISpell soulstone;
-	public static ISpell torch;
-	//public static ISpell heart;
-	public static ISpell endereye;
-	public static ISpell haste;
+	public static ISpell pearl;//item
+	public static ISpell phase;//exp
+	public static ISpell slowfall;//exp
+	public static ISpell waterwalk;//exp
+	public static ISpell waterbolt;//item-ice block
+	public static ISpell soulstone;//exp
+	public static ISpell torch;//item
+	public static ISpell endereye;//item
+	public static ISpell haste;//exp
+
+	//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
+	//public static ISpell enderinv;//own key
+	
 	
 	public enum EnumSpellType {
 		chest,//TODO: make the "transform" button redirect and instead do this for chests

@@ -12,7 +12,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellLightningbolt extends BaseSpell implements ISpell
+public class SpellLightningbolt extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()

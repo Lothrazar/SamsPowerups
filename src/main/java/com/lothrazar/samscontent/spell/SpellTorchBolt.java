@@ -12,7 +12,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellTorchBolt extends BaseSpell  implements ISpell
+public class SpellTorchBolt extends BaseSpellExp  implements ISpell
 {
 
 	@Override

@@ -43,7 +43,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-public class SpellHarvest extends BaseSpell implements ISpell
+public class SpellHarvest extends BaseSpellExp implements ISpell
 {
 	@Override
 	public EnumSpellType getSpellType()

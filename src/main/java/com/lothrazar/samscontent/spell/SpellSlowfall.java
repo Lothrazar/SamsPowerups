@@ -12,7 +12,7 @@ import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellSlowfall extends BaseSpell implements ISpell
+public class SpellSlowfall extends BaseSpellExp implements ISpell
 { 
 	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
 	@Override
