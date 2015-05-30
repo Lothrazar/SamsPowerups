@@ -27,7 +27,7 @@ public class ItemRegistry
 { 
 	public static ArrayList<Item> items = new ArrayList<Item>();
 	
-	public static ItemEnderBook itemEnderBook; 
+	//public static ItemEnderBook itemEnderBook; 
 	public static ItemChestSack itemChestSack; 
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
@@ -236,14 +236,7 @@ public class ItemRegistry
 			ItemRegistry.registerItem(ItemRegistry.respawn_egg_empty, "respawn_egg_empty"); 
 			ItemRespawnEggEmpty.addRecipe();  
 		}
- 
-		if(ModMain.cfg.enderBook)
-		{ 
-			ItemRegistry.itemEnderBook = new ItemEnderBook(); 
-			ItemRegistry.registerItem(ItemRegistry.itemEnderBook, "book_ender"); 
-			ItemEnderBook.addRecipe();
-		}
-		 
+  
 		if(ModMain.cfg.appleEmerald) 
 		{
 			//potion effects

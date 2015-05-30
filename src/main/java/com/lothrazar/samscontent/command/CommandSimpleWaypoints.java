@@ -53,6 +53,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender p_71518_1_) 
 	{ 
+		//TODO: MODE_TELEPORT - and have it cost xp - same xp drain as spells
 		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + "|" + MODE_HIDEDISPLAY + "|" + MODE_DISPLAY + "> [displayname | showindex]";
 	}
 

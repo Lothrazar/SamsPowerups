@@ -52,8 +52,8 @@ public class AchievementRegistry
  
 	public Achievement carbonPaper;
 	
-	public Achievement soulstone;
-	public Achievement enderBook;
+	//public Achievement soulstone;
+	//public Achievement enderBook;
 
 	
 	public Achievement scaffolding;
@@ -163,12 +163,6 @@ public class AchievementRegistry
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
  
-		if(ItemRegistry.soulstone != null) 
-		{ 
-			xCurrent += xSpacing;
-			soulstone = new Achievement(Reference.MODID + "_soulstone", "soulstone" ,xCurrent, yCurrent,ItemRegistry.soulstone,null);
-			register(soulstone);
-		}
  
 
 		xCurrent = xStart;//new row
@@ -185,13 +179,7 @@ public class AchievementRegistry
 
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
-		 
-		if(ItemRegistry.itemEnderBook != null) 
-		{ 
-			xCurrent += xSpacing;
-			enderBook = new Achievement(Reference.MODID + "_enderBook", "enderBook" ,xCurrent, yCurrent,ItemRegistry.itemEnderBook,null);
-			register(enderBook);
-		} 
+	 
 		if(BlockRegistry.block_fragile != null) 
 		{ 
 			xCurrent += xSpacing;
@@ -320,16 +308,7 @@ public class AchievementRegistry
 		else if(item == ItemRegistry.lapisCarrot)
 		{ 
 			addStatSafe(lapisCarrot,event.player);  
-		} 
-	  
-		else if(item == ItemRegistry.soulstone)//TODO: v2
-		{ 
-			addStatSafe(soulstone,event.player);  
-		} 
-		else if(item == ItemRegistry.itemEnderBook) 
-		{ 
-			addStatSafe(enderBook,event.player);  
-		} 
+		}  
 		else if(Block.getBlockFromItem(item) == BlockRegistry.block_fishing) 
 		{ 
 			addStatSafe(block_fishing,event.player);  

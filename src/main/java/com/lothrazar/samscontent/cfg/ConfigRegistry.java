@@ -319,12 +319,6 @@ public class ConfigRegistry
 		  
 		horse_food_upgrades = instance.getBoolean("horse_food_upgrades",category, true,
 				"Adds three items that let you upgrade a horses health, change its colour and change it into a zombie or skeleton horse.");  
-		  
-		enderBook = instance.getBoolean( "ender_book",category,true,
-				" Craft an ender book that lets you save a waypoint, and then teleport to it later (single use).  Do not use this outside the overworld.");
-		
-		ItemEnderBook.DURABILITY  = instance.getInt("ender_book.durability",category, 16,1,64,
-    			"Durability of the book, after saving a location in the book.");
 	 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();   
 		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();  
@@ -523,7 +517,7 @@ public class ConfigRegistry
 	public boolean decorativeBlocks;  
 	public boolean uncraftGeneral; 
 	public boolean fishingNetBlock; 
-	public boolean enderBook;
+	//public boolean enderBook;
 	public boolean weatherBlock; 
 	public boolean craftableMushroomBlocks;
 	public boolean cmd_searchtrade;

@@ -468,23 +468,6 @@ public class ModMain
 			//}
 		}
 	
-		if (held != null && 
-			held.getItem() != null && 
-			ItemRegistry.itemEnderBook != null &&
-			held.getItem() == ItemRegistry.itemEnderBook && 
-			event.action.RIGHT_CLICK_BLOCK == event.action)
-		{   
-			ItemEnderBook.rightClickBlock(event.world,event.entityPlayer, held);
-			
-		}
-		/*
-		if(event.action == event.action.LEFT_CLICK_BLOCK && 
-			event.entityPlayer.isPotionActive(PotionRegistry.ender) && 
-			event.entityPlayer.getCurrentEquippedItem() != null && 
-			event.entityPlayer.getCurrentEquippedItem().getItem() == Item.getItemFromBlock(Blocks.ender_chest))
-		{
-			event.entityPlayer.displayGUIChest(event.entityPlayer.getInventoryEnderChest()); 
-		} */
 		
 		if(ModMain.cfg.swiftDeposit  &&  //how to get this all into its own class
 				event.action == event.action.LEFT_CLICK_BLOCK && 
