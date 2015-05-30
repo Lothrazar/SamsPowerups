@@ -4,11 +4,10 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;     
-
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Location; 
 import com.lothrazar.util.Reference;
-
+import com.lothrazar.util.Util;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP; 
 import net.minecraft.command.ICommand;
@@ -35,7 +34,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	{  
 		this.aliases.add("swp"); 
 		this.aliases.add("SWP");
-		this.aliases.add("SIMPLEWP");
+		this.aliases.add(getName().toUpperCase());
 	}
 	
 	@Override
@@ -54,7 +53,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	public String getCommandUsage(ICommandSender p_71518_1_) 
 	{ 
 		//TODO: MODE_TELEPORT - and have it cost xp - same xp drain as spells
-		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + "|" + MODE_HIDEDISPLAY + "|" + MODE_DISPLAY + "> [displayname | showindex]";
+		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + "|" + MODE_HIDEDISPLAY + "|" + MODE_DISPLAY + "|" + MODE_TP + "> [displayname | showindex]";
 	}
 
 	@Override
@@ -63,6 +62,7 @@ public class CommandSimpleWaypoints  implements ICommand
 		return this.aliases;
 	}
 
+	private static String MODE_TP = "tp"; 
 	private static String MODE_DISPLAY = "show"; 
 	private static String MODE_HIDEDISPLAY = "hide";
 	private static String MODE_LIST = "list";
@@ -134,7 +134,12 @@ public class CommandSimpleWaypoints  implements ICommand
 			executeDisplay(p,index);
 			return;
 		} 
-		
+
+		if(args[0].equals(MODE_TP))
+		{
+			executeTp(p, index);
+			return;
+		} 
 		//}
 		//catch(Exception e) //NumberFormat not anymore, could be IOOB
 		//{ 
@@ -172,7 +177,28 @@ public class CommandSimpleWaypoints  implements ICommand
 		lines.set(0,"0");
 		overwriteForPlayer(p,lines); 
 	}
-	
+	private void executeTp(EntityPlayer player,int index) 
+	{
+		Location loc = getSingleForPlayer(player,index);
+
+		System.out.println("try and teleport to loc "+index);
+		
+		if(loc == null)
+		{
+			Util.addChatMessage(player, "waypoints.tp.notfound");
+		}
+		else
+		{
+			if(player.dimension != loc.dimension)
+			{
+				Util.addChatMessage(player, "waypoints.tp.dimension");
+			}
+			else
+			{
+				Util.teleportWallSafe(player, player.worldObj, new BlockPos(loc.X,loc.Y,loc.Z));
+			}
+		}
+	}
 	private void executeClear(EntityPlayer p) 
 	{
 		ArrayList<String> lines = getForPlayer(p);
@@ -316,7 +342,32 @@ public class CommandSimpleWaypoints  implements ICommand
 			} 
 		}
 	}
-	
+	public static Location getSingleForPlayer(EntityPlayer player, int index)
+	{
+		if(index <= 0){return null;}
+		
+		
+		ArrayList<String> saved = getForPlayer(player);//.getDisplayName().getUnformattedText()
+
+
+		if(saved.size() <= index) {return null;}
+
+    	//loc = getSingleForPlayer(p,index);
+    	
+		String sloc = saved.get(index);
+		
+		if(sloc == null || sloc.isEmpty()) {return null;}
+
+		Location loc = null;
+		
+		if( index < saved.size() && saved.get(index) != null) 
+		{
+			loc = new Location(sloc);//this still might be null..?
+		}
+		
+		
+		return loc;
+	}
 	public static ArrayList<String> getForPlayer(EntityPlayer player)
 	{ 
 		ArrayList<String> lines = new ArrayList<String>();
@@ -374,8 +425,10 @@ public class CommandSimpleWaypoints  implements ICommand
 	 
     	ArrayList<String> saved = getForPlayer(Minecraft.getMinecraft().thePlayer);//.getDisplayName().getUnformattedText()
 
+    	
     	if(saved.size() > 0 && saved.get(0) != null)
     	{ 
+    		//find what index is selected currently
     		int index = 0;
     		try
     		{
@@ -386,21 +439,17 @@ public class CommandSimpleWaypoints  implements ICommand
     			return;
     		}// do nothing, its allowed to be a string
     		
-    		if(index <= 0){return;}
-    		
+    		 
     		Location loc = null;
-
-    		if(saved.size() <= index) {return;}
-    		
-    		String sloc = saved.get(index);
-    		
-    		if(sloc == null || sloc.isEmpty()) {return;}
-    	 
-    		if( index < saved.size() && saved.get(index) != null) {loc = new Location(sloc);}
-    		
+ 
+        	loc = getSingleForPlayer(p,index);
+        	 
     		if(loc != null)
     		{ 
-    			if(p.dimension != loc.dimension){return;}
+    			if(p.dimension != loc.dimension)
+    			{ 
+    				return;//hide it, we are in wrong dimension to display this
+    			}
     			
     			double dX = p.posX - loc.X;
     			double dZ = p.posZ - loc.Z;
