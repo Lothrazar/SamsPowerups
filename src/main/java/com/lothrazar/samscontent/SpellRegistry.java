@@ -114,13 +114,13 @@ public class SpellRegistry
 		pearl,
 		endereye;
 		//thanks to http://digitaljoel.nerd-herders.com/2011/04/05/get-the-next-value-in-a-java-enum/
-		public EnumSpellType next() 
+		public EnumSpellType prev() 
 		{
 		     return this.ordinal() < EnumSpellType.values().length - 1
 		         ? EnumSpellType.values()[this.ordinal() + 1]
 		         : null;//EnumSpellType.values()[0];
 		}
-		public EnumSpellType prev() 
+		public EnumSpellType next() 
 		{
 		     return this.ordinal() > 0
 		         ? EnumSpellType.values()[this.ordinal() - 1]
