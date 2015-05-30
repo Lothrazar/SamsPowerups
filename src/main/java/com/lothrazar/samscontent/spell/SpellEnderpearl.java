@@ -24,36 +24,8 @@ public class SpellEnderpearl extends BaseSpellItem implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
 		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
-		 
 	}
  
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
-	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		ItemStack is;
-		
-		for(int i = 0; i < player.getInventoryEnderChest().getSizeInventory(); i++)
-		{
-			is = player.getInventoryEnderChest().getStackInSlot(i);
-			if(is != null)
-			{ 
-				if(is.getItem() == this.getItemCost())
-				{
-					return true;
-				}
-			}
-		}
-		
-		return false;
-	} 
-	
 	@Override
 	public Item getItemCost()
 	{

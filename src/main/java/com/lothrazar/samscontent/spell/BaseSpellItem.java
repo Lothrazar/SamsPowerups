@@ -13,7 +13,6 @@ import com.lothrazar.util.Util;
 public abstract class BaseSpellItem implements ISpell
 {
 	public abstract EnumSpellType getSpellType();
-	 
 	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
 	public abstract ItemStack getIconDisplay();
 	public abstract Item getItemCost();
@@ -40,16 +39,27 @@ public abstract class BaseSpellItem implements ISpell
 	}
 
 	@Override
+	public boolean canPlayerCast(EntityPlayer player)
+	{
+		ItemStack is;
+		
+		for(int i = 0; i < player.getInventoryEnderChest().getSizeInventory(); i++)
+		{
+			is = player.getInventoryEnderChest().getStackInSlot(i);
+			if(is != null)
+			{ 
+				if(is.getItem() == this.getItemCost())
+				{
+					return true;
+				}
+			}
+		}
+		
+		return false;
+	} 
+	@Override
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
 		Util.playSoundAt(player, Reference.sounds.wood_click);
 	}
- 
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		System.out.println("TODO: canPlayerCast you must extend for baseitem");
-		// TODO Auto-generated method stub
-		return false;
-	} 
 }
