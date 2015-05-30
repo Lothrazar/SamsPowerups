@@ -20,5 +20,5 @@ public interface ISpell
 	
 	public boolean canPlayerCast(EntityPlayer player);
 
-	public int getExpCost();
+	//public int getExpCost();
 }

@@ -15,7 +15,7 @@ public abstract class BaseSpellItem implements ISpell
 	 
 	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
 	public abstract ItemStack getIconDisplay();
-	public abstract int getExpCost();
+	//public abstract int getExpCost();
 
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)

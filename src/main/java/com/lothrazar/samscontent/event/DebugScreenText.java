@@ -198,7 +198,8 @@ public class DebugScreenText
 		{
 			String name = spell.getSpellType().name();
 			
-			event.left.add(spell.getExpCost()+" : "+Util.lang("key.spell."+name));
+			//spell.getExpCost()+" : "+
+			event.left.add(Util.lang("key.spell."+name));
 		}
 		else
 		{
@@ -209,11 +210,12 @@ public class DebugScreenText
 			int x = 12, y = 2;
 			
 	
-			boolean canAfford = (Util.getExpTotal(player) <= spell.getExpCost());
+			//boolean canAfford = (Util.getExpTotal(player) <= spell.getExpCost());
 			
-			if(canAfford)
-				renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),x,y,dim);
-			else
+			//if(canAfford)
+			//	renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),x,y,dim);
+			//else
+			//TODO: maybe blinking one day or something?
 				renderItemAt(new ItemStack(ItemRegistry.exp_cost_empty_dummy),x,y,dim);
 				
 			//int ysmall = ymain - 3;
