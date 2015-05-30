@@ -41,18 +41,15 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 			player.setPositionAndUpdate(offs.getX(), offs.getY(), offs.getZ()); 
  
 		}
-
 	}
  
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		player.swingItem();
-		 
 		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);  
 		Util.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
 
-		Util.drainExp(player, getExpCost());
+		super.onCastSuccess(world, player, pos);
 	}
 
 	@Override
@@ -60,10 +57,10 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	{
 		return 2;
 	}
+	
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(Items.brick);
 	}
-
 }

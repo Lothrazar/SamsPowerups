@@ -26,9 +26,7 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
 		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
-		  
 	}
-
 
 	@Override
 	public int getExpCost()
@@ -41,5 +39,4 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_jump_dummy);
 	}
-
 }

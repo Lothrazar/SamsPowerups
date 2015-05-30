@@ -37,6 +37,7 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	{
 		return 20;
 	}
+	
 	@Override
 	public ItemStack getIconDisplay()
 	{

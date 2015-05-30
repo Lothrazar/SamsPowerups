@@ -24,17 +24,6 @@ public class SpellLightningbolt extends BaseSpellExp implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
 		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
-	 
-	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
 	}
 
 	@Override
@@ -43,11 +32,9 @@ public class SpellLightningbolt extends BaseSpellExp implements ISpell
 		return 300;
 	}
  
-
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_lightning_dummy);
 	}
-
 }

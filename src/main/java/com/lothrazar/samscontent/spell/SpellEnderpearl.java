@@ -12,7 +12,7 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellEnderpearl extends BaseSpellItem implements ISpell
+public class SpellEnderPearl extends BaseSpellItem implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()
@@ -31,6 +31,7 @@ public class SpellEnderpearl extends BaseSpellItem implements ISpell
 	{
 		return Items.ender_pearl;
 	}
+	
 	@Override
 	public ItemStack getIconDisplay()
 	{

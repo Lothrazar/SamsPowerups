@@ -46,5 +46,4 @@ public class SpellWaterwalk extends BaseSpellExp implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_waterwalk_dummy);
 	}
-
 }

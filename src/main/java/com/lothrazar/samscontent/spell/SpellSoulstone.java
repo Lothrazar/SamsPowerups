@@ -16,14 +16,11 @@ import com.lothrazar.util.Util;
 
 public class SpellSoulstone extends BaseSpellExp implements ISpell
 {
-	
-
 	private static final String KEY_STONED = "soulstone";
 	private static final int VALUE_SINGLEUSE = -1;
 	private static final int VALUE_PERSIST = 1;
 	private static final int VALUE_EMPTY = 0;
 	
-
 	@Override
 	public EnumSpellType getSpellType()
 	{
@@ -33,12 +30,9 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		System.out.println("TODO: soulstone projectile");
-		
 		world.spawnEntityInWorld(new EntitySoulstoneBolt(world,player 	 ));
-		
- 
 	}
+	
 	public static void addEntitySoulstone(EntityLivingBase e) 
 	{  
 		//getInteger by default returns zero if no value exists
@@ -47,26 +41,20 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 			return;//for single use, only apply if existing is empty (do not overwrite persist)
 		}
  
-		
 		//(item == ItemRegistry.soulstone_persist) ? 
 		int newValue = VALUE_PERSIST;// : VALUE_SINGLEUSE;
 		 
 		e.getEntityData().setInteger(KEY_STONED, newValue);
-		
-		
 	} 
+	
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-
-		Util.drainExp(player, getExpCost());
-		
-
 		Util.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
 		
-		
 		Util.playSoundAt(player, "mob.endermen.death");
-		//Util.decrHeldStackSize(event.entityPlayer); 
+
+		super.onCastSuccess(world, player, pos);
 	}
  
 
@@ -81,6 +69,7 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	{
 		return 200;
 	}
+	
 	public static void onLivingHurt(LivingHurtEvent event) 
 	{
 		//called from ModMain event handler

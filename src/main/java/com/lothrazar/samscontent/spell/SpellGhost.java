@@ -29,9 +29,7 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-
 		setPlayerGhostMode(player,player.worldObj);
-
 	}
 
 	@Override
@@ -53,6 +51,7 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 			player.getEntityData().setInteger(KEY_EATDIM, player.dimension);
 		}
 	} 
+	
 	public static void onPlayerUpdate(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving instanceof EntityPlayer == false){return;}//just in case

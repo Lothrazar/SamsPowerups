@@ -113,19 +113,12 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 		 
 		super.onCastSuccess(world, player, pos);
 	}
-	@Override
-	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
-	{
-
-		
-	}
-
+	
 	@Override
 	public ItemStack getIconDisplay()
 	{ 
 		return new ItemStack(ItemRegistry.spell_harvest_dummy);
 	}
-
 
 	@Override
 	public int getExpCost()

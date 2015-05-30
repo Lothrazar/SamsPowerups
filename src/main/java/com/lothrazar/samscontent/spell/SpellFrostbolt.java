@@ -2,6 +2,8 @@ package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -13,7 +15,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellFrostbolt extends BaseSpellExp implements ISpell
+public class SpellFrostbolt extends BaseSpellItem implements ISpell
 { 
 	@Override
 	public EnumSpellType getSpellType()
@@ -27,14 +29,12 @@ public class SpellFrostbolt extends BaseSpellExp implements ISpell
 		BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
 
 		world.spawnEntityInWorld(new EntitySnowballBolt(world,player));
-
-	
 	}
-
+	
 	@Override
-	public int getExpCost()
+	public Item getItemCost()
 	{
-		return 5;
+		return Items.snowball;
 	}
 
 	@Override
@@ -50,5 +50,4 @@ public class SpellFrostbolt extends BaseSpellExp implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
-
 }

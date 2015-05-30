@@ -116,4 +116,10 @@ public class SpellChest extends BaseSpellExp implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
+
+	@Override
+	public int getExpCost()
+	{
+		return 5;
+	}
 }

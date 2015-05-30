@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.spell;
 import net.minecraft.entity.item.EntityEnderEye;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -11,9 +12,8 @@ import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellEnderEye extends BaseSpellExp implements ISpell
+public class SpellEnderEye extends BaseSpellItem implements ISpell
 {
-
 	@Override
 	public EnumSpellType getSpellType()
 	{
@@ -23,15 +23,13 @@ public class SpellEnderEye extends BaseSpellExp implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{  
-		world.spawnEntityInWorld(new EntityEnderEye(world,pos.getX(),pos.getY(),pos.getZ()	 )); 
-		   
+		world.spawnEntityInWorld(new EntityEnderEye(world,pos.getX(),pos.getY(),pos.getZ())); 
 	}
   
-
 	@Override
-	public int getExpCost()
+	public Item getItemCost()
 	{
-		return 500;
+		return Items.ender_eye;
 	}
 	
 	@Override

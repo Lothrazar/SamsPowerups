@@ -1,7 +1,9 @@
 package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -12,9 +14,8 @@ import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
-public class SpellTorchBolt extends BaseSpellExp  implements ISpell
+public class SpellTorchBolt extends BaseSpellItem implements ISpell
 {
-
 	@Override
 	public EnumSpellType getSpellType()
 	{
@@ -26,18 +27,16 @@ public class SpellTorchBolt extends BaseSpellExp  implements ISpell
 	{ 
 		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
 	}
- 
 
 	@Override
-	public int getExpCost()
+	public Item getItemCost()
 	{
-		return 100;
+		return Item.getItemFromBlock(Blocks.torch);
 	}
 
 	@Override
 	public ItemStack getIconDisplay()
 	{
-		return new ItemStack(Items.tnt_minecart);//todo:torch
+		return new ItemStack(Items.tnt_minecart);//TODO:FIX?
 	}
-
 }

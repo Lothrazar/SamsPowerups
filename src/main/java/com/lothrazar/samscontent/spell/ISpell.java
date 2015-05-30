@@ -19,6 +19,4 @@ public interface ISpell
 	public ItemStack getIconDisplay();
 	
 	public boolean canPlayerCast(EntityPlayer player);
-
-	//public int getExpCost();
 }

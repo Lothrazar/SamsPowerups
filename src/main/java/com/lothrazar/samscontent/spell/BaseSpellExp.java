@@ -13,7 +13,6 @@ import net.minecraft.world.World;
 public abstract class BaseSpellExp implements ISpell
 {
 	public abstract SpellRegistry.EnumSpellType getSpellType();
-	
 	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
 	public abstract ItemStack getIconDisplay();
 	public abstract int getExpCost();
@@ -23,23 +22,18 @@ public abstract class BaseSpellExp implements ISpell
 		player.swingItem();
 		
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		//
-		//Util.playSoundAt(player, Reference.sounds.bowtoss);
+
 		Util.drainExp(player, getExpCost());
 	}
 
-	
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
 		Util.playSoundAt(player, Reference.sounds.wood_click);
 	}
 	
-	
 	@Override
 	public boolean canPlayerCast(EntityPlayer player)
 	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
 		if(Util.getExpTotal(player) < getExpCost()) return false;
 		
 		return true;

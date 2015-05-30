@@ -35,7 +35,7 @@ public class SpellRegistry
 		ghost = new SpellGhost();
 		harvest = new SpellHarvest(); 
 		jump = new SpellJump();
-		pearl = new SpellEnderpearl();
+		pearl = new SpellEnderPearl();
 		phase = new SpellPhasing();
 		lightningbolt = new SpellLightningbolt();
 		slowfall = new SpellSlowfall();

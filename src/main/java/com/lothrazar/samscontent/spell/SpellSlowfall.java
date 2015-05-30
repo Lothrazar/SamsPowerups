@@ -25,25 +25,14 @@ public class SpellSlowfall extends BaseSpellExp implements ISpell
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
 		Util.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.slowfall.id,fiveSeconds,0));
-		  
 	}
-
-	@Override
-	public boolean canPlayerCast(EntityPlayer player)
-	{
-		//TODO: in future, we can check if its locked/unlocked here
-		
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
-	}
- 
 
 	@Override
 	public int getExpCost()
 	{
 		return 5;
 	}
+	
 	@Override
 	public ItemStack getIconDisplay()
 	{ 
