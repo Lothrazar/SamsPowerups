@@ -33,8 +33,7 @@ public class SpellRegistry
 		firebolt = new SpellFirebolt();
 		frostbolt = new SpellFrostbolt();
 		ghost = new SpellGhost();
-		harvest = new SpellHarvest();
-		hud = new SpellHud();
+		harvest = new SpellHarvest(); 
 		jump = new SpellJump();
 		pearl = new SpellEnderpearl();
 		phase = new SpellPhasing();
@@ -55,8 +54,7 @@ public class SpellRegistry
 		spellbook.add(firebolt);
 		spellbook.add(frostbolt);
 		spellbook.add(ghost);
-		spellbook.add(harvest);
-		spellbook.add(hud);
+		spellbook.add(harvest); 
 		spellbook.add(jump );
 		spellbook.add(pearl );
 		spellbook.add(phase );
@@ -78,8 +76,7 @@ public class SpellRegistry
 	public static ISpell firebolt;
 	public static ISpell frostbolt;
 	public static ISpell ghost;
-	public static ISpell harvest;
-	public static ISpell hud;
+	public static ISpell harvest; 
 	public static ISpell jump;
 	public static ISpell lightningbolt;
 	public static ISpell pearl;
@@ -95,8 +92,7 @@ public class SpellRegistry
 	
 	public enum EnumSpellType {
 		chest,
-		enderinv,
-		hud,
+		enderinv, 
 		phase,
 		ghost,
 		jump,
@@ -127,14 +123,7 @@ public class SpellRegistry
 		         : null;//EnumSpellType.values()[EnumSpellType.values().length - 1];
 		}
 	};
-	
-	public enum EnumHudType {
-		none,
-		clock,
-		compass,
-		both
-	};
-	
+	 
 	public static void cast(EnumSpellType spell, World world, EntityPlayer player,BlockPos pos)
 	{
 		ISpell sp = SpellRegistry.getSpellFromType(spell);

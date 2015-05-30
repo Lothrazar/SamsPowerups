@@ -14,8 +14,7 @@ import java.util.Random;
 import org.apache.logging.log4j.Logger;  
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumHudType;
+import com.lothrazar.samscontent.SpellRegistry; 
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
@@ -125,7 +124,8 @@ public class DebugScreenText
 		if(props.getSpellToggle() == 1)
 		{
 			drawSpell(event) ;
-			
+
+		 	drawHud(player); 
 		}
 		
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
@@ -184,13 +184,7 @@ public class DebugScreenText
 		 	{ 
 				addGameruleInfo(event, world); 
 			}
-		}
-		else
-		{
-
-		 	drawHud(player); 
-			
-		}
+		} 
 		 
 	 	 
 	}
@@ -285,43 +279,11 @@ public class DebugScreenText
 		int xRight = Minecraft.getMinecraft().displayWidth/2 - 32;
 	 
 		
-		PlayerPowerups props = PlayerPowerups.get(player);
-		
-		String hudCurr = props.getStringHUD();
-		if(hudCurr == null || hudCurr.trim()=="") hudCurr = EnumHudType.none.name();
+		//PlayerPowerups props = PlayerPowerups.get(player);
+
+		renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
+		renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);//works at mid top//was ,16
 	
-		EnumHudType newhud = null;
-		
-		
-		try{
-			newhud = EnumHudType.valueOf(hudCurr);
-		}
-		catch(Exception e)
-		{
-			//its ok, stay to none by default
-			newhud = EnumHudType.none;
-		}
-		
-		
-		switch(newhud)
-		{
-		case clock: 
-			renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
-		break;
-
-		case compass: 
-			renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);//works at mid top//was ,16
-		break;
-
-		case both: 
-			renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
-			renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);
-		break;
-		case none: 
-		default:
-			//neither
-			break;
-		}
 	}
 
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 

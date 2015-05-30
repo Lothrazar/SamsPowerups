@@ -22,8 +22,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public static final int SPELL_WATCHER = 22;
 	private static final String NBT_SPELL = "samSpell"; 
 
-	public static final int SPELLHUD_WATCHER = 23;
-	private static final String NBT_SPELLHUD = "samSpellHUD"; 
+	//public static final int SPELLHUD_WATCHER = 23;
+	//private static final String NBT_SPELLHUD = "samSpellHUD"; 
 
 	public static final int SPELLTOG_WATCHER = 24;
 	private static final String NBT_SPELLTOG = "samSpellToggle"; 
@@ -37,7 +37,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().addObject(WAYPOINT_WATCHER, 0);
 		this.player.getDataWatcher().addObject(TODO_WATCHER, 0); 
 		this.player.getDataWatcher().addObject(SPELL_WATCHER, 0); 
-		this.player.getDataWatcher().addObject(SPELLHUD_WATCHER, 0);
+		//this.player.getDataWatcher().addObject(SPELLHUD_WATCHER, 0);
 		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0);
 		this.player.getDataWatcher().addObject(HEALTH_WATCHER, 0);
 	}
@@ -61,7 +61,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		properties.setString(NBT_WAYPOINT, this.getStringSafe(WAYPOINT_WATCHER)); 
 		properties.setString(NBT_TODO,     this.getStringSafe(TODO_WATCHER)); 
 		properties.setString(NBT_SPELL,     this.getStringSafe(SPELL_WATCHER)); 
-		properties.setString(NBT_SPELLHUD,     this.getStringSafe(SPELLHUD_WATCHER)); 
+		//properties.setString(NBT_SPELLHUD,     this.getStringSafe(SPELLHUD_WATCHER)); 
 		properties.setInteger(NBT_SPELLTOG,    this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
 		properties.setInteger(NBT_HEALTH,    this.player.getDataWatcher().getWatchableObjectInt(HEALTH_WATCHER) ); 
 		
@@ -81,7 +81,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
 		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
 		this.player.getDataWatcher().updateObject(SPELL_WATCHER,    properties.getString(NBT_SPELL)); 
-		this.player.getDataWatcher().updateObject(SPELLHUD_WATCHER,    properties.getString(NBT_SPELLHUD));
+	//	this.player.getDataWatcher().updateObject(SPELLHUD_WATCHER,    properties.getString(NBT_SPELLHUD));
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,    properties.getInteger(NBT_SPELLTOG));  
 		this.player.getDataWatcher().updateObject(HEALTH_WATCHER,    properties.getInteger(NBT_HEALTH));  
 		
@@ -111,15 +111,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			return "";
 		}
 	}
-
-	public final void setStringHUD(String hudtype) 
-	{
-		this.player.getDataWatcher().updateObject(SPELLHUD_WATCHER, hudtype);
-	}
-	public final String getStringHUD() 
-	{
-		return this.getStringSafe(SPELLHUD_WATCHER);
-	}
+ 
 	public final void setStringSpell(String todo) 
 	{
 		this.player.getDataWatcher().updateObject(SPELL_WATCHER, todo);
@@ -168,14 +160,14 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		player.getDataWatcher().updateObject(WAYPOINT_WATCHER, props.getStringWaypoints());
 		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo());
 		player.getDataWatcher().updateObject(SPELL_WATCHER, props.getStringTodo());
-		player.getDataWatcher().updateObject(SPELLHUD_WATCHER, props.getStringHUD());
+		//player.getDataWatcher().updateObject(SPELLHUD_WATCHER, props.getStringHUD());
 		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle());
 		player.getDataWatcher().updateObject(HEALTH_WATCHER, props.getHealthMaxCustom());
 		//set here
 		this.setStringWaypoints(props.getStringWaypoints());
 		this.setStringTodo(props.getStringTodo());  
 		this.setStringSpell(props.getStringSpell());  
-		this.setStringHUD(props.getStringHUD());  
+		//this.setStringHUD(props.getStringHUD());  
 		this.setSpellToggle(props.getSpellToggle());  
 		this.setHealthMaxCustom(props.getHealthMaxCustom());  
 	}
