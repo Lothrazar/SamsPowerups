@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.spell;
+ package com.lothrazar.samscontent.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -28,7 +28,7 @@ public class SpellHaste extends BaseSpell implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
-		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.digSpeed.id,fiveSeconds,0));
+		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.digSpeed.id,fiveSeconds,PotionRegistry.II));
 		 
 	}
 

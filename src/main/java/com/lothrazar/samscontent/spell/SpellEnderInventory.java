@@ -38,4 +38,11 @@ public class SpellEnderInventory extends BaseSpell implements ISpell
 	}
 
 
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.chestopen);
+
+		super.onCastSuccess(world, player, pos);
+	}
 }

@@ -106,17 +106,13 @@ public class SpellHarvest extends BaseSpell implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		player.swingItem();
-		
-		Util.playSoundAt(player, "mob.zombie.remedy");
+		Util.playSoundAt(player, Reference.sounds.zombieremedy);
 		 
 		if(world.isRemote) //client side 
 			Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
 		 
-
-		Util.drainExp(player, getExpCost());
+		super.onCastSuccess(world, player, pos);
 	}
-
 	@Override
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{

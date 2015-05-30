@@ -42,5 +42,13 @@ public class SpellFrostbolt extends BaseSpell implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_frostbolt_dummy);
 	}
+	
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
+
+		super.onCastSuccess(world, player, pos);
+	}
 
 }

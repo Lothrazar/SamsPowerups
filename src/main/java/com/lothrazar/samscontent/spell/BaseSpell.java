@@ -21,8 +21,8 @@ public abstract class BaseSpell implements ISpell
 		player.swingItem();
 		
 		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
+		//
+		//Util.playSoundAt(player, Reference.sounds.bowtoss);
 		Util.drainExp(player, getExpCost());
 	}
 

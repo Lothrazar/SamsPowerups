@@ -40,4 +40,11 @@ public class SpellEnderEye extends BaseSpell implements ISpell
 		return new ItemStack(Items.ender_eye);
 	}
 
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
+
+		super.onCastSuccess(world, player, pos);
+	}
 }

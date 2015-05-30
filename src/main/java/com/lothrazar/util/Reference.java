@@ -278,6 +278,9 @@ public class Reference
 	{
 		public final static String bowtoss = "random.bow";
 		public final static String wood_click = "random.wood_click";
+		public final static String drink = "random.drink";
+		public final static String chestopen = "random.chestopen";
+		public final static String zombieremedy = "mob.zombie.remedy";
 		
 	}
 

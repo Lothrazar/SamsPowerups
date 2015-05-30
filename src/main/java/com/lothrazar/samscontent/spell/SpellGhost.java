@@ -33,6 +33,14 @@ public class SpellGhost extends BaseSpell  implements ISpell
 		setPlayerGhostMode(player,player.worldObj);
 
 	}
+
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.drink);
+
+		super.onCastSuccess(world, player, pos);
+	}
 	private void setPlayerGhostMode(EntityPlayer player, World par2World)
 	{
 		if(par2World.isRemote == false)  //false means serverside

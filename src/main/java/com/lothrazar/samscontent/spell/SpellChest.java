@@ -109,4 +109,11 @@ public class SpellChest extends BaseSpell implements ISpell
 		return new ItemStack(ItemRegistry.itemChestSack);
 	}
 
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.wood_click);
+
+		super.onCastSuccess(world, player, pos);
+	}
 }
