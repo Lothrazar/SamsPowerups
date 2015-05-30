@@ -177,11 +177,19 @@ public class CommandSimpleWaypoints  implements ICommand
 		lines.set(0,"0");
 		overwriteForPlayer(p,lines); 
 	}
+	public static int EXP_COST_TP = 100;//TODO: CONFIG
 	private void executeTp(EntityPlayer player,int index) 
 	{
+		if(Util.getExpTotal(player) < EXP_COST_TP)
+		{
+			Util.addChatMessage(player, Util.lang("waypoints.tp.exp")+EXP_COST_TP);
+			return;
+		}
+		
 		Location loc = getSingleForPlayer(player,index);
 
-		System.out.println("try and teleport to loc "+index);
+		//System.out.println("try and teleport to loc "+index);
+		
 		
 		if(loc == null)
 		{
@@ -196,6 +204,8 @@ public class CommandSimpleWaypoints  implements ICommand
 			else
 			{
 				Util.teleportWallSafe(player, player.worldObj, new BlockPos(loc.X,loc.Y,loc.Z));
+				
+				Util.drainExp(player, EXP_COST_TP);
 			}
 		}
 	}
