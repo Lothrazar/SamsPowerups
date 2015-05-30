@@ -96,35 +96,35 @@ public class SpellRegistry
 	public enum EnumSpellType {
 		chest,
 		enderinv,
-		harvest,
 		hud,
-		firebolt,
-		frostbolt,
+		phase,
 		ghost,
 		jump,
-		//heart,
-		lightningbolt,
-		pearl,
-		phase,
-		slowfall,
-		soulstone,
 		waterwalk,
-		waterbolt,
+		slowfall,
 		haste,
-		endereye,
-		torch;
+		//heart,
+		harvest,
+		firebolt,
+		frostbolt,
+		lightningbolt,
+		torch,
+		soulstone,
+		waterbolt,
+		pearl,
+		endereye;
 		//thanks to http://digitaljoel.nerd-herders.com/2011/04/05/get-the-next-value-in-a-java-enum/
 		public EnumSpellType next() 
 		{
 		     return this.ordinal() < EnumSpellType.values().length - 1
 		         ? EnumSpellType.values()[this.ordinal() + 1]
-		         : EnumSpellType.values()[0];
+		         : null;//EnumSpellType.values()[0];
 		}
 		public EnumSpellType prev() 
 		{
 		     return this.ordinal() > 0
 		         ? EnumSpellType.values()[this.ordinal() - 1]
-		         : EnumSpellType.values()[EnumSpellType.values().length - 1];
+		         : null;//EnumSpellType.values()[EnumSpellType.values().length - 1];
 		}
 	};
 	
@@ -160,8 +160,9 @@ public class SpellRegistry
 	{
 		EnumSpellType current = getPlayerCurrentSpell(player);
 		EnumSpellType next = current.next();
-		 
-		setPlayerCurrentSpell(player,next);
+
+		if(next != null)
+			setPlayerCurrentSpell(player,next);
 		
 		//Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
 	}
@@ -170,7 +171,8 @@ public class SpellRegistry
 		EnumSpellType current = getPlayerCurrentSpell(player);
 		EnumSpellType next = current.prev();
 		 
-		setPlayerCurrentSpell(player,next);
+		if(next != null)
+			setPlayerCurrentSpell(player,next);
 
 		//Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
 	}
@@ -220,6 +222,7 @@ public class SpellRegistry
 
 	public static ISpell getSpellFromType(EnumSpellType next)
 	{
+		if(next == null){return null;}
 		for(ISpell sp : spellbook)
 		{ 
 			if(sp.getSpellType() == next)

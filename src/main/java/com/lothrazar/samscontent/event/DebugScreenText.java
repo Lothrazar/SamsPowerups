@@ -222,14 +222,6 @@ public class DebugScreenText
 			else
 				renderItemAt(new ItemStack(ItemRegistry.exp_cost_empty_dummy),x,y,dim);
 				
-			//Util.lang("key.spell.cost")
-			//event.left.add("");
-			//event.left.add(spell.getExpCost()+"" );
-			
-			
-			ISpell spellNext = SpellRegistry.getSpellFromType(spell.getSpellType().next());
-			ISpell spellPrev = SpellRegistry.getSpellFromType(spell.getSpellType().prev());
-			
 			//int ysmall = ymain - 3;
 			int xmain = 10;
 			ymain = 14;
@@ -240,42 +232,46 @@ public class DebugScreenText
 				dim = 16;
 				renderItemAt(spell.getIconDisplay(),x,y,dim);
 			}
-			if(spellNext.getIconDisplay() != null)
+			
+			
+			ISpell spellNext = SpellRegistry.getSpellFromType(spell.getSpellType().next());
+			ISpell spellPrev = SpellRegistry.getSpellFromType(spell.getSpellType().prev());
+			
+			
+			if(spellNext != null)// && spellNext.getIconDisplay() != null
 			{
 				x = xmain-3; 
 				y = ymain + 16;
 				dim = 16/2;
 				renderItemAt(spellNext.getIconDisplay(),x,y,dim);
+				
+				ISpell sLeftLeft = SpellRegistry.getSpellFromType(spellNext.getSpellType().next());
+
+				if(sLeftLeft != null && sLeftLeft.getIconDisplay() != null)
+				{
+					x = xmain-3 - 1; 
+					y = ymain + 16+14;
+					dim = 16/2 - 2;
+					renderItemAt(sLeftLeft.getIconDisplay(),x,y,dim);
+				}
 			}
-			if(spellPrev.getIconDisplay() != null)
+			if(spellPrev != null)// && spellPrev.getIconDisplay() != null
 			{
 				x = xmain+6; 
 				y = ymain + 16;
 				dim = 16/2;
 				renderItemAt(spellPrev.getIconDisplay(),x,y,dim);
-			}
-			
-			
 
-			ISpell sLeftLeft = SpellRegistry.getSpellFromType(spellNext.getSpellType().next());
-			ISpell sRightRight = SpellRegistry.getSpellFromType(spellPrev.getSpellType().prev());
+				ISpell sRightRight = SpellRegistry.getSpellFromType(spellPrev.getSpellType().prev());
 
-			if(sLeftLeft.getIconDisplay() != null)
-			{
-				x = xmain-3 - 1; 
-				y = ymain + 16+14;
-				dim = 16/2 - 2;
-				renderItemAt(sLeftLeft.getIconDisplay(),x,y,dim);
+				if(sRightRight != null && sRightRight.getIconDisplay() != null)
+				{
+					x = xmain+6 + 4; 
+					y = ymain + 16+14;
+					dim = 16/2 - 2;
+					renderItemAt(sRightRight.getIconDisplay(),x,y,dim);
+				}
 			}
-			if(sRightRight.getIconDisplay() != null)
-			{
-				x = xmain+6 + 4; 
-				y = ymain + 16+14;
-				dim = 16/2 - 2;
-				renderItemAt(sRightRight.getIconDisplay(),x,y,dim);
-			}
-			
-			
 		}
 	}
 
