@@ -29,7 +29,7 @@ public class SpellRegistry
 		spellbook = new ArrayList<ISpell>();
 		
 		chest = new SpellChest();
-		enderinv = new SpellEnderInventory();
+		//enderinv = new SpellEnderInventory();
 		firebolt = new SpellFirebolt();
 		frostbolt = new SpellFrostbolt();
 		ghost = new SpellGhost();
@@ -50,7 +50,7 @@ public class SpellRegistry
 		haste = new SpellHaste();
 		 
 		spellbook.add(chest);
-		spellbook.add(enderinv);
+		//spellbook.add(enderinv);
 		spellbook.add(firebolt);
 		spellbook.add(frostbolt);
 		spellbook.add(ghost);
@@ -72,7 +72,7 @@ public class SpellRegistry
 
 	public static ArrayList<ISpell> spellbook;
 	public static ISpell chest;
-	public static ISpell enderinv;
+	//public static ISpell enderinv;
 	public static ISpell firebolt;
 	public static ISpell frostbolt;
 	public static ISpell ghost;
@@ -91,8 +91,8 @@ public class SpellRegistry
 	public static ISpell haste;
 	
 	public enum EnumSpellType {
-		chest,
-		enderinv, 
+		chest,//TODO: make the "transform" button redirect and instead do this for chests
+		//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
 		phase,
 		ghost,
 		jump,
