@@ -19,6 +19,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World; 
@@ -56,8 +57,7 @@ public class EntityTorchBolt extends EntityThrowable
         
         BlockPos pos = mop.getBlockPos();
         BlockPos offset = null;
-        
-  
+         
         if( mop.sideHit != null)
         {
     
@@ -67,18 +67,42 @@ public class EntityTorchBolt extends EntityThrowable
    
     	if(this.isInWater() == false )
         {  
-    		/*if(this.worldObj.isAirBlock(pos)  ) 
+    		
+    		if(offset != null && this.worldObj.isAirBlock(offset)  ) 
     		{
-        		this.worldObj.setBlockState(pos, Blocks.torch.getDefaultState()); 
-    		}
-    		else */if(offset != null && this.worldObj.isAirBlock(offset)  ) 
-    		{
-        		this.worldObj.setBlockState(offset, Blocks.torch.getDefaultState()); 
+    			//http://minecraft.gamepedia.com/Torch#Block_data
+    			int faceEast = 1;
+    			int faceWest = 2;
+    			int faceSouth = 3;
+    			int faceNorth = 4;
+    			int faceUp = 5;
+    			int blockdata;
+    			
+    			switch(mop.sideHit)
+    			{ 
+    			case WEST:
+    				blockdata = faceWest;
+    				break;
+    			case EAST:
+    				blockdata = faceEast;
+    				break;
+    			case NORTH:
+    				blockdata = faceNorth;
+    				break;
+    			case SOUTH:
+    				blockdata = faceSouth;
+    				break; 
+    			default:
+    				blockdata = faceUp;
+    				break;
+    			}
+    			
+        		this.worldObj.setBlockState(offset, Blocks.torch.getStateFromMeta(blockdata)); 
+        		
         	}
         }
     	 
         	 
         this.setDead();
- 
     }  
 }

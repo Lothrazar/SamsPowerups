@@ -12,7 +12,8 @@ ALTERNATE INTERFACE, MAYBE GRID?
 BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
 
 TORCH SPELL - icon texture
-TORCH SPELL ALSO - set block meta to side facing direction of attachment, for when it hits wall-check hit face
+TORCH SPELL ALSO  THEY DONT STICK TO WALLS
+- set block meta to side facing direction of attachment, for when it hits wall-check hit face
 
 haste spell - ICON TEXTURE - make it 10 seconds?
 
