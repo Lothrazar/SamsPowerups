@@ -31,7 +31,7 @@ public class PotionRegistry
 	public static Potion waterwalk;
 	public static Potion slowfall; 
 	public static Potion lavawalk;
-	//public static Potion ender;
+	public static Potion ender;
 	public static Potion frozen;
 	
 	public final static int I = 0; 
@@ -55,7 +55,7 @@ public class PotionRegistry
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModMain.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 		 
-		//PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
+		PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 		
 		PotionRegistry.frozen = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
 	}
@@ -90,32 +90,7 @@ public class PotionRegistry
 	        }
 	    }
 	}
-	 /*
-	public static void onEnderTeleportEvent(EnderTeleportEvent event)
-	{  
-		if(event.entity instanceof EntityPlayer)
-		{ 
-			EntityPlayer p = (EntityPlayer)event.entity;
-			
-			if(p.isPotionActive(PotionRegistry.ender))
-			{
-				//Feature 1: : remove damage 
-				event.attackDamage = 0;  //starts at exactly  5.0 which is 2.5hearts
-			  
-				//feature 2: odds to return pearl
-				int rawChance = 50;//ModLoader.configSettings.chanceReturnEnderPearl;
-				
-				double pct = ((double)rawChance)/100.0; 
-				 
-				if(p.worldObj.rand.nextDouble() < pct) //so event.entity.pos is their position BEFORE teleport
-				{ 
-					EntityItem ei = new EntityItem(p.worldObj, event.targetX, event.targetY, event.targetZ, new ItemStack(Items.ender_pearl));
-					p.worldObj.spawnEntityInWorld(ei);
-				} 
-			}
-		}
-	} */
-	 
+
 	public static void onEntityUpdate(LivingUpdateEvent event) 
 	{  
 		if(event.entityLiving == null){return;}
@@ -131,7 +106,7 @@ public class PotionRegistry
 	     
 	    tickLavawalk(event);
 
-	    //tickEnder(event); 
+	    tickEnder(event); 
 	     
 	    tickFrozen(event); 
 	}
@@ -161,24 +136,8 @@ public class PotionRegistry
 			}
 	    } 
 	}
-	/*
-	private static void tickEnder(LivingUpdateEvent event) 
-	{
-		if(event.entityLiving.isPotionActive(PotionRegistry.ender)) 
-	    { 
-			//also  see HandlerEnderpearlTeleport, and handlerPlayerFall 
-			doPotionParticle(event.entityLiving.worldObj,event.entityLiving,EnumParticleTypes.PORTAL); 
-	    } 
-	}*/
-/*
-	public static void tickEnder(EntityPlayer player) 
-	{
-		if( player.isPotionActive(PotionRegistry.ender) &&     //this function is called from MainMod
-			player.posY < -50)
-		{   
-			Util.teleportWallSafe(player, player.worldObj, player.getPosition().up(Reference.HEIGHT_MAX)); 
-		} 
-	}*/
+
+
 	
 	private static void tickLavawalk(LivingUpdateEvent event) 
 	{
@@ -215,6 +174,11 @@ public class PotionRegistry
     		 event.entityLiving.onGround = true; //act as if on solid ground
     		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
     	 }  
+	}
+	private static void tickEnder(LivingUpdateEvent event) 
+	{
+		if(event.entity.worldObj.rand.nextDouble() < 0.1)
+			doPotionParticle(event.entity.worldObj,event.entityLiving,EnumParticleTypes.PORTAL);
 	}
 	
 	private static void tickSlowfall(LivingUpdateEvent event) 

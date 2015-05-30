@@ -191,7 +191,9 @@ public class ConfigRegistry
 		potionIdLavawalk = instance.get(category,"lavawalk_id", 43).getInt();
  
 		potionIdFrozen = instance.get(category,"frost_id", 44).getInt();
-
+		
+		potionIdEnder = instance.get(category,"frost_id", 45).getInt();
+		
 		category = "potion_effect_tweaks";
 		
 		slowfallSpeed = instance.getFloat("potion_slowfall_speed",category, 0.41F,0.1F,1F,
@@ -326,6 +328,7 @@ public class ConfigRegistry
 	 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();   
 		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();  
+		appleEnder = instance.get( category,"apple_ender",true).getBoolean();  
 		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean(); 
 		appleNetherwart = instance.get(category, "apple_netherwart",true).getBoolean();
 		
@@ -539,7 +542,7 @@ public class ConfigRegistry
 	public boolean appleDiamond;
 	//public boolean appleLapis;
 	public boolean appleChocolate;
-	public boolean appleEmerald;
+ 
  
 	public boolean debugSlime;
 	public boolean debugHorseInfo;
@@ -563,6 +566,8 @@ public class ConfigRegistry
 	public boolean teleportSpawnBlock;
 	public boolean spawnCaveSpiderJungle;
 	public boolean appleNetherwart;
+	public boolean appleEnder;
+	public boolean appleEmerald;
 	public boolean smoothstoneTools; 
 	public boolean furnaceNeedsCoal;  
 	public boolean plantDespawningSaplings; 
@@ -606,7 +611,7 @@ public class ConfigRegistry
 	public boolean beetroot;
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;
-	  
+	public int potionIdEnder;
 	public int potionIdFrozen;
 	public int chanceZombieChildFeather;
 	public int chanceZombieVillagerEmerald;

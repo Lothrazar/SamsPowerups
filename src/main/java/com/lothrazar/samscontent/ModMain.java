@@ -280,12 +280,6 @@ public class ModMain
 	}
 	
 	@SubscribeEvent
-	public void onEnderTeleportEvent(EnderTeleportEvent event)
-	{ 
-		//PotionRegistry.onEnderTeleportEvent(event); 
-	}
-	
-	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
 		PotionRegistry.onEntityUpdate(event);
@@ -614,7 +608,30 @@ public class ModMain
 			}
 		}
 	}
+	@SubscribeEvent
+	public void onEnderTeleportEvent(EnderTeleportEvent event)
+	{  
+		
+		if(event.entityLiving != null && event.entityLiving.isPotionActive(PotionRegistry.ender))
+		{
+			event.attackDamage = 0;  //starts at exactly  5.0 which is 2.5hearts
+		  /*
+			//feature 2: odds to return pearl-removed feature
+			int rawChance = 50;//ModLoader.configSettings.chanceReturnEnderPearl;
+			
+			double pct = ((double)rawChance)/100.0; 
+			 
+			if(p.worldObj.rand.nextDouble() < pct) //so event.entity.pos is their position BEFORE teleport
+			{ 
+				EntityItem ei = new EntityItem(p.worldObj, event.targetX, event.targetY, event.targetZ, new ItemStack(Items.ender_pearl));
+				p.worldObj.spawnEntityInWorld(ei);
+			} */
+		}
+		 
+	}
+	 
 	/*
+	 //TODO: put back in if needed
 	@SubscribeEvent
 	public void onPlayerTick(PlayerTickEvent event)
 	{     

@@ -32,6 +32,7 @@ public class ItemRegistry
 	public static ItemRespawnEggEmpty respawn_egg_empty; 
 	public static ItemFoodAppleMagic apple_emerald;
 	public static ItemFoodAppleHeart apple_diamond; 
+	public static ItemFoodAppleMagic apple_ender; 
  
 	public static ItemFoodAppleMagic apple_chocolate;
 	public static ItemFoodAppleMagic apple_netherwart; 
@@ -258,7 +259,20 @@ public class ItemRegistry
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Items.emerald));
 	
+			
+			
 		}   
+		
+		if(ModMain.cfg.appleEnder) 
+		{
+			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);
+			//one hour!
+			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, 60*60, PotionRegistry.I);  
+			ItemRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
+			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl));
+		}
+ 
+		
 		if(ModMain.cfg.appleChocolate)
 		{
 			ItemRegistry.apple_chocolate = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false); 

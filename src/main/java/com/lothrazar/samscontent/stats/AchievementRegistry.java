@@ -36,7 +36,7 @@ public class AchievementRegistry
  
 	public Achievement appleDiamond;
 	public Achievement appleEmerald; 
- 
+	public Achievement appleEnder;
 	public Achievement beetrootSeed; 
 	 
 	public Achievement appleNether;
@@ -120,7 +120,13 @@ public class AchievementRegistry
 			appleEmerald = new Achievement(Reference.MODID + "_appleEmerald", "appleEmerald", xCurrent, yCurrent, ItemRegistry.apple_emerald, null);
 			register(appleEmerald);
 		}  
-	 
+
+		if(ItemRegistry.apple_ender != null)
+		{ 
+			xCurrent += xSpacing;
+			appleEnder = new Achievement(Reference.MODID + "_appleEnder", "appleEnder", xCurrent, yCurrent, ItemRegistry.apple_ender, null);
+			register(appleEnder);
+		}  
 		if(ItemRegistry.apple_netherwart != null)
 		{ 
 			xCurrent += xSpacing;
@@ -290,6 +296,10 @@ public class AchievementRegistry
 		else if(item == ItemRegistry.apple_emerald)
 		{ 
 			addStatSafe(appleEmerald,event.player); 
+		}
+		else if(item == ItemRegistry.apple_ender)
+		{ 
+			addStatSafe(appleEnder,event.player); 
 		}
 		else if(item == ItemRegistry.apple_diamond)
 		{ 
