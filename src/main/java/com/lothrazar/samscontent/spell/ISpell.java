@@ -18,5 +18,8 @@ public interface ISpell
 	
 	public ItemStack getIconDisplay();
 	
+
+	public ItemStack getIconDisplayHeader();
+	
 	public boolean canPlayerCast(EntityPlayer player);
 }

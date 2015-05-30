@@ -1,5 +1,6 @@
 package com.lothrazar.samscontent.spell;
 
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -37,6 +38,14 @@ public abstract class BaseSpellExp implements ISpell
 		if(Util.getExpTotal(player) < getExpCost()) return false;
 		
 		return true;
+	}
+	
+	
+
+	@Override
+	public ItemStack getIconDisplayHeader()
+	{
+		return new ItemStack(ItemRegistry.exp_cost_dummy);
 	}
  
 }

@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -61,5 +62,12 @@ public abstract class BaseSpellItem implements ISpell
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
 		Util.playSoundAt(player, Reference.sounds.wood_click);
+	}
+
+
+	@Override
+	public ItemStack getIconDisplayHeader()
+	{
+		return new ItemStack(ItemRegistry.spell_enderinv_dummy);
 	}
 }

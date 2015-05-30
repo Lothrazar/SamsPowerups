@@ -209,14 +209,7 @@ public class DebugScreenText
 	 
 			int x = 12, y = 2;
 			
-	
-			//boolean canAfford = (Util.getExpTotal(player) <= spell.getExpCost());
-			
-			//if(canAfford)
-			//	renderItemAt(new ItemStack(ItemRegistry.exp_cost_dummy),x,y,dim);
-			//else
-			//TODO: maybe blinking one day or something?
-				renderItemAt(new ItemStack(ItemRegistry.exp_cost_empty_dummy),x,y,dim);
+			renderItemAt(spell.getIconDisplayHeader(),x,y,dim);
 				
 			//int ysmall = ymain - 3;
 			int xmain = 10;
