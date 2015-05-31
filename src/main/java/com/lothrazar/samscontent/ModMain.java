@@ -242,10 +242,7 @@ public class ModMain
 
 		if(ModMain.cfg.cmd_uses) 
 			event.registerServerCommand(new CommandUses());
-
-		if(ModMain.cfg.cmd_effectpay) 
-			event.registerServerCommand(new CommandEffectPay());
-
+  
 		if(ModMain.cfg.cmd_ping) 
 			event.registerServerCommand(new CommandPing());
 		

@@ -420,16 +420,9 @@ public class ConfigRegistry
 		
 		PlaceLib.allowedFromConfig = instance.getString("place.filter",category, "minecraft:dirt,samscontent:block_fragile",
     			"Filter which blocks can be placed with ALL place commands.  Empty string in this filter means everything is allowed.");
-		PlaceLib.XP_COST_PER_PLACE = instance.getInt("place.xp_cost", category, 1, 0, 99, 
+		PlaceLib.XP_COST_PER_PLACE = instance.getInt("place.xp_cost", category, 0, 0, 99, 
 				"Experience drained each time a block is placed with one of these commands.");
-		
-		cmd_effectpay = instance.getBoolean("effectpay",category, true,
-    			"Similar to /effect, but it drains exp for each second you get.");
-		CommandEffectPay.XP_COST_PER_SECOND = instance.getInt("effectpay.exp_per_second", category, 5, 1, 64, 
-				"Experience cost per second of potion effect.");
-		CommandEffectPay.REQUIRES_OP = instance.getBoolean("effectpay.needs_op",category, false,
-    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
-	
+ 
 		cmd_place_blocks = instance.getBoolean("place",category, true,
     			"Use /place to put blocks in the world from your survival inventory.  It will only replace air blocks, and can skip blocks with its arguments.");
 
@@ -629,7 +622,7 @@ public class ConfigRegistry
 	public boolean cheaper_stairs; 
 	public boolean cmd_recipe;
 	public boolean cmd_uses; 
-	public boolean cmd_effectpay;
+	//public boolean cmd_effectpay;
 	public boolean cmd_ping; 
 	public int heartsWolfTamed;
 	public int heartsVillager;
