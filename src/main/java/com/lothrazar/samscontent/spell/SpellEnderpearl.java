@@ -38,13 +38,13 @@ public class SpellEnderPearl extends BaseSpellItem implements ISpell
 		return new ItemStack(Items.ender_pearl);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
 		return SpellRegistry.endereye;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return SpellRegistry.waterbolt;
 	}

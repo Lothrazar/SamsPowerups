@@ -134,7 +134,8 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			{
 				SpellRegistry.shiftUp(player);
 				
-				Util.playSoundAt(player, "random.orb");
+				Util.playSoundAt(player, Reference.sounds.orb);
+				
 			}
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
@@ -142,7 +143,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			if(props.getSpellToggle() != PlayerPowerups.SPELL_TOGGLE_HIDE)
 			{
 				SpellRegistry.shiftDown(player);
-				Util.playSoundAt(player, "random.orb");
+				Util.playSoundAt(player, Reference.sounds.orb);
 			}
 			
 		}

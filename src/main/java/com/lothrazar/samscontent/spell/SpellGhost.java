@@ -103,13 +103,13 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 		return 200;
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
 		return SpellRegistry.jump;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return SpellRegistry.phase;
 	}

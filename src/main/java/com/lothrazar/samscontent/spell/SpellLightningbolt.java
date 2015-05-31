@@ -38,14 +38,14 @@ public class SpellLightningbolt extends BaseSpellExp implements ISpell
 		return new ItemStack(ItemRegistry.spell_lightning_dummy);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.torch;
+		return SpellRegistry.soulstone;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
-		return SpellRegistry.frostbolt;
+		return SpellRegistry.firebolt;
 	}
 }

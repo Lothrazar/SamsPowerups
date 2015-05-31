@@ -124,13 +124,13 @@ public class SpellChest extends BaseSpellExp implements ISpell
 	}
 
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.phase;
+		return SpellRegistry.haste;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return null;
 	}

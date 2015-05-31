@@ -222,8 +222,8 @@ public class DebugScreenText
 			}
 			
 			
-			ISpell spellNext = spell.next();//SpellRegistry.getSpellFromType(spell.getSpellID().next());
-			ISpell spellPrev = spell.prev();//SpellRegistry.getSpellFromType(spell.getSpellID().prev());
+			ISpell spellNext = spell.left();//SpellRegistry.getSpellFromType(spell.getSpellID().next());
+			ISpell spellPrev = spell.right();//SpellRegistry.getSpellFromType(spell.getSpellID().prev());
 			
 			
 			if(spellNext != null)// && spellNext.getIconDisplay() != null
@@ -233,7 +233,7 @@ public class DebugScreenText
 				dim = 16/2;
 				renderItemAt(spellNext.getIconDisplay(),x,y,dim);
 				
-				ISpell sLeftLeft = spellNext.next();//SpellRegistry.getSpellFromType(spellNext.getSpellID().next());
+				ISpell sLeftLeft = spellNext.left();//SpellRegistry.getSpellFromType(spellNext.getSpellID().next());
 
 				if(sLeftLeft != null && sLeftLeft.getIconDisplay() != null)
 				{
@@ -250,7 +250,7 @@ public class DebugScreenText
 				dim = 16/2;
 				renderItemAt(spellPrev.getIconDisplay(),x,y,dim);
 
-				ISpell sRightRight = spellPrev.prev();//SpellRegistry.getSpellFromType(spellPrev.getSpellID().prev());
+				ISpell sRightRight = spellPrev.right();//SpellRegistry.getSpellFromType(spellPrev.getSpellID().prev());
 
 				if(sRightRight != null && sRightRight.getIconDisplay() != null)
 				{

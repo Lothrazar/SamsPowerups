@@ -46,13 +46,13 @@ public class SpellEnderEye extends BaseSpellItem implements ISpell
 		super.onCastSuccess(world, player, pos);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
 		return null;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return SpellRegistry.pearl;
 	}

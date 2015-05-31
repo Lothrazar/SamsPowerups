@@ -40,13 +40,13 @@ public class SpellJump extends BaseSpellExp implements ISpell
 		return new ItemStack(ItemRegistry.spell_jump_dummy);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
 		return SpellRegistry.haste;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return SpellRegistry.ghost;
 	}

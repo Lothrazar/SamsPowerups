@@ -47,14 +47,14 @@ public class SpellFirebolt extends BaseSpellItem implements ISpell
 		return new ItemStack(Items.fire_charge);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.frostbolt;
+		return SpellRegistry.lightningbolt;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
-		return SpellRegistry.harvest;
+		return SpellRegistry.frostbolt;
 	}
 }

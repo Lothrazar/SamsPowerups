@@ -47,13 +47,13 @@ public class SpellWaterwalk extends BaseSpellExp implements ISpell
 		return new ItemStack(ItemRegistry.spell_waterwalk_dummy);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
 		return SpellRegistry.slowfall;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return SpellRegistry.haste;
 	}

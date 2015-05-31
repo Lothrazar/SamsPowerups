@@ -13,8 +13,8 @@ import net.minecraft.world.World;
 
 public abstract class BaseSpellExp implements ISpell
 {
-	public abstract ISpell next();
-	public abstract ISpell prev();
+	public abstract ISpell left();
+	public abstract ISpell right();
 	public abstract String getSpellID();
 	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
 	public abstract ItemStack getIconDisplay();

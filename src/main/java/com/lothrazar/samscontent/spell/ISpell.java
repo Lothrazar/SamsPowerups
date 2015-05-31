@@ -8,8 +8,8 @@ import net.minecraft.world.World;
 
 public interface ISpell
 {
-	public ISpell next();
-	public ISpell prev();
+	public ISpell left();
+	public ISpell right();
 	
 	public String getSpellID();
 	

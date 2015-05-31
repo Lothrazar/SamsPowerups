@@ -40,14 +40,14 @@ public class SpellWaterBolt extends BaseSpellItem implements ISpell
 		return new ItemStack(ItemRegistry.spell_water_dummy);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.phase;
+		return SpellRegistry.frostbolt;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
-		return SpellRegistry.haste;
+		return SpellRegistry.torch;
 	}
 }

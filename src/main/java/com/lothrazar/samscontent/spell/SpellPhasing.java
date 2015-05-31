@@ -64,13 +64,13 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 		return new ItemStack(Items.brick);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
 		return SpellRegistry.ghost;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return SpellRegistry.chest;
 	}

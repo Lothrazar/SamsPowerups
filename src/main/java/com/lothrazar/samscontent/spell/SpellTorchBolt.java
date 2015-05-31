@@ -39,15 +39,16 @@ public class SpellTorchBolt extends BaseSpellItem implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_torch_dummy);
 	}
+	//
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.soulstone;
+		return SpellRegistry.waterbolt;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
-		return SpellRegistry.lightningbolt;
+		return null;
 	}
 }

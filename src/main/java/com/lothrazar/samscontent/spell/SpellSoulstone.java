@@ -99,14 +99,14 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 		} 
 	} 
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.waterbolt;
+		return SpellRegistry.harvest;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
-		return SpellRegistry.torch;
+		return SpellRegistry.lightningbolt;
 	}
 }

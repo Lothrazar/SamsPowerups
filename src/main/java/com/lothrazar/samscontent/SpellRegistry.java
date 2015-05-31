@@ -79,14 +79,18 @@ public class SpellRegistry
 	public static ISpell lightningbolt;
 	public static ISpell pearl;
 	public static ISpell phase;
-	public static ISpell slowfall;
+	public static ISpell slowfall;//10
 	public static ISpell waterwalk;
 	public static ISpell waterbolt;
 	public static ISpell soulstone;
 	public static ISpell torch;
 	public static ISpell endereye;
-	public static ISpell haste;
+	public static ISpell haste;//16
 	 
+	public static ISpell getDefaultSpell()
+	{
+		return getSpellFromType("chest");
+	}
 
 	//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
 	public static void cast(ISpell spell, World world, EntityPlayer player,BlockPos pos)
@@ -112,16 +116,16 @@ public class SpellRegistry
 	{
 		ISpell current = getPlayerCurrentISpell(player);
 		
-		if(current.next() != null)
-			setPlayerCurrentSpell(player,current.next().getSpellID());
+		if(current.left() != null)
+			setPlayerCurrentSpell(player,current.left().getSpellID());
 	}
 
 	public static void shiftDown(EntityPlayer player)
 	{ 
 		ISpell current = getPlayerCurrentISpell(player);
 
-		if(current.prev() != null)
-			setPlayerCurrentSpell(player,current.prev().getSpellID());
+		if(current.right() != null)
+			setPlayerCurrentSpell(player,current.right().getSpellID());
 	}
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	String current)
@@ -134,18 +138,6 @@ public class SpellRegistry
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 	 
-		 /*
-		 try{
-			 newOrDefault = EnumSpellTypeA.valueOf(props.getStringSpell());
-		 }
-		 catch (Exception e)
-		 {
-			 //in case blank wasnt caught already
-			 setPlayerCurrentSpell(player, EnumSpellTypeA.chest);//default
-			 newOrDefault = EnumSpellTypeA.chest; 
-		 }
-		*/
-		
 		return props.getStringSpell();
 	}
 
@@ -161,7 +153,7 @@ public class SpellRegistry
 			}
 		} 
 		//if current spell is null,default to the first one
-		return SpellRegistry.chest;
+		return SpellRegistry.getDefaultSpell();
 	}
  
 	public static ISpell getSpellFromType(String next)

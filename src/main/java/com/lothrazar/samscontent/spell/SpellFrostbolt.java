@@ -51,14 +51,14 @@ public class SpellFrostbolt extends BaseSpellItem implements ISpell
 		super.onCastSuccess(world, player, pos);
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.lightningbolt;
+		return SpellRegistry.firebolt;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
-		return SpellRegistry.firebolt;
+		return SpellRegistry.waterbolt;
 	}
 }

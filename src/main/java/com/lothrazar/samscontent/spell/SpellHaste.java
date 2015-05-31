@@ -44,13 +44,13 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 		return new ItemStack(ItemRegistry.spell_haste_dummy);
 	} 
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
 		return SpellRegistry.waterwalk;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
 		return SpellRegistry.jump;
 	}

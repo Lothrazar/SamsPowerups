@@ -1,3 +1,15 @@
+//todo: a group left to right is
+
+
+torch water frost fire lightn soulstone harvest
+
+//next group ltr
+
+chest haste waterwalk jump slowfall phase pearl eeye ghost
+
+
+//since 5 icons per screen, min size 5/group. above is 7,9 for 16 total
+
 TODO: back up to 4 macros again?
 //spell types: some use items from EI others use EXP
 
@@ -14,6 +26,7 @@ ALTERNATE INTERFACE, MAYBE GRID?
 
 BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
   
+  iron golems drop extra block of iron? in config?
 
 /place commands (like place floor) add a random flag 
 so you would enter /place floor 5 50 

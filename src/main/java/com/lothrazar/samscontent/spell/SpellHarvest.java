@@ -126,14 +126,14 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 		return 75;
 	}
 	@Override
-	public ISpell next()
+	public ISpell left()
 	{
-		return SpellRegistry.firebolt;
+		return null;
 	}
 
 	@Override
-	public ISpell prev()
+	public ISpell right()
 	{
-		return null;
+		return SpellRegistry.soulstone;
 	}
 }

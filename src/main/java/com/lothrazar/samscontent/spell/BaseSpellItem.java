@@ -12,8 +12,8 @@ import com.lothrazar.util.Util;
 
 public abstract class BaseSpellItem implements ISpell
 {
-	public abstract ISpell next();
-	public abstract ISpell prev();
+	public abstract ISpell left();
+	public abstract ISpell right();
 	public abstract String getSpellID();
 	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
 	public abstract ItemStack getIconDisplay();
