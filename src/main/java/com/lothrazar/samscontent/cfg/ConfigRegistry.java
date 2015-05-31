@@ -189,7 +189,7 @@ public class ConfigRegistry
  
 		potionIdFrozen = instance.get(category,"frost_id", 44).getInt();
 		
-		potionIdEnder = instance.get(category,"frost_id", 45).getInt();
+		potionIdEnder = instance.get(category,"ender_id", 45).getInt();
 		
 		category = "potion_effect_tweaks";
 		
@@ -322,6 +322,7 @@ public class ConfigRegistry
 		appleEnder = instance.get( category,"apple_ender",true).getBoolean();  
 		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean(); 
 		appleNetherwart = instance.get(category, "apple_netherwart",true).getBoolean();
+		appleFrost = instance.get(category, "apple_frost",true).getBoolean(); 
 		
 	
 		carbon_paper = instance.getBoolean("carbon_paper",category, true,
@@ -633,4 +634,5 @@ public class ConfigRegistry
 	public int heartsWolfTamed;
 	public int heartsVillager;
 	public int heartsCatTamed;
+	public boolean appleFrost;
 }

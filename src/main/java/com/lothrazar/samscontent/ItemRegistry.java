@@ -33,6 +33,7 @@ public class ItemRegistry
 	public static ItemFoodAppleMagic apple_emerald;
 	public static ItemFoodAppleHeart apple_diamond; 
 	public static ItemFoodAppleMagic apple_ender; 
+	public static ItemFoodAppleMagic apple_frost; 
  
 	public static ItemFoodAppleMagic apple_chocolate;
 	public static ItemFoodAppleMagic apple_netherwart; 
@@ -264,6 +265,7 @@ public class ItemRegistry
 		{
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);
 			//one hour!
+			System.out.println("apple ender"+PotionRegistry.ender.id);
 			ItemRegistry.apple_ender.addEffect(PotionRegistry.ender.id, 60*60, PotionRegistry.I);  
 			ItemRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl));
@@ -290,7 +292,14 @@ public class ItemRegistry
 			ItemFoodAppleHeart.addRecipe(ItemRegistry.apple_diamond);
 
 		}
- 
+		if(ModMain.cfg.appleFrost) 
+		{
+			System.out.println("apple_frost  "+PotionRegistry.frost.id);
+			apple_frost = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true); 
+			ItemRegistry.apple_frost.addEffect(PotionRegistry.frost.id, timePotionLong, PotionRegistry.I);
+			ItemRegistry.registerItem(ItemRegistry.apple_frost, "apple_frost");
+			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_frost, new ItemStack(Blocks.ice ));
+		}
 		if(ModMain.cfg.appleNetherwart) 
 		{ 
 			ItemRegistry.apple_netherwart = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, true);  

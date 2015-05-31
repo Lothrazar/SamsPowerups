@@ -32,7 +32,7 @@ public class PotionRegistry
 	public static Potion slowfall; 
 	public static Potion lavawalk;
 	public static Potion ender;
-	public static Potion frozen;
+	public static Potion frost;
 	
 	public final static int I = 0; 
 	public final static int II = 1;
@@ -57,7 +57,7 @@ public class PotionRegistry
 		 
 		PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
 		
-		PotionRegistry.frozen = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
+		PotionRegistry.frost = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
@@ -108,7 +108,7 @@ public class PotionRegistry
 
 	    tickEnder(event); 
 	     
-	    tickFrozen(event); 
+	    tickFrost(event); 
 	}
 	
 	private static void doPotionParticle(World world, EntityLivingBase living, EnumParticleTypes particle)
@@ -119,26 +119,26 @@ public class PotionRegistry
     	}
 	}
 
-	private static void tickFrozen(LivingUpdateEvent event) 
+	private static void tickFrost(LivingUpdateEvent event) 
 	{ 
-		if(event.entityLiving.isPotionActive(PotionRegistry.frozen)) 
+		if(event.entityLiving.isPotionActive(PotionRegistry.frost)) 
 	    { 
 			World world = event.entityLiving.worldObj;
 			BlockPos pos = event.entityLiving.getPosition();
 
-			if(world.rand.nextDouble() < 0.9)
+			if(world.rand.nextDouble() < 0.5)
 				doPotionParticle(world,event.entityLiving,EnumParticleTypes.SNOWBALL);
 
-			if(world.rand.nextDouble() < 0.5 && 
-				world.getBlockState(pos).getBlock().isReplaceable(world, pos) )
+			if(world.rand.nextDouble() < 0.3 && 
+				world.getBlockState(pos).getBlock().isReplaceable(world, pos) &&
+				world.getBlockState(pos).getBlock().isReplaceable(world, pos.down()) == false &&//dont place above torches/snow/grass
+				world.isAirBlock(pos.down()) == false)//dont place above air
 			{
 				Util.setBlockIfAir(world, pos, Blocks.snow_layer.getDefaultState());
 			}
 	    } 
 	}
 
-
-	
 	private static void tickLavawalk(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.lavawalk)) 

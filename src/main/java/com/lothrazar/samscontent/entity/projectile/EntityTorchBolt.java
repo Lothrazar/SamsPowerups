@@ -64,45 +64,39 @@ public class EntityTorchBolt extends EntityThrowable
         	offset = mop.getBlockPos().offset(mop.sideHit);
         }
         
-   
-    	if(this.isInWater() == false )
-        {  
+		if(this.isInWater() == false && offset != null && this.worldObj.isAirBlock(offset)  && this.worldObj.isRemote ) 
+		{
+			//http://minecraft.gamepedia.com/Torch#Block_data
+			int faceEast = 1;
+			int faceWest = 2;
+			int faceSouth = 3;
+			int faceNorth = 4;
+			int faceUp = 5;
+			int blockdata;
+			
+			switch(mop.sideHit)
+			{ 
+			case WEST:
+				blockdata = faceWest;
+				break;
+			case EAST:
+				blockdata = faceEast;
+				break;
+			case NORTH:
+				blockdata = faceNorth;
+				break;
+			case SOUTH:
+				blockdata = faceSouth;
+				break; 
+			default:
+				blockdata = faceUp;
+				break;
+			}
+			
+    		this.worldObj.setBlockState(offset, Blocks.torch.getStateFromMeta(blockdata)); 
     		
-    		if(offset != null && this.worldObj.isAirBlock(offset)  ) 
-    		{
-    			//http://minecraft.gamepedia.com/Torch#Block_data
-    			int faceEast = 1;
-    			int faceWest = 2;
-    			int faceSouth = 3;
-    			int faceNorth = 4;
-    			int faceUp = 5;
-    			int blockdata;
-    			
-    			switch(mop.sideHit)
-    			{ 
-    			case WEST:
-    				blockdata = faceWest;
-    				break;
-    			case EAST:
-    				blockdata = faceEast;
-    				break;
-    			case NORTH:
-    				blockdata = faceNorth;
-    				break;
-    			case SOUTH:
-    				blockdata = faceSouth;
-    				break; 
-    			default:
-    				blockdata = faceUp;
-    				break;
-    			}
-    			
-        		this.worldObj.setBlockState(offset, Blocks.torch.getStateFromMeta(blockdata)); 
-        		
-        	}
-        }
-    	 
-        	 
+    	}
+	 
         this.setDead();
     }  
 }

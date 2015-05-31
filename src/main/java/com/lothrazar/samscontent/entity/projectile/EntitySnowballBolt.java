@@ -67,7 +67,7 @@ public class EntitySnowballBolt extends EntityThrowable
                 	e.extinguish();
                 }
                 
-            	e.addPotionEffect(new PotionEffect(PotionRegistry.frozen.id, secondsFrozenOnHit * Reference.TICKS_PER_SEC,0));
+            	e.addPotionEffect(new PotionEffect(PotionRegistry.frost.id, secondsFrozenOnHit * Reference.TICKS_PER_SEC,0));
             } 
         }
         
