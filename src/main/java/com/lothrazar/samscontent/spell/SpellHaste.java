@@ -9,7 +9,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
@@ -20,9 +20,9 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	private static int seconds = Reference.TICKS_PER_SEC * 10; 
 	 
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.haste;
+		return "haste";
 	}
 
 	@Override
@@ -43,4 +43,15 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_haste_dummy);
 	} 
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.waterwalk;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.jump;
+	}
 }

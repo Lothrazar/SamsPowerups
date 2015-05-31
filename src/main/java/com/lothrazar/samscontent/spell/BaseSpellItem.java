@@ -7,13 +7,14 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public abstract class BaseSpellItem implements ISpell
 {
-	public abstract EnumSpellType getSpellType();
+	public abstract ISpell next();
+	public abstract ISpell prev();
+	public abstract String getSpellID();
 	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
 	public abstract ItemStack getIconDisplay();
 	public abstract Item getItemCost();

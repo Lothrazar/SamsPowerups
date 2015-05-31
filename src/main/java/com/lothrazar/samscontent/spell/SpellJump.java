@@ -8,7 +8,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
@@ -17,9 +17,9 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
 
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.jump;
+		return "jump";
 	}
 
 	@Override
@@ -38,5 +38,16 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_jump_dummy);
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.haste;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.ghost;
 	}
 }

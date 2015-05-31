@@ -9,8 +9,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
-import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -18,9 +17,9 @@ import com.lothrazar.util.Util;
 public class SpellWaterBolt extends BaseSpellItem implements ISpell
 { 
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.waterbolt;
+		return "waterbolt";
 	}
 
 	@Override
@@ -39,5 +38,16 @@ public class SpellWaterBolt extends BaseSpellItem implements ISpell
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_water_dummy);
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.phase;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.haste;
 	}
 }

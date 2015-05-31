@@ -7,7 +7,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -17,9 +17,9 @@ public class SpellWaterwalk extends BaseSpellExp implements ISpell
 	private static int seconds = Reference.TICKS_PER_SEC * 10; 
 	
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.waterwalk;
+		return "waterwalk";
 	}
 
 	@Override
@@ -45,5 +45,16 @@ public class SpellWaterwalk extends BaseSpellExp implements ISpell
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_waterwalk_dummy);
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.slowfall;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.haste;
 	}
 }

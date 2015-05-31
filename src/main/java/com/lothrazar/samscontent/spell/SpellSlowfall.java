@@ -7,7 +7,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
@@ -15,10 +15,11 @@ import com.lothrazar.util.Util;
 public class SpellSlowfall extends BaseSpellExp implements ISpell
 { 
 	private static int seconds = Reference.TICKS_PER_SEC * 10;
+	
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.slowfall;
+		return "slowfall";
 	}
 
 	@Override
@@ -39,4 +40,15 @@ public class SpellSlowfall extends BaseSpellExp implements ISpell
 		return new ItemStack(Items.feather);
 	}
 
+	@Override
+	public ISpell next()
+	{
+		return null;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.waterwalk;
+	}
 }

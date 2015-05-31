@@ -13,12 +13,7 @@ ORDER SPELLS: throwables group, potion group?
 ALTERNATE INTERFACE, MAYBE GRID?
 
 BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
- 
-
-haste spell  - make it 10 seconds?
-
-slowfall/waterwalk - make it 10 seconds?
-   
+  
 
 /place commands (like place floor) add a random flag 
 so you would enter /place floor 5 50 

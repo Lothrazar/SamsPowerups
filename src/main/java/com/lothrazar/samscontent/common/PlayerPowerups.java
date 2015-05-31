@@ -132,6 +132,10 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public void init(Entity entity, World world) 
 	{ 
 	}
+	public static final int SPELL_TOGGLE_HIDE = 0;
+	public static final int SPELL_TOGGLE_SHOW = 1;
+	//public static final int SPELL_TOGGLE_B = 2;
+	
 	public final void setSpellToggle(int onoff) 
 	{
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, onoff);

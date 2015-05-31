@@ -9,7 +9,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType; 
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
@@ -21,9 +21,9 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	private static final String KEY_EATDIM = "ghost_dim";
 	private static final int GHOST_SECONDS = 10;//so 30 seconds
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.ghost;
+		return "ghost";
 	}
 
 	@Override
@@ -101,5 +101,16 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	public int getExpCost()
 	{
 		return 200;
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.jump;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.phase;
 	}
 }

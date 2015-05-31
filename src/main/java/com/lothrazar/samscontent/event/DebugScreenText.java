@@ -14,8 +14,7 @@ import java.util.Random;
 import org.apache.logging.log4j.Logger;  
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.SpellRegistry; 
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;  
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
 import com.lothrazar.samscontent.common.PlayerPowerups;
@@ -121,7 +120,7 @@ public class DebugScreenText
 
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
-		if(props.getSpellToggle() == 1)
+		if(props.getSpellToggle() != PlayerPowerups.SPELL_TOGGLE_HIDE)
 		{
 			drawSpell(event) ;
 
@@ -192,14 +191,14 @@ public class DebugScreenText
 	private void drawSpell(RenderGameOverlayEvent.Text event)
 	{ 
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
-		 
+
+		PlayerPowerups props = PlayerPowerups.get(player);
+	 
 		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
+		System.out.println("drawspell "+spell.getSpellID());
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
 		{
-			String name = spell.getSpellType().name();
-			
-			//spell.getExpCost()+" : "+
-			event.left.add(Util.lang("key.spell."+name));
+			event.left.add(Util.lang("key.spell."+spell.getSpellID()));
 		}
 		else
 		{
@@ -223,8 +222,8 @@ public class DebugScreenText
 			}
 			
 			
-			ISpell spellNext = SpellRegistry.getSpellFromType(spell.getSpellType().next());
-			ISpell spellPrev = SpellRegistry.getSpellFromType(spell.getSpellType().prev());
+			ISpell spellNext = spell.next();//SpellRegistry.getSpellFromType(spell.getSpellID().next());
+			ISpell spellPrev = spell.prev();//SpellRegistry.getSpellFromType(spell.getSpellID().prev());
 			
 			
 			if(spellNext != null)// && spellNext.getIconDisplay() != null
@@ -234,7 +233,7 @@ public class DebugScreenText
 				dim = 16/2;
 				renderItemAt(spellNext.getIconDisplay(),x,y,dim);
 				
-				ISpell sLeftLeft = SpellRegistry.getSpellFromType(spellNext.getSpellType().next());
+				ISpell sLeftLeft = spellNext.next();//SpellRegistry.getSpellFromType(spellNext.getSpellID().next());
 
 				if(sLeftLeft != null && sLeftLeft.getIconDisplay() != null)
 				{
@@ -251,7 +250,7 @@ public class DebugScreenText
 				dim = 16/2;
 				renderItemAt(spellPrev.getIconDisplay(),x,y,dim);
 
-				ISpell sRightRight = SpellRegistry.getSpellFromType(spellPrev.getSpellType().prev());
+				ISpell sRightRight = spellPrev.prev();//SpellRegistry.getSpellFromType(spellPrev.getSpellID().prev());
 
 				if(sRightRight != null && sRightRight.getIconDisplay() != null)
 				{

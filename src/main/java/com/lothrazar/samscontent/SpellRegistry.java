@@ -1,7 +1,6 @@
 package com.lothrazar.samscontent;
 
 import java.util.ArrayList;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.common.PlayerPowerups; 
 import com.lothrazar.samscontent.spell.ISpell;
 import com.lothrazar.samscontent.spell.SpellHarvest; 
@@ -71,152 +70,106 @@ public class SpellRegistry
 	}
 
 	public static ArrayList<ISpell> spellbook;
-	public static ISpell chest;//exp//??//TODO: make the "transform" button redirect and instead do this for chests
-	public static ISpell firebolt;//item-fire charge
-	public static ISpell frostbolt;//item-snowball
-	public static ISpell ghost;//exp
-	public static ISpell harvest; //exp
-	public static ISpell jump;//exp
+	public static ISpell chest;
+	public static ISpell firebolt;
+	public static ISpell frostbolt;
+	public static ISpell ghost;
+	public static ISpell harvest; 
+	public static ISpell jump;
 	public static ISpell lightningbolt;
-	public static ISpell pearl;//item
-	public static ISpell phase;//exp
-	public static ISpell slowfall;//exp
-	public static ISpell waterwalk;//exp
-	public static ISpell waterbolt;//item-ice block
-	public static ISpell soulstone;//exp
-	public static ISpell torch;//item
-	public static ISpell endereye;//item
-	public static ISpell haste;//exp
+	public static ISpell pearl;
+	public static ISpell phase;
+	public static ISpell slowfall;
+	public static ISpell waterwalk;
+	public static ISpell waterbolt;
+	public static ISpell soulstone;
+	public static ISpell torch;
+	public static ISpell endereye;
+	public static ISpell haste;
+	 
 
 	//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
-	//public static ISpell enderinv;//own key
-	
-	
-	public enum EnumSpellType {
-		chest,//TODO: make the "transform" button redirect and instead do this for chests
-		//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
-		phase,
-		ghost,
-		jump,
-		waterwalk,
-		slowfall,
-		haste,
-		//heart,
-		harvest,
-		firebolt,
-		frostbolt,
-		lightningbolt,
-		torch,
-		soulstone,
-		waterbolt,
-		pearl,
-		endereye;
-		//thanks to http://digitaljoel.nerd-herders.com/2011/04/05/get-the-next-value-in-a-java-enum/
-		public EnumSpellType prev() 
-		{
-		     return this.ordinal() < EnumSpellType.values().length - 1
-		         ? EnumSpellType.values()[this.ordinal() + 1]
-		         : null;//EnumSpellType.values()[0];
-		}
-		public EnumSpellType next() 
-		{
-		     return this.ordinal() > 0
-		         ? EnumSpellType.values()[this.ordinal() - 1]
-		         : null;//EnumSpellType.values()[EnumSpellType.values().length - 1];
-		}
-	};
-	 
-	public static void cast(EnumSpellType spell, World world, EntityPlayer player,BlockPos pos)
+	public static void cast(ISpell spell, World world, EntityPlayer player,BlockPos pos)
 	{
-		ISpell sp = SpellRegistry.getSpellFromType(spell);
-		
-		if(sp != null)
+		if(spell == null){return;}
+		if(spell.canPlayerCast(player))
 		{
-			
-			if(sp.canPlayerCast(player))
-			{
-				sp.cast(world, player, pos);
-				sp.onCastSuccess(world, player, pos);
-			}
-			else
-			{
-				sp.onCastFailure(world, player, pos);
-			}
-			
-			
+			spell.cast(world, player, pos);
+			spell.onCastSuccess(world, player, pos);
 		}
+		else
+		{
+			spell.onCastFailure(world, player, pos);
+		}
+	}
+	public static void cast(String spell_id, World world, EntityPlayer player,BlockPos pos)
+	{
+		ISpell sp = SpellRegistry.getSpellFromType(spell_id); 
+		cast(sp,world,player,pos);
 	}
 	
 	public static void shiftUp(EntityPlayer player)
 	{
-		EnumSpellType current = getPlayerCurrentSpell(player);
-		EnumSpellType next = current.next();
-
-		if(next != null)
-			setPlayerCurrentSpell(player,next);
+		ISpell current = getPlayerCurrentISpell(player);
 		
-		//Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
+		if(current.next() != null)
+			setPlayerCurrentSpell(player,current.next().getSpellID());
 	}
+
 	public static void shiftDown(EntityPlayer player)
 	{ 
-		EnumSpellType current = getPlayerCurrentSpell(player);
-		EnumSpellType next = current.prev();
-		 
-		if(next != null)
-			setPlayerCurrentSpell(player,next);
+		ISpell current = getPlayerCurrentISpell(player);
 
-		//Util.addChatMessage(player, Util.lang("key.spell."+next.name()));
+		if(current.prev() != null)
+			setPlayerCurrentSpell(player,current.prev().getSpellID());
 	}
 	
-	private static void setPlayerCurrentSpell(EntityPlayer player,	EnumSpellType current)
+	private static void setPlayerCurrentSpell(EntityPlayer player,	String current)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
-		props.setStringSpell(current.name());
+		props.setStringSpell(current);
 	}
-	public static EnumSpellType getPlayerCurrentSpell(EntityPlayer player)
+	public static String getPlayerCurrentSpell(EntityPlayer player)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
-		 
-	//	if(props.getStringSpell() == "")//didnt work
-
-		
-		 EnumSpellType newOrDefault =  EnumSpellType.chest;
-		 
+	 
+		 /*
 		 try{
-			 newOrDefault = EnumSpellType.valueOf(props.getStringSpell());
+			 newOrDefault = EnumSpellTypeA.valueOf(props.getStringSpell());
 		 }
 		 catch (Exception e)
 		 {
 			 //in case blank wasnt caught already
-			 setPlayerCurrentSpell(player, EnumSpellType.chest);//default
-			 newOrDefault = EnumSpellType.chest; 
+			 setPlayerCurrentSpell(player, EnumSpellTypeA.chest);//default
+			 newOrDefault = EnumSpellTypeA.chest; 
 		 }
+		*/
 		
-		return newOrDefault;
+		return props.getStringSpell();
 	}
 
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)
 	{
-		EnumSpellType s = getPlayerCurrentSpell(player);
+		String s = getPlayerCurrentSpell(player);
+
 		for(ISpell sp : spellbook)
 		{ 
-			if(sp.getSpellType() == s)
+			if(sp.getSpellID() == s)
 			{
 				return sp;
 			}
 		} 
-		
-		return null;
+		//if current spell is null,default to the first one
+		return SpellRegistry.chest;
 	}
-	/**/
-
-	public static ISpell getSpellFromType(EnumSpellType next)
+ 
+	public static ISpell getSpellFromType(String next)
 	{
 		if(next == null){return null;}
 		for(ISpell sp : spellbook)
 		{ 
-			if(sp.getSpellType() == next)
+			if(sp.getSpellID() == next)
 			{
 				return sp;
 			}

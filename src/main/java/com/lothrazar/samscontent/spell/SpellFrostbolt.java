@@ -9,7 +9,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
 import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.util.Reference;
@@ -18,9 +18,9 @@ import com.lothrazar.util.Util;
 public class SpellFrostbolt extends BaseSpellItem implements ISpell
 { 
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.frostbolt;
+		return "frostbolt";
 	}
 
 	@Override
@@ -49,5 +49,16 @@ public class SpellFrostbolt extends BaseSpellItem implements ISpell
 		Util.playSoundAt(player, Reference.sounds.bowtoss);
 
 		super.onCastSuccess(world, player, pos);
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.phase;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.haste;
 	}
 }

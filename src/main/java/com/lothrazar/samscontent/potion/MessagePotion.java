@@ -66,6 +66,10 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 		if(ctx.side.isClient()) 
 		{ 
 			//  http://www.minecraftforge.net/forum/index.php?topic=21195.0
+			if(Minecraft.getMinecraft().thePlayer ==null){return null;}//i think maybe possibly this was null once? [
+			//20:50:44] [Netty Local Client IO #0/ERROR] [FML]: SimpleChannelHandlerWrapper exception
+			//java.lang.NullPointerException
+			//at com.lothrazar.samscontent.potion.MessagePotion.onMessage(MessagePotion.java:69) ~[MessagePotion.class:?]
 			World world = Minecraft.getMinecraft().thePlayer.worldObj;//Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
   
 			Util.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y,message.z));

@@ -6,7 +6,7 @@ import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
 import com.lothrazar.samscontent.spell.ISpell;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.*;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -46,9 +46,9 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 public class SpellHarvest extends BaseSpellExp implements ISpell
 {
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{ 
-		return EnumSpellType.harvest;
+		return "harvest";
 	}
 
 	@Override
@@ -124,5 +124,16 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	public int getExpCost()
 	{
 		return 75;
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.phase;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.haste;
 	}
 }

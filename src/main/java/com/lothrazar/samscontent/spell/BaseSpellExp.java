@@ -13,7 +13,9 @@ import net.minecraft.world.World;
 
 public abstract class BaseSpellExp implements ISpell
 {
-	public abstract SpellRegistry.EnumSpellType getSpellType();
+	public abstract ISpell next();
+	public abstract ISpell prev();
+	public abstract String getSpellID();
 	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
 	public abstract ItemStack getIconDisplay();
 	public abstract int getExpCost();

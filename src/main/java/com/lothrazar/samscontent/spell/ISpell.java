@@ -8,7 +8,10 @@ import net.minecraft.world.World;
 
 public interface ISpell
 {
-	public SpellRegistry.EnumSpellType getSpellType();
+	public ISpell next();
+	public ISpell prev();
+	
+	public String getSpellID();
 	
 	public void cast(World world, EntityPlayer player, BlockPos pos);
 	
@@ -18,7 +21,6 @@ public interface ISpell
 	
 	public ItemStack getIconDisplay();
 	
-
 	public ItemStack getIconDisplayHeader();
 	
 	public boolean canPlayerCast(EntityPlayer player);

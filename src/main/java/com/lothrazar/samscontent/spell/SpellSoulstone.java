@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
 import com.lothrazar.util.Util;
 
@@ -22,9 +22,9 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	private static final int VALUE_EMPTY = 0;
 	
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.soulstone;
+		return "soulstone";
 	}
 
 	@Override
@@ -98,4 +98,15 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 			}
 		} 
 	} 
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.phase;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.haste;
+	}
 }

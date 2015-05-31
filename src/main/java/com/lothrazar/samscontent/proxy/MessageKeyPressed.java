@@ -1,8 +1,7 @@
 package com.lothrazar.samscontent.proxy;
   
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry; 
 import com.lothrazar.samscontent.command.CommandBindMacro;
 import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.samscontent.entity.projectile.*;
@@ -124,16 +123,14 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	} 
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
-			if(props.getSpellToggle() == 1)
+			if(props.getSpellToggle() == PlayerPowerups.SPELL_TOGGLE_SHOW)
 			{
-				EnumSpellType spell = SpellRegistry.getPlayerCurrentSpell(player);
-	
-				SpellRegistry.cast(spell, world, player,posMouse);
+				SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,posMouse);
 			}
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{
-			if(props.getSpellToggle() == 1)
+			if(props.getSpellToggle() == PlayerPowerups.SPELL_TOGGLE_SHOW)
 			{
 				SpellRegistry.shiftUp(player);
 				

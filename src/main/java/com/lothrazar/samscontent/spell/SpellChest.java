@@ -9,16 +9,16 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellChest extends BaseSpellExp implements ISpell
 { 
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.chest;
+		return "chest";
 	}
 
 	@Override
@@ -122,4 +122,17 @@ public class SpellChest extends BaseSpellExp implements ISpell
 	{
 		return 5;
 	}
+
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.phase;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return null;
+	}
+
 }

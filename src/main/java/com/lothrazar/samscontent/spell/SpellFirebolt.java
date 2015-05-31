@@ -8,16 +8,16 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellFirebolt extends BaseSpellItem implements ISpell
 { 
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.firebolt;
+		return "firebolt";
 	}
 
 	@Override
@@ -45,5 +45,16 @@ public class SpellFirebolt extends BaseSpellItem implements ISpell
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(Items.fire_charge);
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.phase;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.haste;
 	}
 }

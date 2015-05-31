@@ -7,16 +7,16 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.SpellRegistry.EnumSpellType; 
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellPhasing extends BaseSpellExp implements ISpell
 { 
 	@Override
-	public EnumSpellType getSpellType()
+	public String getSpellID()
 	{
-		return EnumSpellType.phase;
+		return "phase";
 	}
 
 	@Override
@@ -62,5 +62,16 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(Items.brick);
+	}
+	@Override
+	public ISpell next()
+	{
+		return SpellRegistry.ghost;
+	}
+
+	@Override
+	public ISpell prev()
+	{
+		return SpellRegistry.chest;
 	}
 }
