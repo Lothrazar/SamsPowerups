@@ -65,6 +65,8 @@ public class ItemRegistry
 	public static Item exp_cost_dummy;
 	public static Item exp_cost_empty_dummy;
 	public static Item spell_heart_dummy;
+	public static Item spell_torch_dummy;
+	public static Item spell_haste_dummy;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
@@ -78,7 +80,8 @@ public class ItemRegistry
 		ItemRegistry.registerItem(exp_cost_dummy, "exp_cost_dummy");
 		exp_cost_empty_dummy = new Item();
 		ItemRegistry.registerItem(exp_cost_empty_dummy, "exp_cost_empty_dummy");
-		
+		spell_torch_dummy = new Item();
+		ItemRegistry.registerItem(spell_torch_dummy, "spell_torch_dummy");
 		spell_water_dummy = new Item();
 		ItemRegistry.registerItem(spell_water_dummy, "spell_water_dummy"); 
 		spell_jump_dummy = new Item();
@@ -95,7 +98,8 @@ public class ItemRegistry
 		ItemRegistry.registerItem(spell_ghost_dummy, "spell_ghost_dummy");
 		spell_enderinv_dummy = new Item();
 		ItemRegistry.registerItem(spell_enderinv_dummy, "spell_enderinv_dummy");
-		
+		spell_haste_dummy = new Item();
+		ItemRegistry.registerItem(spell_haste_dummy, "spell_haste_dummy");
 		if(ModMain.cfg.emerald_armor)
 		{ 
 			MATERIAL_EMERALD = EnumHelper.addToolMaterial("emerald", 

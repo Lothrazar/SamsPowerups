@@ -8,6 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
+import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry.EnumSpellType;
 import com.lothrazar.samscontent.entity.projectile.EntityTorchBolt;
 import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
@@ -37,6 +38,6 @@ public class SpellTorchBolt extends BaseSpellItem implements ISpell
 	@Override
 	public ItemStack getIconDisplay()
 	{
-		return new ItemStack(Items.tnt_minecart);//TODO:FIX?
+		return new ItemStack(ItemRegistry.spell_torch_dummy);
 	}
 }

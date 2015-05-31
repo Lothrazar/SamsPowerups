@@ -41,6 +41,6 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	@Override
 	public ItemStack getIconDisplay()
 	{
-		return new ItemStack(Items.sugar);
+		return new ItemStack(ItemRegistry.spell_haste_dummy);
 	} 
 }
