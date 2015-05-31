@@ -128,15 +128,17 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		int old = getSpellToggle();
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, current);
 		//set default spells
+		
 		if(current != old)
-		switch(current)
-		{
- 
-		case SPELL_TOGGLE_SHOWMAIN:
-			this.setStringSpell(SpellRegistry.chest.getSpellID());
-		case SPELL_TOGGLE_SHOWOTHER:
-			this.setStringSpell(SpellRegistry.harvest.getSpellID());
-		}
+			switch(current)
+			{
+			case SPELL_TOGGLE_SHOWMAIN:
+				this.setStringSpell(SpellRegistry.chest.getSpellID());
+				break;
+			case SPELL_TOGGLE_SHOWOTHER:
+				this.setStringSpell(SpellRegistry.torch.getSpellID());
+				break;
+			}
 		
 	}
 	public final int getSpellToggle() 
