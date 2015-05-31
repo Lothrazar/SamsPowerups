@@ -42,12 +42,12 @@ public class SpellTorchBolt extends BaseSpellItem implements ISpell
 	@Override
 	public ISpell next()
 	{
-		return SpellRegistry.phase;
+		return SpellRegistry.soulstone;
 	}
 
 	@Override
 	public ISpell prev()
 	{
-		return SpellRegistry.haste;
+		return SpellRegistry.lightningbolt;
 	}
 }

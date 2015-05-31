@@ -123,14 +123,14 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	} 
 		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
-			if(props.getSpellToggle() == PlayerPowerups.SPELL_TOGGLE_SHOW)
+			if(props.getSpellToggle() != PlayerPowerups.SPELL_TOGGLE_HIDE)
 			{
 				SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,posMouse);
 			}
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
 	 	{
-			if(props.getSpellToggle() == PlayerPowerups.SPELL_TOGGLE_SHOW)
+			if(props.getSpellToggle() != PlayerPowerups.SPELL_TOGGLE_HIDE)
 			{
 				SpellRegistry.shiftUp(player);
 				
@@ -139,7 +139,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
 	 	{ 
-			if(props.getSpellToggle() == 1)
+			if(props.getSpellToggle() != PlayerPowerups.SPELL_TOGGLE_HIDE)
 			{
 				SpellRegistry.shiftDown(player);
 				Util.playSoundAt(player, "random.orb");
@@ -148,8 +148,8 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		}
 		else if( message.keyPressed == ClientProxy.keySpellToggle.getKeyCode())
 	 	{  
-			int tog = props.getSpellToggle() == 0 ? 1 : 0;
-			props.setSpellToggle(tog);
+			//int tog = props.getSpellToggle() == 0 ? 1 : 0;
+			props.setSpellToggle(props.getSpellToggleNext());
 		}
 		
 		//TODO: search spawner??? with particle directors?

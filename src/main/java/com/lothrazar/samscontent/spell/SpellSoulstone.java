@@ -101,12 +101,12 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell next()
 	{
-		return SpellRegistry.phase;
+		return SpellRegistry.waterbolt;
 	}
 
 	@Override
 	public ISpell prev()
 	{
-		return SpellRegistry.haste;
+		return SpellRegistry.torch;
 	}
 }

@@ -133,16 +133,44 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{ 
 	}
 	public static final int SPELL_TOGGLE_HIDE = 0;
-	public static final int SPELL_TOGGLE_SHOW = 1;
-	//public static final int SPELL_TOGGLE_B = 2;
-	
-	public final void setSpellToggle(int onoff) 
+	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
+	public static final int SPELL_TOGGLE_SHOWOTHER = 2;
+
+	public final void setSpellToggle(int current) 
 	{
-		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, onoff);
+		int old = getSpellToggle();
+		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, current);
+		//set default spells
+		if(current != old)
+		switch(current)
+		{
+		//case SPELL_TOGGLE_HIDE:
+
+		case SPELL_TOGGLE_SHOWMAIN:
+			this.setStringSpell("chest");
+		case SPELL_TOGGLE_SHOWOTHER:
+			this.setStringSpell("harvest");
+		}
+		
 	}
 	public final int getSpellToggle() 
 	{
 		return this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER);
+	}
+	public final int getSpellToggleNext() 
+	{
+		int current = getSpellToggle() ;
+
+		switch(current)
+		{
+		case SPELL_TOGGLE_HIDE:
+			return SPELL_TOGGLE_SHOWMAIN;
+		case SPELL_TOGGLE_SHOWMAIN:
+			return SPELL_TOGGLE_SHOWOTHER;
+		default:
+		case SPELL_TOGGLE_SHOWOTHER:
+			return SPELL_TOGGLE_HIDE;
+		}
 	}
 	public final void setHealthMaxCustom(int newmax) 
 	{

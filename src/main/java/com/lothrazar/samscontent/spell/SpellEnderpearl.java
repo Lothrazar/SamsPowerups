@@ -40,12 +40,12 @@ public class SpellEnderPearl extends BaseSpellItem implements ISpell
 	@Override
 	public ISpell next()
 	{
-		return SpellRegistry.phase;
+		return SpellRegistry.endereye;
 	}
 
 	@Override
 	public ISpell prev()
 	{
-		return SpellRegistry.haste;
+		return SpellRegistry.waterbolt;
 	}
 }

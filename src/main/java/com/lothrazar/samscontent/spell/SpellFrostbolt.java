@@ -53,12 +53,12 @@ public class SpellFrostbolt extends BaseSpellItem implements ISpell
 	@Override
 	public ISpell next()
 	{
-		return SpellRegistry.phase;
+		return SpellRegistry.lightningbolt;
 	}
 
 	@Override
 	public ISpell prev()
 	{
-		return SpellRegistry.haste;
+		return SpellRegistry.firebolt;
 	}
 }

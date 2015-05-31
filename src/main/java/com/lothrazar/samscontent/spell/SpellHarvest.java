@@ -128,12 +128,12 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell next()
 	{
-		return SpellRegistry.phase;
+		return SpellRegistry.firebolt;
 	}
 
 	@Override
 	public ISpell prev()
 	{
-		return SpellRegistry.haste;
+		return null;
 	}
 }
