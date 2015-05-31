@@ -39,17 +39,12 @@ public abstract class BaseSpellExp implements ISpell
 	@Override
 	public boolean canPlayerCast(EntityPlayer player)
 	{
-		if(Util.getExpTotal(player) < getExpCost()) return false;
-		
-		return true;
+		return (getExpCost() <= Util.getExpTotal(player)); 
 	}
 	
-	
-
 	@Override
 	public ItemStack getIconDisplayHeader()
 	{
 		return new ItemStack(ItemRegistry.exp_cost_dummy);
 	}
- 
 }
