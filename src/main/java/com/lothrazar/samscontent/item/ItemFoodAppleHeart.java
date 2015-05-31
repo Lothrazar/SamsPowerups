@@ -47,7 +47,8 @@ public class ItemFoodAppleHeart extends ItemFood
 		else
 			Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, player.getPosition());
 			
-		Util.playSoundAt(player, "mob.zombie.remedy");
+		Util.playSoundAt(player, Reference.sounds.zombieremedy);
+		
     }
 	
 	@Override

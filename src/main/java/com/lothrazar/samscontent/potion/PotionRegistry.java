@@ -130,8 +130,10 @@ public class PotionRegistry
 				doPotionParticle(world,event.entityLiving,EnumParticleTypes.SNOWBALL);
 
 			if(world.rand.nextDouble() < 0.3 && 
-				world.getBlockState(pos).getBlock().isReplaceable(world, pos) &&
-				world.getBlockState(pos).getBlock().isReplaceable(world, pos.down()) == false &&//dont place above torches/snow/grass
+				//world.getBlockState(pos).getBlock().isReplaceable(world, pos) &&
+				world.getBlockState(pos.down()).getBlock() != Blocks.snow_layer && 
+				//world.getBlockState(pos).getBlock().isReplaceable(world, pos.down()) == false &&//dont place above torches/snow/grass
+				
 				world.isAirBlock(pos.down()) == false)//dont place above air
 			{
 				Util.setBlockIfAir(world, pos, Blocks.snow_layer.getDefaultState());
