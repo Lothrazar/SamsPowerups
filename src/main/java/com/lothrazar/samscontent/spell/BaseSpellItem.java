@@ -62,6 +62,8 @@ public abstract class BaseSpellItem implements ISpell
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
 		Util.playSoundAt(player, Reference.sounds.wood_click);
+		String name = (new ItemStack(this.getItemCost())).getDisplayName();
+		Util.addChatMessage(player, Util.lang("spell.item.missing")+name);
 	}
 
 

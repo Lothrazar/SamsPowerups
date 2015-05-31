@@ -30,6 +30,8 @@ public abstract class BaseSpellExp implements ISpell
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
 		Util.playSoundAt(player, Reference.sounds.wood_click);
+
+		Util.addChatMessage(player, Util.lang("spell.exp.missing")+this.getExpCost());
 	}
 	
 	@Override
