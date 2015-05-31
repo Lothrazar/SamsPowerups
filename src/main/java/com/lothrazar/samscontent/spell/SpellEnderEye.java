@@ -48,12 +48,12 @@ public class SpellEnderEye extends BaseSpellItem implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return null;
+		return SpellRegistry.pearl;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.pearl;
+		return SpellRegistry.ghost;
 	}
 }

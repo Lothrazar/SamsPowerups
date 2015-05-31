@@ -101,12 +101,12 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.harvest;
+		return SpellRegistry.lightningbolt;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.lightningbolt;
+		return SpellRegistry.harvest;
 	}
 }

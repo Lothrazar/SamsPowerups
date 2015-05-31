@@ -105,12 +105,12 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.jump;
+		return SpellRegistry.endereye;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.phase;
+		return null;
 	}
 }

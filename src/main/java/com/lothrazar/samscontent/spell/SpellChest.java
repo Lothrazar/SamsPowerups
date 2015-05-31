@@ -126,13 +126,13 @@ public class SpellChest extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.haste;
+		return null;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return null;
+		return SpellRegistry.haste;
 	}
 
 }

@@ -41,11 +41,8 @@ public class ItemFoodAppleHeart extends ItemFood
 	protected void onFoodEaten(ItemStack par1ItemStack, World world, EntityPlayer player)
     {     
 		if(world.isRemote == false)  //false means serverside
-		{
-			PlayerPowerups props = PlayerPowerups.get(player);
-			int newmax = props.getHealthMaxCustom()+2;
-			
-			props.setHealthMaxCustom(newmax);
+		{ 
+			Util.setMaxHealth(player, (int)(player.getMaxHealth() + 2));
 		}
 		else
 			Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, player.getPosition());

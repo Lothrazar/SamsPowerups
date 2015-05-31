@@ -49,12 +49,12 @@ public class SpellFirebolt extends BaseSpellItem implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.lightningbolt;
+		return SpellRegistry.frostbolt;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.frostbolt;
+		return SpellRegistry.lightningbolt;
 	}
 }

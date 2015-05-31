@@ -771,7 +771,7 @@ public class ModMain
 		if(event.entity instanceof EntityLivingBase && event.world.isRemote)
 		{
 			EntityLivingBase living = (EntityLivingBase)event.entity;
-			if(living instanceof EntityPlayer)// && ((EntityPlayer)living).
+			/*if(living instanceof EntityPlayer)// && ((EntityPlayer)living).
 			{
 				EntityPlayer player = ((EntityPlayer)living);
 				PlayerPowerups props = PlayerPowerups.get(player);
@@ -787,10 +787,11 @@ public class ModMain
 				//start at whatever config file says is min health.  do nothing if already upgraded
 				if(max < ModMain.cfg.heartsPlayerStart)
 				{
+					
 					props.setHealthMaxCustom(ModMain.cfg.heartsPlayerStart*2);
 				}
 				
-			} 
+			} */
 			if(living instanceof EntityWolf && ((EntityWolf)living).isTamed())
 			{
 				Util.setMaxHealth(living,ModMain.cfg.heartsWolfTamed*2);

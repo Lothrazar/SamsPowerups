@@ -66,12 +66,12 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.ghost;
+		return SpellRegistry.jump;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.chest;
+		return SpellRegistry.pearl;
 	}
 }

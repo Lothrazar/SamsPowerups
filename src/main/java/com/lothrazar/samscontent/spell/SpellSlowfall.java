@@ -43,12 +43,12 @@ public class SpellSlowfall extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return null;
+		return SpellRegistry.waterwalk;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.waterwalk;
+		return SpellRegistry.jump;
 	}
 }

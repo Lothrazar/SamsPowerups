@@ -96,10 +96,7 @@ public class ConfigRegistry
 	private void mob_changes() 
 	{
 		category = "mob_changes";
-		
-		heartsPlayerStart = instance.getInt("health_player_start",category, 3,1,100,
-    			"Change the number of hearts a player starts with.  10 hearts is the vanilla default.");
-		
+		 
 		heartsWolfTamed = instance.getInt("health_tamed_wolf",category, 40,1,900,
     			"Change the number of hearts a tamed wolf has.  4 hearts is the vanilla default.");
 		
@@ -632,8 +629,7 @@ public class ConfigRegistry
 	public boolean cmd_recipe;
 	public boolean cmd_uses; 
 	public boolean cmd_effectpay;
-	public boolean cmd_ping;
-	public int heartsPlayerStart;
+	public boolean cmd_ping; 
 	public int heartsWolfTamed;
 	public int heartsVillager;
 	public int heartsCatTamed;

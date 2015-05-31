@@ -1,6 +1,7 @@
 package com.lothrazar.samscontent.common;
 
 
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.util.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -21,25 +22,17 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	
 	public static final int SPELL_WATCHER = 22;
 	private static final String NBT_SPELL = "samSpell"; 
-
-	//public static final int SPELLHUD_WATCHER = 23;
-	//private static final String NBT_SPELLHUD = "samSpellHUD"; 
-
+ 
 	public static final int SPELLTOG_WATCHER = 24;
 	private static final String NBT_SPELLTOG = "samSpellToggle"; 
-
-	public static final int HEALTH_WATCHER = 25;
-	private static final String NBT_HEALTH = "samHealth"; 
-	
+ 
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;  
 		this.player.getDataWatcher().addObject(WAYPOINT_WATCHER, 0);
 		this.player.getDataWatcher().addObject(TODO_WATCHER, 0); 
-		this.player.getDataWatcher().addObject(SPELL_WATCHER, 0); 
-		//this.player.getDataWatcher().addObject(SPELLHUD_WATCHER, 0);
-		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0);
-		this.player.getDataWatcher().addObject(HEALTH_WATCHER, 0);
+		this.player.getDataWatcher().addObject(SPELL_WATCHER, 0);  
+		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0); 
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -60,12 +53,9 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	
 		properties.setString(NBT_WAYPOINT, this.getStringSafe(WAYPOINT_WATCHER)); 
 		properties.setString(NBT_TODO,     this.getStringSafe(TODO_WATCHER)); 
-		properties.setString(NBT_SPELL,     this.getStringSafe(SPELL_WATCHER)); 
-		//properties.setString(NBT_SPELLHUD,     this.getStringSafe(SPELLHUD_WATCHER)); 
+		properties.setString(NBT_SPELL,     this.getStringSafe(SPELL_WATCHER));  
 		properties.setInteger(NBT_SPELLTOG,    this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
-		properties.setInteger(NBT_HEALTH,    this.player.getDataWatcher().getWatchableObjectInt(HEALTH_WATCHER) ); 
-		
-		
+ 	 
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
 
@@ -80,11 +70,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
 		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
-		this.player.getDataWatcher().updateObject(SPELL_WATCHER,    properties.getString(NBT_SPELL)); 
-	//	this.player.getDataWatcher().updateObject(SPELLHUD_WATCHER,    properties.getString(NBT_SPELLHUD));
-		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,    properties.getInteger(NBT_SPELLTOG));  
-		this.player.getDataWatcher().updateObject(HEALTH_WATCHER,    properties.getInteger(NBT_HEALTH));  
-		
+		this.player.getDataWatcher().updateObject(SPELL_WATCHER,    properties.getString(NBT_SPELL));  
+		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,    properties.getInteger(NBT_SPELLTOG));   
  	}
 
 	public final String getStringSpell() 
@@ -144,12 +131,11 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		if(current != old)
 		switch(current)
 		{
-		//case SPELL_TOGGLE_HIDE:
-
+ 
 		case SPELL_TOGGLE_SHOWMAIN:
-			this.setStringSpell("chest");
+			this.setStringSpell(SpellRegistry.chest.getSpellID());
 		case SPELL_TOGGLE_SHOWOTHER:
-			this.setStringSpell("harvest");
+			this.setStringSpell(SpellRegistry.harvest.getSpellID());
 		}
 		
 	}
@@ -171,17 +157,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		case SPELL_TOGGLE_SHOWOTHER:
 			return SPELL_TOGGLE_HIDE;
 		}
-	}
-	public final void setHealthMaxCustom(int newmax) 
-	{
-		this.player.getDataWatcher().updateObject(HEALTH_WATCHER, newmax);
-
-		Util.setMaxHealth(player,newmax);
-	}
-	public final int getHealthMaxCustom() 
-	{
-		return this.player.getDataWatcher().getWatchableObjectInt(HEALTH_WATCHER);
-	}
+	} 
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
 
 	public void copy(PlayerPowerups props) 
@@ -191,17 +167,13 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		//set in the player
 		player.getDataWatcher().updateObject(WAYPOINT_WATCHER, props.getStringWaypoints());
 		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo());
-		player.getDataWatcher().updateObject(SPELL_WATCHER, props.getStringTodo());
-		//player.getDataWatcher().updateObject(SPELLHUD_WATCHER, props.getStringHUD());
-		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle());
-		player.getDataWatcher().updateObject(HEALTH_WATCHER, props.getHealthMaxCustom());
+		player.getDataWatcher().updateObject(SPELL_WATCHER, props.getStringTodo()); 
+		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle()); 
 		//set here
 		this.setStringWaypoints(props.getStringWaypoints());
 		this.setStringTodo(props.getStringTodo());  
-		this.setStringSpell(props.getStringSpell());  
-		//this.setStringHUD(props.getStringHUD());  
-		this.setSpellToggle(props.getSpellToggle());  
-		this.setHealthMaxCustom(props.getHealthMaxCustom());  
+		this.setStringSpell(props.getStringSpell());   
+		this.setSpellToggle(props.getSpellToggle());   
 	}
 
 }

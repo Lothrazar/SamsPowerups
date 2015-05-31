@@ -40,12 +40,12 @@ public class SpellLightningbolt extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.soulstone;
+		return SpellRegistry.firebolt;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.firebolt;
+		return SpellRegistry.soulstone;
 	}
 }

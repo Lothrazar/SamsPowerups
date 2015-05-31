@@ -42,12 +42,12 @@ public class SpellWaterBolt extends BaseSpellItem implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.frostbolt;
+		return SpellRegistry.torch;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.torch;
+		return SpellRegistry.frostbolt;
 	}
 }

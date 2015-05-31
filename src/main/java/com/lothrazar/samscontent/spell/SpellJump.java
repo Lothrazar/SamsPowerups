@@ -42,12 +42,12 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.haste;
+		return SpellRegistry.slowfall;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.ghost;
+		return SpellRegistry.phase;
 	}
 }

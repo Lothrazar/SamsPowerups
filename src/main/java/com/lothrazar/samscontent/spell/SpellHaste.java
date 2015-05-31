@@ -46,12 +46,12 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.waterwalk;
+		return SpellRegistry.chest;
 	}
 
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.jump;
+		return SpellRegistry.waterwalk;
 	}
 }
