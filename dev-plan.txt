@@ -13,23 +13,15 @@ ORDER SPELLS: throwables group, potion group?
 ALTERNATE INTERFACE, MAYBE GRID?
 
 BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
+ 
 
-TORCH SPELL - icon texture
-TORCH SPELL ALSO  THEY DONT STICK TO WALLS
-- set block meta to side facing direction of attachment, for when it hits wall-check hit face
-
-haste spell - ICON TEXTURE - make it 10 seconds?
+haste spell  - make it 10 seconds?
 
 slowfall/waterwalk - make it 10 seconds?
+   
 
-ADD a not enough EXP text message, not just sound
-
-HUD SPELL- better icon than just the paper?
-
-/place commands (like place floor) add a random flag
-
-so you would enter /place floor 5 50
-
+/place commands (like place floor) add a random flag 
+so you would enter /place floor 5 50 
 and the 50 is a 50% chance an air block gets filled with that?
 
 DONE THINGS
