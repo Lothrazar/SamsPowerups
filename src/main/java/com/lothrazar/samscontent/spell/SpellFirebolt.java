@@ -36,6 +36,13 @@ public class SpellFirebolt extends BaseSpellItem implements ISpell
 	}
 
 	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
+
+		super.onCastSuccess(world, player, pos);
+	}
+	@Override
 	public Item getItemCost()
 	{
 		return Items.fire_charge;

@@ -12,6 +12,7 @@ import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
+import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util;
 
 public class SpellSoulstone extends BaseSpellExp implements ISpell
@@ -52,7 +53,7 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	{
 		Util.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
 		
-		Util.playSoundAt(player, "mob.endermen.death");
+		Util.playSoundAt(player, Reference.sounds.bowtoss);//"mob.endermen.death"
 
 		super.onCastSuccess(world, player, pos);
 	}

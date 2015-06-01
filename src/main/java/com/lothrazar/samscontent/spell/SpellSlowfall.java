@@ -29,6 +29,14 @@ public class SpellSlowfall extends BaseSpellExp implements ISpell
 	}
 
 	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.drink);
+
+		super.onCastSuccess(world, player, pos);
+	}
+	
+	@Override
 	public int getExpCost()
 	{
 		return 5;

@@ -31,7 +31,14 @@ public class SpellEnderPearl extends BaseSpellItem implements ISpell
 	{
 		return Items.ender_pearl;
 	}
-	
+
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
+
+		super.onCastSuccess(world, player, pos);
+	}
 	@Override
 	public ItemStack getIconDisplay()
 	{

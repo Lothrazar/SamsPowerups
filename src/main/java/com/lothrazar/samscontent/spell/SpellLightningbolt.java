@@ -42,6 +42,13 @@ public class SpellLightningbolt extends BaseSpellExp implements ISpell
 	}
 
 	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		Util.playSoundAt(player, Reference.sounds.bowtoss);
+
+		super.onCastSuccess(world, player, pos);
+	}
+	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
 		world.spawnEntityInWorld(new EntityLightningballBolt(world,player 	 ));
