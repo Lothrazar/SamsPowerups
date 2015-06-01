@@ -315,7 +315,7 @@ public class CommandSimpleWaypoints  implements ICommand
 			{ 
 				csv += line + System.lineSeparator();
 			}
-			props.setStringWaypoints(csv);
+			props.setWaypoints(csv);
 			
 			//System.out.println("overwrite for player:");
 			//System.out.println(csv);
