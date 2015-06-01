@@ -70,7 +70,8 @@ public class CommandHearts implements ICommand
 			return;
 		}
 		
-
+		if(hearts < 1) {hearts = 1;}
+		
 		Util.setMaxHealth(ptarget, hearts*2);
 	}
 
