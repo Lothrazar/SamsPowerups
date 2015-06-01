@@ -28,6 +28,9 @@ public class PlayerPowerups implements IExtendedEntityProperties
  
 	private static final int SPELLTOG_WATCHER = 24;
 	private static final String NBT_SPELLTOG = "samSpellToggle"; 
+
+	private static final int SPELLTIMER_WATCHER = 25;
+	private static final String NBT_SPELLTIMER = "samSpellTimer"; 
  
 	public PlayerPowerups(EntityPlayer player)
 	{
@@ -37,6 +40,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().addObject(SPELLMAIN_WATCHER, 0);  
 		this.player.getDataWatcher().addObject(SPELLOTHER_WATCHER, 0);  
 		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0); 
+		this.player.getDataWatcher().addObject(SPELLTIMER_WATCHER, 0); 
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -49,10 +53,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		return (PlayerPowerups) player.getExtendedProperties(EXT_PROP_NAME);
 	}
 
-	public static final int SPELL_TOGGLE_HIDE = 0;
-	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
-	public static final int SPELL_TOGGLE_SHOWOTHER = 2;
-
 	@Override
 	public void saveNBTData(NBTTagCompound compound) 
 	{
@@ -64,6 +64,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		properties.setString(NBT_SPELLMAIN,  this.getStringSafe(SPELLMAIN_WATCHER)); 
 		properties.setString(NBT_SPELLOTHER, this.getStringSafe(SPELLOTHER_WATCHER));  
 		properties.setInteger(NBT_SPELLTOG,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
+		properties.setInteger(NBT_SPELLTIMER,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTIMER_WATCHER) ); 
  	 
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
@@ -75,9 +76,10 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		if(properties == null){ properties = new NBTTagCompound(); }
 		
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
-		this.player.getDataWatcher().updateObject(TODO_WATCHER,     properties.getString(NBT_TODO)); 
-		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER,    properties.getString(NBT_SPELLMAIN));  
-		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,    properties.getInteger(NBT_SPELLTOG));   
+		this.player.getDataWatcher().updateObject(TODO_WATCHER,      properties.getString(NBT_TODO)); 
+		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getString(NBT_SPELLMAIN));  
+		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,  properties.getInteger(NBT_SPELLTOG));   
+		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER,properties.getInteger(NBT_SPELLTIMER));   
  	}
 
 	private final String getSpellMain() 
@@ -102,8 +104,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		String spell = getSpellMain();
 		switch(current)
 		{
-		case SPELL_TOGGLE_SHOWMAIN:
-			System.out.println("getSpellCurrent "+current+" "+getSpellMain()); 
+		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
 			spell = getSpellMain();
 			
 			if(spell == null || spell.isEmpty())
@@ -111,13 +112,12 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			
 			return getSpellMain();
 			//break;
-		case SPELL_TOGGLE_SHOWOTHER:
+		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
 			spell = getSpellOther();
 			
 			if(spell == null || spell.isEmpty())
 				setSpellOther(SpellRegistry.torch.getSpellID());
 
-			System.out.println("getSpellCurrent "+current+" "+getSpellOther());
 			return getSpellOther();
 			//break;
 		}
@@ -128,10 +128,10 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		int current = this.getSpellToggle();
 		switch(current)
 		{
-		case SPELL_TOGGLE_SHOWMAIN:
+		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
 			this.setSpellMain(spell);
 			break;
-		case SPELL_TOGGLE_SHOWOTHER:
+		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
 			this.setSpellOther(spell);
 			break;
 		}
@@ -140,21 +140,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		return this.getStringSafe(TODO_WATCHER);
 	}
-	public String getStringSafe(int WATCHER)
-	{
-		//we used to get these exceptions when our "copy" function wanst in here saving us to persist data on player death.
-		//doesnt seem to happen anymore, but keeing the try catch because it couldn't hurt.
-		try
-		{
-			//why is this giving  java.lang.Integer cannot be cast to java.lang.String
-			return this.player.getDataWatcher().getWatchableObjectString(WATCHER); 
-		}
-		catch(ClassCastException e)
-		{
-			return "";
-		}
-	}
- 
 	public final void setStringTodo(String todo) 
 	{
 		this.player.getDataWatcher().updateObject(TODO_WATCHER, todo);
@@ -167,11 +152,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, waypointsCSV);
 	}
-	@Override
-	public void init(Entity entity, World world) 
-	{ 
-	}
-	
 	public final void setSpellToggle(int current) 
 	{
 		int old = getSpellToggle();
@@ -187,15 +167,23 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 		switch(current)
 		{
-		case SPELL_TOGGLE_HIDE:
-			return SPELL_TOGGLE_SHOWMAIN;
-		case SPELL_TOGGLE_SHOWMAIN:
-			return SPELL_TOGGLE_SHOWOTHER;
+		case SpellRegistry.SPELL_TOGGLE_HIDE:
+			return SpellRegistry.SPELL_TOGGLE_SHOWMAIN;
+		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
+			return SpellRegistry.SPELL_TOGGLE_SHOWOTHER;
 		default:
-		case SPELL_TOGGLE_SHOWOTHER:
-			return SPELL_TOGGLE_HIDE;
+		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
+			return SpellRegistry.SPELL_TOGGLE_HIDE;
 		}
 	} 
+	public final void setSpellTimer(int current) 
+	{ 
+		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER, current);
+	}
+	public final int getSpellTimer() 
+	{
+		return this.player.getDataWatcher().getWatchableObjectInt(SPELLTIMER_WATCHER);
+	}
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
 
 	public void copy(PlayerPowerups props) 
@@ -208,12 +196,31 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, props.getSpellMain()); 
 		player.getDataWatcher().updateObject(SPELLOTHER_WATCHER, props.getSpellOther()); 
 		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle()); 
+		player.getDataWatcher().updateObject(SPELLTIMER_WATCHER, props.getSpellTimer()); 
 		//set here
 		this.setWaypoints(props.getStringWaypoints());
 		this.setStringTodo(props.getStringTodo());  
 		this.setSpellMain(props.getSpellMain());   
 		this.setSpellOther(props.getSpellOther());   
 		this.setSpellToggle(props.getSpellToggle());   
+		this.setSpellTimer(props.getSpellTimer()); 
 	}
-
+	@Override
+	public void init(Entity entity, World world) 
+	{ 
+	}
+	public String getStringSafe(int WATCHER)
+	{
+		//we used to get these exceptions when our "copy" function wanst in here saving us to persist data on player death.
+		//doesnt seem to happen anymore, but keeing the try catch because it couldn't hurt.
+		try
+		{
+			//why is this giving  java.lang.Integer cannot be cast to java.lang.String
+			return this.player.getDataWatcher().getWatchableObjectString(WATCHER); 
+		}
+		catch(ClassCastException e)
+		{
+			return "";
+		}
+	}
 }

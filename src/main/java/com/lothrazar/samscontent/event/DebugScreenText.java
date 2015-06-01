@@ -120,7 +120,7 @@ public class DebugScreenText
 
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
-		if(props.getSpellToggle() != PlayerPowerups.SPELL_TOGGLE_HIDE)
+		if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 		{
 			drawSpell(event);
 
@@ -195,7 +195,7 @@ public class DebugScreenText
 		PlayerPowerups props = PlayerPowerups.get(player);
 	 
 		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
-		//System.out.println("drawspell "+spell.getSpellID());
+		//System.out.println("drawspell "+props.getSpellToggle());
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
 		{
 			event.left.add(Util.lang("key.spell."+spell.getSpellID()));
@@ -205,10 +205,11 @@ public class DebugScreenText
 			int ymain = 12;
 			int dim = 12;
 				
-	 
 			int x = 12, y = 2;
 			
-			renderItemAt(spell.getIconDisplayHeader(),x,y,dim);
+			Item ptr = SpellRegistry.canPlayerCastAnything(player) ? ItemRegistry.exp_cost_dummy : ItemRegistry.exp_cost_empty_dummy;
+			//spell.getIconDisplayHeader()
+			renderItemAt(new ItemStack(ptr),x,y,dim);
 				
 			//int ysmall = ymain - 3;
 			int xmain = 10;

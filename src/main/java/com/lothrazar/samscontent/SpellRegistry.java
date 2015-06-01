@@ -91,15 +91,31 @@ public class SpellRegistry
 	{
 		return getSpellFromType("chest");
 	}
+	public static final int SPELL_TOGGLE_HIDE = 0;
+	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
+	public static final int SPELL_TOGGLE_SHOWOTHER = 2;
 
+	public static boolean canPlayerCastAnything(EntityPlayer player)
+	{
+		PlayerPowerups props = PlayerPowerups.get(player);
+		return props.getSpellTimer() == 0;
+	}
+	
 	//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
 	public static void cast(ISpell spell, World world, EntityPlayer player,BlockPos pos)
 	{
 		if(spell == null){return;}
+		if(canPlayerCastAnything(player) == false)
+		{
+		//	Util.addChatMessage(player, "spell.timeout");
+			return;
+		}
+	
 		if(spell.canPlayerCast(player))
 		{
 			spell.cast(world, player, pos);
 			spell.onCastSuccess(world, player, pos);
+			startSpellTimer(player);
 		}
 		else
 		{
@@ -112,7 +128,7 @@ public class SpellRegistry
 		cast(sp,world,player,pos);
 	}
 	
-	public static void shiftUp(EntityPlayer player)
+	public static void shiftLeft(EntityPlayer player)
 	{
 		ISpell current = getPlayerCurrentISpell(player);
 		
@@ -120,7 +136,7 @@ public class SpellRegistry
 			setPlayerCurrentSpell(player,current.left().getSpellID());
 	}
 
-	public static void shiftDown(EntityPlayer player)
+	public static void shiftRight(EntityPlayer player)
 	{ 
 		ISpell current = getPlayerCurrentISpell(player);
 
@@ -139,6 +155,27 @@ public class SpellRegistry
 		PlayerPowerups props = PlayerPowerups.get(player);
 	 
 		return props.getSpellCurrent();
+	}
+	public static int getSpellTimer(EntityPlayer player)
+	{
+		PlayerPowerups props = PlayerPowerups.get(player);
+		return props.getSpellTimer();
+	}
+	public static void startSpellTimer(EntityPlayer player)
+	{
+		PlayerPowerups props = PlayerPowerups.get(player);
+		props.setSpellTimer(SPELL_TIMER_MAX);
+	}
+	public static final int SPELL_TIMER_MAX = 20;
+	public static void tickSpellTimer(EntityPlayer player)
+	{
+		PlayerPowerups props = PlayerPowerups.get(player);
+		if(props.getSpellTimer() < 0)
+			props.setSpellTimer(0);
+		else if(props.getSpellTimer() > 0)
+			props.setSpellTimer(props.getSpellTimer() - 1);
+
+
 	}
 
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)

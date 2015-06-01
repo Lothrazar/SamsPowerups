@@ -3,6 +3,7 @@ package com.lothrazar.samscontent.potion;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier; 
 import com.lothrazar.samscontent.ModMain; 
+import com.lothrazar.samscontent.SpellRegistry;
 import com.lothrazar.samscontent.spell.SpellGhost;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
@@ -98,6 +99,8 @@ public class PotionRegistry
 		if(event.entityLiving instanceof EntityPlayer)
 		{
 			SpellGhost.onPlayerUpdate(event); 
+			
+			SpellRegistry.tickSpellTimer((EntityPlayer)event.entityLiving);
 		}
 		
 		tickSlowfall(event);

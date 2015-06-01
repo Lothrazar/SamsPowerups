@@ -155,7 +155,6 @@ public class ModMain
 		BlockHardnessRegistry.registerChanges(); 
 		
 		SpellRegistry.setup();
-		
 	}
         
 	@EventHandler
@@ -194,14 +193,7 @@ public class ModMain
         EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModMain.instance, 64, 1, true);
         EntityRegistry.registerModEntity(EntityTorchBolt.class, "torchbolt",1004, ModMain.instance, 64, 1, true);
 		
-        
 		proxy.registerRenderers();
-	}
-	
-	@EventHandler 
-	public void onPostInit(FMLPostInitializationEvent event)
-	{ 		
-	
 	}
 	
 	@EventHandler
@@ -249,7 +241,6 @@ public class ModMain
 		//these ones are always here. no reason to disable.
 	
 		event.registerServerCommand(new CommandBindMacro());
-
 
 	}
   
@@ -359,20 +350,17 @@ public class ModMain
 			Util.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
 		}
 		
-		
 		if(ModMain.cfg.petNametagChat && 
 			event.entity instanceof EntityLivingBase && 
 			event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
 		    event.entity.getCustomNameTag() != ""   &&
 		    event.entity.worldObj.isRemote == false) 
 		{    
-           
 			//show message as if player, works since EntityLiving extends EntityLivingBase
 	 
 			Util.printChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
 		}
 		 
-		
 		if(ModMain.cfg.cowExtraLeather > 0 && event.entity instanceof EntityCow)
 		{
 			event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ(), new ItemStack(Items.leather,ModMain.cfg.cowExtraLeather)));
@@ -415,12 +403,6 @@ public class ModMain
 				event.setCanceled(true);//stop the GUI inventory opening
 			}  
 		}  
-		/*
-		if(held != null && held.getItem() instanceof ItemSoulstone)
-		{      
-			ItemSoulstone.onEntityInteract(event);   
-		}  
-		*/
   	} 
 	 
 	@SubscribeEvent
@@ -568,12 +550,6 @@ public class ModMain
 	}
 
 	@SubscribeEvent
-	public void onPlayerSleepInBedEvent(PlayerSleepInBedEvent event)
-	{
-		
-	}
-
-	@SubscribeEvent
 	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)
 	{
 		if(event.entityPlayer.worldObj.isRemote == false)
@@ -588,39 +564,16 @@ public class ModMain
 			}
 		}
 	}
+	
 	@SubscribeEvent
 	public void onEnderTeleportEvent(EnderTeleportEvent event)
 	{  
-		
 		if(event.entityLiving != null && event.entityLiving.isPotionActive(PotionRegistry.ender))
 		{
 			event.attackDamage = 0;  //starts at exactly  5.0 which is 2.5hearts
-		  /*
-			//feature 2: odds to return pearl-removed feature
-			int rawChance = 50;//ModLoader.configSettings.chanceReturnEnderPearl;
-			
-			double pct = ((double)rawChance)/100.0; 
-			 
-			if(p.worldObj.rand.nextDouble() < pct) //so event.entity.pos is their position BEFORE teleport
-			{ 
-				EntityItem ei = new EntityItem(p.worldObj, event.targetX, event.targetY, event.targetZ, new ItemStack(Items.ender_pearl));
-				p.worldObj.spawnEntityInWorld(ei);
-			} */
 		}
-		 
 	}
 	 
-	/*
-	 //TODO: put back in if needed
-	@SubscribeEvent
-	public void onPlayerTick(PlayerTickEvent event)
-	{     
-		EntityPlayer player = event.player;
-		
-		//this one only applies to players
-		PotionRegistry.tickEnder(player); 
-	} */
-	
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
     {   
@@ -719,6 +672,7 @@ public class ModMain
 	{ 
 		PlayerPowerups.get(event.entityPlayer).copy(PlayerPowerups.get(event.original));
 	}
+	
 	@SubscribeEvent
  	public void onEntityConstructing(EntityConstructing event)
  	{ 
@@ -728,12 +682,6 @@ public class ModMain
  		} 
  	}
 	
-	@SubscribeEvent
-	public void onHarvestDropsEvent(HarvestDropsEvent event)
-	{
-		
-	}
-
 	@SubscribeEvent
 	public void onBreakEvent(BreakEvent event)
 	{
@@ -753,42 +701,14 @@ public class ModMain
 			t.setBuckets(0);
 		}
 	}
-	@SubscribeEvent
-	public void onLogin(PlayerLoggedInEvent event)
-	{
-		//every time the player joins the world
-		//Util.addChatMessage(event.player, "login.new.first");
-
-	}
-
-
+	
 	@SubscribeEvent
 	public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
 	{ 
 		if(event.entity instanceof EntityLivingBase && event.world.isRemote)
 		{
 			EntityLivingBase living = (EntityLivingBase)event.entity;
-			/*if(living instanceof EntityPlayer)// && ((EntityPlayer)living).
-			{
-				EntityPlayer player = ((EntityPlayer)living);
-				PlayerPowerups props = PlayerPowerups.get(player);
-				//max health
-				//Hearts to Health ratio is 2:1
-				//so config file might say 3 which is 6 health points (6 half-hearts)
-				
-				int max = props.getHealthMaxCustom();
-
-		//	System.out.println("EntityPlayer spawn event max="+max);
-			//	System.out.println("healthPlayerStart="+ModMain.cfg.heartsPlayerStart);
-				
-				//start at whatever config file says is min health.  do nothing if already upgraded
-				if(max < ModMain.cfg.heartsPlayerStart)
-				{
-					
-					props.setHealthMaxCustom(ModMain.cfg.heartsPlayerStart*2);
-				}
-				
-			} */
+		
 			if(living instanceof EntityWolf && ((EntityWolf)living).isTamed())
 			{
 				Util.setMaxHealth(living,ModMain.cfg.heartsWolfTamed*2);
@@ -800,10 +720,45 @@ public class ModMain
 			
 			if(living instanceof EntityVillager && ((EntityVillager)living).isChild() == false)
 			{
-				//??living.getMaxHealth()
 				Util.setMaxHealth(living,ModMain.cfg.heartsVillager*2);			
 			}
 		}
 	}
+	
+	/*
+	 old code; a few unused events: put back in if needed
+	  
+	@EventHandler 
+	public void onPostInit(FMLPostInitializationEvent event)
+	{ 		
+	
+	}
+	@SubscribeEvent
+	public void onPlayerSleepInBedEvent(PlayerSleepInBedEvent event)
+	{
+		
+	}
+	@SubscribeEvent
+	public void onHarvestDropsEvent(HarvestDropsEvent event)
+	{
+		
+	}
+	
+	@SubscribeEvent
+	public void onLogin(PlayerLoggedInEvent event)
+	{
+		//every time the player joins the world
+		//Util.addChatMessage(event.player, "login.new.first");
+
+	}
+
+	@SubscribeEvent
+	public void onPlayerTick(PlayerTickEvent event)
+	{     
+		EntityPlayer player = event.player;
+		
+		//this one only applies to players
+		PotionRegistry.tickEnder(player); 
+	} */
 	
 }
