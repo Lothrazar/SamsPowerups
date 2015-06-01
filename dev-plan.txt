@@ -5,14 +5,8 @@ ALSO: remember current spell twice? current spell per row?
 careful for on cast and navigate?
 GetCurrent spell must check the #
 
-torch water frost fire lightn soulstone harvest
 
-//next group ltr
-
-chest haste waterwalk jump slowfall phase pearl eeye ghost
-
-
-//since 5 icons per screen, min size 5/group. above is 7,9 for 16 total
+l
 
 TODO: back up to 4 macros again?
 //spell types: some use items from EI others use EXP

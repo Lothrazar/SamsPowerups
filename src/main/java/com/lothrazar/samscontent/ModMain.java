@@ -241,6 +241,7 @@ public class ModMain
 		//these ones are always here. no reason to disable.
 	
 		event.registerServerCommand(new CommandBindMacro());
+		event.registerServerCommand(new CommandHearts());
 
 	}
   
@@ -358,7 +359,7 @@ public class ModMain
 		{    
 			//show message as if player, works since EntityLiving extends EntityLivingBase
 	 
-			Util.printChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
+			Util.addChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
 		}
 		 
 		if(ModMain.cfg.cowExtraLeather > 0 && event.entity instanceof EntityCow)
@@ -662,7 +663,7 @@ public class ModMain
 			if(ModMain.cfg.playerDeathCoordinates)
 			{
 				String coordsStr = Util.posToString(player.getPosition()); 
-				Util.printChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
+				Util.addChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
 			}
 		}
 	}

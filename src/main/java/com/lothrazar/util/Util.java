@@ -375,15 +375,15 @@ public class Util
 		return Keyboard.isKeyDown(Keyboard.KEY_LSHIFT) || Keyboard.isKeyDown(Keyboard.KEY_RSHIFT); 
 	}
 
-	public static void printChatMessage(String string) 
+	public static void addChatMessage(String string) 
 	{ 
-		printChatMessage(new ChatComponentTranslation(string)); 
+		addChatMessage(new ChatComponentTranslation(string)); 
 	}
 	public static void addChatMessage(EntityPlayer player,String string) 
 	{ 
 		player.addChatMessage(new ChatComponentTranslation(string));
 	}
-	public static void printChatMessage(IChatComponent string) 
+	public static void addChatMessage(IChatComponent string) 
 	{ 
 		 Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(string); 
 	}
