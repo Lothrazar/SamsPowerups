@@ -30,7 +30,7 @@ public class CommandHearts implements ICommand
 	@Override
 	public String getCommandUsage(ICommandSender sender)
 	{
-		return "/"+getName()+" <hearts>";
+		return "/"+getName()+" <player> <hearts>";
 	}
 
 	@Override
@@ -42,10 +42,27 @@ public class CommandHearts implements ICommand
 	@Override
 	public void execute(ICommandSender sender, String[] args)		throws CommandException
 	{ 
-		int health = 0;
+		EntityPlayer ptarget  = null;
+		
+		int hearts = 0;
 		try
 		{
-			health = Integer.parseInt(args[0]);
+			ptarget = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(args[0]);
+			
+			if(ptarget == null)
+			{
+				Util.addChatMessage(getCommandUsage(sender));
+				return;
+			}
+		}
+		catch (Exception e)
+		{
+			Util.addChatMessage(getCommandUsage(sender));
+			return;
+		}
+		try
+		{
+			hearts = Integer.parseInt(args[1]);
 		}
 		catch (Exception e)
 		{
@@ -53,22 +70,8 @@ public class CommandHearts implements ICommand
 			return;
 		}
 		
-		if(args.length > 2)
-		{
-			String target = args[2];
-			
-			System.out.println("target");
-			
-			EntityPlayer ptarget = MinecraftServer.getServer().getConfigurationManager().getPlayerByUsername(target);
-			
-			if(ptarget == null)
-			{
-				Util.addChatMessage(getCommandUsage(sender));
-				return;
-			}
 
-			Util.setMaxHealth(ptarget, health*2);
-		}
+		Util.setMaxHealth(ptarget, hearts*2);
 	}
 
 	@Override
