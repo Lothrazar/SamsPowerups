@@ -138,7 +138,7 @@ public class SpellRegistry
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 	 
-		return props.getStringSpell();
+		return props.getSpell();
 	}
 
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)

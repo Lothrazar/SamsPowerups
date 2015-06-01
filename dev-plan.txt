@@ -1,5 +1,9 @@
 //todo: a group left to right is
 
+semicolon/spell row switching: hold shift means go in reverse order (2 1 0 not the normal)
+ALSO: remember current spell twice? current spell per row?
+careful for on cast and navigate?
+GetCurrent spell must check the #
 
 torch water frost fire lightn soulstone harvest
 
