@@ -1,31 +1,19 @@
 package com.lothrazar.samscontent.proxy;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.Map;
 import org.lwjgl.input.Keyboard;   
-import net.minecraft.init.Items;
 import  net.minecraft.item.Item;
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModMain; 
-import com.lothrazar.samscontent.entity.projectile.*;
+import com.lothrazar.samscontent.ModMain;  
 import com.lothrazar.util.*;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
-import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.client.renderer.entity.RenderManager;
-import net.minecraft.client.renderer.entity.RenderSnowball;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.client.settings.GameSettings;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityList;
-import net.minecraft.item.Item;
 
 public class ClientProxy extends CommonProxy 
 {  
@@ -38,39 +26,15 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keyPush;
 	public static KeyBinding keyPull; 
 	public static KeyBinding keyTransform; 
-	public static KeyBinding keySpellCast;
-	public static KeyBinding keySpellUp;
-	public static KeyBinding keySpellDown;
-	public static KeyBinding keySpellToggle;
  
     @Override
     public void registerRenderers() 
     {  
     	registerKeyBindings(); 
 
-        registerModels(); 
-        
-        registerEntities();
+        registerModels();  
     }
-    
-    private void registerEntities()
-    {
-    	RenderManager rm = Minecraft.getMinecraft().getRenderManager();
-    	RenderItem ri = Minecraft.getMinecraft().getRenderItem();
-    	
-    	//works similar to vanilla which is like
-    	//Minecraft.getMinecraft().getRenderManager().entityRenderMap.put(EntitySoulstoneBolt.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), ItemRegistry.soulstone, Minecraft.getMinecraft().getRenderItem()));
-
-    	RenderingRegistry.registerEntityRenderingHandler(EntitySoulstoneBolt.class, new RenderSnowball(rm, ItemRegistry.soulstone, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityLightningballBolt.class, new RenderSnowball(rm, ItemRegistry.spell_lightning_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityHarvestbolt.class, new RenderSnowball(rm, ItemRegistry.spell_harvest_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityWaterBolt.class, new RenderSnowball(rm, ItemRegistry.spell_frostbolt_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntitySnowballBolt.class, new RenderSnowball(rm, ItemRegistry.spell_frostbolt_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityTorchBolt.class, new RenderSnowball(rm, ItemRegistry.spell_torch_dummy, ri));
-        
-    	
-    }
-
+     
 	private void registerModels() 
 	{
 		//More info on proxy rendering
@@ -133,17 +97,6 @@ public class ClientProxy extends CommonProxy
         keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_B,  Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPull);
         
-        keySpellCast = new KeyBinding(Reference.keySpellCastName, Keyboard.KEY_X, Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keySpellCast);
-
-        keySpellUp = new KeyBinding(Reference.keySpellUpName, Keyboard.KEY_Z, Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keySpellUp);
-
-        keySpellDown = new KeyBinding(Reference.keySpellDownName, Keyboard.KEY_C,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keySpellDown);
-        
-        keySpellToggle = new KeyBinding(Reference.keySpellToggleName, Keyboard.KEY_SEMICOLON,  Reference.keyCategorySpell); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keySpellToggle);
 	} 
 
 	public static String getKeyDescription(int key)

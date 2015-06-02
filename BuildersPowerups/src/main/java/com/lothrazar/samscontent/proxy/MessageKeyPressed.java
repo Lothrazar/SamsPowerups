@@ -1,35 +1,18 @@
 package com.lothrazar.samscontent.proxy;
   
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry; 
 import com.lothrazar.samscontent.command.CommandBindMacro;
 import com.lothrazar.samscontent.common.PlayerPowerups;
-import com.lothrazar.samscontent.entity.projectile.*;
-import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.samscontent.spell.ISpell;
 import com.lothrazar.samscontent.spell.UtilBlockTransform;
 import com.lothrazar.samscontent.spell.UtilPistonSpell;
 import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPressed, IMessage>
@@ -121,45 +104,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{ 
 			UtilBlockTransform.transformBlock(player, player.worldObj, null, posMouse);
 	 	} 
-		else if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
-	 	{ 
-			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
-			{
-				SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,posMouse);
-			}
-	 	}
-		else if( message.keyPressed == ClientProxy.keySpellUp.getKeyCode())
-	 	{
-			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
-			{
-				SpellRegistry.shiftLeft(player);
-				
-				Util.playSoundAt(player, Reference.sounds.orb);
-				
-			}
-	 	}
-		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
-	 	{ 
-			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
-			{
-				SpellRegistry.shiftRight(player);
-				Util.playSoundAt(player, Reference.sounds.orb);
-			}
-			
-		}
-		else if( message.keyPressed == ClientProxy.keySpellToggle.getKeyCode())
-	 	{  
-			//int tog = props.getSpellToggle() == 0 ? 1 : 0;
-			//System.out.println("toggle from "+props.getSpellToggle());
-			int next = props.getSpellToggleNext();
-			props.setSpellToggle(next);
-			
-
-			//System.out.println("TO "+props.getSpellToggle());
-		}
-		
-		//TODO: search spawner??? with particle directors?
-
+		  
 		return null;
 	}
 

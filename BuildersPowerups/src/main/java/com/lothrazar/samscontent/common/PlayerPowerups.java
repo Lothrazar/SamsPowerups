@@ -1,7 +1,6 @@
 package com.lothrazar.samscontent.common;
 
-
-import com.lothrazar.samscontent.SpellRegistry;
+ 
 import com.lothrazar.util.Util;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -19,28 +18,12 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 	private static final int TODO_WATCHER = 21;
 	private static final String NBT_TODO = "samTodo"; 
-	
-	private static final int SPELLMAIN_WATCHER = 22;
-	private static final String NBT_SPELLMAIN = "samSpell"; 
-	
-	private static final int SPELLOTHER_WATCHER = 23;
-	private static final String NBT_SPELLOTHER = "samSpellOther"; 
- 
-	private static final int SPELLTOG_WATCHER = 24;
-	private static final String NBT_SPELLTOG = "samSpellToggle"; 
-
-	private static final int SPELLTIMER_WATCHER = 25;
-	private static final String NBT_SPELLTIMER = "samSpellTimer"; 
  
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;  
 		this.player.getDataWatcher().addObject(WAYPOINT_WATCHER, 0);
-		this.player.getDataWatcher().addObject(TODO_WATCHER, 0); 
-		this.player.getDataWatcher().addObject(SPELLMAIN_WATCHER, 0);  
-		this.player.getDataWatcher().addObject(SPELLOTHER_WATCHER, 0);  
-		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0); 
-		this.player.getDataWatcher().addObject(SPELLTIMER_WATCHER, 0); 
+		this.player.getDataWatcher().addObject(TODO_WATCHER, 0);  
 	}
 	
 	public static final void register(EntityPlayer player)
@@ -61,11 +44,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	
 		properties.setString(NBT_WAYPOINT,   this.getStringSafe(WAYPOINT_WATCHER)); 
 		properties.setString(NBT_TODO,       this.getStringSafe(TODO_WATCHER)); 
-		properties.setString(NBT_SPELLMAIN,  this.getStringSafe(SPELLMAIN_WATCHER)); 
-		properties.setString(NBT_SPELLOTHER, this.getStringSafe(SPELLOTHER_WATCHER));  
-		properties.setInteger(NBT_SPELLTOG,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
-		properties.setInteger(NBT_SPELLTIMER,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTIMER_WATCHER) ); 
- 	 
+	 
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
 
@@ -76,66 +55,10 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		if(properties == null){ properties = new NBTTagCompound(); }
 		
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
-		this.player.getDataWatcher().updateObject(TODO_WATCHER,      properties.getString(NBT_TODO)); 
-		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getString(NBT_SPELLMAIN));  
-		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,  properties.getInteger(NBT_SPELLTOG));   
-		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER,properties.getInteger(NBT_SPELLTIMER));   
+		this.player.getDataWatcher().updateObject(TODO_WATCHER,      properties.getString(NBT_TODO));   
  	}
 
-	private final String getSpellMain() 
-	{
-		return this.getStringSafe(SPELLMAIN_WATCHER);
-	}
-	private final void setSpellMain(String s) 
-	{
-		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, s);
-	}
-	private final String getSpellOther() 
-	{
-		return this.getStringSafe(SPELLOTHER_WATCHER);
-	}
-	private final void setSpellOther(String s) 
-	{
-		this.player.getDataWatcher().updateObject(SPELLOTHER_WATCHER, s);
-	}
-	public final String getSpellCurrent()
-	{
-		int current = this.getSpellToggle();
-		String spell = getSpellMain();
-		switch(current)
-		{
-		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
-			spell = getSpellMain();
-			
-			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.chest.getSpellID());
-			
-			return getSpellMain();
-			//break;
-		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
-			spell = getSpellOther();
-			
-			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.torch.getSpellID());
-
-			return getSpellOther();
-			//break;
-		}
-		return null;
-	}
-	public final void setSpellCurrent(String spell)
-	{
-		int current = this.getSpellToggle();
-		switch(current)
-		{
-		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
-			this.setSpellMain(spell);
-			break;
-		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
-			this.setSpellOther(spell);
-			break;
-		}
-	}
+	  
 	public final String getStringTodo() 
 	{
 		return this.getStringSafe(TODO_WATCHER);
@@ -151,39 +74,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public final void setWaypoints(String waypointsCSV) 
 	{
 		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, waypointsCSV);
-	}
-	public final void setSpellToggle(int current) 
-	{
-		int old = getSpellToggle();
-		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, current);
-	}
-	public final int getSpellToggle() 
-	{
-		return this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER);
-	}
-	public final int getSpellToggleNext() 
-	{
-		int current = getSpellToggle() ;
-
-		switch(current)
-		{
-		case SpellRegistry.SPELL_TOGGLE_HIDE:
-			return SpellRegistry.SPELL_TOGGLE_SHOWMAIN;
-		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
-			return SpellRegistry.SPELL_TOGGLE_SHOWOTHER;
-		default:
-		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
-			return SpellRegistry.SPELL_TOGGLE_HIDE;
-		}
-	} 
-	public final void setSpellTimer(int current) 
-	{ 
-		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER, current);
-	}
-	public final int getSpellTimer() 
-	{
-		return this.player.getDataWatcher().getWatchableObjectInt(SPELLTIMER_WATCHER);
-	}
+	}  
 	//http://www.minecraftforum.net/forums/mapping-and-modding/mapping-and-modding-tutorials/1571567-forge-1-6-4-1-8-eventhandler-and
 
 	public void copy(PlayerPowerups props) 
@@ -192,19 +83,12 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 		//set in the player
 		player.getDataWatcher().updateObject(WAYPOINT_WATCHER, props.getStringWaypoints());
-		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo());
-		player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, props.getSpellMain()); 
-		player.getDataWatcher().updateObject(SPELLOTHER_WATCHER, props.getSpellOther()); 
-		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle()); 
-		player.getDataWatcher().updateObject(SPELLTIMER_WATCHER, props.getSpellTimer()); 
+		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo()); 
 		//set here
 		this.setWaypoints(props.getStringWaypoints());
-		this.setStringTodo(props.getStringTodo());  
-		this.setSpellMain(props.getSpellMain());   
-		this.setSpellOther(props.getSpellOther());   
-		this.setSpellToggle(props.getSpellToggle());   
-		this.setSpellTimer(props.getSpellTimer()); 
+		this.setStringTodo(props.getStringTodo());   
 	}
+	
 	@Override
 	public void init(Entity entity, World world) 
 	{ 

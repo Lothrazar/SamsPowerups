@@ -2,9 +2,7 @@ package com.lothrazar.samscontent.potion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier; 
-import com.lothrazar.samscontent.ModMain; 
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.samscontent.spell.SpellGhost;
+import com.lothrazar.samscontent.ModMain;  
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
 import net.minecraft.block.Block;
@@ -95,13 +93,7 @@ public class PotionRegistry
 	public static void onEntityUpdate(LivingUpdateEvent event) 
 	{  
 		if(event.entityLiving == null){return;}
-		
-		if(event.entityLiving instanceof EntityPlayer)
-		{
-			SpellGhost.onPlayerUpdate(event); 
-			
-			SpellRegistry.tickSpellTimer((EntityPlayer)event.entityLiving);
-		}
+	 
 		
 		tickSlowfall(event);
 	     

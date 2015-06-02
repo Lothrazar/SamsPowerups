@@ -8,8 +8,7 @@ import org.apache.logging.log4j.Logger;
 import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.cfg.ConfigRegistry;
 import com.lothrazar.samscontent.command.*;
-import com.lothrazar.samscontent.common.PlayerPowerups;
-import com.lothrazar.samscontent.entity.projectile.*; 
+import com.lothrazar.samscontent.common.PlayerPowerups; 
 import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
@@ -153,8 +152,7 @@ public class ModMain
 		this.registerEventHandlers(); 
 		
 		BlockHardnessRegistry.registerChanges(); 
-		
-		SpellRegistry.setup();
+		 
 	}
         
 	@EventHandler
@@ -183,16 +181,7 @@ public class ModMain
 			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
 		}
   		 
-  		//TODO: we could make our own custom projectileRegistry, that acts as our other ones above do.
-  		
-  		//TODO: Entity ids are the 999,1000,1001 -> config file
-        EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityWaterBolt.class, "waterbolt",1002, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityTorchBolt.class, "torchbolt",1004, ModMain.instance, 64, 1, true);
-		
+ 
 		proxy.registerRenderers();
 	}
 	
@@ -296,13 +285,7 @@ public class ModMain
 			}
 		}
 	}
-
-	@SubscribeEvent
-	public void onLivingHurt(LivingHurtEvent event) 
-	{ 
-		SpellSoulstone.onLivingHurt(event);
-	}
-	
+ 
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)
 	{
@@ -615,22 +598,7 @@ public class ModMain
         {
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyTransform.getKeyCode()));
         }
-        else if(ClientProxy.keySpellToggle.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellToggle.getKeyCode()));
-        }
-        else if(ClientProxy.keySpellCast.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
-        }
-        else if(ClientProxy.keySpellUp.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellUp.getKeyCode()));
-        }
-        else if(ClientProxy.keySpellDown.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellDown.getKeyCode()));
-        }
+       
     } 
 	
 	@SubscribeEvent

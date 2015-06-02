@@ -5,8 +5,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.config.Configuration;  
-import com.lothrazar.samscontent.command.*;  
-import com.lothrazar.samscontent.entity.projectile.EntitySnowballBolt;
+import com.lothrazar.samscontent.command.*;   
 import com.lothrazar.samscontent.item.*; 
 import com.lothrazar.samscontent.spell.UtilBlockTransform;
 import com.lothrazar.samscontent.spell.UtilPistonSpell;
@@ -333,12 +332,7 @@ public class ConfigRegistry
 		respawn_egg = instance.getBoolean("respawn_egg",category, true,
     			"Use an empty respawn egg to turn an mob into a respawn egg.  This works the same as a regular spawn egg, but does not interact with mob spawners.  Works only on livestock/passive mobs, not hostiles.");
   
-		
-		
-		//TODO: Spell Configs
-		EntitySnowballBolt.secondsFrozenOnHit = instance.getInt("frozen_snowball.duration_on_hit",category, 25,1,600,
-    			"When something hit by one of these snowballs, it gets the snow effect for this many seconds.");
-		
+		 
 		String csv = instance.getString("spell_piston.ignored",category, "minecraft:cactus,minecraft:piston_head,minecraft:piston_extension,minecraft:lit_furnace,minecraft:melon_stem,minecraft:pumpkin_stem,minecraft:wheat,samscontent:beetroot_crop,wooden_door,minecraft:spruce_door,minecraft:birch_door,minecraft:jungle_door,minecraft:acacia_door,minecraft:dark_oak_door,minecraft:iron_door,minecraft:bedrock,minecraft:tripwire,minecraft:tripwire_hook,minecraft:stone_button,minecraft:wooden_button,minecraft:stone_pressure_plate,minecraft:wooden_pressure_plate,minecraft:heavy_weighted_pressure_plate,minecraft:light_weighted_pressure_plate,minecraft:redstone_wire,minecraft:mob_spawner,minecraft:ladder",
     			"List of ignored blocks that will not be moved.");
 		UtilPistonSpell.seIgnoreBlocksFromString(csv);

@@ -1,29 +1,16 @@
 package com.lothrazar.samscontent.event;
 
-import java.io.DataInputStream;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;  
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;  
-import org.apache.logging.log4j.Logger;  
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.SpellRegistry;  
+import com.lothrazar.samscontent.ModMain; 
 import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
 import com.lothrazar.samscontent.command.CommandTodoList;
-import com.lothrazar.samscontent.common.PlayerPowerups;
-import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.samscontent.spell.ISpell;
-import com.lothrazar.util.Location;
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
-import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft; 
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.Tessellator;
@@ -31,34 +18,17 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.resources.model.IBakedModel;
-import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.MathHelper;
 import net.minecraft.village.Village;
 import net.minecraft.world.GameRules;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.passive.EntityHorse;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraftforge.common.DimensionManager;  
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.config.Configuration;  
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
  
 public class DebugScreenText
 {   
@@ -118,15 +88,7 @@ public class DebugScreenText
 			
 		}
 
-		PlayerPowerups props = PlayerPowerups.get(player);
-		
-		if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
-		{
-			drawSpell(event);
-
-		 	drawHud(player); 
-		}
-		
+	
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
 		{
 			 
@@ -183,104 +145,9 @@ public class DebugScreenText
 		 	{ 
 				addGameruleInfo(event, world); 
 			}
-		} 
-		 
-	 	 
+		}  
 	}
-
-	private void drawSpell(RenderGameOverlayEvent.Text event)
-	{ 
-		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
-
-		PlayerPowerups props = PlayerPowerups.get(player);
-	 
-		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
-		//System.out.println("drawspell "+props.getSpellToggle());
-		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
-		{
-			event.left.add(Util.lang("key.spell."+spell.getSpellID()));
-		}
-		else
-		{
-			int ymain = 12;
-			int dim = 12;
-				
-			int x = 12, y = 2;
-			
-			Item ptr = SpellRegistry.canPlayerCastAnything(player) ? ItemRegistry.exp_cost_dummy : ItemRegistry.exp_cost_empty_dummy;
-			//spell.getIconDisplayHeader()
-			renderItemAt(new ItemStack(ptr),x,y,dim);
-				
-			//int ysmall = ymain - 3;
-			int xmain = 10;
-			ymain = 14;
-			if(spell.getIconDisplay() != null)
-			{
-				x = xmain; 
-				y = ymain;
-				dim = 16;
-				renderItemAt(spell.getIconDisplay(),x,y,dim);
-			}
-			
-			
-			ISpell spellNext = spell.left();//SpellRegistry.getSpellFromType(spell.getSpellID().next());
-			ISpell spellPrev = spell.right();//SpellRegistry.getSpellFromType(spell.getSpellID().prev());
-			
-			
-			if(spellNext != null)// && spellNext.getIconDisplay() != null
-			{
-				x = xmain-3; 
-				y = ymain + 16;
-				dim = 16/2;
-				renderItemAt(spellNext.getIconDisplay(),x,y,dim);
-				
-				ISpell sLeftLeft = spellNext.left();//SpellRegistry.getSpellFromType(spellNext.getSpellID().next());
-
-				if(sLeftLeft != null && sLeftLeft.getIconDisplay() != null)
-				{
-					x = xmain-3 - 1; 
-					y = ymain + 16+14;
-					dim = 16/2 - 2;
-					renderItemAt(sLeftLeft.getIconDisplay(),x,y,dim);
-				}
-			}
-			if(spellPrev != null)// && spellPrev.getIconDisplay() != null
-			{
-				x = xmain+6; 
-				y = ymain + 16;
-				dim = 16/2;
-				renderItemAt(spellPrev.getIconDisplay(),x,y,dim);
-
-				ISpell sRightRight = spellPrev.right();//SpellRegistry.getSpellFromType(spellPrev.getSpellID().prev());
-
-				if(sRightRight != null && sRightRight.getIconDisplay() != null)
-				{
-					x = xmain+6 + 4; 
-					y = ymain + 16+14;
-					dim = 16/2 - 2;
-					renderItemAt(sRightRight.getIconDisplay(),x,y,dim);
-				}
-			}
-		}
-	}
-
-	private void drawHud(EntityPlayerSP player)
-	{
-		//TESTING OUT PLAYER COMPASS CLOCKS PELLS
-	 	//System.out.println("width"+ Minecraft.getMinecraft().displayWidth);
-		int xMiddle = Minecraft.getMinecraft().displayWidth/4;
-		int yMiddle = Minecraft.getMinecraft().displayHeight/4;
-		int yBottom = Minecraft.getMinecraft().displayHeight/2 - 32;
-		int xRight = Minecraft.getMinecraft().displayWidth/2 - 32;
-	 
-		
-		//PlayerPowerups props = PlayerPowerups.get(player);
-
-		renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
-		renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);//works at mid top//was ,16
 	
-	}
-
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 
 	{
 		String todoCurrent = CommandTodoList.GetTodoForPlayer(player);
