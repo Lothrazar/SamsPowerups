@@ -1,8 +1,6 @@
-package com.lothrazar.samscontent.common;
+package com.lothrazar.samsmagic;
 
-
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.util.Util;
+import com.lothrazar.samsmagic.SpellRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -13,13 +11,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 {
 	private final static String EXT_PROP_NAME = "PlayerPowerups";
 	private final EntityPlayer player;//we get one of these powerup classes for each player
-
-	private static final int WAYPOINT_WATCHER = 20;
-	private static final String NBT_WAYPOINT = "samWaypoints"; 
-
-	private static final int TODO_WATCHER = 21;
-	private static final String NBT_TODO = "samTodo"; 
-	
+  
 	private static final int SPELLMAIN_WATCHER = 22;
 	private static final String NBT_SPELLMAIN = "samSpell"; 
 	
@@ -34,9 +26,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
  
 	public PlayerPowerups(EntityPlayer player)
 	{
-		this.player = player;  
-		this.player.getDataWatcher().addObject(WAYPOINT_WATCHER, 0);
-		this.player.getDataWatcher().addObject(TODO_WATCHER, 0); 
+		this.player = player;   
 		this.player.getDataWatcher().addObject(SPELLMAIN_WATCHER, 0);  
 		this.player.getDataWatcher().addObject(SPELLOTHER_WATCHER, 0);  
 		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0); 
@@ -58,9 +48,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		// We need to create a new tag compound that will save everything for our Extended Properties
 		NBTTagCompound properties = new NBTTagCompound(); 
-	
-		properties.setString(NBT_WAYPOINT,   this.getStringSafe(WAYPOINT_WATCHER)); 
-		properties.setString(NBT_TODO,       this.getStringSafe(TODO_WATCHER)); 
+	 
 		properties.setString(NBT_SPELLMAIN,  this.getStringSafe(SPELLMAIN_WATCHER)); 
 		properties.setString(NBT_SPELLOTHER, this.getStringSafe(SPELLOTHER_WATCHER));  
 		properties.setInteger(NBT_SPELLTOG,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
@@ -75,9 +63,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		if(properties == null){ properties = new NBTTagCompound(); }
 		
-		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, properties.getString(NBT_WAYPOINT)); 
-		this.player.getDataWatcher().updateObject(TODO_WATCHER,      properties.getString(NBT_TODO)); 
-		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getString(NBT_SPELLMAIN));  
+		 this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getString(NBT_SPELLMAIN));  
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,  properties.getInteger(NBT_SPELLTOG));   
 		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER,properties.getInteger(NBT_SPELLTIMER));   
  	}
@@ -136,22 +122,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			break;
 		}
 	}
-	public final String getStringTodo() 
-	{
-		return this.getStringSafe(TODO_WATCHER);
-	}
-	public final void setStringTodo(String todo) 
-	{
-		this.player.getDataWatcher().updateObject(TODO_WATCHER, todo);
-	}
-	public final String getStringWaypoints() 
-	{
-		return this.getStringSafe(WAYPOINT_WATCHER);
-	}
-	public final void setWaypoints(String waypointsCSV) 
-	{
-		this.player.getDataWatcher().updateObject(WAYPOINT_WATCHER, waypointsCSV);
-	}
+ 
 	public final void setSpellToggle(int current) 
 	{
 		int old = getSpellToggle();
@@ -190,16 +161,12 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	{
 		//thanks for the help https://github.com/coolAlias/Tutorial-Demo/blob/master/src/main/java/tutorial/entity/ExtendedPlayer.java
 
-		//set in the player
-		player.getDataWatcher().updateObject(WAYPOINT_WATCHER, props.getStringWaypoints());
-		player.getDataWatcher().updateObject(TODO_WATCHER, props.getStringTodo());
+		//set in the player 
 		player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, props.getSpellMain()); 
 		player.getDataWatcher().updateObject(SPELLOTHER_WATCHER, props.getSpellOther()); 
 		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle()); 
 		player.getDataWatcher().updateObject(SPELLTIMER_WATCHER, props.getSpellTimer()); 
-		//set here
-		this.setWaypoints(props.getStringWaypoints());
-		this.setStringTodo(props.getStringTodo());  
+		//set here  
 		this.setSpellMain(props.getSpellMain());   
 		this.setSpellOther(props.getSpellOther());   
 		this.setSpellToggle(props.getSpellToggle());   

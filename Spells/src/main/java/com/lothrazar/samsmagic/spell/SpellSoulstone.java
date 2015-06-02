@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,12 +9,11 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.samscontent.entity.projectile.EntitySoulstoneBolt;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
 
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.SpellRegistry;
+import com.lothrazar.samsmagic.entity.projectile.EntitySoulstoneBolt; 
 public class SpellSoulstone extends BaseSpellExp implements ISpell
 {
 	private static final String KEY_STONED = "soulstone";
@@ -51,9 +50,9 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
-		
-		Util.playSoundAt(player, Reference.sounds.bowtoss);//"mob.endermen.death"
+		ModMain.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
+
+		ModMain.playSoundAt(player, "random.bow");
 
 		super.onCastSuccess(world, player, pos);
 	}
@@ -87,9 +86,9 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 				
 				//event.setCanceled(true);//this is possible but not needed
 				
-				Util.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
+				ModMain.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
 
-				boolean isPersist = event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST;
+				//boolean isPersist = event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST;
 				 
 				if(event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_SINGLEUSE)
 				{

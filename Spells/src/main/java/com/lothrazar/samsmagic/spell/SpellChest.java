@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -8,10 +8,10 @@ import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.SpellRegistry; 
 
 public class SpellChest extends BaseSpellExp implements ISpell
 { 
@@ -112,7 +112,7 @@ public class SpellChest extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.playSoundAt(player, Reference.sounds.wood_click);
+		ModMain.playSoundAt(player, "random.wood_click");
 
 		super.onCastSuccess(world, player, pos);
 	}

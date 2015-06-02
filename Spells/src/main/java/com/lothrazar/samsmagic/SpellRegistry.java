@@ -1,24 +1,12 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samsmagic;
 
 import java.util.ArrayList;
-import com.lothrazar.samscontent.common.PlayerPowerups; 
-import com.lothrazar.samscontent.spell.ISpell;
-import com.lothrazar.samscontent.spell.SpellHarvest; 
-import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.samscontent.spell.*;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
-import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.item.EntityEnderPearl;
+import com.lothrazar.samsmagic.PlayerPowerups; 
+import com.lothrazar.samsmagic.spell.ISpell;
+import com.lothrazar.samsmagic.spell.SpellHarvest; 
+import com.lothrazar.samsmagic.spell.*; 
 import net.minecraft.entity.player.EntityPlayer; 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 
 public class SpellRegistry

@@ -1,9 +1,9 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.SpellRegistry; 
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -24,22 +24,22 @@ public abstract class BaseSpellExp implements ISpell
 	{
 		player.swingItem();
 		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
+		ModMain.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 
-		Util.drainExp(player, getExpCost());
+		ModMain.drainExp(player, getExpCost());
 	}
 
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.playSoundAt(player, Reference.sounds.wood_click);
+		ModMain.playSoundAt(player, "random.wood_click");
 
-		Util.addChatMessage(player, Util.lang("spell.exp.missing")+this.getExpCost());
+		ModMain.addChatMessage(player, ModMain.lang("spell.exp.missing")+this.getExpCost());
 	}
 	
 	@Override
 	public boolean canPlayerCast(EntityPlayer player)
 	{
-		return (getExpCost() <= Util.getExpTotal(player)); 
+		return (getExpCost() <= ModMain.getExpTotal(player)); 
 	}
 	
 	@Override

@@ -1,32 +1,16 @@
 package com.lothrazar.samsmagic.proxy;
   
-import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModMain;
 import com.lothrazar.samsmagic.SpellRegistry;  
 import com.lothrazar.samsmagic.PlayerPowerups;
-import com.lothrazar.samsmagic.entity.projectile.*;
-import com.lothrazar.samsmagic.potion.PotionRegistry;
-import com.lothrazar.samsmagic.spell.ISpell;
-import com.lothrazar.samsmagic.spell.UtilBlockTransform;
-import com.lothrazar.samsmagic.spell.UtilPistonSpell; 
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.entity.effect.EntityLightningBolt;
-import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.server.MinecraftServer;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPressed, IMessage>
@@ -78,7 +62,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			{
 				SpellRegistry.shiftLeft(player);
 				
-				Util.playSoundAt(player, Reference.sounds.orb);
+				ModMain.playSoundAt(player, "random.orb");
 				
 			}
 	 	}
@@ -87,7 +71,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 			{
 				SpellRegistry.shiftRight(player);
-				Util.playSoundAt(player, Reference.sounds.orb);
+				ModMain.playSoundAt(player, "random.orb");
 			}
 			
 		}

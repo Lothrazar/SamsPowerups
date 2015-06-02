@@ -1,12 +1,10 @@
-package com.lothrazar.samscontent.entity.projectile; 
+package com.lothrazar.samsmagic.entity.projectile; 
 
 import java.util.ArrayList;
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.potion.MessagePotion;
-import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.samscontent.spell.SpellSoulstone;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.potion.MessagePotion;
+import com.lothrazar.samsmagic.potion.PotionRegistry;
+import com.lothrazar.samsmagic.spell.SpellSoulstone; 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
@@ -68,7 +66,7 @@ public class EntitySoulstoneBolt extends EntityThrowable//EntitySnowball
             	
             	 if(this.getThrower() instanceof EntityPlayer)
             	 {
-            		 Util.addChatMessage((EntityPlayer)this.getThrower(), Util.lang("spell.soulstone.complete") + e.getDisplayName().getFormattedText());
+            		 ModMain.addChatMessage((EntityPlayer)this.getThrower(), ModMain.lang("spell.soulstone.complete") + e.getDisplayName().getFormattedText());
             	 }
             	 
             	 

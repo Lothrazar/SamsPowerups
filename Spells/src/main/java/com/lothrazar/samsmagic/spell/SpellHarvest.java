@@ -1,47 +1,17 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
-import com.google.common.collect.Sets;  
-import com.lothrazar.samscontent.entity.projectile.EntityHarvestbolt;
-import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
-import com.lothrazar.samscontent.spell.ISpell;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.util.*;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import com.lothrazar.samsmagic.entity.projectile.EntityHarvestbolt;
+import com.lothrazar.samsmagic.spell.ISpell;
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.SpellRegistry; 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockBush;
-import net.minecraft.block.BlockChest;
-import net.minecraft.block.BlockCrops;
 import net.minecraft.block.IGrowable;
-import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityMooshroom;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntitySheep;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemTool;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.MathHelper; 
 import net.minecraft.world.World;
-import net.minecraftforge.common.IPlantable;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class SpellHarvest extends BaseSpellExp implements ISpell
 {
@@ -106,7 +76,7 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
+		ModMain.playSoundAt(player, "random.bow");
 
 	//	if(world.isRemote) //client side 
 			//Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 

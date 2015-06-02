@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -7,14 +7,14 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.SpellRegistry; 
 
 public class SpellJump extends BaseSpellExp implements ISpell
 { 
-	private static int fiveSeconds = Reference.TICKS_PER_SEC * 5;//TODO : config? reference? cost?
+	private static int seconds = 20 * 5;//TODO : config? reference? cost?
 
 	@Override
 	public String getSpellID()
@@ -25,7 +25,7 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,fiveSeconds,4));
+		ModMain.addOrMergePotionEffect(player,new PotionEffect(Potion.jump.id,seconds,4));
 	}
 
 	@Override
@@ -37,7 +37,7 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.playSoundAt(player, Reference.sounds.drink);
+		ModMain.playSoundAt(player, "random.drink");
 
 		super.onCastSuccess(world, player, pos);
 	}

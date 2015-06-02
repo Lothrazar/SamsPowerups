@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.player.EntityPlayer;
@@ -6,11 +6,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.SpellRegistry;
+import com.lothrazar.samsmagic.entity.projectile.EntityLightningballBolt; 
 
 public class SpellLightningbolt extends BaseSpellExp implements ISpell
 { 
@@ -44,7 +44,7 @@ public class SpellLightningbolt extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.playSoundAt(player, Reference.sounds.bowtoss);
+		ModMain.playSoundAt(player, "random.bow");
 
 		super.onCastSuccess(world, player, pos);
 	}

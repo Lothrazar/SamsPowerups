@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntitySmallFireball;
@@ -8,11 +8,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.samscontent.entity.projectile.EntityWaterBolt;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.SpellRegistry;
+import com.lothrazar.samsmagic.entity.projectile.EntityWaterBolt; 
 
 public class SpellWaterBolt extends BaseSpellItem implements ISpell
 { 

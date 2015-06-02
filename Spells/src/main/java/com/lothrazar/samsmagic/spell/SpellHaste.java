@@ -1,4 +1,4 @@
- package com.lothrazar.samscontent.spell;
+ package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -8,16 +8,16 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.SpellRegistry;
-import com.lothrazar.samscontent.entity.projectile.EntityLightningballBolt;
-import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.SpellRegistry;
+import com.lothrazar.samsmagic.entity.projectile.EntityLightningballBolt;
+import com.lothrazar.samsmagic.potion.PotionRegistry;
+import com.lothrazar.samsmagic.ModMain; 
 
 public class SpellHaste extends BaseSpellExp implements ISpell
 {
-	private static int seconds = Reference.TICKS_PER_SEC * 10; 
+	private static int seconds = 20* 10; 
 	 
 	@Override
 	public String getSpellID()
@@ -28,14 +28,14 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
-		Util.addOrMergePotionEffect(player,new PotionEffect(Potion.digSpeed.id,seconds,PotionRegistry.II));
+		ModMain.addOrMergePotionEffect(player,new PotionEffect(Potion.digSpeed.id,seconds,PotionRegistry.II));
 		 
 	}
 
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.playSoundAt(player, Reference.sounds.drink);
+		ModMain.playSoundAt(player, "random.drink");
 
 		super.onCastSuccess(world, player, pos);
 	}

@@ -1,10 +1,8 @@
-package com.lothrazar.samscontent.entity.projectile; 
+package com.lothrazar.samsmagic.entity.projectile; 
 
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.potion.MessagePotion;
-import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.potion.MessagePotion;
+import com.lothrazar.samsmagic.potion.PotionRegistry; 
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLiving;
@@ -67,15 +65,15 @@ public class EntitySnowballBolt extends EntityThrowable
                 	e.extinguish();
                 }
                 
-            	e.addPotionEffect(new PotionEffect(PotionRegistry.frost.id, secondsFrozenOnHit * Reference.TICKS_PER_SEC,0));
+            	e.addPotionEffect(new PotionEffect(PotionRegistry.frost.id, secondsFrozenOnHit * 20,0));
             } 
         }
         
         BlockPos pos = mop.getBlockPos();
         if(pos == null){return;}//hasn't happened yet, but..
         
-    	Util.spawnParticle(this.worldObj, EnumParticleTypes.SNOWBALL, pos);
-    	Util.spawnParticle(this.worldObj, EnumParticleTypes.SNOW_SHOVEL, pos);
+    	ModMain.spawnParticle(this.worldObj, EnumParticleTypes.SNOWBALL, pos);
+    	ModMain.spawnParticle(this.worldObj, EnumParticleTypes.SNOW_SHOVEL, pos);
       
         if( mop.sideHit != null && this.getThrower() instanceof EntityPlayer)
         {
@@ -109,7 +107,7 @@ public class EntitySnowballBolt extends EntityThrowable
     		BlockPos hitUp = hit.up();
         	
     		IBlockState hitState = this.worldObj.getBlockState(hit);
-    		if(this.worldObj.getBlockState(hit).getBlock() == Blocks.snow_layer)
+    		if(hitState.getBlock() == Blocks.snow_layer)
     		{
     			setMoreSnow(this.worldObj,hit);
 

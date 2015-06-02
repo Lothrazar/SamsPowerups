@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.spell;
+package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -6,9 +6,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+
+import com.lothrazar.samsmagic.ItemRegistry; 
+import com.lothrazar.samsmagic.ModMain;
 
 public abstract class BaseSpellItem implements ISpell
 {
@@ -24,7 +24,7 @@ public abstract class BaseSpellItem implements ISpell
 	{
 		player.swingItem();
 		
-		Util.spawnParticle(world, EnumParticleTypes.CRIT, pos);
+		ModMain.spawnParticle(world, EnumParticleTypes.CRIT, pos);
  
 		ItemStack is;
 		for(int i = 0; i < player.getInventoryEnderChest().getSizeInventory(); i++)
@@ -62,9 +62,9 @@ public abstract class BaseSpellItem implements ISpell
 	@Override
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
-		Util.playSoundAt(player, Reference.sounds.wood_click);
+		ModMain.playSoundAt(player, "random.wood_click");
 		String name = (new ItemStack(this.getItemCost())).getDisplayName();
-		Util.addChatMessage(player, Util.lang("spell.item.missing")+name);
+		ModMain.addChatMessage(player, ModMain.lang("spell.item.missing")+name);
 	}
 
 

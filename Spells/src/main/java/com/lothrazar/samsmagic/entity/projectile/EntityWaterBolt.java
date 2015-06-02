@@ -1,11 +1,9 @@
-package com.lothrazar.samscontent.entity.projectile; 
+package com.lothrazar.samsmagic.entity.projectile; 
 
 import java.util.ArrayList;
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.samscontent.potion.MessagePotion;
-import com.lothrazar.samscontent.potion.PotionRegistry;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
+import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.potion.MessagePotion;
+import com.lothrazar.samsmagic.potion.PotionRegistry; 
 import net.minecraft.block.Block;
 import net.minecraft.block.state.BlockState;
 import net.minecraft.block.state.IBlockState;
