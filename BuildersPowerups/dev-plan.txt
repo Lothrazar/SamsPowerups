@@ -1,0 +1,206 @@
+MOD SPLIT
+
+
+key inventory sliders + macro binding keys  + bind command
+
+push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
+
+command pack - everything except BindMacro (or merge?)
+
+mob_changes- nametag stuff, health, endermen drop carrying, etc
+
+mob_spawning
+
+smoothstone tools + furnace coal: merge this with what?
+
+where does fragile_torches go? on its own?
+
+skull sign names?
+
+recipes_new + uncrafting
+
+from above: the exp bottle crafting + bottle return
+
+command blocks - expand by adding more gamerules/colours
+
+utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
+
+player config group - maybe remove?
+
+magic apples
+
+emerald stuff
+
+respawn eggs--test maybe making this a spell+projectile?
+
+Horse food
+
+Beetroot
+
+
+WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
+/flint pumpkin etc
+
+
+
+carbon paper
+
+Spells+item chest sack
+?problem? both apples and spells use Frozen potion effect
+
+
+MISC: 
+DEBUG SCREEN: villagers/slime/horse/ reduced imrpovements
+block hardness changes
+Stack size to 64
+swift deposit - TODO: change to spell..??
+
+
+
+
+
+
+
+spell for tools that cannot be repaired - allwo repair again.
+
+allow spell Casting. even if hidden?
+
+
+//todo: a group left to right is
+
+semicolon/spell row switching: hold shift means go in reverse order (2 1 0 not the normal)
+ALSO: remember current spell twice? current spell per row?
+careful for on cast and navigate?
+GetCurrent spell must check the #
+
+
+l
+
+TODO: back up to 4 macros again?
+//spell types: some use items from EI others use EXP
+
+EXP FROM BUILDING
+25% each time you place any block/thing, you get 1-3 xp randomly!?!?!?
+
+NEW POTION AURA: EXP REGEN:
+makes you slowly gain exp over time
+-- lapis? makes sense since its for enchanting anyway?
+
+ORDER SPELLS: throwables group, potion group?
+
+ALTERNATE INTERFACE, MAYBE GRID?
+
+BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
+  
+  iron golems drop extra block of iron? in config?
+
+/place commands (like place floor) add a random flag 
+so you would enter /place floor 5 50 
+and the 50 is a 50% chance an air block gets filled with that?
+
+DONE THINGS
+
+-frozen potion improvements
+
+-health change configs
+
+-debug date screen text from lang file, and better arrangement
+
+-effectpay bugfixes: was not calculating and blocking/draining experience correctly
+
+-10 new macro keybindings, used with new command /bind for macros
+    four key bindings and a command so you can bind any command to any key.  These are 
+    saved per character/world, and get reset on death.
+    simply run /bind /toggledownfall or /bind /effectpay 41 10, or any other command
+    and that key is now bound to the macro key (default G)
+
+/ping : shows coordinates in chat.
+
+/enderchest cmd bugfix (config file entries existed but not hooked up)
+
+
+
+/effectpay: add option to pump levels (ex haste2, jump3) , make sure we default=1, and multiply XP cost by that
+(then -1 since 1 = II)
+
+
+ 
+place circle
+place floor
+place line
+place stair    [radius|distance] [halt]
+
+Possible Future Features (1.4 + ):
+
+
+  ?flag-ghasts always drop tears- in config, check mob drops
+  
+-version checker
+
+?? placefloor as spiralling outward.
+
+ 
+ command to place vertical? 
+ 
+
+ REPLACE WAND: click two blocks, it swaps second with first. has a timeout between.
+  
+  -craft packed ice with regular for more packed
+  -simlar with podzol
+  
+  -beter placeable pumpkins/fence gates
+  -placing rail in bad spots
+
+//config file entry for waypoints // todo that switches left/right side
+
+          hotkey to search through inventory and use enderpearl ingoring all else
+          hotkey to eat first food found in inventory searching from topleft to right amd dpwm
+          smart potion button
+          smart torch button 
+          shrink to 1 height if possible
+          crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
+          far reach place hotkey. use player look vectors and trickery 
+
+
+- play random song
+
+
+-EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
+
+-a way to place signs quick by skipping interface (leaving them blank)
+ 
+-find a way that you need food variety to live/comfort. 
+
+-more pocket edition features to go with beetroot (nether reactor? crafting recipes?)
+
+-completley revisit   the non-punching wood stuff. maybe flint / wood tools.
+ 
+-investigate new dispenser behavoirs, and if we can change vanilla AI at all from forge directly
+
+-   show spawn chunk [true/false] in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
+ 
+--waiting on forge to update for VillagerTradeRegistry// implements IVillageTradeHandler
+    
+-  beetroot  breeds pigs - no forge way exists - unless im wrong??
+              beetroot gets pigs to follow like carrot  - no forge way exists
+            
+an item (maybe nametag maybe3 not) for pet respawning block/spot , set their NBT or something
+
+-   horse upgrades: only let the OWNER change the types ?? maybe one day
+ 
+- add reeds/existing plants to ocean?
+
+-disable digging stuff by hand?
+ /*  revisit/add back in??
+          //add clay
+        String csv = instance.getString("harvestOnlyShovel",category, "minecraft:dirt,minecraft:sand",
+                "If these blocks are not harvested by a shovel, they will break but have no drops."); 
+        HandlerPlayerHarvest.setShovelFromCSV(csv);
+     
+         */
+   
+   SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
+         
+one day we could do a  version checker
+        //FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
+         

@@ -5,6 +5,7 @@ eclipse/
 logs/
 mods/
 config/
+saves/
 .gradle/
 .settings/
 gradlew
@@ -14,7 +15,10 @@ gradle/
 *.properties 
 .gradle/
 screenshots/
+.metadata/
 .settings/
 .classpath
 .project
 gradlew
+options.txt
+usernamecache.json
