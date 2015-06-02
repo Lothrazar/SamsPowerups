@@ -1,3 +1,24 @@
+MOD SPLIT
+
+
+key inventory sliders + macro binding keys
+
+
+
+Spells
+
+
+content-armor, apples, blocks
+
+
+
+
+
+spell for tools that cannot be repaired - allwo repair again.
+
+allow spell Casting. even if hidden?
+
+
 //todo: a group left to right is
 
 semicolon/spell row switching: hold shift means go in reverse order (2 1 0 not the normal)
