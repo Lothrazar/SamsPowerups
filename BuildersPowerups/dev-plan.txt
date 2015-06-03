@@ -1,14 +1,20 @@
 MOD SPLIT
 
 
-key inventory sliders + macro binding keys  + bind command
+key inventory sliders + macro binding keys  + all command
+	push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
 
-push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
+Spells+item chest sack
 
-command pack - everything except BindMacro (or merge?)
+recipes_new + uncrafting
+
+
+
+
+
+
 
 mob_changes- nametag stuff, health, endermen drop carrying, etc
-
 mob_spawning
 
 smoothstone tools + furnace coal: merge this with what?
@@ -17,7 +23,6 @@ where does fragile_torches go? on its own?
 
 skull sign names?
 
-recipes_new + uncrafting
 
 from above: the exp bottle crafting + bottle return
 
@@ -45,7 +50,6 @@ WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
 
 carbon paper
 
-Spells+item chest sack
 ?problem? both apples and spells use Frozen potion effect
 
 

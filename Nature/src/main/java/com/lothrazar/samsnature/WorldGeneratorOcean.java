@@ -1,11 +1,8 @@
-package com.lothrazar.samscontent.world;
+package com.lothrazar.samsnature;
 
 import java.util.Random;
 
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
-
+import com.lothrazar.samsnature.ModMain; 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.init.Blocks;
@@ -29,6 +26,8 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	
 	private final int MIN_HEIGHT = 20; 
 	private final int MAX_HEIGHT = 128;
+	public static final int CHUNK_SIZE = 16;
+	public static final int OVERWORLD = 0;
  
 	public WorldGeneratorOcean() 
 	{   
@@ -43,13 +42,13 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{ 
-		if(world.provider.getDimensionId() == Reference.Dimension.overworld) 
+		if(world.provider.getDimensionId() == OVERWORLD)//overworld 
 		{ 
-			this.run(this.genClay, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
+			this.run(this.genClay, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
 					ModMain.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
-			this.run(this.genSand, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
+			this.run(this.genSand, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
 					ModMain.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
-			this.run(this.genDirt, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE,
+			this.run(this.genDirt, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE,
 					ModMain.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
 		/*//TODO: maybe oneday?
@@ -72,9 +71,9 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	    
 	    for (int i = 0; i < chancesToSpawn; i ++) 
 	    { 
-	        int x = chunk_X + rand.nextInt(Reference.CHUNK_SIZE);
+	        int x = chunk_X + rand.nextInt(CHUNK_SIZE);
 	        int y = minHeight + rand.nextInt(heightDiff);
-	        int z = chunk_Z + rand.nextInt(Reference.CHUNK_SIZE);
+	        int z = chunk_Z + rand.nextInt(CHUNK_SIZE);
 	        
 	        pos = new BlockPos(x, y, z);
 	        biome = world.getBiomeGenForCoords(pos);

@@ -17,23 +17,23 @@ buildscript {
 
 apply plugin: 'forge'
 
-version = "1.0"
-group= "com.lothrazar.samsmagic" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "Spells"
+version = "1.8-1.5.alpha"
+group= "com.lothrazar.samsnature" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "Nature"
 
 minecraft {
     version = "1.8-11.14.1.1334"
-    //runDir = "eclipse"
-if(file('../run').exists()){
-assetDir = "../run/assets"
-}else{
-assetDir = "assets"
-}
 if(file('../run').exists()){
 assetDir = "../run/eclipse"
 }else{
 assetDir = "eclipse"
 }    
+if(file('../run').exists()){
+assetDir = "../run/assets"
+}else{
+assetDir = "assets"
+}
+    
     // the mappings can be changed at any time, and must be in the following format.
     // snapshot_YYYYMMDD   snapshot are built nightly.
     // stable_#            stables are built at the discretion of the MCP team.

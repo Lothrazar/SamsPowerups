@@ -1,6 +1,5 @@
-package com.lothrazar.samscontent.world;
+package com.lothrazar.samsnature;
 
-import com.lothrazar.samscontent.ModMain;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;

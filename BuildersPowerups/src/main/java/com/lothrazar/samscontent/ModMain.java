@@ -1,9 +1,6 @@
 package com.lothrazar.samscontent;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.Modifier;
 import java.util.ArrayList; 
-import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;   
 import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.cfg.ConfigRegistry; 
@@ -13,30 +10,12 @@ import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
 import com.lothrazar.samscontent.proxy.*;  
 import com.lothrazar.samscontent.stats.*;
-import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;
-import com.lothrazar.samscontent.world.*; 
+import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage; 
 import com.lothrazar.util.*;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockChest;
-import net.minecraft.block.BlockDoor;
-import net.minecraft.block.BlockFence;
-import net.minecraft.block.BlockFenceGate;
-import net.minecraft.block.BlockSandStone;
-import net.minecraft.block.BlockStairs;
-import net.minecraft.block.BlockStone;
-import net.minecraft.block.BlockStoneSlab;
-import net.minecraft.block.BlockTrapDoor;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.RenderSnowball;
-import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.entity.SharedMonsterAttributes;
-import net.minecraft.entity.effect.EntityLightningBolt;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*; 
@@ -44,24 +23,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemDoor;
-import net.minecraft.item.ItemFood;
-import net.minecraft.item.ItemSeeds;
-import net.minecraft.item.ItemSpade;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.tileentity.TileEntityNote;
 import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
@@ -70,39 +41,23 @@ import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
-import net.minecraftforge.event.entity.player.PlayerSleepInBedEvent;
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
-import net.minecraftforge.event.world.BlockEvent.HarvestDropsEvent;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.ModMetadata;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLInterModComms;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.InputEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.PlayerLoggedInEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.common.registry.VillagerRegistry;
-import net.minecraftforge.fml.relauncher.ReflectionHelper;
 import net.minecraftforge.fml.relauncher.Side;
   
 @Mod(modid = Reference.MODID, version = Reference.VERSION,	name = Reference.NAME, useMetadata = true )  
@@ -161,9 +116,7 @@ public class ModMain
 		CreativeInventoryRegistry.registerTabImprovements();
 	
 		MobSpawningRegistry.registerSpawns();
-  
-		ChestLootGenerator.regsiterLoot();
-		  
+   
 		RecipeRegistry.registerRecipes();
 		 
 		StackSizeRegistry.registerChanges(); 
@@ -172,14 +125,7 @@ public class ModMain
   		{
   			GameRegistry.registerFuelHandler(new FurnaceFuelRegistry()); 
   		}
-  		
-  		if(ModMain.cfg.worldGenOceansNotUgly)
-		{ 
-  			int weight = 0;
-			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
-		}
-  		 
- 
+   
 		proxy.registerRenderers();
 	}
 	 
