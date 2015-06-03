@@ -288,7 +288,7 @@ public class ModMain
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 
 		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
-		//System.out.println("drawspell "+props.getSpellToggle());
+
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
 		{
 			event.left.add(lang("key.spell."+spell.getSpellID()));
@@ -434,9 +434,7 @@ public class ModMain
 	public static boolean drainExp(EntityPlayer player, float f) 
 	{  
 		double totalExp = getExpTotal(player);
-  
-		//System.out.println("Drain from total = "+totalExp+" - "+f);
-		
+
 		if(totalExp - f < 0)
 		{
 			return false;

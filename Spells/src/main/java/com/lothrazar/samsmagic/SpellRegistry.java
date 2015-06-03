@@ -81,6 +81,7 @@ public class SpellRegistry
 	public static final int SPELL_TOGGLE_HIDE = 0;
 	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
 	public static final int SPELL_TOGGLE_SHOWOTHER = 2;
+	public static final int SPELL_TIMER_MAX = 20;
 
 	public static boolean canPlayerCastAnything(EntityPlayer player)
 	{
@@ -93,25 +94,21 @@ public class SpellRegistry
 	{
 		if(spell == null)
 		{
-			System.out.println("NULL CAST");
 			return;
 		}
 		if(canPlayerCastAnything(player) == false)
 		{
-			System.out.println("spell timeout");
 			return;
 		}
 	
 		if(spell.canPlayerCast(player))
 		{
-			System.out.println("cast go "+spell.getSpellID());
 			spell.cast(world, player, pos);
 			spell.onCastSuccess(world, player, pos);
 			startSpellTimer(player);
 		}
 		else
 		{
-			System.out.println("onCastFailure "+spell.getSpellID());
 			spell.onCastFailure(world, player, pos);
 		}
 	}
@@ -124,27 +121,23 @@ public class SpellRegistry
 	public static void shiftLeft(EntityPlayer player)
 	{
 		ISpell current = getPlayerCurrentISpell(player);
-		 System.out.println("shiftLeft FROM "+current.getSpellID());
-		
+
 		if(current.left() != null)
 			setPlayerCurrentSpell(player,current.left().getSpellID());
-		else System.out.println("left is null");
 	}
 
 	public static void shiftRight(EntityPlayer player)
 	{ 
 		ISpell current = getPlayerCurrentISpell(player);
-		 System.out.println("ShiftRight FROM "+current.getSpellID());
+
 		if(current.right() != null)
-			setPlayerCurrentSpell(player,current.right().getSpellID());
-		else System.out.println("right is null");
+			setPlayerCurrentSpell(player,current.right().getSpellID()); 
 	}
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	String current)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 
-		 System.out.println("setPlayerCurrentSpell "+current);
 		props.setSpellCurrent(current);
 	}
 	public static String getPlayerCurrentSpell(EntityPlayer player)
@@ -163,7 +156,6 @@ public class SpellRegistry
 		PlayerPowerups props = PlayerPowerups.get(player);
 		props.setSpellTimer(SPELL_TIMER_MAX);
 	}
-	public static final int SPELL_TIMER_MAX = 20;
 	public static void tickSpellTimer(EntityPlayer player)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
@@ -176,7 +168,7 @@ public class SpellRegistry
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)
 	{
 		String s = getPlayerCurrentSpell(player);
-System.out.println("getcurr   "+s);
+ 
 		for(ISpell sp : spellbook)
 		{ 
 			if(sp.getSpellID().equalsIgnoreCase(s))
@@ -185,7 +177,7 @@ System.out.println("getcurr   "+s);
 			}
 		} 
 		//if current spell is null,default to the first one
-		System.out.println("getDefaultSpell   ");
+ 
 		return SpellRegistry.getDefaultSpell(player);
 	}
  

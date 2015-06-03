@@ -53,7 +53,6 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 	 	{ 
 			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 			{
-				System.out.println("cast");
 				SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,posMouse);
 			}
 	 	}
