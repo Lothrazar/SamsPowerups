@@ -21,7 +21,7 @@ public class PotionRegistry
 	//public static Potion tired;//http://www.minecraftforge.net/wiki/Potion_Tutorial
 	public static Potion waterwalk;
 	public static Potion slowfall; 
-	public static Potion lavawalk;
+	//public static Potion lavawalk;
 	public static Potion frost;
 	
 	public final static int I = 0; 
@@ -41,7 +41,7 @@ public class PotionRegistry
 	{  
 		PotionRegistry.waterwalk = (new PotionCustom(ModMain.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
-		PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
+		//PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModMain.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 	 
@@ -109,14 +109,14 @@ public class PotionRegistry
 			}
 	    } 
 	}
-
+/*
 	public static void tickLavawalk(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.lavawalk)) 
 	    {
 			tickLiquidWalk(event,Blocks.lava);
 	    }
-	}
+	}*/
 
 	public static void tickWaterwalk(LivingUpdateEvent event) 
 	{

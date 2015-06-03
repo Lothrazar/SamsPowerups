@@ -249,7 +249,7 @@ public class ModMain
 	     
 		PotionRegistry.tickWaterwalk(event);
 	     
-		PotionRegistry.tickLavawalk(event);
+		//PotionRegistry.tickLavawalk(event);
  
 		PotionRegistry.tickFrost(event); 
 	}

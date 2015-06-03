@@ -29,7 +29,7 @@ public class ConfigRegistry
 		  
 		potionIdFlying = instance.get(category,"flying_id", 42).getInt();
 		
-		potionIdLavawalk = instance.get(category,"lavawalk_id", 43).getInt();
+		//potionIdLavawalk = instance.get(category,"lavawalk_id", 43).getInt();
  
 		potionIdFrozen = instance.get(category,"frost_id", 44).getInt();
  
@@ -78,7 +78,7 @@ public class ConfigRegistry
 	public int potionIdSlowfall;
 	public int potionIdFlying;
 	public float slowfallSpeed; 
-	public int potionIdLavawalk;
+	//public int potionIdLavawalk;
 	  
 	public int potionIdFrozen; 
 	public int heartsCatTamed;
