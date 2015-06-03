@@ -1,10 +1,10 @@
 package com.lothrazar.samsmagic;
 
 import java.util.ArrayList;
+
 import com.lothrazar.samsmagic.PlayerPowerups; 
-import com.lothrazar.samsmagic.spell.ISpell;
-import com.lothrazar.samsmagic.spell.SpellHarvest; 
 import com.lothrazar.samsmagic.spell.*; 
+
 import net.minecraft.entity.player.EntityPlayer; 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -92,21 +92,28 @@ public class SpellRegistry
 	//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
 	public static void cast(ISpell spell, World world, EntityPlayer player,BlockPos pos)
 	{
-		if(spell == null){return;}
+		if(spell == null)
+		{
+
+			System.out.println("NULL CAST");
+			return;
+			}
 		if(canPlayerCastAnything(player) == false)
 		{
-		//	Util.addChatMessage(player, "spell.timeout");
+			System.out.println("spell timeout");
 			return;
 		}
 	
 		if(spell.canPlayerCast(player))
 		{
+			System.out.println("cast go "+spell.getSpellID());
 			spell.cast(world, player, pos);
 			spell.onCastSuccess(world, player, pos);
 			startSpellTimer(player);
 		}
 		else
 		{
+			System.out.println("onCastFailure "+spell.getSpellID());
 			spell.onCastFailure(world, player, pos);
 		}
 	}
@@ -122,20 +129,23 @@ public class SpellRegistry
 		
 		if(current.left() != null)
 			setPlayerCurrentSpell(player,current.left().getSpellID());
+		else System.out.println("left is null");
 	}
 
 	public static void shiftRight(EntityPlayer player)
 	{ 
 		ISpell current = getPlayerCurrentISpell(player);
-
+		 System.out.println("ShiftRight FROM "+current.getSpellID());
 		if(current.right() != null)
 			setPlayerCurrentSpell(player,current.right().getSpellID());
+		else System.out.println("right is null");
 	}
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	String current)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
-		
+
+		 System.out.println("setPlayerCurrentSpell "+current);
 		props.setSpellCurrent(current);
 	}
 	public static String getPlayerCurrentSpell(EntityPlayer player)
@@ -162,8 +172,6 @@ public class SpellRegistry
 			props.setSpellTimer(0);
 		else if(props.getSpellTimer() > 0)
 			props.setSpellTimer(props.getSpellTimer() - 1);
-
-
 	}
 
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)

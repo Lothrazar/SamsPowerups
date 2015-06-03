@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samscontent:items/soulstone"
+        "layer0": "samsmagic:items/soulstone"
     },
     "display": {
         "thirdperson": {

@@ -17,6 +17,7 @@ import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.resources.model.IBakedModel;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -37,6 +38,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.EnderTeleportEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
+import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.fml.common.FMLCommonHandler;
@@ -56,6 +58,7 @@ import net.minecraftforge.fml.relauncher.Side;
 @Mod(modid = ModMain.MODID, version = ModMain.VERSION,	name = ModMain.NAME, useMetadata = true )  
 public class ModMain
 {
+	//TODO: DO NOT RESET TIMER IF CASTING FAILS
 	public static final String MODID = "samsmagic";
 	public static final String TEXTURE_LOCATION = MODID + ":";
 	public static final String VERSION = "1.8-1.4.0";
@@ -67,17 +70,7 @@ public class ModMain
 	public static Logger logger; 
 	public static ConfigRegistry cfg;
 	public static SimpleNetworkWrapper network; 
-	/*public static AchievementRegistry achievements;  
-	
-	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
-	{ 
-		@Override
-		public Item getTabIconItem() 
-		{ 
-			return ItemRegistry.apple_chocolate;
-		}
-	};    
-	*/
+
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{ 
@@ -195,7 +188,6 @@ public class ModMain
 		 
         if(ClientProxy.keySpellToggle.isPressed())
         {
-        	System.out.println("spelltoggle pressed");
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellToggle.getKeyCode()));
         }
         else if(ClientProxy.keySpellCast.isPressed())
@@ -239,6 +231,30 @@ public class ModMain
 
 		 	drawHud(player); 
 		}
+	}
+
+	@SubscribeEvent
+	public void onEntityUpdate(LivingUpdateEvent event) 
+	{  
+		System.out.println("onEntityUpdateonEntityUpdateonEntityUpdate");
+		if(event.entityLiving == null){return;}
+		
+		if(event.entityLiving instanceof EntityPlayer)
+		{
+			SpellGhost.onPlayerUpdate(event); 
+			
+			SpellRegistry.tickSpellTimer((EntityPlayer)event.entityLiving);
+		}
+
+		PotionRegistry.tickSlowfall(event);
+	     
+		PotionRegistry.tickWaterwalk(event);
+	     
+		PotionRegistry.tickLavawalk(event);
+
+		PotionRegistry.tickEnder(event); 
+	     
+		PotionRegistry.tickFrost(event); 
 	}
 	private static void renderItemAt(ItemStack stack, int x, int y, int dim)
 	{

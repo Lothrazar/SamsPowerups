@@ -82,27 +82,6 @@ public class PotionRegistry
 	    }
 	}
 
-	public static void onEntityUpdate(LivingUpdateEvent event) 
-	{  
-		if(event.entityLiving == null){return;}
-		
-		if(event.entityLiving instanceof EntityPlayer)
-		{
-			SpellGhost.onPlayerUpdate(event); 
-			
-			SpellRegistry.tickSpellTimer((EntityPlayer)event.entityLiving);
-		}
-		
-		tickSlowfall(event);
-	     
-	    tickWaterwalk(event);
-	     
-	    tickLavawalk(event);
-
-	    tickEnder(event); 
-	     
-	    tickFrost(event); 
-	}
 	
 	private static void doPotionParticle(World world, EntityLivingBase living, EnumParticleTypes particle)
 	{
@@ -112,7 +91,7 @@ public class PotionRegistry
     	}
 	}
 
-	private static void tickFrost(LivingUpdateEvent event) 
+	public static void tickFrost(LivingUpdateEvent event) 
 	{ 
 		if(event.entityLiving.isPotionActive(PotionRegistry.frost)) 
 	    { 
@@ -134,7 +113,7 @@ public class PotionRegistry
 	    } 
 	}
 
-	private static void tickLavawalk(LivingUpdateEvent event) 
+	public static void tickLavawalk(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.lavawalk)) 
 	    {
@@ -142,7 +121,7 @@ public class PotionRegistry
 	    }
 	}
 
-	private static void tickWaterwalk(LivingUpdateEvent event) 
+	public static void tickWaterwalk(LivingUpdateEvent event) 
 	{
 		if(event.entityLiving.isPotionActive(PotionRegistry.waterwalk)) 
 	    {
@@ -170,13 +149,15 @@ public class PotionRegistry
     		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
     	 }  
 	}
-	private static void tickEnder(LivingUpdateEvent event) 
+	public static void tickEnder(LivingUpdateEvent event) 
 	{
-		if(event.entity.worldObj.rand.nextDouble() < 0.1)
+		 if(event.entityLiving.isPotionActive(PotionRegistry.ender) && event.entity.worldObj.rand.nextDouble() < 0.1)
+		 {
 			doPotionParticle(event.entity.worldObj,event.entityLiving,EnumParticleTypes.PORTAL);
+		 }
 	}
 	
-	private static void tickSlowfall(LivingUpdateEvent event) 
+	public static void tickSlowfall(LivingUpdateEvent event) 
 	{
 		 if(event.entityLiving.isPotionActive(PotionRegistry.slowfall)) 
 	     { 

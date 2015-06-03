@@ -46,14 +46,14 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		PlayerPowerups props = PlayerPowerups.get(player);
 		World world = player.worldObj;
 		BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
-		//THANKS TO THIS
+
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
-		//int fiveSeconds = 20 * 5;//TODO : config? reference? cost?
-		
+	
 		if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
 			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 			{
+				System.out.println("cast");
 				SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,posMouse);
 			}
 	 	}
@@ -72,25 +72,17 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 			{
 				SpellRegistry.shiftRight(player);
+				
 				ModMain.playSoundAt(player, "random.orb");
 			}
 			
 		}
 		else if( message.keyPressed == ClientProxy.keySpellToggle.getKeyCode())
 	 	{  
-
-        	System.out.println("MessageKeyPressed spelltoggle pressed");
-			//int tog = props.getSpellToggle() == 0 ? 1 : 0;
-			//System.out.println("toggle from "+props.getSpellToggle());
 			int next = props.getSpellToggleNext();
 			props.setSpellToggle(next);
-			
-
-			//System.out.println("TO "+props.getSpellToggle());
 		}
 		
-		//TODO: search spawner??? with particle directors?
-
 		return null;
 	}
 }
