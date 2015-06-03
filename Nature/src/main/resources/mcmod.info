@@ -1,9 +1,9 @@
 {
   "modListVersion": 2,
   "modList": [{
-    "modid": "samsmagic",
-    "name": "Builder's Spells",
-    "description": "A magic system that uses either items from your ender chest, or experience points.",
+    "modid": "samsnature",
+    "name": "Builder's Nature",
+    "description": "Clay in the oceans, and sapling growth has been restricted.  Bonemeal works on more stuff.",
     "version": "1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
