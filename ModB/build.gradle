@@ -23,7 +23,11 @@ archivesBaseName = "ModB"
 
 minecraft {
     version = "1.8-11.14.1.1334"
-    runDir = "eclipse"
+if(file('../run').exists()){
+assetDir = "../run/eclipse"
+}else{
+assetDir = "eclipse"
+}    
 if(file('../run').exists()){
 assetDir = "../run/assets"
 }else{
