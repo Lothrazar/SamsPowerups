@@ -134,7 +134,7 @@ public class ModMain
     	ArrayList<Object> handlers = new ArrayList<Object>();
   
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
-      	handlers.add(new DebugScreenText()          );  //This one can stay  
+      //	handlers.add(new DebugScreenText()          );  //This one can stay  
      	handlers.add(instance                         ); 
      	handlers.add(achievements);  
 		handlers.add(BlockRegistry.block_storelava    );//TODO: why are these four done so weirdly

@@ -1,12 +1,18 @@
 MOD SPLIT
 
 
--Macroskey inventory sliders + macro binding keys  + all command
+[Macros] inventory sliders + macro binding keys  + all command
 	push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
 
--Nature
+[Nature]  WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
+				/flint pumpkin etc
 
--Spells+item chest sack
+[Spells] + item chest sack
+	f  the exp bottle crafting + bottle return
+	swift deposit - TODO: change to spell..??
+	respawn eggs--test maybe making this a spell+projectile?
+
+[Screentext] DEBUG SCREEN standalone?: villagers/slime/horse/ reduced imrpovements
 
 -Recipes recipes_new + uncrafting
 
@@ -14,52 +20,35 @@ MOD SPLIT
 		mob_spawning
 
 
+-utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
 
+-command blocks - expand by adding more gamerules/colours
 
+-emerald stuff + apples
+ + Beetroot -- OR PUT BEETROOT IN NATURE??
 
+??block hardness changes
 
+??Stack size to 64-standalone?
 
-smoothstone tools + furnace coal: merge this with what?
+Horse food - standalone?
 
-where does fragile_torches go? on its own?
+carbon paper - standalone?
+
+-difficulty mod: smoothstone tools + furnace coal: merge this with what?
+    fragile_torches  
+
 
 skull sign names?
 
 
-from above: the exp bottle crafting + bottle return
-
-command blocks - expand by adding more gamerules/colours
-
-utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
-
-player config group - maybe remove?
-
-magic apples
-
-emerald stuff
-
-respawn eggs--test maybe making this a spell+projectile?
-
-Horse food
-
-Beetroot
-
-
-WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
-/flint pumpkin etc
 
 
 
-carbon paper
-
-?problem? both apples and spells use Frozen potion effect
 
 
-MISC: 
-DEBUG SCREEN: villagers/slime/horse/ reduced imrpovements
-block hardness changes
-Stack size to 64
-swift deposit - TODO: change to spell..??
+
+
 
 
 
