@@ -22,7 +22,6 @@ public class PotionRegistry
 	public static Potion waterwalk;
 	public static Potion slowfall; 
 	public static Potion lavawalk;
-	public static Potion ender;
 	public static Potion frost;
 	
 	public final static int I = 0; 
@@ -45,9 +44,7 @@ public class PotionRegistry
 		PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModMain.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
-		 
-		PotionRegistry.ender = (new PotionCustom(ModMain.cfg.potionIdEnder,  new ResourceLocation("ender"), false, 0)).setPotionName("potion.ender");	  
-		
+	 
 		PotionRegistry.frost = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
 	}
 
@@ -148,14 +145,14 @@ public class PotionRegistry
     		 event.entityLiving.onGround = true; //act as if on solid ground
     		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
     	 }  
-	}
+	}/*
 	public static void tickEnder(LivingUpdateEvent event) 
 	{
 		 if(event.entityLiving.isPotionActive(PotionRegistry.ender) && event.entity.worldObj.rand.nextDouble() < 0.1)
 		 {
 			doPotionParticle(event.entity.worldObj,event.entityLiving,EnumParticleTypes.PORTAL);
 		 }
-	}
+	}*/
 	
 	public static void tickSlowfall(LivingUpdateEvent event) 
 	{

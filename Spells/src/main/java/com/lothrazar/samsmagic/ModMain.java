@@ -173,14 +173,14 @@ public class ModMain
 		} 
    	}
   
-	@SubscribeEvent
+	/*@SubscribeEvent
 	public void onEnderTeleportEvent(EnderTeleportEvent event)
 	{  
 		if(event.entityLiving != null && event.entityLiving.isPotionActive(PotionRegistry.ender))
 		{
 			event.attackDamage = 0;  //starts at exactly  5.0 which is 2.5hearts
 		}
-	}
+	}*/
 	 
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
@@ -250,9 +250,7 @@ public class ModMain
 		PotionRegistry.tickWaterwalk(event);
 	     
 		PotionRegistry.tickLavawalk(event);
-
-		PotionRegistry.tickEnder(event); 
-	     
+ 
 		PotionRegistry.tickFrost(event); 
 	}
 	private static void renderItemAt(ItemStack stack, int x, int y, int dim)

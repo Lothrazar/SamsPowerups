@@ -32,9 +32,7 @@ public class ConfigRegistry
 		potionIdLavawalk = instance.get(category,"lavawalk_id", 43).getInt();
  
 		potionIdFrozen = instance.get(category,"frost_id", 44).getInt();
-		
-		potionIdEnder = instance.get(category,"ender_id", 45).getInt();
-		
+ 
 		category = "potion_effect_tweaks";
 		
 		slowfallSpeed = instance.getFloat("potion_slowfall_speed",category, 0.41F,0.1F,1F,
@@ -81,8 +79,7 @@ public class ConfigRegistry
 	public int potionIdFlying;
 	public float slowfallSpeed; 
 	public int potionIdLavawalk;
-	 
-	public int potionIdEnder;
+	  
 	public int potionIdFrozen; 
 	public int heartsCatTamed;
 	public boolean appleFrost;
