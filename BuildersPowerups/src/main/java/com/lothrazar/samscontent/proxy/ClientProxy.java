@@ -17,15 +17,7 @@ import net.minecraft.entity.EntityList;
 
 public class ClientProxy extends CommonProxy 
 {  
-	public static KeyBinding keyShiftUp;
-	public static KeyBinding keyShiftDown; 
-	public static KeyBinding keyBarUp;
-	public static KeyBinding keyBarDown; 
-	public static KeyBinding keyBindMacro1;
-	public static KeyBinding keyBindMacro2;
-	public static KeyBinding keyPush;
-	public static KeyBinding keyPull; 
-	public static KeyBinding keyTransform; 
+ 
  
     @Override
     public void registerRenderers() 
@@ -70,7 +62,7 @@ public class ClientProxy extends CommonProxy
 	}
 
 	private void registerKeyBindings() 
-	{
+	{/*
 		keyShiftUp = new KeyBinding(Reference.keyUpName, Keyboard.KEY_Y, Reference.keyCategoryInventory);
         ClientRegistry.registerKeyBinding(ClientProxy.keyShiftUp);
     
@@ -96,9 +88,9 @@ public class ClientProxy extends CommonProxy
         ClientRegistry.registerKeyBinding(ClientProxy.keyPush);
         keyPull = new KeyBinding(Reference.keyPullName, Keyboard.KEY_B,  Reference.keyCategoryBlocks); 
         ClientRegistry.registerKeyBinding(ClientProxy.keyPull);
-        
-	} 
-
+         */
+	}
+/*
 	public static String getKeyDescription(int key)
 	{
 		//getKeyDescription gets something like 'key.macro1' like lang file data
@@ -123,5 +115,5 @@ public class ClientProxy extends CommonProxy
 			return GameSettings.getKeyDisplayString(binding.getKeyCode());
 			//return I18n.format(binding.getKeyDescription(), new Object[0]);
 			//return java.awt.event.KeyEvent.getKeyText(binding.getKeyCode());
-	}
+	}*/
 }

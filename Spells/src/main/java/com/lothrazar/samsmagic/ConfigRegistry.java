@@ -15,7 +15,8 @@ public class ConfigRegistry
 	
 	public ConfigRegistry(Configuration c)
 	{
-		instance = c;
+		instance = c; 
+		instance.load();
  
  
 		category = "potion_effect_ids";

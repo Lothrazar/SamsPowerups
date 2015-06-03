@@ -6,14 +6,12 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.Logger;   
 import com.lothrazar.samscontent.block.*;
-import com.lothrazar.samscontent.cfg.ConfigRegistry;
-import com.lothrazar.samscontent.command.*;
+import com.lothrazar.samscontent.cfg.ConfigRegistry; 
 import com.lothrazar.samscontent.common.PlayerPowerups; 
 import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
-import com.lothrazar.samscontent.proxy.*; 
-import com.lothrazar.samscontent.spell.*;
+import com.lothrazar.samscontent.proxy.*;  
 import com.lothrazar.samscontent.stats.*;
 import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;
 import com.lothrazar.samscontent.world.*; 
@@ -136,7 +134,7 @@ public class ModMain
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	
-    	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
+    	//network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
     	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
  		
 		PotionRegistry.registerPotionEffects();
@@ -184,56 +182,7 @@ public class ModMain
  
 		proxy.registerRenderers();
 	}
-	
-	@EventHandler
-	public void onServerStarting(FMLServerStartingEvent event)
-	{
-		if(ModMain.cfg.cmd_searchtrade) 
-			event.registerServerCommand(new CommandSearchTrades()); 
-		
-		if(ModMain.cfg.cmd_searchitem) 
-			event.registerServerCommand(new CommandSearchItem()); 
-		
-		if(ModMain.cfg.cmd_searchspawner) 
-			event.registerServerCommand(new CommandSearchSpawner()); 
-		 
-		if(ModMain.cfg.cmd_simplewaypoint) 
-			event.registerServerCommand(new CommandSimpleWaypoints()); 
-		
-		if(ModMain.cfg.cmd_enderchest) 
-			event.registerServerCommand(new CommandEnderChest()); 
-		
-		if(ModMain.cfg.cmd_todo) 
-			event.registerServerCommand(new CommandTodoList());  
-		 
-		if(ModMain.cfg.cmd_kit)  
-			event.registerServerCommand(new CommandKit()); 
-  
-		if(ModMain.cfg.cmd_home) 
-			event.registerServerCommand(new CommandWorldHome()); 
-		
-		if(ModMain.cfg.worldhome) 
-			event.registerServerCommand(new CommandHome());
-
-		if(ModMain.cfg.cmd_place_blocks) 
-			event.registerServerCommand(new CommandPlaceBlocks());
 	 
-		if(ModMain.cfg.cmd_recipe) 
-			event.registerServerCommand(new CommandRecipe());
-
-		if(ModMain.cfg.cmd_uses) 
-			event.registerServerCommand(new CommandUses());
-  
-		if(ModMain.cfg.cmd_ping) 
-			event.registerServerCommand(new CommandPing());
-		
-		//these ones are always here. no reason to disable.
-	
-		event.registerServerCommand(new CommandBindMacro());
-		event.registerServerCommand(new CommandHearts());
-
-	}
-  
 	private void registerEventHandlers() 
 	{ 
     	ArrayList<Object> handlers = new ArrayList<Object>();
@@ -557,49 +506,7 @@ public class ModMain
 			event.attackDamage = 0;  //starts at exactly  5.0 which is 2.5hearts
 		}
 	}
-	 
-	@SubscribeEvent
-    public void onKeyInput(InputEvent.KeyInputEvent event) 
-    {   
-		//TODO: key handler class? maybe a better way to do this than copying the same code??
-        if(ClientProxy.keyShiftUp.isPressed() )
-        { 	     
-        	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyShiftUp.getKeyCode()));  
-        }        
-        else if(ClientProxy.keyShiftDown.isPressed() )
-        { 	      
-        	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyShiftDown.getKeyCode()));  
-        }      
-        else if(ClientProxy.keyBarDown.isPressed() )
-        { 	      
-        	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarDown.getKeyCode()));  
-        }  
-        else if(ClientProxy.keyBarUp.isPressed() )
-        { 	      
-        	 ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBarUp.getKeyCode()));  
-        }   
-        else if(ClientProxy.keyBindMacro1.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindMacro1.getKeyCode()));
-        }
-        else if(ClientProxy.keyBindMacro2.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyBindMacro2.getKeyCode()));
-        }
-        else if(ClientProxy.keyPush.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPush.getKeyCode()));
-        }
-        else if(ClientProxy.keyPull.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyPull.getKeyCode()));
-        }
-        else if(ClientProxy.keyTransform.isPressed())
-        {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keyTransform.getKeyCode()));
-        }
-       
-    } 
+	  
 	
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDeathEvent event)

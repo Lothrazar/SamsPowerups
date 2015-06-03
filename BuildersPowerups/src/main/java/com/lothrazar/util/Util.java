@@ -574,14 +574,7 @@ public class Util
 	//TODO: The showCoords on all the commands is not working at all. must hook to the gamerule
 	//AND use this
 	public static String getDirectionsString(EntityPlayer player, BlockPos pos  )
-	{    
-		/*
-		if(showCoords )
-		{ 
-			return "(" + xLoop + ", " + yLoop + ", " + zLoop + ")" + " : "+ totalsStr;
-		}
-		*/
- 
+	{     
 		int xDist,yDist,zDist;
 		
 		xDist = (int) player.posX - pos.getX();

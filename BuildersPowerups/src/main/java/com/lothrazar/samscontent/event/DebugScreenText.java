@@ -6,9 +6,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Random;  
-import com.lothrazar.samscontent.ModMain; 
-import com.lothrazar.samscontent.command.CommandSimpleWaypoints;
-import com.lothrazar.samscontent.command.CommandTodoList;
+import com.lothrazar.samscontent.ModMain;  
 import com.lothrazar.util.Reference;
 import com.lothrazar.util.Util; 
 import net.minecraft.client.Minecraft; 
@@ -137,9 +135,9 @@ public class DebugScreenText
 		 	} 
 	
 		
-			CommandSimpleWaypoints.AddWaypointInfo(event); 
+			//CommandSimpleWaypoints.AddWaypointInfo(event); 
 			
-			addTodoCommandInfo(event, player);  
+			//addTodoCommandInfo(event, player);  
 	
 		 	if(Util.isShiftKeyDown() && ModMain.cfg.debugGameruleInfo)  
 		 	{ 
@@ -147,7 +145,7 @@ public class DebugScreenText
 			}
 		}  
 	}
-	
+	/*
 	private void addTodoCommandInfo(RenderGameOverlayEvent.Text event,	EntityPlayerSP player) 
 	{
 		String todoCurrent = CommandTodoList.GetTodoForPlayer(player);
@@ -156,7 +154,7 @@ public class DebugScreenText
 		{ 
 			event.right.add(todoCurrent);
 		}
-	}
+	}*/
 
 	private void addGameruleInfo(RenderGameOverlayEvent.Text event, World world) 
 	{
