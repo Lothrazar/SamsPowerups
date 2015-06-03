@@ -15,8 +15,7 @@ public class SpellRegistry
 	{
 		spellbook = new ArrayList<ISpell>();
 		
-		chest = new SpellChest();
-		//enderinv = new SpellEnderInventory();
+		chest = new SpellChest(); 
 		firebolt = new SpellFirebolt();
 		frostbolt = new SpellFrostbolt();
 		ghost = new SpellGhost();
@@ -28,16 +27,12 @@ public class SpellRegistry
 		slowfall = new SpellSlowfall();
 		waterwalk = new SpellWaterwalk();
 		waterbolt = new SpellWaterBolt();
-		soulstone = new SpellSoulstone();
-		
-
-		torch = new SpellTorchBolt();
-		//heart = new SpellHeart();
+		soulstone = new SpellSoulstone(); 
+		torch = new SpellTorchBolt(); 
 		endereye = new SpellEnderEye();
 		haste = new SpellHaste();
 		 
-		spellbook.add(chest);
-		//spellbook.add(enderinv);
+		spellbook.add(chest); 
 		spellbook.add(firebolt);
 		spellbook.add(frostbolt);
 		spellbook.add(ghost);
@@ -50,10 +45,10 @@ public class SpellRegistry
 		spellbook.add(waterwalk );
 		spellbook.add(waterbolt );
 		spellbook.add(soulstone);
-		spellbook.add(torch);
-		//spellbook.add(heart);
+		spellbook.add(torch); 
 		spellbook.add(endereye);
 		spellbook.add(haste);
+		
 		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 	}
 
@@ -75,9 +70,13 @@ public class SpellRegistry
 	public static ISpell endereye;
 	public static ISpell haste;//16
 	 
-	public static ISpell getDefaultSpell()
+	public static ISpell getDefaultSpell(EntityPlayer player)
 	{
-		return getSpellFromType("chest");
+		PlayerPowerups props = PlayerPowerups.get(player);
+		if(props.getSpellToggle() == SPELL_TOGGLE_SHOWMAIN)
+			return getSpellFromType("chest");
+		else
+			return getSpellFromType("torch");
 	}
 	public static final int SPELL_TOGGLE_HIDE = 0;
 	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
@@ -94,10 +93,9 @@ public class SpellRegistry
 	{
 		if(spell == null)
 		{
-
 			System.out.println("NULL CAST");
 			return;
-			}
+		}
 		if(canPlayerCastAnything(player) == false)
 		{
 			System.out.println("spell timeout");
@@ -126,6 +124,7 @@ public class SpellRegistry
 	public static void shiftLeft(EntityPlayer player)
 	{
 		ISpell current = getPlayerCurrentISpell(player);
+		 System.out.println("shiftLeft FROM "+current.getSpellID());
 		
 		if(current.left() != null)
 			setPlayerCurrentSpell(player,current.left().getSpellID());
@@ -177,16 +176,17 @@ public class SpellRegistry
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)
 	{
 		String s = getPlayerCurrentSpell(player);
-
+System.out.println("getcurr   "+s);
 		for(ISpell sp : spellbook)
 		{ 
-			if(sp.getSpellID() == s)
+			if(sp.getSpellID().equalsIgnoreCase(s))
 			{
 				return sp;
 			}
 		} 
 		//if current spell is null,default to the first one
-		return SpellRegistry.getDefaultSpell();
+		System.out.println("getDefaultSpell   ");
+		return SpellRegistry.getDefaultSpell(player);
 	}
  
 	public static ISpell getSpellFromType(String next)

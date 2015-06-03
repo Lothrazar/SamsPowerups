@@ -236,7 +236,6 @@ public class ModMain
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
-		System.out.println("onEntityUpdateonEntityUpdateonEntityUpdate");
 		if(event.entityLiving == null){return;}
 		
 		if(event.entityLiving instanceof EntityPlayer)
