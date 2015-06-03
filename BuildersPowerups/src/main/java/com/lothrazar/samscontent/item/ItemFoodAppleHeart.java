@@ -1,32 +1,17 @@
 package com.lothrazar.samscontent.item;
 
-import java.util.ArrayList; 
-import java.util.List;
-import com.lothrazar.samscontent.common.PlayerPowerups;
-import com.lothrazar.samscontent.potion.PotionRegistry;
 import com.lothrazar.samscontent.ModMain; 
 import com.lothrazar.util.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.util.ChatComponentTranslation;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.EnumParticleTypes;
-import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
 
 public class ItemFoodAppleHeart extends ItemFood
 { 

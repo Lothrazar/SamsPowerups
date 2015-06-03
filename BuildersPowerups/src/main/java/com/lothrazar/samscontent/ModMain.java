@@ -92,7 +92,7 @@ public class ModMain
     	//network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
     	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
  		
-		PotionRegistry.registerPotionEffects();
+		//PotionRegistry.registerPotionEffects();
 
 		BlockRegistry.registerBlocks();
 		
@@ -155,7 +155,7 @@ public class ModMain
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
-		PotionRegistry.onEntityUpdate(event);
+		//PotionRegistry.onEntityUpdate(event);
 		
 		//TODO: make class/event handler for fragile torches
 		if(ModMain.cfg.fragileTorches && 
@@ -443,7 +443,7 @@ public class ModMain
 			}
 		}
 	}
-	
+	/*
 	@SubscribeEvent
 	public void onEnderTeleportEvent(EnderTeleportEvent event)
 	{  
@@ -451,7 +451,7 @@ public class ModMain
 		{
 			event.attackDamage = 0;  //starts at exactly  5.0 which is 2.5hearts
 		}
-	}
+	}*/
 	  
 	
 	@SubscribeEvent

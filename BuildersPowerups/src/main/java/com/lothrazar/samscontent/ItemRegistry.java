@@ -19,13 +19,19 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import com.lothrazar.samscontent.item.*; 
-import com.lothrazar.samscontent.potion.PotionRegistry;
+import com.lothrazar.samscontent.item.*;  
 import com.lothrazar.util.Reference; 
 
 public class ItemRegistry 
 { 
 	public static ArrayList<Item> items = new ArrayList<Item>();
+
+	
+	public final static int I = 0; 
+	public final static int II = 1;
+	public final static int III = 2;
+	public final static int IV = 3;
+	public final static int V = 4;
 	
 	//public static ItemEnderBook itemEnderBook; 
 	public static ItemChestSack itemChestSack; 
@@ -247,12 +253,12 @@ public class ItemRegistry
 			//potion effects
 			 
 			ItemRegistry.apple_emerald = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);
-			ItemRegistry.apple_emerald.addEffect(Potion.digSpeed.id, timePotionLong, PotionRegistry.II);
-			ItemRegistry.apple_emerald.addEffect(Potion.moveSpeed.id, timePotionLong, PotionRegistry.I);  
-			ItemRegistry.apple_emerald.addEffect(Potion.absorption.id, timePotionLong, PotionRegistry.I);  
-			ItemRegistry.apple_emerald.addEffect(Potion.resistance.id, timePotionLong, PotionRegistry.I); 
-			ItemRegistry.apple_emerald.addEffect(Potion.jump.id, timePotionLong, PotionRegistry.I); 
-			ItemRegistry.apple_emerald.addEffect(PotionRegistry.slowfall.id, timePotionLong, PotionRegistry.I); 
+			ItemRegistry.apple_emerald.addEffect(Potion.digSpeed.id, timePotionLong, II);
+			ItemRegistry.apple_emerald.addEffect(Potion.moveSpeed.id, timePotionLong, I);  
+			ItemRegistry.apple_emerald.addEffect(Potion.absorption.id, timePotionLong, I);  
+			ItemRegistry.apple_emerald.addEffect(Potion.resistance.id, timePotionLong, I); 
+			ItemRegistry.apple_emerald.addEffect(Potion.jump.id, timePotionLong, I); 
+		//	ItemRegistry.apple_emerald.addEffect(PotionRegistry.slowfall.id, timePotionLong, I); 
 			ItemRegistry.registerItem(ItemRegistry.apple_emerald, "apple_emerald");
 			
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_emerald,new ItemStack(Items.emerald));
@@ -260,7 +266,7 @@ public class ItemRegistry
 			
 			
 		}   
-		
+		/*
 		if(ModMain.cfg.appleEnder) 
 		{
 			ItemRegistry.apple_ender = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerLarge, false);
@@ -270,14 +276,14 @@ public class ItemRegistry
 			ItemRegistry.registerItem(ItemRegistry.apple_ender, "apple_ender");
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_ender,new ItemStack(Items.ender_pearl));
 		}
- 
+ */
 		
 		if(ModMain.cfg.appleChocolate)
 		{
 			ItemRegistry.apple_chocolate = new ItemFoodAppleMagic(ItemFoodAppleMagic.hungerSmall, false); 
-			ItemRegistry.apple_chocolate.addEffect(Potion.weakness.id, timePotionLong, PotionRegistry.I);
-			ItemRegistry.apple_chocolate.addEffect(Potion.moveSpeed.id, timePotionLong, PotionRegistry.I);
-			ItemRegistry.apple_chocolate.addEffect(Potion.digSpeed.id, timePotionLong, PotionRegistry.I); 
+			ItemRegistry.apple_chocolate.addEffect(Potion.weakness.id, timePotionLong, I);
+			ItemRegistry.apple_chocolate.addEffect(Potion.moveSpeed.id, timePotionLong, I);
+			ItemRegistry.apple_chocolate.addEffect(Potion.digSpeed.id, timePotionLong, I); 
 			ItemRegistry.registerItem(ItemRegistry.apple_chocolate, "apple_chocolate");
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_chocolate, new ItemStack(Items.dye, 1, Reference.dye_cocoa) );
 	
@@ -291,7 +297,7 @@ public class ItemRegistry
 			
 			ItemFoodAppleHeart.addRecipe(ItemRegistry.apple_diamond);
 
-		}
+		}/*
 		if(ModMain.cfg.appleFrost) 
 		{
 			System.out.println("apple_frost  "+PotionRegistry.frost.id);
@@ -309,7 +315,7 @@ public class ItemRegistry
 			ItemRegistry.registerItem(ItemRegistry.apple_netherwart, "apple_nether_star");
 		 
 			ItemFoodAppleMagic.addRecipe(ItemRegistry.apple_netherwart,new ItemStack(Items.nether_wart));
-		}
+		}*/
  
 	}
 	

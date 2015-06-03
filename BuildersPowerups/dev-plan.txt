@@ -1,21 +1,23 @@
 MOD SPLIT
 
 
-key inventory sliders + macro binding keys  + all command
+-Macroskey inventory sliders + macro binding keys  + all command
 	push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
 
-Spells+item chest sack
+-Nature
 
-recipes_new + uncrafting
+-Spells+item chest sack
+
+-Recipes recipes_new + uncrafting
+
+-mob_changes- nametag stuff, health, endermen drop carrying, etc
+		mob_spawning
 
 
 
 
 
 
-
-mob_changes- nametag stuff, health, endermen drop carrying, etc
-mob_spawning
 
 smoothstone tools + furnace coal: merge this with what?
 

@@ -308,10 +308,10 @@ public class ConfigRegistry
 	 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();   
 		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();  
-		appleEnder = instance.get( category,"apple_ender",true).getBoolean();  
+		//appleEnder = instance.get( category,"apple_ender",true).getBoolean();  
 		appleDiamond = instance.get(category, "apple_diamond",true).getBoolean(); 
-		appleNetherwart = instance.get(category, "apple_netherwart",true).getBoolean();
-		appleFrost = instance.get(category, "apple_frost",true).getBoolean(); 
+		//appleNetherwart = instance.get(category, "apple_netherwart",true).getBoolean();
+		//appleFrost = instance.get(category, "apple_frost",true).getBoolean(); 
 		
 	
 		carbon_paper = instance.getBoolean("carbon_paper",category, true,
@@ -450,8 +450,8 @@ public class ConfigRegistry
 	public boolean teleportBedBlock;
 	public boolean teleportSpawnBlock;
 	public boolean spawnCaveSpiderJungle;
-	public boolean appleNetherwart;
-	public boolean appleEnder;
+	//public boolean appleNetherwart;
+	//public boolean appleEnder;
 	public boolean appleEmerald;
 	public boolean smoothstoneTools; 
 	public boolean furnaceNeedsCoal;  
@@ -527,5 +527,5 @@ public class ConfigRegistry
 	public int heartsWolfTamed;
 	public int heartsVillager;
 	public int heartsCatTamed;
-	public boolean appleFrost;
+	//public boolean appleFrost;
 }
