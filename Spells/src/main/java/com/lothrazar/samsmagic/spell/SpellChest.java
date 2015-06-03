@@ -9,7 +9,7 @@ import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
 import com.lothrazar.samsmagic.ItemRegistry;
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
 public class SpellChest extends BaseSpellExp implements ISpell
@@ -111,7 +111,7 @@ public class SpellChest extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModMain.playSoundAt(player, "random.wood_click");
+		ModSpells.playSoundAt(player, "random.wood_click");
 
 		super.onCastSuccess(world, player, pos);
 	}

@@ -3,7 +3,7 @@ package com.lothrazar.samsmagic.spell;
 import com.lothrazar.samsmagic.entity.projectile.EntityHarvestbolt;
 import com.lothrazar.samsmagic.spell.ISpell;
 import com.lothrazar.samsmagic.ItemRegistry;
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 import net.minecraft.block.Block;
 import net.minecraft.block.IGrowable;
@@ -76,7 +76,7 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModMain.playSoundAt(player, "random.bow");
+		ModSpells.playSoundAt(player, "random.bow");
 
 	//	if(world.isRemote) //client side 
 			//Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 

@@ -102,7 +102,7 @@ public class SaplingDespawnGrowth
 		//deepocean
 		//frozen ocean(10N  
 		 
-		if(ModMain.cfg.saplingAllNether)
+		if(ModNature.cfg.saplingAllNether)
 		{
 			acaciaBiomes.add(BiomeGenBase.hell.biomeID);
 			oakBiomes.add(BiomeGenBase.hell.biomeID);
@@ -112,7 +112,7 @@ public class SaplingDespawnGrowth
 			jungleBiomes.add(BiomeGenBase.hell.biomeID);
 		}
 		
-		if(ModMain.cfg.saplingAllEnd)
+		if(ModNature.cfg.saplingAllEnd)
 		{ 
 			acaciaBiomes.add(BiomeGenBase.sky.biomeID);
 			oakBiomes.add(BiomeGenBase.sky.biomeID);
@@ -132,7 +132,7 @@ public class SaplingDespawnGrowth
 	@SubscribeEvent
 	public void onSaplingGrowTreeEvent(SaplingGrowTreeEvent event)
 	{  
-		if(ModMain.cfg.saplingGrowthRestricted == false) {return;}
+		if(ModNature.cfg.saplingGrowthRestricted == false) {return;}
 		
 		Block b = event.world.getBlockState(event.pos).getBlock();
 		
@@ -181,7 +181,7 @@ public class SaplingDespawnGrowth
 				//overwrite the sapling. - we could set to Air first, but dont see much reason to
 				event.world.setBlockState(event.pos, Blocks.deadbush.getDefaultState());
 				
-				ModMain.dropItemStackInWorld(event.world, event.pos, new ItemStack(Blocks.sapling,1,tree_type));
+				ModNature.dropItemStackInWorld(event.world, event.pos, new ItemStack(Blocks.sapling,1,tree_type));
 			}  
 		}//else a tree grew that was added by some mod
 	}
@@ -189,7 +189,7 @@ public class SaplingDespawnGrowth
 	@SubscribeEvent
 	public void onItemExpireEvent(ItemExpireEvent event)
 	{  
-		 if(ModMain.cfg.plantDespawningSaplings == false) {return;}
+		 if(ModNature.cfg.plantDespawningSaplings == false) {return;}
 		 
 		 ItemStack is = event.entityItem.getEntityItem();
 		 if(is == null ) {return;}//has not happened in the wild, yet

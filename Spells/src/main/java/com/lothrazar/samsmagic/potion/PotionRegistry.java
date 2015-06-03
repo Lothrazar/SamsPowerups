@@ -2,7 +2,7 @@ package com.lothrazar.samsmagic.potion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier; 
-import com.lothrazar.samsmagic.ModMain; 
+import com.lothrazar.samsmagic.ModSpells; 
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.spell.SpellGhost; 
 import net.minecraft.block.Block;
@@ -39,13 +39,13 @@ public class PotionRegistry
  
 	private static void registerNewPotionEffects() 
 	{  
-		PotionRegistry.waterwalk = (new PotionCustom(ModMain.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
+		PotionRegistry.waterwalk = (new PotionCustom(ModSpells.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
 		
 		//PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		
-		PotionRegistry.slowfall = (new PotionCustom(ModMain.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
 	 
-		PotionRegistry.frost = (new PotionCustom(ModMain.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
+		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
@@ -84,7 +84,7 @@ public class PotionRegistry
 	{
 		if(world.getTotalWorldTime() % 2/2 == 0) // every half second
     	{
-    		ModMain.spawnParticlePacketByID(living.getPosition(), particle.getParticleID());
+    		ModSpells.spawnParticlePacketByID(living.getPosition(), particle.getParticleID());
     	}
 	}
 
@@ -171,7 +171,7 @@ public class PotionRegistry
 	    	 //a normal fall seems to go up to 0, -1.2, -1.4, -1.6, then flattens out at -0.078 
 	    	 if(event.entityLiving.motionY < 0)
 	    	 { 
-				event.entityLiving.motionY *= ModMain.cfg.slowfallSpeed;
+				event.entityLiving.motionY *= ModSpells.cfg.slowfallSpeed;
 				  
 				event.entityLiving.fallDistance = 0f; //for no fall damage
 	    	 } 

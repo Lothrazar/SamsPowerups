@@ -1,6 +1,6 @@
 package com.lothrazar.samsnature;
 
-import com.lothrazar.samsnature.ModMain; 
+import com.lothrazar.samsnature.ModNature; 
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -18,29 +18,29 @@ public class BonemealExt
 		 
   		//we could do a 1/3 odds chance or something, but tall flowers work everytime so following that
   		
-  		if(ModMain.cfg.bonemealAllFlowers )
+  		if(ModNature.cfg.bonemealAllFlowers )
   		{ 
 		 	if ( blockClicked.equals(Blocks.yellow_flower))//yellow flowers have no damage variations
 		 	{   
-		 		ModMain.dropItemStackInWorld(world, pos,new ItemStack(Blocks.yellow_flower));
+		 		ModNature.dropItemStackInWorld(world, pos,new ItemStack(Blocks.yellow_flower));
 		
 			  	success = true;
 		 	}
 		 	else if ( blockClicked.equals(Blocks.red_flower)) 	//the red flower is ALL the flowers
 		 	{    
-		 		ModMain.dropItemStackInWorld(world, pos, new ItemStack(Blocks.red_flower ,1,Blocks.red_flower.getMetaFromState(world.getBlockState(pos))));
+		 		ModNature.dropItemStackInWorld(world, pos, new ItemStack(Blocks.red_flower ,1,Blocks.red_flower.getMetaFromState(world.getBlockState(pos))));
 		
 			  	success = true; 
 		 	} 
   		}
 	 	
-	 	if(ModMain.cfg.bonemealLilypads && blockClicked.equals(Blocks.waterlily))
+	 	if(ModNature.cfg.bonemealLilypads && blockClicked.equals(Blocks.waterlily))
 	 	{ 
-	 		ModMain.dropItemStackInWorld(world, pos,new ItemStack(Blocks.waterlily));
+	 		ModNature.dropItemStackInWorld(world, pos,new ItemStack(Blocks.waterlily));
 	 	 
 		  	success = true;
 	 	} 
-	 	if(ModMain.cfg.bonemealReeds && blockClicked.equals(Blocks.reeds))
+	 	if(ModNature.cfg.bonemealReeds && blockClicked.equals(Blocks.reeds))
 	 	{
 	 		//do not drop items, just grow them upwards
 	 	 
@@ -60,9 +60,9 @@ public class BonemealExt
 	 	if(success)
 	 	{ 
 	 		//the game also uses VILLAGER_HAPPY for their bonemeal events so i copy
-	 		ModMain.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);
+	 		ModNature.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);
 	 		 
-	 		ModMain.decrHeldStackSize(entityPlayer); 
+	 		ModNature.decrHeldStackSize(entityPlayer); 
 	 	} 
 	}
 }

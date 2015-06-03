@@ -8,7 +8,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
 public class SpellPhasing extends BaseSpellExp implements ISpell
@@ -47,7 +47,7 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
 		world.playSoundAtEntity(player, "mob.endermen.portal", 1.0F, 1.0F);  
-		ModMain.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
+		ModSpells.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
 
 		super.onCastSuccess(world, player, pos);
 	}

@@ -13,7 +13,7 @@ public class ChestLootGenerator
 { 
 	public static void lootGlowstone() 
 	{
-		if(ModMain.cfg.lootGlowstone)
+		if(ModNature.cfg.lootGlowstone)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] //TODO: rename these variables, possibly refactor the whole class
 			{
@@ -26,7 +26,7 @@ public class ChestLootGenerator
 
 	public static void lootQuartz() 
 	{
-		if(ModMain.cfg.lootQuartz)
+		if(ModNature.cfg.lootQuartz)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] 
 			{
@@ -39,7 +39,7 @@ public class ChestLootGenerator
 
 	public static void lootObsidian() 
 	{
-		if(ModMain.cfg.lootObsidian)
+		if(ModNature.cfg.lootObsidian)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] 
 			{
@@ -52,7 +52,7 @@ public class ChestLootGenerator
 
 	public static void lootAllRecords() 
 	{
-		if(ModMain.cfg.lootAllRecords)
+		if(ModNature.cfg.lootAllRecords)
 		{ 
 			ItemStack[] allRecords = new ItemStack[] 
 			{

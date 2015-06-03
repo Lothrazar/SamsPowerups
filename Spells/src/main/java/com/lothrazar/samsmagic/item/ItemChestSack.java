@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.apache.logging.log4j.Level;
 
-import com.lothrazar.samsmagic.ModMain; 
+import com.lothrazar.samsmagic.ModSpells; 
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -152,7 +152,7 @@ public class ItemChestSack extends Item
 		
 		if(itemids==null)
 		{
-			ModMain.logger.log(Level.WARN, "null nbt problem in itemchestsack");
+			ModSpells.logger.log(Level.WARN, "null nbt problem in itemchestsack");
 			return;
 		}
 	 

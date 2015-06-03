@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
 public class SpellEnderEye extends BaseSpellItem implements ISpell
@@ -40,7 +40,7 @@ public class SpellEnderEye extends BaseSpellItem implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModMain.playSoundAt(player, "random.bow");
+		ModSpells.playSoundAt(player, "random.bow");
 
 		super.onCastSuccess(world, player, pos);
 	}

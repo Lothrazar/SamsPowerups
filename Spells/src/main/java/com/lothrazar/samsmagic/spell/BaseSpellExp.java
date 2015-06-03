@@ -1,7 +1,7 @@
 package com.lothrazar.samsmagic.spell;
 
 import com.lothrazar.samsmagic.ItemRegistry;
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -21,22 +21,22 @@ public abstract class BaseSpellExp implements ISpell
 	{
 		player.swingItem();
 		
-		ModMain.spawnParticle(world, EnumParticleTypes.CRIT, pos);
+		ModSpells.spawnParticle(world, EnumParticleTypes.CRIT, pos);
 
-		ModMain.drainExp(player, getExpCost());
+		ModSpells.drainExp(player, getExpCost());
 	}
 
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModMain.playSoundAt(player, "random.wood_click");
+		ModSpells.playSoundAt(player, "random.wood_click");
 
-		ModMain.addChatMessage(player, ModMain.lang("spell.exp.missing")+this.getExpCost());
+		ModSpells.addChatMessage(player, ModSpells.lang("spell.exp.missing")+this.getExpCost());
 	}
 	
 	@Override
 	public boolean canPlayerCast(EntityPlayer player)
 	{
-		return (getExpCost() <= ModMain.getExpTotal(player)); 
+		return (getExpCost() <= ModSpells.getExpTotal(player)); 
 	}
 	
 	@Override

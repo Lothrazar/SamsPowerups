@@ -8,7 +8,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 import com.lothrazar.samsmagic.ItemRegistry; 
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 
 public abstract class BaseSpellItem implements ISpell
 {
@@ -24,7 +24,7 @@ public abstract class BaseSpellItem implements ISpell
 	{
 		player.swingItem();
 		
-		ModMain.spawnParticle(world, EnumParticleTypes.CRIT, pos);
+		ModSpells.spawnParticle(world, EnumParticleTypes.CRIT, pos);
  
 		ItemStack is;
 		for(int i = 0; i < player.getInventoryEnderChest().getSizeInventory(); i++)
@@ -62,9 +62,9 @@ public abstract class BaseSpellItem implements ISpell
 	@Override
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModMain.playSoundAt(player, "random.wood_click");
+		ModSpells.playSoundAt(player, "random.wood_click");
 		String name = (new ItemStack(this.getItemCost())).getDisplayName();
-		ModMain.addChatMessage(player, ModMain.lang("spell.item.missing")+name);
+		ModSpells.addChatMessage(player, ModSpells.lang("spell.item.missing")+name);
 	}
 
 

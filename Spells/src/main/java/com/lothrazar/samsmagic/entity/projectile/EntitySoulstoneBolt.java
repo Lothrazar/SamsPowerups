@@ -1,6 +1,6 @@
 package com.lothrazar.samsmagic.entity.projectile; 
 
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.spell.SpellSoulstone; 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -54,7 +54,7 @@ public class EntitySoulstoneBolt extends EntityThrowable//EntitySnowball
             	
             	 if(this.getThrower() instanceof EntityPlayer)
             	 {
-            		 ModMain.addChatMessage((EntityPlayer)this.getThrower(), ModMain.lang("spell.soulstone.complete") + e.getDisplayName().getFormattedText());
+            		 ModSpells.addChatMessage((EntityPlayer)this.getThrower(), ModSpells.lang("spell.soulstone.complete") + e.getDisplayName().getFormattedText());
             	 }
             	 
             	 

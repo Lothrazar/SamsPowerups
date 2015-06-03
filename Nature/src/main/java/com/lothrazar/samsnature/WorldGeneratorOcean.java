@@ -2,7 +2,7 @@ package com.lothrazar.samsnature;
 
 import java.util.Random;
 
-import com.lothrazar.samsnature.ModMain; 
+import com.lothrazar.samsnature.ModNature; 
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.init.Blocks;
@@ -31,9 +31,9 @@ public class WorldGeneratorOcean implements IWorldGenerator
  
 	public WorldGeneratorOcean() 
 	{   
-	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModMain.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModMain.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModNature.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModNature.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModNature.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	
 	   // this.genGold = new WorldGenMinable(Blocks.gold_ore.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.netherrack));
 	   
@@ -45,11 +45,11 @@ public class WorldGeneratorOcean implements IWorldGenerator
 		if(world.provider.getDimensionId() == OVERWORLD)//overworld 
 		{ 
 			this.run(this.genClay, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
-					ModMain.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModNature.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genSand, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
-					ModMain.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModNature.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genDirt, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE,
-					ModMain.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
+					ModNature.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
 		/*//TODO: maybe oneday?
 		if(world.provider.getDimensionId() == Reference.Dimension.nether) 

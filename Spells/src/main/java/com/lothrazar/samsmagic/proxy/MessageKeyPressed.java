@@ -1,6 +1,6 @@
 package com.lothrazar.samsmagic.proxy;
   
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;  
 import com.lothrazar.samsmagic.PlayerPowerups;
 
@@ -62,7 +62,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			{
 				SpellRegistry.shiftLeft(player);
 				
-				ModMain.playSoundAt(player, "random.orb");
+				ModSpells.playSoundAt(player, "random.orb");
 				
 			}
 	 	}
@@ -72,7 +72,7 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 			{
 				SpellRegistry.shiftRight(player);
 				
-				ModMain.playSoundAt(player, "random.orb");
+				ModSpells.playSoundAt(player, "random.orb");
 			}
 			
 		}

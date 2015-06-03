@@ -9,7 +9,7 @@ import net.minecraft.world.WorldSettings.GameType;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 
 import com.lothrazar.samsmagic.ItemRegistry;
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
 public class SpellGhost extends BaseSpellExp  implements ISpell
@@ -34,7 +34,7 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModMain.playSoundAt(player, "random.drink");
+		ModSpells.playSoundAt(player, "random.drink");
 
 		super.onCastSuccess(world, player, pos);
 	}
@@ -44,9 +44,9 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 		{ 
 			player.setGameType(GameType.SPECTATOR);
 			 
-			ModMain.incrementPlayerIntegerNBT(player, KEY_TIMER, GHOST_SECONDS * 20);
+			ModSpells.incrementPlayerIntegerNBT(player, KEY_TIMER, GHOST_SECONDS * 20);
 			player.getEntityData().setBoolean(KEY_BOOLEAN,true);
-			player.getEntityData().setString(KEY_EATLOC, ModMain.posToStringCSV(player.getPosition()));
+			player.getEntityData().setString(KEY_EATLOC, ModSpells.posToStringCSV(player.getPosition()));
 			player.getEntityData().setInteger(KEY_EATDIM, player.dimension);
 		}
 	} 
@@ -63,7 +63,7 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 			
 			if(playerGhost > 0)
 			{
-				ModMain.incrementPlayerIntegerNBT(player, KEY_TIMER,-1);
+				ModSpells.incrementPlayerIntegerNBT(player, KEY_TIMER,-1);
 			}
 			else  
 			{

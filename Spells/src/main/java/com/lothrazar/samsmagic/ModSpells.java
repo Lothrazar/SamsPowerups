@@ -55,16 +55,16 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
   
-@Mod(modid = ModMain.MODID, version = ModMain.VERSION,	name = ModMain.NAME, useMetadata = true )  
-public class ModMain
+@Mod(modid = ModSpells.MODID, version = ModSpells.VERSION,	name = ModSpells.NAME, useMetadata = true )  
+public class ModSpells
 {
 	//TODO: DO NOT RESET TIMER IF CASTING FAILS
 	public static final String MODID = "samsmagic";
 	public static final String TEXTURE_LOCATION = MODID + ":";
 	public static final String VERSION = "1.8-1.4.0";
 	public static final String NAME = "Builder's Powerups";
-	@Instance(value = ModMain.MODID)
-	public static ModMain instance;
+	@Instance(value = ModSpells.MODID)
+	public static ModSpells instance;
 	@SidedProxy(clientSide="com.lothrazar.samsmagic.proxy.ClientProxy", serverSide="com.lothrazar.samsmagic.proxy.CommonProxy")
 	public static CommonProxy proxy;   
 	public static Logger logger; 
@@ -99,12 +99,12 @@ public class ModMain
   		//TODO: we could make our own custom projectileRegistry, that acts as our other ones above do.
   		
   		//TODO: Entity ids are the 999,1000,1001 -> config file
-        EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityWaterBolt.class, "waterbolt",1002, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModMain.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityTorchBolt.class, "torchbolt",1004, ModMain.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModSpells.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModSpells.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModSpells.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityWaterBolt.class, "waterbolt",1002, ModSpells.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModSpells.instance, 64, 1, true);
+        EntityRegistry.registerModEntity(EntityTorchBolt.class, "torchbolt",1004, ModSpells.instance, 64, 1, true);
 		
 		proxy.registerRenderers();
 	}
@@ -158,7 +158,7 @@ public class ModMain
 		if(held != null && held.getItem() == Items.experience_bottle  && 
 				event.action.RIGHT_CLICK_BLOCK == event.action && 
 				event.entityPlayer.capabilities.isCreativeMode == false && 
-				ModMain.cfg.experience_bottle_return)
+				ModSpells.cfg.experience_bottle_return)
 		{ 
 			dropItemStackInWorld(event.world, event.pos, new ItemStack(Items.glass_bottle));
 		}
@@ -188,19 +188,19 @@ public class ModMain
 		 
         if(ClientProxy.keySpellToggle.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellToggle.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellToggle.getKeyCode()));
         }
         else if(ClientProxy.keySpellCast.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
         }
         else if(ClientProxy.keySpellUp.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellUp.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellUp.getKeyCode()));
         }
         else if(ClientProxy.keySpellDown.isPressed())
         {
-       		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellDown.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellDown.getKeyCode()));
         }
     } 
 	 
@@ -397,7 +397,7 @@ public class ModMain
 	public static void spawnParticlePacketByID(BlockPos position, int particleID)
 	{
 		//this. fires only on server side. so send packet for client to spawn particles and so on
-		ModMain.network.sendToAll(new MessagePotion(position, particleID));
+		ModSpells.network.sendToAll(new MessagePotion(position, particleID));
     	
 		
 	}

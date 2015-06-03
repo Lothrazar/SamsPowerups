@@ -8,7 +8,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import com.lothrazar.samsmagic.ItemRegistry;
-import com.lothrazar.samsmagic.ModMain;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.entity.projectile.EntitySoulstoneBolt; 
 
@@ -48,9 +48,9 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModMain.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
+		ModSpells.spawnParticle(world, EnumParticleTypes.PORTAL, pos);
 
-		ModMain.playSoundAt(player, "random.bow");
+		ModSpells.playSoundAt(player, "random.bow");
 
 		super.onCastSuccess(world, player, pos);
 	}
@@ -84,7 +84,7 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 				
 				//event.setCanceled(true);//this is possible but not needed
 				
-				ModMain.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
+				ModSpells.teleportWallSafe(event.entityLiving, event.entity.worldObj,  event.entity.worldObj.getSpawnPoint());
 
 				//boolean isPersist = event.entityLiving.getEntityData().getInteger(KEY_STONED) == VALUE_PERSIST;
 				 

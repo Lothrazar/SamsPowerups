@@ -22,8 +22,8 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
   
-@Mod(modid = ModMain.MODID, version = ModMain.VERSION,	name = ModMain.NAME, useMetadata = true )  
-public class ModMain
+@Mod(modid = ModNature.MODID, version = ModNature.VERSION,	name = ModNature.NAME, useMetadata = true )  
+public class ModNature
 {	
 	public static final String MODID = "samsnature";
 	public static final String TEXTURE_LOCATION = MODID + ":";
@@ -31,7 +31,7 @@ public class ModMain
 	public static final String NAME = "Builder's Powerups";
 
 	@Instance(value = MODID)
-	public static ModMain instance;
+	public static ModNature instance;
 	//@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
 	//public static CommonProxy proxy;   
 	public static Logger logger; 
@@ -72,7 +72,7 @@ public class ModMain
   			GameRegistry.registerFuelHandler(new FurnaceFuelRegistry()); 
   		}*/
   		
-  		if(ModMain.cfg.worldGenOceansNotUgly)
+  		if(ModNature.cfg.worldGenOceansNotUgly)
 		{ 
   			int weight = 0;
 			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
