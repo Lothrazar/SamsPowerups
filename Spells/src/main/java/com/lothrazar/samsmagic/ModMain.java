@@ -53,7 +53,7 @@ public class ModMain
 	public static final String NAME = "Builder's Powerups";
 	@Instance(value = ModMain.MODID)
 	public static ModMain instance;
-	@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
+	@SidedProxy(clientSide="com.lothrazar.samsmagic.proxy.ClientProxy", serverSide="com.lothrazar.samsmagic.proxy.CommonProxy")
 	public static CommonProxy proxy;   
 	public static Logger logger; 
 	public static ConfigRegistry cfg;
