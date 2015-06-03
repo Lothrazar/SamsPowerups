@@ -68,29 +68,13 @@ public class ClientProxy extends CommonProxy
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 
         String name;
-        Item item;
-	/*
-        for(Block b : BlockRegistry.blocks)
-        { 
-        	item = Item.getItemFromBlock(b);
-        	name = Reference.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
-
-   			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	 
-        }
-         */
+ 
         for(Item i : ItemRegistry.items)
         {  
         	name = ModMain.TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
-        } /*
-        if(ModMain.cfg.respawn_egg)
-        {
-        	for(Object key : EntityList.entityEggs.keySet())
-            {
-            	mesher.register(ItemRegistry.respawn_egg, (Integer)key, new ModelResourceLocation(Reference.TEXTURE_LOCATION + "respawn_egg" , "inventory"));	 
-            }
-        }*/
+        }
 	}
 
 	public static final String keyCategorySpell = "key.categories.spell";

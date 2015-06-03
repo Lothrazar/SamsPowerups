@@ -1,38 +1,20 @@
 package com.lothrazar.samsmagic.item;
 
-import java.util.ArrayList;
 import java.util.List; 
 
 import org.apache.logging.log4j.Level;
 
-import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModMain; 
 
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.gameevent.TickEvent.PlayerTickEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly; 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockChest;
-import net.minecraft.block.state.BlockState;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.EnumRarity;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
-import net.minecraft.entity.player.EntityPlayer;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 public class ItemChestSack extends Item
 { 
@@ -74,7 +56,7 @@ public class ItemChestSack extends Item
   		int totalItemsMoved = 0; 
   		int totalSlotsFreed = 0;
   		
-  		boolean debug = false;
+  		//boolean debug = false;
   	  	
 		ItemStack chestItem;
 		ItemStack invItem;
@@ -83,11 +65,11 @@ public class ItemChestSack extends Item
 		int chestMax;
 		  
 		int START_CHEST = 0;
-		int START_INV = 9;//because we are ignoring the item hotbar, we skip the first row this way
+		//int START_INV = 9;//because we are ignoring the item hotbar, we skip the first row this way
 		//player inventory and the small chest have the same dimensions 
 		int size = 3*9;
 		int END_CHEST =  START_CHEST + size;
-		int END_INV = START_INV + size;
+		//int END_INV = START_INV + size;
 
 		int item;
 		int meta;

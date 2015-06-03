@@ -30,7 +30,7 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	public static int harvestArea(World world, EntityPlayer player, BlockPos pos, int radius)
 	{
 		int x = (int)player.posX;
-		int y = (int)player.posY;
+		//int y = (int)player.posY;
 		int z = (int)player.posZ;
 		
 		//search in a cube

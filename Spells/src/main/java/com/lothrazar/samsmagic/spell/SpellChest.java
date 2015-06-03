@@ -6,7 +6,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 import com.lothrazar.samsmagic.ItemRegistry;
@@ -37,14 +36,14 @@ public class SpellChest extends BaseSpellExp implements ISpell
 		//chestTarget.getInventoryStackLimit()//=64
 		//chestContents.size internally is 27
 		ItemStack chestItem;  
-		int chestMax;
+		//int chestMax;
 		 
 		int ROWS = 3;
 		int COLS = 9;
 		int START_CHEST = 0;
-		int START_INV = 9;//because we are ignoring the item hotbar, we skip the first row this way
+		//int START_INV = 9;//because we are ignoring the item hotbar, we skip the first row this way
 		int END_CHEST =  START_CHEST + ROWS * COLS;
-		int END_INV = START_INV + ROWS * COLS;
+		//int END_INV = START_INV + ROWS * COLS;
 
 		ItemStack drop = new ItemStack(ItemRegistry.itemChestSack ,1,0); 
 		

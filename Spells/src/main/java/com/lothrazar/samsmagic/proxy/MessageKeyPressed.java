@@ -10,7 +10,6 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
@@ -49,8 +48,9 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
 		//THANKS TO THIS
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
-		int fiveSeconds = 20 * 5;//TODO : config? reference? cost?
- if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
+		//int fiveSeconds = 20 * 5;//TODO : config? reference? cost?
+		
+		if( message.keyPressed == ClientProxy.keySpellCast.getKeyCode())
 	 	{ 
 			if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 			{

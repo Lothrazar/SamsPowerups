@@ -1,12 +1,10 @@
 package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.SpellRegistry;

@@ -1,6 +1,5 @@
 package com.lothrazar.samsmagic.spell;
 
-import com.lothrazar.samsmagic.SpellRegistry;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;

@@ -1,17 +1,14 @@
  package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.SpellRegistry;
-import com.lothrazar.samsmagic.entity.projectile.EntityLightningballBolt;
 import com.lothrazar.samsmagic.potion.PotionRegistry;
 import com.lothrazar.samsmagic.ModMain; 
 

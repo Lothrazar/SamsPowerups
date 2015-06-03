@@ -1,24 +1,10 @@
 package com.lothrazar.samsmagic.entity.projectile; 
 
-import java.util.ArrayList;
-import com.lothrazar.samsmagic.ModMain;
-import com.lothrazar.samsmagic.potion.MessagePotion;
-import com.lothrazar.samsmagic.potion.PotionRegistry; 
-import net.minecraft.block.Block;
-import net.minecraft.block.state.BlockState;
-import net.minecraft.block.state.IBlockState;
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.monster.EntityBlaze;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.projectile.EntitySnowball;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Blocks;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.DamageSource;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World; 
 
@@ -59,7 +45,7 @@ public class EntityTorchBolt extends EntityThrowable
         if( mop.sideHit != null)
         {
     
-        	offset = mop.getBlockPos().offset(mop.sideHit);
+        	offset = pos.offset(mop.sideHit);
         }
         
 		if(this.isInWater() == false && offset != null && this.worldObj.isAirBlock(offset)  && this.worldObj.isRemote ) 

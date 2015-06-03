@@ -244,7 +244,9 @@ public class ModMain
 	{
 		//int height = dim, width = dim;
 
+		@SuppressWarnings("deprecation")
 		IBakedModel iBakedModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(stack);
+		@SuppressWarnings("deprecation")
 		TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(iBakedModel.getTexture().getIconName());
 		
 		renderTexture( textureAtlasSprite, x, y, dim);
@@ -270,8 +272,6 @@ public class ModMain
 	{ 
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
 
-		PlayerPowerups props = PlayerPowerups.get(player);
-	 
 		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
 		//System.out.println("drawspell "+props.getSpellToggle());
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
@@ -345,9 +345,9 @@ public class ModMain
 	private void drawHud(EntityPlayerSP player)
 	{
 		//TESTING OUT PLAYER COMPASS CLOCKS PELLS
-	 	//System.out.println("width"+ Minecraft.getMinecraft().displayWidth);
-		int xMiddle = Minecraft.getMinecraft().displayWidth/4;
-		int yMiddle = Minecraft.getMinecraft().displayHeight/4;
+
+		//int xMiddle = Minecraft.getMinecraft().displayWidth/4;
+		//int yMiddle = Minecraft.getMinecraft().displayHeight/4;
 		int yBottom = Minecraft.getMinecraft().displayHeight/2 - 32;
 		int xRight = Minecraft.getMinecraft().displayWidth/2 - 32;
 	 
@@ -358,42 +358,7 @@ public class ModMain
 		renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);//works at mid top//was ,16
 	
 	}
-	/*
-	 old code; a few unused events: put back in if needed
-	  
-	@EventHandler 
-	public void onPostInit(FMLPostInitializationEvent event)
-	{ 		
-	
-	}
-	@SubscribeEvent
-	public void onPlayerSleepInBedEvent(PlayerSleepInBedEvent event)
-	{
-		
-	}
-	@SubscribeEvent
-	public void onHarvestDropsEvent(HarvestDropsEvent event)
-	{
-		
-	}
-	
-	@SubscribeEvent
-	public void onLogin(PlayerLoggedInEvent event)
-	{
-		//every time the player joins the world
-		//Util.addChatMessage(event.player, "login.new.first");
-
-	}
-
-	@SubscribeEvent
-	public void onPlayerTick(PlayerTickEvent event)
-	{     
-		EntityPlayer player = event.player;
-		
-		//this one only applies to players
-		PotionRegistry.tickEnder(player); 
-	} */
-
+	 
 	public static void playSoundAt(Entity player, String sound)
 	{ 
 		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
@@ -435,7 +400,7 @@ public class ModMain
 		int level = player.experienceLevel;
 		
 		//this is the exp between previous and last level, not the real total
-		float experience = player.experience;
+		//float experience = player.experience;
 	
 		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
 		double totalExp = getXpForLevel(level);

@@ -125,7 +125,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
  
 	public final void setSpellToggle(int current) 
 	{
-		int old = getSpellToggle();
+		//int old = getSpellToggle();
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, current);
 	}
 	public final int getSpellToggle() 

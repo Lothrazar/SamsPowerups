@@ -2,18 +2,16 @@ package com.lothrazar.samsmagic.spell;
 
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import net.minecraftforge.event.entity.player.EntityInteractEvent;
-
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModMain;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.entity.projectile.EntitySoulstoneBolt; 
+
 public class SpellSoulstone extends BaseSpellExp implements ISpell
 {
 	private static final String KEY_STONED = "soulstone";
