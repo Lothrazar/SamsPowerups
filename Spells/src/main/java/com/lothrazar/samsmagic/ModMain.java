@@ -10,11 +10,19 @@ import com.lothrazar.samsmagic.item.ItemChestSack;
 import com.lothrazar.samsmagic.proxy.*; 
 import com.lothrazar.samsmagic.spell.*; 
 
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.WorldRenderer;
+import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.resources.model.IBakedModel;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -23,6 +31,7 @@ import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
@@ -186,6 +195,7 @@ public class ModMain
 		 
         if(ClientProxy.keySpellToggle.isPressed())
         {
+        	System.out.println("spelltoggle pressed");
        		ModMain.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellToggle.getKeyCode()));
         }
         else if(ClientProxy.keySpellCast.isPressed())
@@ -217,7 +227,137 @@ public class ModMain
  			PlayerPowerups.register((EntityPlayer) event.entity);
  		} 
  	}
+	@SubscribeEvent
+	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
+	{  
+		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
+		PlayerPowerups props = PlayerPowerups.get(player);
+		
+		if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
+		{
+			drawSpell(event);
+
+		 	drawHud(player); 
+		}
+	}
+	private static void renderItemAt(ItemStack stack, int x, int y, int dim)
+	{
+		//int height = dim, width = dim;
+
+		IBakedModel iBakedModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(stack);
+		TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(iBakedModel.getTexture().getIconName());
+		
+		renderTexture( textureAtlasSprite, x, y, dim);
+	}
+	private static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y, int dim)
+	{	
+		//special thanks to http://www.minecraftforge.net/forum/index.php?topic=26613.0
+		
+        Minecraft.getMinecraft().getTextureManager().bindTexture(TextureMap.locationBlocksTexture);
+		Tessellator tessellator = Tessellator.getInstance();
+
+		int height = dim, width = dim;
+		WorldRenderer worldrenderer = tessellator.getWorldRenderer();
+		worldrenderer.startDrawingQuads();
+		worldrenderer.addVertexWithUV((double)(x),          (double)(y + height),  0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMaxV());
+		worldrenderer.addVertexWithUV((double)(x + width),  (double)(y + height),  0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMaxV());
+		worldrenderer.addVertexWithUV((double)(x + width),  (double)(y),           0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMinV());
+		worldrenderer.addVertexWithUV((double)(x),          (double)(y),           0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMinV());
+		tessellator.draw();
+		
+	}
+	private void drawSpell(RenderGameOverlayEvent.Text event)
+	{ 
+		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
+
+		PlayerPowerups props = PlayerPowerups.get(player);
 	 
+		ISpell spell = SpellRegistry.getPlayerCurrentISpell(player);
+		//System.out.println("drawspell "+props.getSpellToggle());
+		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
+		{
+			event.left.add(lang("key.spell."+spell.getSpellID()));
+		}
+		else
+		{
+			int ymain = 12;
+			int dim = 12;
+				
+			int x = 12, y = 2;
+			
+			Item ptr = SpellRegistry.canPlayerCastAnything(player) ? ItemRegistry.exp_cost_dummy : ItemRegistry.exp_cost_empty_dummy;
+			//spell.getIconDisplayHeader()
+			renderItemAt(new ItemStack(ptr),x,y,dim);
+				
+			//int ysmall = ymain - 3;
+			int xmain = 10;
+			ymain = 14;
+			if(spell.getIconDisplay() != null)
+			{
+				x = xmain; 
+				y = ymain;
+				dim = 16;
+				renderItemAt(spell.getIconDisplay(),x,y,dim);
+			}
+			
+			
+			ISpell spellNext = spell.left();//SpellRegistry.getSpellFromType(spell.getSpellID().next());
+			ISpell spellPrev = spell.right();//SpellRegistry.getSpellFromType(spell.getSpellID().prev());
+			
+			
+			if(spellNext != null)// && spellNext.getIconDisplay() != null
+			{
+				x = xmain-3; 
+				y = ymain + 16;
+				dim = 16/2;
+				renderItemAt(spellNext.getIconDisplay(),x,y,dim);
+				
+				ISpell sLeftLeft = spellNext.left();//SpellRegistry.getSpellFromType(spellNext.getSpellID().next());
+
+				if(sLeftLeft != null && sLeftLeft.getIconDisplay() != null)
+				{
+					x = xmain-3 - 1; 
+					y = ymain + 16+14;
+					dim = 16/2 - 2;
+					renderItemAt(sLeftLeft.getIconDisplay(),x,y,dim);
+				}
+			}
+			if(spellPrev != null)// && spellPrev.getIconDisplay() != null
+			{
+				x = xmain+6; 
+				y = ymain + 16;
+				dim = 16/2;
+				renderItemAt(spellPrev.getIconDisplay(),x,y,dim);
+
+				ISpell sRightRight = spellPrev.right();//SpellRegistry.getSpellFromType(spellPrev.getSpellID().prev());
+
+				if(sRightRight != null && sRightRight.getIconDisplay() != null)
+				{
+					x = xmain+6 + 4; 
+					y = ymain + 16+14;
+					dim = 16/2 - 2;
+					renderItemAt(sRightRight.getIconDisplay(),x,y,dim);
+				}
+			}
+		}
+	}
+
+	private void drawHud(EntityPlayerSP player)
+	{
+		//TESTING OUT PLAYER COMPASS CLOCKS PELLS
+	 	//System.out.println("width"+ Minecraft.getMinecraft().displayWidth);
+		int xMiddle = Minecraft.getMinecraft().displayWidth/4;
+		int yMiddle = Minecraft.getMinecraft().displayHeight/4;
+		int yBottom = Minecraft.getMinecraft().displayHeight/2 - 32;
+		int xRight = Minecraft.getMinecraft().displayWidth/2 - 32;
+	 
+		
+		//PlayerPowerups props = PlayerPowerups.get(player);
+
+		renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
+		renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);//works at mid top//was ,16
+	
+	}
 	/*
 	 old code; a few unused events: put back in if needed
 	  

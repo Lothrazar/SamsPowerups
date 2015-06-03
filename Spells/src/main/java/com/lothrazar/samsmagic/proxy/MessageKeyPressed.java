@@ -3,6 +3,7 @@ package com.lothrazar.samsmagic.proxy;
 import com.lothrazar.samsmagic.ModMain;
 import com.lothrazar.samsmagic.SpellRegistry;  
 import com.lothrazar.samsmagic.PlayerPowerups;
+
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
@@ -77,6 +78,8 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		}
 		else if( message.keyPressed == ClientProxy.keySpellToggle.getKeyCode())
 	 	{  
+
+        	System.out.println("MessageKeyPressed spelltoggle pressed");
 			//int tog = props.getSpellToggle() == 0 ? 1 : 0;
 			//System.out.println("toggle from "+props.getSpellToggle());
 			int next = props.getSpellToggleNext();
@@ -89,58 +92,6 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 		//TODO: search spawner??? with particle directors?
 
 		return null;
-	}
-
-	//TODO: move function to spellbook
-	private void shiftSlotDown(EntityPlayer player, int currentItem) 
-	{
-		int topNumber = currentItem + 9;
-		int midNumber = topNumber + 9;
-		int lowNumber = midNumber + 9;
-		//so if we had the final slot hit (8 for keyboard 9) we would go 8, 17, 26, 35
-		 
-		ItemStack bar = player.inventory.getStackInSlot(currentItem);
-		ItemStack top = player.inventory.getStackInSlot(topNumber);
-		ItemStack mid = player.inventory.getStackInSlot(midNumber);
-		ItemStack low = player.inventory.getStackInSlot(lowNumber);
-  
-		player.inventory.setInventorySlotContents(currentItem, null);
-		player.inventory.setInventorySlotContents(currentItem, top);//lot so 0 gets what 9 had
-
-		player.inventory.setInventorySlotContents(topNumber, null);
-		player.inventory.setInventorySlotContents(topNumber, mid);
-
-		player.inventory.setInventorySlotContents(midNumber, null);
-		player.inventory.setInventorySlotContents(midNumber, low);
-		
-		player.inventory.setInventorySlotContents(lowNumber, null);
-		player.inventory.setInventorySlotContents(lowNumber, bar);
-	}
-
-	private void shiftSlotUp(EntityPlayer player, int currentItem) 
-	{
-		//so we move each up by nine
-		int topNumber = currentItem + 9;
-		int midNumber = topNumber + 9;
-		int lowNumber = midNumber + 9;
-		//so if we had the final slot hit (8 for keyboard 9) we would go 8, 17, 26, 35
-		 
-		ItemStack bar = player.inventory.getStackInSlot(currentItem);
-		ItemStack top = player.inventory.getStackInSlot(topNumber);
-		ItemStack mid = player.inventory.getStackInSlot(midNumber);
-		ItemStack low = player.inventory.getStackInSlot(lowNumber);
-  
-		player.inventory.setInventorySlotContents(currentItem, null);
-		player.inventory.setInventorySlotContents(currentItem, low);//lot so 0 gets what 9 had
- 
-		player.inventory.setInventorySlotContents(lowNumber, null);
-		player.inventory.setInventorySlotContents(lowNumber, mid);
- 
-		player.inventory.setInventorySlotContents(midNumber, null);
-		player.inventory.setInventorySlotContents(midNumber, top);
- 
-		player.inventory.setInventorySlotContents(topNumber, null);
-		player.inventory.setInventorySlotContents(topNumber, bar);
 	}
 }
  
