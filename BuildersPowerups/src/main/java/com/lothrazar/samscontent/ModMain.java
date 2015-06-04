@@ -289,27 +289,7 @@ public class ModMain
 			ItemPaperCarbon.rightClickBlock(event); 
 		}
 	
-		if(held != null && held.getItem() == ItemRegistry.itemChestSack &&  //how to get this all into its own class
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{ 
-			/*
-			if(blockClicked instanceof BlockChest && container instanceof TileEntityChest)// && event.entityPlayer.isSneaking()
-			{    
-				 
-				ItemChestSackEmpty.convertChestToSack(event.entityPlayer,held,(TileEntityChest)container,event.pos);  
-			 
-				//TODO: other containers could go here: dispenser, trapped chest. 
-				//heck maybe thers another way such as with IInventory?
-				
-			} 
-			else
-			{
-				*/
-				if(event.face != null && event.world.isAirBlock(event.pos.offset(event.face)) == false)
-					ItemChestSack.createAndFillChest(event.entityPlayer, held, event.pos.offset(event.face));
-			//}
-		}
-	
+		 
 		
 		if(ModMain.cfg.swiftDeposit  &&  //how to get this all into its own class
 				event.action == event.action.LEFT_CLICK_BLOCK && 
