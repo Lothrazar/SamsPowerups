@@ -41,6 +41,10 @@ public class ModCarbon
     {
    		FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
+		
+
+		   
+		proxy.registerRenderers();
     }
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
