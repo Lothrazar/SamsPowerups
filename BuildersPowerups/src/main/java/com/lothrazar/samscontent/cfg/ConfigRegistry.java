@@ -16,8 +16,7 @@ public class ConfigRegistry
 	{
 		instance = c; 
 		instance.load();
-
-		blocks(); 
+ 
 		creative();
 		debug_info();
 		harvesting_changes();
@@ -26,8 +25,7 @@ public class ConfigRegistry
 		mob_changes();
 		mob_spawning(); 
 		more_chest_loot(); 
-		nature();
-		ocean_generation();
+		nature(); 
 		player();
 		pocket_edition();  
 		potions(); 
@@ -144,23 +142,7 @@ public class ConfigRegistry
     			"If true, all saplings grow in the end (ignoring sapling_biome_restricted)");
 	}
 
-	private void ocean_generation() 
-	{
-		category = "ocean_generation";
-	
-		worldGenOceansNotUgly = instance.getBoolean("alter_ocean_floor",category, true,
-    			"Clay, sand, and dirt can generate in oceans just like they used to in the old days.  Replaces the gravel in patches.");
-	 
-		clayNumBlocks = instance.get(category,"clay_size",16).getInt();
-		clayChance = instance.get(category,"clay_chance",65).getInt();
-		
-		sandNumBlocks = instance.get(category,"sand_size",20).getInt();
-		sandChance = instance.get(category,"sand_chance",45).getInt();
-
-		dirtNumBlocks = instance.get(category,"dirt_size",14).getInt();
-		dirtChance = instance.get(category,"dirt_chance",30).getInt();
-	}
-
+ 
 	private void potions() 
 	{ 
 		category = "potion_effect_ids";
@@ -311,10 +293,6 @@ public class ConfigRegistry
 		//appleNetherwart = instance.get(category, "apple_netherwart",true).getBoolean();
 		//appleFrost = instance.get(category, "apple_frost",true).getBoolean(); 
 		
-	
-		carbon_paper = instance.getBoolean("carbon_paper",category, true,
-    			"Craft a wand that can copy and paste note blocks and signs.");
- 
 	 
  
 		respawn_egg = instance.getBoolean("respawn_egg",category, true,
@@ -327,31 +305,7 @@ public class ConfigRegistry
  
 	}
 	
-	private void blocks() 
-	{
-		category = "blocks";
-		 
-		block_fragile  = instance.getBoolean( "scaffolding",category,true,
-				"Scaffolding block that decays on its own over time, so its better than spamming dirt everywhere."); 		 
-				
-		storeBucketsBlock = instance.getBoolean( "store_buckets",category,true,
-				"A block that stores any number of milk/water/lava buckets (click to insert / withdraw)."); 
 	 
-		shearSheepBlock = instance.getBoolean( "shear_sheep",category,true,
-				"Shears adult sheep that collide with this block."); 
-		 
-		fishingNetBlock = instance.getBoolean( "fishing_net",category,true,
-				"Place the fishing block in deep water and it will randomly spawn fish with the same odds as a pole (but no treasures or junk)."); 
-	 
-		weatherBlock = instance.getBoolean( "weather",category,true,
-				"Block that will run /toggledownfall whenever it gets a redstone signal.  Uses command block functions but is not editable by players."); 
-		
-		teleportBedBlock = instance.getBoolean( "teleport_bed",category,true,
-				"Block that teleports you to the world spawn.  Uses command block functions but is not editable by players.");
-		
-		teleportSpawnBlock = instance.getBoolean( "teleport_spawn",category,true,
-				"Block that teleports you to your bed.  Uses command block functions but is not editable by players."); 
-	}
 	
 	private void recipes_new() 
 	{
@@ -471,8 +425,7 @@ public class ConfigRegistry
 	public int diamondOreHardness;
 	public int emeraldOreHardness;
 	public int spawnerHardness; 
- 
-	public boolean carbon_paper;
+  
  
 	public boolean respawn_egg;
  
@@ -488,9 +441,7 @@ public class ConfigRegistry
 	public boolean saplingAllNether;
 	public boolean saplingAllEnd; 
 	public boolean harvestGlassPickaxe;
- 
-	public boolean shearSheepBlock; 
-	public boolean storeBucketsBlock;
+  
 	public boolean beetroot;
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;

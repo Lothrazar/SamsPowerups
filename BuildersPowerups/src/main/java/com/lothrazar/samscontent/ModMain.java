@@ -282,15 +282,7 @@ public class ModMain
 		{ 
 			Util.dropItemStackInWorld(event.world, event.pos, Items.glass_bottle);
 		}
-		
-		if(held != null && held.getItem() == ItemRegistry.carbon_paper &&   
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{   
-			ItemPaperCarbon.rightClickBlock(event); 
-		}
-	
 		 
-		
 		if(ModMain.cfg.swiftDeposit  &&  //how to get this all into its own class
 				event.action == event.action.LEFT_CLICK_BLOCK && 
 				event.entityPlayer.isSneaking()  && 

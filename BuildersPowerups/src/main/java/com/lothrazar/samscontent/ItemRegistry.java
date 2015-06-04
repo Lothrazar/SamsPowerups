@@ -45,7 +45,7 @@ public class ItemRegistry
  
 	public static ItemFoodAppleMagic apple_chocolate;
 	public static ItemFoodAppleMagic apple_netherwart; 
-	public static ItemPaperCarbon carbon_paper;  
+ 
  
 	public static Item beetroot_seed ;
 	public static Item beetrootItem;
@@ -172,14 +172,6 @@ public class ItemRegistry
 		}
   
 */
-		if(ModMain.cfg.carbon_paper)
-		{ 
-			ItemRegistry.carbon_paper = new ItemPaperCarbon();
-
-			ItemRegistry.registerItem(ItemRegistry.carbon_paper, "carbon_paper");
-
-			ItemPaperCarbon.addRecipe();  
-		}
 	 
 		if(ModMain.cfg.respawn_egg)
 		{   

@@ -32,34 +32,6 @@ public class AchievementRegistry
 	public Achievement beetrootSeed; 
 	 
 	public Achievement appleNether; 
-	//public Achievement wandWater;
- 
- 
-	
-
- 
- 
-	public Achievement carbonPaper;
-	
-	//public Achievement soulstone;
-	//public Achievement enderBook;
-
-	
-	public Achievement scaffolding;
-
-	private Achievement command_block_weather;
-
-	private Achievement command_block_tpspawn;
-
-	private Achievement command_block_tpbed;
-
-	private Achievement block_fragile;
-
-	private Achievement block_fishing;
-
-	private Achievement block_shear_sheep;
-
-	private Achievement block_storeempty;
  
 	
 	private void register(Achievement a)
@@ -123,47 +95,7 @@ public class AchievementRegistry
 			register(appleNether);
 		} 
 		
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
  
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
- 
- 
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
- 
- 
-
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
-		
-	 
-		 
-		if(ItemRegistry.carbon_paper != null) 
-		{ 
-			xCurrent += xSpacing;
-			carbonPaper = new Achievement(Reference.MODID + "_carbonPaper", "carbonPaper" ,xCurrent, yCurrent,ItemRegistry.carbon_paper,null);
-			register(carbonPaper);
-		}
-
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
-	 
-		 
-	 
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
-		
-		 
-		
-		xCurrent = xStart;//new row
-		yCurrent += ySpacing;
-		
-	 
-		//xCurrent = xStart;//new row
-		//yCurrent += ySpacing;
-		
 		
 		page = new AchievementPage(Reference.NAME,(Achievement[]) ach.toArray(new Achievement[0]));
 
