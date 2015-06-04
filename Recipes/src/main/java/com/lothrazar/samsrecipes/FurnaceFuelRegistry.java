@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samsrecipes;
 
 import java.util.ArrayList;
 

@@ -1,37 +1,16 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samsrecipes;
 
-import java.util.ArrayList;  
 import java.util.List;  
 
-import org.apache.logging.log4j.Logger;    
-
-import com.lothrazar.util.Reference;  
-import com.lothrazar.util.Util;
-
 import net.minecraft.block.Block;
-import net.minecraft.block.material.MapColor;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
-import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.item.crafting.IRecipe;
-import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.common.config.Property;
-import net.minecraftforge.fml.client.event.ConfigChangedEvent;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLServerStartingEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import net.minecraft.util.MathHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
-import net.minecraftforge.oredict.OreDictionary;
  
 public class RecipeRegistry  
 {  
@@ -62,14 +41,12 @@ public class RecipeRegistry
    		RecipeRegistry.repeaterSimple();
 		
    		RecipeRegistry.minecartsSimple();
-   		
-   		RecipeRegistry.beetroot();
-   		
+   	 
    		RecipeRegistry.experience_bottle();
 
    		RecipeRegistry.inventory_stairs();
    		
-   		if(ModMain.cfg.smelt_gravel)
+   		if(ModRecipes.cfg.smelt_gravel)
    		{
    			GameRegistry.addSmelting(Blocks.gravel, new ItemStack(Items.flint),0);
    		}
@@ -77,7 +54,7 @@ public class RecipeRegistry
 	
 	private static void inventory_stairs()//13
 	{
-		if(!ModMain.cfg.cheaper_stairs)  {return;}
+		if(!ModRecipes.cfg.cheaper_stairs)  {return;}
 		//the suggestion http://www.reddit.com/r/minecraftsuggestions/comments/35hyg4/make_stairs_not_stupendously_expensive_to_craft/
 		//6 wood stairs
 		small_stairs(Blocks.acacia_stairs,new ItemStack(Blocks.planks,1,Reference.planks_acacia));
@@ -116,7 +93,7 @@ public class RecipeRegistry
 
 	private static void quartsFromPrismarine() 
 	{
-		if(!ModMain.cfg.quartz_from_prismarine)  {return;}
+		if(!ModRecipes.cfg.quartz_from_prismarine)  {return;}
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.quartz,4)
 			, new ItemStack(Items.prismarine_shard)
@@ -128,7 +105,7 @@ public class RecipeRegistry
 
 	private static void experience_bottle() 
 	{
-		if(!ModMain.cfg.experience_bottle)  {return;}
+		if(!ModRecipes.cfg.experience_bottle)  {return;}
 		
 		experience_stripe(Items.rotten_flesh);
 		experience_stripe(Items.bone);
@@ -167,25 +144,11 @@ public class RecipeRegistry
 	
 	
 
-	public static void beetroot()
-	{
-		if(!ModMain.cfg.beetroot)  {return;}
-
-		GameRegistry.addRecipe(new ItemStack(Blocks.red_mushroom_block),
-				"rrr",
-				"rrr",
-				" b ",
-				'r', ItemRegistry.beetrootItem,
-				'b', Items.bowl);
-		
-		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,2,Reference.dye_red)
-			,ItemRegistry.beetrootItem);
-	
-	}
+ 
 	
 	public static void netherwartPurple()
 	{
-		if(!ModMain.cfg.netherwartPurpleDye)  {return;}
+		if(!ModRecipes.cfg.netherwartPurpleDye)  {return;}
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.dye,2,Reference.dye_purple)
 			,Items.nether_wart
@@ -194,7 +157,7 @@ public class RecipeRegistry
   
 	public static void mushroomBlocks()
 	{
-		if(!ModMain.cfg.craftableMushroomBlocks)  {return;}
+		if(!ModRecipes.cfg.craftableMushroomBlocks)  {return;}
 
 		GameRegistry.addRecipe(new ItemStack(Blocks.red_mushroom_block),
 				"mm",
@@ -208,7 +171,7 @@ public class RecipeRegistry
 
 	public static void uncrafting()
 	{
-		if(!ModMain.cfg.uncraftGeneral) {return;}
+		if(!ModRecipes.cfg.uncraftGeneral) {return;}
 			
 		GameRegistry.addRecipe(new ItemStack(Blocks.sandstone, 6), "xx", "xx",
 				'x', Blocks.sandstone_stairs);
@@ -738,7 +701,7 @@ public class RecipeRegistry
 
 	public static void records()
 	{
-		if(!ModMain.cfg.craftableTransmuteRecords) {return;}
+		if(!ModRecipes.cfg.craftableTransmuteRecords) {return;}
 		// iterate down the list, 8 emeralds each time
 		
 		GameRegistry.addRecipe(new ItemStack(Items.record_13), "xxx", "xsx","xxx"
@@ -785,7 +748,7 @@ public class RecipeRegistry
 
 	public static void bonemealWool()
 	{
-		if(!ModMain.cfg.craftableBonemealColouredWool){return;}
+		if(!ModRecipes.cfg.craftableBonemealColouredWool){return;}
 		//use bonemeal to bleach colored wool back to white
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.wool, 1, 0),
 				new ItemStack(Blocks.wool, 1, 1), new ItemStack(Items.dye, 1,				Reference.dye_bonemeal)); 
@@ -831,7 +794,7 @@ public class RecipeRegistry
 */
 	public static void repeaterSimple()
 	{ 
-		if(!ModMain.cfg.craftRepeaterSimple) {return;}
+		if(!ModRecipes.cfg.craftRepeaterSimple) {return;}
 		
 		GameRegistry.addRecipe(new ItemStack(Items.repeater), "r r", "srs","ttt"
 				, 't', new ItemStack(Blocks.stone)
@@ -841,7 +804,7 @@ public class RecipeRegistry
 
 	public static void minecartsSimple()
 	{
-		if(!ModMain.cfg.craftMinecartsSimple){return;}
+		if(!ModRecipes.cfg.craftMinecartsSimple){return;}
  
 		//normally you would need the minecart created in a different step. this is faster
  
@@ -868,7 +831,7 @@ public class RecipeRegistry
 
 	public static void woolDyeSavings()
 	{
-		if(!ModMain.cfg.craftWoolDye8) {return;}
+		if(!ModRecipes.cfg.craftWoolDye8) {return;}
 		 
 		//so any color that is not white, add the new recipe with all 8 blocks
 		for(int dye = 0; dye < 15; dye++)//only since we know that the dyes are these numbers
@@ -887,7 +850,7 @@ public class RecipeRegistry
 	
 	public static void furnaceNeedsCoal()
 	{ 
-		if(!ModMain.cfg.furnaceNeedsCoal) {return;}
+		if(!ModRecipes.cfg.furnaceNeedsCoal) {return;}
 		
 		removeRecipe(Blocks.furnace);
 
@@ -901,11 +864,11 @@ public class RecipeRegistry
 	 
 	public static void smoothstoneRequired()
 	{ 
-		if(!ModMain.cfg.smoothstoneTools) {return;}
+		if(!ModRecipes.cfg.smoothstoneTools) {return;}
  
 		removeRecipe(Items.stone_pickaxe); 
 		
-		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe,1,Util.getMaxDmgFraction(Items.stone_pickaxe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_pickaxe,1,getMaxDmgFraction(Items.stone_pickaxe,4)), 
 				"sss",
 				" t ", 
 				" t ", 
@@ -920,7 +883,7 @@ public class RecipeRegistry
 
 		removeRecipe(Items.stone_sword);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_sword,1,Util.getMaxDmgFraction(Items.stone_sword,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_sword,1,getMaxDmgFraction(Items.stone_sword,4)), 
 				" s ",
 				" s ", 
 				" t ", 
@@ -935,13 +898,13 @@ public class RecipeRegistry
  
 		removeRecipe(Items.stone_axe);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,Util.getMaxDmgFraction(Items.stone_axe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,getMaxDmgFraction(Items.stone_axe,4)), 
 				"ss ",
 				"st ", 
 				" t ", 
 				's', Blocks.cobblestone,  
 				't', Items.stick );
-		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,Util.getMaxDmgFraction(Items.stone_axe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_axe,1,getMaxDmgFraction(Items.stone_axe,4)), 
 				" ss", 
 				" ts", 
 				" t ", 
@@ -962,13 +925,13 @@ public class RecipeRegistry
 
 		removeRecipe(Items.stone_hoe);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,Util.getMaxDmgFraction(Items.stone_hoe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,getMaxDmgFraction(Items.stone_hoe,4)), 
 				"ss ",
 				" t ", 
 				" t ", 
 				's', Blocks.cobblestone,  
 				't', Items.stick ); 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,Util.getMaxDmgFraction(Items.stone_hoe,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_hoe,1,getMaxDmgFraction(Items.stone_hoe,4)), 
 				" ss", 
 				" t ", 
 				" t ", 
@@ -989,7 +952,8 @@ public class RecipeRegistry
 
 		removeRecipe(Items.stone_shovel);
 
-		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel,1,Util.getMaxDmgFraction(Items.stone_shovel,4)), 
+		GameRegistry.addRecipe(new ItemStack(Items.stone_shovel,1,
+				getMaxDmgFraction(Items.stone_shovel,4)), 
 				" s ",
 				" t ", 
 				" t ", 
@@ -1007,7 +971,7 @@ public class RecipeRegistry
 	
 	public static void simpleDispenser() 
 	{
-		if(!ModMain.cfg.simpleDispenser) {return;}
+		if(!ModRecipes.cfg.simpleDispenser) {return;}
 
 		GameRegistry.addRecipe(new ItemStack(Blocks.dispenser), 
 				"ccc",
@@ -1048,4 +1012,9 @@ public class RecipeRegistry
 	        }
 	    }
 	}
+	public static int getMaxDmgFraction(Item tool, int d) 
+	{
+		return tool.getMaxDamage() - (int)MathHelper.floor_double(tool.getMaxDamage() / d);
+	}
+	
 }

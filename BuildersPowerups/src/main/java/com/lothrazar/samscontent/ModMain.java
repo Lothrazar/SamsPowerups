@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import org.apache.logging.log4j.Logger;   
  
+
 import com.lothrazar.samscontent.block.*;
 import com.lothrazar.samscontent.cfg.ConfigRegistry; 
 import com.lothrazar.samscontent.common.PlayerPowerups; 
@@ -12,7 +13,7 @@ import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
 import com.lothrazar.samscontent.proxy.*;  
 import com.lothrazar.samscontent.stats.*;
-import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage; 
+import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;  
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -120,12 +121,9 @@ public class ModMain
 	
 		MobSpawningRegistry.registerSpawns();
    
-		RecipeRegistry.registerRecipes();
+		//RecipeRegistry.registerRecipes();
 	
-  		if(ModMain.cfg.moreFuel) 
-  		{
-  			GameRegistry.registerFuelHandler(new FurnaceFuelRegistry()); 
-  		}
+  		
    
 		proxy.registerRenderers();
 	}
