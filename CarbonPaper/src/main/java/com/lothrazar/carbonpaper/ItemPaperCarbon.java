@@ -65,7 +65,7 @@ public class ItemPaperCarbon  extends Item
 		setItemStackNBT(held, KEY_SIGN2, sign.signText[2].getUnformattedText());
 		setItemStackNBT(held, KEY_SIGN3, sign.signText[3].getUnformattedText());
 
-		held.getTagCompound().setByte(KEY_NOTE,(byte)-1); //cast -1 to byte
+		held.getTagCompound().setByte(KEY_NOTE,(byte)NOTE_EMPTY); 
 		
 		entityPlayer.swingItem(); 
 	}
@@ -90,12 +90,14 @@ public class ItemPaperCarbon  extends Item
 		
 		held.getTagCompound().setByte(KEY_NOTE, noteblock.note); 
 	}
-
+public static int NOTE_EMPTY = -1;
 	public static void pasteNote(World world, EntityPlayer entityPlayer,TileEntityNote noteblock, ItemStack held) 
 	{ 
 		if(held.getTagCompound() == null)  {return;}//nothing ot paste
+		if(held.getTagCompound().getByte(KEY_NOTE) == NOTE_EMPTY){return;}
 		
 		noteblock.note = held.getTagCompound().getByte(KEY_NOTE);
+		
 		world.markBlockForUpdate(noteblock.getPos());//so update is refreshed on client side
 
 		entityPlayer.swingItem();
