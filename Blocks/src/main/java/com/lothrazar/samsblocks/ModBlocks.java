@@ -17,6 +17,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -34,6 +35,8 @@ public class ModBlocks
 	public static ModBlocks instance;
 	public static Logger logger; 
 	public static ConfigRegistry cfg;
+	@SidedProxy(clientSide="com.lothrazar.samsblocks.ClientProxy", serverSide="com.lothrazar.samsblocks.CommonProxy")
+	public static CommonProxy proxy;  
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsBlocks") 
 	{ 
 		@Override
@@ -63,7 +66,8 @@ public class ModBlocks
     {
 
     	
-    	
+
+		proxy.registerRenderers();
     }
 	@SubscribeEvent
 	public void onBreakEvent(BreakEvent event)
