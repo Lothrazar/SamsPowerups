@@ -1,15 +1,10 @@
-package com.lothrazar.samscontent.proxy;
+package com.lothrazar.samsblocks;
 
-import  net.minecraft.item.Item;
-
-import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.ModMain;  
-import com.lothrazar.util.*;
-
+import  net.minecraft.item.Item; 
+import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.entity.EntityList;
 
 public class ClientProxy extends CommonProxy 
 {  
@@ -32,29 +27,24 @@ public class ClientProxy extends CommonProxy
         ItemModelMesher mesher = Minecraft.getMinecraft().getRenderItem().getItemModelMesher();
 
         String name;
-      //  Item item;
-	 /*
+        Item item;
+	 
         for(Block b : BlockRegistry.blocks)
         { 
         	item = Item.getItemFromBlock(b);
-        	name = Reference.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
+        	name = ModBlocks.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
 
    			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	 
-        }*/
-         
-        for(Item i : ItemRegistry.items)
-        {  
-        	name = Reference.TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
-
-   			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-        if(ModMain.cfg.respawn_egg)
+         
+    /*
+        if(ModBlocks.cfg.respawn_egg)
         {
         	for(Object key : EntityList.entityEggs.keySet())
             {
             	mesher.register(ItemRegistry.respawn_egg, (Integer)key, new ModelResourceLocation(Reference.TEXTURE_LOCATION + "respawn_egg" , "inventory"));	 
             }
-        }
+        }*/
 	}
 
 	private void registerKeyBindings() 

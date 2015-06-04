@@ -109,11 +109,6 @@ public class Util
 		if(world.isAirBlock(pos))
 			world.setBlockState(pos, state); 
 	}
-	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
-	{
-		if(pos != null)
-			spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
-    }
 	public static void spawnParticleSixAround(World world, EnumParticleTypes type, BlockPos pos)
 	{
 		spawnParticle(world,type,pos.up());
@@ -122,6 +117,11 @@ public class Util
 		spawnParticle(world,type,pos.west());
 		spawnParticle(world,type,pos.south());
 		spawnParticle(world,type,pos.north());
+    }
+	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
+	{
+		if(pos != null)
+			spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
     }
 	public static void spawnParticle(World world, EnumParticleTypes type, double x, double y, double z)
 	{ 

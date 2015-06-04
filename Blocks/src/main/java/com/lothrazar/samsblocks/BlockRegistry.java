@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import com.lothrazar.samsblocks.BlockCommandBlockCraftable.CommandType;
 
 import net.minecraft.block.Block;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry; 
  
@@ -43,7 +41,10 @@ public class BlockRegistry
 			block_fragile = new BlockFragile();
 			BlockRegistry.registerBlock(block_fragile, "block_fragile"); 
 			block_fragile.addRecipe();
-		}/*
+		}
+		
+		 
+		/*
 		if(ModMain.cfg.beetroot)
 		{
 			beetroot_crop =  new BlockCropBeetroot();

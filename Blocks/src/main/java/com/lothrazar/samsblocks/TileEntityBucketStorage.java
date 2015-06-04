@@ -1,7 +1,6 @@
 package com.lothrazar.samsblocks;
 
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.Packet;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileEntityBucketStorage extends TileEntity
