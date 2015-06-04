@@ -1,16 +1,25 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samsstacks;
 
 import java.util.ArrayList;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 
-public class StackSizeRegistry
-{ 
-	public static void registerChanges()
-	{ 
-		if(!ModMain.cfg.increasedStackSizes ) {return;}
-		
+@Mod(modid = ModStacks.MODID, version = ModStacks.VERSION,name = ModStacks.NAME, useMetadata = true )
+public class ModStacks
+{
+	public static final String MODID = "samsstacks";
+	public static final String TEXTURE_LOCATION = MODID + ":";
+	public static final String VERSION = "1.8-1.0.0";
+	public static final String NAME = "Builder's Stackables";
+
+    
+    @EventHandler
+    public void init(FMLInitializationEvent event)
+    {
 		ArrayList<Item> to64 = new ArrayList<Item>();
  
 		to64.add(Items.ender_pearl);
@@ -56,5 +65,5 @@ public class StackSizeRegistry
 		{
 			item.setMaxStackSize(64);
 		}
-	}
+    }
 }
