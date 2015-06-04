@@ -1,7 +1,9 @@
 package com.lothrazar.samsblocks;
  
+import java.util.ArrayList;
+
 import org.apache.logging.log4j.Logger;
- 
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem; 
@@ -53,12 +55,27 @@ public class ModBlocks
 		
 		cfg = new ConfigRegistry(new Configuration(event.getSuggestedConfigurationFile()));
 
-		FMLCommonHandler.instance().bus().register(instance); 
-		MinecraftForge.EVENT_BUS.register(instance); 
-		MinecraftForge.TERRAIN_GEN_BUS.register(instance);
-		MinecraftForge.ORE_GEN_BUS.register(instance); 
- 	
 		BlockRegistry.registerBlocks();
+		
+		
+		
+		
+	  	ArrayList<Object> handlers = new ArrayList<Object>();
+	    
+     	handlers.add(instance                         ); 
+     	handlers.add(BlockRegistry.block_storelava    );//TODO: why are these four done so weirdly
+		handlers.add(BlockRegistry.block_storewater   );
+		handlers.add(BlockRegistry.block_storemilk    ); 
+		handlers.add(BlockRegistry.block_storeempty   );   
+
+     	for(Object h : handlers)
+     		if(h != null)
+	     	{ 
+	    		FMLCommonHandler.instance().bus().register(h); 
+	    		MinecraftForge.EVENT_BUS.register(h); 
+	    		//MinecraftForge.TERRAIN_GEN_BUS.register(h);
+	    		//MinecraftForge.ORE_GEN_BUS.register(h); 
+	     	} 
 	}
 	
     @EventHandler
