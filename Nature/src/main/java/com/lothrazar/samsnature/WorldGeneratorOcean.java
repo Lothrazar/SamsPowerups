@@ -2,8 +2,7 @@ package com.lothrazar.samsnature;
 
 import java.util.Random;
 
-import com.lothrazar.samsnature.ModNature; 
-import net.minecraft.block.state.IBlockState;
+import com.lothrazar.samsnature.ModNature;  
 import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;

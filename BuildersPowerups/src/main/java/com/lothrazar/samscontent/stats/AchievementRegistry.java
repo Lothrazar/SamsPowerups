@@ -4,25 +4,18 @@ import java.util.ArrayList;
 
 import com.lothrazar.samscontent.BlockRegistry;
 import com.lothrazar.samscontent.ItemRegistry;
-import com.lothrazar.samscontent.common.PlayerPowerups;
 import com.lothrazar.util.Reference; 
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.stats.AchievementList;
 import net.minecraftforge.common.AchievementPage;
-import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemSmeltedEvent;
-import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent; 
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.fml.common.gameevent.PlayerEvent.ItemPickupEvent;
 
 public class AchievementRegistry 
 {

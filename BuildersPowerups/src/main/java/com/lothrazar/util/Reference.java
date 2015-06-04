@@ -1,13 +1,5 @@
 package com.lothrazar.util;
 
-import java.util.ArrayList;
-import net.minecraft.entity.passive.EntityBat;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.passive.EntityCow;
-import net.minecraft.entity.passive.EntityMooshroom;
-import net.minecraft.entity.passive.EntityPig;
-import net.minecraft.entity.passive.EntitySheep;
-
 public class Reference 
 {  
 	public static final String MODID = "samscontent";
