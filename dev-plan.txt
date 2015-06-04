@@ -7,14 +7,17 @@ MOD SPLIT
 [Nature]  WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
 				/flint pumpkin etc
 
+[Screentext] DEBUG SCREEN standalone: date/villagers/slime/horse/ reduced imrpovements
+
+[Recipes] recipes_new + uncrafting
+
 [Spells] + item chest sack
 	f  the exp bottle crafting + bottle return
 	swift deposit - TODO: change to spell..??
 	respawn eggs--test maybe making this a spell+projectile?
 
-[Screentext] DEBUG SCREEN standalone: date/villagers/slime/horse/ reduced imrpovements
+[Stacks] 64 + extra fuel
 
--Recipes recipes_new + uncrafting
 
 -mob_changes- nametag stuff, health, endermen drop carrying, etc
 		mob_spawning

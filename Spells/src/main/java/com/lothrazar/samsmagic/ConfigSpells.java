@@ -3,7 +3,7 @@ package com.lothrazar.samsmagic;
 import net.minecraftforge.common.config.Configuration;  
 import com.lothrazar.samsmagic.entity.projectile.EntitySnowballBolt; 
 
-public class ConfigRegistry
+public class ConfigSpells
 { 
 	private Configuration instance;
 	private String category = "";
@@ -13,7 +13,7 @@ public class ConfigRegistry
 		return instance;
 	}
 	
-	public ConfigRegistry(Configuration c)
+	public ConfigSpells(Configuration c)
 	{
 		instance = c; 
 		instance.load();

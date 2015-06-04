@@ -108,7 +108,7 @@ public class ModMain
 		 
 		this.registerEventHandlers(); 
 		
-		BlockHardnessRegistry.registerChanges(); 
+		//BlockHardnessRegistry.registerChanges(); 
 		 
 	}
         

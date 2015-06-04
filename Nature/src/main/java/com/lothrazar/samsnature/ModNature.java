@@ -35,7 +35,7 @@ public class ModNature
 	//@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
 	//public static CommonProxy proxy;   
 	public static Logger logger; 
-	public static ConfigRegistry cfg;
+	public static ConfigNature cfg;
 //	public static SimpleNetworkWrapper network;  
  
 	
@@ -44,7 +44,7 @@ public class ModNature
 	{ 
 		logger = event.getModLog();  
 		
-		cfg = new ConfigRegistry(new Configuration(event.getSuggestedConfigurationFile()));
+		cfg = new ConfigNature(new Configuration(event.getSuggestedConfigurationFile()));
 	  
     	//network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
     	

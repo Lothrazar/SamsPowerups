@@ -68,7 +68,7 @@ public class ModSpells
 	@SidedProxy(clientSide="com.lothrazar.samsmagic.proxy.ClientProxy", serverSide="com.lothrazar.samsmagic.proxy.CommonProxy")
 	public static CommonProxy proxy;   
 	public static Logger logger; 
-	public static ConfigRegistry cfg;
+	public static ConfigSpells cfg;
 	public static SimpleNetworkWrapper network; 
 
 	@EventHandler
@@ -76,7 +76,7 @@ public class ModSpells
 	{ 
 		logger = event.getModLog();  
 		
-		cfg = new ConfigRegistry(new Configuration(event.getSuggestedConfigurationFile()));
+		cfg = new ConfigSpells(new Configuration(event.getSuggestedConfigurationFile()));
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( MODID );     	
     	
