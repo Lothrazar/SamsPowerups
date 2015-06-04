@@ -303,8 +303,6 @@ public class ConfigRegistry
 		emerald_armor = instance.getBoolean("emerald_armor",category, true,
 				"Adds a full set of emerald armor and tools.  Better enchantability than gold, and better stats than diamond, but requires emerald blocks.");  
 		  
-		horse_food_upgrades = instance.getBoolean("horse_food_upgrades",category, true,
-				"Adds three items that let you upgrade a horses health, change its colour and change it into a zombie or skeleton horse.");  
 	 
 		appleChocolate = instance.get( category,"apple_chocolate",true).getBoolean();   
 		appleEmerald = instance.get( category,"apple_emerald",true).getBoolean();  
@@ -508,7 +506,7 @@ public class ConfigRegistry
 	public int sandChance;
 	public int sandNumBlocks;
 	public boolean canNameVillagers;
-	public boolean horse_food_upgrades;
+	//public boolean horse_food_upgrades;
 	public int cowExtraLeather;
 	public int sleeping_hunger_seconds;  
 	public boolean experience_bottle;

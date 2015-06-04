@@ -48,10 +48,7 @@ public class ItemRegistry
 	public static Item beetroot_seed ;
 	public static Item beetrootItem;
 	public static Item beetrootSoup;	
-	
-	public static ItemHorseFood emeraldCarrot; 
-	public static ItemHorseFood lapisCarrot; 
-	public static ItemHorseFood diamondCarrot; 
+	 
 	 
 	public static ItemRespawnEggAnimal respawn_egg; 
 	public static Item soulstone;
@@ -193,20 +190,7 @@ public class ItemRegistry
 		}
 
 	
-		if(ModMain.cfg.horse_food_upgrades )
-		{  
-			emeraldCarrot = new ItemHorseFood();
-			ItemRegistry.registerItem(emeraldCarrot, "horse_upgrade_type");
-			
-			lapisCarrot = new ItemHorseFood();
-			ItemRegistry.registerItem(lapisCarrot, "horse_upgrade_variant");
-			
-			diamondCarrot = new ItemHorseFood();
-			ItemRegistry.registerItem(diamondCarrot, "horse_upgrade_health"); 
-			
-			ItemHorseFood.addRecipes();
-		}
-		
+ 
 		if(ModMain.cfg.beetroot)
 		{  
 			

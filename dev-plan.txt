@@ -6,6 +6,9 @@ MOD SPLIT
 
 [Nature]  WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
 				/flint pumpkin etc
+        block hardness changes
+
+[HorseFood]
 
 [Screentext] DEBUG SCREEN standalone: date/villagers/slime/horse/ reduced imrpovements
 
@@ -19,6 +22,7 @@ MOD SPLIT
 [Stacks] 64 + extra fuel
 
 
+
 -mob_changes- nametag stuff, health, endermen drop carrying, etc
 		mob_spawning
 
@@ -27,12 +31,12 @@ MOD SPLIT
 
 -command blocks - expand by adding more gamerules/colours
 
+
 -emerald stuff + apples
  + Beetroot -- OR PUT BEETROOT IN NATURE??
 
-??block hardness changes
 
-[Stacks] size to 64-standalone?
+
 
 Horse food - standalone?
 

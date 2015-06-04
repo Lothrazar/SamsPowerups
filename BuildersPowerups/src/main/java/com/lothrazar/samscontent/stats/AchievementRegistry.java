@@ -39,10 +39,7 @@ public class AchievementRegistry
 	public Achievement appleEnder;
 	public Achievement beetrootSeed; 
 	 
-	public Achievement appleNether;
-	public Achievement lapisCarrot;
-	public Achievement emeraldCarrot;
-	public Achievement diamondCarrot;
+	public Achievement appleNether; 
 	//public Achievement wandWater;
  
  
@@ -136,26 +133,7 @@ public class AchievementRegistry
 		
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
-
-		if(ItemRegistry.diamondCarrot != null)//DIAMOND
-		{ 
-			xCurrent += xSpacing;
-			diamondCarrot = new Achievement(Reference.MODID + "_diamondCarrot", "diamondCarrot" ,xCurrent, yCurrent,ItemRegistry.diamondCarrot,null);
-			register(diamondCarrot);
-		}
-		if(ItemRegistry.emeraldCarrot != null)//DIAMOND
-		{ 
-			xCurrent += xSpacing;
-			emeraldCarrot = new Achievement(Reference.MODID + "_emeraldCarrot", "emeraldCarrot" ,xCurrent, yCurrent,ItemRegistry.emeraldCarrot,null);
-			register(emeraldCarrot);
-		}
-		if(ItemRegistry.lapisCarrot != null)//DIAMOND
-		{ 
-			xCurrent += xSpacing;
-			lapisCarrot = new Achievement(Reference.MODID + "_lapisCarrot", "lapisCarrot" ,xCurrent, yCurrent,ItemRegistry.lapisCarrot,null);
-			register(lapisCarrot);
-		} 
-
+ 
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
  
@@ -297,18 +275,7 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(appleNether,event.player);  
 		} 
-		else if(item == ItemRegistry.diamondCarrot)
-		{ 
-			addStatSafe(diamondCarrot,event.player);  
-		} 
-		else if(item == ItemRegistry.emeraldCarrot)
-		{ 
-			addStatSafe(emeraldCarrot,event.player);  
-		} 
-		else if(item == ItemRegistry.lapisCarrot)
-		{ 
-			addStatSafe(lapisCarrot,event.player);  
-		}  
+ 
 		else if(Block.getBlockFromItem(item) == BlockRegistry.block_fishing) 
 		{ 
 			addStatSafe(block_fishing,event.player);  

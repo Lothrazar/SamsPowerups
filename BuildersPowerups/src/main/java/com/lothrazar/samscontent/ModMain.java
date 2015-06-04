@@ -272,15 +272,7 @@ public class ModMain
 			} 
 		} 
   
-		if(held != null && held.getItem() instanceof ItemHorseFood)
-		{     
-			if(event.target instanceof EntityHorse)
-			{ 
-				ItemHorseFood.onHorseInteract((EntityHorse)event.target,event.entityPlayer,held);  
-				
-				event.setCanceled(true);//stop the GUI inventory opening
-			}  
-		}  
+	 
   	} 
 	 
 	@SubscribeEvent
