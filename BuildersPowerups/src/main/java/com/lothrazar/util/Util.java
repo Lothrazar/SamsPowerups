@@ -399,42 +399,6 @@ public class Util
 		return StatCollector.translateToLocal(name);
 	}
 
-	public static String noteToString(byte note) 
-	{
-		String s = null;
-		
-		switch(note)
-		{
-		case 0:   s = EnumChatFormatting.YELLOW + "F#";  	break;//yellow
-		case 1:   s = EnumChatFormatting.YELLOW + "G";  	break;
-		case 2:   s = EnumChatFormatting.YELLOW + "G#";  	break;
-		case 3:   s = EnumChatFormatting.YELLOW + "A";  	break;//or
-		case 4:   s = EnumChatFormatting.YELLOW + "A#";  	break;//or
-		case 5:   s = EnumChatFormatting.RED + "B";  		break;//red
-		case 6:   s = EnumChatFormatting.RED + "C";  		break;//red
-		case 7:   s = EnumChatFormatting.DARK_RED + "C#";  	break;
-		case 8:   s = EnumChatFormatting.DARK_RED + "D";  	break;
-		case 9:   s = EnumChatFormatting.LIGHT_PURPLE + "D#";  	break;//pink
-		case 10:  s = EnumChatFormatting.LIGHT_PURPLE + "E";  	break;
-		case 11:  s = EnumChatFormatting.DARK_PURPLE + "F";  	break;//purp
-		case 12:  s = EnumChatFormatting.DARK_PURPLE + "F#";  	break;
-		case 13:  s = EnumChatFormatting.DARK_PURPLE + "G";  	break;
-		case 14:  s = EnumChatFormatting.DARK_BLUE + "G#";  	break;
-		case 15:  s = EnumChatFormatting.DARK_BLUE + "A";  	break;//blue
-		case 16:  s = EnumChatFormatting.BLUE + "A#";  	break;
-		case 17:  s = EnumChatFormatting.BLUE + "B";  	break;
-		case 18:  s = EnumChatFormatting.DARK_AQUA + "C";  	break;//lt blue?
-		case 19:  s = EnumChatFormatting.AQUA + "C#";  	break;
-		case 20:  s = EnumChatFormatting.AQUA + "D";  	break;//EnumChatFormatting.GREEN
-		case 21:  s = EnumChatFormatting.GREEN + "D#";  	break;//there is no light green or dark green...
-		case 22:  s = EnumChatFormatting.GREEN + "E";  	break;
-		case 23:  s = EnumChatFormatting.AQUA + "F";  	break;
-		case 24:  s = EnumChatFormatting.AQUA + "F#";  	break;//EnumChatFormatting.GREEN
-		}
-		
-		return s;
-	}
-	
 	
 	public static TileEntityChest getChestAdj(TileEntityChest chest) 
 	{

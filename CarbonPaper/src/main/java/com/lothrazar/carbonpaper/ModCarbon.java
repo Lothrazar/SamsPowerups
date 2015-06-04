@@ -1,13 +1,12 @@
 package com.lothrazar.carbonpaper;
- 
- 
-import net.minecraft.block.Block;
+  
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
@@ -23,6 +22,8 @@ public class ModCarbon
     public static final String VERSION = "1.8-1.0";
     @Instance(value = ModCarbon.MODID)
 	public static ModCarbon instance;
+    @SidedProxy(clientSide="com.lothrazar.carbonpaper.ClientProxy", serverSide="com.lothrazar.carbonpaper.CommonProxy")
+	public static CommonProxy proxy;   
 	
 	public static ItemPaperCarbon carbon_paper;  
 
@@ -45,7 +46,7 @@ public class ModCarbon
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
-		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
+		//Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
 //		TileEntity container = event.world.getTileEntity(event.pos);
  
 		if(held != null && held.getItem() == carbon_paper &&   
