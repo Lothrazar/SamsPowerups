@@ -1,6 +1,8 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samsblocks;
 
 import java.util.ArrayList;
+
+import com.lothrazar.samsblocks.BlockCommandBlockCraftable.CommandType;
 
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
@@ -8,9 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.registry.GameRegistry; 
-import com.lothrazar.samscontent.block.*;
-import com.lothrazar.samscontent.block.BlockCommandBlockCraftable.CommandType;
-import com.lothrazar.util.Reference; 
+ 
 
 public class BlockRegistry 
 {  
@@ -23,7 +23,6 @@ public class BlockRegistry
 	public static BlockBucketStorage block_storewater;
 	public static BlockBucketStorage block_storemilk;
 	public static BlockBucketStorage block_storeempty;
-	public static BlockCropBeetroot beetroot_crop;
 	public static BlockFragile block_fragile;
 	//store blocks in a list - because this is used by the ModelMesher in the client proxy later
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
@@ -39,20 +38,20 @@ public class BlockRegistry
 	
 	public static void registerBlocks() 
 	{  
-		if(ModMain.cfg.block_fragile)
+		if(ModBlocks.cfg.block_fragile)
 		{
 			block_fragile = new BlockFragile();
 			BlockRegistry.registerBlock(block_fragile, "block_fragile"); 
 			block_fragile.addRecipe();
-		}
+		}/*
 		if(ModMain.cfg.beetroot)
 		{
 			beetroot_crop =  new BlockCropBeetroot();
 
 			BlockRegistry.registerBlock(beetroot_crop, "beetroot_crop"); 
-		}
+		}*/
 		 
-		if(ModMain.cfg.storeBucketsBlock)
+		if(ModBlocks.cfg.storeBucketsBlock)
 		{
 			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket);  
 			registerBlock(BlockRegistry.block_storewater, "block_storewater");
@@ -63,16 +62,16 @@ public class BlockRegistry
 			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket);  
 			BlockRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");	  
 	
-			GameRegistry.registerTileEntity(com.lothrazar.samscontent.tileentity.TileEntityBucketStorage.class, Reference.MODID);
+			GameRegistry.registerTileEntity(TileEntityBucketStorage.class, ModBlocks.MODID);
 		
 			BlockRegistry.block_storeempty = new BlockBucketStorage(null); //null for emtpy, no liquids stored inside
-			BlockRegistry.block_storeempty.setCreativeTab(ModMain.tabSamsContent); 
+			BlockRegistry.block_storeempty.setCreativeTab(ModBlocks.tabSamsContent); 
 			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
 			
 			BlockRegistry.block_storeempty.addRecipe();
 		}
 		
-		if(ModMain.cfg.shearSheepBlock)
+		if(ModBlocks.cfg.shearSheepBlock)
 		{
 			BlockRegistry.block_shear_sheep = new BlockShearWool(); 
 			
@@ -81,7 +80,7 @@ public class BlockRegistry
 			BlockShearWool.addRecipe();
 		}
 		
-		if(ModMain.cfg.fishingNetBlock)
+		if(ModBlocks.cfg.fishingNetBlock)
 		{
 			BlockRegistry.block_fishing = new BlockFishing(); 
 			
@@ -90,7 +89,7 @@ public class BlockRegistry
 			BlockFishing.addRecipe();
 		}
   
-		if(ModMain.cfg.weatherBlock) 
+		if(ModBlocks.cfg.weatherBlock) 
 		{
 			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);
 	 
@@ -99,7 +98,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_weather,new ItemStack(Items.water_bucket));
 		}
 		 
-		if(ModMain.cfg.teleportSpawnBlock) 
+		if(ModBlocks.cfg.teleportSpawnBlock) 
 		{ 
 			BlockRegistry.command_block_tpspawn = new BlockCommandBlockCraftable(CommandType.TeleportSpawn);
 	 
@@ -108,7 +107,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpspawn,new ItemStack(Items.ender_eye));
 		}
 
-		if(ModMain.cfg.teleportBedBlock) 
+		if(ModBlocks.cfg.teleportBedBlock) 
 		{ 
 			BlockRegistry.command_block_tpbed = new BlockCommandBlockCraftable(CommandType.TeleportBed);
 	 
@@ -117,7 +116,7 @@ public class BlockRegistry
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.bed));
 		} 
 		
-		/*if(ModMain.cfg.xRayBlock)
+		/*if(ModBlocks.cfg.xRayBlock)
 		{ 
 			BlockRegistry.block_xray = new BlockXRay(); 
 			

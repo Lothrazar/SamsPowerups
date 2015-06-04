@@ -1,11 +1,7 @@
-package com.lothrazar.samscontent.block;
+package com.lothrazar.samsblocks;
 
 import java.util.Random;  
-
-import com.lothrazar.samscontent.BlockRegistry;
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.*;
-
+ 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
@@ -31,7 +27,7 @@ public class BlockFishing extends Block
 	public BlockFishing()
 	{
 		super(Material.wood);  
-		this.setCreativeTab(ModMain.tabSamsContent);
+		this.setCreativeTab(ModBlocks.tabSamsContent);
 		this.setHardness(3F);
 		this.setResistance(5F); 
 		this.setStepSound(soundTypeWood);
@@ -97,7 +93,7 @@ public class BlockFishing extends Block
 			 fishSpawned = pufferfish;
 		 }
 		 
-		 EntityItem ei = Util.dropItemStackInWorld(worldObj, pos, fishSpawned);
+		 EntityItem ei = ModBlocks.dropItemStackInWorld(worldObj, pos, fishSpawned);
 		  
     	worldObj.playSoundAtEntity(ei,"game.neutral.swim.splash",1F,1F); 
     }
@@ -124,10 +120,9 @@ public class BlockFishing extends Block
 				'f', new ItemStack(Items.fishing_rod, 1, 0), 
 				'p', Blocks.planks);
 
-		if(ModMain.cfg.uncraftGeneral)
-		{
+	 
 			GameRegistry.addSmelting(new ItemStack(BlockRegistry.block_fishing)
 			, new ItemStack(Blocks.web, 4), 0); 
-		}
+		 
 	} 
 }

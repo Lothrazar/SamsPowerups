@@ -1,18 +1,21 @@
 MOD SPLIT
 
+[Blocks]-utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
+	-command blocks - expand by adding more gamerules/colours
+
+[HorseFood] 
 
 [Macros] inventory sliders + macro binding keys  + all command
 	push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
 
 [Nature]  WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
-				/flint pumpkin etc
+	/flint pumpkin etc
         block hardness changes
 
-[HorseFood]
+[Recipes] recipes_new + uncrafting
 
 [Screentext] DEBUG SCREEN standalone: date/villagers/slime/horse/ reduced imrpovements
 
-[Recipes] recipes_new + uncrafting
 
 [Spells] + item chest sack
 	f  the exp bottle crafting + bottle return
@@ -23,27 +26,25 @@ MOD SPLIT
 
 
 
--mob_changes- nametag stuff, health, endermen drop carrying, etc
-		mob_spawning
 
 
--utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
-
--command blocks - expand by adding more gamerules/colours
 
 
 -emerald stuff + apples
  + Beetroot -- OR PUT BEETROOT IN NATURE??
 
 
-
-
-Horse food - standalone?
+ ??apples
+ 
 
 carbon paper - standalone?
 
 -difficulty mod: smoothstone tools + furnace coal: merge this with what?
     fragile_torches  
+-mob_changes- nametag stuff, health, endermen drop carrying, etc
+		mob_spawning
+
+
 
 
 skull sign names?

@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import org.apache.logging.log4j.Logger;   
  
 
+
+
 import com.lothrazar.samscontent.cfg.ConfigRegistry; 
 import com.lothrazar.samscontent.common.PlayerPowerups; 
 import com.lothrazar.samscontent.event.*;
@@ -12,7 +14,6 @@ import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
 import com.lothrazar.samscontent.proxy.*;  
 import com.lothrazar.samscontent.stats.*;
-import com.lothrazar.samscontent.tileentity.TileEntityBucketStorage;  
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -95,7 +96,6 @@ public class ModMain
  		
 		//PotionRegistry.registerPotionEffects();
 
-		BlockRegistry.registerBlocks();
 		
 		ItemRegistry.registerItems();
 		
@@ -133,11 +133,7 @@ public class ModMain
       //	handlers.add(new DebugScreenText()          );  //This one can stay  
      	handlers.add(instance                         ); 
      	handlers.add(achievements);  
-		handlers.add(BlockRegistry.block_storelava    );//TODO: why are these four done so weirdly
-		handlers.add(BlockRegistry.block_storewater   );
-		handlers.add(BlockRegistry.block_storemilk    ); 
-		handlers.add(BlockRegistry.block_storeempty   );   
-
+		
      	for(Object h : handlers)
      		if(h != null)
 	     	{ 
@@ -492,25 +488,7 @@ public class ModMain
  		} 
  	}
 	
-	@SubscribeEvent
-	public void onBreakEvent(BreakEvent event)
-	{
-		TileEntity ent = event.world.getTileEntity(event.pos);
-		  
-		//TODO; check tool/pickaxe? if notHarvestable or whatever, drop the buckets and the ..glass?
-		 
-		if(ent != null && ent instanceof TileEntityBucketStorage)
-		{
-			TileEntityBucketStorage t = (TileEntityBucketStorage)ent;
-			ItemStack stack = new ItemStack(event.state.getBlock());
-			
-			Util.setItemStackNBT(stack, "buckets", t.getBuckets());
-		
-			Util.dropItemStackInWorld(event.world, event.pos, stack);
 
-			t.setBuckets(0);
-		}
-	}
 	
 	@SubscribeEvent
 	public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)

@@ -1,8 +1,7 @@
 package com.lothrazar.samscontent.stats;
 
 import java.util.ArrayList;
-
-import com.lothrazar.samscontent.BlockRegistry;
+ 
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.util.Reference; 
 
@@ -151,56 +150,17 @@ public class AchievementRegistry
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
 	 
-		if(BlockRegistry.block_fragile != null) 
-		{ 
-			xCurrent += xSpacing;
-			block_fragile = new Achievement(Reference.MODID + "_block_fragile", "block_fragile" ,xCurrent, yCurrent,BlockRegistry.block_fragile,null);
-			register(block_fragile);
-		}
+		 
 	 
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
 		
-		if(BlockRegistry.block_fishing != null) 
-		{ 
-			xCurrent += xSpacing;
-			block_fishing = new Achievement(Reference.MODID + "_block_fishing", "block_fishing" ,xCurrent, yCurrent,BlockRegistry.block_fishing,null);
-			register(block_fishing);
-		}
-		if(BlockRegistry.block_shear_sheep != null) 
-		{ 
-			xCurrent += xSpacing;
-			block_shear_sheep = new Achievement(Reference.MODID + "_block_shear_sheep", "block_shear_sheep" ,xCurrent, yCurrent,BlockRegistry.block_shear_sheep,null);
-			register(block_shear_sheep);
-		}
-		if(BlockRegistry.block_storeempty != null) 
-		{ 
-			xCurrent += xSpacing;
-			block_storeempty = new Achievement(Reference.MODID + "_block_storeempty", "block_storeempty" ,xCurrent, yCurrent,BlockRegistry.block_storeempty,null);
-			register(block_storeempty);
-		}
+		 
 		
 		xCurrent = xStart;//new row
 		yCurrent += ySpacing;
 		
-		if(BlockRegistry.command_block_tpbed != null) 
-		{ 
-			xCurrent += xSpacing;
-			command_block_tpbed = new Achievement(Reference.MODID + "_command_block_tpbed", "command_block_tpbed" ,xCurrent, yCurrent,BlockRegistry.command_block_tpbed,null);
-			register(command_block_tpbed);
-		}
-		if(BlockRegistry.command_block_tpspawn != null) 
-		{ 
-			xCurrent += xSpacing;
-			command_block_tpspawn = new Achievement(Reference.MODID + "_command_block_tpspawn", "command_block_tpspawn" ,xCurrent, yCurrent,BlockRegistry.command_block_tpspawn,null);
-			register(command_block_tpspawn);
-		}
-		if(BlockRegistry.command_block_weather != null) 
-		{ 
-			xCurrent += xSpacing;
-			command_block_weather = new Achievement(Reference.MODID + "_command_block_weather", "command_block_weather" ,xCurrent, yCurrent,BlockRegistry.command_block_weather,null);
-			register(command_block_weather);
-		}
+	 
 		//xCurrent = xStart;//new row
 		//yCurrent += ySpacing;
 		
@@ -268,35 +228,7 @@ public class AchievementRegistry
 		{ 
 			addStatSafe(appleNether,event.player);  
 		} 
- 
-		else if(Block.getBlockFromItem(item) == BlockRegistry.block_fishing) 
-		{ 
-			addStatSafe(block_fishing,event.player);  
-		} 
-		else if(Block.getBlockFromItem(item) == BlockRegistry.block_fragile) 
-		{ 
-			addStatSafe(block_fragile,event.player);  
-		} 	
-		else if(Block.getBlockFromItem(item) == BlockRegistry.block_shear_sheep) 
-		{ 
-			addStatSafe(block_shear_sheep,event.player);  
-		} 
-		else if(Block.getBlockFromItem(item) == BlockRegistry.block_storeempty) 
-		{ 
-			addStatSafe(block_storeempty,event.player);  
-		} 
-		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_tpbed) 
-		{ 
-			addStatSafe(command_block_tpbed,event.player);  
-		} 
-		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_tpspawn) 
-		{ 
-			addStatSafe(command_block_tpspawn,event.player);  
-		} 
-		else if(Block.getBlockFromItem(item) == BlockRegistry.command_block_weather) 
-		{ 
-			addStatSafe(command_block_weather,event.player);  
-		}   
+   
 	}
 	
 	private void addStatSafe(Achievement stat, EntityPlayer player)

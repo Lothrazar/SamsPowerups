@@ -1,18 +1,14 @@
 package com.lothrazar.samscontent.proxy;
 
-import org.lwjgl.input.Keyboard;   
 import  net.minecraft.item.Item;
-import com.lothrazar.samscontent.BlockRegistry;
+
 import com.lothrazar.samscontent.ItemRegistry;
 import com.lothrazar.samscontent.ModMain;  
 import com.lothrazar.util.*;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraft.block.Block;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.minecraft.client.settings.GameSettings;
-import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.entity.EntityList;
 
 public class ClientProxy extends CommonProxy 
@@ -37,14 +33,14 @@ public class ClientProxy extends CommonProxy
 
         String name;
         Item item;
-	 
+	 /*
         for(Block b : BlockRegistry.blocks)
         { 
         	item = Item.getItemFromBlock(b);
         	name = Reference.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
 
    			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	 
-        }
+        }*/
          
         for(Item i : ItemRegistry.items)
         {  

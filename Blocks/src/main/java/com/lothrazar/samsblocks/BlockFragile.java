@@ -1,10 +1,8 @@
-package com.lothrazar.samscontent.block;
+package com.lothrazar.samsblocks;
 
 import java.util.Random;
 
-import com.lothrazar.samscontent.BlockRegistry;
-import com.lothrazar.samscontent.ModMain;
-
+ 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -22,7 +20,7 @@ public class BlockFragile extends Block
 	public BlockFragile() 
 	{
 		super(Material.wood);
-		this.setCreativeTab(ModMain.tabSamsContent);
+		this.setCreativeTab(ModBlocks.tabSamsContent);
 		this.setTickRandomly(true);
 		this.setHardness(0F);
 		this.setResistance(0F); 
@@ -51,7 +49,7 @@ public class BlockFragile extends Block
 				"ss", 
 				's',Items.stick);
 		
-		if(ModMain.cfg.uncraftGeneral)
+		//if(ModMain.cfg.uncraftGeneral)
 			GameRegistry.addShapelessRecipe(new ItemStack(Items.stick,4), BlockRegistry.block_fragile);
 	}
 }

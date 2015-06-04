@@ -3,6 +3,7 @@ package com.lothrazar.samscontent;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -19,6 +20,7 @@ import net.minecraft.item.ItemSword;
 import net.minecraft.potion.Potion;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+ 
 import com.lothrazar.samscontent.item.*;  
 import com.lothrazar.util.Reference; 
 
@@ -190,7 +192,7 @@ public class ItemRegistry
 		}
 
 	
- 
+ /*
 		if(ModMain.cfg.beetroot)
 		{  
 			
@@ -212,7 +214,7 @@ public class ItemRegistry
 					);
 		}
   
-
+*/
 		if(ModMain.cfg.carbon_paper)
 		{ 
 			ItemRegistry.carbon_paper = new ItemPaperCarbon();
