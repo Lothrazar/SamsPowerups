@@ -2,11 +2,12 @@ package com.lothrazar.samsnature;
 
 import java.util.ArrayList; 
 
-import org.apache.logging.log4j.Logger;    
-
+import org.apache.logging.log4j.Logger;     
+ 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -14,12 +15,15 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.event.entity.player.UseHoeEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
   
 @Mod(modid = ModNature.MODID, version = ModNature.VERSION,	name = ModNature.NAME, useMetadata = true )  
@@ -31,14 +35,14 @@ public class ModNature
 	public static final String NAME = "Sam's Nature";
 
 	@Instance(value = MODID)
-	public static ModNature instance;
-	//@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
-	//public static CommonProxy proxy;   
+	public static ModNature instance;	
+	@SidedProxy(clientSide="com.lothrazar.samsnature.ClientProxy", serverSide="com.lothrazar.samsnature.CommonProxy")
+	public static CommonProxy proxy;   
+
 	public static Logger logger; 
 	public static ConfigNature cfg;
 //	public static SimpleNetworkWrapper network;  
- 
-	
+
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{ 
@@ -50,42 +54,10 @@ public class ModNature
     	
     	//network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
     //	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
- 		
+ 		ItemBlockRegistry.registerItems();
  
-		 
-		this.registerEventHandlers(); 
-		 
-		 
-	}
-        
-	@EventHandler
-	public void onInit(FMLInitializationEvent event)
-	{       
- 
-	//	MobSpawningRegistry.registerSpawns();
-  
-		ChestLootGenerator.regsiterLoot();
-		   
- /*
-  		if(ModMain.cfg.moreFuel) 
-  		{
-  			GameRegistry.registerFuelHandler(new FurnaceFuelRegistry()); 
-  		}*/
-  		
-  		if(ModNature.cfg.worldGenOceansNotUgly)
-		{ 
-  			int weight = 0;
-			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
-		}
-  		 
- 
-		//proxy.registerRenderers();
-	}
-	 
-	private void registerEventHandlers() 
-	{ 
-    	ArrayList<Object> handlers = new ArrayList<Object>();
-  
+		ArrayList<Object> handlers = new ArrayList<Object>();
+		  
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
       	handlers.add(instance                         );  
 
@@ -97,7 +69,45 @@ public class ModNature
 	    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
 	    		MinecraftForge.ORE_GEN_BUS.register(h); 
 	     	} 
+		 
+		 
 	}
+	@SubscribeEvent
+	public void onHoeUse(UseHoeEvent event)
+	{  
+		//this fires BEFORE the block turns into farmland (is cancellable) so check for grass and dirt, not farmland
+		
+		Block clicked = event.world.getBlockState(event.pos).getBlock();
+		
+		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
+			&& event.world.isAirBlock(event.pos.up()) 
+			&& ItemBlockRegistry.beetroot_seed != null
+			&& event.world.rand.nextInt(16) == 0) //it is a 1/15 chance
+		{			
+			if(event.world.isRemote == false)
+			{
+				dropItemStackInWorld(event.world, event.pos, ItemBlockRegistry.beetroot_seed);
+			}
+
+			//event.entityPlayer.addStat(achievements.beetrootSeed, 1);
+		}
+	}
+	@EventHandler
+	public void onInit(FMLInitializationEvent event)
+	{       
+		ChestLootGenerator.regsiterLoot();
+
+  		if(ModNature.cfg.worldGenOceansNotUgly)
+		{ 
+  			int weight = 0;
+			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
+		}
+  		 
+ 
+		proxy.registerRenderers();
+	}
+	 
+	 
 	public static void decrHeldStackSize(EntityPlayer entityPlayer) 
 	{
 		decrHeldStackSize(entityPlayer,1);
@@ -109,71 +119,8 @@ public class ModNature
 			entityPlayer.inventory.decrStackSize(entityPlayer.inventory.currentItem, by);
         }
 	}
- /*
-	@SubscribeEvent
-	public void onLivingDropsEvent(LivingDropsEvent event)
-	{
-		BlockPos pos = event.entity.getPosition();
-		World world = event.entity.worldObj;
 
-		if( event.entity instanceof EntityZombie) //how to get this all into its own class
-		{  
-			EntityZombie z = (EntityZombie)event.entity;
-			
-			if(ModMain.cfg.removeZombieCarrotPotato)
-				for(int i = 0; i < event.drops.size(); i++) 
-				{
-					EntityItem item = event.drops.get(i);
-					
-					if(item.getEntityItem().getItem() == Items.carrot || item.getEntityItem().getItem() == Items.potato)
-					{ 
-						event.drops.remove(i);
-					}
-				}
-			
-			
-			if(z.isChild() && ModMain.cfg.chanceZombieChildFeather > 0 && 
-					event.entity.worldObj.rand.nextInt(100) <= ModMain.cfg.chanceZombieChildFeather)
-			{ 
-				event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ()
-						,new ItemStack(Items.feather)));
-			}
-			 
-			if(z.isVillager() && ModMain.cfg.chanceZombieVillagerEmerald > 0
-					&& event.entity.worldObj.rand.nextInt(100) <=  ModMain.cfg.chanceZombieVillagerEmerald)
-			{
-				event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ() 
-						,new ItemStack(Items.emerald)));
-			} 
-		} 
-		 
-		if(ModMain.cfg.petNametagDrops //no need to restrict to pets && SamsUtilities.isPet(event.entity)
-		  && event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
-		   event.entity.getCustomNameTag() != ""   
-		   ) 
-		{  
-			//item stack NBT needs the name enchanted onto it
-			ItemStack nameTag = Util.buildEnchantedNametag(event.entity.getCustomNameTag());
-		  
-			Util.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
-		}
-		
-		if(ModMain.cfg.petNametagChat && 
-			event.entity instanceof EntityLivingBase && 
-			event.entity.getCustomNameTag() != null && //'custom' is blank if no nametag
-		    event.entity.getCustomNameTag() != ""   &&
-		    event.entity.worldObj.isRemote == false) 
-		{    
-			//show message as if player, works since EntityLiving extends EntityLivingBase
-	 
-			Util.addChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
-		}
-		 
-		if(ModMain.cfg.cowExtraLeather > 0 && event.entity instanceof EntityCow)
-		{
-			event.drops.add(new EntityItem(world,pos.getX(),pos.getY(),pos.getZ(), new ItemStack(Items.leather,ModMain.cfg.cowExtraLeather)));
-		} 
-	} */
+
 	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
 	{
 		if(pos != null)

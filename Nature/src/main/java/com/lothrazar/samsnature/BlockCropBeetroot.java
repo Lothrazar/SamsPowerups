@@ -1,11 +1,9 @@
-package com.lothrazar.samscontent.block;
+package com.lothrazar.samsnature;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-
-import com.lothrazar.samscontent.ItemRegistry;
-
+ 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.IGrowable;
@@ -126,7 +124,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	@Override
 	public Item getItem(World worldIn, BlockPos pos)
 	{
-		return ItemRegistry.beetroot_seed;
+		return ItemBlockRegistry.beetroot_seed;
 	}
 	
 	@Override
@@ -138,7 +136,7 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune)
 	{
-		return ((Integer)state.getValue(AGE)).intValue() == GROWTHMAX ? ItemRegistry.beetrootItem: ItemRegistry.beetroot_seed;
+		return ((Integer)state.getValue(AGE)).intValue() == GROWTHMAX ? ItemBlockRegistry.beetrootItem: ItemBlockRegistry.beetroot_seed;
 	}
 	
 	@Override
@@ -160,10 +158,10 @@ public class BlockCropBeetroot extends BlockBush implements IGrowable
 			{
 				if (rand.nextInt(15) <= age) 
 				{
-					ret.add(new ItemStack(ItemRegistry.beetrootItem)); 
+					ret.add(new ItemStack(ItemBlockRegistry.beetrootItem)); 
 					int seeds = rand.nextInt(3);//0,1,2 only
 					if(seeds > 0)
-						ret.add(new ItemStack(ItemRegistry.beetroot_seed,seeds)); 
+						ret.add(new ItemStack(ItemBlockRegistry.beetroot_seed,seeds)); 
 				}
 			}
 		}

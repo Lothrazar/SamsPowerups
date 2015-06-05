@@ -1,7 +1,6 @@
 package com.lothrazar.samscontent.item;
 
-import com.google.common.collect.Sets;  
-import com.lothrazar.samscontent.ItemRegistry;
+import com.google.common.collect.Sets;   
 import com.lothrazar.samscontent.ModMain;
 import com.lothrazar.util.*;
 
@@ -50,16 +49,16 @@ public class ItemRespawnEggEmpty extends Item
 	public ItemRespawnEggEmpty( )
 	{   
 		super(); 
-		this.setCreativeTab(ModMain.tabSamsContent);
+		//this.setCreativeTab(ModMain.tabSamsContent);
 		this.setMaxStackSize(64);   
 	}
- 
+ /*
 	public static void addRecipe() 
 	{
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.respawn_egg_empty),
 			Items.egg, 
 			Items.ender_eye  );
-	}
+	}*/
 
 	public static void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 
 	{
@@ -124,13 +123,15 @@ public class ItemRespawnEggEmpty extends Item
 				Util.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
 			else
 			{
+				//TODO: 
+				/*
 				ItemStack stack = new ItemStack(ItemRegistry.respawn_egg,1,entity_id);
 				
 				if(target.hasCustomName())
 					stack.setStackDisplayName(target.getCustomNameTag());
 					
 				entityPlayer.dropPlayerItemWithRandomChoice(stack,true);
-
+*/
 			}
 			Util.playSoundAt(entityPlayer, "mob.zombie.remedy");
 			 

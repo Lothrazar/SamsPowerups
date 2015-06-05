@@ -1,20 +1,8 @@
-BUGS:
+[Apples]
 
-ALL: change build.gradle/mcinfo/strings to have namespace sam__ and mod name Sam's 
-and 3 digit 1.0.0
+[Armor]
 
-Trim extras from lang files
 
-Stacks  - mcinfo doesnt show up
- 	-name change to 'Sams Stacks'
-
-Spells  - add  swift deposit - TODO: change to spell..??
-	-add respawn eggs--test maybe making this a spell+projectile?
-	- NEW WORLD BUG: second round defaults to chest
-
-Blocks-bucket storage - addInfo inventory: display count in list
-
-MOD SPLIT
 
 [Blocks]-utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
 	-command blocks - expand by adding more gamerules/colours
@@ -50,6 +38,21 @@ apples
 [Stacks] 64 + extra fuel
 
 
+BUGS:
+
+ALL: change build.gradle/mcinfo/strings to have namespace sam__ and mod name Sam's 
+and 3 digit 1.0.0
+
+Trim extras from lang files
+
+Stacks  - mcinfo doesnt show up
+ 	-name change to 'Sams Stacks'
+
+Spells  - add  swift deposit - TODO: change to spell..??
+	-add respawn eggs--test maybe making this a spell+projectile?
+	- NEW WORLD BUG: second round defaults to chest
+
+Blocks-bucket storage - addInfo inventory: display count in list
 
 
 

@@ -62,15 +62,7 @@ public class ModMain
 	public static Logger logger; 
 	public static ConfigRegistry cfg;
 	public static SimpleNetworkWrapper network; 
-	//public static AchievementRegistry achievements;  
-	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
-	{ 
-		@Override
-		public Item getTabIconItem() 
-		{ 
-			return ItemRegistry.apple_chocolate;
-		}
-	};    
+ 
 	
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
@@ -84,18 +76,8 @@ public class ModMain
     	//network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
     	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
  		
-		//PotionRegistry.registerPotionEffects();
-
-		
-		ItemRegistry.registerItems();
-		
-		ArmorRegistry.registerItems();
-		
-		//achievements = new AchievementRegistry();
-		 
+  
 		this.registerEventHandlers(); 
-		
-		//BlockHardnessRegistry.registerChanges(); 
 		 
 	}
         
@@ -232,11 +214,11 @@ public class ModMain
 	public void onEntityInteractEvent(EntityInteractEvent event)
   	{
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem(); 
-		
+		/*
 		if(held != null && held.getItem() == ItemRegistry.respawn_egg_empty )
 		{
 			ItemRespawnEggEmpty.entitySpawnEgg(event.entityPlayer, event.target); 
-		}
+		}*/
 		  
 		if(ModMain.cfg.canNameVillagers &&  //how to get this all into its own class
 		  held != null && held.getItem() == Items.name_tag && 
@@ -353,26 +335,8 @@ public class ModMain
 		} *///end of skullSignNames
    	}
 	
-	@SubscribeEvent
-	public void onHoeUse(UseHoeEvent event)
-	{  
-		//this fires BEFORE the block turns into farmland (is cancellable) so check for grass and dirt, not farmland
-		
-		Block clicked = event.world.getBlockState(event.pos).getBlock();
-		
-		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
-			&& event.world.isAirBlock(event.pos.up()) 
-			&& ItemRegistry.beetroot_seed != null
-			&& event.world.rand.nextInt(16) == 0) //it is a 1/15 chance
-		{			
-			if(event.world.isRemote == false)
-			{
-				Util.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);
-			}
 
-			//event.entityPlayer.addStat(achievements.beetrootSeed, 1);
-		}
-	}
+ 
 
 	@SubscribeEvent
 	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)

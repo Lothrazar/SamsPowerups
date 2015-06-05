@@ -20,13 +20,14 @@ public class ConfigNature
 		//fragileTorches = instance.getBoolean("fragile_torches",category, true,
 		//		"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
 		 
-	 
- 
+
+		category = "crops";
  	
-		//beetroot =  instance.getBoolean( "beetroot",category,true,
-		//		"Add beetroot to the game.  The same as pocket edition, except they do not work with pigs.  " );
- 
+		beetroot =  instance.getBoolean( "beetroot",category,true,
+				"Add beetroot to the game.  The same as pocket edition, except they do not work with pigs.  " );
+
 		category = "nature";
+
 
 		flintPumpkin = instance.getBoolean("flint_pumpkin",category, true,
     			"Lighting a pumpkin with a flint and steel turns it into a lit pumpkin (jack-o-lantern). ");

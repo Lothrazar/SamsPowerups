@@ -43,15 +43,7 @@ public class BlockRegistry
 			block_fragile.addRecipe();
 		}
 		
-		 
-		/*
-		if(ModMain.cfg.beetroot)
-		{
-			beetroot_crop =  new BlockCropBeetroot();
-
-			BlockRegistry.registerBlock(beetroot_crop, "beetroot_crop"); 
-		}*/
-		 
+		  
 		if(ModBlocks.cfg.storeBucketsBlock)
 		{
 			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket);  
