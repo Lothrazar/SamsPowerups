@@ -1,8 +1,0 @@
-{
-    "parent": "block/cube_all",
-    "textures": {
-        "all": "samscontent:blocks/command_block_weather",
-        "triggered=true": "samscontent:blocks/command_block_weather",
-        "triggered=false": "samscontent:blocks/command_block_weather"
-    }
-}

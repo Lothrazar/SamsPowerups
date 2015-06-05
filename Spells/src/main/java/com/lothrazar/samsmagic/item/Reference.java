@@ -1,4 +1,4 @@
-package com.lothrazar.util;
+package com.lothrazar.samsmagic.item;
 
 public class Reference 
 {  

@@ -1,7 +1,7 @@
 package com.lothrazar.samsmagic;
 
 import java.util.ArrayList; 
-import com.lothrazar.samsmagic.item.ItemChestSack; 
+import com.lothrazar.samsmagic.item.*; 
 import net.minecraft.item.Item;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
@@ -14,6 +14,9 @@ public class ItemRegistry
 	public static int timePotionShort = 90; // 1:30
 	public static int timePotionLong = 8 * 60;// 8:00
 
+	//public static ItemRespawnEggEmpty respawn_egg_empty; 
+	public static ItemRespawnEggAnimal respawn_egg; 
+	
 	public static Item soulstone;
 	public static Item spell_water_dummy;
 	public static Item spell_frostbolt_dummy;
@@ -33,6 +36,13 @@ public class ItemRegistry
 		ItemRegistry.itemChestSack = new ItemChestSack();   
 		ItemRegistry.registerItem(ItemRegistry.itemChestSack, "chest_sack");
 	
+		respawn_egg = new ItemRespawnEggAnimal();
+		ItemRegistry.registerItem(respawn_egg, "respawn_egg");
+		
+	//	ItemRegistry.respawn_egg_empty = new ItemRespawnEggEmpty(); 
+		//ItemRegistry.registerItem(ItemRegistry.respawn_egg_empty, "respawn_egg_empty"); 
+		//ItemRespawnEggEmpty.addRecipe();  
+		
 		soulstone = new Item();
 		ItemRegistry.registerItem(soulstone, "soulstone");
 		spell_heart_dummy = new Item();

@@ -1,8 +1,8 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samsmagic.item;
 
 import com.google.common.collect.Sets;   
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.*;
+import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModSpells;
 
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -120,22 +120,22 @@ public class ItemRespawnEggEmpty extends Item
 			entityPlayer.worldObj.removeEntity(target); 
 			
 			if(entityPlayer.worldObj.isRemote) 
-				Util.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
+				ModSpells.spawnParticle(entityPlayer.worldObj, EnumParticleTypes.VILLAGER_HAPPY, target.getPosition());
 			else
 			{
 				//TODO: 
-				/*
+				
 				ItemStack stack = new ItemStack(ItemRegistry.respawn_egg,1,entity_id);
 				
 				if(target.hasCustomName())
 					stack.setStackDisplayName(target.getCustomNameTag());
 					
 				entityPlayer.dropPlayerItemWithRandomChoice(stack,true);
-*/
+
 			}
-			Util.playSoundAt(entityPlayer, "mob.zombie.remedy");
+			ModSpells.playSoundAt(entityPlayer, "mob.zombie.remedy");
 			 
-			Util.decrHeldStackSize(entityPlayer);
+			//ModSpells.decrHeldStackSize(entityPlayer);
 			
 		} 
 	}

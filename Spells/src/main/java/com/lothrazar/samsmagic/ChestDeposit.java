@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.event;
+package com.lothrazar.samsmagic;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -10,15 +10,20 @@ import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-
-import com.lothrazar.samscontent.ModMain;
-import com.lothrazar.util.Reference;
-import com.lothrazar.util.Util;
-
+ 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class ChestDeposit
-{   
+{   	//100 to 103 is the armor
+	public class PlayerInventory
+	{
+		public static final int ROWS = 3;
+		public static final int COLS = 9;
+		public static final int SIZE = ROWS*COLS;
+		public static final int START = 9;//top left
+		public static final int END = START + SIZE;
+	}
+  
   	public static void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
   	{ 
   		int totalItemsMoved = 0; 
@@ -33,7 +38,7 @@ public class ChestDeposit
 		//player inventory and the small chest have the same dimensions 
 		
 		int START_CHEST = 0; 
-		int END_CHEST =  START_CHEST + Reference.PlayerInventory.SIZE; 
+		int END_CHEST =  START_CHEST + PlayerInventory.SIZE; 
 		
 		//inventory and chest has 9 rows by 3 columns, never changes. same as 64 max stack size
 		for(int islotChest = START_CHEST; islotChest < END_CHEST; islotChest++)
@@ -45,7 +50,7 @@ public class ChestDeposit
 				continue;
 			}//not an error; empty chest slot
 			 
-			for(int islotInv = Reference.PlayerInventory.START; islotInv < Reference.PlayerInventory.END; islotInv++)
+			for(int islotInv = PlayerInventory.START; islotInv < PlayerInventory.END; islotInv++)
   			{ 
 				invItem = entityPlayer.inventory.getStackInSlot(islotInv);
 				

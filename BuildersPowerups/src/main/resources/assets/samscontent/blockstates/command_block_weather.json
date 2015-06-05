@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "normal": { "model": "samscontent:command_block_weather" },
-        "triggered=true": { "model": "samscontent:command_block_weather" },
-        "triggered=false": { "model": "samscontent:command_block_weather" } 
-    }
-}

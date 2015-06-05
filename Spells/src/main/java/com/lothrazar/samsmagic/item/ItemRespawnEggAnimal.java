@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samsmagic.item;
 
 import java.util.Iterator;
 import java.util.List;
