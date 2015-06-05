@@ -1,3 +1,12 @@
+BUGS:
+
+Stacks  - mcinfo doesnt show up
+ 	-name change to 'Sams Stacks'
+
+Spells  - add  swift deposit - TODO: change to spell..??
+	-add respawn eggs--test maybe making this a spell+projectile?
+	- NEW WORLD BUG: second round defaults to chest
+
 MOD SPLIT
 
 [Blocks]-utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
@@ -7,6 +16,12 @@ MOD SPLIT
 
 [HorseFood] 
 
+[Items_forlackofabettername] emerald stuff  
+ + Beetroot -- OR PUT BEETROOT IN NATURE??
+apples
+ 
+
+
 [Macros] inventory sliders + macro binding keys  + all command
 	push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
 
@@ -14,35 +29,21 @@ MOD SPLIT
 	/flint pumpkin etc
         block hardness changes
 
--mob_changes- nametag stuff, health, endermen drop carrying, etc
+[MobChanges]   nametag stuff, health, endermen drop carrying, etc
 		mob_spawning
 	skull sign names?
-
 
 [Recipes] recipes_new + uncrafting
 
 [Screentext] DEBUG SCREEN standalone: date/villagers/slime/horse/ reduced imrpovements
 
-
 [Spells] + item chest sack
 	f  the exp bottle crafting + bottle return
-	swift deposit - TODO: change to spell..??
-	respawn eggs--test maybe making this a spell+projectile?
 
 [Stacks] 64 + extra fuel
 
 
 
-
-
-
-
--emerald stuff + apples
- + Beetroot -- OR PUT BEETROOT IN NATURE??
-
-
- ??apples
- 
 
 
 -difficulty mod: smoothstone tools + furnace coal: merge this with what?

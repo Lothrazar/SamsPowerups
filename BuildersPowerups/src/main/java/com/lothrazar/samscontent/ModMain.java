@@ -10,7 +10,7 @@ import com.lothrazar.samscontent.event.*;
 import com.lothrazar.samscontent.item.*;
 import com.lothrazar.samscontent.potion.*; 
 import com.lothrazar.samscontent.proxy.*;  
-import com.lothrazar.samscontent.stats.*; 
+ 
 import com.lothrazar.util.*;
 
 import net.minecraft.block.Block;
@@ -62,7 +62,7 @@ public class ModMain
 	public static Logger logger; 
 	public static ConfigRegistry cfg;
 	public static SimpleNetworkWrapper network; 
-	public static AchievementRegistry achievements;  
+	//public static AchievementRegistry achievements;  
 	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
 	{ 
 		@Override
@@ -91,7 +91,7 @@ public class ModMain
 		
 		ArmorRegistry.registerItems();
 		
-		achievements = new AchievementRegistry();
+		//achievements = new AchievementRegistry();
 		 
 		this.registerEventHandlers(); 
 		
@@ -102,7 +102,7 @@ public class ModMain
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
-		achievements.registerAll();
+		//achievements.registerAll();
 		
 		CreativeInventoryRegistry.registerTabImprovements();
 	
@@ -122,7 +122,7 @@ public class ModMain
       //	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
       //	handlers.add(new DebugScreenText()          );  //This one can stay  
      	handlers.add(instance                         ); 
-     	handlers.add(achievements);  
+     	//handlers.add(achievements);  
 		
      	for(Object h : handlers)
      		if(h != null)
@@ -370,7 +370,7 @@ public class ModMain
 				Util.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);
 			}
 
-			event.entityPlayer.addStat(achievements.beetrootSeed, 1);
+			//event.entityPlayer.addStat(achievements.beetrootSeed, 1);
 		}
 	}
 
