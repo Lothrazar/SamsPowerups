@@ -1,7 +1,5 @@
-package com.lothrazar.samscontent;
-
-import com.lothrazar.samscontent.item.ItemEmeraldArmor;
-import com.lothrazar.util.Reference;
+package com.lothrazar.samsarmor;
+ 
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -23,16 +21,22 @@ public class ArmorRegistry
 	public static ArmorMaterial MATERIAL_EMERALD;
 	
 	public static Item emerald_helmet;
-	public static Item emerald__chestplate;
+	public static Item emerald_chestplate;
 	public static Item emerald_leggings;
 	public static Item emerald_boots;
 
+	public static final String toolClassShovel = "shovel";
+	public static final String toolClassAxe = "axe";
+	public static final int armor_type_helmet = 0;
+	public static final int armor_type_chest = 1;
+	public static final int armor_type_leg = 2;
+	public static final int armor_type_boots = 3;
+	
 	public static void registerItems()
 	{
 		MATERIAL_EMERALD = EnumHelper.addArmorMaterial("emerald","emerald", emerald_durability, reductionAmounts , emerald_enchantability);
-		if(ModMain.cfg.emerald_armor)
-		{
-			emerald_helmet = new ItemEmeraldArmor(Reference.armor_type_helmet);//TODO: Reference.armor_type_helmet
+	 
+			emerald_helmet = new ItemEmeraldArmor(armor_type_helmet);//TODO: Reference.armor_type_helmet
 			ItemRegistry.registerItem(emerald_helmet, "emerald_helmet");
 			GameRegistry.addShapedRecipe(new ItemStack(emerald_helmet)
 				,"eee","e e","   "
@@ -40,26 +44,26 @@ public class ArmorRegistry
 			GameRegistry.addShapedRecipe(new ItemStack(emerald_helmet)
 				,"   ","eee","e e"
 				,'e',new ItemStack(Blocks.emerald_block));
-			if(ModMain.cfg.uncraftGeneral)
+			//if(ModMain.cfg.uncraftGeneral)
 				GameRegistry.addSmelting(emerald_helmet, new ItemStack(Blocks.emerald_block,5), 0);
 			
-			emerald__chestplate = new ItemEmeraldArmor(Reference.armor_type_chest);
-			ItemRegistry.registerItem(emerald__chestplate, "emerald_chestplate");
-			GameRegistry.addShapedRecipe(new ItemStack(emerald__chestplate)
+			emerald_chestplate = new ItemEmeraldArmor(armor_type_chest);
+			ItemRegistry.registerItem(emerald_chestplate, "emerald_chestplate");
+			GameRegistry.addShapedRecipe(new ItemStack(emerald_chestplate)
 				,"e e","eee","eee"
 				,'e',new ItemStack(Blocks.emerald_block));
-			if(ModMain.cfg.uncraftGeneral)
-				GameRegistry.addSmelting(emerald__chestplate, new ItemStack(Blocks.emerald_block,8), 0);
+		//	if(ModMain.cfg.uncraftGeneral)
+				GameRegistry.addSmelting(emerald_chestplate, new ItemStack(Blocks.emerald_block,8), 0);
 			
-			emerald_leggings = new ItemEmeraldArmor(Reference.armor_type_leg);
+			emerald_leggings = new ItemEmeraldArmor(armor_type_leg);
 			ItemRegistry.registerItem(emerald_leggings, "emerald_leggings");
 			GameRegistry.addShapedRecipe(new ItemStack(emerald_leggings)
 				,"eee","e e","e e"
 				,'e',new ItemStack(Blocks.emerald_block));
-			if(ModMain.cfg.uncraftGeneral)
+			//if(ModMain.cfg.uncraftGeneral)
 				GameRegistry.addSmelting(emerald_leggings, new ItemStack(Blocks.emerald_block,7), 0);
 			
-			emerald_boots = new ItemEmeraldArmor(Reference.armor_type_boots);
+			emerald_boots = new ItemEmeraldArmor(armor_type_boots);
 			ItemRegistry.registerItem(emerald_boots, "emerald_boots");
 			GameRegistry.addShapedRecipe(new ItemStack(emerald_boots)
 				,"e e","e e","   "
@@ -67,11 +71,9 @@ public class ArmorRegistry
 			GameRegistry.addShapedRecipe(new ItemStack(emerald_boots)
 				,"   ","e e","e e"
 				,'e',new ItemStack(Blocks.emerald_block));
-			if(ModMain.cfg.uncraftGeneral)
+			//if(ModMain.cfg.uncraftGeneral)
 				GameRegistry.addSmelting(emerald_boots, new ItemStack(Blocks.emerald_block,4), 0);
-		
-
-		}
+	 
 	}
 
 

@@ -23,3 +23,7 @@ gradlew
 options.txt
 usernamecache.json
 crash-reports/
+*.fdx
+*.fnm
+*.tis
+.recommenders/

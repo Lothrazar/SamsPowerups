@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.proxy;
+package com.lothrazar.samsarmor;
 
 public class CommonProxy 
 {   

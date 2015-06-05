@@ -1,4 +1,4 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samsarmor;
 
 import net.minecraft.item.ItemPickaxe;
 
