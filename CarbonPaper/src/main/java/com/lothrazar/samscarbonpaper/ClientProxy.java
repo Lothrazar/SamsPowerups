@@ -1,4 +1,4 @@
-package com.lothrazar.carbonpaper;
+package com.lothrazar.samscarbonpaper;
  
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemModelMesher;

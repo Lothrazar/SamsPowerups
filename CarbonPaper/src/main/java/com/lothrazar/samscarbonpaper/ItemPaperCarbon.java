@@ -1,4 +1,4 @@
-package com.lothrazar.carbonpaper;
+package com.lothrazar.samscarbonpaper;
 
 import java.util.List; 
 import net.minecraft.block.Block;

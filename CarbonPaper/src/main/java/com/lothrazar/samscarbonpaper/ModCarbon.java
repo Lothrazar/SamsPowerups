@@ -1,4 +1,4 @@
-package com.lothrazar.carbonpaper;
+package com.lothrazar.samscarbonpaper;
   
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -17,9 +17,9 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 @Mod(modid = ModCarbon.MODID, version = ModCarbon.VERSION,	name = ModCarbon.NAME, useMetadata = true )
 public class ModCarbon
 {
-    public static final String MODID = "carbonpaper";
-    public static final String NAME = "Carbon Paper";
-    public static final String VERSION = "1.8-1.0";
+    public static final String MODID = "samscarbonpaper";
+    public static final String NAME = "Sam's Carbon Paper";
+    public static final String VERSION = "1.8-1.0.0";
     @Instance(value = ModCarbon.MODID)
 	public static ModCarbon instance;
     @SidedProxy(clientSide="com.lothrazar.carbonpaper.ClientProxy", serverSide="com.lothrazar.carbonpaper.CommonProxy")

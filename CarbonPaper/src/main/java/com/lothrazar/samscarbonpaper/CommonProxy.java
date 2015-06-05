@@ -1,4 +1,4 @@
-package com.lothrazar.carbonpaper;
+package com.lothrazar.samscarbonpaper;
 
 public class CommonProxy 
 {   

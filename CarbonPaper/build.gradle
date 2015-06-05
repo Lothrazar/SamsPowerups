@@ -18,8 +18,8 @@ buildscript {
 apply plugin: 'forge'
 
 version = "1.0.0"
-group= "com.lothrazar.carbonpaper" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "CarbonPaper"
+group= "com.lothrazar.samscarbonpaper" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
+archivesBaseName = "SamsCarbonPaper"
 
 minecraft {
     version = "1.8-11.14.1.1334"

@@ -1,8 +1,8 @@
 {
   "modListVersion": 2,
   "modList": [{
-    "modid": "carbonpaper",
-    "name": "Carbon Paper",
+    "modid": "samscarbonpaper",
+    "name": "Sam's Carbon Paper",
     "description": "Copy and paste the contents of Note Blocks and Signs",
     "version": "1.0.0",
     "mcversion": "1.8",
