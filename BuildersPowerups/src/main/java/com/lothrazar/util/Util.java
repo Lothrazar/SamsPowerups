@@ -469,7 +469,7 @@ public class Util
 		 
 		return nameTag;
 	}
-
+/*
 	public static ItemStack buildNamedPlayerSkull(String displayNameString) 
 	{
 		ItemStack skull =  new ItemStack(Items.skull,1,Reference.skull_player);
@@ -484,7 +484,7 @@ public class Util
 	{
 		return Util.buildNamedPlayerSkull(player.getDisplayNameString());
 	}
-
+*/
 	public static BlockPos getBedLocationSafe(World world, EntityPlayer player) 
 	{
 		 BlockPos realBedPos = null;

@@ -1,21 +1,18 @@
-package com.lothrazar.samscontent;
+package com.lothrazar.samsmobchanges;
 
 import java.util.ArrayList; 
 
 import org.apache.logging.log4j.Logger;   
   
-
-import com.lothrazar.samscontent.cfg.ConfigRegistry;  
-import com.lothrazar.samscontent.event.*;
-import com.lothrazar.samscontent.item.*;
-import com.lothrazar.samscontent.potion.*; 
-import com.lothrazar.samscontent.proxy.*;  
-import com.lothrazar.samscontent.stats.*; 
-import com.lothrazar.util.*;
-
+import com.lothrazar.samsmobchanges.MobSpawningRegistry;
+ 
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*; 
@@ -24,22 +21,30 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
+import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
+import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -52,87 +57,56 @@ import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
   
-@Mod(modid = Reference.MODID, version = Reference.VERSION,	name = Reference.NAME, useMetadata = true )  
+@Mod(modid = ModMain.MODID, version = ModMain.VERSION,	name = ModMain.NAME, useMetadata = true )  
 public class ModMain
 {
-	@Instance(value = Reference.MODID)
+	public static final String MODID = "samsmobchanges";
+	public static final String TEXTURE_LOCATION = ModMain.MODID + ":";
+	public static final String VERSION = "1.8-1.0.0";
+	public static final String NAME = "Mob Spawning";
+	@Instance(value = ModMain.MODID)
 	public static ModMain instance;
-	@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
-	public static CommonProxy proxy;   
+	//@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
+	//public static CommonProxy proxy;   
 	public static Logger logger; 
 	public static ConfigRegistry cfg;
-	public static SimpleNetworkWrapper network; 
-	public static AchievementRegistry achievements;  
-	public static CreativeTabs tabSamsContent = new CreativeTabs("tabSamsContent") 
-	{ 
-		@Override
-		public Item getTabIconItem() 
-		{ 
-			return ItemRegistry.apple_chocolate;
-		}
-	};    
-	
+	//public static SimpleNetworkWrapper network; 
+ 
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{ 
 		logger = event.getModLog();  
 		
 		cfg = new ConfigRegistry(new Configuration(event.getSuggestedConfigurationFile()));
-	  
-    	network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
-    	
-    	//network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
-    	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
- 		
-		//PotionRegistry.registerPotionEffects();
-
+	 
+  
+    	ArrayList<Object> handlers = new ArrayList<Object>();
+    	  
+      //	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
+      //	handlers.add(new DebugScreenText()          );  //This one can stay  
+     	handlers.add(instance                         ); 
+     	//handlers.add(achievements);  
 		
-		ItemRegistry.registerItems();
-		
-		ArmorRegistry.registerItems();
-		
-		achievements = new AchievementRegistry();
-		 
-		this.registerEventHandlers(); 
-		
-		//BlockHardnessRegistry.registerChanges(); 
-		 
+     	for(Object h : handlers) 
+     	{ 
+    		FMLCommonHandler.instance().bus().register(h); 
+    		MinecraftForge.EVENT_BUS.register(h); 
+    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
+    		MinecraftForge.ORE_GEN_BUS.register(h); 
+     	} 
+	 
 	}
         
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
-		achievements.registerAll();
-		
-		CreativeInventoryRegistry.registerTabImprovements();
-	
-		//MobSpawningRegistry.registerSpawns();
+		MobSpawningRegistry.registerSpawns();
+    
    
-		//RecipeRegistry.registerRecipes();
-	
-  		
-   
-		proxy.registerRenderers();
+	//	proxy.registerRenderers();
 	}
 	 
-	private void registerEventHandlers() 
-	{ 
-    	ArrayList<Object> handlers = new ArrayList<Object>();
-  
-      //	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
-      //	handlers.add(new DebugScreenText()          );  //This one can stay  
-     	handlers.add(instance                         ); 
-     	handlers.add(achievements);  
-		
-     	for(Object h : handlers)
-     		if(h != null)
-	     	{ 
-	    		FMLCommonHandler.instance().bus().register(h); 
-	    		MinecraftForge.EVENT_BUS.register(h); 
-	    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
-	    		MinecraftForge.ORE_GEN_BUS.register(h); 
-	     	} 
-	}
+	 
 	
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
@@ -206,9 +180,9 @@ public class ModMain
 		   ) 
 		{  
 			//item stack NBT needs the name enchanted onto it
-			ItemStack nameTag = Util.buildEnchantedNametag(event.entity.getCustomNameTag());
+			ItemStack nameTag = buildEnchantedNametag(event.entity.getCustomNameTag());
 		  
-			Util.dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
+			dropItemStackInWorld(world, event.entity.getPosition(), nameTag);  
 		}
 		
 		if(ModMain.cfg.petNametagChat && 
@@ -219,7 +193,7 @@ public class ModMain
 		{    
 			//show message as if player, works since EntityLiving extends EntityLivingBase
 	 
-			Util.addChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
+			addChatMessage((event.source.getDeathMessage((EntityLivingBase)event.entity)));
 		}
 		 
 		if(ModMain.cfg.cowExtraLeather > 0 && event.entity instanceof EntityCow)
@@ -232,11 +206,11 @@ public class ModMain
 	public void onEntityInteractEvent(EntityInteractEvent event)
   	{
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem(); 
-		
+		/*
 		if(held != null && held.getItem() == ItemRegistry.respawn_egg_empty )
 		{
 			ItemRespawnEggEmpty.entitySpawnEgg(event.entityPlayer, event.target); 
-		}
+		}*/
 		  
 		if(ModMain.cfg.canNameVillagers &&  //how to get this all into its own class
 		  held != null && held.getItem() == Items.name_tag && 
@@ -249,7 +223,10 @@ public class ModMain
 				  
 				v.setCustomNameTag(held.getDisplayName()); 
 				
-				Util.decrHeldStackSize(event.entityPlayer); 
+				if (event.entityPlayer.capabilities.isCreativeMode == false)
+		        {
+					event.entityPlayer.inventory.decrStackSize(event.entityPlayer.inventory.currentItem, 1);
+		        }
 				
 				event.setCanceled(true);//stop the GUI inventory opening 
 			} 
@@ -264,7 +241,7 @@ public class ModMain
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
 		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
 		TileEntity container = event.world.getTileEntity(event.pos);
-
+		 /*
 		if(held != null && held.getItem() == Items.experience_bottle  && 
 				event.action.RIGHT_CLICK_BLOCK == event.action && 
 				event.entityPlayer.capabilities.isCreativeMode == false && 
@@ -272,7 +249,7 @@ public class ModMain
 		{ 
 			Util.dropItemStackInWorld(event.world, event.pos, Items.glass_bottle);
 		}
-		 
+		
 		if(ModMain.cfg.swiftDeposit  &&  //how to get this all into its own class
 				event.action == event.action.LEFT_CLICK_BLOCK && 
 				event.entityPlayer.isSneaking()  && 
@@ -294,43 +271,14 @@ public class ModMain
 		  		}
 	  	  	}
 		}
-		/*
-		if(  event.action == event.action.RIGHT_CLICK_BLOCK && 
-  				Util.isBonemeal(held)  && 
-  				blockClicked != null ) 
-		{    
-			BonemealExt.useBonemeal(event.world, event.entityPlayer, event.pos, blockClicked);
-		}
-		*/
-		if(ModMain.cfg.flintPumpkin &&  //how to get this all into its own class
-				held != null && held.getItem() == Items.flint_and_steel && 
-				event.action.RIGHT_CLICK_BLOCK == event.action )
-		{   
-			if(blockClicked == Blocks.pumpkin)
-			{
-				event.world.setBlockState(event.pos, Blocks.lit_pumpkin.getDefaultState());
-				 
-				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
-				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
-			
-				Util.playSoundAt(event.entityPlayer, "fire.ignite"); 
-			}
-			else if(blockClicked == Blocks.lit_pumpkin)//then un-light it
-			{
-				event.world.setBlockState(event.pos, Blocks.pumpkin.getDefaultState());
-				 
-				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos);
-				Util.spawnParticle(event.world, EnumParticleTypes.FLAME, event.pos.offset(event.entityPlayer.getHorizontalFacing()));
-				
-				Util.playSoundAt(event.entityPlayer, "random.fizz"); 
-			}
-		}		
-		/*
+		
+  */
+		
 		if(ModMain.cfg.skullSignNames &&  //how to get this all into its own class
 				event.action == event.action.LEFT_CLICK_BLOCK && 
 				event.entityPlayer.isSneaking() && 
 				held != null && held.getItem() == Items.skull && 
-				held.getItemDamage() == Reference.skull_player	&& 
+				held.getItemDamage() == skull_player	&& 
 				container != null &&
 				container instanceof TileEntitySign)
 		{
@@ -350,9 +298,30 @@ public class ModMain
 				
 				held.getTagCompound().setString("SkullOwner",firstLine);
 			} 
-		} *///end of skullSignNames
+		} //end of skullSignNames
    	}
-	
+	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
+	{ 
+		spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
+    }
+	public static void spawnParticle(World world, EnumParticleTypes type, double x, double y, double z)
+	{ 
+		//http://www.minecraftforge.net/forum/index.php?topic=9744.0
+		for(int countparticles = 0; countparticles <= 10; ++countparticles)
+		{
+			world.spawnParticle(type, x + (world.rand.nextDouble() - 0.5D) * (double)0.8, y + world.rand.nextDouble() * (double)1.5 - (double)0.1, z + (world.rand.nextDouble() - 0.5D) * (double)0.8, 0.0D, 0.0D, 0.0D);
+		} 
+    }
+	public static void playSoundAt(Entity player, String sound)
+	{ 
+		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
+	}
+	public static final int skull_skeleton = 0;	
+	public static final int skull_wither = 1;
+	public static final int skull_zombie = 2;
+	public static final int skull_player = 3;
+	public static final int skull_creeper = 4;
+	/*
 	@SubscribeEvent
 	public void onHoeUse(UseHoeEvent event)
 	{  
@@ -372,7 +341,7 @@ public class ModMain
 
 			event.entityPlayer.addStat(achievements.beetrootSeed, 1);
 		}
-	}
+	}*/
 
 	@SubscribeEvent
 	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)
@@ -385,7 +354,7 @@ public class ModMain
 			{ 
 				int levelBoost = 0;//1 means Hunger II. int = 2 means Hunger III, etc.
 				
-				event.entityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id,  ModMain.cfg.sleeping_hunger_seconds * Reference.TICKS_PER_SEC, levelBoost));
+				event.entityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id,  ModMain.cfg.sleeping_hunger_seconds * 20, levelBoost));
 			}
 		}
 	}
@@ -399,9 +368,90 @@ public class ModMain
 		}
 	}*/
 	  
-	  
-
 	
+	@SubscribeEvent
+	public void onLivingDeathEvent(LivingDeathEvent event)
+	{
+		if( ModMain.cfg.endermenDropCarryingBlock
+			&& event.entity instanceof EntityEnderman)
+		{ 
+			EntityEnderman mob = (EntityEnderman)event.entity;
+ 
+			IBlockState bs = mob.func_175489_ck();//mcp/forge just did not translate this
+			
+			if(bs != null && bs.getBlock() != null && event.entity.worldObj.isRemote == false)
+			{
+				dropItemStackInWorld(event.entity.worldObj, mob.getPosition(), bs.getBlock());
+			} 
+		}
+		
+		if(event.entity instanceof EntityPlayer)
+		{ 
+			EntityPlayer player = (EntityPlayer)event.entity;
+			
+			if(ModMain.cfg.dropPlayerSkullOnDeath)
+			{  
+				ItemStack skull = buildNamedPlayerSkull(player);
+				 
+				dropItemStackInWorld(event.entity.worldObj, player.getPosition(), skull);
+			}
+			
+			if(ModMain.cfg.playerDeathCoordinates)
+			{
+				String coordsStr = posToString(player.getPosition()); 
+				addChatMessage(player.getDisplayNameString() + " has died at " + coordsStr);
+			}
+		}
+	}
+	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Block block)
+	{
+		return dropItemStackInWorld(worldObj, pos, new ItemStack(block));  
+	}
+	
+	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Item item)
+	{
+		return dropItemStackInWorld(worldObj, pos, new ItemStack(item)); 
+	}
+	
+	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, ItemStack stack)
+	{
+		EntityItem entityItem = new EntityItem(worldObj, pos.getX(),pos.getY(),pos.getZ(), stack); 
+
+ 		if(worldObj.isRemote==false)//do not spawn a second 'ghost' one on client side
+ 			worldObj.spawnEntityInWorld(entityItem);
+    	return entityItem;
+	}
+	public static String posToString(BlockPos position) 
+	{ 
+		return "["+ position.getX() + ", "+position.getY()+", "+position.getZ()+"]";
+	} 
+
+	public static ItemStack buildNamedPlayerSkull(EntityPlayer player) 
+	{
+		return buildNamedPlayerSkull(player.getDisplayNameString());
+	}
+	public static ItemStack buildNamedPlayerSkull(String displayNameString) 
+	{
+		ItemStack skull =  new ItemStack(Items.skull,1,skull_player);
+
+		if(skull.getTagCompound() == null) {skull.setTagCompound(new NBTTagCompound());}
+		
+		skull.getTagCompound().setString("SkullOwner",displayNameString);
+		
+		return skull; 
+	}
+	public static void addChatMessage(String string) 
+	{ 
+		addChatMessage(new ChatComponentTranslation(string)); 
+	}
+	public static void addChatMessage(EntityPlayer player,String string) 
+	{ 
+		player.addChatMessage(new ChatComponentTranslation(string));
+	}
+	public static void addChatMessage(IChatComponent string) 
+	{ 
+		 Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(string); 
+	}
 	@SubscribeEvent
 	public void onEntityJoinWorldEvent(EntityJoinWorldEvent event)
 	{ 
@@ -411,18 +461,39 @@ public class ModMain
 		
 			if(living instanceof EntityWolf && ((EntityWolf)living).isTamed())
 			{
-				Util.setMaxHealth(living,ModMain.cfg.heartsWolfTamed*2);
+				setMaxHealth(living,ModMain.cfg.heartsWolfTamed*2);
 			}
 			if(living instanceof EntityOcelot && ((EntityOcelot)living).isTamed())
 			{
-				Util.setMaxHealth(living,ModMain.cfg.heartsCatTamed*2);
+				setMaxHealth(living,ModMain.cfg.heartsCatTamed*2);
 			}
 			
 			if(living instanceof EntityVillager && ((EntityVillager)living).isChild() == false)
 			{
-				Util.setMaxHealth(living,ModMain.cfg.heartsVillager*2);			
+				setMaxHealth(living,ModMain.cfg.heartsVillager*2);			
 			}
 		}
 	}
-	 
+
+	public static void setMaxHealth(EntityLivingBase living,int max)
+	{	
+		living.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(max);
+	}
+	public static ItemStack buildEnchantedNametag(String customNameTag) 
+	{
+		//build multi-level NBT tag so it matches a freshly enchanted one
+		
+		ItemStack nameTag = new ItemStack(Items.name_tag, 1); 
+		  
+		NBTTagCompound nbt = new NBTTagCompound(); 
+		NBTTagCompound display = new NBTTagCompound();
+		display.setString("Name", customNameTag);//NOT "CustomName" implied by commandblocks/google 
+		nbt.setTag("display",display);
+		nbt.setInteger("RepairCost", 1);
+		
+		nameTag.setTagCompound(nbt);//put the data into the item stack
+		 
+		return nameTag;
+	}
+	
 }

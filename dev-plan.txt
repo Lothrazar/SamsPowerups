@@ -3,6 +3,8 @@ MOD SPLIT
 [Blocks]-utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
 	-command blocks - expand by adding more gamerules/colours
 
+[CarbonPaper]
+
 [HorseFood] 
 
 [Macros] inventory sliders + macro binding keys  + all command
@@ -11,6 +13,11 @@ MOD SPLIT
 [Nature]  WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
 	/flint pumpkin etc
         block hardness changes
+
+-mob_changes- nametag stuff, health, endermen drop carrying, etc
+		mob_spawning
+	skull sign names?
+
 
 [Recipes] recipes_new + uncrafting
 
@@ -37,17 +44,9 @@ MOD SPLIT
  ??apples
  
 
-carbon paper - standalone?
 
 -difficulty mod: smoothstone tools + furnace coal: merge this with what?
     fragile_torches  
--mob_changes- nametag stuff, health, endermen drop carrying, etc
-		mob_spawning
-
-
-
-
-skull sign names?
 
 
 

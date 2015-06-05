@@ -48,11 +48,6 @@ public class Reference
 	public static final int face_west = 4;
 	public static final int face_east = 5;
 	  
-	public static final int skull_skeleton = 0;	
-	public static final int skull_wither = 1;
-	public static final int skull_zombie = 2;
-	public static final int skull_player = 3;
-	public static final int skull_creeper = 4;
 	 
 	public static final int dye_incsac = 0;
 	public static final int dye_red = 1;
