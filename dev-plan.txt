@@ -5,8 +5,6 @@ and 3 digit 1.0.0
 
 Trim extras from lang files
 
-
-
 Stacks  - mcinfo doesnt show up
  	-name change to 'Sams Stacks'
 
