@@ -48,7 +48,7 @@ public class ModMobChanges
 	public static final String MODID = "samsmobchanges";
 	public static final String TEXTURE_LOCATION = ModMobChanges.MODID + ":";
 	public static final String VERSION = "1.8-1.0.0";
-	public static final String NAME = "Mob Spawning";
+	public static final String NAME = "Sam's Mob Spawning";
 	@Instance(value = ModMobChanges.MODID)
 	public static ModMobChanges instance;
 	//@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")

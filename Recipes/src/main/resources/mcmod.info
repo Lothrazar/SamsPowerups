@@ -3,7 +3,7 @@
   "modList": [{
     "modid": "samsrecipes",
     "name": "Builder's Recipes",
-    "description": ".",
+    "description": "More recipes for existing content, lots of uncrafting recipes.  Also a few recipes are harder such as furnace requiring coal.  Check config file.",
     "version": "1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",

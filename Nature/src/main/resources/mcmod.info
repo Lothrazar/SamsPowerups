@@ -2,7 +2,7 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samsnature",
-    "name": "Builder's Nature",
+    "name": "Sam's Nature",
     "description": "Clay in the oceans, and sapling growth has been restricted.  Bonemeal works on more stuff.",
     "version": "1.0.0",
     "mcversion": "1.8",
