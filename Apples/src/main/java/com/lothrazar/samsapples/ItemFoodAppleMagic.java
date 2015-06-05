@@ -1,10 +1,7 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samsapples;
 
 import java.util.ArrayList; 
-import java.util.List;
- 
-import com.lothrazar.samscontent.ModMain; 
-import com.lothrazar.util.*;
+import java.util.List; 
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -16,6 +13,7 @@ import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
 public class ItemFoodAppleMagic extends ItemFood
@@ -31,7 +29,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		hasEffect = has_effect;//true gives it enchantment shine
  
 		this.setAlwaysEdible(); //can eat even if full hunger
-		this.setCreativeTab(ModMain.tabSamsContent);
+		this.setCreativeTab(ModApples.tabSamsContent);
 		potionIds = new ArrayList<Integer>();
 		potionDurations = new ArrayList<Integer>();
 		potionAmplifiers = new ArrayList<Integer>();
@@ -54,7 +52,7 @@ public class ItemFoodAppleMagic extends ItemFood
 		if(world.isRemote == false)  //false means serverside
 	  		for(int i = 0; i < potionIds.size(); i++)  
 	  		{ 
-	  			Util.addOrMergePotionEffect(player, new PotionEffect(potionIds.get(i) ,potionDurations.get(i),potionAmplifiers.get(i)));
+	  			addOrMergePotionEffect(player, new PotionEffect(potionIds.get(i) ,potionDurations.get(i),potionAmplifiers.get(i)));
 	  		//	par3EntityPlayer.addPotionEffect();
 	  		}  
     }
@@ -75,7 +73,7 @@ public class ItemFoodAppleMagic extends ItemFood
 			 return EnumRarity.RARE;
 	} 
 	 
-	
+
 
 	public static int hungerSmall = 1;
 	public static int hungerLarge = 4; //how much it fills us up
@@ -87,7 +85,7 @@ public class ItemFoodAppleMagic extends ItemFood
 			,'l', ingredient
 			,'a', Items.apple);
 		
-		if(ModMain.cfg.uncraftGeneral) 
+		//if(ModApples.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(apple, new ItemStack(ingredient.getItem(), 8, ingredient.getMetadata()),	0);
 	} 
 	 
@@ -99,7 +97,26 @@ public class ItemFoodAppleMagic extends ItemFood
   		{ 
   			p = Potion.potionTypes[potionIds.get(i)];
   			 
-  			list.add(Util.lang(p.getName()));   
+  			list.add(ModApples.lang(p.getName()));   
   		}   
 	} 
+
+	public static void addOrMergePotionEffect(EntityPlayer player, PotionEffect newp)
+	{
+		if(player.isPotionActive(newp.getPotionID()))
+		{
+			//do not use built in 'combine' function, just add up duration myself
+			PotionEffect p = player.getActivePotionEffect(Potion.potionTypes[newp.getPotionID()]);
+			
+			int ampMax = Math.max(p.getAmplifier(), newp.getAmplifier());
+		
+			player.addPotionEffect(new PotionEffect(newp.getPotionID()
+					,newp.getDuration()+p.getDuration()
+					,ampMax));
+		}
+		else
+		{
+			player.addPotionEffect(newp);
+		}
+	}
 }

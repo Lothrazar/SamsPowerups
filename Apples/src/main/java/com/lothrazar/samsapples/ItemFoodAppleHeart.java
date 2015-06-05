@@ -1,10 +1,10 @@
-package com.lothrazar.samscontent.item;
+package com.lothrazar.samsapples;
 
-import com.lothrazar.samscontent.ModMain; 
-import com.lothrazar.util.*;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.EnumRarity;
@@ -19,7 +19,7 @@ public class ItemFoodAppleHeart extends ItemFood
 	{  
 		super(4,false);//is not edible by wolf
 		this.setAlwaysEdible(); //can eat even if full hunger
-		this.setCreativeTab(ModMain.tabSamsContent); 
+		this.setCreativeTab(ModApples.tabSamsContent); 
 	}
 	 
 	@Override
@@ -27,15 +27,18 @@ public class ItemFoodAppleHeart extends ItemFood
     {     
 		if(world.isRemote == false)  //false means serverside
 		{ 
-			Util.setMaxHealth(player, (int)(player.getMaxHealth() + 2));
+			setMaxHealth(player, (int)(player.getMaxHealth() + 2));
 		}
 		else
-			Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, player.getPosition());
+			ModApples.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, player.getPosition());
 			
-		Util.playSoundAt(player, Reference.sounds.zombieremedy);
+		ModApples.playSoundAt(player, "mob.zombie.remedy");
 		
     }
-	
+	public static void setMaxHealth(EntityLivingBase living,int max)
+	{	
+		living.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(max);
+	}
 	@Override
     public boolean hasEffect(ItemStack par1ItemStack)
     {
@@ -55,7 +58,7 @@ public class ItemFoodAppleHeart extends ItemFood
 			, Items.diamond
 			, Items.apple);
 		
-		if(ModMain.cfg.uncraftGeneral) 
+		//if(ModApples.cfg.uncraftGeneral) 
 			GameRegistry.addSmelting(apple, new ItemStack(Items.diamond, 1),	0);
 	} 
 	 /*
