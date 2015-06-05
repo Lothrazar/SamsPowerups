@@ -18,40 +18,40 @@ public class MobSpawningRegistry
 	static int max = 4; 
 	public static void registerSpawns()
 	{  
-		if(ModMain.cfg.spawnBlazeDesertHills) 
+		if(ModMobChanges.cfg.spawnBlazeDesertHills) 
 			EntityRegistry.addSpawn(EntityBlaze.class, group, min, max, EnumCreatureType.MONSTER, new BiomeGenBase[]{ BiomeGenBase.desertHills} );
  
-		if(ModMain.cfg.spawnMagmaCubeDesert) 
+		if(ModMobChanges.cfg.spawnMagmaCubeDesert) 
 			EntityRegistry.addSpawn(EntityMagmaCube.class, group, min, max, EnumCreatureType.MONSTER, new BiomeGenBase[]{ BiomeGenBase.desert} );
 
-		if(ModMain.cfg.spawnCaveSpiderMesa)
+		if(ModMobChanges.cfg.spawnCaveSpiderMesa)
 			EntityRegistry.addSpawn(EntityCaveSpider.class, group, min, max, EnumCreatureType.MONSTER, new BiomeGenBase[]{ BiomeGenBase.mesa} );
 
-		if(ModMain.cfg.spawnCaveSpiderRoofedForest)
+		if(ModMobChanges.cfg.spawnCaveSpiderRoofedForest)
 			EntityRegistry.addSpawn(EntityCaveSpider.class, group, min, max, EnumCreatureType.MONSTER, new BiomeGenBase[]{ BiomeGenBase.roofedForest} );
 		
-		if(ModMain.cfg.spawnCaveSpiderJungle)
+		if(ModMobChanges.cfg.spawnCaveSpiderJungle)
 			EntityRegistry.addSpawn(EntityCaveSpider.class, group, min, max, EnumCreatureType.MONSTER, new BiomeGenBase[]{ BiomeGenBase.jungle} );
  
-		if(ModMain.cfg.spawnSnowgolemsIceMountains) 
+		if(ModMobChanges.cfg.spawnSnowgolemsIceMountains) 
 			EntityRegistry.addSpawn(EntitySnowman.class, group, min, max, EnumCreatureType.MONSTER, new BiomeGenBase[]{ BiomeGenBase.iceMountains} );
 		
-		if(ModMain.cfg.spawnGhastDeepOcean) 
+		if(ModMobChanges.cfg.spawnGhastDeepOcean) 
 			EntityRegistry.addSpawn(EntityGhast.class, group, min, max, EnumCreatureType.MONSTER, new BiomeGenBase[]{ BiomeGenBase.deepOcean} );
 
 		//existing horses only spawn in plains and savanah
 		//horses dont like trees, so biomes without them makes sense. ocean means those little islands
 
-		if(ModMain.cfg.spawnHorseIcePlains) 
+		if(ModMobChanges.cfg.spawnHorseIcePlains) 
 			EntityRegistry.addSpawn(EntityHorse.class, group, min, max, EnumCreatureType.CREATURE, new BiomeGenBase[]{ BiomeGenBase.icePlains} );
 
-		if(ModMain.cfg.spawnHorseOceanIslands) 
+		if(ModMobChanges.cfg.spawnHorseOceanIslands) 
 			EntityRegistry.addSpawn(EntityHorse.class, group, min, max, EnumCreatureType.CREATURE, new BiomeGenBase[]{ BiomeGenBase.deepOcean} );
 		
-		if(ModMain.cfg.spawnHorseExtremeHills) 
+		if(ModMobChanges.cfg.spawnHorseExtremeHills) 
 			EntityRegistry.addSpawn(EntityHorse.class, group, min, max, EnumCreatureType.CREATURE, new BiomeGenBase[]{ BiomeGenBase.extremeHills} );
 		
-		if(ModMain.cfg.spawnVillagerExtremeHills) 
+		if(ModMobChanges.cfg.spawnVillagerExtremeHills) 
 			EntityRegistry.addSpawn(EntityVillager.class, group, min, max, EnumCreatureType.CREATURE, new BiomeGenBase[]{ BiomeGenBase.extremeHills} );
 		
 		//WOLVES only spawn naturally in forest, taiga, mega taiga, cold taiga, and cold taiga M
