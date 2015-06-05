@@ -22,7 +22,7 @@ public class ModCarbon
     public static final String VERSION = "1.8-1.0.0";
     @Instance(value = ModCarbon.MODID)
 	public static ModCarbon instance;
-    @SidedProxy(clientSide="com.lothrazar.carbonpaper.ClientProxy", serverSide="com.lothrazar.carbonpaper.CommonProxy")
+    @SidedProxy(clientSide="com.lothrazar.samscarbonpaper.ClientProxy", serverSide="com.lothrazar.samscarbonpaper.CommonProxy")
 	public static CommonProxy proxy;   
 	
 	public static ItemPaperCarbon carbon_paper;  
