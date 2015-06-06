@@ -1,3 +1,4 @@
+itemGroup.tabSamsBlocks=Utility Blocks
 tile.command_block_tpbed.name=Spawn Command Block
 tile.command_block_tpspawn.name=Worldspawn Command Block
 tile.command_block_weather.name=Weather Command Block

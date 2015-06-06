@@ -2,12 +2,7 @@
 TODO/BUGS/FEATURES:
 ***********
 
-ALL	 
-	- Description in mod info
-
-apples/blocks/armor: Lang file for tabGroup
-
-APPLES		-mc info file broken/missing
+ 
 
 Spells  - add  swift deposit - TODO: change to spell..??
 	-add respawn eggs--test maybe making this a spell+projectile?
@@ -18,8 +13,7 @@ Spells  - add  swift deposit - TODO: change to spell..??
 	-shrink to 1 height if possible
 	-far reach place hotkey. use player look vectors and trickery 
 	- play random song
-
-SCREENTEXT  
+ 
 
 Blocks-bucket storage - addInfo inventory: display count in list
 
@@ -28,7 +22,6 @@ mobchanges - more health add back in
 	-iron golems drop extra block of iron? in config?
 
 MacrosKeys 
-	-LANG FILE MISSING
 	- up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
 	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
 	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
@@ -37,8 +30,7 @@ MacrosKeys
 	-command to place vertical? 
  	-config file entry for waypoints // todo that switches left/right side
 
-NATURE
-	- add reeds/existing plants to ocean?
+
 
 
 
@@ -48,6 +40,11 @@ NATURE
 ***********
 NEW MODS, or MISC IDEAS
 ***********
+
+
+NATURE
+	- add reeds/existing plants to ocean?
+
 ?new?-difficulty mod: smoothstone tools + furnace coal: merge this with what?
     fragile_torches  
 
