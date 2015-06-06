@@ -27,8 +27,8 @@ public class ConfigRecipes
 		
 		//category = "recipes_new";
 		
-		cheaper_stairs = instance.getBoolean( "cheaper_stairs",category,true,
-				"Craft stairs in your inventory 2x2 grid.  This recipe is cheaper and more logical than the original.");
+		//cheaper_stairs = instance.getBoolean( "cheaper_stairs",category,true,
+		//		"Craft stairs in your inventory 2x2 grid.  This recipe is cheaper and more logical than the original.");
 		
 		smelt_gravel = instance.getBoolean( "smelt_gravel",category,true,
 				"Smelt gravel into flint to save on mindless shovel digging.");
@@ -211,7 +211,7 @@ public class ConfigRecipes
 	public boolean smelt_gravel;
 	public boolean cmd_place_blocks; 
 	public boolean emerald_armor; 
-	public boolean cheaper_stairs; 
+	//public boolean cheaper_stairs; 
 	public boolean cmd_recipe;
 	public boolean cmd_uses; 
 	//public boolean cmd_effectpay;

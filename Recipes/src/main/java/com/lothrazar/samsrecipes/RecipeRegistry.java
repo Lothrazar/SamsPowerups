@@ -44,14 +44,14 @@ public class RecipeRegistry
    	 
    		RecipeRegistry.experience_bottle();
 
-   		RecipeRegistry.inventory_stairs();
+   		//RecipeRegistry.inventory_stairs();
    		
    		if(ModRecipes.cfg.smelt_gravel)
    		{
    			GameRegistry.addSmelting(Blocks.gravel, new ItemStack(Items.flint),0);
    		}
 	}
-	
+	/*
 	private static void inventory_stairs()//13
 	{
 		if(!ModRecipes.cfg.cheaper_stairs)  {return;}
@@ -90,7 +90,7 @@ public class RecipeRegistry
 				"ss", 
 				's', input);
 	}
-
+*/
 	private static void quartsFromPrismarine() 
 	{
 		if(!ModRecipes.cfg.quartz_from_prismarine)  {return;}
