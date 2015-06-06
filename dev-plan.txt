@@ -21,7 +21,7 @@ TODO command: instead of +-, use words like ADD/REPLACE/REMOVE, three modes inst
 
 WORLDGENOCEAN: make all patches bigger, but keep ratios/size order
  
-NATURE: fix bonemeal event- cant bonemeal lilypads/flowers
+NATURE: [readyfortesting] fix bonemeal event- cant bonemeal lilypads/flowers
 
 Spells  - add  swift deposit - TODO: change to spell..??
 	-add respawn eggs--test maybe making this a spell+projectile?
