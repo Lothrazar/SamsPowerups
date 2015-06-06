@@ -2,7 +2,7 @@
 TODO/BUGS/FEATURES:
 ***********
 
-ALL	- Trim extras from lang files
+ALL	 
 	- Description in mod info
 
 apples/blocks/armor: Lang file for tabGroup
@@ -19,7 +19,7 @@ Spells  - add  swift deposit - TODO: change to spell..??
 	-far reach place hotkey. use player look vectors and trickery 
 	- play random song
 
-SCREENTEXT - lang file MISSING
+SCREENTEXT  
 
 Blocks-bucket storage - addInfo inventory: display count in list
 
