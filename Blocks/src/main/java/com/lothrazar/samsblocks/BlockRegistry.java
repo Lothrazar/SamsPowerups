@@ -33,7 +33,14 @@ public class BlockRegistry
 		  
 		blocks.add(s);
 	}
-	
+	public static void registerBucketBlock(Block s, String name)
+	{    
+		s.setUnlocalizedName(name); 
+		 
+		GameRegistry.registerBlock(s, ItemBlockBucket.class,name);
+		  
+		blocks.add(s);
+	}
 	public static void registerBlocks() 
 	{  
 		if(ModBlocks.cfg.block_fragile)
@@ -47,19 +54,19 @@ public class BlockRegistry
 		if(ModBlocks.cfg.storeBucketsBlock)
 		{
 			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket);  
-			registerBlock(BlockRegistry.block_storewater, "block_storewater");
+			registerBucketBlock(BlockRegistry.block_storewater, "block_storewater");
 
 			BlockRegistry.block_storemilk = new BlockBucketStorage(Items.milk_bucket);  
-			BlockRegistry.registerBlock(BlockRegistry.block_storemilk, "block_storemilk");
+			registerBucketBlock(BlockRegistry.block_storemilk, "block_storemilk");
 		 
 			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket);  
-			BlockRegistry.registerBlock(BlockRegistry.block_storelava, "block_storelava");	  
+			registerBucketBlock(BlockRegistry.block_storelava, "block_storelava");	  
 	
 			GameRegistry.registerTileEntity(TileEntityBucketStorage.class, ModBlocks.MODID);
 		
 			BlockRegistry.block_storeempty = new BlockBucketStorage(null); //null for emtpy, no liquids stored inside
 			BlockRegistry.block_storeempty.setCreativeTab(ModBlocks.tabSamsContent); 
-			BlockRegistry.registerBlock(BlockRegistry.block_storeempty, "block_storeempty");
+			registerBucketBlock(BlockRegistry.block_storeempty, "block_storeempty");
 			
 			BlockRegistry.block_storeempty.addRecipe();
 		}

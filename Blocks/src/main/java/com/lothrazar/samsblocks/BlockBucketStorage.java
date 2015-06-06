@@ -36,14 +36,21 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider
 		this.setStepSound(soundTypeMetal);
 		this.setHarvestLevel("pickaxe", 1);
 		bucketItem = bucketIn;  
+		 
 	}
-	
+	public static final String NBTBUCKETS = "buckets";
+
+	public static int getItemStackBucketNBT(ItemStack item) 
+	{
+		ModBlocks.setItemStackNotNull(item); 
+		return item.getTagCompound().getInteger(NBTBUCKETS);
+	} 
 	@Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) 
 	{ 
 		if( stack.getTagCompound() != null)
 		{ 
-			int b = stack.getTagCompound().getInteger("buckets");
+			int b = BlockBucketStorage.getItemStackBucketNBT(stack);
 			 
 			TileEntityBucketStorage container = (TileEntityBucketStorage)worldIn.getTileEntity(pos);
 			

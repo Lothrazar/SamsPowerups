@@ -24,9 +24,6 @@ Spells  - add  swift deposit - TODO: change to spell..??
 	-far reach place hotkey. use player look vectors and trickery 
 	- play random song
  
-
-Blocks-bucket storage - addInfo inventory: display count in list
-
  
 mobchanges - more health add back in
 	-iron golems drop extra block of iron? in config?

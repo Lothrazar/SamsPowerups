@@ -98,7 +98,7 @@ public class ModBlocks
 			TileEntityBucketStorage t = (TileEntityBucketStorage)ent;
 			ItemStack stack = new ItemStack(event.state.getBlock());
 			
-			ModBlocks.setItemStackNBT(stack, "buckets", t.getBuckets());
+			ModBlocks.setItemStackNBT(stack, BlockBucketStorage.NBTBUCKETS, t.getBuckets());
 		
 			ModBlocks.dropItemStackInWorld(event.world, event.pos, stack);
 
@@ -109,7 +109,7 @@ public class ModBlocks
 	{
 		if(item.getTagCompound() == null) {item.setTagCompound(new NBTTagCompound());}
 	}
-	
+
 	public static void setItemStackNBT(ItemStack item,	String prop, int value) 
 	{
 		setItemStackNotNull(item); 
