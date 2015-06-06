@@ -12,10 +12,7 @@ fishing block- seems to never spawn in my testing-verify. also add sound
 
 RECIPES: the uncrafting stairs + the cheaper stairs recipe = INFINTIE WOOD
 -fix
-
-MACROS: 
-
-TODO and simple waypoints: both do not show on screen. fix. also put on main not F3
+ 
 
 TODO command: instead of +-, use words like ADD/REPLACE/REMOVE, three modes instead of 2
 
