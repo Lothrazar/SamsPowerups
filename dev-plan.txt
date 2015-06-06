@@ -19,6 +19,7 @@ Spells  - add  swift deposit - TODO: change to spell..??
 	-far reach place hotkey. use player look vectors and trickery 
 	- play random song
 
+SCREENTEXT - lang file MISSING
 
 Blocks-bucket storage - addInfo inventory: display count in list
 
@@ -26,7 +27,9 @@ Blocks-bucket storage - addInfo inventory: display count in list
 mobchanges - more health add back in
 	-iron golems drop extra block of iron? in config?
 
-MacrosKeys - up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
+MacrosKeys 
+	-LANG FILE MISSING
+	- up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
 	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
 	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
 				and the 50 is a 50% chance an air block gets filled with that?
