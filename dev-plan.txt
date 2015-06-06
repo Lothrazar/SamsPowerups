@@ -1,186 +1,68 @@
-[Apples]
+***********
+TODO/BUGS/FEATURES:
+***********
 
-[Armor]
+ALL	- Trim extras from lang files
+	- Description in mod info
 
+apples/blocks/armor: Lang file for tabGroup
 
-
-[Blocks]-utility blocks - fishing, shearing, bucket storage, fragile(scaffolding)
-	-command blocks - expand by adding more gamerules/colours
-
-[CarbonPaper]
-
-[HorseFood] 
-
-[Items_forlackofabettername] emerald stuff  
- + Beetroot -- OR PUT BEETROOT IN NATURE??
-apples
- 
-
-
-[Macros] inventory sliders + macro binding keys  + all command
-	push/pull key binds? is this included?+ add an allow_vertical flag based on Yaw?
-
-[Nature]  WorldGen- loot chests, ocean changes, nature/sapling changes/better bonemeal
-	/flint pumpkin etc
-        block hardness changes
-
-[MobChanges]   nametag stuff, health, endermen drop carrying, etc
-		mob_spawning
-	skull sign names?
-
-[Recipes] recipes_new + uncrafting
-
-[Screentext] DEBUG SCREEN standalone: date/villagers/slime/horse/ reduced imrpovements
-
-[Spells] + item chest sack
-	f  the exp bottle crafting + bottle return
-
-[Stacks] 64 + extra fuel
-
-
-BUGS:
-
-ALL: change build.gradle/mcinfo/strings to have namespace sam__ and mod name Sam's 
-and 3 digit 1.0.0
-
-Trim extras from lang files
-
-Stacks  - mcinfo doesnt show up
- 	-name change to 'Sams Stacks'
+APPLES		-mc info file broken/missing
 
 Spells  - add  swift deposit - TODO: change to spell..??
 	-add respawn eggs--test maybe making this a spell+projectile?
-	- NEW WORLD BUG: second round defaults to chest
+	-spell for tools that cannot be repaired - allwo repair again.
+	-allow spell Casting. even if hidden?
+	-semicolon/spell row switching: hold shift means go in reverse order (2 1 0 not the normal)
+	-REPLACE SPELL : similar to /place, but swap what you are aiming at with what youre holding. use blacklist
+	-shrink to 1 height if possible
+	-far reach place hotkey. use player look vectors and trickery 
+	- play random song
+
 
 Blocks-bucket storage - addInfo inventory: display count in list
 
+ 
+mobchanges - more health add back in
+	-iron golems drop extra block of iron? in config?
+
+MacrosKeys - up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
+	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
+	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
+				and the 50 is a 50% chance an air block gets filled with that?
+	-placefloor as spiralling outward from center. Right now if you do a 5x5, it starts way off in the far corner.
+	-command to place vertical? 
+ 	-config file entry for waypoints // todo that switches left/right side
+
+NATURE
+	- add reeds/existing plants to ocean?
 
 
--difficulty mod: smoothstone tools + furnace coal: merge this with what?
+
+
+
+
+***********
+NEW MODS, or MISC IDEAS
+***********
+?new?-difficulty mod: smoothstone tools + furnace coal: merge this with what?
     fragile_torches  
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-spell for tools that cannot be repaired - allwo repair again.
-
-allow spell Casting. even if hidden?
-
-
-//todo: a group left to right is
-
-semicolon/spell row switching: hold shift means go in reverse order (2 1 0 not the normal)
-ALSO: remember current spell twice? current spell per row?
-careful for on cast and navigate?
-GetCurrent spell must check the #
-
-
-l
-
-TODO: back up to 4 macros again?
-//spell types: some use items from EI others use EXP
-
-EXP FROM BUILDING
-25% each time you place any block/thing, you get 1-3 xp randomly!?!?!?
-
 NEW POTION AURA: EXP REGEN:
-makes you slowly gain exp over time
--- lapis? makes sense since its for enchanting anyway?
-
-ORDER SPELLS: throwables group, potion group?
-
-ALTERNATE INTERFACE, MAYBE GRID?
-
-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
-  
-  iron golems drop extra block of iron? in config?
-
-/place commands (like place floor) add a random flag 
-so you would enter /place floor 5 50 
-and the 50 is a 50% chance an air block gets filled with that?
-
-DONE THINGS
-
--frozen potion improvements
-
--health change configs
-
--debug date screen text from lang file, and better arrangement
-
--effectpay bugfixes: was not calculating and blocking/draining experience correctly
-
--10 new macro keybindings, used with new command /bind for macros
-    four key bindings and a command so you can bind any command to any key.  These are 
-    saved per character/world, and get reset on death.
-    simply run /bind /toggledownfall or /bind /effectpay 41 10, or any other command
-    and that key is now bound to the macro key (default G)
-
-/ping : shows coordinates in chat.
-
-/enderchest cmd bugfix (config file entries existed but not hooked up)
+	makes you slowly gain exp over time
+	-- lapis apple? makes sense since its for enchanting anyway?
 
 
-
-/effectpay: add option to pump levels (ex haste2, jump3) , make sure we default=1, and multiply XP cost by that
-(then -1 since 1 = II)
-
-
- 
-place circle
-place floor
-place line
-place stair    [radius|distance] [halt]
-
-Possible Future Features (1.4 + ):
-
-
-  ?flag-ghasts always drop tears- in config, check mob drops
-  
--version checker
-
-?? placefloor as spiralling outward.
-
- 
- command to place vertical? 
- 
-
- REPLACE WAND: click two blocks, it swaps second with first. has a timeout between.
-  
-  -craft packed ice with regular for more packed
-  -simlar with podzol
-  
   -beter placeable pumpkins/fence gates
   -placing rail in bad spots
 
-//config file entry for waypoints // todo that switches left/right side
+      
 
-          hotkey to search through inventory and use enderpearl ingoring all else
-          hotkey to eat first food found in inventory searching from topleft to right amd dpwm
-          smart potion button
-          smart torch button 
-          shrink to 1 height if possible
-          crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
-          far reach place hotkey. use player look vectors and trickery 
-
-
-- play random song
-
+  crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
+          
 
 -EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
 
--a way to place signs quick by skipping interface (leaving them blank)
  
 -find a way that you need food variety to live/comfort. 
 
@@ -192,28 +74,10 @@ Possible Future Features (1.4 + ):
 
 -   show spawn chunk [true/false] in F3 Spawn chunks are everything within 8 chunks of WorldSpawn (20x20 area).
  
---waiting on forge to update for VillagerTradeRegistry// implements IVillageTradeHandler
+-waiting on forge to update for VillagerTradeRegistry// implements IVillageTradeHandler
     
 -  beetroot  breeds pigs - no forge way exists - unless im wrong??
               beetroot gets pigs to follow like carrot  - no forge way exists
             
-an item (maybe nametag maybe3 not) for pet respawning block/spot , set their NBT or something
 
--   horse upgrades: only let the OWNER change the types ?? maybe one day
  
-- add reeds/existing plants to ocean?
-
--disable digging stuff by hand?
- /*  revisit/add back in??
-          //add clay
-        String csv = instance.getString("harvestOnlyShovel",category, "minecraft:dirt,minecraft:sand",
-                "If these blocks are not harvested by a shovel, they will break but have no drops."); 
-        HandlerPlayerHarvest.setShovelFromCSV(csv);
-     
-         */
-   
-   SIMPLE WP : add "tp" option - and a requires_op flag for just this..?
-         
-one day we could do a  version checker
-        //FMLInterModComms.sendRuntimeMessage(MODID, "VersionChecker", "addVersionCheck", "http://www.lothrazar.net/api/mc/samscontent/version.json");
-         
