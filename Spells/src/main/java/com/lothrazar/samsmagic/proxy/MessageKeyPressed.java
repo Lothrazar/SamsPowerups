@@ -63,7 +63,6 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 				SpellRegistry.shiftLeft(player);
 				
 				ModSpells.playSoundAt(player, "random.orb");
-				
 			}
 	 	}
 		else if( message.keyPressed == ClientProxy.keySpellDown.getKeyCode())
@@ -74,12 +73,13 @@ public class MessageKeyPressed implements IMessage, IMessageHandler<MessageKeyPr
 				
 				ModSpells.playSoundAt(player, "random.orb");
 			}
-			
 		}
 		else if( message.keyPressed == ClientProxy.keySpellToggle.getKeyCode())
 	 	{  
 			int next = props.getSpellToggleNext();
 			props.setSpellToggle(next);
+			
+			ModSpells.playSoundAt(player, "random.click");
 		}
 		
 		return null;

@@ -5,11 +5,8 @@ TODO/BUGS/FEATURES:
 place command- default the filter to empty?
 or maybe switch it to a blacklist?
 
-SPELLS - make ender spells (all spells) cast for free
-keys.spell.cast: shoul-fix lang file
-
-
-SPELLS - add sound when changing category
+SPELLS - IF CREATIVE make ender spells (all spells) cast for free
+keys.spell.cast: shoul-fix lang file 
 
 fishing block- seems to never spawn in my testing-verify. also add sound
 
