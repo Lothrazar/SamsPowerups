@@ -2,6 +2,8 @@
 TODO/BUGS/FEATURES:
 ***********
 
+CAN we customize/nicefy the Config File names, make it the mod name isntead of modid
+
 fragile torches as seperate mod (i think its currently in nature)
 
 worldhome needsop = false
