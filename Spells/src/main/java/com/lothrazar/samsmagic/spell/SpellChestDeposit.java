@@ -1,5 +1,6 @@
 package com.lothrazar.samsmagic.spell;
 
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
 
 import net.minecraft.entity.player.EntityPlayer;
@@ -64,7 +65,14 @@ public class SpellChestDeposit extends BaseSpellExp
 	{
 		return 5;
 	}
-	
+
+	@Override
+	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
+	{
+		ModSpells.playSoundAt(player, "random.chestopen");
+
+		super.onCastSuccess(world, player, pos);
+	}
 	 
 	//100 to 103 is the armor
 	public class PlayerInventory

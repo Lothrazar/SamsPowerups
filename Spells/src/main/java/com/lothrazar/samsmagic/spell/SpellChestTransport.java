@@ -4,6 +4,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -19,13 +20,20 @@ public class SpellChestTransport extends BaseSpellExp implements ISpell
 	{
 		return "chest";
 	}
-
+	@Override
+	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
+	{
+		if(super.canPlayerCast(world, player, pos) == false) {return false;}
+	
+		TileEntity tile = world.getTileEntity(pos);
+		return (tile != null && tile instanceof TileEntityChest);
+	}
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
 		TileEntityChest chestTarget = (TileEntityChest)world.getTileEntity(pos);
 	
-		if(chestTarget == null)
+		if(chestTarget == null)//should never happen, assuming the canPlayerCast was run
 		{
 			onCastFailure(world,player,pos);
 			return;
@@ -111,7 +119,7 @@ public class SpellChestTransport extends BaseSpellExp implements ISpell
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModSpells.playSoundAt(player, "random.wood_click");
+		ModSpells.playSoundAt(player, "random.chestclosed");
 
 		super.onCastSuccess(world, player, pos);
 	}
