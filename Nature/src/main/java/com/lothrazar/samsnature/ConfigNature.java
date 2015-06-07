@@ -6,6 +6,8 @@ public class ConfigNature
 { 
 	private Configuration instance;
 	private String category = "";
+	public boolean plantDespawningSaplings;
+	public boolean beetroot;
 	
 	public Configuration instance()
 	{
@@ -113,111 +115,38 @@ public class ConfigNature
 		spawnerCreativeInventory = instance.get(category,"spawner", true).getBoolean(); 
 	}
 */ 
-   
-	public boolean swiftDeposit; 
-	public boolean increasedStackSizes;
+
+
 	public boolean moreFuel;
 	public boolean skullSignNames; 
-	public boolean craftableTransmuteRecords;    
-	public boolean craftableBonemealColouredWool;    
+
+ 
 	public boolean bonemealAllFlowers;
 	public boolean bonemealLilypads;
 	public boolean bonemealReeds;
-	public boolean decorativeBlocks;  
-	public boolean uncraftGeneral; 
-	public boolean fishingNetBlock; 
-	//public boolean enderBook;
-	public boolean weatherBlock; 
-	public boolean craftableMushroomBlocks;
-	public boolean cmd_searchtrade;
-	public boolean cmd_searchitem;
-	public boolean killall;
-	public boolean cmd_enderchest;
-	public boolean cmd_simplewaypoint;
-	public boolean cmd_todo;
-	public boolean cmd_kit; 
-	public boolean cmd_home;
-	public boolean worldhome;
 	public boolean lootObsidian;
 	public boolean lootAllRecords;
 	public boolean lootGlowstone;
-	public boolean lootQuartz;
-	public boolean appleDiamond;
-	//public boolean appleLapis;
-	public boolean appleChocolate;
- 
- 
-	public boolean debugSlime;
-	public boolean debugHorseInfo;
-	public boolean reducedDebugImproved;
-	public boolean debugVillageInfo;
-	public boolean spawnBlazeDesertHills;
-	public boolean spawnMagmaCubeDesert;
-	public boolean spawnCaveSpiderMesa;
-	public boolean spawnCaveSpiderRoofedForest;
-	public boolean spawnSnowgolemsIceMountains;
-	public boolean spawnGhastDeepOcean;
-	public boolean spawnHorseIcePlains;
-	public boolean spawnHorseOceanIslands;
-	public boolean spawnHorseExtremeHills;
-	public boolean craftWoolDye8;
-	public boolean craftRepeaterSimple;
-	public boolean craftMinecartsSimple;
-	public boolean petNametagDrops;
-	public boolean spawnVillagerExtremeHills;
-	public boolean teleportBedBlock;
-	public boolean teleportSpawnBlock;
-	public boolean spawnCaveSpiderJungle;
-	public boolean appleNetherwart;
-	public boolean appleEnder;
-	public boolean appleEmerald;
-	public boolean smoothstoneTools; 
-	public boolean furnaceNeedsCoal;  
-	public boolean plantDespawningSaplings; 
-	//public boolean wandPiston;
+	public boolean lootQuartz; 
 	public boolean simpleDispenser; 
 	public boolean dropPlayerSkullOnDeath;
-	public boolean cmd_searchspawner; 
-	public boolean mushroomBlocksCreativeInventory;
-	public boolean barrierCreativeInventory;
-	public boolean dragonEggCreativeInventory;
-	public boolean farmlandCreativeInventory;
-	public boolean spawnerCreativeInventory; 
-	public boolean fragileTorches;
-	public boolean removeZombieCarrotPotato;
-	public boolean petNametagChat;
-	public boolean playerDeathCoordinates;
+
 	public int obsidianHardness; 
 	public int diamondOreHardness;
 	public int emeraldOreHardness;
 	public int spawnerHardness; 
+  
  
-	public boolean carbon_paper;
- 
-	public boolean respawn_egg;
- 
-	public int potionIdWaterwalk;
-	public int potionIdSlowfall;
-	public int potionIdFlying;
-	public float slowfallSpeed;
-	public boolean flintTool;
-	public int potionIdLavawalk;
-	public boolean netherwartPurpleDye;
+  
 	public boolean worldGenOceansNotUgly;
 	public boolean saplingGrowthRestricted;
 	public boolean saplingAllNether;
 	public boolean saplingAllEnd; 
 	public boolean harvestGlassPickaxe;
- 
-	public boolean shearSheepBlock; 
-	public boolean storeBucketsBlock;
-	public boolean beetroot;
+
 	public boolean flintPumpkin;
 	public boolean endermenDropCarryingBlock;
-	public int potionIdEnder;
-	public int potionIdFrozen;
-	public int chanceZombieChildFeather;
-	public int chanceZombieVillagerEmerald;
+
 	public float redstoneOreHardness;
 	public int clayChance;
 	public int clayNumBlocks;
@@ -225,25 +154,5 @@ public class ConfigNature
 	public int dirtNumBlocks;
 	public int sandChance;
 	public int sandNumBlocks;
-	public boolean canNameVillagers;
-	public boolean horse_food_upgrades;
-	public int cowExtraLeather;
-	public int sleeping_hunger_seconds;  
-	public boolean experience_bottle;
-	public boolean experience_bottle_return;
-	public boolean block_fragile; 
-	public boolean quartz_from_prismarine;
-	public boolean debugGameruleInfo;
-	public boolean smelt_gravel;
-	public boolean cmd_place_blocks; 
-	public boolean emerald_armor; 
-	public boolean cheaper_stairs; 
-	public boolean cmd_recipe;
-	public boolean cmd_uses; 
-	//public boolean cmd_effectpay;
-	public boolean cmd_ping; 
-	public int heartsWolfTamed;
-	public int heartsVillager;
-	public int heartsCatTamed;
-	public boolean appleFrost;
+
 }
