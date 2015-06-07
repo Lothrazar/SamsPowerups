@@ -28,7 +28,7 @@ public abstract class BaseSpellExp implements ISpell
 
 	public void onCastFailure(World world, EntityPlayer player, BlockPos pos)
 	{
-		ModSpells.playSoundAt(player, "random.wood_click");
+		ModSpells.playSoundAt(player, "random.fizz");//"random.wood_click");
 
 		//ModSpells.addChatMessage(player, ModSpells.lang("spell.exp.missing")+this.getExpCost());
 	}

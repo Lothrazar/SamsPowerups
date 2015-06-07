@@ -1,7 +1,7 @@
 ***********
 TODO/BUGS/FEATURES:
 ***********
-
+ 
 spell chest transform: check for canSpelLCast before draining
 
 SPELL FAIL : need new sound thats not a click
