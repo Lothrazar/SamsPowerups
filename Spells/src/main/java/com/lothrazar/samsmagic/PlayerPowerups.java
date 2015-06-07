@@ -94,7 +94,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			spell = getSpellMain();
 			
 			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.chest.getSpellID());
+				setSpellOther(SpellRegistry.chesttransp.getSpellID());
 			
 			return getSpellMain();
 			//break;
@@ -102,7 +102,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			spell = getSpellOther();
 			
 			//HOW THIS EVER becomes chest i have not found yet, but this force fixes the bug
-			if(spell == null || spell.isEmpty() || spell == SpellRegistry.chest.getSpellID())
+			if(spell == null || spell.isEmpty() || spell == SpellRegistry.chesttransp.getSpellID())
 			{
 				//System.out.println("get spell other, going to default");
 				setSpellOther(SpellRegistry.torch.getSpellID());

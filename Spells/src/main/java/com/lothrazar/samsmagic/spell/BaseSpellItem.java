@@ -41,7 +41,7 @@ public abstract class BaseSpellItem implements ISpell
 	}
 
 	@Override
-	public boolean canPlayerCast(EntityPlayer player)
+	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{
 		ItemStack is;
 		

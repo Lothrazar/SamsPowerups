@@ -22,5 +22,5 @@ public interface ISpell
 	
 	public ItemStack getIconDisplayHeader();
 	
-	public boolean canPlayerCast(EntityPlayer player);
+	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos);
 }

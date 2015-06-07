@@ -15,7 +15,8 @@ public class SpellRegistry
 	{
 		spellbook = new ArrayList<ISpell>();
 		
-		chest = new SpellChest(); 
+		deposit = new SpellChestDeposit(); 
+		chesttransp = new SpellChestTransport(); 
 		firebolt = new SpellFirebolt();
 		frostbolt = new SpellFrostbolt();
 		ghost = new SpellGhost();
@@ -31,8 +32,9 @@ public class SpellRegistry
 		torch = new SpellTorchBolt(); 
 		endereye = new SpellEnderEye();
 		haste = new SpellHaste();
-		 
-		spellbook.add(chest); 
+
+		spellbook.add(deposit); 
+		spellbook.add(chesttransp); 
 		spellbook.add(firebolt);
 		spellbook.add(frostbolt);
 		spellbook.add(ghost);
@@ -53,7 +55,8 @@ public class SpellRegistry
 	}
 
 	public static ArrayList<ISpell> spellbook;
-	public static ISpell chest;
+	public static ISpell deposit;
+	public static ISpell chesttransp;
 	public static ISpell firebolt;
 	public static ISpell frostbolt;
 	public static ISpell ghost;
@@ -101,7 +104,7 @@ public class SpellRegistry
 			return;
 		}
 	
-		if(spell.canPlayerCast(player))
+		if(spell.canPlayerCast(world, player, pos))
 		{
 			spell.cast(world, player, pos);
 			spell.onCastSuccess(world, player, pos);

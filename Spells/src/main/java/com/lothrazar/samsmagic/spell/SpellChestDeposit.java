@@ -1,4 +1,6 @@
-package com.lothrazar.samsmagic;
+package com.lothrazar.samsmagic.spell;
+
+import com.lothrazar.samsmagic.SpellRegistry;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -7,14 +9,65 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.tileentity.TileEntitySign;
+import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
  
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-public class ChestDeposit
-{   	//100 to 103 is the armor
+public class SpellChestDeposit extends BaseSpellExp
+{   	
+	@Override
+	public ISpell left() 
+	{
+		return SpellRegistry.chesttransp;
+	}
+
+	@Override
+	public ISpell right() 
+	{
+		return SpellRegistry.haste;
+	}
+
+	@Override
+	public String getSpellID() 
+	{
+		return "deposit";
+	}
+	@Override
+	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
+	{
+		if(super.canPlayerCast(world, player, pos) == false) {return false;}
+	
+		TileEntity tile = world.getTileEntity(pos);
+		return (tile != null && tile instanceof TileEntityChest);
+	}
+	
+	@Override
+	public void cast(World world, EntityPlayer player, BlockPos pos) 
+	{ 
+		System.out.println("cast deposit");
+		TileEntity tile = world.getTileEntity(pos);
+		
+		if(tile != null && tile instanceof TileEntityChest)//redundant check, assuming the canPlayerCast was tested
+			sortFromPlayerToChestEntity(world, (TileEntityChest)tile, player); 
+	}
+
+	@Override
+	public ItemStack getIconDisplay() 
+	{
+		return new ItemStack(Items.chest_minecart);
+	}
+
+	@Override
+	public int getExpCost() 
+	{
+		return 5;
+	}
+	
+	 
+	//100 to 103 is the armor
 	public class PlayerInventory
 	{
 		public static final int ROWS = 3;
@@ -24,7 +77,7 @@ public class ChestDeposit
 		public static final int END = START + SIZE;
 	}
   
-  	public static void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
+  	public void sortFromPlayerToChestEntity(World world, TileEntityChest chest, EntityPlayer entityPlayer)
   	{ 
   		int totalItemsMoved = 0; 
   		int totalSlotsFreed = 0;
@@ -103,4 +156,6 @@ public class ChestDeposit
 			//SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos().up()); 
 		}
   	}
+
+	
 }

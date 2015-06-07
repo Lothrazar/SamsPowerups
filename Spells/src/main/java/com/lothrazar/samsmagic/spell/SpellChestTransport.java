@@ -12,7 +12,7 @@ import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
-public class SpellChest extends BaseSpellExp implements ISpell
+public class SpellChestTransport extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public String getSpellID()
@@ -131,7 +131,7 @@ public class SpellChest extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell right()
 	{
-		return SpellRegistry.haste;
+		return SpellRegistry.deposit;
 	}
 
 }

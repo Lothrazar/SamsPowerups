@@ -50,7 +50,7 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return SpellRegistry.chest;
+		return SpellRegistry.deposit;
 	}
 
 	@Override

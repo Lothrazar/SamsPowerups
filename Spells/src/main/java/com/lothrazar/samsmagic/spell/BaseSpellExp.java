@@ -30,11 +30,11 @@ public abstract class BaseSpellExp implements ISpell
 	{
 		ModSpells.playSoundAt(player, "random.wood_click");
 
-		ModSpells.addChatMessage(player, ModSpells.lang("spell.exp.missing")+this.getExpCost());
+		//ModSpells.addChatMessage(player, ModSpells.lang("spell.exp.missing")+this.getExpCost());
 	}
 	
 	@Override
-	public boolean canPlayerCast(EntityPlayer player)
+	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{
 		return (getExpCost() <= ModSpells.getExpTotal(player)); 
 	}
