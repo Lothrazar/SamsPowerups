@@ -155,7 +155,7 @@ public class ItemChestSack extends Item
 			ModSpells.logger.log(Level.WARN, "null nbt problem in itemchestsack");
 			return;
 		}
-	 
+ 
 		entityPlayer.worldObj.setBlockState(pos,  Blocks.chest.getDefaultState());
 		
 		TileEntityChest chest = (TileEntityChest)entityPlayer.worldObj.getTileEntity(pos);  

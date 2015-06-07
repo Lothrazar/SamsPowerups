@@ -108,27 +108,12 @@ public class ModSpells
 	}
 	
 	private void registerEventHandlers() 
-	{ 
-    	ArrayList<Object> handlers = new ArrayList<Object>();
-  
-      	//handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
-      	//handlers.add(new DebugScreenText()          );  //This one can stay  
-     	handlers.add(instance                         ); 
-     	/*
-     	handlers.add(achievements);  
-		handlers.add(BlockRegistry.block_storelava    );//TODO: why are these four done so weirdly
-		handlers.add(BlockRegistry.block_storewater   );
-		handlers.add(BlockRegistry.block_storemilk    ); 
-		handlers.add(BlockRegistry.block_storeempty   );   
-*/
-     	for(Object h : handlers)
-     		if(h != null)
-	     	{ 
-	    		FMLCommonHandler.instance().bus().register(h); 
-	    		MinecraftForge.EVENT_BUS.register(h); 
-	    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
-	    		MinecraftForge.ORE_GEN_BUS.register(h); 
-	     	} 
+	{  
+		FMLCommonHandler.instance().bus().register(instance); 
+		MinecraftForge.EVENT_BUS.register(instance); 
+		//MinecraftForge.TERRAIN_GEN_BUS.register(instance);
+		//MinecraftForge.ORE_GEN_BUS.register(instance); 
+	
 	}
  
 	@SubscribeEvent
@@ -141,8 +126,11 @@ public class ModSpells
 	{
 		EntityItem entityItem = new EntityItem(worldObj, pos.getX(),pos.getY(),pos.getZ(), stack); 
 
- 		if(worldObj.isRemote==false)//do not spawn a second 'ghost' one on client side
+ 		if(worldObj.isRemote  ==  false)//do not spawn a second 'ghost' one on client side
+ 		{
  			worldObj.spawnEntityInWorld(entityItem);
+ 		}
+ 		
     	return entityItem;
 	}
 	 
@@ -163,9 +151,9 @@ public class ModSpells
  
 		if(held != null && held.getItem() == ItemRegistry.itemChestSack &&  //how to get this all into its own class
 				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{  
-			if(event.face != null && event.world.isAirBlock(event.pos.offset(event.face)) == false)
-			{
+		{   
+			if(event.face != null && event.world.isAirBlock(event.pos.offset(event.face)))
+			{ 
 				ItemChestSack.createAndFillChest(event.entityPlayer, held, event.pos.offset(event.face));
 			}
 		} 
