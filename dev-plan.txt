@@ -3,13 +3,6 @@ TODO/BUGS/FEATURES:
 ***********
 
 
-SPELLS - IF CREATIVE make ender spells (all spells) cast for free
-
-Spells  - add  swift deposit - TODO: change to spell..??
-	-add respawn eggs--test maybe making this a spell+projectile?
-	
- 
- 
 mobchanges - more health add back in
 	-iron golems drop extra block of iron? in config?
 
@@ -31,7 +24,7 @@ MacrosKeys :
 ***********
 NEW MODS, or MISC IDEAS/ 1.1
 ***********
-Spells maybes
+Spells maybes  -add respawn eggs--test maybe making this a spell+projectile?
 	-shrink to 1 height if possible
 	- play random song
 	-far reach place hotkey. use player look vectors and trickery 

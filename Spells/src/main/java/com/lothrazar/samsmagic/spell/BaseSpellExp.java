@@ -36,6 +36,8 @@ public abstract class BaseSpellExp implements ISpell
 	@Override
 	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{
+		if(player.capabilities.isCreativeMode){return true;}
+		
 		return (getExpCost() <= ModSpells.getExpTotal(player)); 
 	}
 	

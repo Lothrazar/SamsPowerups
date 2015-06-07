@@ -43,6 +43,8 @@ public abstract class BaseSpellItem implements ISpell
 	@Override
 	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{
+		if(player.capabilities.isCreativeMode){return true;}
+		
 		ItemStack is;
 		
 		for(int i = 0; i < player.getInventoryEnderChest().getSizeInventory(); i++)
