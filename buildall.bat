@@ -22,4 +22,3 @@ cd ../Spells
 START gradlew build
 cd ../Stacks
 START gradlew build
-pause
