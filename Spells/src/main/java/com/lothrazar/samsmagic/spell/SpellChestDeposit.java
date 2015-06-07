@@ -47,7 +47,6 @@ public class SpellChestDeposit extends BaseSpellExp
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos) 
 	{ 
-		System.out.println("cast deposit");
 		TileEntity tile = world.getTileEntity(pos);
 		
 		if(tile != null && tile instanceof TileEntityChest)//redundant check, assuming the canPlayerCast was tested
@@ -70,10 +69,10 @@ public class SpellChestDeposit extends BaseSpellExp
 	//100 to 103 is the armor
 	public class PlayerInventory
 	{
-		public static final int ROWS = 3;
+		public static final int ROWS = 4;//3 means ignore hotbar, 4 is include hotbar: TODO maybe toggle btw two in config one day?
 		public static final int COLS = 9;
 		public static final int SIZE = ROWS*COLS;
-		public static final int START = 9;//top left
+		public static final int START = 0;//top left=9; 1=hotbar
 		public static final int END = START + SIZE;
 	}
   
@@ -91,7 +90,7 @@ public class SpellChestDeposit extends BaseSpellExp
 		//player inventory and the small chest have the same dimensions 
 		
 		int START_CHEST = 0; 
-		int END_CHEST =  START_CHEST + PlayerInventory.SIZE; 
+		int END_CHEST =  START_CHEST + 3*9; 
 		
 		//inventory and chest has 9 rows by 3 columns, never changes. same as 64 max stack size
 		for(int islotChest = START_CHEST; islotChest < END_CHEST; islotChest++)
