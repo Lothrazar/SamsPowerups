@@ -8,12 +8,6 @@ or maybe switch it to a blacklist?
 SPELLS - IF CREATIVE make ender spells (all spells) cast for free
 keys.spell.cast: shoul-fix lang file 
 
-TODO command: instead of +-, use words like ADD/REPLACE/REMOVE, three modes instead of 2
-
-WORLDGENOCEAN: make all patches bigger, but keep ratios/size order
- 
-NATURE: [readyfortesting] fix bonemeal event- cant bonemeal lilypads/flowers
-
 Spells  - add  swift deposit - TODO: change to spell..??
 	-add respawn eggs--test maybe making this a spell+projectile?
 	-spell for tools that cannot be repairended - allwo repair again.

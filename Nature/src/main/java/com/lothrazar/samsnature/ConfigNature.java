@@ -56,15 +56,17 @@ public class ConfigNature
 		worldGenOceansNotUgly = instance.getBoolean("alter_ocean_floor",category, true,
     			"Clay, sand, and dirt can generate in oceans just like they used to in the old days.  Replaces the gravel in patches.");
 	 
-		clayNumBlocks = instance.get(category,"clay_size",16).getInt();
+		clayNumBlocks = instance.get(category,"clay_size",32).getInt();
 		clayChance = instance.get(category,"clay_chance",65).getInt();
 		
-		sandNumBlocks = instance.get(category,"sand_size",20).getInt();
+		sandNumBlocks = instance.get(category,"sand_size",22).getInt();
 		sandChance = instance.get(category,"sand_chance",45).getInt();
 
-		dirtNumBlocks = instance.get(category,"dirt_size",14).getInt();
+		dirtNumBlocks = instance.get(category,"dirt_size",18).getInt();
 		dirtChance = instance.get(category,"dirt_chance",30).getInt();
 
+		category = "block_properties";
+		
 		harvestGlassPickaxe  = instance.getBoolean("harvest_glass_pickaxe",category, true,
     			"Sets the pickaxe as the correct tool to harvest glass (by default there is no correct glass tool)."); 
 		
@@ -83,6 +85,7 @@ public class ConfigNature
 		spawnerHardness  = instance.getInt("spawner_hardness",category, 50,1,50,
 	    		"Hardness level of mob spawners (vanilla is 5)."); 
 
+		category = "natural_chests";
 
 		lootObsidian = instance.get(category,"obsidian", true).getBoolean();
   
