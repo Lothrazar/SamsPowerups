@@ -2,6 +2,9 @@
 TODO/BUGS/FEATURES:
 ***********
 
+fragile torches as seperate mod (i think its currently in nature)
+
+worldhome needsop = false
 
 mobchanges - more health add back in
 	-iron golems drop extra block of iron? in config?
@@ -16,7 +19,7 @@ MacrosKeys :
  	-config file entry for waypoints // todo that switches left/right side
 
 
-
+/bind list not registering?
 
 
 
