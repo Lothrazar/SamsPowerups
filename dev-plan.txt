@@ -2,28 +2,18 @@
 TODO/BUGS/FEATURES:
 ***********
 
-place command- default the filter to empty?
-or maybe switch it to a blacklist?
 
 SPELLS - IF CREATIVE make ender spells (all spells) cast for free
-keys.spell.cast/down/toggle/up : missing from lang. Spellbook category is still fine
 
 Spells  - add  swift deposit - TODO: change to spell..??
 	-add respawn eggs--test maybe making this a spell+projectile?
-	-spell for tools that cannot be repairended - allwo repair again.
-	-allow spell Casting. even if hidden?
-	-semicolon/spell row switching: hold shift means go in reverse order (2 1 0 not the normal)
-	-REPLACE SPELL : similar to /place, but swap what you are aiming at with what youre holding. use blacklist
-	-shrink to 1 height if possible
-	-far reach place hotkey. use player look vectors and trickery 
-	- play random song
+	
  
  
 mobchanges - more health add back in
 	-iron golems drop extra block of iron? in config?
 
-MacrosKeys : key.categories.inventorycontrol : in lang file
-Block interaction category: key.spell.push/pull/transform : also remove the .spell.
+MacrosKeys :
 	- up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
 	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
 	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
@@ -39,9 +29,16 @@ Block interaction category: key.spell.push/pull/transform : also remove the .spe
 
 
 ***********
-NEW MODS, or MISC IDEAS
+NEW MODS, or MISC IDEAS/ 1.1
 ***********
-
+Spells maybes
+	-shrink to 1 height if possible
+	- play random song
+	-far reach place hotkey. use player look vectors and trickery 
+	-spell for tools that cannot be repairended - allwo repair again.
+	-allow spell Casting. even if hidden?
+	-semicolon/spell row switching: hold shift means go in reverse order (2 1 0 not the normal)-only if we go up to 3 or more
+	-REPLACE SPELL : similar to /place, but swap what you are aiming at with what youre holding. use blacklist
 
 NATURE
 	- add reeds/existing plants to ocean?
