@@ -6,7 +6,7 @@ place command- default the filter to empty?
 or maybe switch it to a blacklist?
 
 SPELLS - IF CREATIVE make ender spells (all spells) cast for free
-keys.spell.cast: shoul-fix lang file 
+keys.spell.cast/down/toggle/up : missing from lang. Spellbook category is still fine
 
 Spells  - add  swift deposit - TODO: change to spell..??
 	-add respawn eggs--test maybe making this a spell+projectile?
@@ -22,7 +22,8 @@ Spells  - add  swift deposit - TODO: change to spell..??
 mobchanges - more health add back in
 	-iron golems drop extra block of iron? in config?
 
-MacrosKeys 
+MacrosKeys : key.categories.inventorycontrol : in lang file
+Block interaction category: key.spell.push/pull/transform : also remove the .spell.
 	- up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
 	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
 	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
@@ -30,7 +31,6 @@ MacrosKeys
 	-placefloor as spiralling outward from center. Right now if you do a 5x5, it starts way off in the far corner.
 	-command to place vertical? 
  	-config file entry for waypoints // todo that switches left/right side
-
 
 
 
