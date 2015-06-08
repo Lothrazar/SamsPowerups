@@ -59,13 +59,12 @@ public class ModNature
       	handlers.add(instance                         );   
 
      	for(Object h : handlers)
-     		if(h != null)
-	     	{ 
-	    		FMLCommonHandler.instance().bus().register(h); 
-	    		MinecraftForge.EVENT_BUS.register(h); 
-	    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
-	    		MinecraftForge.ORE_GEN_BUS.register(h); 
-	     	} 
+     	{ 
+    		FMLCommonHandler.instance().bus().register(h); 
+    		MinecraftForge.EVENT_BUS.register(h); 
+    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
+    		MinecraftForge.ORE_GEN_BUS.register(h); 
+     	} 
 		 
 		 
 	}

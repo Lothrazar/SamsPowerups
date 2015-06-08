@@ -28,7 +28,6 @@ public class ConfigRegistry
 		experience_bottle_return = instance.getBoolean("experience_bottle_return",category, true,
 				"Experience bottles in survival mode return an empty glass bottle to you (if used on a block).");  
 		  
- 
 		category = "player";
 
 		playerDeathCoordinates = instance.getBoolean("player_death_coordinates",category, false,
@@ -72,7 +71,6 @@ public class ConfigRegistry
 		cowExtraLeather =instance.getInt("cow_extra_leather",category, 2,0,10,
     			"Extra leather that is dropped by cows.  Normally they drop 0-2 leather, so with this setting at '2', you will get 2-4 leather per cow.");
 		 
- 
 		category = "mob_spawning";
 		
 		spawnBlazeDesertHills = instance.get(category,"blaze_deserthills", true).getBoolean(); 
@@ -97,12 +95,9 @@ public class ConfigRegistry
     	
 		spawnCaveSpiderJungle = instance.get(category,"cavespider_jungle", true).getBoolean(); 
 	
-	
-
 		if(instance.hasChanged()){ instance.save(); }
 	}
-	    
- 
+	
 	public boolean swiftDeposit; 
 	public boolean increasedStackSizes;
 	public boolean moreFuel;

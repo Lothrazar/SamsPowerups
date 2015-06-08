@@ -11,7 +11,6 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.monster.*;
 import net.minecraft.entity.passive.*; 
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -30,7 +29,6 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
-import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
@@ -68,49 +66,14 @@ public class ModMobChanges
 		MinecraftForge.EVENT_BUS.register(instance); 
 		MinecraftForge.TERRAIN_GEN_BUS.register(instance);
 		MinecraftForge.ORE_GEN_BUS.register(instance); 
- 
 	}
         
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
 		MobSpawningRegistry.registerSpawns();
-    
-   
-	//	proxy.registerRenderers();
 	}
 	 
-	 
-	
-	@SubscribeEvent
-	public void onEntityUpdate(LivingUpdateEvent event) 
-	{  
-		//PotionRegistry.onEntityUpdate(event);
-		
-		//TODO: make class/event handler for fragile torches
-		if(ModMobChanges.cfg.fragileTorches && 
-				event.entityLiving.worldObj.getBlockState(event.entityLiving.getPosition()).getBlock() == Blocks.torch) 
-		{ 
-			float oddsWillBreak = 0.01F;//TODO: in config or something? or make this 1/100
-			boolean playerCancelled = false;
-			if(event.entityLiving instanceof EntityPlayer)
-			{
-				EntityPlayer p = (EntityPlayer)event.entityLiving;
-				if(p.isSneaking())
-				{
-					playerCancelled = true;//torches are safe from breaking
-				}
-			}
-			
-			if(playerCancelled == false //if its a player, then the player is not sneaking
-					&& event.entityLiving.worldObj.rand.nextDouble() < oddsWillBreak
-					&& event.entityLiving.worldObj.isRemote == false)
-			{ 
-				event.entityLiving.worldObj.destroyBlock(event.entityLiving.getPosition(), true);  
-			}
-		}
-	}
- 
 	@SubscribeEvent
 	public void onLivingDropsEvent(LivingDropsEvent event)
 	{
@@ -131,8 +94,7 @@ public class ModMobChanges
 						event.drops.remove(i);
 					}
 				}
-			
-			
+	
 			if(z.isChild() && ModMobChanges.cfg.chanceZombieChildFeather > 0 && 
 					event.entity.worldObj.rand.nextInt(100) <= ModMobChanges.cfg.chanceZombieChildFeather)
 			{ 
@@ -205,15 +167,13 @@ public class ModMobChanges
 				event.setCanceled(true);//stop the GUI inventory opening 
 			} 
 		} 
-  
-	 
   	} 
 	 
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
-		//Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
+
 		TileEntity container = event.world.getTileEntity(event.pos);
  
 		if(ModMobChanges.cfg.skullSignNames &&  //how to get this all into its own class
@@ -263,28 +223,7 @@ public class ModMobChanges
 	public static final int skull_zombie = 2;
 	public static final int skull_player = 3;
 	public static final int skull_creeper = 4;
-	/*
-	@SubscribeEvent
-	public void onHoeUse(UseHoeEvent event)
-	{  
-		//this fires BEFORE the block turns into farmland (is cancellable) so check for grass and dirt, not farmland
-		
-		Block clicked = event.world.getBlockState(event.pos).getBlock();
-		
-		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
-			&& event.world.isAirBlock(event.pos.up()) 
-			&& ItemRegistry.beetroot_seed != null
-			&& event.world.rand.nextInt(16) == 0) //it is a 1/15 chance
-		{			
-			if(event.world.isRemote == false)
-			{
-				Util.dropItemStackInWorld(event.world, event.pos, ItemRegistry.beetroot_seed);
-			}
-
-			event.entityPlayer.addStat(achievements.beetrootSeed, 1);
-		}
-	}*/
-
+	
 	@SubscribeEvent
 	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)
 	{
@@ -300,17 +239,7 @@ public class ModMobChanges
 			}
 		}
 	}
-	/*
-	@SubscribeEvent
-	public void onEnderTeleportEvent(EnderTeleportEvent event)
-	{  
-		if(event.entityLiving != null && event.entityLiving.isPotionActive(PotionRegistry.ender))
-		{
-			event.attackDamage = 0;  //starts at exactly  5.0 which is 2.5hearts
-		}
-	}*/
-	  
-	
+
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDeathEvent event)
 	{
@@ -345,6 +274,7 @@ public class ModMobChanges
 			}
 		}
 	}
+	
 	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Block block)
 	{
 		return dropItemStackInWorld(worldObj, pos, new ItemStack(block));  
@@ -437,5 +367,4 @@ public class ModMobChanges
 		 
 		return nameTag;
 	}
-	
 }
