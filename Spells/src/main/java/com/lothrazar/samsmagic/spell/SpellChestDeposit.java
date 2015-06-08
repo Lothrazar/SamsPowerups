@@ -51,7 +51,18 @@ public class SpellChestDeposit extends BaseSpellExp
 		TileEntity tile = world.getTileEntity(pos);
 		
 		if(tile != null && tile instanceof TileEntityChest)//redundant check, assuming the canPlayerCast was tested
-			sortFromPlayerToChestEntity(world, (TileEntityChest)tile, player); 
+		{
+			TileEntityChest chest = (TileEntityChest)tile;
+			
+			sortFromPlayerToChestEntity(world, chest, player); 
+			
+			TileEntityChest cdouble = getChestAdj(chest);
+			
+			if(cdouble != null)
+			{
+				sortFromPlayerToChestEntity(world, cdouble, player); 
+			}
+		}
 	}
 
 	@Override
@@ -163,6 +174,29 @@ public class SpellChestDeposit extends BaseSpellExp
 			//SamsUtilities.spawnParticle(world,EnumParticleTypes.SLIME,chest.getPos().up()); 
 		}
   	}
+  	
+	public TileEntityChest getChestAdj(TileEntityChest chest) 
+	{
+		TileEntityChest teAdjacent = null;
+		if(chest.adjacentChestXNeg != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestXNeg; 
+  	  	}
+  		if(chest.adjacentChestXPos != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestXPos; 
+  	  	}
+  		if(chest.adjacentChestZNeg != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestZNeg ; 
+  	  	}
+  		if(chest.adjacentChestZPos != null)
+  	  	{
+  	  		teAdjacent = chest.adjacentChestZPos; 
+  	  	}
+		return teAdjacent;
+	}
+	
 
 	
 }
