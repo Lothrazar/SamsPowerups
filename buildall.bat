@@ -22,3 +22,7 @@ cd ../Spells
 START gradlew build
 cd ../Stacks
 START gradlew build
+cd ../FragileTorches
+START gradlew build
+cd ../Beetroot
+START gradlew build

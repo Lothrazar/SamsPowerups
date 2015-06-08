@@ -1,6 +1,8 @@
 ***********
 TODO/BUGS/FEATURES:
 ***********
+
+waypints: show on main screen AND ignore that gamerule
  
 spell chest transform: check for canSpelLCast before draining
 
