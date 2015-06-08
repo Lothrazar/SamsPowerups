@@ -1,7 +1,7 @@
 {
     "parent": "builtin/generated",
     "textures": {
-        "layer0": "samsnature:items/beetroot_seed"
+        "layer0": "samsbeetroot:items/beetroot_item"
     },
     "display": {
         "thirdperson": {

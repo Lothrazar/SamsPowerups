@@ -1,4 +1,4 @@
-package com.lothrazar.samsnature;
+package com.lothrazar.samsbeetroot;
 
 public class CommonProxy 
 {   

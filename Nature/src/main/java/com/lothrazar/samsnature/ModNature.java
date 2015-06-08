@@ -41,8 +41,6 @@ public class ModNature
 
 	@Instance(value = MODID)
 	public static ModNature instance;	
-	@SidedProxy(clientSide="com.lothrazar.samsnature.ClientProxy", serverSide="com.lothrazar.samsnature.CommonProxy")
-	public static CommonProxy proxy;   
 
 	public static Logger logger; 
 	public static ConfigNature cfg;
@@ -55,12 +53,6 @@ public class ModNature
 		
 		cfg = new ConfigNature(new Configuration(event.getSuggestedConfigurationFile()));
 	  
-    	//network = NetworkRegistry.INSTANCE.newSimpleChannel( Reference.MODID );     	
-    	
-    	//network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
-    //	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
- 		ItemBlockRegistry.registerItems();
- 
 		ArrayList<Object> handlers = new ArrayList<Object>();
 		  
       	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
@@ -151,26 +143,7 @@ public class ModNature
 	 		ModNature.decrHeldStackSize(entityPlayer); 
 	 	} 
 	}
-	@SubscribeEvent
-	public void onHoeUse(UseHoeEvent event)
-	{  
-		//this fires BEFORE the block turns into farmland (is cancellable) so check for grass and dirt, not farmland
-		
-		Block clicked = event.world.getBlockState(event.pos).getBlock();
-		
-		if( (clicked == Blocks.grass || clicked == Blocks.dirt ) 
-			&& event.world.isAirBlock(event.pos.up()) 
-			&& ItemBlockRegistry.beetroot_seed != null
-			&& event.world.rand.nextInt(16) == 0) //it is a 1/15 chance
-		{			
-			if(event.world.isRemote == false)
-			{
-				dropItemStackInWorld(event.world, event.pos, ItemBlockRegistry.beetroot_seed);
-			}
 
-			//event.entityPlayer.addStat(achievements.beetrootSeed, 1);
-		}
-	}
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
@@ -183,7 +156,6 @@ public class ModNature
 		}
   		 
  
-		proxy.registerRenderers();
 	}
 	 
 	 

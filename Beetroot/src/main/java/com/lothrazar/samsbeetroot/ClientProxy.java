@@ -1,4 +1,4 @@
-package com.lothrazar.samsnature;
+package com.lothrazar.samsbeetroot;
  
 import  net.minecraft.item.Item; 
 import net.minecraft.block.Block;
@@ -22,14 +22,14 @@ public class ClientProxy extends CommonProxy
         
         for(Item i : ItemBlockRegistry.items)
         {  
-        	name = ModNature.TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
+        	name = ModBeetroot.TEXTURE_LOCATION + i.getUnlocalizedName().replaceAll("item.", "");
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         } 
         for(Block b : ItemBlockRegistry.blocks)
         { 
         	item = Item.getItemFromBlock(b);
-        	name = ModNature.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
+        	name = ModBeetroot.TEXTURE_LOCATION + b.getUnlocalizedName().replaceAll("tile.", "");
 
    			mesher.register(item, 0, new ModelResourceLocation( name , "inventory"));	 
         } 
