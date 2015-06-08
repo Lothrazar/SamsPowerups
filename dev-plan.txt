@@ -4,6 +4,10 @@ TODO/BUGS/FEATURES:
  
 spell chest transform: check for canSpelLCast before draining
 
+BEETROOT standalone
+fragile torches as seperate mod (i think its currently in nature)
+
+
 SPELL FAIL : need new sound thats not a click
 
 NEW SPELL: withdraw all from chest?
@@ -13,7 +17,6 @@ DEPOSIT SPELL: use adjacent chests also
 
 CAN we customize/nicefy the Config File names, make it the mod name isntead of modid
 
-fragile torches as seperate mod (i think its currently in nature)
 
 worldhome needsop = false
 
