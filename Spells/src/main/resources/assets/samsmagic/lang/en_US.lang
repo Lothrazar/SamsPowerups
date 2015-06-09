@@ -22,3 +22,6 @@ key.spell.soulstone=Soulstone
 spell.soulstone.complete=Soulstone Applied to 
 spell.item.missing=Reagent Missing: 
 spell.exp.missing=Exp Required: 
+potion.waterwalk=Waterwalk
+potion.slowfall=Slowfall
+potion.frozen=Frost
