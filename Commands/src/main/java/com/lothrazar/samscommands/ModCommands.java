@@ -49,14 +49,14 @@ public class ModCommands
 	@Instance(value = MODID)
 	public static ModCommands instance;
 	public static Logger logger; 
-	public static ConfigMacros cfg;
+	public static ConfigCommands cfg;
 	
 	public static SimpleNetworkWrapper network;  
 	
     @EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
     {
-    	cfg = new ConfigMacros(new Configuration(event.getSuggestedConfigurationFile()));
+    	cfg = new ConfigCommands(new Configuration(event.getSuggestedConfigurationFile()));
 
     	logger = event.getModLog();  
     	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);

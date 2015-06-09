@@ -4,7 +4,7 @@ import net.minecraftforge.common.config.Configuration;
 import com.lothrazar.samscommands.command.*;
 
 
-public class ConfigMacros
+public class ConfigCommands
 { 
 	private Configuration instance;
 	private String category = "";
@@ -14,7 +14,7 @@ public class ConfigMacros
 		return instance;
 	}
 	
-	public ConfigMacros(Configuration c)
+	public ConfigCommands(Configuration c)
 	{
 		instance = c; 
 		instance.load();
