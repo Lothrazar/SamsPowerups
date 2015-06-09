@@ -2,45 +2,28 @@
 TODO/BUGS/FEATURES:
 ***********
 
-TODO: /swp: config file to disable JUST the /tp/ option
-
-SCREENTEXT-reducedGamerule improved- remove the config option, just always show coords
-
-TODO COMMAND: add a hide/show subcommands
+/swp: config file to disable JUST the /tp/ option
 
 lang entry missing: potion.waterwalk, also check other potions
 
+NEW SPELL: withdraw all from chest?-as much as player can carry 
  
-NEW SPELL: withdraw all from chest?-as much as player can carry
  
-BUG? "ghost mode" showing above date. - possibly not turning off from ghost spell
-
-CAN we customize/nicefy the Config File names, make it the mod name isntead of modid
-
- 
-
-mobchanges - more health add back in
-	-iron golems drop extra block of iron? in config?
-
 MacrosKeys :
 	- up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
 	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
 	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
 				and the 50 is a 50% chance an air block gets filled with that?
 	-placefloor as spiralling outward from center. Right now if you do a 5x5, it starts way off in the far corner.
-	-command to place vertical? 
- 	-config file entry for waypoints // todo that switches left/right side
-
-
-/bind list not registering?
-
-
-
-
+	-command to place vertical - start at player feet, and go up/left/right
+  
+ 
 ***********
 NEW MODS, or MISC IDEAS/ 1.1
 ***********
-Spells maybes  -add respawn eggs--test maybe making this a spell+projectile?
+Spells maybes  
+	-Saturation spell
+	-add respawn eggs--test maybe making this a spell+projectile?
 	-shrink to 1 height if possible
 	- play random song
 	-far reach place hotkey. use player look vectors and trickery 
@@ -59,17 +42,11 @@ NEW POTION AURA: EXP REGEN:
 	makes you slowly gain exp over time
 	-- lapis apple? makes sense since its for enchanting anyway?
 
-
-  -beter placeable pumpkins/fence gates
-  -placing rail in bad spots
-
-      
-
+ 
   crafting window place item into numpad http://www.reddit.com/r/minecraftsuggestions/comments/2yhgd6/hover_numpad_puts_items_directly_into_desired/
           
 
 -EDIT SIGNS  public void openEditSign(TileEntitySign signTile) {} in world
-
  
 -find a way that you need food variety to live/comfort. 
 
