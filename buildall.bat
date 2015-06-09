@@ -1,30 +1,35 @@
 cd Apples
-START gradlew build
+call gradlew build
 cd ../Armor
-START gradlew build
+call gradlew build
 cd ../Blocks
-START gradlew build
+call gradlew build
 cd ../CarbonPaper
-START gradlew build
+call gradlew build
 cd ../HorseFood
-START gradlew build
+call gradlew build
 cd ../Macros
-START gradlew build
+call gradlew build
 cd ../MobChanges
-START gradlew build
+call gradlew build
 cd ../Nature
-START gradlew build
+call gradlew build
 cd ../Recipes
-START gradlew build
+call gradlew build
 cd ../Screentext
-START gradlew build
+call gradlew build
 cd ../Spells
-START gradlew build
+call gradlew build
 cd ../Stacks
-START gradlew build
+call gradlew build
 cd ../FragileTorches
-START gradlew build
+call gradlew build
 cd ../Beetroot
-START gradlew build
+call gradlew build
 cd ../Commands
-START gradlew build
+call gradlew build
+cd ../ControlInventory
+call gradlew build
+cd ../ControlBlocks
+call gradlew build
+pause

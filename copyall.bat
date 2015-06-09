@@ -13,3 +13,5 @@ echo f | xcopy /f /y Stacks\build\libs run
 echo f | xcopy /f /y FragileTorches\build\libs run
 echo f | xcopy /f /y Beetroot\build\libs run
 echo f | xcopy /f /y Commands\build\libs run
+echo f | xcopy /f /y ControlInventory\build\libs run
+echo f | xcopy /f /y ControlBlocks\build\libs run
