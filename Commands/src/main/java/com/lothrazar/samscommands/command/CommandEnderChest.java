@@ -1,4 +1,4 @@
-package com.lothrazar.samskeys.command;
+package com.lothrazar.samscommands.command;
 
 /*
  * 

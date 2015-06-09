@@ -1,9 +1,8 @@
-package com.lothrazar.samskeys.command;
+package com.lothrazar.samscommands.command;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import com.lothrazar.samskeys.ModKeyMacros; 
+import com.lothrazar.samscommands.ModCommands; 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -52,13 +51,13 @@ public class CommandHearts implements ICommand
 			
 			if(ptarget == null)
 			{
-				ModKeyMacros.addChatMessage(getCommandUsage(sender));
+				ModCommands.addChatMessage(getCommandUsage(sender));
 				return;
 			}
 		}
 		catch (Exception e)
 		{
-			ModKeyMacros.addChatMessage(getCommandUsage(sender));
+			ModCommands.addChatMessage(getCommandUsage(sender));
 			return;
 		}
 		try
@@ -67,13 +66,13 @@ public class CommandHearts implements ICommand
 		}
 		catch (Exception e)
 		{
-			ModKeyMacros.addChatMessage(getCommandUsage(sender));
+			ModCommands.addChatMessage(getCommandUsage(sender));
 			return;
 		}
 		
 		if(hearts < 1) {hearts = 1;}
 		
-		ModKeyMacros.setMaxHealth(ptarget, hearts*2);
+		ModCommands.setMaxHealth(ptarget, hearts*2);
 	}
 
 	@Override

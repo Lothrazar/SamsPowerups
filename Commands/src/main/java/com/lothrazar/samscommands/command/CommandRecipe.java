@@ -1,10 +1,9 @@
-package com.lothrazar.samskeys.command;
+package com.lothrazar.samscommands.command;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.lang.reflect.Field;
-import com.lothrazar.samskeys.ModKeyMacros; 
-
+import com.lothrazar.samscommands.ModCommands; 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -63,7 +62,7 @@ public class CommandRecipe  implements ICommand
 		
 		if(held == null && world.isRemote)
 		{
-			ModKeyMacros.addChatMessage(player, "command.recipes.empty");
+			ModCommands.addChatMessage(player, "command.recipes.empty");
 			return;
 		}
 
@@ -99,7 +98,7 @@ public class CommandRecipe  implements ICommand
 		    	
 		    	//System.out.println("isInventory is from : "+r.recipeHeight+" "+r.recipeWidth);
 
-		    	ModKeyMacros.addChatMessage(player, "command.recipes.found");
+		    	ModCommands.addChatMessage(player, "command.recipes.found");
 		    	addChatShapedRecipe(player, getRecipeInput(recipe), isInventory);
 		    	foundSomething = true;
 		    }
@@ -132,13 +131,13 @@ public class CommandRecipe  implements ICommand
 			        }
 		    	}
 
-		    	ModKeyMacros.addChatMessage(player, "command.recipes.found");
+		    	ModCommands.addChatMessage(player, "command.recipes.found");
 		    	addChatShapedRecipe(player,recipeItems, isInventory);
 		    	foundSomething = true;
 		    } 
 		    else if(recipe instanceof ShapelessRecipes || recipe instanceof ShapelessOreRecipe)
 			{
-		    	ModKeyMacros.addChatMessage(player, "command.recipes.found");
+		    	ModCommands.addChatMessage(player, "command.recipes.found");
 				addChatShapelessRecipe(player,getRecipeInput(recipe));
 		    	foundSomething = true;
 		    }
@@ -155,7 +154,7 @@ public class CommandRecipe  implements ICommand
 		
 		if(foundSomething == false)
 		{
-			ModKeyMacros.addChatMessage(player, "command.recipes.notfound");
+			ModCommands.addChatMessage(player, "command.recipes.notfound");
 		}
 	}
 
@@ -259,7 +258,7 @@ public class CommandRecipe  implements ICommand
     		ItemStack is = recipeItems[i];
     		
     		//list.add(is.getDisplayName());
-        	ModKeyMacros.addChatMessage(player, " - "+is.getDisplayName());
+        	ModCommands.addChatMessage(player, " - "+is.getDisplayName());
     		
     	}
     	//TODO: cleanup/make ncer,etc
@@ -280,21 +279,21 @@ public class CommandRecipe  implements ICommand
     	{
     		if(recipeItems[i] != null)
     		{
-    			ModKeyMacros.addChatMessage(player, i+" : "+recipeItems[i].getDisplayName());
+    			ModCommands.addChatMessage(player, i+" : "+recipeItems[i].getDisplayName());
     			grid[i] = i+" ";
     		}
     	}
 		
 		if(isInventory)
 		{
-			ModKeyMacros.addChatMessage(player, grid[0]+grid[1]);
-			ModKeyMacros.addChatMessage(player, grid[2]+grid[3]);
+			ModCommands.addChatMessage(player, grid[0]+grid[1]);
+			ModCommands.addChatMessage(player, grid[2]+grid[3]);
 		}
 		else
 		{
-			ModKeyMacros.addChatMessage(player, grid[0]+grid[1]+grid[2]);
-			ModKeyMacros.addChatMessage(player, grid[3]+grid[4]+grid[5]);
-			ModKeyMacros.addChatMessage(player, grid[6]+grid[7]+grid[8]);
+			ModCommands.addChatMessage(player, grid[0]+grid[1]+grid[2]);
+			ModCommands.addChatMessage(player, grid[3]+grid[4]+grid[5]);
+			ModCommands.addChatMessage(player, grid[6]+grid[7]+grid[8]);
 		}
 	}
 }

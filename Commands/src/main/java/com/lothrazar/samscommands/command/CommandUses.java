@@ -1,10 +1,9 @@
-package com.lothrazar.samskeys.command;
+package com.lothrazar.samscommands.command;
 
 import java.util.ArrayList;
 import java.util.List; 
 
-import com.lothrazar.samskeys.ModKeyMacros;
-
+import com.lothrazar.samscommands.ModCommands; 
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -59,7 +58,7 @@ public class CommandUses implements ICommand
 				
 		if(held == null && world.isRemote)
 		{
-			ModKeyMacros.addChatMessage(player, "command.recipes.empty");
+			ModCommands.addChatMessage(player, "command.recipes.empty");
 			return;
 		}
 
@@ -80,7 +79,7 @@ public class CommandUses implements ICommand
 			{
 				if(is != null && held.getItem() == is.getItem() && held.getMetadata() == is.getMetadata()) 
 				{ 
-					ModKeyMacros.addChatMessage(player, recipeResult.getDisplayName());
+					ModCommands.addChatMessage(player, recipeResult.getDisplayName());
 				
 					foundSomething = true;
 					//break only the inner loop, keep looking for other recipes
@@ -91,7 +90,7 @@ public class CommandUses implements ICommand
 		
 		if(foundSomething == false)
 		{
-			ModKeyMacros.addChatMessage(player, "command.recipes.notfound");
+			ModCommands.addChatMessage(player, "command.recipes.notfound");
 		}
 	}
 

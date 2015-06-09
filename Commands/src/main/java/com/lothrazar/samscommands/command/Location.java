@@ -1,4 +1,4 @@
-package com.lothrazar.samskeys;
+package com.lothrazar.samscommands.command;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;

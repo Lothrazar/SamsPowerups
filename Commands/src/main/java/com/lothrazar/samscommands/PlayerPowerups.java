@@ -1,6 +1,6 @@
-package com.lothrazar.samskeys;
+package com.lothrazar.samscommands;
 
- 
+  
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,7 +9,7 @@ import net.minecraftforge.common.IExtendedEntityProperties;
 
 public class PlayerPowerups implements IExtendedEntityProperties
 {
-	private final static String EXT_PROP_NAME = "PlayerPowerups" + ModKeyMacros.MODID;
+	private final static String EXT_PROP_NAME = "PlayerPowerups" + ModCommands.MODID;
 	private final EntityPlayer player;//we get one of these powerup classes for each player
 
 	private static final int WAYPOINT_WATCHER = 20;

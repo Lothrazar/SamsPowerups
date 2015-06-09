@@ -1,5 +1,5 @@
-package com.lothrazar.samskeys;
- 
+package com.lothrazar.samscommands;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.BlockPos;
@@ -67,7 +67,7 @@ public class MessagePotion implements IMessage, IMessageHandler<MessagePotion, I
 			//at com.lothrazar.samscontent.potion.MessagePotion.onMessage(MessagePotion.java:69) ~[MessagePotion.class:?]
 			World world = Minecraft.getMinecraft().thePlayer.worldObj;//Minecraft.getMinecraft().getIntegratedServer().getEntityWorld();
   
-			ModKeyMacros.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y,message.z));
+			ModCommands.spawnParticle(world, EnumParticleTypes.getParticleFromId(message.particle), new BlockPos(message.x,message.y,message.z));
 		}
 		 
 		return null;

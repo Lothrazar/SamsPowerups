@@ -1,4 +1,4 @@
-package com.lothrazar.samskeys.command;
+package com.lothrazar.samscommands.command;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -10,7 +10,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lothrazar.samskeys.PlayerPowerups;
+import com.lothrazar.samscommands.PlayerPowerups;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.command.ICommand;

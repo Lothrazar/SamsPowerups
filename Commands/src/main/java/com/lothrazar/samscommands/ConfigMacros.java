@@ -1,7 +1,8 @@
-package com.lothrazar.samskeys;
+package com.lothrazar.samscommands;
  
 import net.minecraftforge.common.config.Configuration;  
-import com.lothrazar.samskeys.command.*;   
+import com.lothrazar.samscommands.command.*;
+
 
 public class ConfigMacros
 { 
