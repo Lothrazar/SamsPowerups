@@ -34,7 +34,7 @@ public class ConfigRecipes
 				"Smelt gravel into flint to save on mindless shovel digging.");
 		
 		experience_bottle = instance.getBoolean( "experience_bottle",category,true,
-				"Craft experience bottles from many (vanilla) mob drops and empty bottles.  Also fish.");
+				"Craft experience bottles from many mob drops with empty bottles.");
 		 
 		netherwartPurpleDye = instance.getBoolean( "netherwart_purple_dye",category,true,
 				"Craft bonemeal and netherwart into purple dye.");
