@@ -1,14 +1,11 @@
 ***********
-TODO/BUGS/FEATURES:
+BUGs/TODO list for 1.0 before release
 ***********
 
-/swp: config file to disable JUST the /tp/ option
 
-lang entry missing: potion.waterwalk, also check other potions
-
-NEW SPELL: withdraw all from chest?-as much as player can carry 
- 
- 
+***********
+NEW FEATURE IDEAS /  1.1
+***********
 MacrosKeys :
 	- up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
 	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
@@ -18,9 +15,7 @@ MacrosKeys :
 	-command to place vertical - start at player feet, and go up/left/right
   
  
-***********
-NEW MODS, or MISC IDEAS/ 1.1
-***********
+
 Spells maybes  
 	-Saturation spell
 	-add respawn eggs--test maybe making this a spell+projectile?
