@@ -12,3 +12,4 @@ echo f | xcopy /f /y Spells\build\libs run
 echo f | xcopy /f /y Stacks\build\libs run
 echo f | xcopy /f /y FragileTorches\build\libs run
 echo f | xcopy /f /y Beetroot\build\libs run
+echo f | xcopy /f /y Commands\build\libs run

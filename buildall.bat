@@ -26,3 +26,5 @@ cd ../FragileTorches
 START gradlew build
 cd ../Beetroot
 START gradlew build
+cd ../Commands
+START gradlew build
