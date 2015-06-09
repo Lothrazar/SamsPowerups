@@ -4,6 +4,8 @@ TODO/BUGS/FEATURES:
 
 TODO: /swp: config file to disable JUST the /tp/ option
 
+SCREENTEXT-reducedGamerule improved- remove the config option, just always show coords
+
 TODO COMMAND: add a hide/show subcommands
 
 lang entry missing: potion.waterwalk, also check other potions
@@ -11,6 +13,7 @@ lang entry missing: potion.waterwalk, also check other potions
  
 NEW SPELL: withdraw all from chest?-as much as player can carry
  
+BUG? "ghost mode" showing above date. - possibly not turning off from ghost spell
 
 CAN we customize/nicefy the Config File names, make it the mod name isntead of modid
 
