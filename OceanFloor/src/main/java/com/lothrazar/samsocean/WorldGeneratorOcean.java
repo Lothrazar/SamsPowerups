@@ -1,8 +1,7 @@
-package com.lothrazar.samsnature;
+package com.lothrazar.samsocean;
 
 import java.util.Random;
 
-import com.lothrazar.samsnature.ModNature;  
 import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.BlockPos;
@@ -21,8 +20,6 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	private WorldGenerator genSand;  
 	private WorldGenerator genDirt;  
 
-	//private WorldGenerator genGold;  
-	
 	private final int MIN_HEIGHT = 20; 
 	private final int MAX_HEIGHT = 128;
 	public static final int CHUNK_SIZE = 16;
@@ -30,12 +27,9 @@ public class WorldGeneratorOcean implements IWorldGenerator
  
 	public WorldGeneratorOcean() 
 	{   
-	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModNature.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModNature.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModNature.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	
-	   // this.genGold = new WorldGenMinable(Blocks.gold_ore.getDefaultState(), ModMain.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.netherrack));
-	   
+	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModOcean.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModOcean.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModOcean.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
 	}
 	 
 	@Override
@@ -44,11 +38,11 @@ public class WorldGeneratorOcean implements IWorldGenerator
 		if(world.provider.getDimensionId() == OVERWORLD)//overworld 
 		{ 
 			this.run(this.genClay, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
-					ModNature.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
+					 ModOcean.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genSand, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
-					ModNature.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
+					 ModOcean.cfg.sandChance, MIN_HEIGHT, MAX_HEIGHT);
 			this.run(this.genDirt, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE,
-					ModNature.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
+					 ModOcean.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
 		/*//TODO: maybe oneday?
 		if(world.provider.getDimensionId() == Reference.Dimension.nether) 

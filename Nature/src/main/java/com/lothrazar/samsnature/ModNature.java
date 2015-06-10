@@ -44,7 +44,6 @@ public class ModNature
 
 	public static Logger logger; 
 	public static ConfigNature cfg;
-//	public static SimpleNetworkWrapper network;  
 
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
@@ -65,9 +64,8 @@ public class ModNature
     		MinecraftForge.TERRAIN_GEN_BUS.register(h);
     		MinecraftForge.ORE_GEN_BUS.register(h); 
      	} 
-		 
-		 
 	}
+	
 	public static final int dye_bonemeal = 15;
 	public static boolean isBonemeal(ItemStack held )
 	{ 
@@ -77,6 +75,7 @@ public class ModNature
 	 
 		return (heldItem.equals(Items.dye)  && held.getItemDamage() == dye_bonemeal); 
 	}
+	
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
@@ -93,6 +92,7 @@ public class ModNature
 			useBonemeal(event.world, event.entityPlayer, event.pos, blockClicked);
 		}
   	}
+	
 	private void useBonemeal(World world, EntityPlayer entityPlayer, BlockPos pos, Block blockClicked)
 	{
 		boolean success = false; 
@@ -146,22 +146,7 @@ public class ModNature
 	 		ModNature.decrHeldStackSize(entityPlayer); 
 	 	} 
 	}
-
-	@EventHandler
-	public void onInit(FMLInitializationEvent event)
-	{       
-		ChestLootGenerator.regsiterLoot();
-
-  		if(ModNature.cfg.worldGenOceansNotUgly)
-		{ 
-  			int weight = 0;
-			GameRegistry.registerWorldGenerator(new WorldGeneratorOcean(), weight);
-		}
-  		 
  
-	}
-	 
-	 
 	public static void decrHeldStackSize(EntityPlayer entityPlayer) 
 	{
 		decrHeldStackSize(entityPlayer,1);

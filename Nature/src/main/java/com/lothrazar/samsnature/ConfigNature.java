@@ -44,21 +44,6 @@ public class ConfigNature
 		saplingAllEnd = instance.getBoolean("sapling_end",category, false,
     			"If true, all saplings grow in the end (ignoring sapling_biome_restricted)");
  
- 
-		category = "ocean_generation";
-	
-		worldGenOceansNotUgly = instance.getBoolean("alter_ocean_floor",category, true,
-    			"Clay, sand, and dirt can generate in oceans just like they used to in the old days.  Replaces the gravel in patches.");
-	 
-		clayNumBlocks = instance.get(category,"clay_size",32).getInt();
-		clayChance = instance.get(category,"clay_chance",65).getInt();
-		
-		sandNumBlocks = instance.get(category,"sand_size",22).getInt();
-		sandChance = instance.get(category,"sand_chance",45).getInt();
-
-		dirtNumBlocks = instance.get(category,"dirt_size",18).getInt();
-		dirtChance = instance.get(category,"dirt_chance",30).getInt();
-
 		category = "block_properties";
 		
 		harvestGlassPickaxe  = instance.getBoolean("harvest_glass_pickaxe",category, true,
@@ -140,11 +125,5 @@ public class ConfigNature
 	public boolean endermenDropCarryingBlock;
 
 	public float redstoneOreHardness;
-	public int clayChance;
-	public int clayNumBlocks;
-	public int dirtChance;
-	public int dirtNumBlocks;
-	public int sandChance;
-	public int sandNumBlocks;
-
+ 
 }
