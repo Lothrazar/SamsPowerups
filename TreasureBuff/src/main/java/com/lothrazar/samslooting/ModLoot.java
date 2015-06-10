@@ -31,7 +31,6 @@ public class ModLoot
 		logger = event.getModLog();  
 		
 		cfg = new ConfigLoot(new Configuration(event.getSuggestedConfigurationFile()));
-	  
 	}
 	 
 	@EventHandler

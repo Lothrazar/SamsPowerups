@@ -32,4 +32,10 @@ cd ../ControlInventory
 call gradlew build
 cd ../ControlBlocks
 call gradlew build
+cd ../OceanFloor
+call gradlew build
+cd ../SaplingGrowth
+call gradlew build
+cd ../TreasureBuff
+call gradlew build
 pause
