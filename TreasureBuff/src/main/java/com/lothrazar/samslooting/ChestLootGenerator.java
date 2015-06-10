@@ -88,7 +88,8 @@ public class ChestLootGenerator
 			ChestGenHooks.addItem(STRONGHOLD_CORRIDOR, new WeightedRandomChestContent( items[i], min, max, weight));
 			ChestGenHooks.addItem(STRONGHOLD_CROSSING, new WeightedRandomChestContent (items[i], min, max, weight));
 			ChestGenHooks.addItem(STRONGHOLD_LIBRARY, new WeightedRandomChestContent(  items[i], min, max, weight));
-			 
+			ChestGenHooks.addItem(NETHER_FORTRESS, new WeightedRandomChestContent(     items[i], min, max, weight));
+			
 			//brainstorm what would make sense, be Fun, and Not overpowered in bonus chests
 			// if food then not too much
 			//stack of fun potions
