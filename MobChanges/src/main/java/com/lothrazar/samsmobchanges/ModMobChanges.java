@@ -15,10 +15,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumParticleTypes;
@@ -30,8 +26,6 @@ import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.EntityInteractEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
-import net.minecraftforge.event.entity.player.PlayerWakeUpEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
@@ -40,21 +34,17 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
   
-@Mod(modid = ModMobChanges.MODID, version = ModMobChanges.VERSION,	name = ModMobChanges.NAME, useMetadata = true )  
+@Mod(modid = ModMobChanges.MODID, useMetadata = true )  
 public class ModMobChanges
 {
 	public static final String MODID = "samsmobchanges";
 	public static final String TEXTURE_LOCATION = ModMobChanges.MODID + ":";
-	public static final String VERSION = "1.8-1.0.0";
-	public static final String NAME = "Sam's Mob Changes";
 	@Instance(value = ModMobChanges.MODID)
 	public static ModMobChanges instance;
-	//@SidedProxy(clientSide="com.lothrazar.samscontent.proxy.ClientProxy", serverSide="com.lothrazar.samscontent.proxy.CommonProxy")
-	//public static CommonProxy proxy;   
+  
 	public static Logger logger; 
 	public static ConfigRegistry cfg;
-	//public static SimpleNetworkWrapper network; 
- 
+
 	@EventHandler
 	public void onPreInit(FMLPreInitializationEvent event)
 	{ 
@@ -168,7 +158,8 @@ public class ModMobChanges
 			} 
 		} 
   	} 
-	 
+	 /*
+	  //TODO: standalone for this?
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
@@ -206,6 +197,7 @@ public class ModMobChanges
 			} 
 		} //end of skullSignNames
    	}
+   	*/
 	public static void spawnParticle(World world, EnumParticleTypes type, BlockPos pos)
 	{ 
 		spawnParticle(world,type,pos.getX(),pos.getY(),pos.getZ());
@@ -228,6 +220,8 @@ public class ModMobChanges
 	public static final int skull_player = 3;
 	public static final int skull_creeper = 4;
 	
+	/*
+	 //TODO: this should be in standalone , but what goes with it?
 	@SubscribeEvent
 	public void onPlayerWakeUpEvent(PlayerWakeUpEvent event)
 	{
@@ -242,7 +236,7 @@ public class ModMobChanges
 				event.entityPlayer.addPotionEffect(new PotionEffect(Potion.hunger.id,  ModMobChanges.cfg.sleeping_hunger_seconds * 20, levelBoost));
 			}
 		}
-	}
+	}*/
 
 	@SubscribeEvent
 	public void onLivingDeathEvent(LivingDeathEvent event)

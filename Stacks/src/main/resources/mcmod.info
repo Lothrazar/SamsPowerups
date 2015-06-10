@@ -3,8 +3,8 @@
   "modList": [{
     "modid": "samsstacks",
     "name": "Sam's Stackables",
-    "description": ".",
-    "version": "1.0.0",
+    "description": "Stack more things to 64, such as ender pearls, minecarts, snowballs, and so on.",
+    "version": "1.8-1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
     "updateUrl": "",

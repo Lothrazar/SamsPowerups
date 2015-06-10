@@ -17,16 +17,14 @@ public class ConfigRegistry
 		instance = c; 
 		instance.load();
    
-		category = "tweaks";//these are the misc. changes i made that have no clear category yet
+	//	category = "tweaks";//these are the misc. changes i made that have no clear category yet
 		
-		skullSignNames = instance.getBoolean("skull_sign_names",category, true,
-    			"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
-
-		fragileTorches = instance.getBoolean("fragile_torches",category, true,
-				"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
-		 
-		experience_bottle_return = instance.getBoolean("experience_bottle_return",category, true,
-				"Experience bottles in survival mode return an empty glass bottle to you (if used on a block).");  
+		//TODO: standalone for this? does not belong here
+	//	skullSignNames = instance.getBoolean("skull_sign_names",category, true,
+    		//	"Hit a sign with a player skull to make the skull take on the name (skin) of the first word/line on the sign");
+  
+		//experience_bottle_return = instance.getBoolean("experience_bottle_return",category, true,
+		//		"Experience bottles in survival mode return an empty glass bottle to you (if used on a block).");  
 		  
 		category = "player";
 
@@ -36,8 +34,8 @@ public class ConfigRegistry
 		dropPlayerSkullOnDeath = instance.getBoolean("drop_player_skull_on_death",category, true,
     			"Players will drop their skull when they die for any reason.");
 
-		sleeping_hunger_seconds = instance.getInt("sleeping_hunger_seconds",category, 60,0,999,
-    		"Number of seconds of hunger effect you get if you skip the night in a bed (so 0 for vanilla).");
+		//sleeping_hunger_seconds = instance.getInt("sleeping_hunger_seconds",category, 60,0,999,
+    	//	"Number of seconds of hunger effect you get if you skip the night in a bed (so 0 for vanilla).");
  
 		category = "mob_changes";
 		 
@@ -68,7 +66,7 @@ public class ConfigRegistry
 		
 		endermenDropCarryingBlock = instance.get(category,"endermen_drop_carrying_block", true).getBoolean();
 		
-		cowExtraLeather =instance.getInt("cow_extra_leather",category, 2,0,10,
+		cowExtraLeather = instance.getInt("cow_extra_leather",category, 2,0,10,
     			"Extra leather that is dropped by cows.  Normally they drop 0-2 leather, so with this setting at '2', you will get 2-4 leather per cow.");
 		 
 		category = "mob_spawning";
@@ -98,43 +96,8 @@ public class ConfigRegistry
 		if(instance.hasChanged()){ instance.save(); }
 	}
 	
-	public boolean swiftDeposit; 
-	public boolean increasedStackSizes;
-	public boolean moreFuel;
-	public boolean skullSignNames; 
-	public boolean craftableTransmuteRecords;    
-	public boolean craftableBonemealColouredWool;    
-	public boolean bonemealAllFlowers;
-	public boolean bonemealLilypads;
-	public boolean bonemealReeds;
-	public boolean decorativeBlocks;  
-	public boolean uncraftGeneral; 
-	public boolean fishingNetBlock; 
-	//public boolean enderBook;
-	public boolean weatherBlock; 
-	public boolean craftableMushroomBlocks;
-	public boolean cmd_searchtrade;
-	public boolean cmd_searchitem;
-	public boolean killall;
-	public boolean cmd_enderchest;
-	public boolean cmd_simplewaypoint;
-	public boolean cmd_todo;
-	public boolean cmd_kit; 
-	public boolean cmd_home;
-	public boolean worldhome;
-	public boolean lootObsidian;
-	public boolean lootAllRecords;
-	public boolean lootGlowstone;
-	public boolean lootQuartz;
-	public boolean appleDiamond;
-	//public boolean appleLapis;
-	public boolean appleChocolate;
+
  
- 
-	public boolean debugSlime;
-	public boolean debugHorseInfo;
-	public boolean reducedDebugImproved;
-	public boolean debugVillageInfo;
 	public boolean spawnBlazeDesertHills;
 	public boolean spawnMagmaCubeDesert;
 	public boolean spawnCaveSpiderMesa;
@@ -166,31 +129,14 @@ public class ConfigRegistry
 	public boolean barrierCreativeInventory;
 	public boolean dragonEggCreativeInventory;
 	public boolean farmlandCreativeInventory;
-	public boolean spawnerCreativeInventory; 
-	public boolean fragileTorches;
+	public boolean spawnerCreativeInventory;  
 	public boolean removeZombieCarrotPotato;
 	public boolean petNametagChat;
 	public boolean playerDeathCoordinates;
-	public int obsidianHardness; 
-	public int diamondOreHardness;
-	public int emeraldOreHardness;
-	public int spawnerHardness; 
-  
- 
+
 	public boolean respawn_egg;
  
-	public int potionIdWaterwalk;
-	public int potionIdSlowfall;
-	public int potionIdFlying;
-	public float slowfallSpeed;
-	public boolean flintTool;
-	public int potionIdLavawalk;
-	public boolean netherwartPurpleDye;
-	public boolean worldGenOceansNotUgly;
-	public boolean saplingGrowthRestricted;
-	public boolean saplingAllNether;
-	public boolean saplingAllEnd; 
-	public boolean harvestGlassPickaxe;
+
   
 	public boolean beetroot;
 	public boolean flintPumpkin;
@@ -209,18 +155,10 @@ public class ConfigRegistry
 	public boolean canNameVillagers;
 	//public boolean horse_food_upgrades;
 	public int cowExtraLeather;
-	public int sleeping_hunger_seconds;  
+	//public int sleeping_hunger_seconds;  
 	public boolean experience_bottle;
-	public boolean experience_bottle_return;
-	public boolean block_fragile; 
-	public boolean quartz_from_prismarine;
-	public boolean debugGameruleInfo;
-	public boolean smelt_gravel;
-	public boolean cmd_place_blocks; 
-	public boolean emerald_armor; 
-	public boolean cheaper_stairs; 
-	public boolean cmd_recipe;
-	public boolean cmd_uses; 
+	//public boolean experience_bottle_return;
+
 	//public boolean cmd_effectpay;
 	public boolean cmd_ping; 
 	public int heartsWolfTamed;

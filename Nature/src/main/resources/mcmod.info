@@ -3,8 +3,8 @@
   "modList": [{
     "modid": "samsnature",
     "name": "Sam's Nature",
-    "description": "Clay in the oceans, and sapling growth has been restricted.  Bonemeal works on more stuff.",
-    "version": "1.0.0",
+    "description": "Saplings that try to grow in a non-native biome turn into dead bushes.  Clay, sand, and dirt spawn in the deep gravel oceans.  Bonemeal works on more things.  Block hardness of spawners and a few others changed in the config file.  More treasure and records spawn in natural chests.",
+    "version": "1.8-1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
     "updateUrl": "",

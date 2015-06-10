@@ -7,7 +7,7 @@ public class ConfigNature
 	private Configuration instance;
 	private String category = "";
 	public boolean plantDespawningSaplings;
-	public boolean beetroot;
+	//public boolean beetroot;
 	
 	public Configuration instance()
 	{
@@ -19,15 +19,7 @@ public class ConfigNature
 		instance = c; 
 		instance.load();
   
-		//fragileTorches = instance.getBoolean("fragile_torches",category, true,
-		//		"Torches have a chance to break when living entity colides with it (unless it is a sneaking player).");  
-		 
-
-		category = "crops";
- 	
-		beetroot =  instance.getBoolean( "beetroot",category,true,
-				"Add beetroot to the game.  The same as pocket edition, except they do not work with pigs.  " );
-
+ 
 		category = "nature";
 
 

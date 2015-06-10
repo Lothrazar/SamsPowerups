@@ -14,13 +14,12 @@ import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
   
-@Mod(modid = ModArmor.MODID, version = ModArmor.VERSION,	name = ModArmor.NAME, useMetadata = true )  
+@Mod(modid = ModArmor.MODID , useMetadata=true)  
 public class ModArmor
 { 
 	public static final String MODID = "samsarmor";
 	public static final String TEXTURE_LOCATION = MODID + ":";
-	public static final String VERSION = "1.8-1.0.0";
-	public static final String NAME = "Sam's Apples";
+ 
 
 	@Instance(value = MODID)
 	public static ModArmor instance;

@@ -54,14 +54,12 @@ import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
   
-@Mod(modid = ModSpells.MODID, version = ModSpells.VERSION,	name = ModSpells.NAME, useMetadata = true )  
+@Mod(modid = ModSpells.MODID,  useMetadata = true )  
 public class ModSpells
 {
 	//TODO: DO NOT RESET TIMER IF CASTING FAILS
 	public static final String MODID = "samsmagic";
-	public static final String TEXTURE_LOCATION = MODID + ":";
-	public static final String VERSION = "1.8-1.0.0";
-	public static final String NAME = "Sam's Spells";
+	public static final String TEXTURE_LOCATION = MODID + ":"; 
 	@Instance(value = ModSpells.MODID)
 	public static ModSpells instance;
 	@SidedProxy(clientSide="com.lothrazar.samsmagic.proxy.ClientProxy", serverSide="com.lothrazar.samsmagic.proxy.CommonProxy")

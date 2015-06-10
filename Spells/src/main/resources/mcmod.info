@@ -3,8 +3,8 @@
   "modList": [{
     "modid": "samsmagic",
     "name": "Sam's Spells",
-    "description": "A magic system that uses either items from your ender chest, or experience points.",
-    "version": "1.0.0",
+    "description": "A magic system that uses either items from your ender chest, or experience points.  Keybindings to select and cast your spells.",
+    "version": "1.8-1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
     "updateUrl": "",

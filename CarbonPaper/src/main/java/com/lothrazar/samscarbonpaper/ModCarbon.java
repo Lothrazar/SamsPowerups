@@ -15,12 +15,10 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-@Mod(modid = ModCarbon.MODID, version = ModCarbon.VERSION,	name = ModCarbon.NAME, useMetadata = true )
+@Mod(modid = ModCarbon.MODID, useMetadata=true)
 public class ModCarbon
 {
-    public static final String MODID = "samscarbonpaper";
-    public static final String NAME = "Sam's Carbon Paper";
-    public static final String VERSION = "1.8-1.0.0";
+    public static final String MODID = "samscarbonpaper"; 
     @Instance(value = ModCarbon.MODID)
 	public static ModCarbon instance;
     @SidedProxy(clientSide="com.lothrazar.samscarbonpaper.ClientProxy", serverSide="com.lothrazar.samscarbonpaper.CommonProxy")

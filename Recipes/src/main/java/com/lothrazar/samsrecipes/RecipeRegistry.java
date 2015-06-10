@@ -28,7 +28,7 @@ public class RecipeRegistry
 		
 		RecipeRegistry.simpleDispenser();
 		
-		RecipeRegistry.records();
+	//	RecipeRegistry.records();
 		  
    		RecipeRegistry.uncrafting();
  
@@ -698,7 +698,7 @@ public class RecipeRegistry
 		GameRegistry.addShapelessRecipe(new ItemStack(Items.slime_ball, 2),
 				new ItemStack(Items.lead), new ItemStack(Items.lead));
 	}
-
+/*
 	public static void records()
 	{
 		if(!ModRecipes.cfg.craftableTransmuteRecords) {return;}
@@ -744,7 +744,7 @@ public class RecipeRegistry
 		GameRegistry.addRecipe(new ItemStack(Items.record_wait), "xxx", "xsx",
 				"xxx", 'x', new ItemStack(Items.emerald), 's', new ItemStack(
 						Items.record_13));
-	}
+	}*/
 
 	public static void bonemealWool()
 	{

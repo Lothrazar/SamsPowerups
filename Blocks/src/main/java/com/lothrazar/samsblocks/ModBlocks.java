@@ -26,13 +26,11 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
-@Mod(modid = ModBlocks.MODID, version = ModBlocks.VERSION,	name = ModBlocks.NAME, useMetadata = true )  
+@Mod(modid = ModBlocks.MODID, useMetadata=true)  
 public class ModBlocks
 {
 	public static final String MODID = "samsblocks";
-	public static final String TEXTURE_LOCATION = ModBlocks.MODID + ":";
-	public static final String VERSION = "1.8-1.0.0";
-	public static final String NAME = "Builder's Blocks";
+	public static final String TEXTURE_LOCATION = ModBlocks.MODID + ":"; 
 	@Instance(value = ModBlocks.MODID)
 	public static ModBlocks instance;
 	public static Logger logger; 
