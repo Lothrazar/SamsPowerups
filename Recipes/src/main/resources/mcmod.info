@@ -2,7 +2,7 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samsrecipes",
-    "name": "Sam's Recipes",
+    "name": "UncraftingRecipes",
     "description": "More recipes for existing content, such as smelting gravel, and crafting mushroom blocks.  More things burn as furnace fuel.  Lots of uncrafting recipes.  Also a few recipes are harder such as furnace requiring coal.  Stone tools need smoothstone for fully repaired result.  Check config file.",
     "version": "1.8-1.0.0",
     "mcversion": "1.8",

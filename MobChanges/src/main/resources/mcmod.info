@@ -2,7 +2,7 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samsmobchanges",
-    "name": "Sam's Mob Changes",
+    "name": "Mob Spawns and Tweaks",
     "description": "Existing mobs spawn in more biomes.  Named mobs drop their nametag on death.  Enderman drop the block they are carrying on death.  Increased health of pet mobs.  Some changes to mob drops.  Players drop their skull on death.  See config file for more details.",
     "version": "1.8-1.0.0",
     "mcversion": "1.8",

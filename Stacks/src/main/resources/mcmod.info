@@ -2,7 +2,7 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samsstacks",
-    "name": "Sam's Stackables",
+    "name": "Full Stackable",
     "description": "Stack more things to 64, such as ender pearls, minecarts, snowballs, and so on.",
     "version": "1.8-1.0.0",
     "mcversion": "1.8",

@@ -2,9 +2,15 @@
 BUGs/TODO list for 1.0 before release
 ***********
 
-mc info missing for fragile torches + other new mods
+TODO: SPLIT SAMS NATURE INTO 3 CHUNKS:
 
-remove usemetadata = true, and remove 'sam' display name ready for release
+- OceanFloor
+
+- SaplingGrowth
+
+- TreasureBuff
+
+SAMS MAGIC: more/better categories? Maybe one that is just the spells that use ender stuff? right now they are too big
 
 release schedule:
 

@@ -2,8 +2,8 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samsnature",
-    "name": "Sam's Nature",
-    "description": "Saplings that try to grow in a non-native biome turn into dead bushes.  Clay, sand, and dirt spawn in the deep gravel oceans.  Bonemeal works on more things.  Block hardness of spawners and a few others changed in the config file.  More treasure and records spawn in natural chests.",
+    "name": "OceanSaplingsTreasure",
+    "description": "THREEINONE: DO NOT RELEASE THIS YET",
     "version": "1.8-1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
