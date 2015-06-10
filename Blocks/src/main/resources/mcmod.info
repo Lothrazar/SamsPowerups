@@ -2,8 +2,8 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samsblocks",
-    "name": "Sam's Blocks",
-    "description": "Fishing net, auto sheep shearing, scaffolding, gamerule and weather toggle blocks, liquid storage blocks for buckets.",
+    "name": "Farm Utility Blocks",
+    "description": "Fishing net block spawns fish items in water; sheep shearing block that auto-shears on collision; scaffolding block that decays like leaves; gamerule and weather toggle blocks; liquid storage blocks that holds unlimited buckets; blocks to execute toggledownfall, and send you to your bed or worldspawn",
     "version": "1.8-1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
