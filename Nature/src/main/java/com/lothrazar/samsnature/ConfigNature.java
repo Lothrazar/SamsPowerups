@@ -5,8 +5,7 @@ import net.minecraftforge.common.config.Configuration;
 public class ConfigNature
 { 
 	private Configuration instance;
-	private String category = "";
-	public boolean plantDespawningSaplings;
+	private String category = ""; 
 	//public boolean beetroot;
 	
 	public Configuration instance()
@@ -31,18 +30,6 @@ public class ConfigNature
 		bonemealLilypads = instance.get(category,"bonemeal_lilypads", true).getBoolean();
 
 		bonemealReeds = instance.get(category,"bonemeal_reeds", true).getBoolean();
-		
-		plantDespawningSaplings = instance.getBoolean("sapling_plant_despawn",category, true,
-    			"When a sapling (or mushroom) despawns while sitting on grass or dirt, it will instead attempt to plant itself.");
-
-		saplingGrowthRestricted = instance.getBoolean("sapling_biome_restricted",category, true,
-    			"Sapling growth is restricted to only their native biomes (for example, birch trees will not grow in roofed forests).");
-		 
-		saplingAllNether = instance.getBoolean("sapling_nether",category, false,
-    			"If true, all saplings grow in the nether (ignoring sapling_biome_restricted).");
-		
-		saplingAllEnd = instance.getBoolean("sapling_end",category, false,
-    			"If true, all saplings grow in the end (ignoring sapling_biome_restricted)");
  
 		category = "block_properties";
 		
@@ -112,13 +99,7 @@ public class ConfigNature
 	public int diamondOreHardness;
 	public int emeraldOreHardness;
 	public int spawnerHardness; 
-  
- 
-  
-	public boolean worldGenOceansNotUgly;
-	public boolean saplingGrowthRestricted;
-	public boolean saplingAllNether;
-	public boolean saplingAllEnd; 
+   
 	public boolean harvestGlassPickaxe;
 
 	public boolean flintPumpkin;

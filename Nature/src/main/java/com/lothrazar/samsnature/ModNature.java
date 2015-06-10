@@ -52,18 +52,15 @@ public class ModNature
 		
 		cfg = new ConfigNature(new Configuration(event.getSuggestedConfigurationFile()));
 	  
-		ArrayList<Object> handlers = new ArrayList<Object>();
-		  
-      	handlers.add(new SaplingDespawnGrowth());//this is only one needs terrain gen buff, plus one of the regular ones
-      	handlers.add(instance                         );   
+	  
+      	//handlers.add(instance                         );   
 
-     	for(Object h : handlers)
-     	{ 
-    		FMLCommonHandler.instance().bus().register(h); 
-    		MinecraftForge.EVENT_BUS.register(h); 
-    		MinecraftForge.TERRAIN_GEN_BUS.register(h);
-    		MinecraftForge.ORE_GEN_BUS.register(h); 
-     	} 
+    
+    		FMLCommonHandler.instance().bus().register(instance); 
+    		MinecraftForge.EVENT_BUS.register(instance); 
+    		MinecraftForge.TERRAIN_GEN_BUS.register(instance);
+    		MinecraftForge.ORE_GEN_BUS.register(instance); 
+     	
 	}
 	
 	public static final int dye_bonemeal = 15;
