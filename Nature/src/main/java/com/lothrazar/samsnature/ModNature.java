@@ -7,7 +7,9 @@ import org.apache.logging.log4j.Logger;
 
 
 
+
 import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -80,8 +82,12 @@ public class ModNature
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
+		if(event.pos == null){return;}
+		IBlockState bstate = event.entityPlayer.worldObj.getBlockState(event.pos);
+		if(bstate == null){return;}
+		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
-		Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
+		Block blockClicked = bstate.getBlock(); 
 		if(  event.action == event.action.RIGHT_CLICK_BLOCK && 
   				isBonemeal(held)  && 
   				blockClicked != null ) 

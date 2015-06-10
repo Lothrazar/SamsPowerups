@@ -2,6 +2,14 @@
 BUGs/TODO list for 1.0 before release
 ***********
 
+mc info missing for fragile torches + other new mods
+
+remove usemetadata = true, and remove 'sam' display name ready for release
+
+release schedule:
+
+fragile torches
+keybinding stuff
 
 ***********
 NEW FEATURE IDEAS /  1.1

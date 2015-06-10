@@ -103,7 +103,11 @@ public class BlockBucketStorage extends Block implements ITileEntityProvider
   	{       
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();  
 
-		Block blockClicked = event.entityPlayer.worldObj.getBlockState(event.pos).getBlock();
+		if(event.pos == null){return;}
+		IBlockState bstate = event.entityPlayer.worldObj.getBlockState(event.pos);
+		if(bstate == null){return;}
+		
+		Block blockClicked = bstate.getBlock();
 		 
 		if(blockClicked == null || blockClicked == Blocks.air ){return;}
 		if((blockClicked instanceof BlockBucketStorage) == false) {return;} 

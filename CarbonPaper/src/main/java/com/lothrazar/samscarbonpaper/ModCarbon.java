@@ -1,5 +1,6 @@
 package com.lothrazar.samscarbonpaper;
   
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
@@ -49,6 +50,10 @@ public class ModCarbon
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
+		if(event.pos == null){return;}
+		IBlockState bstate = event.entityPlayer.worldObj.getBlockState(event.pos);
+		if(bstate == null){return;}
+		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
 		//Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
 //		TileEntity container = event.world.getTileEntity(event.pos);

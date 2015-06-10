@@ -172,6 +172,10 @@ public class ModMobChanges
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
+		if(event.pos == null){return;}
+		IBlockState bstate = event.entityPlayer.worldObj.getBlockState(event.pos);
+		if(bstate == null){return;}
+		
 		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
 
 		TileEntity container = event.world.getTileEntity(event.pos);
