@@ -1,4 +1,4 @@
-package com.lothrazar.samsnature;
+package com.lothrazar.samslooting;
  
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items; 
@@ -11,75 +11,61 @@ public class ChestLootGenerator
 { 
 	public static void lootGlowstone() 
 	{
-		if(ModNature.cfg.lootGlowstone)
-		{ 
-			ItemStack[] allRecords = new ItemStack[] //TODO: rename these variables, possibly refactor the whole class
-			{
-				new ItemStack(Items.glowstone_dust ,64)
-			}; 
+		ItemStack[] allRecords = new ItemStack[] //TODO: rename these variables, possibly refactor the whole class
+		{
+			new ItemStack(Items.glowstone_dust ,64)
+		}; 
 
-			addToAllChests(allRecords,16,64); //each stack in this range
-		}
+		addToAllChests(allRecords,16,64); //each stack in this range
+	 
 	}
 
 	public static void lootQuartz() 
 	{
-		if(ModNature.cfg.lootQuartz)
-		{ 
-			ItemStack[] allRecords = new ItemStack[] 
-			{
-				new ItemStack(Items.quartz ,64)
-			}; 
+		ItemStack[] allRecords = new ItemStack[] 
+		{
+			new ItemStack(Items.quartz ,64)
+		}; 
 
-			addToAllChests(allRecords,16,64); //each stack in this range
-		}
+		addToAllChests(allRecords,16,64); //each stack in this range
+	
 	}
 
 	public static void lootObsidian() 
 	{
-		if(ModNature.cfg.lootObsidian)
-		{ 
-			ItemStack[] allRecords = new ItemStack[] 
-			{
-				new ItemStack(Blocks.obsidian,64)
-			}; 
+		ItemStack[] allRecords = new ItemStack[] 
+		{
+			new ItemStack(Blocks.obsidian,64)
+		}; 
 
-			addToAllChests(allRecords,16,64); //each stack in this range
-		}
+		addToAllChests(allRecords,16,64); //each stack in this range
+	
 	}
 
 	public static void lootAllRecords() 
-	{
-		if(ModNature.cfg.lootAllRecords)
-		{ 
-			ItemStack[] allRecords = new ItemStack[] 
-			{
-				new ItemStack(Items.record_11 ,     1),
-				new ItemStack(Items.record_13 ,     1),
-				new ItemStack(Items.record_blocks,  1),
-				new ItemStack(Items.record_cat,     1),
-				new ItemStack(Items.record_chirp,   1),
-				new ItemStack(Items.record_far,     1),
-				new ItemStack(Items.record_mall,    1),
-				new ItemStack(Items.record_mellohi, 1),
-				new ItemStack(Items.record_stal,    1),
-				new ItemStack(Items.record_strad,   1),
-				new ItemStack(Items.record_wait,    1),
-				new ItemStack(Items.record_ward  ,  1)
-			};// all the records
-			 
-			addToAllChests(allRecords); 
-		}
+	{ 
+		ItemStack[] allRecords = new ItemStack[] 
+		{
+			new ItemStack(Items.record_11 ,     1),
+			new ItemStack(Items.record_13 ,     1),
+			new ItemStack(Items.record_blocks,  1),
+			new ItemStack(Items.record_cat,     1),
+			new ItemStack(Items.record_chirp,   1),
+			new ItemStack(Items.record_far,     1),
+			new ItemStack(Items.record_mall,    1),
+			new ItemStack(Items.record_mellohi, 1),
+			new ItemStack(Items.record_stal,    1),
+			new ItemStack(Items.record_strad,   1),
+			new ItemStack(Items.record_wait,    1),
+			new ItemStack(Items.record_ward  ,  1)
+		};// all the records
+		 
+		addToAllChests(allRecords); 
+	 
 	}
 	
 	static int weightDefault = 3;
-
-	private static void addToAllChests(ItemStack item)
-	{
-		ItemStack[] items = new ItemStack[]  {	item  };
-		
-		addToAllChests(items,1,1,weightDefault); 
-	} 
+ 
 	private static void addToAllChests(ItemStack[] items)
 	{
 		addToAllChests(items,1,1,weightDefault); //defaults
@@ -116,13 +102,12 @@ public class ChestLootGenerator
 
 	public static void regsiterLoot() 
 	{
-		ChestLootGenerator.lootAllRecords();
+		if(ModLoot.cfg.lootAllRecords) ChestLootGenerator.lootAllRecords();
 		
-		ChestLootGenerator.lootObsidian(); 
+		if(ModLoot.cfg.lootObsidian) ChestLootGenerator.lootObsidian(); 
 		
-		ChestLootGenerator.lootQuartz(); 
+		if(ModLoot.cfg.lootQuartz) ChestLootGenerator.lootQuartz(); 
 		
-		ChestLootGenerator.lootGlowstone(); 
-		
+		if(ModLoot.cfg.lootGlowstone) ChestLootGenerator.lootGlowstone(); 
 	}
 }
