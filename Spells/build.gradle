@@ -22,13 +22,12 @@ group= "com.lothrazar.samsmagic" // http://maven.apache.org/guides/mini/guide-na
 archivesBaseName = "SamSpells"
 
 minecraft {
-    version = "1.8-11.14.1.1334"
- 
+    version = "1.8-11.14.3.1446"
 	if(file('../run').exists()){
-		assetDir  = "../run/assets"
+ 
 		runDir = "../run/eclipse"
 	}else{
-		assetDir = "assets"
+ 
 		runDir = "eclipse"
 	}
   
