@@ -2,8 +2,8 @@
   "modListVersion": 2,
   "modList": [{
     "modid": "samscommands",
-    "name": "Command Utilities",
-    "description": "Lots of new commands, such as home, enderchest, kit, place, waypoints, todo, and more.  Config file can disable commands, and control OP permissions.",
+    "name": "Utility Commands",
+    "description": "New commands: home, worldhome, sethearts, kit, ping, place, recipe, searchitem, searchspawner, searchtrade, simplewp, todo, uses.  Config file can disable commands, and control OP permissions.",
     "version": "1.8-1.0.0",
     "mcversion": "1.8",
     "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
