@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
-public class SpellEnderPearl extends BaseSpellItem implements ISpell
+public class SpellEnderPearl extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public String getSpellID()
@@ -25,12 +25,6 @@ public class SpellEnderPearl extends BaseSpellItem implements ISpell
 		world.spawnEntityInWorld(new EntityEnderPearl(world,player 	 ));
 	}
  
-	@Override
-	public Item getItemCost()
-	{
-		return Items.ender_pearl;
-	}
-
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -54,4 +48,16 @@ public class SpellEnderPearl extends BaseSpellItem implements ISpell
 	{
 		return SpellRegistry.endereye;
 	}
+
+	@Override
+	public int getExpCost() 
+	{
+		return 77;
+	}/*
+	@Override
+	public Item getItemCost()
+	{
+		return Items.ender_pearl;
+	}
+*/
 }

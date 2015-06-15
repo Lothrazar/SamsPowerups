@@ -10,7 +10,7 @@ import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.entity.projectile.EntityTorchBolt; 
 
-public class SpellTorchBolt extends BaseSpellItem implements ISpell
+public class SpellTorchBolt extends BaseSpellExp implements ISpell
 {
 	@Override
 	public String getSpellID()
@@ -24,11 +24,6 @@ public class SpellTorchBolt extends BaseSpellItem implements ISpell
 		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
 	}
 
-	@Override
-	public Item getItemCost()
-	{
-		return Item.getItemFromBlock(Blocks.torch);
-	}
 
 	@Override
 	public ItemStack getIconDisplay()
@@ -47,4 +42,15 @@ public class SpellTorchBolt extends BaseSpellItem implements ISpell
 	{
 		return SpellRegistry.waterbolt;
 	}
+
+	@Override
+	public int getExpCost() 
+	{
+		return 30;
+	}/*
+	@Override
+	public Item getItemCost()
+	{
+		return Item.getItemFromBlock(Blocks.torch);
+	}*/
 }

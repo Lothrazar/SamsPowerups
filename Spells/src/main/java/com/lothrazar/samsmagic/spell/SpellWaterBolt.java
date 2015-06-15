@@ -10,7 +10,7 @@ import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.entity.projectile.EntityWaterBolt; 
 
-public class SpellWaterBolt extends BaseSpellItem implements ISpell
+public class SpellWaterBolt extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public String getSpellID()
@@ -23,13 +23,6 @@ public class SpellWaterBolt extends BaseSpellItem implements ISpell
 	{ 
 		world.spawnEntityInWorld(new EntityWaterBolt(world,player)); 
 	}
-  
-	@Override
-	public Item getItemCost()
-	{
-		return Item.getItemFromBlock(Blocks.ice);
-	}
-	
 	@Override
 	public ItemStack getIconDisplay()
 	{
@@ -46,4 +39,17 @@ public class SpellWaterBolt extends BaseSpellItem implements ISpell
 	{
 		return SpellRegistry.frostbolt;
 	}
+
+	@Override
+	public int getExpCost() 
+	{
+		return 25;
+	}/*
+  
+	@Override
+	public Item getItemCost()
+	{
+		return Item.getItemFromBlock(Blocks.ice);
+	}
+	*/
 }

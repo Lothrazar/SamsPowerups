@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
-public class SpellFirebolt extends BaseSpellItem implements ISpell
+public class SpellFirebolt extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public String getSpellID()
@@ -41,11 +41,6 @@ public class SpellFirebolt extends BaseSpellItem implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
-	@Override
-	public Item getItemCost()
-	{
-		return Items.fire_charge;
-	}
 	
 	@Override
 	public ItemStack getIconDisplay()
@@ -63,4 +58,15 @@ public class SpellFirebolt extends BaseSpellItem implements ISpell
 	{
 		return SpellRegistry.lightningbolt;
 	}
+
+	@Override
+	public int getExpCost() 
+	{
+		return 44;
+	}/*
+	@Override
+	public Item getItemCost()
+	{
+		return Items.fire_charge;
+	}*/
 }

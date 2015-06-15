@@ -11,7 +11,7 @@ import net.minecraft.world.World;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
-public class SpellEnderEye extends BaseSpellItem implements ISpell
+public class SpellEnderEye extends BaseSpellExp implements ISpell
 {
 	@Override
 	public String getSpellID()
@@ -24,13 +24,6 @@ public class SpellEnderEye extends BaseSpellItem implements ISpell
 	{  
 		world.spawnEntityInWorld(new EntityEnderEye(world,pos.getX(),pos.getY(),pos.getZ())); 
 	}
-  
-	@Override
-	public Item getItemCost()
-	{
-		return Items.ender_eye;
-	}
-	
 	@Override
 	public ItemStack getIconDisplay()
 	{
@@ -55,4 +48,17 @@ public class SpellEnderEye extends BaseSpellItem implements ISpell
 	{
 		return SpellRegistry.ghost;
 	}
+
+	@Override
+	public int getExpCost() 
+	{
+		return 1;
+	}
+	  /*
+		@Override
+		public Item getItemCost()
+		{
+			return Items.ender_eye;
+		}*/
+		
 }

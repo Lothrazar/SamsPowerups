@@ -12,7 +12,7 @@ import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.entity.projectile.EntitySnowballBolt; 
 
-public class SpellFrostbolt extends BaseSpellItem implements ISpell
+public class SpellFrostbolt extends BaseSpellExp implements ISpell
 { 
 	@Override
 	public String getSpellID()
@@ -28,11 +28,6 @@ public class SpellFrostbolt extends BaseSpellItem implements ISpell
 		world.spawnEntityInWorld(new EntitySnowballBolt(world,player));
 	}
 	
-	@Override
-	public Item getItemCost()
-	{
-		return Items.snowball;
-	}
 
 	@Override
 	public ItemStack getIconDisplay()
@@ -58,4 +53,15 @@ public class SpellFrostbolt extends BaseSpellItem implements ISpell
 	{
 		return SpellRegistry.firebolt;
 	}
+
+	@Override
+	public int getExpCost() 
+	{
+		return 22;
+	}/*
+	@Override
+	public Item getItemCost()
+	{
+		return Items.snowball;
+	}*/
 }
