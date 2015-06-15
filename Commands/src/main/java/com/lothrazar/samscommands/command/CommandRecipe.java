@@ -1,9 +1,14 @@
 package com.lothrazar.samscommands.command;
 
 import java.util.ArrayList;
+import java.util.Dictionary;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.lang.reflect.Field;
+
 import com.lothrazar.samscommands.ModCommands; 
+
 import net.minecraft.command.CommandException;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
@@ -272,17 +277,40 @@ public class CommandRecipe  implements ICommand
 		if(isInventory) size = 4;
 		else size = 9;
 		String[] grid = new String[size];
-		for(int i = 0; i < grid.length; i++)grid[i] = "- ";
+		for(int i = 0; i < grid.length; i++) { grid[i] = "- "; }
  
+		//now
+		//todo:
+		//1,2,3 iron
+		//5 boat
+		//4,6 piston
+		//7,8,9 apple
+		Map<String, String> namenumbers = new HashMap<String, String>();
 		
+		String name;
+		int j = 0;
 		for(int i = 0; i < recipeItems.length; i++)
     	{
     		if(recipeItems[i] != null)
     		{
-    			ModCommands.addChatMessage(player, i+" : "+recipeItems[i].getDisplayName());
-    			grid[i] = i+" ";
+    			name = recipeItems[i].getDisplayName();
+    			
+    			if(namenumbers.containsKey(name))
+    			{
+    				namenumbers.put(name, namenumbers.get(name) +", "+i);
+    			}
+    			else
+    			{
+    				namenumbers.put(name, ""+i);
+    			}
+    			
+    			j++;
+    			
+    			//ModCommands.addChatMessage(player, i + " : " + recipeItems[i].getDisplayName());
+    			grid[i] = i + " ";
     		}
     	}
+		
 		
 		if(isInventory)
 		{
@@ -294,6 +322,13 @@ public class CommandRecipe  implements ICommand
 			ModCommands.addChatMessage(player, grid[0]+grid[1]+grid[2]);
 			ModCommands.addChatMessage(player, grid[3]+grid[4]+grid[5]);
 			ModCommands.addChatMessage(player, grid[6]+grid[7]+grid[8]);
+		}
+		for (Map.Entry<String, String> entry : namenumbers.entrySet()) 
+		{
+		    String item = entry.getKey();
+		    String nums = entry.getValue();
+
+			ModCommands.addChatMessage(player, item + " : "+nums);
 		}
 	}
 }
