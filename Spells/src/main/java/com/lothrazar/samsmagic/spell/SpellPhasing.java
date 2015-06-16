@@ -3,6 +3,8 @@ package com.lothrazar.samsmagic.spell;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
@@ -18,10 +20,17 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	{
 		return "phase";
 	}
-
+	@Override
+	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
+	{
+		if(super.canPlayerCast(world, player, pos) == false) {return false;}
+	
+		return (pos != null);//if it is null, we cannot cast
+	}
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
+		if(pos == null){return;}//covered also by canPlayerCast
 		EnumFacing face = EnumFacing.getFacingFromVector(
 				(float)player.getLookVec().xCoord
 				, (float)player.getLookVec().yCoord

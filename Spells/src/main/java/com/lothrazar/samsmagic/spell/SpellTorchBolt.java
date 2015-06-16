@@ -34,7 +34,7 @@ public class SpellTorchBolt extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return null;
+		return SpellRegistry.ghost;
 	}
 
 	@Override

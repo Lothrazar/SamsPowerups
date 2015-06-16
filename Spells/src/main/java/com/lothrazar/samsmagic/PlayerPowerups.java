@@ -145,13 +145,15 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 		switch(current)
 		{
-		case SpellRegistry.SPELL_TOGGLE_HIDE:
-			return SpellRegistry.SPELL_TOGGLE_SHOWMAIN;
 		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
-			return SpellRegistry.SPELL_TOGGLE_SHOWOTHER;
+			return SpellRegistry.SPELL_TOGGLE_HIDE;
+		case SpellRegistry.SPELL_TOGGLE_HIDE:
+		default:
+			return SpellRegistry.SPELL_TOGGLE_SHOWMAIN;
+			/*return SpellRegistry.SPELL_TOGGLE_SHOWOTHER;
 		default:
 		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
-			return SpellRegistry.SPELL_TOGGLE_HIDE;
+			return SpellRegistry.SPELL_TOGGLE_HIDE;*/
 		}
 	} 
 	public final void setSpellTimer(int current) 

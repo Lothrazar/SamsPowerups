@@ -2,16 +2,6 @@
 BUGs/TODO list for 1.0 before release
 ***********
 
-TODO: SPLIT SAMS NATURE INTO 3 CHUNKS:
-
-- OceanFloor
-
-- SaplingGrowth
-
-- TreasureBuff
-
-SAMS MAGIC: more/better categories? Maybe one that is just the spells that use ender stuff? right now they are too big
-
 release schedule:
 
 fragile torches

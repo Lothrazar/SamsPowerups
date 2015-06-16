@@ -110,6 +110,6 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	@Override
 	public ISpell right()
 	{
-		return null;
+		return SpellRegistry.torch;
 	}
 }
