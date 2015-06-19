@@ -79,11 +79,11 @@ public class ModSpells
     	
     	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
     	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
- 		
-		PotionRegistry.registerPotionEffects();
 
 		ItemRegistry.registerItems();
 		
+		PotionRegistry.registerPotionEffects();
+
 		this.registerEventHandlers(); 
 		
 		SpellRegistry.setup();
@@ -253,7 +253,7 @@ public class ModSpells
 		
 		renderTexture( textureAtlasSprite, x, y, dim);
 	}
-	private static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y, int dim)
+	public static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y, int dim)
 	{	
 		//special thanks to http://www.minecraftforge.net/forum/index.php?topic=26613.0
 		

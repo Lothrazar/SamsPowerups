@@ -2,13 +2,18 @@ package com.lothrazar.samsmagic.potion;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier; 
+
+import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells; 
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.spell.SpellGhost; 
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.EnumParticleTypes;
@@ -42,14 +47,14 @@ public class PotionRegistry
 		//http://www.minecraftforge.net/forum/index.php?topic=11024.0
 		//new ResourceLocation(ModSpells.MODID,"textures/items/apple_ender.png")
 		//progress: they are not blank anymore, are instead using a default vanilla one from a beacon.
-		PotionRegistry.waterwalk = (new PotionCustom(ModSpells.cfg.potionIdWaterwalk, new ResourceLocation("waterwalk") , false, 0)).setIconIndex(0, 0).setPotionName("potion.waterwalk");
+		PotionRegistry.waterwalk = (new PotionCustom(ModSpells.cfg.potionIdWaterwalk, new ResourceLocation("waterwalk") , false, 0, new ItemStack(ItemRegistry.spell_waterwalk_dummy))).setPotionName("potion.waterwalk");
 		
 		//PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		//???http://www.minecraftforge.net/forum/index.php?topic=12358.0
 		
-		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,   new ResourceLocation("slowfall"), false, 0)).setIconIndex(0, 0).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,   new ResourceLocation("slowfall"), false, 0, new ItemStack(Items.feather))).setPotionName("potion.slowfall");
 	 
-		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen, new ResourceLocation("frost"), false, 0)).setIconIndex(0, 0).setPotionName("potion.frozen");	  
+		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen, new ResourceLocation("frost"), false, 0, new ItemStack(Items.snowball))).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
