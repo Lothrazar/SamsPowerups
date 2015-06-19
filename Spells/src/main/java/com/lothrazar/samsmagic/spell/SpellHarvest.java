@@ -104,6 +104,6 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell right()
 	{
-		return null;
+		return SpellRegistry.chesttransp;
 	}
 }

@@ -133,7 +133,7 @@ public class SpellChestTransport extends BaseSpellExp implements ISpell
 	@Override
 	public ISpell left()
 	{
-		return null;
+		return SpellRegistry.harvest;
 	}
 
 	@Override
