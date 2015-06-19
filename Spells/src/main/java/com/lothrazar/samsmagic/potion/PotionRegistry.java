@@ -39,13 +39,17 @@ public class PotionRegistry
  
 	private static void registerNewPotionEffects() 
 	{  
-		PotionRegistry.waterwalk = (new PotionCustom(ModSpells.cfg.potionIdWaterwalk,  new ResourceLocation("waterwalk"), false, 0)).setPotionName("potion.waterwalk");
+		//http://www.minecraftforge.net/forum/index.php?topic=11024.0
+		//new ResourceLocation(ModSpells.MODID,"textures/items/apple_ender.png")
+		//progress: they are not blank anymore, are instead using a default vanilla one from a beacon.
+		PotionRegistry.waterwalk = (new PotionCustom(ModSpells.cfg.potionIdWaterwalk, new ResourceLocation("waterwalk") , false, 0)).setIconIndex(0, 0).setPotionName("potion.waterwalk");
 		
 		//PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
+		//???http://www.minecraftforge.net/forum/index.php?topic=12358.0
 		
-		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,  new ResourceLocation("slowfall"), false, 0)).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,   new ResourceLocation("slowfall"), false, 0)).setIconIndex(0, 0).setPotionName("potion.slowfall");
 	 
-		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen,  new ResourceLocation("frozen"), false, 0)).setPotionName("potion.frozen");	  
+		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen, new ResourceLocation("frost"), false, 0)).setIconIndex(0, 0).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
