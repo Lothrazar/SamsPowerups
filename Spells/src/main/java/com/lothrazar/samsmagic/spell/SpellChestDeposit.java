@@ -1,5 +1,6 @@
 package com.lothrazar.samsmagic.spell;
 
+import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
 
@@ -68,7 +69,8 @@ public class SpellChestDeposit extends BaseSpellExp
 	@Override
 	public ItemStack getIconDisplay() 
 	{
-		return new ItemStack(Items.chest_minecart);
+		return new ItemStack(ItemRegistry.spell_dummy_deposit);
+		//return new ItemStack(Items.chest_minecart);
 	}
 
 	@Override

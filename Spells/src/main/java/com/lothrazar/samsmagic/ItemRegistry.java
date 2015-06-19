@@ -31,6 +31,10 @@ public class ItemRegistry
 	public static Item spell_heart_dummy;
 	public static Item spell_torch_dummy;
 	public static Item spell_haste_dummy;
+
+	public static Item spell_dummy_phasing;
+	public static Item spell_dummy_slowfall;
+	public static Item spell_dummy_deposit;
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   
@@ -42,7 +46,13 @@ public class ItemRegistry
 	//	ItemRegistry.respawn_egg_empty = new ItemRespawnEggEmpty(); 
 		//ItemRegistry.registerItem(ItemRegistry.respawn_egg_empty, "respawn_egg_empty"); 
 		//ItemRespawnEggEmpty.addRecipe();  
-		
+
+		spell_dummy_deposit = new Item();
+		ItemRegistry.registerItem(spell_dummy_deposit, "spell_dummy_deposit");
+		spell_dummy_slowfall = new Item();
+		ItemRegistry.registerItem(spell_dummy_slowfall, "spell_dummy_slowfall");
+		spell_dummy_phasing = new Item();
+		ItemRegistry.registerItem(spell_dummy_phasing, "spell_dummy_phasing");
 		soulstone = new Item();
 		ItemRegistry.registerItem(soulstone, "soulstone");
 		spell_heart_dummy = new Item();

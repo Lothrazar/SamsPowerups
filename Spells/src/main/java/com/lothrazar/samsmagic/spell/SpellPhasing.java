@@ -10,6 +10,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
+import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
 
@@ -70,7 +71,7 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	@Override
 	public ItemStack getIconDisplay()
 	{
-		return new ItemStack(Items.brick);
+		return new ItemStack(ItemRegistry.spell_dummy_phasing);
 	}
 	@Override
 	public ISpell left()

@@ -7,6 +7,7 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 
+import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.potion.PotionRegistry; 
@@ -44,7 +45,7 @@ public class SpellSlowfall extends BaseSpellExp implements ISpell
 	@Override
 	public ItemStack getIconDisplay()
 	{ 
-		return new ItemStack(Items.feather);
+		return new ItemStack(ItemRegistry.spell_dummy_slowfall);
 	}
 
 	@Override
