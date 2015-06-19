@@ -28,61 +28,31 @@ public class PotionCustom extends Potion
 		icon = is;
 	}
 	private ItemStack icon;
+	
 	@Override
 	public Potion setIconIndex(int par1, int par2) 
     {
         super.setIconIndex(par1, par2);
         return this;
     }
-   @SideOnly(Side.CLIENT)
+	
+    @SideOnly(Side.CLIENT)
     public boolean hasStatusIcon()
     {
         return false;//to block it from looking for one of the vanilla textures in the default way.
     }
+    
 	@Override
     @SideOnly(Side.CLIENT)
     public void renderInventoryEffect(int x, int y, PotionEffect effect, net.minecraft.client.Minecraft mc) 
 	{
-		//if(icon != null)System.out.println("FFFF"+icon.getDisplayName());
-		
 		@SuppressWarnings("deprecation")
 		IBakedModel iBakedModel = Minecraft.getMinecraft().getRenderItem().getItemModelMesher().getItemModel(icon);
 		@SuppressWarnings("deprecation")
 		TextureAtlasSprite textureAtlasSprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(iBakedModel.getTexture().getIconName());
 		
-		
 		int border = 6;
 		ModSpells.renderTexture( textureAtlasSprite, x + border, y + border, 16);
-		/*ResourceLocation field_110839_f = new ResourceLocation(ModSpells.MODID,"/textures/items/apple_ender.png");
-		 ScaledResolution sr = new ScaledResolution(mc, mc.displayWidth, mc.displayHeight);
-         int Width = sr.getScaledWidth();
-         int Height = sr.getScaledHeight();
-      //  mc.getMinecraft().currentScreen.drawTexturedModalRect(x, y, 16, 16, Width, Height);
-        Minecraft.getMinecraft().renderEngine.bindTexture(field_110839_f);
-      */
+	
 	}
-	/*
-	@Override
-	public int getStatusIconIndex() 
-	{
-	//	ResourceLocation r = new ResourceLocation("More_Apples:textures/gui/inventory.png");
-		ResourceLocation field_110839_f = new ResourceLocation(ModSpells.MODID,"/textures/items/apple_ender.png");
-//does it work? http://www.minecraftforge.net/forum/index.php?topic=12852.0
-		ITextureObject texture = Minecraft.getMinecraft().renderEngine.getTexture(field_110839_f);
-		Minecraft.getMinecraft().renderEngine.bindTexture(field_110839_f);
-		
-		
-		return super.getStatusIconIndex();
-		
-	}*/
-	//private static final ResourceLocation field_110839_f = new ResourceLocation(ModSpells.MODID,"/textures/items/apple_ender.png");
-	/*
-	@Override
-	@SideOnly(Side.CLIENT)
-	public boolean hasStatusIcon() 
-	{
-	    Minecraft.getMinecraft().renderEngine.getTexture(field_110839_f);
-	   //Minecraft.getMinecraft().renderEngine.getTexture(field_110839_f);
-	    return false;
-	}*/
 }

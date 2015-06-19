@@ -45,12 +45,10 @@ public class PotionRegistry
 	private static void registerNewPotionEffects() 
 	{  
 		//http://www.minecraftforge.net/forum/index.php?topic=11024.0
-		//new ResourceLocation(ModSpells.MODID,"textures/items/apple_ender.png")
+		//???http://www.minecraftforge.net/forum/index.php?topic=12358.0
+		
 		//progress: they are not blank anymore, are instead using a default vanilla one from a beacon.
 		PotionRegistry.waterwalk = (new PotionCustom(ModSpells.cfg.potionIdWaterwalk, new ResourceLocation("waterwalk") , false, 0, new ItemStack(ItemRegistry.spell_waterwalk_dummy))).setPotionName("potion.waterwalk");
-		
-		//PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
-		//???http://www.minecraftforge.net/forum/index.php?topic=12358.0
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,   new ResourceLocation("slowfall"), false, 0, new ItemStack(ItemRegistry.spell_dummy_slowfall))).setPotionName("potion.slowfall");
 	 
@@ -154,14 +152,7 @@ public class PotionRegistry
     		 event.entityLiving.onGround = true; //act as if on solid ground
     		 event.entityLiving.setAIMoveSpeed(0.1F);//walking and not sprinting is this speed
     	 }  
-	}/*
-	public static void tickEnder(LivingUpdateEvent event) 
-	{
-		 if(event.entityLiving.isPotionActive(PotionRegistry.ender) && event.entity.worldObj.rand.nextDouble() < 0.1)
-		 {
-			doPotionParticle(event.entity.worldObj,event.entityLiving,EnumParticleTypes.PORTAL);
-		 }
-	}*/
+	}
 	
 	public static void tickSlowfall(LivingUpdateEvent event) 
 	{
