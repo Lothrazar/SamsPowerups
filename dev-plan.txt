@@ -2,6 +2,10 @@
 BUGs/TODO list for 1.0 before release
 ***********
 
+/recipe : crashes for diamond axe
+custom npc wand issue with it
+
+
 release schedule:
 
 fragile torches

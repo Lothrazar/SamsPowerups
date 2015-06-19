@@ -94,25 +94,16 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			spell = getSpellMain();
 			
 			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.chesttransp.getSpellID());
+				setSpellMain(SpellRegistry.chesttransp.getSpellID());
 			
 			return getSpellMain();
-			//break;
+
 		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
 			spell = getSpellOther();
 			
-			//HOW THIS EVER becomes chest i have not found yet, but this force fixes the bug
-			if(spell == null || spell.isEmpty() || spell == SpellRegistry.chesttransp.getSpellID())
-			{
-				//System.out.println("get spell other, going to default");
+			if(spell == null || spell.isEmpty())
 				setSpellOther(SpellRegistry.torch.getSpellID());
-				return SpellRegistry.torch.getSpellID();
-			}
-			else
-			{
-				return spell;
-			}
-			//break;
+	 
 		}
 		return null;
 	}
