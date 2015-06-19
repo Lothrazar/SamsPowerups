@@ -13,8 +13,7 @@ public class ItemRegistry
 	public static ItemChestSack itemChestSack; 
 	public static int timePotionShort = 90; // 1:30
 	public static int timePotionLong = 8 * 60;// 8:00
-
-	//public static ItemRespawnEggEmpty respawn_egg_empty; 
+ 
 	public static ItemRespawnEggAnimal respawn_egg; 
 	
 	public static Item soulstone;
@@ -43,10 +42,6 @@ public class ItemRegistry
 		respawn_egg = new ItemRespawnEggAnimal();
 		ItemRegistry.registerItem(respawn_egg, "respawn_egg");
 		
-	//	ItemRegistry.respawn_egg_empty = new ItemRespawnEggEmpty(); 
-		//ItemRegistry.registerItem(ItemRegistry.respawn_egg_empty, "respawn_egg_empty"); 
-		//ItemRespawnEggEmpty.addRecipe();  
-
 		spell_dummy_deposit = new Item();
 		ItemRegistry.registerItem(spell_dummy_deposit, "spell_dummy_deposit");
 		spell_dummy_slowfall = new Item();

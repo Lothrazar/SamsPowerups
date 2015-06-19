@@ -52,9 +52,9 @@ public class PotionRegistry
 		//PotionRegistry.lavawalk = (new PotionCustom(ModMain.cfg.potionIdLavawalk,  new ResourceLocation("lavawalk"), false, 0)).setPotionName("potion.lavawalk");
 		//???http://www.minecraftforge.net/forum/index.php?topic=12358.0
 		
-		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,   new ResourceLocation("slowfall"), false, 0, new ItemStack(Items.feather))).setPotionName("potion.slowfall");
+		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,   new ResourceLocation("slowfall"), false, 0, new ItemStack(ItemRegistry.spell_dummy_slowfall))).setPotionName("potion.slowfall");
 	 
-		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen, new ResourceLocation("frost"), false, 0, new ItemStack(Items.snowball))).setPotionName("potion.frozen");	  
+		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen, new ResourceLocation("frost"), false, 0, new ItemStack(ItemRegistry.spell_frostbolt_dummy))).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
