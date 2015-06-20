@@ -138,8 +138,9 @@ public class CommandRecipe  implements ICommand
 						}
 			        }
 		    	}
-		    	//System.out.println("ore recipe "+sum);
-
+		    	sum -= 6;//becuase it has four numbers, the current height/width and the max height/width
+		    	//max + max is 6, and are both private. so if the remainder is 4 = height + width; then it was inventory crafting
+	
 				isInventory = (sum == 4);
 
 		    	ModCommands.addChatMessage(player, "command.recipes.found");
@@ -308,6 +309,7 @@ public class CommandRecipe  implements ICommand
 	}
 	public static void addChatShapedRecipe(EntityPlayer player,	ItemStack[] recipeItems, boolean isInventory )
 	{ 
+		//System.out.println("addChatShapedRecipe "+isInventory +":"+recipeItems.length);
 		int size;
 		
 		//needed only becuase MC forge stores as a flat array not a 2D
