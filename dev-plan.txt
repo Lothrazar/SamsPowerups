@@ -2,8 +2,13 @@
 BUGs/TODO list for 1.0 before release
 ***********
 
+bug:
 /recipe : crashes for diamond axe
-custom npc wand issue with it
+	custom npc wand issue with it
+
+bug:
+Spell Deposit: sound on cast
+deposit item sack- sound on place
 
 
 release schedule:

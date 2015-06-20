@@ -99,9 +99,9 @@ public class CommandRecipe  implements ICommand
 		    if(recipe instanceof ShapedRecipes)
 		    { 
 		    	ShapedRecipes r = ((ShapedRecipes)recipe);
-		    	boolean isInventory = (r.recipeHeight < 3 && r.recipeWidth < 3);
+		    	boolean isInventory = (r.recipeHeight < 3 || r.recipeWidth < 3);
 		    	
-		    	//System.out.println("isInventory is from : "+r.recipeHeight+" "+r.recipeWidth);
+		    	//System.out.println(isInventory+"isInventory is from : "+r.recipeHeight+" "+r.recipeWidth);
 
 		    	ModCommands.addChatMessage(player, "command.recipes.found");
 		    	addChatShapedRecipe(player, getRecipeInput(recipe), isInventory);
@@ -115,6 +115,7 @@ public class CommandRecipe  implements ICommand
 	
 		    	//only because r.width//r.height is private
 		    	boolean isInventory = false;
+		    	int sum = 0;
 		    	for(Field f : ShapedOreRecipe.class.getDeclaredFields())
 		    	{
 			        f.setAccessible(true);
@@ -123,7 +124,9 @@ public class CommandRecipe  implements ICommand
 			        {
 			        	try
 						{
-							isInventory = isInventory || f.getInt(r) < 3;
+			        		sum += f.getInt(r);
+			        		//if either one is > 2, then its in 3x3 grid so isInventory == false at end
+							//isInventory = isInventory || (f.getInt(r) == 2);
 						}
 						catch (IllegalArgumentException e)
 						{
@@ -135,6 +138,9 @@ public class CommandRecipe  implements ICommand
 						}
 			        }
 		    	}
+		    	//System.out.println("ore recipe "+sum);
+
+				isInventory = (sum == 4);
 
 		    	ModCommands.addChatMessage(player, "command.recipes.found");
 		    	addChatShapedRecipe(player,recipeItems, isInventory);
@@ -193,14 +199,18 @@ public class CommandRecipe  implements ICommand
 	    	ShapedOreRecipe r = (ShapedOreRecipe)recipe;
 		
 		    recipeItems = new ItemStack[r.getInput().length];
+
+	    	
 	    	
 	    	for(int i = 0; i < r.getInput().length; i++) 
 	    	{
 	    		Object o = r.getInput()[i];
 	    		if(o == null){continue;}
+	    		
 	    		if(o instanceof ItemStack)
 	    		{
 	    			recipeItems[i] = (ItemStack)o;
+			    	//System.out.println(i+" -- "+recipeItems[i].getDisplayName());
 	    		}
 	    		else
 	    		{
@@ -209,9 +219,36 @@ public class CommandRecipe  implements ICommand
 				    if(c != null && c.size() > 0)
 				    {
 				    	recipeItems[i] = c.get(0);
+				    //	System.out.println(i+" -- "+recipeItems[i].getDisplayName());
 				    }
 	    		}
 	    	} 
+	    	
+	    	
+
+	    	///so after 1,3,5 we add skips
+	    	boolean doorShape = r.getInput().length == 6;//is a 2x3, with right hand column missing
+	    
+	    	
+	    	if(doorShape)
+	    	{
+			   // System.out.println("doorShape:: length "+recipeItems.length);
+		    	ItemStack[] backup = recipeItems;
+		    	recipeItems = new ItemStack[9];
+			    int iold;
+			    for(int inew = 0; inew < recipeItems.length; inew++) 
+		    	{
+			    	if(inew == 2 || inew == 5 || inew == 8)recipeItems[inew]=null;
+			    	else
+			    	{
+			    		iold = inew;
+			    		if(inew > 5) iold = inew - 2;
+			    		else if(inew > 2) iold = inew - 1;
+			    		recipeItems[inew] = backup[iold];
+			    	}
+		    	}
+	    	}
+	    
 	    } 
 	    else if(recipe instanceof ShapelessRecipes)
 		{
@@ -276,9 +313,13 @@ public class CommandRecipe  implements ICommand
 		//needed only becuase MC forge stores as a flat array not a 2D
 		if(isInventory) size = 4;
 		else size = 9;
+		if(recipeItems.length > size) size = 9;//in case my flag is false
 		String[] grid = new String[size];
 		for(int i = 0; i < grid.length; i++) { grid[i] = "- "; }
  
+		//System.out.println("size "+size);
+		//System.out.println("recipeItems.len "+recipeItems.length);
+	
 		//now
 		//todo:
 		//1,2,3 iron
@@ -289,9 +330,9 @@ public class CommandRecipe  implements ICommand
 		
 		String name;
 		int j = 0;
-		for(int i = 0; i < recipeItems.length; i++)
+		for(int i = 0; i < size; i++)
     	{
-    		if(recipeItems[i] != null)
+    		if(i < recipeItems.length  && recipeItems[i] != null)
     		{
     			name = recipeItems[i].getDisplayName();
     			
@@ -307,7 +348,8 @@ public class CommandRecipe  implements ICommand
     			j++;
     			
     			//ModCommands.addChatMessage(player, i + " : " + recipeItems[i].getDisplayName());
-    			grid[i] = i + " ";
+    			if(i < grid.length)
+    				grid[i] = i + " ";
     		}
     	}
 		
