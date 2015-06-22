@@ -2,19 +2,16 @@
 BUGs/TODO list for 1.0 before release
 ***********
 
-bug:
-/recipe : crashes for diamond axe
-	custom npc wand issue with it
+bug: todo command: keeps the first argument like "set" in the saving message
+
+bug: worldhome crash if gamemode 3 (probably null bounding box)
 
 bug:
+spell phase - test first if its valid before casting
 Spell Deposit: sound on cast
 deposit item sack- sound on place
 
 
-release schedule:
-
-fragile torches
-keybinding stuff
 
 ***********
 NEW FEATURE IDEAS /  1.1

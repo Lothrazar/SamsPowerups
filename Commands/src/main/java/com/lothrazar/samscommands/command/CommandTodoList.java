@@ -84,6 +84,7 @@ public class CommandTodoList implements ICommand
 			}
 
 		}
+		if(todoCurrent == null) todoCurrent = "";
 		return todoCurrent;
 	}
 	
@@ -150,12 +151,13 @@ public class CommandTodoList implements ICommand
 				 message += " " + args[i];
 			 } 
 			 
-			 todoCurrent += " " + message;//so append
+			 if(todoCurrent.isEmpty()) todoCurrent = message;
+			 else todoCurrent += " " + message;//so append
 		 }
 		 else if(args[0].equals(MODE_SET)) 
 		 {
 			 //they just did /todo blah blah
-			 for(int i = 0; i < args.length; i++)
+			 for(int i = 1; i < args.length; i++)
 			 {
 				 message += " " + args[i];
 			 } 
