@@ -178,10 +178,8 @@ public class ItemChestSack extends Item
 			chest.setInventorySlotContents(i, chestItem); 
 		}
 		 
-		//make the player slot empty
 		entityPlayer.destroyCurrentEquippedItem();
-		
-		//drop the empty sack now
-		//Util.dropItemStackInWorld(entityPlayer.worldObj, pos, ItemRegistry.itemChestSackEmpty);
+
+		ModSpells.playSoundAt(entityPlayer, "random.chestopen");
   	} 
 }

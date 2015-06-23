@@ -8,7 +8,7 @@ bug: worldhome crash if gamemode 3 (probably null bounding box)
 
 bug:
 spell phase - test first if its valid before casting
-Spell Deposit: sound on cast
+Spell Deposit: sound on cast//test
 deposit item sack- sound on place
 
 
