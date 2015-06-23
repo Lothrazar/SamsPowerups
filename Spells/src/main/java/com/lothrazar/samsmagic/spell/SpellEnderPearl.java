@@ -32,32 +32,16 @@ public class SpellEnderPearl extends BaseSpellExp implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
+	
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(Items.ender_pearl);
 	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.phase;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.endereye;
-	}
-
+	
 	@Override
 	public int getExpCost() 
 	{
-		return 77;
-	}/*
-	@Override
-	public Item getItemCost()
-	{
-		return Items.ender_pearl;
+		return ModSpells.cfg.pearl;
 	}
-*/
 }

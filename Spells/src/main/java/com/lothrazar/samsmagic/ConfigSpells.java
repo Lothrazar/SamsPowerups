@@ -1,12 +1,31 @@
 package com.lothrazar.samsmagic;
 
 import net.minecraftforge.common.config.Configuration;  
+
 import com.lothrazar.samsmagic.entity.projectile.EntitySnowballBolt; 
+import com.lothrazar.samsmagic.spell.ISpell;
 
 public class ConfigSpells
 { 
 	private Configuration instance;
 	private String category = "";
+	public int deposit;
+	public int chesttransp;
+	public int firebolt;
+	public int frostbolt;
+	public int ghost;
+	public int harvest; 
+	public int jump;
+	public int lightningbolt;
+	public int pearl;
+	public int phase;
+	public int slowfall;
+	public int waterwalk;
+	public int waterbolt;
+	public int soulstone;
+	public int torch;
+	public int endereye;
+	public int haste;
 	
 	public Configuration instance()
 	{
@@ -19,6 +38,28 @@ public class ConfigSpells
 		instance.load();
  
 		category = ModSpells.MODID;
+		instance.addCustomCategoryComment(category, 
+				"The number is the EXP cost of the spell.  Set to -1 to disable the spell.   ");
+		
+		deposit = instance.get(category,"deposit",  5).getInt();
+		chesttransp = instance.get(category,"chest_transport", 5).getInt();
+		firebolt = instance.get(category,"firebolt", 75).getInt();
+		frostbolt = instance.get(category,"frostbolt",  40).getInt();
+		ghost = instance.get(category,"ghost",   50).getInt();
+		harvest = instance.get(category,"harvest",     15).getInt();
+		jump = instance.get(category,"jump",  10).getInt();
+		lightningbolt = instance.get(category,"lightningbolt", 300).getInt();
+		pearl = instance.get(category,"pearl", 5).getInt();
+		phase = instance.get(category,"phase",  5).getInt();
+		slowfall = instance.get(category,"slowfall",  15).getInt();
+		waterwalk = instance.get(category,"waterwalk",  15).getInt();
+		waterbolt = instance.get(category,"waterbolt",  20).getInt();
+		soulstone = instance.get(category,"soulstone", 100).getInt();
+		torch = instance.get(category,"torch",  5).getInt();
+		endereye = instance.get(category,"endereye", 50).getInt();
+		haste = instance.get(category,"haste",  20).getInt();
+		
+		category = "misc";
 		
 		experience_bottle_return = instance.getBoolean("experience_bottle_return",category, true,
 				"Experience bottles in survival mode return an empty glass bottle to you (if used on a block).");  

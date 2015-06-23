@@ -30,7 +30,7 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 30;
+		return ModSpells.cfg.jump;
 	}
 
 	@Override
@@ -44,16 +44,5 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_jump_dummy);
-	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.slowfall;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.phase;
 	}
 }

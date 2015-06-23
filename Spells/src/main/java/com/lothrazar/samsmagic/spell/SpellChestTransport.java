@@ -20,6 +20,7 @@ public class SpellChestTransport extends BaseSpellExp implements ISpell
 	{
 		return "chest";
 	}
+	
 	@Override
 	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -28,6 +29,7 @@ public class SpellChestTransport extends BaseSpellExp implements ISpell
 		TileEntity tile = world.getTileEntity(pos);
 		return (tile != null && tile instanceof TileEntityChest);
 	}
+	
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -127,19 +129,6 @@ public class SpellChestTransport extends BaseSpellExp implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 5;
+		return ModSpells.cfg.chesttransp;
 	}
-
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.harvest;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.deposit;
-	}
-
 }

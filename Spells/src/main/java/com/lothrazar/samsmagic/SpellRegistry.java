@@ -1,10 +1,8 @@
 package com.lothrazar.samsmagic;
 
-import java.util.ArrayList;
-
+import java.util.ArrayList; 
 import com.lothrazar.samsmagic.PlayerPowerups; 
-import com.lothrazar.samsmagic.spell.*; 
-
+import com.lothrazar.samsmagic.spell.*;  
 import net.minecraft.entity.player.EntityPlayer; 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -13,6 +11,7 @@ public class SpellRegistry
 { 
 	public static void setup()
 	{
+		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 		spellbook = new ArrayList<ISpell>();
 		
 		deposit = new SpellChestDeposit(); 
@@ -33,25 +32,23 @@ public class SpellRegistry
 		endereye = new SpellEnderEye();
 		haste = new SpellHaste();
 
-		spellbook.add(deposit); 
-		spellbook.add(chesttransp); 
-		spellbook.add(firebolt);
-		spellbook.add(frostbolt);
-		spellbook.add(ghost);
-		spellbook.add(harvest); 
-		spellbook.add(jump );
-		spellbook.add(pearl );
-		spellbook.add(phase );
-		spellbook.add(lightningbolt);
-		spellbook.add(slowfall );
-		spellbook.add(waterwalk );
-		spellbook.add(waterbolt );
-		spellbook.add(soulstone);
-		spellbook.add(torch); 
-		spellbook.add(endereye);
-		spellbook.add(haste);
-		
-		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
+		if(deposit.getExpCost() >= 0) spellbook.add(deposit); 
+		if(chesttransp.getExpCost() >= 0)spellbook.add(chesttransp); 
+		if(phase.getExpCost() >= 0)spellbook.add(phase );
+		if(firebolt.getExpCost() >= 0)spellbook.add(firebolt);
+		if(frostbolt.getExpCost() >= 0)spellbook.add(frostbolt);
+		if(lightningbolt.getExpCost() >= 0)spellbook.add(lightningbolt);
+		if(waterbolt.getExpCost() >= 0)spellbook.add(waterbolt );
+		if(pearl.getExpCost() >= 0)spellbook.add(pearl );
+		if(harvest.getExpCost() >= 0)spellbook.add(harvest); 
+		if(haste.getExpCost() >= 0)spellbook.add(haste);
+		if(slowfall.getExpCost() >= 0)spellbook.add(slowfall );
+		if(jump.getExpCost() >= 0)spellbook.add(jump );
+		if(ghost.getExpCost() >= 0)spellbook.add(ghost);
+		if(waterwalk.getExpCost() >= 0)spellbook.add(waterwalk );
+		if(soulstone.getExpCost() >= 0)spellbook.add(soulstone);
+		if(torch.getExpCost() >= 0)spellbook.add(torch); 
+		if(endereye.getExpCost() >= 0)spellbook.add(endereye);
 	}
 
 	public static ArrayList<ISpell> spellbook;
@@ -75,11 +72,15 @@ public class SpellRegistry
 	 
 	public static ISpell getDefaultSpell(EntityPlayer player)
 	{
+		return spellbook.get(0);
+		/*
 		PlayerPowerups props = PlayerPowerups.get(player);
+		
 		if(props.getSpellToggle() == SPELL_TOGGLE_SHOWMAIN)
 			return getSpellFromType("chest");
 		else
 			return getSpellFromType("torch");
+		*/
 	}
 	public static final int SPELL_TOGGLE_HIDE = 0;
 	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
@@ -146,7 +147,7 @@ public class SpellRegistry
 	public static String getPlayerCurrentSpell(EntityPlayer player)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
-	 
+		
 		return props.getSpellCurrent();
 	}
 	public static int getSpellTimer(EntityPlayer player)

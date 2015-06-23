@@ -19,24 +19,13 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class SpellChestDeposit extends BaseSpellExp
-{   	
-	@Override
-	public ISpell left() 
-	{
-		return SpellRegistry.chesttransp;
-	}
-
-	@Override
-	public ISpell right() 
-	{
-		return SpellRegistry.haste;
-	}
-
+{   	 
 	@Override
 	public String getSpellID() 
 	{
 		return "deposit";
 	}
+	
 	@Override
 	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -70,13 +59,12 @@ public class SpellChestDeposit extends BaseSpellExp
 	public ItemStack getIconDisplay() 
 	{
 		return new ItemStack(ItemRegistry.spell_dummy_deposit);
-		//return new ItemStack(Items.chest_minecart);
 	}
 
 	@Override
 	public int getExpCost() 
 	{
-		return 5;
+		return ModSpells.cfg.deposit;
 	}
 
 	@Override
@@ -87,9 +75,9 @@ public class SpellChestDeposit extends BaseSpellExp
 		super.onCastSuccess(world, player, pos);
 	}
 	 
-	//100 to 103 is the armor
 	public class PlayerInventory
 	{
+		//100 to 103 is the armor
 		public static final int ROWS = 4;//3 means ignore hotbar, 4 is include hotbar: TODO maybe toggle btw two in config one day?
 		public static final int COLS = 9;
 		public static final int SIZE = ROWS*COLS;
@@ -198,7 +186,4 @@ public class SpellChestDeposit extends BaseSpellExp
   	  	}
 		return teAdjacent;
 	}
-	
-
-	
 }

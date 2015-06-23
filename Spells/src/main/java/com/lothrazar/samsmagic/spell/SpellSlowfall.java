@@ -39,24 +39,12 @@ public class SpellSlowfall extends BaseSpellExp implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 5;
+		return ModSpells.cfg.slowfall;
 	}
 	
 	@Override
 	public ItemStack getIconDisplay()
 	{ 
 		return new ItemStack(ItemRegistry.spell_dummy_slowfall);
-	}
-
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.waterwalk;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.jump;
 	}
 }

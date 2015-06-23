@@ -36,10 +36,11 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
+	
 	@Override
 	public int getExpCost()
 	{
-		return 5;
+		return ModSpells.cfg.haste;
 	}
 	
 	@Override
@@ -47,15 +48,4 @@ public class SpellHaste extends BaseSpellExp implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_haste_dummy);
 	} 
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.deposit;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.waterwalk;
-	}
 }

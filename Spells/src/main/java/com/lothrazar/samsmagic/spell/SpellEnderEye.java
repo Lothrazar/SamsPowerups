@@ -37,28 +37,10 @@ public class SpellEnderEye extends BaseSpellExp implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.pearl;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.ghost;
-	}
-
+	
 	@Override
 	public int getExpCost() 
 	{
-		return 1;
+		return ModSpells.cfg.endereye;
 	}
-	  /*
-		@Override
-		public Item getItemCost()
-		{
-			return Items.ender_eye;
-		}*/
-		
 }

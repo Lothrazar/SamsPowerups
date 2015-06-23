@@ -6,7 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+
 import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.entity.projectile.EntityWaterBolt; 
 
@@ -28,28 +30,10 @@ public class SpellWaterBolt extends BaseSpellExp implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_water_dummy);
 	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.torch;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.frostbolt;
-	}
 
 	@Override
 	public int getExpCost() 
 	{
-		return 25;
-	}/*
-  
-	@Override
-	public Item getItemCost()
-	{
-		return Item.getItemFromBlock(Blocks.ice);
+		return ModSpells.cfg.waterbolt;
 	}
-	*/
 }

@@ -47,26 +47,10 @@ public class SpellFirebolt extends BaseSpellExp implements ISpell
 	{
 		return new ItemStack(Items.fire_charge);
 	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.frostbolt;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.lightningbolt;
-	}
 
 	@Override
 	public int getExpCost() 
 	{
-		return 44;
-	}/*
-	@Override
-	public Item getItemCost()
-	{
-		return Items.fire_charge;
-	}*/
+		return ModSpells.cfg.firebolt;
+	}
 }

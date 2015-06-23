@@ -1,14 +1,15 @@
 ***********
-BUGs/TODO list for 1.0 before release
+BUGs/TODO/Testing list for 1.0 before release
 ***********
 bug: spell torches do not persist
 
+add: recipes.uncrafting: smelt brewstand into blaze rod
 
 bug: worldhome crash if gamemode 3 (probably null bounding box)
 
 bug:
 spell phase - test first if its valid before casting
-Spell Deposit: sound on cast//test
+Spell Deposit: sound on cast
 deposit item sack- sound on place
 
 
@@ -16,8 +17,7 @@ deposit item sack- sound on place
 ***********
 NEW FEATURE IDEAS /  1.1
 ***********
-MacrosKeys :
-	- up to at least 4 from 2 custom macros. Or maybe even 9 (numpad)
+
 	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
 	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
 				and the 50 is a 50% chance an air block gets filled with that?
@@ -27,7 +27,7 @@ MacrosKeys :
  
 
 Spells maybes  
-	-Saturation spell
+	-Saturation spell - 10 secondsfor high xp
 	-add respawn eggs--test maybe making this a spell+projectile?
 	-shrink to 1 height if possible
 	- play random song

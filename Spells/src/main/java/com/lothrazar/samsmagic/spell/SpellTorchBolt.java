@@ -6,7 +6,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
+
 import com.lothrazar.samsmagic.ItemRegistry;
+import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
 import com.lothrazar.samsmagic.entity.projectile.EntityTorchBolt; 
 
@@ -24,33 +26,15 @@ public class SpellTorchBolt extends BaseSpellExp implements ISpell
 		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
 	}
 
-
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_torch_dummy);
 	}
-	//
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.ghost;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.waterbolt;
-	}
-
+	
 	@Override
 	public int getExpCost() 
 	{
-		return 30;
-	}/*
-	@Override
-	public Item getItemCost()
-	{
-		return Item.getItemFromBlock(Blocks.torch);
-	}*/
+		return ModSpells.cfg.torch;
+	}
 }

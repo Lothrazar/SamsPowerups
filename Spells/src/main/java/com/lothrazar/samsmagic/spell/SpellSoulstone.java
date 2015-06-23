@@ -55,7 +55,6 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 		super.onCastSuccess(world, player, pos);
 	}
  
-
 	@Override
 	public ItemStack getIconDisplay()
 	{
@@ -65,7 +64,7 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 200;
+		return ModSpells.cfg.soulstone;
 	}
 	
 	public static void onLivingHurt(LivingHurtEvent event) 
@@ -96,15 +95,4 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 			}
 		} 
 	} 
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.lightningbolt;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.harvest;
-	}
 }

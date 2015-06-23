@@ -27,6 +27,7 @@ public class SpellWaterwalk extends BaseSpellExp implements ISpell
 		ModSpells.addOrMergePotionEffect(player,new PotionEffect(PotionRegistry.waterwalk.id,seconds,0));
 
 	}
+	
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -37,23 +38,12 @@ public class SpellWaterwalk extends BaseSpellExp implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 5;
+		return ModSpells.cfg.waterwalk;
 	}
 
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_waterwalk_dummy);
-	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.haste;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.slowfall;
 	}
 }

@@ -2,6 +2,8 @@ package com.lothrazar.samsmagic.spell;
 
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
+import com.lothrazar.samsmagic.SpellRegistry;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -10,12 +12,30 @@ import net.minecraft.world.World;
 
 public abstract class BaseSpellExp implements ISpell
 {
-	public abstract ISpell left();
-	public abstract ISpell right();
-	public abstract String getSpellID();
-	public abstract void cast(World world, EntityPlayer player, BlockPos pos);
-	public abstract ItemStack getIconDisplay();
-	public abstract int getExpCost();
+	
+	@Override
+	public ISpell left() 
+	{
+		int idx = SpellRegistry.spellbook.indexOf(this);//-1 for not found
+		if(idx == -1){return null;}
+		
+		if(idx == 0) idx = SpellRegistry.spellbook.size() - 1;
+		else idx = idx-1;
+		
+		return SpellRegistry.spellbook.get(idx);
+	}
+
+	@Override
+	public ISpell right() 
+	{
+		int idx = SpellRegistry.spellbook.indexOf(this);
+		if(idx == -1){return null;}
+		
+		if(idx == SpellRegistry.spellbook.size() - 1) idx = 0;
+		else idx = idx+1;
+		
+		return SpellRegistry.spellbook.get(idx);
+	}
 	
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
 	{

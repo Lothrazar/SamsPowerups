@@ -21,6 +21,7 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	{
 		return "phase";
 	}
+	
 	@Override
 	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -35,6 +36,7 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 		
 		return false;
 	}
+	
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -49,6 +51,7 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 			player.setPositionAndUpdate(offs.getX(), offs.getY(), offs.getZ()); 
 		}
 	}
+	
 	private BlockPos getPosOffset(EntityPlayer player,BlockPos pos) 
 	{
 		if(pos == null){return pos;}
@@ -78,23 +81,12 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 2;
+		return ModSpells.cfg.phase;
 	}
 	
 	@Override
 	public ItemStack getIconDisplay()
 	{
 		return new ItemStack(ItemRegistry.spell_dummy_phasing);
-	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.jump;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.pearl;
 	}
 }

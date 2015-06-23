@@ -78,9 +78,6 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	{
 		ModSpells.playSoundAt(player, "random.bow");
 
-	//	if(world.isRemote) //client side 
-			//Util.spawnParticle(world, EnumParticleTypes.VILLAGER_HAPPY, pos);//cant find the Bonemeal particles 
-		 
 		super.onCastSuccess(world, player, pos);
 	}
 	
@@ -93,17 +90,6 @@ public class SpellHarvest extends BaseSpellExp implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 75;
-	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.soulstone;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.chesttransp;
+		return ModSpells.cfg.harvest;
 	}
 }

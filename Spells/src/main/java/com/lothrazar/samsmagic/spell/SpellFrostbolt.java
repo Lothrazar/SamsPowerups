@@ -23,12 +23,9 @@ public class SpellFrostbolt extends BaseSpellExp implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
-		//BlockPos up = player.getPosition().offset(player.getHorizontalFacing(), 1).up();
-
 		world.spawnEntityInWorld(new EntitySnowballBolt(world,player));
 	}
 	
-
 	@Override
 	public ItemStack getIconDisplay()
 	{
@@ -42,26 +39,10 @@ public class SpellFrostbolt extends BaseSpellExp implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.waterbolt;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.firebolt;
-	}
 
 	@Override
 	public int getExpCost() 
 	{
-		return 22;
-	}/*
-	@Override
-	public Item getItemCost()
-	{
-		return Items.snowball;
-	}*/
+		return ModSpells.cfg.frostbolt;
+	}
 }

@@ -19,6 +19,7 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	private static final String KEY_EATLOC = "ghost_location";
 	private static final String KEY_EATDIM = "ghost_dim";
 	private static final int GHOST_SECONDS = 10;//so 30 seconds
+	
 	@Override
 	public String getSpellID()
 	{
@@ -38,6 +39,7 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 
 		super.onCastSuccess(world, player, pos);
 	}
+	
 	private void setPlayerGhostMode(EntityPlayer player, World par2World)
 	{
 		if(par2World.isRemote == false)  //false means serverside
@@ -99,17 +101,6 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	@Override
 	public int getExpCost()
 	{
-		return 200;
-	}
-	@Override
-	public ISpell left()
-	{
-		return SpellRegistry.endereye;
-	}
-
-	@Override
-	public ISpell right()
-	{
-		return SpellRegistry.torch;
+		return ModSpells.cfg.ghost;
 	}
 }

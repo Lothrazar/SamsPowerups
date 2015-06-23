@@ -11,7 +11,9 @@ public interface ISpell
 	public ISpell right();
 	
 	public String getSpellID();
-	
+
+	public int getExpCost();
+
 	public void cast(World world, EntityPlayer player, BlockPos pos);
 	
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos);
