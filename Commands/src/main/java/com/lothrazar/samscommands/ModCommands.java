@@ -341,7 +341,8 @@ public class ModCommands
 	}
 	public static void moveEntityWallSafe(EntityLivingBase entity, World world) 
 	{
-		while (!world.getCollidingBoundingBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
+		while (entity.getEntityBoundingBox() != null && //gm 3 must have a null box because of the ghost
+				!world.getCollidingBoundingBoxes(entity, entity.getEntityBoundingBox()).isEmpty())
 		{
 			entity.setPositionAndUpdate(entity.posX, entity.posY + 1.0D, entity.posZ);
 		}

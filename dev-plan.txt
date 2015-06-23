@@ -1,8 +1,8 @@
 ***********
 BUGs/TODO list for 1.0 before release
 ***********
+bug: spell torches do not persist
 
-bug: todo command: keeps the first argument like "set" in the saving message
 
 bug: worldhome crash if gamemode 3 (probably null bounding box)
 

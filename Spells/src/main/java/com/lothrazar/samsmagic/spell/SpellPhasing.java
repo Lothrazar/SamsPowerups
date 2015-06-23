@@ -26,31 +26,44 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 	{
 		if(super.canPlayerCast(world, player, pos) == false) {return false;}
 	
-		return (pos != null);//if it is null, we cannot cast
+		BlockPos offs = getPosOffset(player,pos);
+		
+		if(pos != null && offs != null && world.isAirBlock(offs) && world.isAirBlock(offs.up()))
+		{
+			return true;
+		}
+		
+		return false;
 	}
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
 		if(pos == null){return;}//covered also by canPlayerCast
-		EnumFacing face = EnumFacing.getFacingFromVector(
-				(float)player.getLookVec().xCoord
-				, (float)player.getLookVec().yCoord
-				, (float)player.getLookVec().zCoord);
- 
-		int dist = 1;
-		if(face.getOpposite() == EnumFacing.DOWN)
-		{
-			 dist = 2;//only move two when going down - player is 2 tall
-		}
 		
-		BlockPos offs = pos.offset(face, dist);//was .getOpposite()
+ 
+		BlockPos offs = getPosOffset(player,pos);//was .getOpposite()
 		
 		//not 2, depends on block pos?
 		if(world.isAirBlock(offs) && world.isAirBlock(offs.up()))
 		{
 			player.setPositionAndUpdate(offs.getX(), offs.getY(), offs.getZ()); 
- 
 		}
+	}
+	private BlockPos getPosOffset(EntityPlayer player,BlockPos pos) 
+	{
+		if(pos == null){return pos;}
+		EnumFacing face = EnumFacing.getFacingFromVector(
+				(float)player.getLookVec().xCoord
+				, (float)player.getLookVec().yCoord
+				, (float)player.getLookVec().zCoord);
+		int dist = 1;
+		if(face.getOpposite() == EnumFacing.DOWN)
+		{
+			 dist = 2;//only move two when going down - player is 2 tall
+		}
+		//was .getOpposite()
+		BlockPos offs = pos.offset(face, dist);
+		return offs;
 	}
  
 	@Override
