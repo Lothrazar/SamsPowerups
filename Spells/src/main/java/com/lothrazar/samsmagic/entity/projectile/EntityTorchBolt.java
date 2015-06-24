@@ -48,7 +48,7 @@ public class EntityTorchBolt extends EntityThrowable
         	offset = pos.offset(mop.sideHit);
         }
         
-		if(this.isInWater() == false && offset != null && this.worldObj.isAirBlock(offset)  && this.worldObj.isRemote ) 
+		if(this.isInWater() == false && offset != null && this.worldObj.isAirBlock(offset)  && !this.worldObj.isRemote ) 
 		{
 			//http://minecraft.gamepedia.com/Torch#Block_data
 			int faceEast = 1;
@@ -78,7 +78,6 @@ public class EntityTorchBolt extends EntityThrowable
 			}
 			
     		this.worldObj.setBlockState(offset, Blocks.torch.getStateFromMeta(blockdata)); 
-    		
     	}
 	 
         this.setDead();
