@@ -25,7 +25,17 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	{
 		return "ghost";
 	}
+	@Override
+	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
+	{
+		if(super.canPlayerCast(world, player, pos) == false){return false;}
 
+		//if already in ghost mode, then disallow
+		if(player.capabilities.isCreativeMode || player.getEntityData().getBoolean(KEY_BOOLEAN)){return false;}
+		
+		return true;
+	}
+	
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{
@@ -59,7 +69,7 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 		
 		EntityPlayer player = (EntityPlayer)event.entityLiving;
 		
-		if(player.getEntityData().getBoolean(KEY_BOOLEAN))
+		if(player.getEntityData().getBoolean(KEY_BOOLEAN))//if in_ghostmode == true
 		{ 
 			int playerGhost = player.getEntityData().getInteger(KEY_TIMER);
 			
