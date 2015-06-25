@@ -1,8 +1,0 @@
-{
-    "variants": {
-        "age=0": { "model": "samscontent:beetroot_crop_0" },
-        "age=1": { "model": "samscontent:beetroot_crop_1" },
-        "age=2": { "model": "samscontent:beetroot_crop_2" },
-        "age=3": { "model": "samscontent:beetroot_crop_3" } 
-    }
-}

@@ -115,14 +115,5 @@ public class BlockRegistry
 			
 			BlockCommandBlockCraftable.addRecipe(BlockRegistry.command_block_tpbed,new ItemStack(Items.bed));
 		} 
-		
-		/*if(ModBlocks.cfg.xRayBlock)
-		{ 
-			BlockRegistry.block_xray = new BlockXRay(); 
-			
-			BlockRegistry.registerBlock(BlockRegistry.block_xray,"block_xray");
- 
-			BlockXRay.addRecipe();
-		}*/
 	}
 }
