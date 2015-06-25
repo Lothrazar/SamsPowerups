@@ -1,17 +1,18 @@
 ***********
 BUGs/TODO/Testing list for 1.0 before release
 ***********
-bug: spell torches do not persist
 
-add: recipes.uncrafting: smelt brewstand into blaze rod
+Macro bind: bindings get wasted on savequit and death
 
-bug: worldhome crash if gamemode 3 (probably null bounding box)
+Spells feature: add equip method
+
 
 bug:
 spell phase - test first if its valid before casting
 Spell Deposit: sound on cast
 deposit item sack- sound on place
 
+spell ghost : can cast: do not allow casting unless in survival ORANNDDDDD:: just undo the ghost on second cast
 
 
 ***********

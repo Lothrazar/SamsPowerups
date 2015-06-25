@@ -251,7 +251,6 @@ public class RecipeRegistry
 		GameRegistry.addRecipe(new ItemStack(Blocks.log2,1, Reference.log2_acacia), " x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1,Reference.planks_acacia));
 		GameRegistry.addRecipe(new ItemStack(Blocks.log2,1, Reference.log2_darkoak)," x "," x "," xx", 'x', new ItemStack(Blocks.planks, 1, Reference.planks_darkoak));
  		  
-		
 		//four planks makes 3 fences
 		//so same in reverse
 		
