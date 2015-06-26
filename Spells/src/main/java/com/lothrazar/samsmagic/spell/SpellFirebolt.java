@@ -10,7 +10,7 @@ import net.minecraft.world.World;
 
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry; 
-
+/*
 public class SpellFirebolt extends BaseSpellExp implements ISpell
 { 
 	@Override
@@ -53,4 +53,4 @@ public class SpellFirebolt extends BaseSpellExp implements ISpell
 	{
 		return ModSpells.cfg.firebolt;
 	}
-}
+}*/

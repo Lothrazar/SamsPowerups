@@ -63,7 +63,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		if(properties == null){ properties = new NBTTagCompound(); }
 		
-		 this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getString(NBT_SPELLMAIN));  
+		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getString(NBT_SPELLMAIN));  
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,  properties.getInteger(NBT_SPELLTOG));   
 		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER,properties.getInteger(NBT_SPELLTIMER));   
  	}
@@ -102,7 +102,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			spell = getSpellOther();
 			
 			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.torch.getSpellID());
+				setSpellOther(SpellRegistry.spellbook.get(0).getSpellID());
 	 
 		}
 		return null;

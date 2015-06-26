@@ -1,4 +1,4 @@
-package com.lothrazar.samsmagic.entity.projectile; 
+package com.lothrazar.samsprojectiles.entity.projectile; 
 
 import net.minecraft.entity.EntityLivingBase; 
 import net.minecraft.entity.effect.EntityLightningBolt;

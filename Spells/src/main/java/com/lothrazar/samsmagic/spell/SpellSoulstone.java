@@ -10,14 +10,9 @@ import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
-import com.lothrazar.samsmagic.entity.projectile.EntitySoulstoneBolt; 
-
+/*
 public class SpellSoulstone extends BaseSpellExp implements ISpell
 {
-	private static final String KEY_STONED = "soulstone";
-	private static final int VALUE_SINGLEUSE = -1;
-	private static final int VALUE_PERSIST = 1;
-	private static final int VALUE_EMPTY = 0;
 	
 	@Override
 	public String getSpellID()
@@ -31,19 +26,7 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 		world.spawnEntityInWorld(new EntitySoulstoneBolt(world,player 	 ));
 	}
 	
-	public static void addEntitySoulstone(EntityLivingBase e) 
-	{  
-		//getInteger by default returns zero if no value exists
-		if(e.getEntityData().getInteger(KEY_STONED) != VALUE_EMPTY)
-		{ 
-			return;//for single use, only apply if existing is empty (do not overwrite persist)
-		}
- 
-		//(item == ItemRegistry.soulstone_persist) ? 
-		int newValue = VALUE_PERSIST;// : VALUE_SINGLEUSE;
-		 
-		e.getEntityData().setInteger(KEY_STONED, newValue);
-	} 
+
 	
 	@Override
 	public void onCastSuccess(World world, EntityPlayer player, BlockPos pos)
@@ -95,4 +78,5 @@ public class SpellSoulstone extends BaseSpellExp implements ISpell
 			}
 		} 
 	} 
-}
+
+}*/

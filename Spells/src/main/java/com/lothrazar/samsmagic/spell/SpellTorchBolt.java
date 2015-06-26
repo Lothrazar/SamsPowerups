@@ -10,8 +10,7 @@ import net.minecraft.world.World;
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
-import com.lothrazar.samsmagic.entity.projectile.EntityTorchBolt; 
-
+/*
 public class SpellTorchBolt extends BaseSpellExp implements ISpell
 {
 	@Override
@@ -23,6 +22,7 @@ public class SpellTorchBolt extends BaseSpellExp implements ISpell
 	@Override
 	public void cast(World world, EntityPlayer player, BlockPos pos)
 	{ 
+		
 		world.spawnEntityInWorld(new EntityTorchBolt(world,player));
 	}
 
@@ -37,4 +37,4 @@ public class SpellTorchBolt extends BaseSpellExp implements ISpell
 	{
 		return ModSpells.cfg.torch;
 	}
-}
+}*/

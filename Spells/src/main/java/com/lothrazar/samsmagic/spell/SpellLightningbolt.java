@@ -8,8 +8,7 @@ import net.minecraft.world.World;
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
-import com.lothrazar.samsmagic.entity.projectile.EntityLightningballBolt; 
-
+/*
 public class SpellLightningbolt extends BaseSpellExp implements ISpell
 { 
 	@Override
@@ -43,4 +42,4 @@ public class SpellLightningbolt extends BaseSpellExp implements ISpell
 	{
 		return new ItemStack(ItemRegistry.spell_lightning_dummy);
 	}
-}
+}*/

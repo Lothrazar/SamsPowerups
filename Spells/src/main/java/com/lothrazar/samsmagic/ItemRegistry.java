@@ -8,12 +8,8 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ItemRegistry 
 { 
 	public static ArrayList<Item> items = new ArrayList<Item>();
-   
-	//String name, 
-	public static ItemChestSack itemChestSack; 
-	public static int timePotionShort = 90; // 1:30
-	public static int timePotionLong = 8 * 60;// 8:00
- 
+    
+	public static ItemChestSack itemChestSack;  
 	public static ItemRespawnEggAnimal respawn_egg; 
 	
 	public static Item soulstone;
@@ -29,11 +25,11 @@ public class ItemRegistry
 	public static Item exp_cost_empty_dummy;
 	public static Item spell_heart_dummy;
 	public static Item spell_torch_dummy;
-	public static Item spell_haste_dummy;
-
+	public static Item spell_haste_dummy; 
 	public static Item spell_dummy_phasing;
 	public static Item spell_dummy_slowfall;
 	public static Item spell_dummy_deposit;
+	
 	public static void registerItems()
 	{   
 		ItemRegistry.itemChestSack = new ItemChestSack();   

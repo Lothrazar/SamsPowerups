@@ -10,8 +10,7 @@ import net.minecraft.world.World;
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
 import com.lothrazar.samsmagic.SpellRegistry;
-import com.lothrazar.samsmagic.entity.projectile.EntityWaterBolt; 
-
+/*
 public class SpellWaterBolt extends BaseSpellExp implements ISpell
 { 
 	@Override
@@ -37,3 +36,4 @@ public class SpellWaterBolt extends BaseSpellExp implements ISpell
 		return ModSpells.cfg.waterbolt;
 	}
 }
+*/

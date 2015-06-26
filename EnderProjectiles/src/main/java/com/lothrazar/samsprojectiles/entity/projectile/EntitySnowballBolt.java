@@ -1,7 +1,8 @@
-package com.lothrazar.samsmagic.entity.projectile; 
+package com.lothrazar.samsprojectiles.entity.projectile; 
 
-import com.lothrazar.samsmagic.ModSpells;
-import com.lothrazar.samsmagic.potion.PotionRegistry; 
+
+import com.lothrazar.samsprojectiles.ModProj;
+
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.monster.EntityBlaze;
@@ -60,16 +61,16 @@ public class EntitySnowballBolt extends EntityThrowable
                 {
                 	e.extinguish();
                 }
-                
-            	e.addPotionEffect(new PotionEffect(PotionRegistry.frost.id, secondsFrozenOnHit * 20,0));
+            //TODO     System.out.println("TODO: potion");
+            	//e.addPotionEffect(new PotionEffect(PotionRegistry.frost.id, secondsFrozenOnHit * 20,0));
             } 
         }
         
         BlockPos pos = mop.getBlockPos();
         if(pos == null){return;}//hasn't happened yet, but..
         
-    	ModSpells.spawnParticle(this.worldObj, EnumParticleTypes.SNOWBALL, pos);
-    	ModSpells.spawnParticle(this.worldObj, EnumParticleTypes.SNOW_SHOVEL, pos);
+        ModProj.spawnParticle(this.worldObj, EnumParticleTypes.SNOWBALL, pos);
+    	ModProj.spawnParticle(this.worldObj, EnumParticleTypes.SNOW_SHOVEL, pos);
       
         if( mop.sideHit != null && this.getThrower() instanceof EntityPlayer)
         {

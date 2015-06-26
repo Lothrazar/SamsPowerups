@@ -1,4 +1,4 @@
-package com.lothrazar.samsmagic.entity.projectile; 
+package com.lothrazar.samsprojectiles.entity.projectile; 
 
 import java.util.ArrayList;
 import net.minecraft.block.Block;

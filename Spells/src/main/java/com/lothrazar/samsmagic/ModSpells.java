@@ -84,7 +84,11 @@ public class ModSpells
 		
 		PotionRegistry.registerPotionEffects();
 
-		this.registerEventHandlers(); 
+
+		FMLCommonHandler.instance().bus().register(instance); 
+		MinecraftForge.EVENT_BUS.register(instance); 
+		//MinecraftForge.TERRAIN_GEN_BUS.register(instance);
+		//MinecraftForge.ORE_GEN_BUS.register(instance); 
 		
 		SpellRegistry.setup();
 	}
@@ -96,30 +100,17 @@ public class ModSpells
   		//TODO: we could make our own custom projectileRegistry, that acts as our other ones above do.
   		
   		//TODO: Entity ids are the 999,1000,1001 -> config file
-        EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModSpells.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModSpells.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModSpells.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityWaterBolt.class, "waterbolt",1002, ModSpells.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModSpells.instance, 64, 1, true);
-        EntityRegistry.registerModEntity(EntityTorchBolt.class, "torchbolt",1004, ModSpells.instance, 64, 1, true);
+        //EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModSpells.instance, 64, 1, true);
+        //EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModSpells.instance, 64, 1, true);
+        //EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModSpells.instance, 64, 1, true);
+        //EntityRegistry.registerModEntity(EntityWaterBolt.class, "waterbolt",1002, ModSpells.instance, 64, 1, true);
+        //EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModSpells.instance, 64, 1, true);
+        //EntityRegistry.registerModEntity(EntityTorchBolt.class, "torchbolt",1004, ModSpells.instance, 64, 1, true);
 		
 		proxy.registerRenderers();
 	}
-	
-	private void registerEventHandlers() 
-	{  
-		FMLCommonHandler.instance().bus().register(instance); 
-		MinecraftForge.EVENT_BUS.register(instance); 
-		//MinecraftForge.TERRAIN_GEN_BUS.register(instance);
-		//MinecraftForge.ORE_GEN_BUS.register(instance); 
-	
-	}
  
-	@SubscribeEvent
-	public void onLivingHurt(LivingHurtEvent event) 
-	{ 
-		SpellSoulstone.onLivingHurt(event);
-	}
+
 
 	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, ItemStack stack)
 	{

@@ -26,7 +26,7 @@ public class ClientProxy extends CommonProxy
 	public static KeyBinding keySpellDown;
 	public static KeyBinding keySpellToggle;
 
-	public static final String keyTransformName = "key.spell.transform";
+	//public static final String keyTransformName = "key.spell.transform";
 	public static final String keySpellCastName = "key.spell.cast";
 	public static final String keySpellUpName = "key.spell.up";
 	public static final String keySpellDownName = "key.spell.down";
@@ -38,27 +38,10 @@ public class ClientProxy extends CommonProxy
     	registerKeyBindings(); 
 
         registerModels(); 
-        
-        registerEntities();
+         
     }
     
-    private void registerEntities()
-    {
-    	RenderManager rm = Minecraft.getMinecraft().getRenderManager();
-    	RenderItem ri = Minecraft.getMinecraft().getRenderItem();
-    	
-    	//works similar to vanilla which is like
-    	//Minecraft.getMinecraft().getRenderManager().entityRenderMap.put(EntitySoulstoneBolt.class, new RenderSnowball(Minecraft.getMinecraft().getRenderManager(), ItemRegistry.soulstone, Minecraft.getMinecraft().getRenderItem()));
-
-    	RenderingRegistry.registerEntityRenderingHandler(EntitySoulstoneBolt.class, new RenderSnowball(rm, ItemRegistry.soulstone, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityLightningballBolt.class, new RenderSnowball(rm, ItemRegistry.spell_lightning_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityHarvestbolt.class, new RenderSnowball(rm, ItemRegistry.spell_harvest_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityWaterBolt.class, new RenderSnowball(rm, ItemRegistry.spell_frostbolt_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntitySnowballBolt.class, new RenderSnowball(rm, ItemRegistry.spell_frostbolt_dummy, ri));
-    	RenderingRegistry.registerEntityRenderingHandler(EntityTorchBolt.class, new RenderSnowball(rm, ItemRegistry.spell_torch_dummy, ri));
-        
-    	
-    }
+ 
 
 	private void registerModels() 
 	{

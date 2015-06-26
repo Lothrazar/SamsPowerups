@@ -12,6 +12,16 @@ or if no equip makes sense, just have less spells
 So torch/snowball/fire/lightning would become item mods again? look into potion ones?
 and show 1-2 more on each side.  
 
+-throwable torches mod.
+each item is crafted using ender pearls 
+//Ender Projectiles
+Ender Wheat - wheat block
+Ender Torch-torches
+Ender Ball Lightning-ghast tear 
+Ender Fireball-fire charge
+ender waterball-ice
+
+
 
 bug:
 spell phase - test first if its valid before casting
