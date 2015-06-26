@@ -322,6 +322,15 @@ public class ModSpells
 					y = ymain + 16+14;
 					dim = 16/2 - 2;
 					renderItemAt(sLeftLeft.getIconDisplay(),x,y,dim);
+					
+					ISpell another = sLeftLeft.left();
+					if(another != null)
+					{
+						x = xmain-3 - 3; 
+						y = ymain + 16+14+10;
+						dim = 16/2 - 4;
+						renderItemAt(another.getIconDisplay(),x,y,dim);
+					}
 				}
 			}
 			if(spellPrev != null)// && spellPrev.getIconDisplay() != null
@@ -339,8 +348,20 @@ public class ModSpells
 					y = ymain + 16+14;
 					dim = 16/2 - 2;
 					renderItemAt(sRightRight.getIconDisplay(),x,y,dim);
+					
+					ISpell another = sRightRight.right();
+					if(another != null)
+					{
+						x = xmain+6 +7; 
+						y = ymain + 16+14+10;
+						dim = 16/2 - 4;
+						renderItemAt(another.getIconDisplay(),x,y,dim);
+					}
 				}
 			}
+			
+		
+			
 		}
 	}
 

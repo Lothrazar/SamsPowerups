@@ -2,9 +2,15 @@
 BUGs/TODO/Testing list for 1.0 before release
 ***********
 
+screentext: move compass/clock over?
+
 Macro bind: bindings get wasted on savequit and death
 
 Spells feature: add equip method
+
+or if no equip makes sense, just have less spells
+So torch/snowball/fire/lightning would become item mods again? look into potion ones?
+and show 1-2 more on each side.  
 
 
 bug:
