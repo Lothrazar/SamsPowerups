@@ -20,7 +20,7 @@ Ender Torch-torches
 Ender Ball Lightning-ghast tear 
 Ender Fireball-fire charge
 ender waterball-ice
-
+soulstone
 
 
 bug:
