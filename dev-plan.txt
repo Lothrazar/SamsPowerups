@@ -2,33 +2,17 @@
 BUGs/TODO/Testing list for 1.0 before release
 ***********
 
-screentext: move compass/clock over?
+screentext: move compass/clock over? OR IN OWN MOD:? OR IN POTION EFFFFF
 
 Macro bind: bindings get wasted on savequit and death
-
-Spells feature: add equip method
-
-or if no equip makes sense, just have less spells
-So torch/snowball/fire/lightning would become item mods again? look into potion ones?
-and show 1-2 more on each side.  
-
--throwable torches mod.
-each item is crafted using ender pearls 
-//Ender Projectiles
-Ender Wheat - wheat block
-Ender Torch-torches
-Ender Ball Lightning-ghast tear 
-Ender Fireball-fire charge
-ender waterball-ice
-soulstone
-
+ 
+ 
 
 bug:
 spell phase - test first if its valid before casting
 Spell Deposit: sound on cast
 deposit item sack- sound on place
 
-spell ghost : can cast: do not allow casting unless in survival ORANNDDDDD:: just undo the ghost on second cast
 
 
 ***********

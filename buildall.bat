@@ -38,4 +38,6 @@ cd ../SaplingGrowth
 call gradlew build
 cd ../TreasureBuff
 call gradlew build
+cd ../EnderProjectiles
+call gradlew build
 pause
