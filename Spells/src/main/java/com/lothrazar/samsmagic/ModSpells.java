@@ -197,8 +197,6 @@ public class ModSpells
 		if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 		{
 			drawSpell(event);
-
-		 	drawHud(player); 
 		}
 	}
 
@@ -345,23 +343,6 @@ public class ModSpells
 		}
 	}
 
-	private void drawHud(EntityPlayerSP player)
-	{
-		//TESTING OUT PLAYER COMPASS CLOCKS PELLS
-
-		//int xMiddle = Minecraft.getMinecraft().displayWidth/4;
-		//int yMiddle = Minecraft.getMinecraft().displayHeight/4;
-		int yBottom = Minecraft.getMinecraft().displayHeight/2 - 32;
-		int xRight = Minecraft.getMinecraft().displayWidth/2 - 32;
-	 
-		
-		//PlayerPowerups props = PlayerPowerups.get(player);
-
-		renderItemAt(new ItemStack(Items.clock),20,yBottom,16);//works at mid left
-		renderItemAt(new ItemStack(Items.compass),xRight,yBottom,16);//works at mid top//was ,16
-	
-	}
-	 
 	public static void playSoundAt(Entity player, String sound)
 	{ 
 		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
