@@ -11,7 +11,6 @@ public class SpellRegistry
 { 
 	public static void setup()
 	{
-		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 		spellbook = new ArrayList<ISpell>();
 		deposit = new SpellChestDeposit(); 
 		chesttransp = new SpellChestTransport(); 
@@ -57,7 +56,6 @@ public class SpellRegistry
 		return props.getSpellTimer() == 0;
 	}
 	
-	//enderinv, //TODO: delete this spell, we can aleady do it with /bind n /enderchest. 
 	public static void cast(ISpell spell, World world, EntityPlayer player,BlockPos pos)
 	{
 		if(spell == null)
