@@ -94,7 +94,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			spell = getSpellMain();
 			
 			if(spell == null || spell.isEmpty())
-				setSpellMain(SpellRegistry.chesttransp.getSpellID());
+				setSpellOther(SpellRegistry.getDefaultSpell(player).getSpellID());
 			
 			return getSpellMain();
 
@@ -102,7 +102,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 			spell = getSpellOther();
 			
 			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.spellbook.get(0).getSpellID());
+				setSpellOther(SpellRegistry.getDefaultSpell(player).getSpellID());
 	 
 		}
 		return null;

@@ -16,71 +16,42 @@ public class SpellRegistry
 		
 		deposit = new SpellChestDeposit(); 
 		chesttransp = new SpellChestTransport(); 
-		//firebolt = new SpellFirebolt();
-		//frostbolt = new SpellFrostbolt();
 		ghost = new SpellGhost();
-		//harvest = new SpellHarvest(); 
 		jump = new SpellJump();
 		pearl = new SpellEnderPearl();
 		phase = new SpellPhasing();
-		//lightningbolt = new SpellLightningbolt();
 		slowfall = new SpellSlowfall();
 		waterwalk = new SpellWaterwalk();
-		//waterbolt = new SpellWaterBolt();
-		//soulstone = new SpellSoulstone(); 
-		//torch = new SpellTorchBolt(); 
 		endereye = new SpellEnderEye();
 		haste = new SpellHaste();
 
 		if(deposit.getExpCost() >= 0) spellbook.add(deposit); 
 		if(chesttransp.getExpCost() >= 0)spellbook.add(chesttransp); 
 		if(phase.getExpCost() >= 0)spellbook.add(phase );
-		//if(firebolt.getExpCost() >= 0)spellbook.add(firebolt);
-		//if(frostbolt.getExpCost() >= 0)spellbook.add(frostbolt);
-		//if(lightningbolt.getExpCost() >= 0)spellbook.add(lightningbolt);
-		//if(waterbolt.getExpCost() >= 0)spellbook.add(waterbolt );
 		if(pearl.getExpCost() >= 0)spellbook.add(pearl );
-		//if(harvest.getExpCost() >= 0)spellbook.add(harvest); 
 		if(haste.getExpCost() >= 0)spellbook.add(haste);
 		if(slowfall.getExpCost() >= 0)spellbook.add(slowfall );
 		if(jump.getExpCost() >= 0)spellbook.add(jump );
 		if(ghost.getExpCost() >= 0)spellbook.add(ghost);
 		if(waterwalk.getExpCost() >= 0)spellbook.add(waterwalk );
-		//if(soulstone.getExpCost() >= 0)spellbook.add(soulstone);
-		//if(torch.getExpCost() >= 0)spellbook.add(torch); 
 		if(endereye.getExpCost() >= 0)spellbook.add(endereye);
 	}
 
 	public static ArrayList<ISpell> spellbook;
 	public static ISpell deposit;
 	public static ISpell chesttransp;
-	//public static ISpell firebolt;
-	//public static ISpell frostbolt;
 	public static ISpell ghost;
-	//public static ISpell harvest; 
 	public static ISpell jump;
-	//public static ISpell lightningbolt;
 	public static ISpell pearl;
 	public static ISpell phase;
-	public static ISpell slowfall;//10
+	public static ISpell slowfall;
 	public static ISpell waterwalk;
-	//public static ISpell waterbolt;
-	//public static ISpell soulstone;
-	//public static ISpell torch;
 	public static ISpell endereye;
-	public static ISpell haste;//16
+	public static ISpell haste;
 	 
 	public static ISpell getDefaultSpell(EntityPlayer player)
 	{
 		return spellbook.get(0);
-		/*
-		PlayerPowerups props = PlayerPowerups.get(player);
-		
-		if(props.getSpellToggle() == SPELL_TOGGLE_SHOWMAIN)
-			return getSpellFromType("chest");
-		else
-			return getSpellFromType("torch");
-		*/
 	}
 	public static final int SPELL_TOGGLE_HIDE = 0;
 	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
