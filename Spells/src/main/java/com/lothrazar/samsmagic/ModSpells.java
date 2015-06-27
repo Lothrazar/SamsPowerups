@@ -118,7 +118,7 @@ public class ModSpells
  		
     	return entityItem;
 	}
-	 
+	 /*
 	@SubscribeEvent
 	public void onPlayerInteract(PlayerInteractEvent event)
   	{        
@@ -146,7 +146,8 @@ public class ModSpells
 				ItemChestSack.createAndFillChest(event.entityPlayer, held, event.pos.offset(event.face));
 			}
 		} 
-   	}
+   	}*/
+	//TODO: re-consider ender apple again for this?
   
 	/*@SubscribeEvent
 	public void onEnderTeleportEvent(EnderTeleportEvent event)

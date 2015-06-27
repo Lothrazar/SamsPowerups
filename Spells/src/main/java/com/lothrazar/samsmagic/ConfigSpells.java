@@ -12,11 +12,9 @@ public class ConfigSpells
 	public int chesttransp;
 	public int ghost;
 	public int jump;
-	public int pearl;
 	public int phase;
 	public int slowfall;
 	public int waterwalk;
-	public int endereye;
 	public int haste;
 	
 	public Configuration instance()
@@ -40,18 +38,18 @@ public class ConfigSpells
 
 		jump = instance.get(category,"jump",  10).getInt();
 
-		pearl = instance.get(category,"pearl", 5).getInt();
+		//pearl = instance.get(category,"pearl", 5).getInt();
 		phase = instance.get(category,"phase",  5).getInt();
 		slowfall = instance.get(category,"slowfall",  15).getInt();
 		waterwalk = instance.get(category,"waterwalk",  15).getInt();
 
-		endereye = instance.get(category,"endereye", 50).getInt();
+		//endereye = instance.get(category,"endereye", 50).getInt();
 		haste = instance.get(category,"haste",  20).getInt();
 		
-		category = "misc";
+		//category = "misc";
 		
-		experience_bottle_return = instance.getBoolean("experience_bottle_return",category, true,
-				"Experience bottles in survival mode return an empty glass bottle to you (if used on a block).");  
+		//experience_bottle_return = instance.getBoolean("experience_bottle_return",category, true,
+		//		"Experience bottles in survival mode return an empty glass bottle to you (if used on a block).");  
 	
 		category = "effect_ids";
 
@@ -87,7 +85,7 @@ public class ConfigSpells
  
 	}
 	
-	public boolean experience_bottle_return;
+	//public boolean experience_bottle_return;
  
 	public int potionIdWaterwalk;
 	public int potionIdSlowfall;

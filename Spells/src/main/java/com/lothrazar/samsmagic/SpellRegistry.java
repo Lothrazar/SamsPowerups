@@ -13,28 +13,23 @@ public class SpellRegistry
 	{
 		//TODO:https://docs.oracle.com/javase/7/docs/api/java/util/LinkedList.html
 		spellbook = new ArrayList<ISpell>();
-		
 		deposit = new SpellChestDeposit(); 
 		chesttransp = new SpellChestTransport(); 
 		ghost = new SpellGhost();
 		jump = new SpellJump();
-		pearl = new SpellEnderPearl();
 		phase = new SpellPhasing();
 		slowfall = new SpellSlowfall();
 		waterwalk = new SpellWaterwalk();
-		endereye = new SpellEnderEye();
 		haste = new SpellHaste();
 
 		if(deposit.getExpCost() >= 0) spellbook.add(deposit); 
 		if(chesttransp.getExpCost() >= 0)spellbook.add(chesttransp); 
-		if(phase.getExpCost() >= 0)spellbook.add(phase );
-		if(pearl.getExpCost() >= 0)spellbook.add(pearl );
 		if(haste.getExpCost() >= 0)spellbook.add(haste);
+		if(waterwalk.getExpCost() >= 0)spellbook.add(waterwalk );
 		if(slowfall.getExpCost() >= 0)spellbook.add(slowfall );
 		if(jump.getExpCost() >= 0)spellbook.add(jump );
+		if(phase.getExpCost() >= 0)spellbook.add(phase );
 		if(ghost.getExpCost() >= 0)spellbook.add(ghost);
-		if(waterwalk.getExpCost() >= 0)spellbook.add(waterwalk );
-		if(endereye.getExpCost() >= 0)spellbook.add(endereye);
 	}
 
 	public static ArrayList<ISpell> spellbook;
@@ -42,11 +37,9 @@ public class SpellRegistry
 	public static ISpell chesttransp;
 	public static ISpell ghost;
 	public static ISpell jump;
-	public static ISpell pearl;
 	public static ISpell phase;
 	public static ISpell slowfall;
 	public static ISpell waterwalk;
-	public static ISpell endereye;
 	public static ISpell haste;
 	 
 	public static ISpell getDefaultSpell(EntityPlayer player)
