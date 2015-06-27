@@ -2,21 +2,12 @@ package com.lothrazar.samsmagic.spell;
 
 import com.lothrazar.samsmagic.ItemRegistry;
 import com.lothrazar.samsmagic.ModSpells;
-import com.lothrazar.samsmagic.SpellRegistry;
-
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
-import net.minecraft.tileentity.TileEntitySign;
 import net.minecraft.util.BlockPos;
-import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent;
- 
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class SpellChestDeposit extends BaseSpellExp
 {   	 

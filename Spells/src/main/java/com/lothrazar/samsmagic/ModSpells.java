@@ -1,11 +1,8 @@
 package com.lothrazar.samsmagic;
 
-import java.util.ArrayList; 
-
 import org.apache.logging.log4j.Logger;    
 
 import com.lothrazar.samsmagic.potion.*; 
-import com.lothrazar.samsmagic.entity.projectile.*; 
 import com.lothrazar.samsmagic.item.ItemChestSack;
 import com.lothrazar.samsmagic.proxy.*; 
 import com.lothrazar.samsmagic.spell.*; 
@@ -36,7 +33,6 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
-import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
@@ -51,7 +47,6 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.common.registry.EntityRegistry;
 import net.minecraftforge.fml.relauncher.Side;
   
 @Mod(modid = ModSpells.MODID,  useMetadata = true )  
