@@ -2,6 +2,24 @@
 BUGs/TODO/Testing list for 1.0 before release
 ***********
 
+fix not working in multiplayer
+
+fix a crash when pull/push sand
+
+added some blocks to non-config file blacklist
+
+
+
+ControlBlocks: Blacklist Bedrock, end portal, Bed, doors. 
+.....maybe anything .unbreakable?
+
+CRASHES ON SAND..??
+
+does not work on cactus- good?
+
+bug: transforms creeper head into skeleton, but it should just leave it as creeper.
+also rotate does not work
+
 screentext: move compass/clock over? OR IN OWN MOD:? OR IN POTION EFFFFF
 
 Macro bind: bindings get wasted on savequit and death
