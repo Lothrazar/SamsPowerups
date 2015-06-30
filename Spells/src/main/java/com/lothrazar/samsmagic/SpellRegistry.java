@@ -43,13 +43,12 @@ public class SpellRegistry
 	public static ISpell waterwalk;
 	public static ISpell haste;
 	 
-	public static ISpell getDefaultSpell(EntityPlayer player)
+	public static ISpell getDefaultSpell()
 	{
 		return spellbook.get(0);
 	}
 	public static final int SPELL_TOGGLE_HIDE = 0;
-	public static final int SPELL_TOGGLE_SHOWMAIN = 1;
-	public static final int SPELL_TOGGLE_SHOWOTHER = 2;
+	public static final int SPELL_TOGGLE_SHOW = 1;
 	public static final int SPELL_TIMER_MAX = 20;
 
 	public static boolean canPlayerCastAnything(EntityPlayer player)
@@ -105,6 +104,7 @@ public class SpellRegistry
 
 		if(current.right() != null)
 		{
+			System.out.println(current.right().getSpellID());
 			setPlayerCurrentSpell(player,current.right().getSpellID()); 
 			ModSpells.playSoundAt(player, "random.orb");
 		}
@@ -114,6 +114,8 @@ public class SpellRegistry
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 
+		System.out.println("setPlayerCurrentSpell "+current);
+		System.out.println(player.worldObj.isRemote);
 		props.setSpellCurrent(current);
 	}
 	public static String getPlayerCurrentSpell(EntityPlayer player)
@@ -154,7 +156,7 @@ public class SpellRegistry
 		} 
 		//if current spell is null,default to the first one
  
-		return SpellRegistry.getDefaultSpell(player);
+		return SpellRegistry.getDefaultSpell();
 	}
  
 	public static ISpell getSpellFromType(String next)

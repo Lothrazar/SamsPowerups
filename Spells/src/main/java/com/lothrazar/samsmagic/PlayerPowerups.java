@@ -15,9 +15,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	private static final int SPELLMAIN_WATCHER = 22;
 	private static final String NBT_SPELLMAIN = "samSpell"; 
 	
-	private static final int SPELLOTHER_WATCHER = 23;
-	private static final String NBT_SPELLOTHER = "samSpellOther"; 
- 
 	private static final int SPELLTOG_WATCHER = 24;
 	private static final String NBT_SPELLTOG = "samSpellToggle"; 
 
@@ -27,8 +24,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	public PlayerPowerups(EntityPlayer player)
 	{
 		this.player = player;   
-		this.player.getDataWatcher().addObject(SPELLMAIN_WATCHER, 0);  
-		this.player.getDataWatcher().addObject(SPELLOTHER_WATCHER, 0);  
+		this.player.getDataWatcher().addObject(SPELLMAIN_WATCHER, 0);   
 		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0); 
 		this.player.getDataWatcher().addObject(SPELLTIMER_WATCHER, 0); 
 	}
@@ -50,7 +46,6 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		NBTTagCompound properties = new NBTTagCompound(); 
 	 
 		properties.setString(NBT_SPELLMAIN,  this.getStringSafe(SPELLMAIN_WATCHER)); 
-		properties.setString(NBT_SPELLOTHER, this.getStringSafe(SPELLOTHER_WATCHER));  
 		properties.setInteger(NBT_SPELLTOG,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
 		properties.setInteger(NBT_SPELLTIMER,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTIMER_WATCHER) ); 
  	 
@@ -68,62 +63,26 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER,properties.getInteger(NBT_SPELLTIMER));   
  	}
 
-	private final String getSpellMain() 
-	{
-		return this.getStringSafe(SPELLMAIN_WATCHER);
-	}
-	private final void setSpellMain(String s) 
+	public final void setSpellCurrent(String s) 
 	{
 		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, s);
 	}
-	private final String getSpellOther() 
-	{
-		return this.getStringSafe(SPELLOTHER_WATCHER);
-	}
-	private final void setSpellOther(String s) 
-	{
-		this.player.getDataWatcher().updateObject(SPELLOTHER_WATCHER, s);
-	}
+
 	public final String getSpellCurrent()
 	{
-		int current = this.getSpellToggle();
-		String spell = getSpellMain();
-		switch(current)
+		String spell = this.getStringSafe(SPELLMAIN_WATCHER);
+ 
+		if(spell == null || spell.isEmpty())
 		{
-		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
-			spell = getSpellMain();
-			
-			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.getDefaultSpell(player).getSpellID());
-			
-			return getSpellMain();
-
-		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
-			spell = getSpellOther();
-			
-			if(spell == null || spell.isEmpty())
-				setSpellOther(SpellRegistry.getDefaultSpell(player).getSpellID());
-	 
+			spell = SpellRegistry.getDefaultSpell().getSpellID();
+			setSpellCurrent(spell);
 		}
-		return null;
-	}
-	public final void setSpellCurrent(String spell)
-	{
-		int current = this.getSpellToggle();
-		switch(current)
-		{
-		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
-			this.setSpellMain(spell);
-			break;
-		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
-			this.setSpellOther(spell);
-			break;
-		}
+		
+		return spell;
 	}
  
 	public final void setSpellToggle(int current) 
 	{
-		//int old = getSpellToggle();
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER, current);
 	}
 	public final int getSpellToggle() 
@@ -136,15 +95,11 @@ public class PlayerPowerups implements IExtendedEntityProperties
 
 		switch(current)
 		{
-		case SpellRegistry.SPELL_TOGGLE_SHOWMAIN:
+		case SpellRegistry.SPELL_TOGGLE_SHOW:
 			return SpellRegistry.SPELL_TOGGLE_HIDE;
 		case SpellRegistry.SPELL_TOGGLE_HIDE:
 		default:
-			return SpellRegistry.SPELL_TOGGLE_SHOWMAIN;
-			/*return SpellRegistry.SPELL_TOGGLE_SHOWOTHER;
-		default:
-		case SpellRegistry.SPELL_TOGGLE_SHOWOTHER:
-			return SpellRegistry.SPELL_TOGGLE_HIDE;*/
+			return SpellRegistry.SPELL_TOGGLE_SHOW;
 		}
 	} 
 	public final void setSpellTimer(int current) 
@@ -162,13 +117,11 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		//thanks for the help https://github.com/coolAlias/Tutorial-Demo/blob/master/src/main/java/tutorial/entity/ExtendedPlayer.java
 
 		//set in the player 
-		player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, props.getSpellMain()); 
-		player.getDataWatcher().updateObject(SPELLOTHER_WATCHER, props.getSpellOther()); 
+		player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, props.getSpellCurrent()); 
 		player.getDataWatcher().updateObject(SPELLTOG_WATCHER, props.getSpellToggle()); 
 		player.getDataWatcher().updateObject(SPELLTIMER_WATCHER, props.getSpellTimer()); 
 		//set here  
-		this.setSpellMain(props.getSpellMain());   
-		this.setSpellOther(props.getSpellOther());   
+		this.setSpellCurrent(props.getSpellCurrent());  
 		this.setSpellToggle(props.getSpellToggle());   
 		this.setSpellTimer(props.getSpellTimer()); 
 	}
