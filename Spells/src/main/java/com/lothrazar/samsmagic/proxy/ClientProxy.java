@@ -53,14 +53,15 @@ public class ClientProxy extends CommonProxy
 
    			mesher.register(i, 0, new ModelResourceLocation( name , "inventory"));	 
         }
-        
-      //  if(ModMain.cfg.respawn_egg)
-      //  {
+        /*
+        if(ModMain.cfg.respawn_egg)
+        {
         	for(Object key : EntityList.entityEggs.keySet())
             {
             	mesher.register(ItemRegistry.respawn_egg, (Integer)key, new ModelResourceLocation(ModSpells.TEXTURE_LOCATION + "respawn_egg" , "inventory"));	 
             }
-       // }
+        }
+       */ 
 	}
 
 	public static final String keyCategorySpell = "key.categories.spell";

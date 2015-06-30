@@ -18,7 +18,7 @@ public class MessageKeyToggle implements IMessage, IMessageHandler<MessageKeyTog
 {
 	private BlockPos pos;
 	private String csv;
-	public static final int ID = 0;
+	public static final int ID = 3;
 	public MessageKeyToggle()
 	{ 
 	}

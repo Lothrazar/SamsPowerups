@@ -18,7 +18,7 @@ public class MessageKeyRight implements IMessage, IMessageHandler<MessageKeyRigh
 {
 	private BlockPos pos;
 	private String csv;
-	public static final int ID = 0;
+	public static final int ID = 2;
 	public MessageKeyRight()
 	{ 
 	}

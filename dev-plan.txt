@@ -1,43 +1,64 @@
 ***********
-BUGs/TODO/Testing list for 1.0 before release
+Mod Status
 ***********
 
-fix not working in multiplayer
+Apples - 1.0.1 released
 
-fix a crash when pull/push sand
+Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod - need something fresh, if at all.
+	?idea - lapis armor, weaker than iron, but randomly spawns exp orbs?
 
-added some blocks to non-config file blacklist
+Beetroot - 1.0.0 released
 
+Blocks - split this into standalones - one for: fishing, buckets, fragile, shearing.  one for commandblocks
 
+CarbonPaper - 1.0.0 released
 
-ControlBlocks: Blacklist Bedrock, end portal, Bed, doors. 
-.....maybe anything .unbreakable?
+Commands - ready to go after server test
 
-CRASHES ON SAND..??
+ControlBlocks - 1.0.0 released
 
-does not work on cactus- good?
+ControlInv -  1.0.1 released
 
-bug: transforms creeper head into skeleton, but it should just leave it as creeper.
-also rotate does not work
+EnderProj -  1.0.0 released
 
-screentext: move compass/clock over? OR IN OWN MOD:? OR IN POTION EFFFFF
+FragileTorches -  1.0.0 released
 
-Macro bind: bindings get wasted on savequit and death
- 
- 
+HorseFood  -  1.0.0 released
 
-bug:
-spell phase - test first if its valid before casting
-Spell Deposit: sound on cast
-deposit item sack- sound on place
+Macros  fix keybindings   - same as others
+         -: bindings get wasted on savequit and death- add in IExtendedprops instead of NBT
 
+MobChanges - is this interesting/fleshed out enough to release? Do we want more config control
 
+ocean -  1.0.0 released
+
+Recipes - is this interesting/fleshed out enough to release?
+
+SaplingGrowth -  1.0.0 released
+
+screen text -> village info mod. remove gamerule stuff for possible future standalone. OR add it to a command /gameruledisplay show/hide
+
+SpellWheel fix and release 
+
+Stacks - use CSV config list instead of hardcoded? does another mod exist for this?
+
+TreasureBuff - is this interesting/fleshed out enough to release? Do we want more config control
 
 ***********
-NEW FEATURE IDEAS /  1.1
+NEW MOD IDEAS
 ***********
 
-	-BLOCK TOGGLE/ROTATE KEY: can we force a change smoothstone >< <> >< stone brick?
+new mod: respawn eggs standalone. -first, fix sheep color? or drop their dye on the ground? disable villagers? what about horses/dogs?
+
+
+
+new mod: test brewing api - frost potion & waterwalking potion
+
+
+
+
+
+	
 	-/place commands (like place floor) add a random flag  so you would enter /place floor 5 50 
 				and the 50 is a 50% chance an air block gets filled with that?
 	-placefloor as spiralling outward from center. Right now if you do a 5x5, it starts way off in the far corner.

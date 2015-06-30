@@ -52,13 +52,13 @@ public class ItemRespawnEggEmpty extends Item
 		//this.setCreativeTab(ModMain.tabSamsContent);
 		this.setMaxStackSize(64);   
 	}
- /*
+ 
 	public static void addRecipe() 
-	{
+	{/*
 		GameRegistry.addShapelessRecipe(new ItemStack(ItemRegistry.respawn_egg_empty),
 			Items.egg, 
 			Items.ender_eye  );
-	}*/
+	*/}
 
 	public static void entitySpawnEgg(EntityPlayer entityPlayer, Entity target) 
 	{
@@ -124,14 +124,14 @@ public class ItemRespawnEggEmpty extends Item
 			else
 			{
 				//TODO: 
-				
+				/*
 				ItemStack stack = new ItemStack(ItemRegistry.respawn_egg,1,entity_id);
 				
 				if(target.hasCustomName())
 					stack.setStackDisplayName(target.getCustomNameTag());
 					
 				entityPlayer.dropPlayerItemWithRandomChoice(stack,true);
-
+*/
 			}
 			ModSpells.playSoundAt(entityPlayer, "mob.zombie.remedy");
 			 

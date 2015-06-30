@@ -52,7 +52,8 @@ public class PotionRegistry
 		
 		PotionRegistry.slowfall = (new PotionCustom(ModSpells.cfg.potionIdSlowfall,   new ResourceLocation("slowfall"), false, 0, new ItemStack(ItemRegistry.spell_dummy_slowfall))).setPotionName("potion.slowfall");
 	 
-		PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen, new ResourceLocation("frost"), false, 0, new ItemStack(ItemRegistry.spell_frostbolt_dummy))).setPotionName("potion.frozen");	  
+		//TODO: test out brewing api for these?
+		//PotionRegistry.frost = (new PotionCustom(ModSpells.cfg.potionIdFrozen, new ResourceLocation("frost"), false, 0, new ItemStack(ItemRegistry.spell_frostbolt_dummy))).setPotionName("potion.frozen");	  
 	}
 
 	private static void initPotionTypesReflection() 
