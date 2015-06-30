@@ -121,7 +121,6 @@ public class ModSpells
     	}
     	catch(java.lang.ClassCastException e)
     	{
-    		System.out.println("stringCSV "+csv);
     		System.out.println(e.getMessage());
     	}
         return p;
@@ -132,28 +131,23 @@ public class ModSpells
     {   
         if(ClientProxy.keySpellToggle.isPressed())
         {
-        	System.out.println("keySpellToggle");
        		ModSpells.network.sendToServer( new MessageKeyToggle());
         }
         else if(ClientProxy.keySpellUp.isPressed())
         {
-        	System.out.println("keySpellUp");
        		ModSpells.network.sendToServer( new MessageKeyRight());
         }
         else if(ClientProxy.keySpellDown.isPressed())
         {
-        	System.out.println("keySpellDown");
        		ModSpells.network.sendToServer( new MessageKeyLeft());
         }
         else if(ClientProxy.keySpellCast.isPressed())
         {
-        	System.out.println("keySpellCast");
         	BlockPos posMouse = null;
         	
     		if(Minecraft.getMinecraft().objectMouseOver != null && Minecraft.getMinecraft().objectMouseOver.getBlockPos() != null)
     		{
     			posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
-    			System.out.println("posmouse found "+posMouse.getX()+"--"+posMouse.getZ());
     		}
     		else
     		{

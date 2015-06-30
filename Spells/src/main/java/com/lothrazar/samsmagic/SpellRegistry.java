@@ -88,7 +88,6 @@ public class SpellRegistry
 	
 	public static void shiftLeft(EntityPlayer player)
 	{
-		System.out.println("shiftLeft");
 		ISpell current = getPlayerCurrentISpell(player);
 
 		if(current.left() != null)
@@ -100,12 +99,10 @@ public class SpellRegistry
 
 	public static void shiftRight(EntityPlayer player)
 	{ 
-		System.out.println("shiftRight");
 		ISpell current = getPlayerCurrentISpell(player);
 
 		if(current.right() != null)
 		{
-			System.out.println("id"+current.right().getSpellID());
 			setPlayerCurrentSpell(player,current.right().getSpellID()); 
 			ModSpells.playSoundAt(player, "random.orb");
 		}
@@ -115,8 +112,6 @@ public class SpellRegistry
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 
-		System.out.println("setPlayerCurrentSpell "+current_id);
-		System.out.println(player.worldObj.isRemote+" ..");//false
 		props.setSpellCurrent(current_id);
 	}
 	public static int getPlayerCurrentSpell(EntityPlayer player)

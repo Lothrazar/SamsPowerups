@@ -28,6 +28,10 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().addObject(SPELLTOG_WATCHER, 0); 
 		this.player.getDataWatcher().addObject(SPELLTIMER_WATCHER, 0); 
 	}
+	@Override
+	public void init(Entity entity, World world) 
+	{ 
+	}	
 	
 	public static final void register(EntityPlayer player)
 	{
@@ -58,7 +62,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		NBTTagCompound properties = (NBTTagCompound) compound.getTag(EXT_PROP_NAME);
 		if(properties == null){ properties = new NBTTagCompound(); }
 		
-		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getString(NBT_SPELLMAIN));  
+		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, properties.getInteger(NBT_SPELLMAIN));  
 		this.player.getDataWatcher().updateObject(SPELLTOG_WATCHER,  properties.getInteger(NBT_SPELLTOG));   
 		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER,properties.getInteger(NBT_SPELLTIMER));   
  	}
@@ -128,29 +132,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.setSpellToggle(props.getSpellToggle());   
 		this.setSpellTimer(props.getSpellTimer()); 
 	}
-	@Override
-	public void init(Entity entity, World world) 
-	{ 
-	}	
 	public final void setSpellCurrent(int spell_id) 
 	{
-
 		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, spell_id); 
-	}
-	public String getStringSafe(int WATCHER)
-	{
-		//we used to get these exceptions when our "copy" function wanst in here saving us to persist data on player death.
-		//doesnt seem to happen anymore, but keeing the try catch because it couldn't hurt.
-		try
-		{
-			//why is this giving  java.lang.Integer cannot be cast to java.lang.String
-			return this.player.getDataWatcher().getWatchableObjectString(WATCHER); 
-		}
-		catch(ClassCastException e)
-		{
-			System.out.println("getStringSafe "+WATCHER );
-			System.out.println(e.getMessage());
-			return "";
-		}
 	}
 }
