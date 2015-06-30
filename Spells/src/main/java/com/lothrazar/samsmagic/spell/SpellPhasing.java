@@ -56,33 +56,13 @@ public class SpellPhasing extends BaseSpellExp implements ISpell
 			player.setPositionAndUpdate(offs.getX(), offs.getY(), offs.getZ()); 
 		}
 	}
-    public static EnumFacing getFacingFromVector(float p_176737_0_, float p_176737_1_, float p_176737_2_)
-    {
-        EnumFacing enumfacing = EnumFacing.NORTH;
-        float f3 = Float.MIN_VALUE;
-        EnumFacing[] aenumfacing = EnumFacing.values();
-        int i = aenumfacing.length;
-
-        for (int j = 0; j < i; ++j)
-        {
-            EnumFacing enumfacing1 = aenumfacing[j];
-            float f4 = p_176737_0_ * (float)enumfacing1.getDirectionVec().getX() + p_176737_1_ * (float)enumfacing1.getDirectionVec().getY() + p_176737_2_ * (float)enumfacing1.getDirectionVec().getZ();
-
-            if (f4 > f3)
-            {
-                f3 = f4;
-                enumfacing = enumfacing1;
-            }
-        }
-
-        return enumfacing;
-    }
+   
 	private BlockPos getPosOffset(EntityPlayer player,BlockPos pos) 
 	{
 		if(pos == null){return pos;}
-		//oops this is sideonly client...
-		//WAS EnumFacing.getFacingFromVector
-		EnumFacing face = getFacingFromVector(
+
+//this spell crashes servers its sideonly=client.  TODO: what to do?
+		EnumFacing face = EnumFacing.getFacingFromVector(
 				(float)player.getLookVec().xCoord
 				, (float)player.getLookVec().yCoord
 				, (float)player.getLookVec().zCoord);
