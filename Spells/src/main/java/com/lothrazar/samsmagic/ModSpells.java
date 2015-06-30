@@ -208,7 +208,7 @@ public class ModSpells
 	     
 		//PotionRegistry.tickLavawalk(event);
  
-		PotionRegistry.tickFrost(event); 
+		//PotionRegistry.tickFrost(event); 
 	}
 	private static void renderItemAt(ItemStack stack, int x, int y, int dim)
 	{

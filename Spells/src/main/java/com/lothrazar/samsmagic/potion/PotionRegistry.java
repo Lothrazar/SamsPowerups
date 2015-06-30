@@ -27,7 +27,7 @@ public class PotionRegistry
 	public static Potion waterwalk;
 	public static Potion slowfall; 
 	//public static Potion lavawalk;
-	public static Potion frost;
+	//public static Potion frost;
 	
 	public final static int I = 0; 
 	public final static int II = 1;
@@ -95,7 +95,7 @@ public class PotionRegistry
     		ModSpells.spawnParticlePacketByID(living.getPosition(), particle.getParticleID());
     	}
 	}
-
+/*
 	public static void tickFrost(LivingUpdateEvent event) 
 	{ 
 		if(event.entityLiving.isPotionActive(PotionRegistry.frost)) 
@@ -116,7 +116,8 @@ public class PotionRegistry
 				world.setBlockState( pos, Blocks.snow_layer.getDefaultState());
 			}
 	    } 
-	}
+	}*/
+	
 /*
 	public static void tickLavawalk(LivingUpdateEvent event) 
 	{

@@ -53,6 +53,8 @@ public class MessageKeyCast implements IMessage, IMessageHandler<MessageKeyCast,
 
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
 	
+		if(pos == null) pos = player.getPosition();
+		
 		if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 		{
 			SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,pos);
