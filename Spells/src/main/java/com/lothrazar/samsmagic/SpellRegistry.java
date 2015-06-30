@@ -1,8 +1,10 @@
 package com.lothrazar.samsmagic;
 
 import java.util.ArrayList; 
+
 import com.lothrazar.samsmagic.PlayerPowerups; 
 import com.lothrazar.samsmagic.spell.*;  
+
 import net.minecraft.entity.player.EntityPlayer; 
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -89,7 +91,10 @@ public class SpellRegistry
 		ISpell current = getPlayerCurrentISpell(player);
 
 		if(current.left() != null)
+		{
 			setPlayerCurrentSpell(player,current.left().getSpellID());
+			ModSpells.playSoundAt(player, "random.orb");
+		}
 	}
 
 	public static void shiftRight(EntityPlayer player)
@@ -97,7 +102,10 @@ public class SpellRegistry
 		ISpell current = getPlayerCurrentISpell(player);
 
 		if(current.right() != null)
+		{
 			setPlayerCurrentSpell(player,current.right().getSpellID()); 
+			ModSpells.playSoundAt(player, "random.orb");
+		}
 	}
 	
 	private static void setPlayerCurrentSpell(EntityPlayer player,	String current)

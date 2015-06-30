@@ -72,41 +72,28 @@ public class ModSpells
 	  
     	network = NetworkRegistry.INSTANCE.newSimpleChannel( MODID );     	
     	
-    	network.registerMessage(MessageKeyPressed.class, MessageKeyPressed.class, MessageKeyPressed.ID, Side.SERVER);
+    	network.registerMessage(MessageKeyCast.class, MessageKeyCast.class, MessageKeyCast.ID, Side.SERVER);
+    	network.registerMessage(MessageKeyLeft.class, MessageKeyLeft.class, MessageKeyLeft.ID, Side.SERVER);
+    	network.registerMessage(MessageKeyRight.class, MessageKeyRight.class, MessageKeyRight.ID, Side.SERVER);
+    	network.registerMessage(MessageKeyToggle.class, MessageKeyToggle.class, MessageKeyToggle.ID, Side.SERVER);
     	network.registerMessage(MessagePotion.class, MessagePotion.class, MessagePotion.ID, Side.CLIENT);
 
 		ItemRegistry.registerItems();
 		
 		PotionRegistry.registerPotionEffects();
 
-
 		FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
-		//MinecraftForge.TERRAIN_GEN_BUS.register(instance);
-		//MinecraftForge.ORE_GEN_BUS.register(instance); 
 		
 		SpellRegistry.setup();
 	}
-        
+
 	@EventHandler
 	public void onInit(FMLInitializationEvent event)
 	{       
-		 
-  		//TODO: we could make our own custom projectileRegistry, that acts as our other ones above do.
-  		
-  		//TODO: Entity ids are the 999,1000,1001 -> config file
-        //EntityRegistry.registerModEntity(EntitySoulstoneBolt.class, "soulstonebolt",999, ModSpells.instance, 64, 1, true);
-        //EntityRegistry.registerModEntity(EntityLightningballBolt.class, "lightningbolt",1000, ModSpells.instance, 64, 1, true);
-        //EntityRegistry.registerModEntity(EntityHarvestbolt.class, "harvestbolt",1001, ModSpells.instance, 64, 1, true);
-        //EntityRegistry.registerModEntity(EntityWaterBolt.class, "waterbolt",1002, ModSpells.instance, 64, 1, true);
-        //EntityRegistry.registerModEntity(EntitySnowballBolt.class, "frostbolt",1003, ModSpells.instance, 64, 1, true);
-        //EntityRegistry.registerModEntity(EntityTorchBolt.class, "torchbolt",1004, ModSpells.instance, 64, 1, true);
-		
 		proxy.registerRenderers();
 	}
  
-
-
 	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, ItemStack stack)
 	{
 		EntityItem entityItem = new EntityItem(worldObj, pos.getX(),pos.getY(),pos.getZ(), stack); 
@@ -138,38 +125,41 @@ public class ModSpells
 			dropItemStackInWorld(event.world, event.pos, new ItemStack(Items.glass_bottle));
 		}
  
-		if(held != null && held.getItem() == ItemRegistry.itemChestSack &&  //how to get this all into its own class
-				event.action.RIGHT_CLICK_BLOCK == event.action)
-		{   
-			if(event.face != null && event.world.isAirBlock(event.pos.offset(event.face)))
-			{ 
-				ItemChestSack.createAndFillChest(event.entityPlayer, held, event.pos.offset(event.face));
-			}
-		} 
    	}*/
-	//TODO: re-consider ender apple again for this?
-  
 
+	public static String posToCSV(BlockPos pos)
+    {
+		return pos.getX()+","+pos.getY()+","+pos.getZ();
+    }
+    public static BlockPos stringCSVToBlockPos(String csv)
+    {
+    	String [] spl = csv.split(",");
+
+        return new BlockPos(Integer.parseInt(spl[0]),Integer.parseInt(spl[1]),Integer.parseInt(spl[2]));
+    }
 	 
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
     {   
+		if(Minecraft.getMinecraft().objectMouseOver == null){return;}
+		BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+		if(posMouse == null){return;}
 		 
         if(ClientProxy.keySpellToggle.isPressed())
         {
-       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellToggle.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyToggle(posMouse));
         }
         else if(ClientProxy.keySpellCast.isPressed())
         {
-       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellCast.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyCast(posMouse));
         }
         else if(ClientProxy.keySpellUp.isPressed())
         {
-       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellUp.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyRight(posMouse));
         }
         else if(ClientProxy.keySpellDown.isPressed())
         {
-       		ModSpells.network.sendToServer( new MessageKeyPressed(ClientProxy.keySpellDown.getKeyCode()));
+       		ModSpells.network.sendToServer( new MessageKeyLeft(posMouse));
         }
     } 
 	 
