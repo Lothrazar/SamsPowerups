@@ -2,6 +2,7 @@ package com.lothrazar.samsmagic;
 
 import org.apache.logging.log4j.Logger;    
 
+import com.lothrazar.samsmagic.item.ItemChestSack;
 import com.lothrazar.samsmagic.potion.*; 
 import com.lothrazar.samsmagic.proxy.*; 
 import com.lothrazar.samsmagic.spell.*; 
@@ -32,6 +33,7 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -189,7 +191,21 @@ public class ModSpells
 			drawSpell(event);
 		}
 	}
-
+	 
+	@SubscribeEvent
+	public void onPlayerInteract(PlayerInteractEvent event)
+	{        
+		if(event.pos == null || event.face == null ){return;}
+	
+		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
+	
+		if(held != null && held.getItem() == ItemRegistry.itemChestSack  && 
+				event.action.RIGHT_CLICK_BLOCK == event.action)
+		{ 
+			ItemChestSack.createAndFillChest(event.entityPlayer, held, event.pos.offset(event.face));
+		}
+	}
+	
 	@SubscribeEvent
 	public void onEntityUpdate(LivingUpdateEvent event) 
 	{  
