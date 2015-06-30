@@ -12,11 +12,16 @@ import net.minecraft.world.World;
 public class SpellChestDeposit extends BaseSpellExp
 {   	 
 	@Override
-	public String getSpellID() 
+	public String getSpellName() 
 	{
 		return "deposit";
+	} 
+	@Override
+	public int getSpellID() 
+	{
+		return 1;
 	}
-	
+ 
 	@Override
 	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)
 	{

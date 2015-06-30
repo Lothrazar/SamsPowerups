@@ -11,8 +11,7 @@ import net.minecraft.util.EnumParticleTypes;
 import net.minecraft.world.World;
 
 public abstract class BaseSpellExp implements ISpell
-{
-	
+{ 
 	@Override
 	public ISpell left() 
 	{

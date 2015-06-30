@@ -16,9 +16,14 @@ import com.lothrazar.samsmagic.SpellRegistry;
 public class SpellChestTransport extends BaseSpellExp implements ISpell
 { 
 	@Override
-	public String getSpellID()
+	public String getSpellName()
 	{
 		return "chest";
+	}
+	@Override
+	public int getSpellID() 
+	{
+		return 2;
 	}
 	
 	@Override

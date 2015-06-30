@@ -21,9 +21,14 @@ public class SpellGhost extends BaseSpellExp  implements ISpell
 	private static final int GHOST_SECONDS = 10;//so 30 seconds
 	
 	@Override
-	public String getSpellID()
+	public String getSpellName()
 	{
 		return "ghost";
+	}
+	@Override
+	public int getSpellID() 
+	{
+		return 3;
 	}
 	@Override
 	public boolean canPlayerCast(World world, EntityPlayer player, BlockPos pos)

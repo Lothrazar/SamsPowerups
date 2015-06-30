@@ -16,9 +16,14 @@ public class SpellJump extends BaseSpellExp implements ISpell
 	private static int seconds = 20 * 5;//TODO : config? reference? cost?
 
 	@Override
-	public String getSpellID()
+	public String getSpellName()
 	{
 		return "jump";
+	}
+	@Override
+	public int getSpellID() 
+	{
+		return 5;
 	}
 
 	@Override

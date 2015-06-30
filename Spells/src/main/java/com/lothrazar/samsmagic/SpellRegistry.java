@@ -79,9 +79,10 @@ public class SpellRegistry
 			spell.onCastFailure(world, player, pos);
 		}
 	}
-	public static void cast(String spell_id, World world, EntityPlayer player,BlockPos pos)
+	public static void cast(int spell_id, World world, EntityPlayer player,BlockPos pos)
 	{
-		ISpell sp = SpellRegistry.getSpellFromType(spell_id); 
+		//ISpell sp = SpellRegistry.getSpellFromType(spell_id); 
+		ISpell sp = SpellRegistry.getSpellFromID(spell_id); 
 		cast(sp,world,player,pos);
 	}
 	
@@ -104,21 +105,21 @@ public class SpellRegistry
 
 		if(current.right() != null)
 		{
-			System.out.println(current.right().getSpellID());
+			System.out.println("id"+current.right().getSpellID());
 			setPlayerCurrentSpell(player,current.right().getSpellID()); 
 			ModSpells.playSoundAt(player, "random.orb");
 		}
 	}
 	
-	private static void setPlayerCurrentSpell(EntityPlayer player,	String current)
+	private static void setPlayerCurrentSpell(EntityPlayer player,	int current_id)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 
-		System.out.println("setPlayerCurrentSpell "+current);
-		System.out.println(player.worldObj.isRemote);
-		props.setSpellCurrent(current);
+		System.out.println("setPlayerCurrentSpell "+current_id);
+		System.out.println(player.worldObj.isRemote+" ..");//false
+		props.setSpellCurrent(current_id);
 	}
-	public static String getPlayerCurrentSpell(EntityPlayer player)
+	public static int getPlayerCurrentSpell(EntityPlayer player)
 	{
 		PlayerPowerups props = PlayerPowerups.get(player);
 		
@@ -145,11 +146,12 @@ public class SpellRegistry
 
 	public static ISpell getPlayerCurrentISpell(EntityPlayer player)
 	{
-		String s = getPlayerCurrentSpell(player);
+		int spell_id = getPlayerCurrentSpell(player);
  
 		for(ISpell sp : spellbook)
 		{ 
-			if(sp.getSpellID().equalsIgnoreCase(s))
+			//if(sp.getSpellName().equalsIgnoreCase(s))
+			if(sp.getSpellID() == spell_id)
 			{
 				return sp;
 			}
@@ -158,18 +160,30 @@ public class SpellRegistry
  
 		return SpellRegistry.getDefaultSpell();
 	}
- 
-	public static ISpell getSpellFromType(String next)
+	public static ISpell getSpellFromID(int id)
 	{
-		if(next == null){return null;}
+		if(id == 0){return null;}
 		for(ISpell sp : spellbook)
 		{ 
-			if(sp.getSpellID() == next)
+			if(sp.getSpellID() == id)
 			{
 				return sp;
 			}
 		} 
 		
 		return null;
-	}
+	}/*
+	public static ISpell getSpellFromType(String next)
+	{
+		if(next == null){return null;}
+		for(ISpell sp : spellbook)
+		{ 
+			if(sp.getSpellName() == next)
+			{
+				return sp;
+			}
+		} 
+		
+		return null;
+	}*/
 }

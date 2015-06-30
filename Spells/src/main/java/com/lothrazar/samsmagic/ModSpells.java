@@ -267,7 +267,7 @@ public class ModSpells
 
 		if(Minecraft.getMinecraft().gameSettings.showDebugInfo)
 		{
-			event.left.add(lang("key.spell."+spell.getSpellID()));
+			event.left.add(lang("key.spell."+spell.getSpellName()));
 		}
 		else
 		{

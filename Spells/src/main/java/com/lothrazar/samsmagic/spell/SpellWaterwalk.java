@@ -16,9 +16,14 @@ public class SpellWaterwalk extends BaseSpellExp implements ISpell
 	private static int seconds = 20 * 10; 
 	
 	@Override
-	public String getSpellID()
+	public String getSpellName()
 	{
 		return "waterwalk";
+	}
+	@Override
+	public int getSpellID() 
+	{
+		return 8;
 	}
 
 	@Override

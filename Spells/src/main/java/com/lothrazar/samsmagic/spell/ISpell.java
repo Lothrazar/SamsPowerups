@@ -9,9 +9,11 @@ public interface ISpell
 {
 	public ISpell left();
 	public ISpell right();
-	
-	public String getSpellID();
 
+	public String getSpellName();
+	
+	public int getSpellID();
+ 
 	public int getExpCost();
 
 	public void cast(World world, EntityPlayer player, BlockPos pos);

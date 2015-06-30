@@ -17,9 +17,14 @@ import com.lothrazar.samsmagic.SpellRegistry;
 public class SpellPhasing extends BaseSpellExp implements ISpell
 { 
 	@Override
-	public String getSpellID()
+	public String getSpellName()
 	{
 		return "phase";
+	}
+	@Override
+	public int getSpellID() 
+	{
+		return 6;
 	}
 	
 	@Override

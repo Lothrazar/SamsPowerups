@@ -45,8 +45,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		// We need to create a new tag compound that will save everything for our Extended Properties
 		NBTTagCompound properties = new NBTTagCompound(); 
 	 
-		properties.setString(NBT_SPELLMAIN,  this.getStringSafe(SPELLMAIN_WATCHER)); 
-		properties.setInteger(NBT_SPELLTOG,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
+		properties.setInteger(NBT_SPELLMAIN,   this.player.getDataWatcher().getWatchableObjectInt(SPELLMAIN_WATCHER)); 
+		properties.setInteger(NBT_SPELLTOG,    this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
 		properties.setInteger(NBT_SPELLTIMER,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTIMER_WATCHER) ); 
  	 
 		compound.setTag(EXT_PROP_NAME, properties); 
@@ -63,22 +63,25 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		this.player.getDataWatcher().updateObject(SPELLTIMER_WATCHER,properties.getInteger(NBT_SPELLTIMER));   
  	}
 
-	public final void setSpellCurrent(String s) 
-	{
-		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, s);
-	}
 
-	public final String getSpellCurrent()
+
+	public final int getSpellCurrent()
 	{
-		String spell = this.getStringSafe(SPELLMAIN_WATCHER);
- 
-		if(spell == null || spell.isEmpty())
+		int spell_id = 0;
+		try{
+		spell_id = this.player.getDataWatcher().getWatchableObjectInt(SPELLMAIN_WATCHER);
+		}
+		catch(java.lang.ClassCastException e)
 		{
-			spell = SpellRegistry.getDefaultSpell().getSpellID();
-			setSpellCurrent(spell);
+			System.out.println(e.getMessage());//do not quit, leave it as zero
+		}
+		if(spell_id == 0)//== null || spell.isEmpty())
+		{
+			spell_id = SpellRegistry.getDefaultSpell().getSpellID();
+			setSpellCurrent(spell_id);
 		}
 		
-		return spell;
+		return spell_id;
 	}
  
 	public final void setSpellToggle(int current) 
@@ -128,6 +131,11 @@ public class PlayerPowerups implements IExtendedEntityProperties
 	@Override
 	public void init(Entity entity, World world) 
 	{ 
+	}	
+	public final void setSpellCurrent(int spell_id) 
+	{
+
+		this.player.getDataWatcher().updateObject(SPELLMAIN_WATCHER, spell_id); 
 	}
 	public String getStringSafe(int WATCHER)
 	{
@@ -140,6 +148,8 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		}
 		catch(ClassCastException e)
 		{
+			System.out.println("getStringSafe "+WATCHER );
+			System.out.println(e.getMessage());
 			return "";
 		}
 	}
