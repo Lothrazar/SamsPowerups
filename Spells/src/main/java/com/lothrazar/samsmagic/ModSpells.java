@@ -48,6 +48,7 @@ import net.minecraftforge.fml.common.gameevent.InputEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
   
 @Mod(modid = ModSpells.MODID,  useMetadata = true )  
 public class ModSpells
@@ -178,6 +179,7 @@ public class ModSpells
  			PlayerPowerups.register((EntityPlayer) event.entity);
  		} 
  	}
+	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
 	{  
@@ -210,6 +212,7 @@ public class ModSpells
  
 		//PotionRegistry.tickFrost(event); 
 	}
+	@SideOnly(Side.CLIENT)
 	private static void renderItemAt(ItemStack stack, int x, int y, int dim)
 	{
 		//int height = dim, width = dim;
@@ -221,6 +224,7 @@ public class ModSpells
 		
 		renderTexture( textureAtlasSprite, x, y, dim);
 	}
+	@SideOnly(Side.CLIENT)
 	public static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y, int dim)
 	{	
 		//special thanks to http://www.minecraftforge.net/forum/index.php?topic=26613.0
@@ -238,6 +242,7 @@ public class ModSpells
 		tessellator.draw();
 		
 	}
+	@SideOnly(Side.CLIENT)
 	private void drawSpell(RenderGameOverlayEvent.Text event)
 	{ 
 		EntityPlayerSP player = Minecraft.getMinecraft().thePlayer; 
