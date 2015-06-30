@@ -3,11 +3,9 @@ package com.lothrazar.samsmagic;
 import org.apache.logging.log4j.Logger;    
 
 import com.lothrazar.samsmagic.potion.*; 
-import com.lothrazar.samsmagic.item.ItemChestSack;
 import com.lothrazar.samsmagic.proxy.*; 
 import com.lothrazar.samsmagic.spell.*; 
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.renderer.Tessellator;
@@ -19,7 +17,6 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
@@ -35,7 +32,6 @@ import net.minecraftforge.common.config.Configuration;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.event.entity.player.PlayerInteractEvent; 
 import net.minecraftforge.fml.common.FMLCommonHandler;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.SidedProxy;
@@ -106,65 +102,66 @@ public class ModSpells
  		
     	return entityItem;
 	}
-	 /*
-	@SubscribeEvent
-	public void onPlayerInteract(PlayerInteractEvent event)
-  	{        
-		if(event.pos == null){return;}
-		IBlockState bstate = event.entityPlayer.worldObj.getBlockState(event.pos);
-		if(bstate == null){return;}
-		
-		ItemStack held = event.entityPlayer.getCurrentEquippedItem();
-		//Block blockClicked = event.world.getBlockState(event.pos).getBlock(); 
-		//TileEntity container = event.world.getTileEntity(event.pos);
-
-		if(held != null && held.getItem() == Items.experience_bottle  && 
-				event.action.RIGHT_CLICK_BLOCK == event.action && 
-				event.entityPlayer.capabilities.isCreativeMode == false && 
-				ModSpells.cfg.experience_bottle_return)
-		{ 
-			dropItemStackInWorld(event.world, event.pos, new ItemStack(Items.glass_bottle));
-		}
- 
-   	}*/
 
 	public static String posToCSV(BlockPos pos)
     {
 		return pos.getX()+","+pos.getY()+","+pos.getZ();
     }
+	
     public static BlockPos stringCSVToBlockPos(String csv)
     {
     	String [] spl = csv.split(",");
-
-        return new BlockPos(Integer.parseInt(spl[0]),Integer.parseInt(spl[1]),Integer.parseInt(spl[2]));
+    	//on server i got java.lang.ClassCastException: java.lang.String cannot be cast to java.lang.Integer
+ //?? is it from this?
+    	BlockPos p = null;
+    	try{
+    		p = new BlockPos(Integer.parseInt(spl[0]),Integer.parseInt(spl[1]),Integer.parseInt(spl[2]));
+    	}
+    	catch(java.lang.ClassCastException e)
+    	{
+    		System.out.println("stringCSV "+csv);
+    		System.out.println(e.getMessage());
+    	}
+        return p;
     }
 	 
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
     {   
-		if(Minecraft.getMinecraft().objectMouseOver == null){return;}
-		BlockPos posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
-		if(posMouse == null){return;}
-		 
         if(ClientProxy.keySpellToggle.isPressed())
         {
-       		ModSpells.network.sendToServer( new MessageKeyToggle(posMouse));
-        }
-        else if(ClientProxy.keySpellCast.isPressed())
-        {
-       		ModSpells.network.sendToServer( new MessageKeyCast(posMouse));
+        	System.out.println("keySpellToggle");
+       		ModSpells.network.sendToServer( new MessageKeyToggle());
         }
         else if(ClientProxy.keySpellUp.isPressed())
         {
-       		ModSpells.network.sendToServer( new MessageKeyRight(posMouse));
+        	System.out.println("keySpellUp");
+       		ModSpells.network.sendToServer( new MessageKeyRight());
         }
         else if(ClientProxy.keySpellDown.isPressed())
         {
-       		ModSpells.network.sendToServer( new MessageKeyLeft(posMouse));
+        	System.out.println("keySpellDown");
+       		ModSpells.network.sendToServer( new MessageKeyLeft());
+        }
+        else if(ClientProxy.keySpellCast.isPressed())
+        {
+        	System.out.println("keySpellCast");
+        	BlockPos posMouse = null;
+        	
+    		if(Minecraft.getMinecraft().objectMouseOver != null && Minecraft.getMinecraft().objectMouseOver.getBlockPos() != null)
+    		{
+    			posMouse = Minecraft.getMinecraft().objectMouseOver.getBlockPos();
+    			System.out.println("posmouse found "+posMouse.getX()+"--"+posMouse.getZ());
+    		}
+    		else
+    		{
+    			posMouse = Minecraft.getMinecraft().thePlayer.getPosition();
+    		}
+    		
+       		ModSpells.network.sendToServer( new MessageKeyCast(posMouse));
         }
     } 
 	 
-	
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 
 	{ 
@@ -179,6 +176,7 @@ public class ModSpells
  			PlayerPowerups.register((EntityPlayer) event.entity);
  		} 
  	}
+	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
@@ -212,6 +210,7 @@ public class ModSpells
  
 		//PotionRegistry.tickFrost(event); 
 	}
+	
 	@SideOnly(Side.CLIENT)
 	private static void renderItemAt(ItemStack stack, int x, int y, int dim)
 	{
@@ -224,6 +223,7 @@ public class ModSpells
 		
 		renderTexture( textureAtlasSprite, x, y, dim);
 	}
+	
 	@SideOnly(Side.CLIENT)
 	public static void renderTexture( TextureAtlasSprite textureAtlasSprite , int x, int y, int dim)
 	{	
@@ -240,8 +240,8 @@ public class ModSpells
 		worldrenderer.addVertexWithUV((double)(x + width),  (double)(y),           0.0, (double)textureAtlasSprite.getMaxU(), (double)textureAtlasSprite.getMinV());
 		worldrenderer.addVertexWithUV((double)(x),          (double)(y),           0.0, (double)textureAtlasSprite.getMinU(), (double)textureAtlasSprite.getMinV());
 		tessellator.draw();
-		
 	}
+	
 	@SideOnly(Side.CLIENT)
 	private void drawSpell(RenderGameOverlayEvent.Text event)
 	{ 
@@ -342,6 +342,7 @@ public class ModSpells
 	{ 
 		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
 	}
+	
 	public static void addChatMessage(EntityPlayer player,String string) 
 	{ 
 		player.addChatMessage(new ChatComponentTranslation(string));
@@ -360,34 +361,25 @@ public class ModSpells
 			world.spawnParticle(type, x + (world.rand.nextDouble() - 0.5D) * (double)0.8, y + world.rand.nextDouble() * (double)1.5 - (double)0.1, z + (world.rand.nextDouble() - 0.5D) * (double)0.8, 0.0D, 0.0D, 0.0D);
 		} 
     }
+	
 	public static void spawnParticlePacketByID(BlockPos position, int particleID)
 	{
 		//this. fires only on server side. so send packet for client to spawn particles and so on
-		ModSpells.network.sendToAll(new MessagePotion(position, particleID));
-    	
-		
+		ModSpells.network.sendToAll(new MessagePotion(position, particleID));	
 	}
+	
 	public static String lang(String name)
 	{
 		return StatCollector.translateToLocal(name);
 	}
-	//samsmagic
-	
 
 	public static double getExpTotal(EntityPlayer player)
 	{
 		int level = player.experienceLevel;
-		
-		//this is the exp between previous and last level, not the real total
-		//float experience = player.experience;
-	
+
 		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
 		double totalExp = getXpForLevel(level);
- 
-		//so now we knwo how much was used to get to current level
 
-		//double nextLevelExp = getXpToGainLevel(level);
- 
 		double progress = Math.round(player.xpBarCap() * player.experience);
 
 		totalExp += (int)progress;
@@ -407,7 +399,6 @@ public class ModSpells
 		setXp(player, (int)(totalExp - f));
 		
 		return true;
-		
 	}
 	
 	public static int getXpToGainLevel(int level)
@@ -426,6 +417,7 @@ public class ModSpells
 		
 		return nextLevelExp;
 	}
+	
 	public static int getXpForLevel(int level)
 	{
 		//numeric reference: http://minecraft.gamepedia.com/Experience#Leveling_up
@@ -440,6 +432,7 @@ public class ModSpells
 		
 		return totalExp;
 	}
+	
 	public static int getLevelForXp(int xp) 
 	{
 		int lev = 0;
@@ -449,6 +442,7 @@ public class ModSpells
 		}
 		return lev - 1;
 	}
+	
 	public static void setXp(EntityPlayer player, int xp)
 	{
 		player.experienceTotal = xp;
@@ -473,6 +467,7 @@ public class ModSpells
 			entity.setPositionAndUpdate(entity.posX, entity.posY + 1.0D, entity.posZ);
 		}
 	}
+	
 	public static void addOrMergePotionEffect(EntityPlayer player, PotionEffect newp)
 	{
 		if(player.isPotionActive(newp.getPotionID()))
@@ -491,15 +486,16 @@ public class ModSpells
 			player.addPotionEffect(newp);
 		}
 	}
+	
 	public static String posToStringCSV(BlockPos position) 
 	{ 
 		return position.getX() + ","+position.getY()+","+position.getZ();
 	} 
+	
 	public static void incrementPlayerIntegerNBT(EntityPlayer player, String prop, int inc)
 	{
 		int prev = player.getEntityData().getInteger(prop);
 		prev += inc; 
 		player.getEntityData().setInteger(prop, prev);
 	}
-	
 }

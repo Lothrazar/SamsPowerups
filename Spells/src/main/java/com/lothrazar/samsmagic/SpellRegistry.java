@@ -88,6 +88,7 @@ public class SpellRegistry
 	
 	public static void shiftLeft(EntityPlayer player)
 	{
+		System.out.println("shiftLeft");
 		ISpell current = getPlayerCurrentISpell(player);
 
 		if(current.left() != null)
@@ -99,6 +100,7 @@ public class SpellRegistry
 
 	public static void shiftRight(EntityPlayer player)
 	{ 
+		System.out.println("shiftRight");
 		ISpell current = getPlayerCurrentISpell(player);
 
 		if(current.right() != null)

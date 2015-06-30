@@ -133,7 +133,7 @@ public class ItemChestSack extends Item
 		
 		if( totalSlotsFreed > 0 ) 
 		{
-			String msg = "Sack Sort deposited " + totalItemsMoved + " items."; 
+			//String msg = "Sack Sort deposited " + totalItemsMoved + " items."; 
 		 
 			//dont do sound, there is already a sound played from hitting the block
 			//event.entityPlayer.playSound("random.bowhit1",5, 5);

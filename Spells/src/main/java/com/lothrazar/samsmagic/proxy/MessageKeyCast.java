@@ -8,8 +8,7 @@ import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessageHandler;
 import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
+import io.netty.buffer.ByteBuf; 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
@@ -36,6 +35,10 @@ public class MessageKeyCast implements IMessage, IMessageHandler<MessageKeyCast,
 		csv = ByteBufUtils.readUTF8String(buf); 
         
 		pos = ModSpells.stringCSVToBlockPos(csv);
+		
+		System.out.println("cast fromBytes "+csv);
+		System.out.println(pos==null);
+		
 	}
 
 	@Override
@@ -47,17 +50,19 @@ public class MessageKeyCast implements IMessage, IMessageHandler<MessageKeyCast,
 	@Override
 	public IMessage onMessage(MessageKeyCast message, MessageContext ctx)
 	{  
+		System.out.println("CAST "+message.csv);
+	
+		System.out.println("pos  "+message.pos.getX()+"--"+message.pos.getZ());
+ 
 		EntityPlayer player = ctx.getServerHandler().playerEntity; 
 		PlayerPowerups props = PlayerPowerups.get(player);
 		World world = player.worldObj;
 
 		//www.minecraftforge.net/forum/index.php/topic,20135.0.html
-	
-		if(pos == null) pos = player.getPosition();
-		
+	  
 		if(props.getSpellToggle() != SpellRegistry.SPELL_TOGGLE_HIDE)
 		{
-			SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,pos);
+			SpellRegistry.cast(SpellRegistry.getPlayerCurrentISpell(player), world, player,message.pos);
 		}
 
 		return null;

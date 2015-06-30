@@ -1,8 +1,6 @@
 package com.lothrazar.samsmagic;
 
-import net.minecraftforge.common.config.Configuration;  
- 
-import com.lothrazar.samsmagic.spell.ISpell;
+import net.minecraftforge.common.config.Configuration;
 
 public class ConfigSpells
 { 
