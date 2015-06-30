@@ -35,6 +35,8 @@ ocean -  1.0.0 released
 Recipes - is this interesting/fleshed out enough to release?
 
 SaplingGrowth -  1.0.0 released
+next version: biome list in config 
+----http://www.curse.com/mc-mods/minecraft/232166-restricted-saplings#c2
 
 screen text -> village info mod. remove gamerule stuff for possible future standalone. OR add it to a command /gameruledisplay show/hide
 
