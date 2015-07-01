@@ -6,17 +6,12 @@ import java.util.Arrays;
 import java.util.List;     
 
 import com.lothrazar.samscommands.*; 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.entity.EntityPlayerSP; 
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.entity.player.EntityPlayer; 
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.MathHelper;
-import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.common.DimensionManager;
 
 public class CommandSimpleWaypoints  implements ICommand
@@ -422,52 +417,6 @@ public class CommandSimpleWaypoints  implements ICommand
 		return lines;
 	} 
 	
-	public static void AddWaypointInfo(RenderGameOverlayEvent.Text event) 
-	{
-		EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
-	 
-    	ArrayList<String> saved = getForPlayer(Minecraft.getMinecraft().thePlayer);//.getDisplayName().getUnformattedText()
-
-    	
-    	if(saved.size() > 0 && saved.get(0) != null)
-    	{ 
-    		//find what index is selected currently
-    		int index = 0;
-    		try
-    		{
-	    		index = Integer.parseInt( saved.get(0) );
-    		}
-    		catch(NumberFormatException e) 
-    		{ 
-    			return;
-    		}// do nothing, its allowed to be a string
-    		
-    		 
-    		Location loc = null;
- 
-        	loc = getSingleForPlayer(p,index);
-        	 
-    		if(loc != null)
-    		{ 
-    			if(p.dimension != loc.dimension)
-    			{ 
-    				return;//hide it, we are in wrong dimension to display this
-    			}
-    			
-    			double dX = p.posX - loc.X;
-    			double dZ = p.posZ - loc.Z;
-    			
-    			int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
-    			int dY = MathHelper.floor_double(loc.Y - p.posY);
-    			  
-    			String height = " [" + dY + "]";
-    			
-    			String showName = dist + "m to <"+index+"> " + loc.name + height;	
-			 
-				event.right.add(showName); 
-    		} 
-    	}
-	}
 
 	@Override
 	public boolean canCommandSenderUse(ICommandSender ic)

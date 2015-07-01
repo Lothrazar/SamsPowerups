@@ -7,7 +7,6 @@ import com.lothrazar.samscommands.ModCommands;
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentTranslation;
 //import net.minecraft.util.ChunkCoordinates;

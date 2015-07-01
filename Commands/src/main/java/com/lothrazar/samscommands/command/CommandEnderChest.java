@@ -1,13 +1,5 @@
 package com.lothrazar.samscommands.command;
 
-/*
- * 
- * imported from my 
- * 
- * https://github.com/PrinceOfAmber/BuildersDream_Minecraft/tree/master/mod_enderchestcommand/src/main/java/com/lothrazar/enderchestcommand
- * 
- * 
- * */
 import java.util.ArrayList;
 import java.util.List;
 import net.minecraft.command.CommandException;
