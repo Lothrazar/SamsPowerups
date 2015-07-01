@@ -13,7 +13,7 @@ Blocks - split this into standalones - one for: fishing, buckets, fragile, shear
 
 CarbonPaper - 1.0.0 released
 
-Commands - ready to go after server test
+Commands - good on SP, crashes on server- reference to EntityPlayerSP
 
 ControlBlocks - 1.0.0 released
 
@@ -34,9 +34,7 @@ ocean -  1.0.0 released
 
 Recipes - is this interesting/fleshed out enough to release?
 
-SaplingGrowth -  1.0.0 released
-next version: biome list in config 
-----http://www.curse.com/mc-mods/minecraft/232166-restricted-saplings#c2
+SaplingGrowth -  1.1.0 released
 
 screen text -> village info mod. remove gamerule stuff for possible future standalone. OR add it to a command /gameruledisplay show/hide
 
