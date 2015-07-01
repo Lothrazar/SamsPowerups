@@ -46,7 +46,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	{  
 		String tp = ENABLE_TP ?  "|" + MODE_TP : "";
 		// + "|" + MODE_HIDEDISPLAY
-		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + "|" + MODE_DISPLAY + tp + "> [displayname | showindex]";
+		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + tp + "> [displayname | showindex]";
 	}
 
 	@Override
@@ -56,7 +56,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	}
 
 	private static String MODE_TP = "tp"; 
-	private static String MODE_DISPLAY = "get"; 
+	//private static String MODE_DISPLAY = "get"; 
 	//private static String MODE_HIDEDISPLAY = "hide";
 	private static String MODE_LIST = "list";
 	private static String MODE_SAVE = "set";
@@ -121,12 +121,12 @@ public class CommandSimpleWaypoints  implements ICommand
 			p.addChatMessage(new ChatComponentTranslation(getCommandUsage(icommandsender))); 
 			return;
 		}
-		
+		/*
 		if(args[0].equals(MODE_DISPLAY))
 		{ 
 			executeDisplay(p,index);
 			return;
-		} 
+		} */
 
 		if(ENABLE_TP && args[0].equals(MODE_TP))
 		{
@@ -228,16 +228,16 @@ public class CommandSimpleWaypoints  implements ICommand
 		newLines.set(0,"0");
 		overwriteForPlayer(p,newLines);
 	}
-	
+	/*
 	private void executeDisplay(EntityPlayer player, int index) 
 	{  
 		//SetCurrentForPlayer(player,index);
 		Location cur = getSingleForPlayer(player, index);
 		
-		String display = cur.toDisplay() + ModCommands.getDirectionsString(player, cur.toBlockPos());
+		String display = cur.toDisplay() + " : " +ModCommands.getDirectionsString(player, cur.toBlockPos());
 		
 		ModCommands.addChatMessage(player, display);
-	}
+	}*/
 	
 	private void executeList(EntityPlayer p) 
 	{ 

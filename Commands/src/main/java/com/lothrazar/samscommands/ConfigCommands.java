@@ -87,7 +87,7 @@ public class ConfigCommands
 		CommandSimpleWaypoints.REQUIRES_OP = instance.getBoolean("simplewaypoint.needs_op",category, false,
     			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
  
-		CommandSimpleWaypoints.ENABLE_TP = instance.getBoolean("simplewaypoint.enable_teleport",category, false,
+		CommandSimpleWaypoints.ENABLE_TP = instance.getBoolean("simplewaypoint.enable_teleport",category, true,
     			"Command allows teleporting to waypoints.");
 		 
 		cmd_todo = instance.getBoolean("todo",category, true,
