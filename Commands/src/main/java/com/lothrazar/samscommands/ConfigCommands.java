@@ -119,6 +119,5 @@ public class ConfigCommands
 	public boolean worldhome;  
 	public boolean cmd_recipe;
 	public boolean cmd_uses; 
-	//public boolean cmd_effectpay;
 	public boolean cmd_ping;  
 }

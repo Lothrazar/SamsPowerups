@@ -92,4 +92,8 @@ public class Location
 	{
 		return name + " (y = " + MathHelper.floor_double(Y) + ")";
 	}
+	public BlockPos toBlockPos() 
+	{
+		return new BlockPos(X,Y,Z);
+	}
 }

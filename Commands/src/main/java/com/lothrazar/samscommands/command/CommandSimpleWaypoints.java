@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;     
 
 import com.lothrazar.samscommands.*; 
+
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer; 
@@ -18,9 +19,7 @@ public class CommandSimpleWaypoints  implements ICommand
 {
 	public static boolean REQUIRES_OP; 
 	public static boolean ENABLE_TP;
-	//it still functions with flat files if you turn this to false
-	//but set to true uses IExtended properties which is recommended
-	private static final boolean useProps = true; 
+	private static String NBT_KEY = ModCommands.MODID+"_swp";
 	private ArrayList<String> aliases = new ArrayList<String>();
 
 	public CommandSimpleWaypoints()
@@ -46,7 +45,8 @@ public class CommandSimpleWaypoints  implements ICommand
 	public String getCommandUsage(ICommandSender p_71518_1_) 
 	{  
 		String tp = ENABLE_TP ?  "|" + MODE_TP : "";
-		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + "|" + MODE_HIDEDISPLAY + "|" + MODE_DISPLAY + tp + "> [displayname | showindex]";
+		// + "|" + MODE_HIDEDISPLAY
+		return "/" + getName()+" <"+MODE_LIST + "|" + MODE_SAVE + "|"  +MODE_CLEAR + "|" + MODE_DISPLAY + tp + "> [displayname | showindex]";
 	}
 
 	@Override
@@ -56,12 +56,12 @@ public class CommandSimpleWaypoints  implements ICommand
 	}
 
 	private static String MODE_TP = "tp"; 
-	private static String MODE_DISPLAY = "show"; 
-	private static String MODE_HIDEDISPLAY = "hide";
+	private static String MODE_DISPLAY = "get"; 
+	//private static String MODE_HIDEDISPLAY = "hide";
 	private static String MODE_LIST = "list";
-	private static String MODE_SAVE = "save";
+	private static String MODE_SAVE = "set";
 	private static String MODE_CLEAR = "delete"; 
-	private static String KEY_CURRENT = "simplewp_current";
+	//private static String KEY_CURRENT = "simplewp_current";
 	
 	@Override
 	public void execute(ICommandSender icommandsender, String[] args) 
@@ -83,12 +83,12 @@ public class CommandSimpleWaypoints  implements ICommand
 			executeList(p);
 			return;
 		} 
-		
+		/*
 		if(args[0].equals(MODE_HIDEDISPLAY))
 		{
 			executeHide(p);
 			return;
-		}
+		}*/
 
 		if(args[0].equals(MODE_SAVE))
 		{
@@ -156,7 +156,7 @@ public class CommandSimpleWaypoints  implements ICommand
 		 
 		overwriteForPlayer(p,lines);
 	} 
-
+/*
 	private void executeHide(EntityPlayer p) 
 	{
 		ArrayList<String> lines = getForPlayer(p);
@@ -164,8 +164,8 @@ public class CommandSimpleWaypoints  implements ICommand
 		if(lines.size() < 1){return;}
 		lines.set(0,"0");
 		overwriteForPlayer(p,lines); 
-	}
-	public static int EXP_COST_TP = 100;//TODO: CONFIG
+	}*/
+//	public static int EXP_COST_TP = 100;//TODO: CONFIG
 	private void executeTp(EntityPlayer player,int index) 
 	{
 		/*if(ModMain.getExpTotal(player) < EXP_COST_TP)
@@ -229,9 +229,14 @@ public class CommandSimpleWaypoints  implements ICommand
 		overwriteForPlayer(p,newLines);
 	}
 	
-	private void executeDisplay(EntityPlayer p, int index) 
+	private void executeDisplay(EntityPlayer player, int index) 
 	{  
-		SetCurrentForPlayer(p,index);
+		//SetCurrentForPlayer(player,index);
+		Location cur = getSingleForPlayer(player, index);
+		
+		String display = cur.toDisplay() + ModCommands.getDirectionsString(player, cur.toBlockPos());
+		
+		ModCommands.addChatMessage(player, display);
 	}
 	
 	private void executeList(EntityPlayer p) 
@@ -276,7 +281,7 @@ public class CommandSimpleWaypoints  implements ICommand
 	{ 
 		return false;
 	} 
-	 
+	 /* 
 	private void SetCurrentForPlayer(EntityPlayer player, int current)
 	{
 		//String playerName = player.getDisplayName().getUnformattedText();
@@ -286,59 +291,17 @@ public class CommandSimpleWaypoints  implements ICommand
 		lines.set(0, current+"");//overwrite the current index
  
 		overwriteForPlayer(player, lines);
-	}
-	
-	private static String filenameForPlayer(String playerName)
-	{
-		return "swp_"+playerName +".dat";
-	}
-	
-	private void overwriteForPlayer(EntityPlayer player, ArrayList<String> lines)
-	{
-		if(useProps)
-		{
-			PlayerPowerups props = PlayerPowerups.get(player);
-			String csv="";
-			for(String line : lines) 
-			{ 
-				csv += line + System.lineSeparator();
-			}
-			props.setWaypoints(csv);
-			
-			//System.out.println("overwrite for player:");
-			//System.out.println(csv);
-			//System.out.println("arraylist.size() = "+lines.size());
-			
+	}*/
+ 
+	public static void overwriteForPlayer(EntityPlayer player, ArrayList<String> lines)
+	{ 
+		String csv = "";
+		for(String line : lines) 
+		{ 
+			csv += line + System.lineSeparator();
 		}
-		else
-		{
-			String playerName = player.getDisplayName().getUnformattedText();
-			
-			String fileName = filenameForPlayer(playerName);
-			try
-			{
-				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName);
-				if(!myFile.exists()) myFile.createNewFile();
-				FileOutputStream fos = new FileOutputStream(myFile);
-				DataOutputStream stream = new DataOutputStream(fos);
-				 
-				for(String line : lines) 
-				{
-					stream.writeBytes(line);
-					stream.writeBytes(System.lineSeparator());
-				}
-				
-				stream.close();
-				fos.close();
-			} catch (FileNotFoundException e) {
-	
-				e.printStackTrace();
-			} //this makes it per-world
-			catch (IOException e) {
-	
-				e.printStackTrace();
-			} 
-		}
+		player.getEntityData().setString(NBT_KEY,csv);
+		 
 	}
 	public static Location getSingleForPlayer(EntityPlayer player, int index)
 	{
@@ -369,51 +332,11 @@ public class CommandSimpleWaypoints  implements ICommand
 	public static ArrayList<String> getForPlayer(EntityPlayer player)
 	{ 
 		ArrayList<String> lines = new ArrayList<String>();
-		
-		if(useProps)
-		{
-			PlayerPowerups props = PlayerPowerups.get(player);
-			 
-			String csv = props.getStringWaypoints();
-			
-			//System.out.println("getforplayer : ");
-			//System.out.println(csv);
-			//System.out.println("arraylist.size() = "+lines.size());
-			 
-			lines = new ArrayList<String>(Arrays.asList(csv.split(System.lineSeparator())));
-			
-
-		}
-		else
-		{
-			
-			String playerName = player.getDisplayName().getUnformattedText();
-			String fileName = filenameForPlayer(playerName);
-			
-		 
-			try
-			{
-				//TODO: is there another way to do this? without files?
-				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName);
-				if(!myFile.exists()) myFile.createNewFile();
-				FileInputStream fis = new FileInputStream(myFile);
-				DataInputStream instream = new DataInputStream(fis);
-				String val;
-				
-				while((val = instream.readLine()) != null) lines.add(val);
-				
-				instream.close();
-				fis.close();
-			} 
-			catch (FileNotFoundException e) 
-			{
-				e.printStackTrace();
-			} //this makes it per-world
-			catch (IOException e) 
-			{
-				e.printStackTrace();
-			} 
-		}
+ 
+		String csv = player.getEntityData().getString(NBT_KEY);
+	 
+		lines = new ArrayList<String>(Arrays.asList(csv.split(System.lineSeparator())));
+	 
 		return lines;
 	} 
 	

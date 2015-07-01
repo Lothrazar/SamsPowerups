@@ -66,7 +66,7 @@ public class ModCommands
 		FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
     } 
-
+/*
     @SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
@@ -125,13 +125,14 @@ public class ModCommands
     @SideOnly(Side.CLIENT)
 	public static void AddTodoInfo(RenderGameOverlayEvent.Text event) 
 	{
-		String todoCurrent = CommandTodoList.GetTodoForPlayer(Minecraft.getMinecraft().thePlayer);
+		String todoCurrent = CommandTodoList.getTodoForPlayer(Minecraft.getMinecraft().thePlayer);
 		
 		if(todoCurrent != null && todoCurrent.trim().isEmpty() == false)
 		{ 
 			event.right.add(todoCurrent.trim());
 		}
 	}
+	*/
 	@EventHandler
 	public void onServerStarting(FMLServerStartingEvent event)
 	{
@@ -324,7 +325,26 @@ public class ModCommands
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 
 	{ 
-		PlayerPowerups.get(event.entityPlayer).copy(PlayerPowerups.get(event.original));
+		//false means switched dimensions
+		System.out.println("clone player: wasdeath : "+event.wasDeath);
+		
+		if(event.wasDeath)
+		{
+			
+			System.out.println(CommandTodoList.getTodoForPlayer(event.original));
+			System.out.println(CommandSimpleWaypoints.getForPlayer(event.original));
+			//PlayerPowerups.get(event.entityPlayer).copy(PlayerPowerups.get(event.original));
+			
+			
+			CommandSimpleWaypoints.overwriteForPlayer(event.entityPlayer, CommandSimpleWaypoints.getForPlayer(event.original));
+			CommandTodoList.setTodoForPlayer(event.entityPlayer, CommandTodoList.getTodoForPlayer(event.original));
+			
+			
+	
+			System.out.println("NEW CLONE");
+			System.out.println(CommandTodoList.getTodoForPlayer(event.entityPlayer));
+			System.out.println(CommandSimpleWaypoints.getForPlayer(event.entityPlayer));
+		}
 	}
 	public static String lang(String name)
 	{
@@ -333,10 +353,11 @@ public class ModCommands
 	@SubscribeEvent
  	public void onEntityConstructing(EntityConstructing event)
  	{ 
+		/*
  		if (event.entity instanceof EntityPlayer && PlayerPowerups.get((EntityPlayer) event.entity) == null)
  		{ 
  			PlayerPowerups.register((EntityPlayer) event.entity);
- 		} 
+ 		} */
  	}
 	public static void incrementPlayerIntegerNBT(EntityPlayer player, String prop, int inc)
 	{

@@ -10,7 +10,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.lothrazar.samscommands.PlayerPowerups;
+import com.lothrazar.samscommands.ModCommands;
+
 import net.minecraft.command.ICommand;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.player.EntityPlayer;
@@ -24,10 +25,6 @@ public class CommandTodoList implements ICommand
 
 	private ArrayList<String> aliases = new ArrayList<String>(); 
 
-	//it still functions with flat files if you turn this to false
-	//but set to true uses IExtended properties which is recommended
-	private static final boolean useProps = true;
-
 	public CommandTodoList()
 	{  
 	    this.aliases.add(getName().toUpperCase());   
@@ -36,87 +33,28 @@ public class CommandTodoList implements ICommand
 	private static String MODE_ADD = "add"; 
 	private static String MODE_REMOVE = "delete"; 
 	private static String MODE_SET = "set";
-	
-	private static String filenameForPlayer(String playerName)
-	{
-		return "todo_"+playerName +".dat";
-	}
+	private static String MODE_GET = "get";
+	private static String NBT_KEY = ModCommands.MODID+"_todo";
+
 	@Override
 	public String getCommandUsage(ICommandSender s) 
 	{ 
-		return "/" + getName()+" <"+MODE_SET + "|" +MODE_ADD + "|" +MODE_REMOVE+"> <text>";
+		return "/" + getName()+" <"+MODE_GET +"|"+MODE_SET + "|" +MODE_ADD + "|" +MODE_REMOVE+  "> <text>";
 	}
    
-	public static String GetTodoForPlayer(EntityPlayer player)
+	
+	public static String getTodoForPlayer(EntityPlayer player)
 	{
-		String todoCurrent = "" ; 
-		if(useProps)
-		{
-			PlayerPowerups props = PlayerPowerups.get(player);
-			
-			todoCurrent = props.getStringTodo();
-		}
-		else
-		{  
-			String fileName = filenameForPlayer(player.getDisplayName().getUnformattedText());
-	   
-			try 
-		 	{
-				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName); 
-				if(!myFile.exists()) myFile.createNewFile(); 
-				FileInputStream  fis = new FileInputStream(myFile);
-				DataInputStream instream = new DataInputStream(fis);
-				
-				String val;
-				while((val = instream.readLine()) != null)todoCurrent += val; 
-				instream.close(); 
-				fis.close();
-		 	} catch (FileNotFoundException e) { 
-			//	Relay.addChatMessage(p, "Error with "+fileName);
-				e.printStackTrace();
-			} //this makes it per-world
-			catch (IOException e) {
-			//	Relay.addChatMessage(p, "Error with "+fileName);
-				e.printStackTrace();
-			}
+		String todoCurrent = player.getEntityData().getString(NBT_KEY);
 
-		}
 		if(todoCurrent == null) todoCurrent = "";
+		
 		return todoCurrent;
 	}
 	
-	public static void SetTodoForPlayer(EntityPlayer player, String todoCurrent)
+	public static void setTodoForPlayer(EntityPlayer player, String todoCurrent)
 	{
-		if(useProps)
-		{
-			PlayerPowerups props = PlayerPowerups.get(player);
-			
-			props.setStringTodo(todoCurrent);
-		}
-		else
-		{ 
-			String fileName = filenameForPlayer(player.getDisplayName().getUnformattedText());
-			
-			try{
-				 
-				File myFile = new File(DimensionManager.getCurrentSaveRootDirectory(), fileName); 
-				if(!myFile.exists()) myFile.createNewFile(); 
-				FileOutputStream fos = new FileOutputStream(myFile);
-				
-				DataOutputStream stream = new DataOutputStream(fos);
-				stream.writeBytes(todoCurrent);
-				stream.close();
-				fos.close();
-				  
-			} catch (FileNotFoundException e) { 
-			//	Relay.addChatMessage(p, "Error with "+fileName);
-				e.printStackTrace();
-			} //this makes it per-world
-			catch (IOException e) {
-			//	Relay.addChatMessage(p, "Error with "+fileName);
-				e.printStackTrace();
-			} 
-		}
+		player.getEntityData().setString(NBT_KEY,todoCurrent);
 	}
 	
 	@Override
@@ -124,19 +62,26 @@ public class CommandTodoList implements ICommand
 	{ 
 		EntityPlayer player = (EntityPlayer)icommandsender; 
   
-		String todoCurrent = GetTodoForPlayer(player );
+		String todoCurrent = getTodoForPlayer(player );
  
 		 //is the first argument empty
 		 if(args == null || args.length == 0 || args[0] == null || args[0].isEmpty())
 		 {
-			 player.addChatMessage(new ChatComponentTranslation(getCommandUsage(icommandsender))); 
-			
+			// player.addChatMessage(new ChatComponentTranslation(getCommandUsage(icommandsender))); 
+
+			 ModCommands.addChatMessage(player,getCommandUsage(icommandsender));
+			 
 			 return; 
 		 }
 		 
 		 String message = "";
-	   
-		 if(args[0].equals(MODE_REMOVE))
+
+		 if(args[0].equals(MODE_GET))
+		 { 
+			//just display current in chat
+			 ModCommands.addChatMessage(player,getTodoForPlayer(player));
+		 } 
+		 else if(args[0].equals(MODE_REMOVE))
 		 { 
 			 todoCurrent = "";
 			 args[0] = "";//remove the plus sign 
@@ -162,7 +107,7 @@ public class CommandTodoList implements ICommand
 			 todoCurrent = message;//so replace
 		 }
  
-		 SetTodoForPlayer(player, todoCurrent); 
+		 setTodoForPlayer(player, todoCurrent); 
 	}
 	 
  
