@@ -90,7 +90,7 @@ public class CommandSearchTrades  implements ICommand
 		 List<Entity> merchants = ic.getEntityWorld().getEntitiesWithinAABB(EntityVillager.class, searchRange);
 
 		 //List merchants = ic.getEntityWorld().getEntitiesWithinAABB(IMerchant.class, searchRange);
-		 List<IMerchant> villagers = new ArrayList();
+		 List<EntityLiving> villagers = new ArrayList();
 		 
 		 //double check that it should be an adult villager
 		 //recall that 
@@ -99,7 +99,7 @@ public class CommandSearchTrades  implements ICommand
 		 {
 		     if(m instanceof EntityLiving && ((EntityLiving)m).isChild() == false && (IMerchant)m != null)
 		     { 
-		    	 villagers.add((IMerchant)m);
+		    	 villagers.add((EntityLiving)m);
 		     }
 		 }
 		 
@@ -112,15 +112,20 @@ public class CommandSearchTrades  implements ICommand
 		 
 		 ArrayList<String> messages = new ArrayList<String>();
 		 boolean match = false;
+		 IMerchant v_merch;
+		 EntityLiving v_entity;
 		 for(int i = 0; i < villagers.size(); i++)
 		 { 
-			 list = villagers.get(i).getRecipes(p); 
+			 v_entity = villagers.get(i);
+			 v_merch = (IMerchant)villagers.get(i);///not null for sure based on how we constructed the list
+			 
+			 list = v_merch.getRecipes(p); 
 			 
 			 for(int r = 0; r < list.size(); r++)
 			 {
 				 match = false;
 				 rec = (MerchantRecipe)list.get(r); 
-				 disabled = (rec.isRecipeDisabled()) ? "[x]" : "";
+				 disabled = (rec.isRecipeDisabled()) ? "[x] " : "";
 				 
 				 buy = rec.getItemToBuy();
 				 buySecond = rec.getSecondItemToBuy();
@@ -151,6 +156,7 @@ public class CommandSearchTrades  implements ICommand
 				 if(match)
 				 {
 					 m =  disabled  +
+							 ModCommands.posToString(v_entity.getPosition()) + " " + 
 							 sell.stackSize +" "+sell.getDisplayName()+
 							 " :: "+
 							 buy.stackSize+" "+buy.getDisplayName();
