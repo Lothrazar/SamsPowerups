@@ -51,13 +51,13 @@ public class CommandHearts implements ICommand
 			
 			if(ptarget == null)
 			{
-				ModCommands.addChatMessage(getCommandUsage(sender));
+				ModCommands.addChatMessage(sender,getCommandUsage(sender));
 				return;
 			}
 		}
 		catch (Exception e)
 		{
-			ModCommands.addChatMessage(getCommandUsage(sender));
+			ModCommands.addChatMessage(sender,getCommandUsage(sender));
 			return;
 		}
 		try
@@ -66,7 +66,7 @@ public class CommandHearts implements ICommand
 		}
 		catch (Exception e)
 		{
-			ModCommands.addChatMessage(getCommandUsage(sender));
+			ModCommands.addChatMessage(sender,getCommandUsage(sender));
 			return;
 		}
 		

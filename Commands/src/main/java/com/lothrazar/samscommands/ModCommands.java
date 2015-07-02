@@ -10,6 +10,7 @@ import com.lothrazar.samscommands.command.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.command.ICommandSender;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
@@ -311,18 +312,15 @@ public class ModCommands
 	{	
 		living.getEntityAttribute(SharedMonsterAttributes.maxHealth).setBaseValue(max);
 	}
-	public static void addChatMessage(String string) 
-	{ 
-		addChatMessage(new ChatComponentTranslation(string)); 
-	}
-	public static void addChatMessage(IChatComponent string) 
-	{ 
-		 Minecraft.getMinecraft().ingameGUI.getChatGUI().printChatMessage(string); 
-	}
 	public static void addChatMessage(EntityPlayer player,String string) 
 	{ 
 		player.addChatMessage(new ChatComponentTranslation(string));
 	}
+	public static void addChatMessage(ICommandSender player,String string) 
+	{ 
+		player.addChatMessage(new ChatComponentTranslation(string));
+	}
+
 	public static EnumFacing getPlayerFacing(EntityPlayer player) 
 	{
     	int yaw = (int)player.rotationYaw;

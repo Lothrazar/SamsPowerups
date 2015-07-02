@@ -52,21 +52,21 @@ public class CommandVillageInfo implements ICommand
 		 
 		if(closest == null)
 		{
-			ModCommands.addChatMessage(ModCommands.lang("debug.novillage"));
+			ModCommands.addChatMessage(sender,ModCommands.lang("debug.novillage"));
 		}
 		else
 		{ 
 			int doors = closest.getNumVillageDoors();
 		    int villagers = closest.getNumVillagers();
 		    
-		    ModCommands.addChatMessage(ModCommands.lang("debug.villagepop")+"  "+String.format("%d",villagers));
-		    ModCommands.addChatMessage(ModCommands.lang("debug.villagedoors")+"  "+String.format("%d",doors));
+		    ModCommands.addChatMessage(sender,ModCommands.lang("debug.villagepop")+"  "+String.format("%d",villagers));
+		    ModCommands.addChatMessage(sender,ModCommands.lang("debug.villagedoors")+"  "+String.format("%d",doors));
 		    if(sender instanceof EntityPlayer)
 		    {
 		    	EntityPlayer player = (EntityPlayer)sender;
 			    int rep = closest.getReputationForPlayer(player.getName());
 			    
-			    ModCommands.addChatMessage(player.getName()+" "+ModCommands.lang("debug.villagerep")+"  "+String.format("%d",rep));
+			    ModCommands.addChatMessage(sender,player.getName()+" "+ModCommands.lang("debug.villagerep")+"  "+String.format("%d",rep));
 		    }
             
 		    dX = pos.getX() - closest.getCenter().getX();
@@ -74,7 +74,7 @@ public class CommandVillageInfo implements ICommand
 		    
 		    int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
             
-		    ModCommands.addChatMessage(ModCommands.lang("debug.villagedistcenter")+"  "+String.format("%d", dist)); 
+		    ModCommands.addChatMessage(sender,ModCommands.lang("debug.villagedistcenter")+"  "+String.format("%d", dist)); 
 		}
 	}
  
