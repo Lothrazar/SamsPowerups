@@ -14,6 +14,8 @@ Blocks - split this into standalones - one for: fishing, buckets, fragile, shear
 CarbonPaper - 1.0.0 released
 
 Commands - passed server test, ready to release (needs logo)
+     ADD /villageinfo command - imported from screen text
+add allcaps versions, double check aliases etc
 
 ControlBlocks - 1.0.0 released
 
@@ -35,9 +37,7 @@ Recipes - is this interesting/fleshed out enough to release?  Do we want to put 
 
 SaplingGrowth -  1.1.0 released
 
-screen text -> village info mod. remove gamerule stuff for possible future standalone. 
-OR add it to a command /gameruledisplay show/hide
-Test this on server
+screen text - reduce to only Horses & gamerules.  how about add a config to clear right side?
 
 SpellWheel fix and release 
 

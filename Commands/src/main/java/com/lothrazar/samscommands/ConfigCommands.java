@@ -108,6 +108,12 @@ public class ConfigCommands
 		cmd_uses = instance.getBoolean("uses",category, true,
 				"Command to display uses of the players held item in chat.");
 
+		cmd_villageinfo = instance.getBoolean("villageinfo",category, true,
+				"Command to get all information of the nearest village");
+
+		CommandVillageInfo.REQUIRES_OP = instance.getBoolean("villageinfo.needs_op",category, false,
+    			"Command is restricted to players with OP (or single player worlds with cheats enabled).");
+		
 		if(instance.hasChanged()){ instance.save(); }
 	
 	}
@@ -125,5 +131,6 @@ public class ConfigCommands
 	public boolean worldhome;  
 	public boolean cmd_recipe;
 	public boolean cmd_uses; 
-	public boolean cmd_ping;  
+	public boolean cmd_ping;
+	public boolean cmd_villageinfo;  
 }

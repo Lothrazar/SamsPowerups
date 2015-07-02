@@ -66,73 +66,7 @@ public class ModCommands
 		FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
     } 
-/*
-    @SideOnly(Side.CLIENT)
-	@SubscribeEvent
-	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
-	{ 
-		AddWaypointInfo(event); 
-		AddTodoInfo(event); 
-	}
     
-    @SideOnly(Side.CLIENT)
-	public static void AddWaypointInfo(RenderGameOverlayEvent.Text event) 
-	{
-		EntityPlayerSP p = Minecraft.getMinecraft().thePlayer;
-	 
-    	ArrayList<String> saved = CommandSimpleWaypoints.getForPlayer(Minecraft.getMinecraft().thePlayer);//.getDisplayName().getUnformattedText()
-
-    	if(saved.size() > 0 && saved.get(0) != null)
-    	{ 
-    		//find what index is selected currently
-    		int index = 0;
-    		try
-    		{
-	    		index = Integer.parseInt( saved.get(0) );
-    		}
-    		catch(NumberFormatException e) 
-    		{ 
-    			return;
-    		}// do nothing, its allowed to be a string
-    		
-    		 
-    		Location loc = null;
- 
-        	loc = CommandSimpleWaypoints.getSingleForPlayer(p,index);
-        	 
-    		if(loc != null)
-    		{ 
-    			if(p.dimension != loc.dimension)
-    			{ 
-    				return;//hide it, we are in wrong dimension to display this
-    			}
-    			
-    			double dX = p.posX - loc.X;
-    			double dZ = p.posZ - loc.Z;
-    			
-    			int dist = MathHelper.floor_double(Math.sqrt( dX*dX + dZ*dZ));
-    			int dY = MathHelper.floor_double(loc.Y - p.posY);
-    			  
-    			String height = " [" + dY + "]";
-    			
-    			String showName = dist + "m to <"+index+"> " + loc.name + height;	
-			 
-				event.right.add(showName); 
-    		} 
-    	}
-	}
-
-    @SideOnly(Side.CLIENT)
-	public static void AddTodoInfo(RenderGameOverlayEvent.Text event) 
-	{
-		String todoCurrent = CommandTodoList.getTodoForPlayer(Minecraft.getMinecraft().thePlayer);
-		
-		if(todoCurrent != null && todoCurrent.trim().isEmpty() == false)
-		{ 
-			event.right.add(todoCurrent.trim());
-		}
-	}
-	*/
 	@EventHandler
 	public void onServerStarting(FMLServerStartingEvent event)
 	{
@@ -174,6 +108,9 @@ public class ModCommands
   
 		if(cfg.cmd_ping) 
 			event.registerServerCommand(new CommandPing());
+
+		if(cfg.cmd_villageinfo) 
+			event.registerServerCommand(new CommandVillageInfo());
 		
 		//these ones are always here. no reason to disable.
 	 
