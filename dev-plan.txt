@@ -13,7 +13,7 @@ Blocks - split this into standalones - one for: fishing, buckets, fragile, shear
 
 CarbonPaper - 1.0.0 released
 
-Commands - finish saving the NBT strings for /swp and /todo. if they dont work just cut them and release the rest
+Commands - passed server test, ready to release (needs logo)
 
 ControlBlocks - 1.0.0 released
 
