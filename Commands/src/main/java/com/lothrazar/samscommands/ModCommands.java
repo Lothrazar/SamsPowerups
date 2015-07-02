@@ -322,30 +322,24 @@ public class ModCommands
 	{ 
 		player.worldObj.playSoundAtEntity(player, sound, 1.0F, 1.0F);
 	}
+	
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 
 	{ 
-		//false means switched dimensions
-		System.out.println("clone player: wasdeath : "+event.wasDeath);
-		
-		if(event.wasDeath)
+		if(event.wasDeath)//false means switched dimensions
 		{
+			if(CommandSimpleWaypoints.PERSIST_DEATH)
+			{
+				CommandSimpleWaypoints.overwriteForPlayer(event.entityPlayer, CommandSimpleWaypoints.getForPlayer(event.original));
+			}
 			
-			System.out.println(CommandTodoList.getTodoForPlayer(event.original));
-			System.out.println(CommandSimpleWaypoints.getForPlayer(event.original));
-			//PlayerPowerups.get(event.entityPlayer).copy(PlayerPowerups.get(event.original));
-			
-			
-			CommandSimpleWaypoints.overwriteForPlayer(event.entityPlayer, CommandSimpleWaypoints.getForPlayer(event.original));
-			CommandTodoList.setTodoForPlayer(event.entityPlayer, CommandTodoList.getTodoForPlayer(event.original));
-			
-			
-	
-			System.out.println("NEW CLONE");
-			System.out.println(CommandTodoList.getTodoForPlayer(event.entityPlayer));
-			System.out.println(CommandSimpleWaypoints.getForPlayer(event.entityPlayer));
+			if(CommandTodoList.PERSIST_DEATH)
+			{
+				CommandTodoList.setTodoForPlayer(event.entityPlayer, CommandTodoList.getTodoForPlayer(event.original));
+			}
 		}
 	}
+	
 	public static String lang(String name)
 	{
 		return StatCollector.translateToLocal(name);

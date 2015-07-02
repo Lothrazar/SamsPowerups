@@ -24,6 +24,7 @@ public class CommandSimpleWaypoints  implements ICommand
 
 	public CommandSimpleWaypoints()
 	{  
+		this.aliases.add("simplewaypoint"); 
 		this.aliases.add("swp"); 
 		this.aliases.add("SWP");
 		this.aliases.add(getName().toUpperCase());
@@ -59,9 +60,10 @@ public class CommandSimpleWaypoints  implements ICommand
 	//private static String MODE_DISPLAY = "get"; 
 	//private static String MODE_HIDEDISPLAY = "hide";
 	private static String MODE_LIST = "list";
-	private static String MODE_SAVE = "set";
+	private static String MODE_SAVE = "save";
 	private static String MODE_CLEAR = "delete"; 
 	//private static String KEY_CURRENT = "simplewp_current";
+	public static boolean PERSIST_DEATH;
 	
 	@Override
 	public void execute(ICommandSender icommandsender, String[] args) 

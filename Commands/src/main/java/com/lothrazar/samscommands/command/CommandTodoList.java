@@ -36,6 +36,8 @@ public class CommandTodoList implements ICommand
 	private static String MODE_GET = "get";
 	private static String NBT_KEY = ModCommands.MODID+"_todo";
 
+	public static boolean PERSIST_DEATH;
+
 	@Override
 	public String getCommandUsage(ICommandSender s) 
 	{ 
