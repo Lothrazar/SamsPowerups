@@ -70,7 +70,7 @@ public class CommandPlaceBlocks implements ICommand
        
         try
 		{
-        	distOrRadius =  Math.min(Integer.parseInt(args[1]), held.stackSize);
+        	distOrRadius = Integer.parseInt(args[1]);// Math.min(Integer.parseInt(args[1]), held.stackSize);
 		}
 		catch (Exception e)
 		{

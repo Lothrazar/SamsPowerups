@@ -13,8 +13,6 @@ import net.minecraft.world.World;
 
 public class PlaceLib
 {
-
-	
 	//library of functions/configs that apply to all /place[] commands
 	//for all of these, we allow the player to be null
 	
@@ -106,7 +104,7 @@ public class PlaceLib
 	    } 
 		while (x <= z);
 		
-		for(BlockPos p : circleList)
+		for(BlockPos posCurrent : circleList)
 		{
 			if(world.isAirBlock(pos) == false){continue;}
 
@@ -115,21 +113,13 @@ public class PlaceLib
 			
 
 			//if(tryDrainExp(world,player,p) == false){break;}
-			
-			world.setBlockState(p, placing);
-			
-			ModCommands.decrHeldStackSize(player);
 
-			ModCommands.playSoundAt(world, pos, placing.getBlock().stepSound.getPlaceSound());
+			placeSingle(world,player,posCurrent,placing);
 		}
 	}
 
 	public static void square(World world, EntityPlayer player, BlockPos pos, IBlockState placing, int radius)
 	{
-		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
-
-        //boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
-     
 		//search in a cube
 		int xMin = pos.getX() - radius;
 		int xMax = pos.getX() + radius; 
@@ -141,7 +131,7 @@ public class PlaceLib
 		BlockPos posCurrent;
 		System.out.println("square start");
 
-		int numPlaced = 0;
+		//int numPlaced = 0;
 		for (int x = xMin; x <= xMax; x++)
 		{ 
 			for (int z = zMin; z <= zMax; z++)
@@ -154,11 +144,8 @@ public class PlaceLib
 				if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
 				
 				//if(tryDrainExp(world,player,posCurrent) == false){break;}
-				
-				world.setBlockState(posCurrent, placing);
-				ModCommands.decrHeldStackSize(player);
 	 
-				ModCommands.playSoundAt(player, pblock.stepSound.getPlaceSound()); 
+				placeSingle(world,player,posCurrent,placing);
 				
 			}  
 		} //end of the outer loop
@@ -193,23 +180,15 @@ public class PlaceLib
 			if(world.isAirBlock(posCurrent) == false){continue;}
 			//but for the next 2 checks, halt if we run out of blocks/cost
 			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
-			
-			
-			//if(tryDrainExp(world,player,posCurrent) == false){break;}
-			
-			world.setBlockState(posCurrent, placing);
-			
-			ModCommands.decrHeldStackSize(player);
- 
-			ModCommands.playSoundAt(player, placing.getBlock().stepSound.getPlaceSound());
+	
+
+			placeSingle(world,player,posCurrent,placing);
 		}
 	}
 	
 	public static void line(World world, EntityPlayer player,BlockPos pos, IBlockState placing, int want, int skip)
 	{
-		Block pblock = Block.getBlockFromItem(player.inventory.getCurrentItem().getItem());
- 
-        boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
+      //  boolean isLookingUp = (player.getLookVec().yCoord >= 0);//TODO: use this somehow? to place up/down? 
         
 		BlockPos posCurrent;
 		EnumFacing efacing = (player.isSneaking()) ? EnumFacing.DOWN : ModCommands.getPlayerFacing(player);
@@ -221,14 +200,22 @@ public class PlaceLib
 			if(world.isAirBlock(posCurrent) == false){continue;}
 			//but for the next 2 checks, halt if we run out of blocks/cost
 			if(player.inventory.getCurrentItem() == null || player.inventory.getCurrentItem() .stackSize == 0) {return;}
-			
+
 			//if(tryDrainExp(world,player,posCurrent) == false){break;}
 			
-			world.setBlockState(posCurrent, placing);
-			
+			placeSingle(world,player,posCurrent,placing);
+		}
+	}
+
+	private static void placeSingle(World world,EntityPlayer player, BlockPos posCurrent,  IBlockState placing)
+	{
+		world.setBlockState(posCurrent, placing);
+
+		ModCommands.playSoundAt(player, placing.getBlock().stepSound.getPlaceSound());
+		
+		if(player.capabilities.isCreativeMode == false)
+		{
 			ModCommands.decrHeldStackSize(player);
- 
-			ModCommands.playSoundAt(player, pblock.stepSound.getPlaceSound());
 		}
 	}
 }
