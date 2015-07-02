@@ -13,30 +13,33 @@ Blocks - split this into standalones - one for: fishing, buckets, fragile, shear
 
 CarbonPaper - 1.0.0 released
 
-Commands - good on SP, crashes on server- reference to EntityPlayerSP
+Commands - finish saving the NBT strings for /swp and /todo. if they dont work just cut them and release the rest
 
 ControlBlocks - 1.0.0 released
 
 ControlInv -  1.0.1 released
 
-EnderProj -  1.0.0 released
+EnderProj -  1.0.1 is now out
 
 FragileTorches -  1.0.0 released
 
 HorseFood  -  1.0.0 released
 
 Macros  fix keybindings   - same as others
-         -: bindings get wasted on savequit and death- add in IExtendedprops instead of NBT
+         -: bindings get wasted on savequit and death- 
+---only if we can persist nbt strings, test in commands
 
-MobChanges - is this interesting/fleshed out enough to release? Do we want more config control
+MobChanges - Redo the config completely (inspired by sapling growth) - for each hostile mob, list out EXTRA biomes it can spawn in
 
 ocean -  1.0.0 released
 
-Recipes - is this interesting/fleshed out enough to release?
+Recipes - is this interesting/fleshed out enough to release?  Do we want to put uncrafting on its own?
 
 SaplingGrowth -  1.1.0 released
 
-screen text -> village info mod. remove gamerule stuff for possible future standalone. OR add it to a command /gameruledisplay show/hide
+screen text -> village info mod. remove gamerule stuff for possible future standalone. 
+OR add it to a command /gameruledisplay show/hide
+Test this on server
 
 SpellWheel fix and release 
 
