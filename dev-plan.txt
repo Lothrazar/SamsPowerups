@@ -25,9 +25,7 @@ FragileTorches -  1.0.0 released
 
 HorseFood  -  1.0.0 released
 
-Macros  fix keybindings   - same as others
-         -: bindings get wasted on savequit and death- 
----only if we can persist nbt strings, test in commands
+Macros - passed server test, ready to release (needs logo)
 
 MobChanges - Redo the config completely (inspired by sapling growth) - for each hostile mob, list out EXTRA biomes it can spawn in
 
