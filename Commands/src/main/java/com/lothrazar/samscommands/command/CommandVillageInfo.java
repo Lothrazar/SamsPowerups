@@ -61,8 +61,10 @@ public class CommandVillageInfo implements ICommand
 		    
 		    ModCommands.addChatMessage(sender,ModCommands.lang("debug.villagepop")+"  "+String.format("%d",villagers));
 		    ModCommands.addChatMessage(sender,ModCommands.lang("debug.villagedoors")+"  "+String.format("%d",doors));
+		   
 		    if(sender instanceof EntityPlayer)
 		    {
+		    	//command blocks/server controllers do not have reputation
 		    	EntityPlayer player = (EntityPlayer)sender;
 			    int rep = closest.getReputationForPlayer(player.getName());
 			    
