@@ -76,22 +76,13 @@ public class CommandSimpleWaypoints  implements ICommand
 	 
 			return;//not enough args
 		}
-		
-		 //so length at args is at least 1, so [0] exists
-		//try
-		//{
+ 
 		if(args[0].equals(MODE_LIST))
 		{
 			executeList(p);
 			return;
 		} 
-		/*
-		if(args[0].equals(MODE_HIDEDISPLAY))
-		{
-			executeHide(p);
-			return;
-		}*/
-
+ 
 		if(args[0].equals(MODE_SAVE))
 		{
 			String n = "";
@@ -99,13 +90,7 @@ public class CommandSimpleWaypoints  implements ICommand
 			executeSave(p, n);
 			return;
 		} 
-		//clear current
-		if(args[0].equals(MODE_CLEAR))
-		{
-			executeClear(p);
-			return;
-		} 
-		
+ 
 		 //so its outside the scope of commands that do not have a number
 		int index = -1;
 		
@@ -123,13 +108,13 @@ public class CommandSimpleWaypoints  implements ICommand
 			p.addChatMessage(new ChatComponentTranslation(getCommandUsage(icommandsender))); 
 			return;
 		}
-		/*
-		if(args[0].equals(MODE_DISPLAY))
-		{ 
-			executeDisplay(p,index);
+		
+		if(args[0].equals(MODE_CLEAR))
+		{
+			executeClear(p, index);
 			return;
-		} */
-
+		} 
+		
 		if(ENABLE_TP && args[0].equals(MODE_TP))
 		{
 			executeTp(p, index);
@@ -199,18 +184,10 @@ public class CommandSimpleWaypoints  implements ICommand
 			}
 		}
 	}
-	private void executeClear(EntityPlayer p) 
+	private void executeClear(EntityPlayer p, int index) 
 	{
 		ArrayList<String> lines = getForPlayer(p);
-		
-		if(lines.size() <= 1){return;}
-		
-		String sindex = lines.get(0);
-		
-		if(sindex == null || sindex.isEmpty()) {return;}
-		
-		int index = Integer.parseInt(sindex);
-		
+
 		ArrayList<String> newLines = new ArrayList<String>();
 		
 		int i = 0;
@@ -228,19 +205,10 @@ public class CommandSimpleWaypoints  implements ICommand
 		}
 	 
 		newLines.set(0,"0");
+		
 		overwriteForPlayer(p,newLines);
 	}
-	/*
-	private void executeDisplay(EntityPlayer player, int index) 
-	{  
-		//SetCurrentForPlayer(player,index);
-		Location cur = getSingleForPlayer(player, index);
-		
-		String display = cur.toDisplay() + " : " +ModCommands.getDirectionsString(player, cur.toBlockPos());
-		
-		ModCommands.addChatMessage(player, display);
-	}*/
-	
+
 	private void executeList(EntityPlayer p) 
 	{ 
 		boolean showCoords = !p.worldObj.getGameRules().getGameRuleBooleanValue("reducedDebugInfo");
