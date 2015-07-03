@@ -15,7 +15,7 @@ CarbonPaper - 1.0.0 released
 
 Commands - passed server test, ready to release (needs logo)
      ADD /villageinfo command - imported from screen text
-add allcaps versions, double check aliases etc
+	add allcaps versions, double check aliases etc
 
 ControlBlocks - 1.0.0 released
 
@@ -37,7 +37,7 @@ Recipes - is this interesting/fleshed out enough to release?  Do we want to put 
 
 SaplingGrowth -  1.1.0 released
 
-screen text - reduce to only Horses & gamerules.  how about add a config to clear right side?
+screen text aka HorseInfo - reduce to only Horses & gamerules.  how about add a config to clear right side?
 
 SpellWheel fix and release 
 
