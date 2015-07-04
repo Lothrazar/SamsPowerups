@@ -1,4 +1,4 @@
-package com.lothrazar.samsblocks;
+package com.lothrazar.samsfarmblocks;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -20,7 +20,7 @@ public class BlockShearWool extends Block
 	public BlockShearWool() 
 	{
 		super(Material.iron); 
-		this.setCreativeTab(ModBlocks.tabSamsContent);
+		this.setCreativeTab(ModFarmingBlocks.tabSFarming);
 		this.setStepSound(soundTypeMetal);
 		//next two are the same as iron bars
 		this.setHardness(5.0F);  

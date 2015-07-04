@@ -1,16 +1,21 @@
-[
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "",
-  "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
+  "modListVersion": 2,
+  "modList": [{
+    "modid": "samsblocks",
+    "name": "Farm Utility Blocks",
+    "description": "Fishing net block spawns fish items in water; sheep shearing block that auto-shears on collision; scaffolding block that decays like leaves; gamerule and weather toggle blocks; liquid storage blocks that holds unlimited buckets; blocks to execute toggledownfall, and send you to your bed or worldspawn",
+    "version": "1.8-1.0.0",
+    "mcversion": "1.8",
+    "url": "https://github.com/PrinceOfAmber/SamsPowerups/releases",
+    "updateUrl": "",
+    "authorList": [ "Lothrazar" ],
+    "credits": "Thanks to LexManos for the gradle video, and everyone on the forums",
+    "logoFile": "",
+    "screenshots": [  ],
+    "parent": "",
+    "requiredMods": [ "Forge" ],
+    "dependencies": [  ],
+    "dependants": [  ],
+    "useDependencyInformation": false
+  }]
 }
-]

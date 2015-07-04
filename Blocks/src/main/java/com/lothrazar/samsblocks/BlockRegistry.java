@@ -15,14 +15,7 @@ public class BlockRegistry
 	public static BlockCommandBlockCraftable command_block_weather ;
 	public static BlockCommandBlockCraftable command_block_tpspawn;
 	public static BlockCommandBlockCraftable command_block_tpbed; 
-	public static BlockFishing block_fishing ; 
-	public static BlockShearWool block_shear_sheep;
-	public static BlockBucketStorage block_storelava;
-	public static BlockBucketStorage block_storewater;
-	public static BlockBucketStorage block_storemilk;
-	public static BlockBucketStorage block_storeempty;
-	public static BlockFragile block_fragile;
-	//store blocks in a list - because this is used by the ModelMesher in the client proxy later
+
 	public static ArrayList<Block> blocks = new ArrayList<Block>();
 	
 	public static void registerBlock(Block s, String name)
@@ -33,62 +26,10 @@ public class BlockRegistry
 		  
 		blocks.add(s);
 	}
-	public static void registerBucketBlock(Block s, String name)
-	{    
-		s.setUnlocalizedName(name); 
-		 
-		GameRegistry.registerBlock(s, ItemBlockBucket.class,name);
-		  
-		blocks.add(s);
-	}
+
 	public static void registerBlocks() 
 	{  
-		if(ModBlocks.cfg.block_fragile)
-		{
-			block_fragile = new BlockFragile();
-			BlockRegistry.registerBlock(block_fragile, "block_fragile"); 
-			block_fragile.addRecipe();
-		}
 		
-		  
-		if(ModBlocks.cfg.storeBucketsBlock)
-		{
-			BlockRegistry.block_storewater = new BlockBucketStorage(Items.water_bucket);  
-			registerBucketBlock(BlockRegistry.block_storewater, "block_storewater");
-
-			BlockRegistry.block_storemilk = new BlockBucketStorage(Items.milk_bucket);  
-			registerBucketBlock(BlockRegistry.block_storemilk, "block_storemilk");
-		 
-			BlockRegistry.block_storelava = new BlockBucketStorage(Items.lava_bucket);  
-			registerBucketBlock(BlockRegistry.block_storelava, "block_storelava");	  
-	
-			GameRegistry.registerTileEntity(TileEntityBucketStorage.class, ModBlocks.MODID);
-		
-			BlockRegistry.block_storeempty = new BlockBucketStorage(null); //null for emtpy, no liquids stored inside
-			BlockRegistry.block_storeempty.setCreativeTab(ModBlocks.tabSamsContent); 
-			registerBucketBlock(BlockRegistry.block_storeempty, "block_storeempty");
-			
-			BlockRegistry.block_storeempty.addRecipe();
-		}
-		
-		if(ModBlocks.cfg.shearSheepBlock)
-		{
-			BlockRegistry.block_shear_sheep = new BlockShearWool(); 
-			
-			BlockRegistry.registerBlock(BlockRegistry.block_shear_sheep, "block_shear_sheep");
-
-			BlockShearWool.addRecipe();
-		}
-		
-		if(ModBlocks.cfg.fishingNetBlock)
-		{
-			BlockRegistry.block_fishing = new BlockFishing(); 
-			
-			registerBlock(BlockRegistry.block_fishing, "block_fishing");
-
-			BlockFishing.addRecipe();
-		}
-  
 		if(ModBlocks.cfg.weatherBlock) 
 		{
 			BlockRegistry.command_block_weather = new BlockCommandBlockCraftable(CommandType.Weather);

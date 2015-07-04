@@ -1,8 +1,9 @@
-package com.lothrazar.samsblocks;
+package com.lothrazar.samsfarmblocks;
 
 import java.util.Random;
 
  
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -20,7 +21,7 @@ public class BlockFragile extends Block
 	public BlockFragile() 
 	{
 		super(Material.wood);
-		this.setCreativeTab(ModBlocks.tabSamsContent);
+		this.setCreativeTab(ModFarmingBlocks.tabSFarming);
 		this.setTickRandomly(true);
 		this.setHardness(0F);
 		this.setResistance(0F); 

@@ -42,7 +42,7 @@ public class ModBlocks
 		@Override
 		public Item getTabIconItem() 
 		{ 
-			return Item.getItemFromBlock(BlockRegistry.block_fishing);
+			return Item.getItemFromBlock(BlockRegistry.command_block_weather);
 		}
 	};    
 	
@@ -59,12 +59,6 @@ public class ModBlocks
 		
 		
 	  	ArrayList<Object> handlers = new ArrayList<Object>();
-	    
-     	handlers.add(instance                         ); 
-     	handlers.add(BlockRegistry.block_storelava    );//TODO: why are these four done so weirdly
-		handlers.add(BlockRegistry.block_storewater   );
-		handlers.add(BlockRegistry.block_storemilk    ); 
-		handlers.add(BlockRegistry.block_storeempty   );   
 
      	for(Object h : handlers)
      		if(h != null)
@@ -79,30 +73,9 @@ public class ModBlocks
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
-
-    	
-
 		proxy.registerRenderers();
     }
-	@SubscribeEvent
-	public void onBreakEvent(BreakEvent event)
-	{
-		TileEntity ent = event.world.getTileEntity(event.pos);
-		  
-		//TODO; check tool/pickaxe? if notHarvestable or whatever, drop the buckets and the ..glass?
-		 
-		if(ent != null && ent instanceof TileEntityBucketStorage)
-		{
-			TileEntityBucketStorage t = (TileEntityBucketStorage)ent;
-			ItemStack stack = new ItemStack(event.state.getBlock());
-			
-			ModBlocks.setItemStackNBT(stack, BlockBucketStorage.NBTBUCKETS, t.getBuckets());
-		
-			ModBlocks.dropItemStackInWorld(event.world, event.pos, stack);
 
-			t.setBuckets(0);
-		}
-	}
 	public static void setItemStackNotNull(ItemStack item)
 	{
 		if(item.getTagCompound() == null) {item.setTagCompound(new NBTTagCompound());}

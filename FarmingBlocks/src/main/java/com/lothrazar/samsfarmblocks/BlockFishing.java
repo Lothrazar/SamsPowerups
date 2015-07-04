@@ -1,8 +1,9 @@
-package com.lothrazar.samsblocks;
+package com.lothrazar.samsfarmblocks;
 
 import java.util.ArrayList;
 import java.util.Random;  
  
+
 
 import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
@@ -23,7 +24,7 @@ public class BlockFishing extends Block
 	public BlockFishing()
 	{
 		super(Material.wood);  
-		this.setCreativeTab(ModBlocks.tabSamsContent);
+		this.setCreativeTab(ModFarmingBlocks.tabSFarming);
 		this.setHardness(3F);
 		this.setResistance(5F); 
 		this.setStepSound(soundTypeWood);
@@ -91,10 +92,9 @@ public class BlockFishing extends Block
 				 fishSpawned = pufferfish;
 			 }
 			 
-			 EntityItem ei = ModBlocks.dropItemStackInWorld(worldObj, pos.up(), fishSpawned);
-			 ModBlocks.playSoundAt(ei, "game.neutral.swim.splash");
-			// worldObj.playSoundAtEntity(ei,"game.neutral.swim.splash",1F,1F); 
-			 
+			 EntityItem ei = ModFarmingBlocks.dropItemStackInWorld(worldObj, pos.up(), fishSpawned);
+	 
+			 worldObj.playSoundAtEntity(ei, "game.neutral.swim.splash", 1.0F, 1.0F);
 		}
 	//	else 
 			//System.out.println("fail water test");

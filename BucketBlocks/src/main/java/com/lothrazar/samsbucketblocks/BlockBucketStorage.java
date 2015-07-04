@@ -1,4 +1,4 @@
-package com.lothrazar.samsblocks;
+package com.lothrazar.samsbucketblocks;
 
 import java.util.Random;
 
