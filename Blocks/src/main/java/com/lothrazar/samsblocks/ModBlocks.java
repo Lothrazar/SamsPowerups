@@ -54,10 +54,7 @@ public class ModBlocks
 		cfg = new ConfigRegistry(new Configuration(event.getSuggestedConfigurationFile()));
 
 		BlockRegistry.registerBlocks();
-		
-		
-		
-		
+
 	  	ArrayList<Object> handlers = new ArrayList<Object>();
 
      	for(Object h : handlers)
@@ -65,8 +62,6 @@ public class ModBlocks
 	     	{ 
 	    		FMLCommonHandler.instance().bus().register(h); 
 	    		MinecraftForge.EVENT_BUS.register(h); 
-	    		//MinecraftForge.TERRAIN_GEN_BUS.register(h);
-	    		//MinecraftForge.ORE_GEN_BUS.register(h); 
 	     	} 
 	}
 	

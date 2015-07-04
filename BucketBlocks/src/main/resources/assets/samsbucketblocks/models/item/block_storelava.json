@@ -1,5 +1,5 @@
  {
-     "parent": "samsblocks:block/block_storeempty",
+     "parent": "samsbucketblocks:block/block_storelava",
      "display": {
          "thirdperson": {
              "rotation": [ 10, -45, 170 ],

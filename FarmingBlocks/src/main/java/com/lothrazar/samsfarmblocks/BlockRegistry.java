@@ -37,6 +37,5 @@ public class BlockRegistry
 		BlockRegistry.block_fishing = new BlockFishing(); 
 		registerBlock(BlockRegistry.block_fishing, "block_fishing");
 		BlockFishing.addRecipe();
-	
 	}
 }

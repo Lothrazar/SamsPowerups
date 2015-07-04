@@ -36,14 +36,12 @@ public class BlockFishing extends Block
 	public static ArrayList<Block> waterBoth = new ArrayList<Block>();
 	@Override
 	public void updateTick(World worldObj,  BlockPos pos, IBlockState state,  Random rand)
-    {  
-		///if(worldObj.rand.nextInt(2) != 0){return;}//possible values are 0,1
-		//meaning we have a 1/2 chance of getting past this check
-		//System.out.println(worldObj.getBlockState(pos.down()).getBlock().getUnlocalizedName());
+    {   
+		//make sure surrounded by water
 		
 		if( waterBoth.contains(worldObj.getBlockState(pos.down()).getBlock()  ) &&
 			waterBoth.contains(worldObj.getBlockState(pos.down(2)).getBlock()   ) &&
-			waterBoth.contains(worldObj.getBlockState(pos.down(3)).getBlock()   ) &&
+		//	waterBoth.contains(worldObj.getBlockState(pos.down(3)).getBlock()   ) &&
 			waterBoth.contains(worldObj.getBlockState(pos.north()).getBlock()  ) &&
 			waterBoth.contains(worldObj.getBlockState(pos.east()).getBlock()  ) &&
 			waterBoth.contains(worldObj.getBlockState(pos.west()).getBlock()  ) &&
@@ -51,8 +49,6 @@ public class BlockFishing extends Block
 		 
 		)
 		{
-			//System.out.println("pass water test");
-	 
 			 //reference for chances 
 			 // http://minecraft.gamepedia.com/Fishing_Rod#Junk_and_treasures
 		 
@@ -96,8 +92,6 @@ public class BlockFishing extends Block
 	 
 			 worldObj.playSoundAtEntity(ei, "game.neutral.swim.splash", 1.0F, 1.0F);
 		}
-	//	else 
-			//System.out.println("fail water test");
     }
 
 	@Override
@@ -122,9 +116,7 @@ public class BlockFishing extends Block
 				'f', new ItemStack(Items.fishing_rod, 1, 0), 
 				'p', Blocks.planks);
 
-	 
 			GameRegistry.addSmelting(new ItemStack(BlockRegistry.block_fishing)
 			, new ItemStack(Blocks.web, 4), 0); 
-		 
 	} 
 }

@@ -2,7 +2,6 @@ package com.lothrazar.samsfarmblocks;
  
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.BlockPos;
@@ -29,7 +28,7 @@ public class ModFarmingBlocks
 			return Item.getItemFromBlock(BlockRegistry.block_fishing);
 		}
 	};    
-	//public static ConfigRegistry cfg;
+
 	@SidedProxy(clientSide="com.lothrazar.samsfarmblocks.ClientProxy", serverSide="com.lothrazar.samsfarmblocks.CommonProxy")
 	public static CommonProxy proxy;  
     public static final String MODID = "samsfarmblocks";

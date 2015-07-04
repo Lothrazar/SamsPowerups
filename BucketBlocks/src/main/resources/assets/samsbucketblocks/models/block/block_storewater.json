@@ -1,6 +1,6 @@
 {
     "parent": "block/cube_all",
     "textures": {
-        "all": "samsblocks:blocks/block_storeempty"
+        "all": "samsbucketblocks:blocks/block_storewater"
     }
 }

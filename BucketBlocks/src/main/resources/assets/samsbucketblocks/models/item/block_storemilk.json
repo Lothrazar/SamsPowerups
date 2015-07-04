@@ -1,5 +1,5 @@
  {
-     "parent": "samsblocks:block/block_shear_sheep",
+     "parent": "samsbucketblocks:block/block_storemilk",
      "display": {
          "thirdperson": {
              "rotation": [ 10, -45, 170 ],
