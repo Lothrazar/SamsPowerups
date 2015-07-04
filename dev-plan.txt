@@ -27,7 +27,7 @@ FragileTorches -  1.0.0 released
 
 HorseFood  -  1.0.0 released
 
-Macros - passed server test, ready to release (needs logo)
+Macros - 1.0.0 released
 
 MobChanges - Redo the config completely (inspired by sapling growth) - for each hostile mob, list out EXTRA biomes it can spawn in
 
