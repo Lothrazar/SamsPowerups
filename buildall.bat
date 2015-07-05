@@ -12,7 +12,7 @@ cd ../Macros
 call gradlew build
 cd ../MobChanges
 call gradlew build
-cd ../Nature
+cd ../EnderProjectiles
 call gradlew build
 cd ../Recipes
 call gradlew build
@@ -37,7 +37,5 @@ call gradlew build
 cd ../SaplingGrowth
 call gradlew build
 cd ../TreasureBuff
-call gradlew build
-cd ../EnderProjectiles
 call gradlew build
 pause
