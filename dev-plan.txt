@@ -9,7 +9,9 @@ Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod -
 
 Beetroot - 1.0.0 released
 
-Blocks - split this into standalones - one for: fishing, buckets, fragile, shearing.  one for commandblocks
+Blocks - Rename/Rebrand as Restricted Commandblocks
+
+BucketBlocks - 1.0.0 released
 
 CarbonPaper - 1.0.0 released
 
@@ -22,6 +24,8 @@ ControlBlocks - 1.0.0 released
 ControlInv -  1.0.1 released
 
 EnderProj -  1.0.1 is now out
+
+FarmingBlocks - existing blocks ready for release, add a few more first or rename, 'farming' doesnt make sense
 
 FragileTorches -  1.0.0 released
 
@@ -39,9 +43,9 @@ SaplingGrowth -  1.1.0 released
 
 screen text aka HorseInfo - reduce to only Horses & gamerules.  how about add a config to clear right side?
 
-SpellWheel fix and release 
+SpellWheel fix and release , re-evaluate which spells balanced/make sense, more ideas
 
-Stacks - use CSV config list instead of hardcoded? does another mod exist for this?
+Stacks - use CSV config list instead of hardcoded? does another mod exist for this? try it in postInit
 
 TreasureBuff - is this interesting/fleshed out enough to release? Do we want more config control
 
