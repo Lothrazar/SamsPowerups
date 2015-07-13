@@ -52,7 +52,7 @@ public class PlayerPowerups implements IExtendedEntityProperties
 		properties.setInteger(NBT_SPELLMAIN,   this.player.getDataWatcher().getWatchableObjectInt(SPELLMAIN_WATCHER)); 
 		properties.setInteger(NBT_SPELLTOG,    this.player.getDataWatcher().getWatchableObjectInt(SPELLTOG_WATCHER) ); 
 		properties.setInteger(NBT_SPELLTIMER,  this.player.getDataWatcher().getWatchableObjectInt(SPELLTIMER_WATCHER) ); 
- 	 
+		properties.setTag("items", new NBTTagCompound());
 		compound.setTag(EXT_PROP_NAME, properties); 
 	}
 
