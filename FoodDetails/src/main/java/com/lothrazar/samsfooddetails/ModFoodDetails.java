@@ -1,15 +1,16 @@
 package com.lothrazar.samsfooddetails;
 
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import net.minecraft.item.ItemFood;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 @Mod(modid = ModFoodDetails.MODID, useMetadata=true)
 public class ModFoodDetails
@@ -19,7 +20,7 @@ public class ModFoodDetails
 	public static ModFoodDetails instance;
     
     @EventHandler
-	public void onPreInit(FMLPreInitializationEvent event)
+	public void onPreInit(FMLPostInitializationEvent event)
 	{ 
     	FMLCommonHandler.instance().bus().register(instance); 
 		MinecraftForge.EVENT_BUS.register(instance); 
@@ -37,9 +38,9 @@ public class ModFoodDetails
     	if(event.itemStack != null && event.itemStack.getItem() instanceof ItemFood)
     	{
     		ItemFood food = (ItemFood)event.itemStack.getItem();
-    		
-    		int hunger = food.getHealAmount(event.itemStack);
-    		float satur = food.getSaturationModifier(event.itemStack);
+
+    		int hunger = food.func_150905_g(event.itemStack);//getHealAmount==func_150905_g==healAmount
+    		float satur = food.func_150906_h(event.itemStack);//getSaturationModifier==func_150906_h==saturationModifier
     		
     		event.toolTip.add(hunger+" ("+satur+")");
     	} 
