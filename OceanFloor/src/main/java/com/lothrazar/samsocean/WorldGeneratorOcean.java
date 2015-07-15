@@ -2,15 +2,15 @@ package com.lothrazar.samsocean;
 
 import java.util.Random;
 
-import net.minecraft.block.state.pattern.BlockHelper;
+//import net.minecraft.block.state.pattern.BlockHelper;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.BlockPos;
+//import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraft.world.gen.feature.WorldGenerator;
-import net.minecraftforge.fml.common.IWorldGenerator;
+import cpw.mods.fml.common.IWorldGenerator;
 
 public class WorldGeneratorOcean implements IWorldGenerator
 {
@@ -27,15 +27,15 @@ public class WorldGeneratorOcean implements IWorldGenerator
  
 	public WorldGeneratorOcean() 
 	{   
-	    this.genClay = new WorldGenMinable(Blocks.clay.getDefaultState(), ModOcean.cfg.clayNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genSand = new WorldGenMinable(Blocks.dirt.getDefaultState(), ModOcean.cfg.dirtNumBlocks,BlockHelper.forBlock(Blocks.gravel));
-	    this.genDirt = new WorldGenMinable(Blocks.sand.getDefaultState(), ModOcean.cfg.sandNumBlocks,BlockHelper.forBlock(Blocks.gravel));
+	    this.genClay = new WorldGenMinable(Blocks.clay, ModOcean.cfg.clayNumBlocks, Blocks.gravel);
+	    this.genSand = new WorldGenMinable(Blocks.dirt, ModOcean.cfg.dirtNumBlocks, Blocks.gravel);
+	    this.genDirt = new WorldGenMinable(Blocks.sand, ModOcean.cfg.sandNumBlocks, Blocks.gravel);
 	}
 	 
 	@Override
 	public void generate(Random random, int chunkX, int chunkZ, World world,IChunkProvider chunkGenerator, IChunkProvider chunkProvider) 
 	{ 
-		if(world.provider.getDimensionId() == OVERWORLD)//overworld 
+		if(world.provider.dimensionId == OVERWORLD)//overworld 
 		{ 
 			this.run(this.genClay, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE, 
 					 ModOcean.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT);
@@ -44,12 +44,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
 			this.run(this.genDirt, world, random, chunkX * CHUNK_SIZE, chunkZ * CHUNK_SIZE,
 					 ModOcean.cfg.dirtChance, MIN_HEIGHT, MAX_HEIGHT);
 		} 
-		/*//TODO: maybe oneday?
-		if(world.provider.getDimensionId() == Reference.Dimension.nether) 
-		{ 
-			this.run(this.genGold, world, random, chunkX * Reference.CHUNK_SIZE, chunkZ * Reference.CHUNK_SIZE, 
-					ModMain.cfg.clayChance, MIN_HEIGHT, MAX_HEIGHT); 
-		}*/
+	
 	}
 	
 	private void run(WorldGenerator generator, World world, Random rand, int chunk_X, int chunk_Z, int chancesToSpawn, int minHeight, int maxHeight) 
@@ -59,7 +54,7 @@ public class WorldGeneratorOcean implements IWorldGenerator
  
 	    int heightDiff = maxHeight - minHeight;
  
-	    BlockPos pos;
+	   // BlockPos pos;
 	    BiomeGenBase biome;
 	    
 	    for (int i = 0; i < chancesToSpawn; i ++) 
@@ -68,15 +63,15 @@ public class WorldGeneratorOcean implements IWorldGenerator
 	        int y = minHeight + rand.nextInt(heightDiff);
 	        int z = chunk_Z + rand.nextInt(CHUNK_SIZE);
 	        
-	        pos = new BlockPos(x, y, z);
-	        biome = world.getBiomeGenForCoords(pos);
+	      //  pos = new BlockPos(x, y, z);
+	        biome = world.getBiomeGenForCoords(x, z);
 	         
 	        if( biome == BiomeGenBase.ocean || 
 	        	biome == BiomeGenBase.deepOcean 
 	        	//||biome==BiomeGenBase.hell//TODO: a seperate way/class for the nether?
 	        	)
 	        {  
-	        	generator.generate(world, rand, pos);  
+	        	generator.generate(world, rand, x, y, z);  
 	        }
 	    }
 	} 
