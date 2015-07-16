@@ -2,6 +2,12 @@
 Mod Status
 ***********
 
+mod or feature idea: when ender teleporting, the riding entity is left behind. can we bring it? and fix dismount?
+
+--TODO: list mc version of each one released ex 14,17,18
+A horse (similar to a spawn/respawn egg) that you can pick up/put down. maybe a mechanical horse? or a horse cage? horse bag of holding?
+
+
 Apples - 1.0.1 released
 
 Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod - need something fresh, if at all.
