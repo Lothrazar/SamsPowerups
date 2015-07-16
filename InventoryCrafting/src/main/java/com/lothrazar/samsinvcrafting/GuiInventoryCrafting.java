@@ -1,7 +1,9 @@
 package com.lothrazar.samsinvcrafting;
 
 import net.minecraft.client.gui.inventory.GuiInventory;
-import net.minecraft.client.renderer.GlStateManager;
+//import net.minecraft.client.renderer.GlStateManager;//was in 18
+import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.GLAllocation;
 import net.minecraft.entity.player.EntityPlayer;
 
 public class GuiInventoryCrafting extends GuiInventory 
@@ -18,7 +20,8 @@ public class GuiInventoryCrafting extends GuiInventory
 	protected void drawGuiContainerBackgroundLayer(float partialTicks, int mouseX, int mouseY)
 	{
 		super.drawGuiContainerBackgroundLayer(partialTicks, mouseX, mouseY);
-        GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
+		
+        //GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
 		this.mc.getTextureManager().bindTexture(new net.minecraft.util.ResourceLocation(ModInvCrafting.MODID, "textures/gui/inventorycraft.png"));
 
         int k = this.guiLeft;

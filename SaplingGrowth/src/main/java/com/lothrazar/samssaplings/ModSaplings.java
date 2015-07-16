@@ -9,15 +9,15 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.BlockPos;
+//import net.minecraft.util.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
   
 @Mod(modid = ModSaplings.MODID, useMetadata = true )  
 public class ModSaplings
@@ -111,19 +111,19 @@ public class ModSaplings
 		return bi;
 	}
 	
-	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Block block)
+	public static EntityItem dropItemStackInWorld(World worldObj, double x, double y, double z, Block block)
 	{
-		return dropItemStackInWorld(worldObj, pos, new ItemStack(block));  
+		return dropItemStackInWorld(worldObj, x,y,z, new ItemStack(block));  
 	}
 	
-	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, Item item)
+	public static EntityItem dropItemStackInWorld(World worldObj,double x, double y, double z, Item item)
 	{
-		return dropItemStackInWorld(worldObj, pos, new ItemStack(item)); 
+		return dropItemStackInWorld(worldObj, x,y,z, new ItemStack(item)); 
 	}
 	
-	public static EntityItem dropItemStackInWorld(World worldObj, BlockPos pos, ItemStack stack)
+	public static EntityItem dropItemStackInWorld(World worldObj, double x, double y, double z, ItemStack stack)
 	{
-		EntityItem entityItem = new EntityItem(worldObj, pos.getX(),pos.getY(),pos.getZ(), stack); 
+		EntityItem entityItem = new EntityItem(worldObj, x,y,z, stack); 
 
  		if(worldObj.isRemote==false)//do not spawn a second 'ghost' one on client side
  			worldObj.spawnEntityInWorld(entityItem);

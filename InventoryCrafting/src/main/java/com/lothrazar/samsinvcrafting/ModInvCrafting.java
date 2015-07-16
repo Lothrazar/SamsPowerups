@@ -8,19 +8,20 @@ import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import net.minecraftforge.fml.common.FMLCommonHandler;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.SidedProxy;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.network.NetworkRegistry;
-import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
-import net.minecraftforge.fml.relauncher.Side;
-import net.minecraftforge.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
 
 @Mod(modid = ModInvCrafting.MODID, useMetadata=true)
 public class ModInvCrafting
@@ -30,12 +31,12 @@ public class ModInvCrafting
 	public static ModInvCrafting instance;
 	@SidedProxy(clientSide="com.lothrazar.samsinvcrafting.ClientProxy", serverSide="com.lothrazar.samsinvcrafting.CommonProxy")
 	public static CommonProxy proxy;   
-	public static Logger logger; 
+	//public static Logger logger; 
 	public SimpleNetworkWrapper network;
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
+    public void preInit(FMLInitializationEvent event)
     {
-    	logger = event.getModLog();
+    	//logger = event.getModState().get
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
 		
 		proxy.registerRenderers();
