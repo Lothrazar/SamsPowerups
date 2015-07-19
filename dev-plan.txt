@@ -2,6 +2,9 @@
 Mod Status
 ***********
 
+NetHandlerplayserver at processPlayerBlockPlacement
+//could have a setblock event?
+
 mod or feature idea: when ender teleporting, the riding entity is left behind. can we bring it? and fix dismount?
 
 --TODO: list mc version of each one released ex 14,17,18
