@@ -1,11 +1,15 @@
 package com.lothrazar.powerinventory.inventory;
 
+import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.ContainerPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.inventory.SlotCrafting;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
@@ -149,7 +153,7 @@ public class BigContainerPlayer extends ContainerPlayer
 
         this.craftResult.setInventorySlotContents(0, (ItemStack)null);
     }
-
+ 
     /**
      * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
      */
@@ -157,61 +161,87 @@ public class BigContainerPlayer extends ContainerPlayer
     public ItemStack transferStackInSlot(EntityPlayer p, int craft)
     {  
         ItemStack stackCopy = null;
-        Slot slot = (Slot)this.inventorySlots.get(craft);
+        Slot slot = (Slot)this.inventorySlots.get(craft); //333-319
+        int playerSlot = craft - 14;//why is this the magic number? iunno 9+4+1?
+    	System.out.println("ts "+craft+"  -> "  +playerSlot);
 
         if (slot != null && slot.getHasStack())
         {
             ItemStack stackOrig = slot.getStack();
             stackCopy = stackOrig.copy();
 
-            if (craft == 0) // Crafting result
+            if (craft == 0) // Crafting result - verified
             {
-                if (!this.mergeItemStack(stackOrig, 9, 45, true))
+            	System.out.println("craft result");
+                if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, true))
                 {
                     return null;
                 }
 
                 slot.onSlotChange(stackOrig, stackCopy);
             }
-            else if (craft >= 1 && craft <= 9) // Crafting grid
+            else if (craft >= 1 && craft <= 9) // Crafting grid - verified
             {
-                if (!this.mergeItemStack(stackOrig, 9, 45, false))
+            	System.out.println("cGRID");
+                if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false))
                 {
                     return null;
                 }
             }
-            else if (craft >= 10 && craft <= 13) // Armor
+            else if (craft >= 10 && craft <= 13) // from Armor - verified BUT i dont want it going to hotbar probably?
             {
-                if (!this.mergeItemStack(stackOrig, 9, 45, false))
+            	System.out.println("from ARMOR");
+                if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false))
                 {
                     return null;
                 }
             }
             else if (stackCopy.getItem() instanceof ItemArmor && !((Slot)this.inventorySlots.get(5 + ((ItemArmor)stackCopy.getItem()).armorType)).getHasStack()) // Inventory to armor
             {
-                int j = 5 + ((ItemArmor)stackCopy.getItem()).armorType;
-
-                if (!this.mergeItemStack(stackOrig, j, j + 1, false))
+            	System.out.println("intoarmor");
+            	if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false))
                 {
                     return null;
-                }
+                } 
+            }
+            else if (stackCopy.getItem() == Items.ender_pearl)  
+            {
+            	System.out.println("TODO shift PEARL"+Const.enderPearlSlot);
+            	
+            	if(!simpleMerge(p, playerSlot, Const.enderPearlSlot,stackOrig))
+            	{
+            		//tried to put in my static slot, if it doesnt work then move on to as normal stuff
+            		if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false)) 
+                    {
+                        return null;
+                    } 
+            	}
+            	
+            }
+            else if (stackCopy.getItem() == Item.getItemFromBlock(Blocks.ender_chest))  
+            {
+            	System.out.println("TODO shift chest"+Const.enderChestSlot);
+ 
             }
             else if ((craft >= 9 && craft < 36) || (craft >= 45 && craft < invo.getSlotsNotArmor() + 9))
             {
-                if (!this.mergeItemStack(stackOrig, 36, 45, false))
+            	System.out.println("shift PLAIN INvo");
+                if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false))//was 36,45
                 {
                     return null;
                 }
             }
             else if (craft >= 36 && craft < 45) // Hotbar
             {
-                if (!this.mergeItemStack(stackOrig, 9, 36, false) && (invo.getSlotsNotArmor() - 36 <= 0 || !this.mergeItemStack(stackOrig, 45, 45 + (invo.getSlotsNotArmor() - 36), false)))
+            	System.out.println("shift hotbar");
+                if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false) && (invo.getSlotsNotArmor() - 36 <= 0 || !this.mergeItemStack(stackOrig, 45, 45 + (invo.getSlotsNotArmor() - 36), false)))
                 {
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(stackOrig, 9, invo.getSlotsNotArmor() + 9, false)) // Full range
+            else if (!this.mergeItemStack(stackOrig, 10, invo.getSlotsNotArmor() + 9, false)) // Full range
             {
+            	System.out.println("shift full range");
                 return null;
             }
 
@@ -234,4 +264,41 @@ public class BigContainerPlayer extends ContainerPlayer
 
         return stackCopy;
     }
+
+	private boolean simpleMerge(EntityPlayer p, int slotFrom, int slotTo, ItemStack stackOrig) 
+	{
+		ItemStack pearls = p.inventory.getStackInSlot(slotTo);
+		
+		if(pearls == null)
+		{
+			p.inventory.setInventorySlotContents(slotTo, stackOrig);
+			p.inventory.setInventorySlotContents(slotFrom, null);
+			return true;
+		}
+		else
+		{
+			int room = Items.ender_pearl.getItemStackLimit() - pearls.stackSize;
+			if(room > 0)
+			{ 
+				int toDeposit = Math.min(pearls.stackSize,room);
+			
+				pearls.stackSize += toDeposit;
+				p.inventory.setInventorySlotContents(slotTo, pearls);
+
+				stackOrig.stackSize -= toDeposit;
+ 
+				if(stackOrig.stackSize <= 0)//because of calculations above, should not be below zero
+				{
+					//item stacks with zero count do not destroy themselves, they show up and have unexpected behavior in game so set to empty
+					p.inventory.setInventorySlotContents(slotFrom,null);  
+				}
+				else
+				{ 
+					p.inventory.setInventorySlotContents(slotFrom, stackOrig); 
+				} 
+				return true;
+			}
+			else return false;
+		}
+	}
 }

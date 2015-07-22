@@ -241,20 +241,14 @@ System.out.println("set null "+ip);
   					chest.setInventorySlotContents(islotChest, chestItem);
 
   					invItem.stackSize -= toDeposit;
-
-  					//totalItemsMoved += toDeposit;
-  					//totalTypesMoved++;
-  					
+ 
   					if(invItem.stackSize <= 0)//because of calculations above, should not be below zero
   					{
   						//item stacks with zero count do not destroy themselves, they show up and have unexpected behavior in game so set to empty
-  						player.inventory.setInventorySlotContents(islotInv,null); 
-  						
-  					//	totalSlotsFreed++;
+  						player.inventory.setInventorySlotContents(islotInv,null);  
   					}
   					else
-  					{
-  						//set to new quantity
+  					{ 
   	  					player.inventory.setInventorySlotContents(islotInv, invItem); 
   					} 
   				}//end if items match   
