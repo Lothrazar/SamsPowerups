@@ -163,6 +163,8 @@ public class BigContainerPlayer extends ContainerPlayer
         ItemStack stackCopy = null;
         Slot slot = (Slot)this.inventorySlots.get(craft); //333-319
         int playerSlot = craft - 14;//why is this the magic number? iunno 9+4+1?
+    	//System.out.println("rem "+p.worldObj.isRemote);
+    	if(p.worldObj.isRemote ){return null;}//ignore clientside..?
     	System.out.println("ts "+craft+"  -> "  +playerSlot);
 
         if (slot != null && slot.getHasStack())
@@ -206,22 +208,42 @@ public class BigContainerPlayer extends ContainerPlayer
             }
             else if (stackCopy.getItem() == Items.ender_pearl)  
             {
-            	System.out.println("TODO shift PEARL"+Const.enderPearlSlot);
-            	
-            	if(!simpleMerge(p, playerSlot, Const.enderPearlSlot,stackOrig))
+            	//System.out.println("pearl"); 
+            	if(p.inventory.getStackInSlot(Const.enderPearlSlot) == null || 
+            			p.inventory.getStackInSlot(Const.enderPearlSlot).stackSize < Items.ender_pearl.getItemStackLimit())
             	{
+            		simpleMerge(p, playerSlot, Const.enderPearlSlot,stackCopy,Items.ender_pearl.getItemStackLimit());
+            	}
+            	else
+            	{
+            		
+            	}//if(!simpleMerge(p, playerSlot, Const.enderPearlSlot,stackCopy,Items.ender_pearl.getItemStackLimit()))
+            	{
+                	System.out.println("pearl fail: "+stackCopy.stackSize);
             		//tried to put in my static slot, if it doesnt work then move on to as normal stuff
+                	
             		if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false)) 
                     {
+                    	System.out.println("pearl null: "+stackCopy.stackSize);
                         return null;
                     } 
+                	System.out.println("pearl not null: "+stackCopy.stackSize);//so this is still 8, hasnt Duplicated yet....fff..
+            	
             	}
             	
             }
             else if (stackCopy.getItem() == Item.getItemFromBlock(Blocks.ender_chest))  
             {
-            	System.out.println("TODO shift chest"+Const.enderChestSlot);
- 
+            	System.out.println("echest "+stackOrig.stackSize);
+            	if(!simpleMerge(p, playerSlot, Const.enderChestSlot,stackOrig, 64))
+            	{
+            		System.out.println("echest didnt work, size "+stackOrig.stackSize);
+            		//tried to put in my static slot, if it doesnt work then move on to as normal stuff
+            		if (!this.mergeItemStack(stackOrig, 10, Const.invoSize-10, false)) 
+                    {
+                        return null;
+                    } 
+            	} 
             }
             else if ((craft >= 9 && craft < 36) || (craft >= 45 && craft < invo.getSlotsNotArmor() + 9))
             {
@@ -230,7 +252,7 @@ public class BigContainerPlayer extends ContainerPlayer
                 {
                     return null;
                 }
-            }
+            }/*
             else if (craft >= 36 && craft < 45) // Hotbar
             {
             	System.out.println("shift hotbar");
@@ -238,7 +260,7 @@ public class BigContainerPlayer extends ContainerPlayer
                 {
                     return null;
                 }
-            }
+            }*/
             else if (!this.mergeItemStack(stackOrig, 10, invo.getSlotsNotArmor() + 9, false)) // Full range
             {
             	System.out.println("shift full range");
@@ -265,25 +287,26 @@ public class BigContainerPlayer extends ContainerPlayer
         return stackCopy;
     }
 
-	private boolean simpleMerge(EntityPlayer p, int slotFrom, int slotTo, ItemStack stackOrig) 
+	private boolean simpleMerge(EntityPlayer p, int slotFrom, int slotTo, ItemStack stackOrig, int max) 
 	{
-		ItemStack pearls = p.inventory.getStackInSlot(slotTo);
+		ItemStack dest = p.inventory.getStackInSlot(slotTo);
 		
-		if(pearls == null)
-		{
+		if(dest == null)
+		{ 
 			p.inventory.setInventorySlotContents(slotTo, stackOrig);
 			p.inventory.setInventorySlotContents(slotFrom, null);
 			return true;
 		}
 		else
 		{
-			int room = Items.ender_pearl.getItemStackLimit() - pearls.stackSize;
+			int room = max - dest.stackSize;//max was Items.ender_pearl.getItemStackLimit()
+	 
 			if(room > 0)
 			{ 
-				int toDeposit = Math.min(pearls.stackSize,room);
+				int toDeposit = Math.min(dest.stackSize,room);
 			
-				pearls.stackSize += toDeposit;
-				p.inventory.setInventorySlotContents(slotTo, pearls);
+				dest.stackSize += toDeposit;
+				p.inventory.setInventorySlotContents(slotTo, dest);
 
 				stackOrig.stackSize -= toDeposit;
  
