@@ -4,7 +4,9 @@ Mod Status
 
 STUFF FROM SPELL MOD -> OTHERS.. 
 
- 
+This is something that I can very easily put in the config file, so you can toggle each recipe to the cheaper or full version  Next version will also have an option to disable the recipes completely, and let them randomly spawn in dungeon chests (from the config file again). 
+
+ http://minecraft.curseforge.com/mc-mods/232093-power-apples
 
 mod or feature idea: when ender teleporting, the riding entity is left behind. can we bring it? and fix dismount?
 
