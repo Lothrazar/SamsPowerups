@@ -2,16 +2,15 @@
 Mod Status
 ***********
 
-NetHandlerplayserver at processPlayerBlockPlacement
-//could have a setblock event?
+STUFF FROM SPELL MOD -> OTHERS.. 
+
+ 
 
 mod or feature idea: when ender teleporting, the riding entity is left behind. can we bring it? and fix dismount?
 
---TODO: list mc version of each one released ex 14,17,18
-A horse (similar to a spawn/respawn egg) that you can pick up/put down. maybe a mechanical horse? or a horse cage? horse bag of holding?
+Apples - 1.0.2 released
+ -- > 1.1.0    PRIMSARINE APPLE : WATER WALKING !!!!
 
-
-Apples - 1.0.1 released
 
 Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod - need something fresh, if at all.
 	?idea - lapis armor, weaker than iron, but randomly spawns exp orbs?
@@ -61,6 +60,9 @@ TreasureBuff - is this interesting/fleshed out enough to release? Do we want mor
 ***********
 NEW MOD IDEAS
 ***********
+
+NetHandlerplayserver at processPlayerBlockPlacement
+//could have a setblock event?
 
 new mod: respawn eggs standalone. -first, fix sheep color? or drop their dye on the ground? disable villagers? what about horses/dogs?
 
