@@ -26,6 +26,11 @@ CarbonPaper - 1.0.0 released
 Commands - TODO: release this passed server test, ready to release (needs logo)
      ADD /villageinfo command - imported from screen text
 	add allcaps versions, double check aliases etc
+ TODO: i was going to look for conflicts in https://github.com/ForgeEssentials/ForgeEssentialsMain/wiki/Commands%20Module
+//but , that is only 1.7.10 so its okay
+so make sure we note /reference this mod when I do the release
+  ALTERNATE IDEA: the main useful stuff like home/searchx/villageinfo convert into EnderProjectiles items
+  and/or we could put waypoints into OverpoweredInventory buttons, since they are saved in NBT anyway
 
 
 ControlBlocks - 1.0.0 released
