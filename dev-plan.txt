@@ -4,13 +4,8 @@ Mod Status
 
 STUFF FROM SPELL MOD -> OTHERS.. 
 
-This is something that I can very easily put in the config file, so you can toggle each recipe to the cheaper or full version  Next version will also have an option to disable the recipes completely, and let them randomly spawn in dungeon chests (from the config file again). 
 
- http://minecraft.curseforge.com/mc-mods/232093-power-apples
-
-mod or feature idea: when ender teleporting, the riding entity is left behind. can we bring it? and fix dismount?
-
-Apples - 1.1.1   released - TODO for 1.2.0 : Frost Apple (ice) , Lavawalking Apple (blaze rods crafting, BUT netherbrick color)
+Apples - 1.1.1   released - TODO for 1.2.0 : Frost Apple (ice) , Lavawalking Apple (blaze rods crafting, BUT netherbrick color)??
 
 
 Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod - need something fresh, if at all.
@@ -19,6 +14,7 @@ Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod -
 Beetroot - 1.0.0 released
 
 Blocks - Rename/Rebrand as Restricted Commandblocks and/or merge with FarmingBlocks?
+
 BucketBlocks - 1.0.0 released
 
 CarbonPaper - 1.0.0 released
