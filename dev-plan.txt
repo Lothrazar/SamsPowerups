@@ -10,8 +10,7 @@ This is something that I can very easily put in the config file, so you can togg
 
 mod or feature idea: when ender teleporting, the riding entity is left behind. can we bring it? and fix dismount?
 
-Apples - 1.0.2 released
- -- > 1.1.0    PRIMSARINE APPLE : WATER WALKING !!!!
+Apples - 1.1.1   released - TODO for 1.2.0 : Frost Apple (ice) , Lavawalking Apple (blaze rods crafting, BUT netherbrick color)
 
 
 Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod - need something fresh, if at all.
@@ -19,15 +18,15 @@ Armor- cannot use emerald, there is already a popular 'emerald & obsidian' mod -
 
 Beetroot - 1.0.0 released
 
-Blocks - Rename/Rebrand as Restricted Commandblocks
-
+Blocks - Rename/Rebrand as Restricted Commandblocks and/or merge with FarmingBlocks?
 BucketBlocks - 1.0.0 released
 
 CarbonPaper - 1.0.0 released
 
-Commands - passed server test, ready to release (needs logo)
+Commands - TODO: release this passed server test, ready to release (needs logo)
      ADD /villageinfo command - imported from screen text
 	add allcaps versions, double check aliases etc
+
 
 ControlBlocks - 1.0.0 released
 
@@ -35,17 +34,25 @@ ControlInv -  1.0.1 released
 
 EnderProj -  1.0.1 is now out
 
+FancySigns - not coded yet, still prototyping. possibly add in coloured doors too if possible
+
 FarmingBlocks - existing blocks ready for release, add a few more first or rename, 'farming' doesnt make sense
+
+FoodDetails - 1.0.0 released
 
 FragileTorches -  1.0.0 released
 
 HorseFood  -  1.0.0 released
 
+Infinitemutated / overpowered inventory - 1.0.1 released
+
 Macros - 1.0.0 released
 
 MobChanges - Redo the config completely (inspired by sapling growth) - for each hostile mob, list out EXTRA biomes it can spawn in
 
-ocean -  1.0.0 released
+MountedPearl - 1.0.0 released
+
+oceanFloor -  1.0.0 released
 
 Recipes - is this interesting/fleshed out enough to release?  Do we want to put uncrafting on its own?
 
@@ -53,11 +60,14 @@ SaplingGrowth -  1.1.0 released
 
 screen text aka HorseInfo - reduce to only Horses & gamerules.  how about add a config to clear right side?
 
-SpellWheel fix and release , re-evaluate which spells balanced/make sense, more ideas
+SpellWheel TODO re-evaluate which spells balanced/make sense, more ideas. possibly scrap / start over / focus on potion effects / possibly extract chest sack again...
+		One idea: Rebrand as POTION BELT, just consume potions into storage for later, and then use the wheel/belt to use when needed. must have control of using 5/10/30? sec at a time
+
+
 
 Stacks - use CSV config list instead of hardcoded? does another mod exist for this? try it in postInit
 
-TreasureBuff - is this interesting/fleshed out enough to release? Do we want more config control
+TreasureBuff - TODO is this interesting/fleshed out enough to release? Do we want more config control
 
 ***********
 NEW MOD IDEAS
