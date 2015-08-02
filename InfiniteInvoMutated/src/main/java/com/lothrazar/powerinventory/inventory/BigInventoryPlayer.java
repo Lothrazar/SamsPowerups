@@ -31,7 +31,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 	public BigInventoryPlayer(EntityPlayer player)
 	{
 		super(player);
-		this.mainInventory = new ItemStack[Const.ALL_ROWS * Const.ALL_COLS + Const.HOTBAR_SIZE];
+		this.mainInventory = new ItemStack[Const.ALL_SLOTS];
 		bonusInventory = new ItemStack[Const.BONUS_SIZE];
  
 	}
@@ -443,9 +443,9 @@ public class BigInventoryPlayer extends InventoryPlayer
 	@Override
     public void readFromNBT(NBTTagList tags)
     {
-        this.mainInventory = new ItemStack[Const.ALL_ROWS * Const.ALL_COLS + Const.HOTBAR_SIZE];
+        this.mainInventory = new ItemStack[Const.ALL_SLOTS];//was Const.ALL_ROWS * Const.ALL_COLS + Const.HOTBAR_SIZE
         this.armorInventory = new ItemStack[Const.ARMOR_SIZE]; 
-        
+        this.bonusInventory = new ItemStack[Const.BONUS_SIZE]; 
         for (int i = 0; i < tags.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound = tags.getCompoundTagAt(i);
