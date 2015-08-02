@@ -123,7 +123,7 @@ public class BigContainerPlayer extends ContainerPlayer
         for (i = 0; i < Const.hotbarSize; ++i)
         { 
         	cx = 8 + i * Const.square;
-        	cy = 142 + (Const.square * Const.MORE_ROWS);
+        	cy = 142 + (Const.square * (Const.ALL_ROWS-3));//so 12
  
             this.addSlotToContainer(new Slot(playerInventory, i, cx, cy));
         }

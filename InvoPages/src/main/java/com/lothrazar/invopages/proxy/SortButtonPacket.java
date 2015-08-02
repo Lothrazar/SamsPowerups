@@ -5,6 +5,8 @@ import java.util.Queue;
 
 import com.lothrazar.invopages.Const;
 import com.lothrazar.invopages.UtilInventory;
+import com.lothrazar.invopages.inventory.BigContainerPlayer;
+import com.lothrazar.invopages.inventory.BigInventoryPlayer;
 import com.lothrazar.powerinventory.*;
 
 import io.netty.buffer.ByteBuf;
@@ -51,6 +53,19 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 		InventoryPlayer invo = p.inventory;
 		int sortType = message.tags.getInteger(NBT_SORT);
 		
+		
+		if(p.inventoryContainer instanceof BigContainerPlayer)
+		{
+			BigContainerPlayer c =(BigContainerPlayer)p.inventoryContainer;
+			System.out.println("k setpage");
+			if(c.currentPage == 0)
+				c.setPage(1);
+			else
+				c.setPage(0);
+			
+			
+			return null;
+		}
 		switch(sortType)
 		{
 		case Const.SORT_LEFT:

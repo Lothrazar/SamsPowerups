@@ -6,7 +6,15 @@ package com.lothrazar.invopages;
 public class Const
 { 
     public static final String MODID = "invopages";
-    public static final String INVENTORY_TEXTURE = "textures/gui/inventory_pages.png";
+    public static final String INVENTORY_TEXTURE = "textures/gui/inventory_12x18.png";
+    public static final String getInventoryTexture()
+    {
+    	if(ALL_ROWS == 12)
+    		return "textures/gui/inventory_12x18.png";
+    	else if(ALL_ROWS == 15)
+    		return "textures/gui/inventory_15x25.png";
+    	else return null;
+    }
     
 	public static final String NBT_SLOT = "Slot";
 	public static final String NBT_PLAYER = "Player";
@@ -21,14 +29,16 @@ public class Const
 	public final static int hotbarSize = 9;
 	public final static int armorSize = 4; 
  
-	public final static int MORE_ROWS = 9;
-	public final static int ALL_ROWS = 3 + MORE_ROWS; 
-	public final static int MORE_COLS = 9;
-	public final static int ALL_COLS = 9 + MORE_COLS; 
-	public final static int invoSize  = ALL_COLS * ALL_ROWS; 
+//	public static int MORE_ROWS = 9;
+	public static int ALL_ROWS = 15; //12
+	//public static int MORE_COLS = 9;
+	public static int ALL_COLS = 18; //18
+	private final static int SLOTS_PER_PAGE = ALL_COLS * ALL_ROWS;
+	private final static int PAGES = 1;
+	public final static int INVO_SIZE  = PAGES * SLOTS_PER_PAGE; 
 
 	//these are slot indices. different than slot numbers (important)
-    public static final int enderPearlSlot = 777; 
+    public static final int enderPearlSlot = 777777; 
     public static final int enderChestSlot = enderPearlSlot+1;
     public static final int clockSlot = enderPearlSlot+2;
     public static final int compassSlot = enderPearlSlot+3;

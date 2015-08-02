@@ -182,7 +182,7 @@ public class GuiBigInventory extends GuiInventory
 	{ 
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glScalef(1.0F, 1.0F, 1.0F);//so it does not change scale
-        this.mc.getTextureManager().bindTexture(new ResourceLocation(Const.MODID, Const.INVENTORY_TEXTURE));
+        this.mc.getTextureManager().bindTexture(new ResourceLocation(Const.MODID, Const.getInventoryTexture()));
 
         drawTexturedQuadFit(this.guiLeft, this.guiTop,this.xSize,this.ySize,0);
       

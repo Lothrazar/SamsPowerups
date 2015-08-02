@@ -34,6 +34,7 @@ public class BigContainerPlayer extends ContainerPlayer
     public boolean isLocalWorld;
 
 	final int padding = 6;
+	final int OFFSCREEN = -999;
 	//these get used here for actual slot, and in GUI for texture
     //ender pearl is in the far bottom right corner, and the others move left relative to this
 
@@ -46,7 +47,7 @@ public class BigContainerPlayer extends ContainerPlayer
 	public final int echestX = pearlX;
 	public final int echestY = pearlY + 3*Const.square;
 
-	public final int bottleX = GuiBigInventory.texture_width - Const.square - padding - 1;
+	public final int bottleX = GuiBigInventory.texture_width - Const.square - padding - 1+2;
 	public final int bottleY = 20 + 2 * Const.square;
 
 //store slot numbers  (not indexes) as we go. so that transferStack.. is actually readable
@@ -65,6 +66,7 @@ public class BigContainerPlayer extends ContainerPlayer
 	static int S_CLOCK;
 	static int S_COMPASS;
 	static int S_BOTTLE;
+	
 	public BigContainerPlayer(BigInventoryPlayer playerInventory, boolean isLocal, EntityPlayer player)
 	{
 		super(playerInventory, isLocal, player);
@@ -75,7 +77,7 @@ public class BigContainerPlayer extends ContainerPlayer
  
         int i,j,cx,cy;//rows and cols of vanilla, not extra
 
-final int xpadding = 7;
+        final int xpadding = 7;
 
         S_RESULT = this.inventorySlots.size();
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 
@@ -125,7 +127,7 @@ final int xpadding = 7;
         for (i = 0; i < Const.hotbarSize; ++i)
         { 
         	cx = xpadding + i * Const.square;
-        	cy = 142 + (Const.square * Const.MORE_ROWS);
+        	cy = 142 + (Const.square * (Const.ALL_ROWS-3));//so 12?
  
             this.addSlotToContainer(new Slot(playerInventory, i, cx, cy));
         }
@@ -133,16 +135,52 @@ final int xpadding = 7;
         S_MAIN_START = this.inventorySlots.size();
         int slotIndex = Const.hotbarSize;
         
+        
+        int columnSize = 9; 
+          
+        Slot ns;
         for( i = 0; i < Const.ALL_ROWS; i++)
 		{
-            for ( j = 0; j < Const.ALL_COLS; ++j)
+            for ( j = 0; j < columnSize; ++j)
             { 
             	cx = xpadding + j * Const.square;
             	cy = 84 + i * Const.square;
-                this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
+            	
+            	ns = new Slot(playerInventory, slotIndex, cx, cy);
+ 
+                this.addSlotToContainer(ns);
+          
             	slotIndex++;
             }
         }
+
+        for( i = 0; i < Const.ALL_ROWS; i++)
+		{
+            for ( j = columnSize; j < Const.ALL_COLS; ++j)
+            { 
+            	cx = xpadding + j * Const.square;
+            	cy = 84 + i * Const.square;
+            	
+            	ns = new Slot(playerInventory, slotIndex, cx, cy);
+ 
+                this.addSlotToContainer(ns);
+
+            	slotIndex++;
+            }
+        }
+/*
+     //test extras
+        for(i = 0; i < Const.SLOTS_PER_PAGE; i++)
+        {
+        	ns = new Slot(playerInventory, slotIndex, 1, 1);
+        	 
+            this.addSlotToContainer(ns);
+
+        	slotIndex++;
+        }
+        */
+        
+        
         
         S_MAIN_END = this.inventorySlots.size() - 1;
         
@@ -163,6 +201,39 @@ final int xpadding = 7;
         
         this.onCraftMatrixChanged(this.craftMatrix);
 		this.invo = playerInventory; 
+	}
+	
+	public int currentPage = 0;
+	public void setPage(int page)
+	{ 
+		currentPage = page;
+		System.out.println("setpage "+page);
+		/*
+		int st = Const.SLOTS_PER_PAGE * currentPage;
+		int end = Const.SLOTS_PER_PAGE * (currentPage+1);
+
+Slot s;
+		for(int i = 0; i < mainSlots.length; i++)
+		{
+			s = mainSlots[i];
+			
+			if(i >= st && i <= end)
+			{
+				System.out.println("current page has "+i);
+				
+				s.xDisplayPosition = pageSpotX[i];
+				s.yDisplayPosition = pageSpotY[i];
+			}
+			else
+			{
+
+				System.out.println("current NOT "+i);
+				s.xDisplayPosition = OFFSCREEN;
+				s.yDisplayPosition = OFFSCREEN;
+			}
+		}
+
+*/
 	}
   
 	@Override
