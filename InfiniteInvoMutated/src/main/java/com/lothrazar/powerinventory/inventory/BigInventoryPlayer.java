@@ -39,29 +39,14 @@ public class BigInventoryPlayer extends InventoryPlayer
 	@Override
 	public ItemStack getStackInSlot(int index)
     {
-   //ARMOR_START == this.mainInventory.length
+   //reminder, it happens that ARMOR_START == this.mainInventory.length
         if (index >= Const.ARMOR_START && index < Const.ARMOR_START + Const.ARMOR_SIZE)//armor slots depend on being right at the end like 384
         {
-            index -= this.mainInventory.length;
-            //now index is in [0,3]
-            //??
-//armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots
-
-        //    aitemstack = this.armorInventory;
-            return this.armorInventory[index];
+            return this.armorInventory[index - Const.ARMOR_START];
         }
         else if (index >= Const.BONUS_START && index < Const.BONUS_START + Const.BONUS_SIZE)//armor slots depend on being right at the end like 384
         {
-        	//onst.BONUS_START == this.mainInventory.length + Const.ARMOR_SIZE 
-        	//a reminder that BONUS_START = ALL_ROWS * ALL_COLS + Const.ARMOR_SIZE; ==aitemstack.length + Const.ARMOR_SIZE 
-        	
-        	int type = index - Const.BONUS_START;
-        	//if(type >= 0 && type < bonusInventory.length)
-        	//{
-	        	//System.out.println("index "+index+" tried for type "+type);
-	        	return bonusInventory[type];
-	       // }
-        	
+	        return bonusInventory[index - Const.BONUS_START];
         }
         return this.mainInventory[index];
     }
@@ -395,43 +380,6 @@ public class BigInventoryPlayer extends InventoryPlayer
                 tags.appendTag(nbttagcompound);
             }
         }
-/*
-        if(this.enderChestStack != null)
-        {
-        	nbttagcompound = new NBTTagCompound();
-            nbttagcompound.setInteger(Const.NBT_SLOT, Const.enderChestSlot);  
-            this.enderChestStack.writeToNBT(nbttagcompound);
-            tags.appendTag(nbttagcompound);
-        }
-        if(this.enderPearlStack != null)
-        {
-        	nbttagcompound = new NBTTagCompound();
-            nbttagcompound.setInteger(Const.NBT_SLOT, Const.enderPearlSlot);  
-            this.enderPearlStack.writeToNBT(nbttagcompound);
-            tags.appendTag(nbttagcompound);
-        }
-        if(this.clockStack != null)
-        {
-        	nbttagcompound = new NBTTagCompound();
-            nbttagcompound.setInteger(Const.NBT_SLOT, Const.clockSlot);  
-            this.clockStack.writeToNBT(nbttagcompound);
-            tags.appendTag(nbttagcompound);
-        }
-        if(this.compassStack != null)
-        {
-        	nbttagcompound = new NBTTagCompound();
-            nbttagcompound.setInteger(Const.NBT_SLOT, Const.compassSlot);  
-            this.compassStack.writeToNBT(nbttagcompound);
-            tags.appendTag(nbttagcompound);
-        }
-        if(this.bottleStack != null)
-        {
-        	nbttagcompound = new NBTTagCompound();
-            nbttagcompound.setInteger(Const.NBT_SLOT, Const.bottleSlot);  
-            this.bottleStack.writeToNBT(nbttagcompound);
-            tags.appendTag(nbttagcompound);
-        }
-*/
         for (i = 0; i < this.bonusInventory.length; ++i)
         {
             if (this.bonusInventory[i] != null)
@@ -462,88 +410,24 @@ public class BigInventoryPlayer extends InventoryPlayer
     public ItemStack decrStackSize(int index, int count)
     {
         ItemStack itemstack;
-//TODO: these ifelse brnaches are almost all identical. find a way to share code? make function?
-    	if(index == Const.BONUS_START+Const.type_echest)
-    	{ 
-            itemstack = this.bonusInventory[Const.type_echest];
-            this.bonusInventory[Const.type_echest] = null;
-            return itemstack;
-    	}    	
-    	else if(index == Const.BONUS_START+Const.type_epearl)
+
+        if(index >= Const.BONUS_START && index < Const.BONUS_START + Const.BONUS_SIZE)
     	{
-    		 if (this.bonusInventory[Const.type_epearl].stackSize <= count)
+    		int bonusType = index - Const.BONUS_START;// like armorType
+    		
+    		 if (this.bonusInventory[bonusType].stackSize <= count)
              {
-                 itemstack = this.bonusInventory[Const.type_epearl];
-                 this.bonusInventory[Const.type_epearl] = null;
+                 itemstack = this.bonusInventory[bonusType];
+                 this.bonusInventory[bonusType] = null;
                  return itemstack;
              }
     		 else
              {
-                 itemstack = this.bonusInventory[Const.type_epearl].splitStack(count);
+                 itemstack = this.bonusInventory[bonusType].splitStack(count);
 
-                 if (this.bonusInventory[Const.type_epearl].stackSize == 0)
+                 if (this.bonusInventory[bonusType].stackSize == 0)
                  {
-                	 this.bonusInventory[Const.type_epearl] = null;
-                 }
-
-                 return itemstack;
-             }
-    	}	
-    	else if(index == Const.BONUS_START+Const.type_clock)
-    	{
-    		 if (this.bonusInventory[Const.type_clock].stackSize <= count)
-             {
-                 itemstack = this.bonusInventory[Const.type_clock];
-                 this.bonusInventory[Const.type_clock] = null;
-                 return itemstack;
-             }
-    		 else
-             {
-                 itemstack = this.bonusInventory[Const.type_clock].splitStack(count);
-
-                 if (this.bonusInventory[Const.type_clock].stackSize == 0)
-                 {
-                	 this.bonusInventory[Const.type_clock] = null;
-                 }
-
-                 return itemstack;
-             }
-    	}
-    	else if(index == Const.BONUS_START+Const.type_compass)
-    	{
-    		 if (this.bonusInventory[Const.type_compass].stackSize <= count)
-             {
-                 itemstack = this.bonusInventory[Const.type_compass];
-                 this.bonusInventory[Const.type_compass] = null;
-                 return itemstack;
-             }
-    		 else
-             {
-                 itemstack = this.bonusInventory[Const.type_compass].splitStack(count);
-
-                 if (this.bonusInventory[Const.type_compass].stackSize == 0)
-                 {
-                	 this.bonusInventory[Const.type_compass] = null;
-                 }
-
-                 return itemstack;
-             }
-    	}
-    	else if(index == Const.BONUS_START+Const.type_bottle)
-    	{
-    		 if (this.bonusInventory[Const.type_bottle].stackSize <= count)
-             {
-                 itemstack = this.bonusInventory[Const.type_bottle];
-                 this.bonusInventory[Const.type_bottle] = null;
-                 return itemstack;
-             }
-    		 else
-             {
-                 itemstack = this.bonusInventory[Const.type_bottle].splitStack(count);
-
-                 if (this.bonusInventory[Const.type_bottle].stackSize == 0)
-                 {
-                	 this.bonusInventory[Const.type_bottle] = null;
+                	 this.bonusInventory[bonusType] = null;
                  }
 
                  return itemstack;
@@ -560,7 +444,7 @@ public class BigInventoryPlayer extends InventoryPlayer
     public void readFromNBT(NBTTagList tags)
     {
         this.mainInventory = new ItemStack[Const.ALL_ROWS * Const.ALL_COLS + Const.HOTBAR_SIZE];
-        this.armorInventory = new ItemStack[armorInventory == null? Const.ARMOR_SIZE : armorInventory.length]; // Just in case it isn't standard size
+        this.armorInventory = new ItemStack[Const.ARMOR_SIZE]; 
         
         for (int i = 0; i < tags.tagCount(); ++i)
         {
@@ -570,33 +454,17 @@ public class BigInventoryPlayer extends InventoryPlayer
 
             if (itemstack != null)
             {
-            	if(j == Const.BONUS_START+Const.type_epearl)
-            	{
-            		bonusInventory[Const.type_epearl] = itemstack;
-            	}
-            	if(j == Const.BONUS_START+Const.type_echest)
-                {
-            		bonusInventory[Const.type_echest] = itemstack;
-                }
-            	if(j == Const.BONUS_START+Const.type_clock)
-                {
-            		bonusInventory[Const.type_clock] = itemstack;
-                }
-            	if(j == Const.BONUS_START+Const.type_compass)
-                {
-            		bonusInventory[Const.type_compass] = itemstack;
-                }
-            	if(j == Const.BONUS_START+Const.type_bottle)
-                {
-            		bonusInventory[Const.type_bottle] = itemstack;
-                }
                 if (j >= 0 && j < this.mainInventory.length)
                 {
             		this.mainInventory[j] = itemstack;
                 }
-                if (j >= (Integer.MAX_VALUE - 100) && j <= Integer.MAX_VALUE && j - (Integer.MAX_VALUE - 100) < this.armorInventory.length)
+                if (j >= Const.ARMOR_START && j < Const.ARMOR_START  + Const.ARMOR_SIZE)
                 {
-            		this.armorInventory[j - (Integer.MAX_VALUE - 100)] = itemstack;
+                	this.armorInventory[j - Const.ARMOR_START] = itemstack;
+                }
+                if (j >= Const.BONUS_START && j < Const.BONUS_START  + Const.BONUS_SIZE)
+                {
+                	this.bonusInventory[j - Const.BONUS_START] = itemstack;
                 }
             }
         }
