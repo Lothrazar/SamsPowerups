@@ -48,6 +48,7 @@ public class BigInventoryPlayer extends InventoryPlayer
         {
 	        return bonusInventory[index - Const.BONUS_START];
         }
+        System.out.println("?"+index);
         return this.mainInventory[index];
     }
 	

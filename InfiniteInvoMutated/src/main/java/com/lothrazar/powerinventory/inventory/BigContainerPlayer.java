@@ -111,7 +111,8 @@ public class BigContainerPlayer extends ContainerPlayer
         	cx = 8;
         	cy = 8 + i * Const.sq;
             final int k = i;
-            slotIndex = playerInventory.getSizeInventory() - 1 - i;
+            //getSizeInventory==this.mainInventory.length + 4;
+            slotIndex = Const.ARMOR_START + i;//playerInventory.getSizeInventory() - 1 - i;
             this.addSlotToContainer(new Slot(playerInventory,  slotIndex, cx, cy)
             { 
             	public int getSlotStackLimit()
