@@ -113,7 +113,7 @@ public class GuiBigInventory extends GuiInventory
 	{
 		final int s = 16;
 		String st;
-		if(container.invo.getStackInSlot(Const.enderChestSlot) == null)
+		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_echest) == null)
 		{
 			btnEnder.enabled = false;
  
@@ -124,8 +124,8 @@ public class GuiBigInventory extends GuiInventory
 			btnEnder.enabled = true; 
 		}
 		
-		if(container.invo.getStackInSlot(Const.bottleSlot) == null || 
-		   container.invo.getStackInSlot(Const.bottleSlot).getItem() == Items.experience_bottle	)
+		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_bottle) == null || 
+		   container.invo.getStackInSlot(Const.BONUS_START+Const.type_bottle).getItem() == Items.experience_bottle	)
 		{
 			btnExp.enabled = false;
   
@@ -136,17 +136,17 @@ public class GuiBigInventory extends GuiInventory
 			btnExp.enabled = true; 
 		}
 
-		if(container.invo.getStackInSlot(Const.enderPearlSlot) == null)
+		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_epearl) == null)
 		{  
 			drawTextureSimple("textures/items/empty_enderpearl.png",container.pearlX, container.pearlY,s,s);
 		}
 
-		if(container.invo.getStackInSlot(Const.compassSlot) == null)
+		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_compass) == null)
 		{ 
 			drawTextureSimple("textures/items/empty_compass.png",container.compassX, container.compassY,s,s);
 		}
 
-		if(container.invo.getStackInSlot(Const.clockSlot) == null)
+		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_clock) == null)
 		{  
 			drawTextureSimple("textures/items/empty_clock.png",container.clockX, container.clockY,s,s);
 		}

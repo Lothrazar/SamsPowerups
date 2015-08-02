@@ -36,19 +36,12 @@ public class Const
 //375;//
 	//these are slot indices. different than slot numbers (important) comes right after armor
     public static final int BONUS_START = HOTBAR_SIZE+ALL_ROWS * ALL_COLS + Const.ARMOR_SIZE; 
-    static final int type_epearl = 0;
-    static final int type_echest = 1;
-    static final int type_clock=2;
-    static final int type_compass=3;
-    static final int type_bottle=4;
-    
-    public static final int enderPearlSlot = BONUS_START+type_epearl; 
-    public static final int enderChestSlot = enderPearlSlot+type_echest;
-    public static final int clockSlot = enderPearlSlot+type_clock;
-    public static final int compassSlot = enderPearlSlot+type_compass;
-    public static final int bottleSlot = enderPearlSlot+type_bottle;
-    
-     
+    public static final int type_epearl = 0;
+    public static final int type_echest = 1;
+    public static final int type_clock=2;
+    public static final int type_compass=3;
+    public static final int type_bottle=4;
+ 
 	public final static int INV_ENDER = 1;
 	public final static int INV_PLAYER = 2;
 	

@@ -6,6 +6,7 @@ import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.HashMap;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.client.gui.inventory.GuiInventory;
@@ -256,10 +257,10 @@ public class EventHandler
 			int xRight = Minecraft.getMinecraft().displayWidth/2 - size*2;
 			int yBottom = Minecraft.getMinecraft().displayHeight/2 - size*2;
 
-			if(player.inventory.getStackInSlot(Const.clockSlot) != null)
+			if(player.inventory.getStackInSlot(Const.BONUS_START+Const.type_clock) != null)
 				renderItemAt(new ItemStack(Items.clock),xLeft,yBottom,size);
 			
-			if(player.inventory.getStackInSlot(Const.compassSlot) != null)
+			if(player.inventory.getStackInSlot(Const.BONUS_START+Const.type_compass) != null)
 				renderItemAt(new ItemStack(Items.compass),xRight,yBottom,size);
  
 		}

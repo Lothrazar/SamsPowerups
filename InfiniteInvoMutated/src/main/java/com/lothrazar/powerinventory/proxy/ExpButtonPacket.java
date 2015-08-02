@@ -51,7 +51,7 @@ public class ExpButtonPacket implements IMessage , IMessageHandler<ExpButtonPack
 		//in the game, they drop between 3 and 11 experience //src http://minecraft.gamepedia.com/Bottle_o'_Enchanting
 		//int e =ModConfig.expPerBottle;
 		
-		ItemStack bottles = player.inventory.getStackInSlot(Const.bottleSlot);
+		ItemStack bottles = player.inventory.getStackInSlot(Const.BONUS_START+Const.type_bottle);
 		
 		if(bottles != null && bottles.getItem() == Items.glass_bottle)
 		{
@@ -73,7 +73,7 @@ public class ExpButtonPacket implements IMessage , IMessageHandler<ExpButtonPack
 			{ 
 				UtilExperience.drainExp(player, bottlesToDrain * ModConfig.expPerBottle);
 				
-				player.inventory.setInventorySlotContents(Const.bottleSlot, new ItemStack(Items.experience_bottle,bottlesToDrain));
+				player.inventory.setInventorySlotContents(Const.BONUS_START+Const.type_bottle, new ItemStack(Items.experience_bottle,bottlesToDrain));
 			
 			
 				if(bottlesToDrain < bottles.stackSize) 

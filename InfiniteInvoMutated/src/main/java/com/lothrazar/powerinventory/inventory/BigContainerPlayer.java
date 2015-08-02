@@ -120,19 +120,19 @@ public class BigContainerPlayer extends ContainerPlayer
         S_MAIN_END = this.inventorySlots.size() - 1;
         
         S_PEARL =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotEnderPearl(playerInventory, Const.enderPearlSlot, pearlX, pearlY));
+        this.addSlotToContainer(new SlotEnderPearl(playerInventory, Const.BONUS_START+Const.type_epearl, pearlX, pearlY));
 
         S_ECHEST =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotEnderChest(playerInventory, Const.enderChestSlot, echestX, echestY)); 
+        this.addSlotToContainer(new SlotEnderChest(playerInventory, Const.BONUS_START+Const.type_echest, echestX, echestY)); 
 
         S_CLOCK =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotClock(playerInventory, Const.clockSlot, clockX, clockY)); 
+        this.addSlotToContainer(new SlotClock(playerInventory, Const.BONUS_START+Const.type_clock, clockX, clockY)); 
 
         S_COMPASS =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotCompass(playerInventory, Const.compassSlot, compassX, compassY)); 
+        this.addSlotToContainer(new SlotCompass(playerInventory, Const.BONUS_START+Const.type_compass, compassX, compassY)); 
         
         S_BOTTLE =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotBottle(playerInventory, Const.bottleSlot, bottleX, bottleY)); 
+        this.addSlotToContainer(new SlotBottle(playerInventory, Const.BONUS_START+Const.type_bottle, bottleX, bottleY)); 
         
         //384 85 86 87 is what it gets, when INV_SIZE = 375, meaning 375+9=384
         S_ARMOR_START = this.inventorySlots.size(); 
@@ -257,8 +257,8 @@ public class BigContainerPlayer extends ContainerPlayer
             	
             	if(stackCopy.getItem() == Items.ender_pearl && 
             		(
-        			p.inventory.getStackInSlot(Const.enderPearlSlot) == null || 
-        			p.inventory.getStackInSlot(Const.enderPearlSlot).stackSize < Items.ender_pearl.getItemStackLimit(stackCopy))
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_epearl) == null || 
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_epearl).stackSize < Items.ender_pearl.getItemStackLimit(stackCopy))
         			)
         		{
             		 
@@ -269,8 +269,8 @@ public class BigContainerPlayer extends ContainerPlayer
         		}
             	else if(stackCopy.getItem() == Item.getItemFromBlock(Blocks.ender_chest) && 
             		(
-        			p.inventory.getStackInSlot(Const.enderChestSlot) == null || 
-        			p.inventory.getStackInSlot(Const.enderChestSlot).stackSize < 1)
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_echest) == null || 
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_echest).stackSize < 1)
         			)
         		{ 
             		if (!this.mergeItemStack(stackOrig, S_ECHEST, S_ECHEST+1, false))
@@ -280,8 +280,8 @@ public class BigContainerPlayer extends ContainerPlayer
         		}
             	else if(stackCopy.getItem() == Items.compass && 
             		(
-        			p.inventory.getStackInSlot(Const.compassSlot) == null || 
-        			p.inventory.getStackInSlot(Const.compassSlot).stackSize < 1)
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_compass) == null || 
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_compass).stackSize < 1)
         			)
         		{ 
             		if (!this.mergeItemStack(stackOrig, S_COMPASS, S_COMPASS+1, false))
@@ -291,8 +291,8 @@ public class BigContainerPlayer extends ContainerPlayer
         		}
             	else if(stackCopy.getItem() == Items.clock && 
             		(
-        			p.inventory.getStackInSlot(Const.clockSlot) == null || 
-        			p.inventory.getStackInSlot(Const.clockSlot).stackSize < 1)
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_clock) == null || 
+        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_clock).stackSize < 1)
         			)
         		{ 
             		if (!this.mergeItemStack(stackOrig, S_CLOCK, S_CLOCK+1, false))
