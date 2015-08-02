@@ -189,7 +189,7 @@ public class UtilInventory
 		
 			if(chestItem != null) {   continue; }//  chest slot not empty, skip over it
 	 
-			for(int islotInv = Const.hotbarSize; islotInv < player.inventory.getSizeInventory() - Const.armorSize; islotInv++)
+			for(int islotInv = Const.HOTBAR_SIZE; islotInv < player.inventory.getSizeInventory() - Const.ARMOR_SIZE; islotInv++)
 			{
 				invItem = player.inventory.getStackInSlot(islotInv);
 				
@@ -225,7 +225,7 @@ public class UtilInventory
 		
 			if(chestItem == null) {   continue; }//  empty chest slot
 			 
-			for(int islotInv = Const.hotbarSize; islotInv < player.inventory.getSizeInventory() - Const.armorSize; islotInv++)
+			for(int islotInv = Const.HOTBAR_SIZE; islotInv < player.inventory.getSizeInventory() - Const.ARMOR_SIZE; islotInv++)
 			{
 			 
 				invItem = player.inventory.getStackInSlot(islotInv);
@@ -272,7 +272,7 @@ public class UtilInventory
 
 		ItemStack item;
 		
-		for(int i = invo.getSizeInventory() - (Const.armorSize + 1); i >= Const.hotbarSize;i--)
+		for(int i = invo.getSizeInventory() - (Const.ARMOR_SIZE + 1); i >= Const.HOTBAR_SIZE;i--)
 		{
 			item = invo.getStackInSlot(i);
 			
@@ -299,7 +299,7 @@ public class UtilInventory
 
 		ItemStack item;
 		
-		for(int i = Const.hotbarSize; i < invo.getSizeInventory() - Const.armorSize;i++)
+		for(int i = Const.HOTBAR_SIZE; i < invo.getSizeInventory() - Const.ARMOR_SIZE;i++)
 		{
 			item = invo.getStackInSlot(i);
 			
@@ -336,7 +336,7 @@ public class UtilInventory
 		ItemStack item = null;
 		//0 to 8 is crafting
 		//armor is 384-387
-		for(int i = invo.getSizeInventory() - (Const.armorSize + 1); i >= Const.hotbarSize;i--)//388-4 384
+		for(int i = invo.getSizeInventory() - (Const.ARMOR_SIZE + 1); i >= Const.HOTBAR_SIZE;i--)//388-4 384
 		{
 			item = invo.getStackInSlot(i);
 			
@@ -359,7 +359,7 @@ public class UtilInventory
 		int iEmpty = -1;
 		ItemStack item = null;
 
-		for(int i = Const.hotbarSize; i < invo.getSizeInventory() - Const.armorSize;i++)
+		for(int i = Const.HOTBAR_SIZE; i < invo.getSizeInventory() - Const.ARMOR_SIZE;i++)
 		{ 
 			item = invo.getStackInSlot(i);
 			

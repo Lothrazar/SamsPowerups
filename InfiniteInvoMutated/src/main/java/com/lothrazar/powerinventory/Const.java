@@ -25,14 +25,14 @@ public class Const
 	public static final String NBT_INVENTORY = "Inventory";
 	public static final String NBT_INVOSIZE = "invoSize";
 
-	public static final int square = 18;
-	public final static int hotbarSize = 9;
-	public final static int armorSize = 4; 
- 
+	public static final int sq = 18;
+	public final static int HOTBAR_SIZE = 9;
+	public final static int ARMOR_SIZE = 4; 
+ //TODO: what else needs to change to get to 12 18
 	public static int ALL_ROWS = 3 + 12;//3+12=15
 	public static int ALL_COLS = 9 + 16;//9+16=25
-	public final static int INV_SIZE  = ALL_ROWS * ALL_COLS;//15*25=375 
-
+	//public final static int INV_SIZE  = ALL_ROWS * ALL_COLS;//15*25=375 
+//375;//
 	//these are slot indices. different than slot numbers (important)
     public static final int enderPearlSlot = 777777; 
     public static final int enderChestSlot = enderPearlSlot+1;

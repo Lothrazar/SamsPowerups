@@ -40,14 +40,14 @@ public class BigContainerPlayer extends ContainerPlayer
 	public final int pearlX = 80; 
 	public final int pearlY = 8; 
 	public final int compassX = pearlX;
-	public final int compassY = pearlY + Const.square;
+	public final int compassY = pearlY + Const.sq;
 	public final int clockX = pearlX;
-	public final int clockY = pearlY + 2*Const.square;
+	public final int clockY = pearlY + 2*Const.sq;
 	public final int echestX = pearlX;
-	public final int echestY = pearlY + 3*Const.square;
+	public final int echestY = pearlY + 3*Const.sq;
 
-	public final int bottleX = GuiBigInventory.texture_width - Const.square - padding - 1;
-	public final int bottleY = 20 + 2 * Const.square;
+	public final int bottleX = GuiBigInventory.texture_width - Const.sq - padding - 1;
+	public final int bottleY = 20 + 2 * Const.sq;
 
 //store slot numbers  (not indexes) as we go. so that transferStack.. is actually readable
 	 
@@ -85,8 +85,8 @@ public class BigContainerPlayer extends ContainerPlayer
         { 
             for (j = 0; j < craftSize; ++j)
             {  
-    			cx = 114 + j * Const.square ; 
-    			cy = 20 + i * Const.square ;
+    			cx = 114 + j * Const.sq ; 
+    			cy = 20 + i * Const.sq ;
 
         		this.addSlotToContainer(new Slot(this.craftMatrix, j + i * this.craftSize, cx , cy)); 
             }
@@ -94,10 +94,10 @@ public class BigContainerPlayer extends ContainerPlayer
         S_CRAFT_END = this.inventorySlots.size() - 1;
         S_ARMOR_START = this.inventorySlots.size();
  
-        for (i = 0; i < Const.armorSize; ++i)
+        for (i = 0; i < Const.ARMOR_SIZE; ++i)
         {
         	cx = 8;
-        	cy = 8 + i * Const.square;
+        	cy = 8 + i * Const.sq;
             final int k = i;
  
             this.addSlotToContainer(new Slot(playerInventory,  playerInventory.getSizeInventory() - 1 - i, cx, cy)
@@ -120,23 +120,23 @@ public class BigContainerPlayer extends ContainerPlayer
         }
         S_ARMOR_END = this.inventorySlots.size() - 1;
         S_BAR_START = this.inventorySlots.size();
-        for (i = 0; i < Const.hotbarSize; ++i)
+        for (i = 0; i < Const.HOTBAR_SIZE; ++i)
         { 
-        	cx = 8 + i * Const.square;
-        	cy = 142 + (Const.square * (Const.ALL_ROWS-3));//so 12
+        	cx = 8 + i * Const.sq;
+        	cy = 142 + (Const.sq * (Const.ALL_ROWS-3));//so 12
  
             this.addSlotToContainer(new Slot(playerInventory, i, cx, cy));
         }
         S_BAR_END = this.inventorySlots.size() - 1;
         S_MAIN_START = this.inventorySlots.size();
-        int slotIndex = Const.hotbarSize;
+        int slotIndex = Const.HOTBAR_SIZE;
         
         for( i = 0; i < Const.ALL_ROWS; i++)
 		{
             for ( j = 0; j < Const.ALL_COLS; ++j)
             { 
-            	cx = 8 + j * Const.square;
-            	cy = 84 + i * Const.square;
+            	cx = 8 + j * Const.sq;
+            	cy = 84 + i * Const.sq;
                 this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
             	slotIndex++;
             }
