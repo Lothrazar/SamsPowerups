@@ -39,8 +39,8 @@ public class BigInventoryPlayer extends InventoryPlayer
 	@Override
 	public ItemStack getStackInSlot(int index)
     {
-   
-        if (index >= this.mainInventory.length && index < this.mainInventory.length + Const.ARMOR_SIZE)//armor slots depend on being right at the end like 384
+   //ARMOR_START == this.mainInventory.length
+        if (index >= Const.ARMOR_START && index < Const.ARMOR_START + Const.ARMOR_SIZE)//armor slots depend on being right at the end like 384
         {
             index -= this.mainInventory.length;
             //now index is in [0,3]
@@ -50,55 +50,18 @@ public class BigInventoryPlayer extends InventoryPlayer
         //    aitemstack = this.armorInventory;
             return this.armorInventory[index];
         }
-        else if (index >= this.mainInventory.length + Const.ARMOR_SIZE && index < Const.BONUS_START + Const.BONUS_SIZE)//armor slots depend on being right at the end like 384
+        else if (index >= Const.BONUS_START && index < Const.BONUS_START + Const.BONUS_SIZE)//armor slots depend on being right at the end like 384
         {
+        	//onst.BONUS_START == this.mainInventory.length + Const.ARMOR_SIZE 
         	//a reminder that BONUS_START = ALL_ROWS * ALL_COLS + Const.ARMOR_SIZE; ==aitemstack.length + Const.ARMOR_SIZE 
         	
         	int type = index - Const.BONUS_START;
-        	if(type >= 0 && type < bonusInventory.length){
+        	//if(type >= 0 && type < bonusInventory.length)
+        	//{
 	        	//System.out.println("index "+index+" tried for type "+type);
 	        	return bonusInventory[type];
-	        }
-        	/*
-        	if(index == Const.enderPearlSlot){return enderPearlStack;}//bonus + 0, and so on
-            else if(index == Const.enderChestSlot){return enderChestStack;} 
-            else if(index == Const.clockSlot){return clockStack;}
-            else if(index == Const.compassSlot){return compassStack;} 
-            else if(index == Const.bottleSlot){return bottleStack;}  
-        	*/
-        	/* 388 tried for type 0
-[12:03:37] [Client thread/INFO] [STDOUT]: [com.lothrazar.powerinventory.inventory.BigInventoryPlayer:getStackInSlot:92]: index 389 tried for type 1
-[12:03:37] [Client thread/INFO] [STDOUT]: [com.lothrazar.powerinventory.inventory.BigInventoryPlayer:getStackInSlot:92]: index 390 tried for type 2
-[12:03:37] [Client thread/INFO] [STDOUT]: [com.lothrazar.powerinventory.inventory.BigInventoryPlayer:getStackInSlot:92]: index 391 tried for type 3
-[12:03:37] [Client thread/INFO] [STDOUT]: [com.lothrazar.powerinventory.inventory.BigInventoryPlayer:getStackInSlot:92]: index 392 tried for type 4*/
-        	///int type = index - Const.BONUS_START;
-        	//return bonusInventory[Const.BONUS_START + type];
+	       // }
         	
-        	//TODO: 
-        	/*
-    public static final int type_epearl = 0;
-    public static final int type_echest = 1;
-    public static final int type_clock=2;
-    public static final int type_compass=3;
-    public static final int type_bottle=4;
-    public static final int enderPearlSlot = BONUS_START+type_epearl; 
-    public static final int enderChestSlot = BONUS_START+type_echest;
-    public static final int clockSlot = BONUS_START+type_clock;
-    public static final int compassSlot = BONUS_START+type_compass;
-    public static final int bottleSlot = BONUS_START+type_bottle;*/
-        	/*
-		bonusInventory[Const.type_epearl] = enderPearlStack;
-		bonusInventory[Const.type_echest] = enderChestStack;
-		bonusInventory[Const.type_clock] = clockStack;
-		bonusInventory[Const.type_compass] = compassStack;
-		bonusInventory[Const.type_bottle] = bottleStack;*/
-          //  index -= aitemstack.length;
-            //now index is in [0,3]
-            //??
-//armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots
-
-        //    aitemstack = this.armorInventory;
-            //return this.armorInventory[index];
         }
         return this.mainInventory[index];
     }

@@ -35,7 +35,8 @@ public class Const
 	//public final static int INV_SIZE  = ALL_ROWS * ALL_COLS;//15*25=375 
 //375;//
 	//these are slot indices. different than slot numbers (important) comes right after armor
-    public static final int BONUS_START = HOTBAR_SIZE+ALL_ROWS * ALL_COLS + Const.ARMOR_SIZE; 
+	public static final int ARMOR_START = HOTBAR_SIZE+ALL_ROWS * ALL_COLS;
+    public static final int BONUS_START = ARMOR_START + Const.ARMOR_SIZE; 
     public static final int type_epearl = 0;
     public static final int type_echest = 1;
     public static final int type_clock=2;
