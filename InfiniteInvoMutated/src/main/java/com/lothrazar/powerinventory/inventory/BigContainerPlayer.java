@@ -68,15 +68,16 @@ public class BigContainerPlayer extends ContainerPlayer
 	public BigContainerPlayer(BigInventoryPlayer playerInventory, boolean isLocal, EntityPlayer player)
 	{
 		super(playerInventory, isLocal, player);
-		
+ 
         this.thePlayer = player;
 		inventorySlots = Lists.newArrayList();//undo everything done by super()
 		craftMatrix = new InventoryCrafting(this, craftSize, craftSize);
  
-        int i,j,cx,cy;//rows and cols of vanilla, not extra
+        int i,j,cx,cy,slotIndex;//rows and cols of vanilla, not extra
    
         S_RESULT = this.inventorySlots.size();
-        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, 0, 
+        slotIndex = 0;
+        this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, slotIndex, 
         		200,  
         		40));
 
@@ -87,8 +88,8 @@ public class BigContainerPlayer extends ContainerPlayer
             {  
     			cx = 114 + j * Const.sq ; 
     			cy = 20 + i * Const.sq ;
-
-        		this.addSlotToContainer(new Slot(this.craftMatrix, j + i * this.craftSize, cx , cy)); 
+    			slotIndex = j + i * this.craftSize;
+        		this.addSlotToContainer(new Slot(this.craftMatrix, slotIndex, cx , cy)); 
             }
         }
         S_CRAFT_END = this.inventorySlots.size() - 1;
@@ -99,50 +100,19 @@ public class BigContainerPlayer extends ContainerPlayer
         for (i = 0; i < Const.HOTBAR_SIZE; ++i)
         { 
         	cx = 8 + i * Const.sq; 
- //18*7=126
-            this.addSlotToContainer(new Slot(playerInventory, i, cx, cy));
+        	slotIndex = i;
+            this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
         }
         S_BAR_END = this.inventorySlots.size() - 1;
-        S_MAIN_START = this.inventorySlots.size();
-        int slotIndex = Const.HOTBAR_SIZE;
-        
-        for( i = 0; i < Const.ALL_ROWS; i++)
-		{
-            for ( j = 0; j < Const.ALL_COLS; ++j)
-            { 
-            	cx = 8 + j * Const.sq;
-            	cy = 84 + i * Const.sq;
-                this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
-            	slotIndex++;
-            }
-        }
-        
-        S_MAIN_END = this.inventorySlots.size() - 1;
-        
-        S_PEARL =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotEnderPearl(playerInventory, Const.BONUS_START+Const.type_epearl, pearlX, pearlY));
-
-        S_ECHEST =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotEnderChest(playerInventory, Const.BONUS_START+Const.type_echest, echestX, echestY)); 
-
-        S_CLOCK =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotClock(playerInventory, Const.BONUS_START+Const.type_clock, clockX, clockY)); 
-
-        S_COMPASS =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotCompass(playerInventory, Const.BONUS_START+Const.type_compass, compassX, compassY)); 
-        
-        S_BOTTLE =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotBottle(playerInventory, Const.BONUS_START+Const.type_bottle, bottleX, bottleY)); 
-        
-        //384 85 86 87 is what it gets, when INV_SIZE = 375, meaning 375+9=384
+      //384 85 86 87 is what it gets, when INV_SIZE = 375, meaning 375+9=384
         S_ARMOR_START = this.inventorySlots.size(); 
         for (i = 0; i < Const.ARMOR_SIZE; ++i)
         {
         	cx = 8;
         	cy = 8 + i * Const.sq;
             final int k = i;
- 
-            this.addSlotToContainer(new Slot(playerInventory,  playerInventory.getSizeInventory() - 1 - i, cx, cy)
+            slotIndex = playerInventory.getSizeInventory() - 1 - i;
+            this.addSlotToContainer(new Slot(playerInventory,  slotIndex, cx, cy)
             { 
             	public int getSlotStackLimit()
 	            {
@@ -161,7 +131,43 @@ public class BigContainerPlayer extends ContainerPlayer
             }); 
         }
         S_ARMOR_END = this.inventorySlots.size() - 1;
+        
+        
+        S_PEARL =  this.inventorySlots.size() ;
+        this.addSlotToContainer(new SlotEnderPearl(playerInventory, Const.BONUS_START+Const.type_epearl, pearlX, pearlY));
+
+        S_ECHEST =  this.inventorySlots.size() ;
+        this.addSlotToContainer(new SlotEnderChest(playerInventory, Const.BONUS_START+Const.type_echest, echestX, echestY)); 
+
+        S_CLOCK =  this.inventorySlots.size() ;
+        this.addSlotToContainer(new SlotClock(playerInventory, Const.BONUS_START+Const.type_clock, clockX, clockY)); 
+
+        S_COMPASS =  this.inventorySlots.size() ;
+        this.addSlotToContainer(new SlotCompass(playerInventory, Const.BONUS_START+Const.type_compass, compassX, compassY)); 
+        
+        S_BOTTLE =  this.inventorySlots.size() ;
+        this.addSlotToContainer(new SlotBottle(playerInventory, Const.BONUS_START+Const.type_bottle, bottleX, bottleY)); 
+        
+        
          
+        
+
+        S_MAIN_START = this.inventorySlots.size();
+        slotIndex = Const.HOTBAR_SIZE;
+        
+        for( i = 0; i < Const.ALL_ROWS; i++)
+		{
+            for ( j = 0; j < Const.ALL_COLS; ++j)
+            { 
+            	cx = 8 + j * Const.sq;
+            	cy = 84 + i * Const.sq;
+                this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
+            	slotIndex++;
+            }
+        }
+        
+        S_MAIN_END = this.inventorySlots.size() - 1;
+        
         this.onCraftMatrixChanged(this.craftMatrix);
 		this.invo = playerInventory; 
 	}
