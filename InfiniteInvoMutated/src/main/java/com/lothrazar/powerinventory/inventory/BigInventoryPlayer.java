@@ -35,7 +35,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 	{
 		super(player);
 		this.mainInventory = new ItemStack[Const.ALL_ROWS * Const.ALL_COLS + Const.HOTBAR_SIZE];
- 
+		/*
 		if(player.inventory != null)
 		{
 			ItemStack[] oldMain = player.inventory.mainInventory;
@@ -43,11 +43,13 @@ public class BigInventoryPlayer extends InventoryPlayer
 			
 			for(int i = 0; i < this.mainInventory.length && i < oldMain.length; i++)
 			{
+				System.out.println("mainInventory "+i);
 				this.mainInventory[i] = oldMain[i];
 			}
 			
 			this.armorInventory = oldArmor;
-		}
+			
+		}*/
 	}
 	
 	@Override
@@ -56,15 +58,19 @@ public class BigInventoryPlayer extends InventoryPlayer
         ItemStack[] aitemstack = this.mainInventory;
         //check these first, otherwise it crashes thinking they are armor
         if(index == Const.enderPearlSlot){return enderPearlStack;}
-        if(index == Const.enderChestSlot){return enderChestStack;} 
-        if(index == Const.clockSlot){return clockStack;}
-        if(index == Const.compassSlot){return compassStack;} 
-        if(index == Const.bottleSlot){return bottleStack;} 
-        
-        if (index >= aitemstack.length)
+        else if(index == Const.enderChestSlot){return enderChestStack;} 
+        else if(index == Const.clockSlot){return clockStack;}
+        else if(index == Const.compassSlot){return compassStack;} 
+        else if(index == Const.bottleSlot){return bottleStack;}  
+        else if (index >= aitemstack.length && index < aitemstack.length + Const.ARMOR_SIZE)//armor slots depend on being right at the end like 384
         {
             index -= aitemstack.length;
-            aitemstack = this.armorInventory;
+            //now index is in [0,3]
+            //??
+//armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots
+
+        //    aitemstack = this.armorInventory;
+            return this.armorInventory[index];
         }
 
         return aitemstack[index];
@@ -108,15 +114,10 @@ public class BigInventoryPlayer extends InventoryPlayer
 			super.setInventorySlotContents(slot, stack);
 		}
     }
-	
-	public int getSlotsNotArmor()
-	{  
-		return this.getSizeInventory() - Const.ARMOR_SIZE; 
-	}
-	
+	 
     private int func_146029_c(Item stack)
     {
-        for (int i = 0; i < this.getSlotsNotArmor(); ++i)
+        for (int i = 0; i < this.getSizeInventory() - Const.ARMOR_SIZE; ++i)
         {
             if (this.mainInventory[i] != null && this.mainInventory[i].getItem() == stack)
             {
@@ -129,7 +130,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 
     private int storeItemStack(ItemStack stack)
     {
-        for (int i = 0; i < this.getSlotsNotArmor(); ++i)
+        for (int i = 0; i < this.getSizeInventory() - Const.ARMOR_SIZE; ++i)
         {
             if (this.mainInventory[i] != null && this.mainInventory[i].getItem() == stack.getItem() && this.mainInventory[i].isStackable() && this.mainInventory[i].stackSize < this.mainInventory[i].getMaxStackSize() && this.mainInventory[i].stackSize < this.getInventoryStackLimit() && (!this.mainInventory[i].getHasSubtypes() || this.mainInventory[i].getItemDamage() == stack.getItemDamage()) && ItemStack.areItemStackTagsEqual(this.mainInventory[i], stack))
             {
@@ -143,7 +144,7 @@ public class BigInventoryPlayer extends InventoryPlayer
     @Override
     public int getFirstEmptyStack()
     {
-        for (int i = 0; i < this.getSlotsNotArmor(); ++i)
+        for (int i = 0; i < this.getSizeInventory() - Const.ARMOR_SIZE; ++i)
         {
             if (this.mainInventory[i] == null)
             {
@@ -157,7 +158,7 @@ public class BigInventoryPlayer extends InventoryPlayer
     @SideOnly(Side.CLIENT)
     private int func_146024_c(Item item, int meta)//getSlotNumberForItem
     {
-        for (int j = 0; j < this.getSlotsNotArmor(); ++j)
+        for (int j = 0; j < this.getSizeInventory() - Const.ARMOR_SIZE; ++j)
         {
             if (this.mainInventory[j] != null && this.mainInventory[j].getItem() == item && this.mainInventory[j].getItemDamage() == meta)
             {

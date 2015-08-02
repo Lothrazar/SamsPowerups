@@ -92,39 +92,14 @@ public class BigContainerPlayer extends ContainerPlayer
             }
         }
         S_CRAFT_END = this.inventorySlots.size() - 1;
-        S_ARMOR_START = this.inventorySlots.size();
- 
-        for (i = 0; i < Const.ARMOR_SIZE; ++i)
-        {
-        	cx = 8;
-        	cy = 8 + i * Const.sq;
-            final int k = i;
- 
-            this.addSlotToContainer(new Slot(playerInventory,  playerInventory.getSizeInventory() - 1 - i, cx, cy)
-            { 
-            	public int getSlotStackLimit()
-	            {
-	                return 1;
-	            }
-	            public boolean isItemValid(ItemStack stack)
-	            {
-	                if (stack == null) return false;
-	                return stack.getItem().isValidArmor(stack, k, thePlayer);
-	            }
-	            @SideOnly(Side.CLIENT)
-	            public String getSlotTexture()
-	            {
-	                return ItemArmor.EMPTY_SLOT_NAMES[k];
-	            }
-            }); 
-        }
-        S_ARMOR_END = this.inventorySlots.size() - 1;
+       
         S_BAR_START = this.inventorySlots.size();
+        
+    	cy = 16 + Const.sq * (Const.ALL_ROWS + 4);//so 12, since allrows=15
         for (i = 0; i < Const.HOTBAR_SIZE; ++i)
         { 
-        	cx = 8 + i * Const.sq;
-        	cy = 142 + (Const.sq * (Const.ALL_ROWS-3));//so 12
- 
+        	cx = 8 + i * Const.sq; 
+ //18*7=126
             this.addSlotToContainer(new Slot(playerInventory, i, cx, cy));
         }
         S_BAR_END = this.inventorySlots.size() - 1;
@@ -159,6 +134,34 @@ public class BigContainerPlayer extends ContainerPlayer
         S_BOTTLE =  this.inventorySlots.size() ;
         this.addSlotToContainer(new SlotBottle(playerInventory, Const.bottleSlot, bottleX, bottleY)); 
         
+        //384 85 86 87 is what it gets, when INV_SIZE = 375, meaning 375+9=384
+        S_ARMOR_START = this.inventorySlots.size(); 
+        for (i = 0; i < Const.ARMOR_SIZE; ++i)
+        {
+        	cx = 8;
+        	cy = 8 + i * Const.sq;
+            final int k = i;
+ 
+            this.addSlotToContainer(new Slot(playerInventory,  playerInventory.getSizeInventory() - 1 - i, cx, cy)
+            { 
+            	public int getSlotStackLimit()
+	            {
+	                return 1;
+	            }
+	            public boolean isItemValid(ItemStack stack)
+	            {
+	                if (stack == null) return false;
+	                return stack.getItem().isValidArmor(stack, k, thePlayer);
+	            }
+	            @SideOnly(Side.CLIENT)
+	            public String getSlotTexture()
+	            {
+	                return ItemArmor.EMPTY_SLOT_NAMES[k];
+	            }
+            }); 
+        }
+        S_ARMOR_END = this.inventorySlots.size() - 1;
+         
         this.onCraftMatrixChanged(this.craftMatrix);
 		this.invo = playerInventory; 
 	}
@@ -238,6 +241,7 @@ public class BigContainerPlayer extends ContainerPlayer
                 }
             }
             else if (stackCopy.getItem() instanceof ItemArmor 
+            		//armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots
             		&& !((Slot)this.inventorySlots.get(S_ARMOR_START + ((ItemArmor)stackCopy.getItem()).armorType)).getHasStack()) // Inventory to armor
             { 
             	int j = S_ARMOR_START + ((ItemArmor)stackCopy.getItem()).armorType;
@@ -323,10 +327,12 @@ public class BigContainerPlayer extends ContainerPlayer
                     return null;
                 }
             }
-            else if (!this.mergeItemStack(stackOrig, 9, invo.getSlotsNotArmor() + 9, false)) // Full range
+            else if (!this.mergeItemStack(stackOrig, Const.HOTBAR_SIZE, invo.getSizeInventory() - Const.ARMOR_SIZE + Const.HOTBAR_SIZE, false)) // ?Full range
             {
                 return null;
             }
+            
+            //finally, notify of changes
             if (stackOrig.stackSize == 0)
             { 
                 slot.putStack((ItemStack)null);
