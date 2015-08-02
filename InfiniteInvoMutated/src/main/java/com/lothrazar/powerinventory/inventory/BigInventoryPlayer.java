@@ -30,6 +30,9 @@ public class BigInventoryPlayer extends InventoryPlayer
     private ItemStack clockStack;
     private ItemStack compassStack;
     private ItemStack bottleStack;
+    
+    
+   // public ItemStack[] bonusInventory = new ItemStack[Const.BONUS_SIZE];
    
 	public BigInventoryPlayer(EntityPlayer player)
 	{
@@ -56,13 +59,10 @@ public class BigInventoryPlayer extends InventoryPlayer
 	public ItemStack getStackInSlot(int index)
     {
         ItemStack[] aitemstack = this.mainInventory;
+       // int bonusSize = 5;
         //check these first, otherwise it crashes thinking they are armor
-        if(index == Const.enderPearlSlot){return enderPearlStack;}
-        else if(index == Const.enderChestSlot){return enderChestStack;} 
-        else if(index == Const.clockSlot){return clockStack;}
-        else if(index == Const.compassSlot){return compassStack;} 
-        else if(index == Const.bottleSlot){return bottleStack;}  
-        else if (index >= aitemstack.length && index < aitemstack.length + Const.ARMOR_SIZE)//armor slots depend on being right at the end like 384
+        
+        if (index >= aitemstack.length && index < aitemstack.length + Const.ARMOR_SIZE)//armor slots depend on being right at the end like 384
         {
             index -= aitemstack.length;
             //now index is in [0,3]
@@ -72,7 +72,22 @@ public class BigInventoryPlayer extends InventoryPlayer
         //    aitemstack = this.armorInventory;
             return this.armorInventory[index];
         }
+        else if (index >= aitemstack.length + Const.ARMOR_SIZE && index < Const.BONUS_START + Const.BONUS_SIZE)//armor slots depend on being right at the end like 384
+        {
+        	//a reminder that BONUS_START = ALL_ROWS * ALL_COLS + Const.ARMOR_SIZE; ==aitemstack.length + Const.ARMOR_SIZE 
+        	if(index == Const.enderPearlSlot){return enderPearlStack;}//bonus + 0, and so on
+            else if(index == Const.enderChestSlot){return enderChestStack;} 
+            else if(index == Const.clockSlot){return clockStack;}
+            else if(index == Const.compassSlot){return compassStack;} 
+            else if(index == Const.bottleSlot){return bottleStack;}  
+          //  index -= aitemstack.length;
+            //now index is in [0,3]
+            //??
+//armor type: 0 is helmet, 1 is plate, 2 is legs and 3 is boots
 
+        //    aitemstack = this.armorInventory;
+            //return this.armorInventory[index];
+        }
         return aitemstack[index];
     }
 	
