@@ -25,9 +25,13 @@ public class GuiBigInventory extends GuiInventory
 {
 	private BigContainerPlayer container;
 
+	//these for 12x18. TODO link these
+	public static final int texture_width = 336;
+	public static final int texture_height = 328;
+	/*//ONLY FOR THE 15x25 one
 	public static final int texture_width = 464;
 	public static final int texture_height = 382;
-
+*/
 	GuiButton btnEnder;
 	GuiButton btnExp;
 	public GuiBigInventory(EntityPlayer player)

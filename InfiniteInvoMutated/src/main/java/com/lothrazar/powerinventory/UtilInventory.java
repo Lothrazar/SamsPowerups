@@ -380,8 +380,8 @@ public class UtilInventory
 	{
 		// TODO Auto-generated method stub
 		//System.out.println("swapHotbar");
-		if(Const.HOTBAR_SIZE == 18)
-		{
+		//if(Const.HOTBAR_SIZE == 18)
+		//{
 			int half = Const.HOTBAR_SIZE/2;//==9
 			ItemStack[] bar = new ItemStack[half];
 			for(int i = 0; i < half; i++)
@@ -400,6 +400,6 @@ public class UtilInventory
 				inventory.setInventorySlotContents(j, bar[j-half]);
 				inventory.setInventorySlotContents(j-half, s);
 			} 
-		} 
+		//} 
 	}
 }
