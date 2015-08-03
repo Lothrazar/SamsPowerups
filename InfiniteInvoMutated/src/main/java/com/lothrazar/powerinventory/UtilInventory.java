@@ -405,21 +405,29 @@ public class UtilInventory
 	
 	public static void swapPage(InventoryPlayer inventory) 
 	{
-		int full = Const.ALL_SLOTS - Const.HOTBAR_SIZE;
+		//int full = Const.PAGESIZE*2;//should be [18,216+18]
+		//and then like [234,238]
 		
-		int half = (full)/2;//==9
-		ItemStack[] bar = new ItemStack[half];
-		for(int i = Const.HOTBAR_SIZE; i < half; i++)
+		int st = Const.HOTBAR_SIZE;//start
+		
+		ItemStack[] bar = new ItemStack[Const.PAGESIZE];
+		//last index is exactly ALL_SLOTS = PAGES*PAGESIZE + HOTBAR_SIZE
+		//so start page1 = HOTBAR_SIZE
+		//start page2 = HOTBAR_SIZE+PAGESIZE
+		//PAGESIZE is 12*18    216+18=234
+		
+		for(int i = st; i < Const.PAGESIZE+st; i++)
 		{
-			bar[i] = inventory.getStackInSlot(i);//not sure if copy needed
+			bar[i-st] = inventory.getStackInSlot(i);//not sure if copy needed
 		}
 		ItemStack s;
-		for(int j = half; j < full+Const.HOTBAR_SIZE; j++)
+		for(int j = Const.PAGESIZE+st; j < 2*Const.PAGESIZE+st; j++)
 		{
 			s = inventory.getStackInSlot(j);
 			
-			inventory.setInventorySlotContents(j, bar[j-half]);
-			inventory.setInventorySlotContents(j-half, s);
+			int old = j-Const.PAGESIZE;
+			inventory.setInventorySlotContents(j, bar[old-st]);
+			inventory.setInventorySlotContents(old, s);
 		}
 	}
 }
