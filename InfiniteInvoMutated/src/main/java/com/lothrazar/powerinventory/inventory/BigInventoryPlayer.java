@@ -48,7 +48,13 @@ public class BigInventoryPlayer extends InventoryPlayer
         {
 	        return bonusInventory[index - Const.BONUS_START];
         }
-        return this.mainInventory[index];
+        else if(index >= this.mainInventory.length && index < this.mainInventory.length+this.armorInventory.length)
+        { 
+        	//should be using armor slots 
+        	 return this.armorInventory[index - this.mainInventory.length];
+        	
+        }
+        return this.mainInventory[index];//exception at 384?
     }
 	
 	@Override
@@ -86,13 +92,33 @@ public class BigInventoryPlayer extends InventoryPlayer
 		}
 		else
 		{
-			super.setInventorySlotContents(slot, stack);
+			//if(slot > Const.ALL_SLOTS)
+			//	System.out.println("setInv super "+slot);
+			
+			if(slot >= Const.ARMOR_START && slot < Const.ARMOR_START + Const.ARMOR_SIZE)
+			{
+				slot -= Const.ARMOR_START;
+				this.armorInventory[slot] = stack;
+			}
+			
+			
+			 
+		        if (slot >= this.mainInventory.length && slot < Const.ARMOR_START)
+		        {
+		        	System.out.println("Slot="+slot);
+		        	slot = slot - this.mainInventory.length + Const.ARMOR_START;
+		            //out of bounds -586
+			        this.armorInventory[slot] = stack;
+		        }
+
+		        this.mainInventory[slot] = stack;
+			//super.setInventorySlotContents(slot, stack);
 		}
     }
 	 
     private int func_146029_c(Item stack)
     {
-        for (int i = 0; i < this.getSizeInventory() - Const.ARMOR_SIZE; ++i)
+        for (int i = 0; i < this.mainInventory.length; ++i)
         {
             if (this.mainInventory[i] != null && this.mainInventory[i].getItem() == stack)
             {
@@ -105,7 +131,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 
     private int storeItemStack(ItemStack stack)
     {
-        for (int i = 0; i < this.getSizeInventory() - Const.ARMOR_SIZE; ++i)
+        for (int i = 0; i < this.mainInventory.length; ++i)
         {
             if (this.mainInventory[i] != null && this.mainInventory[i].getItem() == stack.getItem() && this.mainInventory[i].isStackable() && this.mainInventory[i].stackSize < this.mainInventory[i].getMaxStackSize() && this.mainInventory[i].stackSize < this.getInventoryStackLimit() && (!this.mainInventory[i].getHasSubtypes() || this.mainInventory[i].getItemDamage() == stack.getItemDamage()) && ItemStack.areItemStackTagsEqual(this.mainInventory[i], stack))
             {
@@ -119,7 +145,7 @@ public class BigInventoryPlayer extends InventoryPlayer
     @Override
     public int getFirstEmptyStack()
     {
-        for (int i = 0; i < this.getSizeInventory() - Const.ARMOR_SIZE; ++i)
+        for (int i = 0; i < this.mainInventory.length; ++i)
         {
             if (this.mainInventory[i] == null)
             {
@@ -133,7 +159,7 @@ public class BigInventoryPlayer extends InventoryPlayer
     @SideOnly(Side.CLIENT)
     private int func_146024_c(Item item, int meta)//getSlotNumberForItem
     {
-        for (int j = 0; j < this.getSizeInventory() - Const.ARMOR_SIZE; ++j)
+        for (int j = 0; j < this.mainInventory.length; ++j)
         {
             if (this.mainInventory[j] != null && this.mainInventory[j].getItem() == item && this.mainInventory[j].getItemDamage() == meta)
             {
@@ -143,14 +169,14 @@ public class BigInventoryPlayer extends InventoryPlayer
 
         return -1;
     }
-    
+    //int hotbarest = 9+9;
     @SideOnly(Side.CLIENT)
     @Override
     public void setCurrentItem(Item item, int meta, boolean var3flag, boolean var4flag)
     {
         this.currentItemStack = this.getCurrentItem();
         int k;
-
+//System.out.println("setCurrentItem");
         if (var3flag)
         {
             k = this.func_146024_c(item, meta);
@@ -158,6 +184,7 @@ public class BigInventoryPlayer extends InventoryPlayer
         else
         {
             k = this.func_146029_c(item);
+          //  System.out.println("k = "+k);
         }
 
         if (k >= 0 && k < 9)
@@ -172,6 +199,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 
                 if (j >= 0 && j < 9)
                 {
+                   // System.out.println("j = "+j);
                     this.currentItem = j;
                 }
 

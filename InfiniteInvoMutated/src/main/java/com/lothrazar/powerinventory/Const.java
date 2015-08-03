@@ -26,13 +26,14 @@ public class Const
 	public static final String NBT_INVOSIZE = "invoSize";
 
 	public static final int sq = 18;
-	public final static int HOTBAR_SIZE = 9;
+	public final static int HOTBAR_SIZE = 9+9;
 	public final static int ARMOR_SIZE = 4; 
 	public final static int BONUS_SIZE = 5;
 
 	public static int ALL_ROWS = 3 + 12;//3+12=15
 	public static int ALL_COLS = 9 + 16;//9+16=25
-	public static final int ALL_SLOTS = 384;//15*25+9
+	//public static final int PAGES = 1;
+	public static final int ALL_SLOTS = 384+9;
  
 	//these are slot indices. different than slot numbers (important) comes right after armor
 	public static final int ARMOR_START = Integer.MAX_VALUE - 100;// HOTBAR_SIZE+ALL_ROWS * ALL_COLS;
