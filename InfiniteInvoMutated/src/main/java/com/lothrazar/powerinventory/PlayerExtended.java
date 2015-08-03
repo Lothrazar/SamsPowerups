@@ -66,7 +66,7 @@ public class PlayerExtended implements IExtendedEntityProperties
 		{
 			System.out.println(e.getMessage());//do not quit, leave it as zero
 		}
-		System.out.println("getPageCurrent "+page);
+
 		return page;
 	}
  

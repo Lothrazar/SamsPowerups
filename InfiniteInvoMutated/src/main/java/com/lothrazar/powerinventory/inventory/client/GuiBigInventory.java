@@ -50,7 +50,7 @@ public class GuiBigInventory extends GuiInventory
 		
 		if(this.container != null && this.mc.playerController.isInCreativeMode() == false)
 		{
-			int height = 20;
+			final int height = 20;
 			final int width = 26;
 			final int widthlrg = 58;
 			final int padding = 6;
@@ -87,9 +87,9 @@ public class GuiBigInventory extends GuiInventory
 			{  
 				int x_spacing = width + padding/2;
 				int x = guiLeft + this.xSize -  4*x_spacing - padding+1;
-				int y = guiTop + this.ySize - height - padding          +14;
+				int y = guiTop + this.ySize - height - padding        -22;
 			
-				height = 10;
+				//height = 10;
 		 
 				btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
 				this.buttonList.add(btnMoveLeft);
@@ -230,10 +230,9 @@ public class GuiBigInventory extends GuiInventory
 			this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
 		
-		  
+		 /*
 
-		//System.out.println(pg + " entitydata says "+player.getEntityData().getInteger("page"));
-		//
+	 
 		Slot s;
 		 
 		for(Object o : this.container.inventorySlots)
@@ -243,10 +242,10 @@ public class GuiBigInventory extends GuiInventory
 	 
 			//each slot has two different numbers. the slotNumber is UNIQUE, the index is not
 	 
-			if(s.slotNumber >= 10 && s.slotNumber < 10 +Const.HOTBAR_SIZE/2)
+		if(s.slotNumber >= 10 && s.slotNumber < 10 +Const.HOTBAR_SIZE/2)
 				this.drawString(this.fontRendererObj, "" + (s.getSlotIndex()+1), s.xDisplayPosition+1, s.yDisplayPosition +  4, 1210752);
-			else//this is debug mode now
-				this.drawString(this.fontRendererObj, "" + s.getSlotIndex(), s.xDisplayPosition, s.yDisplayPosition +  4, 16777120);
-		} 
+		//	else//this is debug mode now
+			//	this.drawString(this.fontRendererObj, "" + s.getSlotIndex(), s.xDisplayPosition, s.yDisplayPosition +  4, 16777120);
+		}*/ 
 	}
 }

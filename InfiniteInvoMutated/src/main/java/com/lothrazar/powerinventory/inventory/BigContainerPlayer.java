@@ -37,7 +37,7 @@ public class BigContainerPlayer extends ContainerPlayer
 	//these get used here for actual slot, and in GUI for texture
     //ender pearl is in the far bottom right corner, and the others move left relative to this
 
-	public final int pearlX = 80; 
+	public final int pearlX = 80-1; 
 	public final int pearlY = 8; 
 	public final int compassX = pearlX;
 	public final int compassY = pearlY + Const.sq;
@@ -46,7 +46,7 @@ public class BigContainerPlayer extends ContainerPlayer
 	public final int echestX = pearlX;
 	public final int echestY = pearlY + 3*Const.sq;
 
-	public final int bottleX = Const.textureWidth() - Const.sq - padding - 1;
+	public final int bottleX = Const.textureWidth() - Const.sq - padding;
 	public final int bottleY = 20 + 2 * Const.sq;
 
 //store slot numbers  (not indexes) as we go. so that transferStack.. is actually readable
@@ -96,7 +96,7 @@ public class BigContainerPlayer extends ContainerPlayer
        
         S_BAR_START = this.inventorySlots.size();
         
-    	cy = 16 + Const.sq * (Const.ALL_ROWS + 4);//so 12, since allrows=15
+    	cy = 19 + Const.sq * (Const.ALL_ROWS + 5);//so 12, since allrows=15
         for (i = 0; i < Const.HOTBAR_SIZE; ++i)
         { 
         	cx = 7 + i * Const.sq; 
