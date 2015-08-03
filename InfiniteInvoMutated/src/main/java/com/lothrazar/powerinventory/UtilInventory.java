@@ -379,28 +379,27 @@ public class UtilInventory
 	public static void swapHotbar(InventoryPlayer inventory) 
 	{
 		// TODO Auto-generated method stub
-		System.out.println("swapHotbar");
+		//System.out.println("swapHotbar");
 		if(Const.HOTBAR_SIZE == 18)
 		{
 			int half = Const.HOTBAR_SIZE/2;//==9
 			ItemStack[] bar = new ItemStack[half];
 			for(int i = 0; i < half; i++)
 			{
-				bar[i] = inventory.getStackInSlot(i).copy();//not sure if copy needed
+				bar[i] = inventory.getStackInSlot(i);//not sure if copy needed
 			}
 			ItemStack s;
 			for(int j = half; j < Const.HOTBAR_SIZE; j++)
 			{
-				s = inventory.getStackInSlot(j).copy();
+				s = inventory.getStackInSlot(j);
 				//since j : 9-18, then take 9 away to get [0-9] which is what bar is, then 
 				int trade = j-half;
 				//same as System.out.println(String.format("trade %d with %d",j,trade));
-				System.out.printf("trade %d with %d",j,trade);
+				//System.out.printf("trade %d with %d",j,trade);
+				//trade 10 with 1trade 11 with 2trade 12 with 3trade 13 with 4trade 14 with 5trade 15 with 6trade 16 with 7trade 17//...
 				inventory.setInventorySlotContents(j, bar[j-half]);
 				inventory.setInventorySlotContents(j-half, s);
-			}
-			
-		}
-		
+			} 
+		} 
 	}
 }
