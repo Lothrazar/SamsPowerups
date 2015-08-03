@@ -2,8 +2,13 @@ package com.lothrazar.powerinventory.proxy;
 
 import org.lwjgl.input.Keyboard;
 
+import com.lothrazar.powerinventory.EventHandler; 
+
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
+import net.minecraftforge.fml.common.FMLCommonHandler;
  
 public class ClientProxy extends CommonProxy
 {

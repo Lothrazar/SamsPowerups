@@ -5,7 +5,9 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.util.Collection;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
@@ -20,16 +22,20 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagList;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.client.event.GuiOpenEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.GuiScreenEvent.InitGuiEvent;
+import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.world.WorldEvent;
 
 import org.apache.logging.log4j.Level;
+import org.lwjgl.opengl.GL11;
 
 import com.lothrazar.powerinventory.inventory.InventoryPersistProperty;
 import com.lothrazar.powerinventory.inventory.client.GuiBigInventory;
@@ -110,6 +116,8 @@ public class EventHandler
 			event.gui = new GuiBigInventory(Minecraft.getMinecraft().thePlayer);
 		}
 	}
+
+
 	
 	@SuppressWarnings("unchecked")
 	@SideOnly(Side.CLIENT)
@@ -117,7 +125,7 @@ public class EventHandler
 	public void onGuiPostInit(InitGuiEvent.Post event)
 	{
 		if(event.gui == null){return;}//probably doesnt ever happen
-
+		
 		if(event.gui instanceof net.minecraft.client.gui.inventory.GuiChest || 
 		   event.gui instanceof net.minecraft.client.gui.inventory.GuiDispenser || 
 		   event.gui instanceof net.minecraft.client.gui.inventory.GuiBrewingStand || 
@@ -240,8 +248,73 @@ public class EventHandler
 			ModInv.logger.log(Level.ERROR, "Failed to load slot unlock cache", e);
 		}
 	}
-  
-	//below was imported from my PowerApples mod
+	
+	@SideOnly(Side.CLIENT)
+	@SubscribeEvent
+    public void renderOverlay(RenderGameOverlayEvent event)
+    {
+		//System.out.println("EH RenderGameOverlayEventRenderGameOverlayEvent");
+		//http://www.minecraftforge.net/wiki/Gui_Overlay
+		onRenderExperienceBar(event);
+    }
+	  private static final int BUFF_ICON_SIZE = 18;
+	  private static final int BUFF_ICON_SPACING = BUFF_ICON_SIZE + 2; // 2 pixels between buff icons
+	  private static final int BUFF_ICON_BASE_U_OFFSET = 0;
+	  private static final int BUFF_ICON_BASE_V_OFFSET = 198;
+	  private static final int BUFF_ICONS_PER_ROW = 8;
+	@SideOnly(Side.CLIENT)
+	 public void onRenderExperienceBar(RenderGameOverlayEvent event)
+	  {
+		//  System.out.println("onRenderExperienceBar "+event.isCancelable());
+	    // 
+	    // We draw after the ExperienceBar has drawn.  The event raised by GuiIngameForge.pre()
+	    // will return true from isCancelable.  If you call event.setCanceled(true) in
+	    // that case, the portion of rendering which this event represents will be canceled.
+	    // We want to draw *after* the experience bar is drawn, so we make sure isCancelable() returns
+	    // false and that the eventType represents the ExperienceBar event.
+	    if(event.isCancelable() || event.type != ElementType.EXPERIENCE){return;}
+
+	    Minecraft mc = Minecraft.getMinecraft();
+	    // Starting position for the buff bar - 2 pixels from the top left corner.
+	    int xPos = 22;
+	    int yPos = 22;
+	    Collection<PotionEffect> collection = ( Collection<PotionEffect> )mc.thePlayer.getActivePotionEffects();
+	    if (!collection.isEmpty())
+	    {
+	      GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+	      GL11.glDisable(GL11.GL_LIGHTING);      
+	    //  this.mc.renderEngine.bindTexture("/gui/inventory.png");      
+
+	      for (Iterator iterator = mc.thePlayer.getActivePotionEffects()
+	          .iterator(); iterator.hasNext(); xPos += BUFF_ICON_SPACING)
+	      {
+	        PotionEffect potioneffect = (PotionEffect) iterator.next();
+	        Potion potion = Potion.potionTypes[potioneffect.getPotionID()];
+
+	  	  System.out.println(potion.getName());
+	        if (potion.hasStatusIcon())
+	        {
+	          int iconIndex = potion.getStatusIconIndex();
+	    
+	        
+	          if(mc.currentScreen != null)
+	          {
+	        	  System.out.println(xPos+" "+yPos );
+		         mc.currentScreen.drawTexturedModalRect(
+		              xPos, yPos, 
+		              BUFF_ICON_BASE_U_OFFSET + iconIndex % BUFF_ICONS_PER_ROW * BUFF_ICON_SIZE, BUFF_ICON_BASE_V_OFFSET + iconIndex / BUFF_ICONS_PER_ROW * BUFF_ICON_SIZE,
+		              BUFF_ICON_SIZE, BUFF_ICON_SIZE);
+		         
+		         
+	          }
+	        /*  else
+	          {
+	        	  System.out.println("null");
+	          }*/
+	        }       
+	      }
+	    }
+	  }
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)

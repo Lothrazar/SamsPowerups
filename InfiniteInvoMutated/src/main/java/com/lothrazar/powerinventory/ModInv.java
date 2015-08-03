@@ -1,6 +1,8 @@
 package com.lothrazar.powerinventory;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.init.Items;
+import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.config.Configuration;
 
 import org.apache.logging.log4j.Logger;
@@ -18,10 +20,12 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.Mod.Instance;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import net.minecraftforge.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 /**
  * @author https://github.com/Funwayguy/InfiniteInvo
  * @author Initially Forked and altered by https://github.com/PrinceOfAmber/InfiniteInvo
@@ -70,6 +74,7 @@ public class ModInv
     	loadConfig(event);
 		
     	proxy.registerHandlers();
+    	
     }
     
 	private void loadConfig(FMLPreInitializationEvent event) 
@@ -90,11 +95,17 @@ public class ModInv
 	}
     
     @EventHandler
-    public void preInit(FMLInitializationEvent event)
+    public void init(FMLInitializationEvent event)
     {
     	if(ModConfig.enderPearl64)
     	{
     		Items.ender_pearl.setMaxStackSize(64);
     	}
+    } 
+    
+    @EventHandler
+    public void postInit(FMLPostInitializationEvent  event)
+    {
+    	
     }
 }
