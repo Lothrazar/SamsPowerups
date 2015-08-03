@@ -37,16 +37,17 @@ public class BigInventoryPlayer extends InventoryPlayer
  
 	}
 	
-	public void incrementPage()
+	public boolean incrementPage()
 	{
-		if(currentPage==Const.PAGES){return;}
+		if(currentPage==Const.PAGES){return false;}
 		currentPage++;
+		return true;
 	}
-	public void decrementPage()
+	public boolean decrementPage()
 	{
-		if(currentPage==0){return;}
+		if(currentPage==0){return false;}
 		currentPage--;
-		
+		return true;
 		
 		
 	}

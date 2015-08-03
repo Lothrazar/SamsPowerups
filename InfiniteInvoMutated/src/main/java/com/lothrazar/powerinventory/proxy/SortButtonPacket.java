@@ -2,7 +2,10 @@ package com.lothrazar.powerinventory.proxy;
 
 import java.util.LinkedList;
 import java.util.Queue;
+
 import com.lothrazar.powerinventory.*;
+import com.lothrazar.powerinventory.inventory.BigInventoryPlayer;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -46,17 +49,36 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
  
 		int sortType = message.tags.getInteger(NBT_SORT);
 		
+
+		
 		switch(sortType)
 		{
 		case Const.SORT_LEFT:
 			//UtilInventory.shiftLeftOne(p.inventory);
 			System.out.printf("page up");
 			UtilInventory.swapPage(p.inventory,0,1);
+
+			if(p.inventory instanceof BigInventoryPlayer)
+			{
+				BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
+				int oldPage = big.currentPage;
+				if(big.incrementPage())
+					UtilInventory.swapPage(p.inventory,oldPage, big.currentPage);
+			}
+			
 			break;
 		case Const.SORT_RIGHT:
-			System.out.printf("page DOWN");
-			//UtilInventory.shiftRightOne(p.inventory);
-			UtilInventory.swapPage(p.inventory,0,1);
+
+
+			if(p.inventory instanceof BigInventoryPlayer)
+			{
+				BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
+				int oldPage = big.currentPage;
+				if(big.decrementPage())
+					UtilInventory.swapPage(p.inventory,oldPage, big.currentPage);
+			}
+			
+			
 			break;
 		case Const.SORT_LEFTALL:
 			UtilInventory.shiftLeftAll(p.inventory);

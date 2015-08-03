@@ -32,7 +32,7 @@ public class Const
 
 	public static int ALL_ROWS = 12;//3 + 12;//3+12=15
 	public static int ALL_COLS = 18;//9 + 16;//9+16=25
-	public static final int PAGES = 2;
+	public static final int PAGES = 3;
 	public static final int PAGESIZE = ALL_ROWS*ALL_COLS;
 	public static final int ALL_SLOTS = PAGES*PAGESIZE + HOTBAR_SIZE;//was 384+9
  
