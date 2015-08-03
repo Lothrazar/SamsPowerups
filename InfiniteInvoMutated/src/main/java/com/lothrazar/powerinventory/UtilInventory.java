@@ -402,4 +402,24 @@ public class UtilInventory
 			} 
 		//} 
 	}
+	
+	public static void swapPage(InventoryPlayer inventory) 
+	{
+		int full = Const.ALL_SLOTS - Const.HOTBAR_SIZE;
+		
+		int half = (full)/2;//==9
+		ItemStack[] bar = new ItemStack[half];
+		for(int i = Const.HOTBAR_SIZE; i < half; i++)
+		{
+			bar[i] = inventory.getStackInSlot(i);//not sure if copy needed
+		}
+		ItemStack s;
+		for(int j = half; j < full+Const.HOTBAR_SIZE; j++)
+		{
+			s = inventory.getStackInSlot(j);
+			
+			inventory.setInventorySlotContents(j, bar[j-half]);
+			inventory.setInventorySlotContents(j-half, s);
+		}
+	}
 }
