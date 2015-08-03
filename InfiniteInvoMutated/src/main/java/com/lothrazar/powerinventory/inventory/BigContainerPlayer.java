@@ -173,6 +173,8 @@ public class BigContainerPlayer extends ContainerPlayer
 		this.invo = playerInventory; 
 	}
   
+	
+	
 	@Override
 	public Slot getSlotFromInventory(IInventory invo, int id)
 	{

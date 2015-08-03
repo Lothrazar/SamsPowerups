@@ -27,7 +27,11 @@ public class BigInventoryPlayer extends InventoryPlayer
     private ItemStack currentItemStack;
  
     public ItemStack[] bonusInventory;// = new ItemStack[Const.BONUS_SIZE];
-    public int currentPage = 0;
+    private int currentPage = 0;
+    public int getCurrentPage()
+    {
+    	return currentPage;
+    }
     
 	public BigInventoryPlayer(EntityPlayer player)
 	{
@@ -39,7 +43,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 	
 	public boolean incrementPage()
 	{
-		if(currentPage==Const.PAGES){return false;}
+		if(currentPage==Const.PAGES-1){return false;}
 		currentPage++;
 		return true;
 	}
@@ -71,7 +75,7 @@ public class BigInventoryPlayer extends InventoryPlayer
         	 return this.armorInventory[index - this.mainInventory.length];
         	
         }
-        return this.mainInventory[index];//exception at 384?
+        return this.mainInventory[index];//exception at 384?454?
     }
 	
 	@Override
@@ -120,14 +124,14 @@ public class BigInventoryPlayer extends InventoryPlayer
 			
 			
 			 
-		        if (slot >= this.mainInventory.length && slot < Const.ARMOR_START)
+		        if (slot >= this.mainInventory.length && slot < this.mainInventory.length + Const.ARMOR_SIZE)
 		        {
-		        	System.out.println("Slot="+slot);
-		        	slot = slot - this.mainInventory.length + Const.ARMOR_START;
+		        	//System.out.println("Slot="+slot);//??666
+		        	slot = slot - this.mainInventory.length;
 		            //out of bounds -586
 			        this.armorInventory[slot] = stack;
 		        }
-
+			else
 		        this.mainInventory[slot] = stack;
 			//super.setInventorySlotContents(slot, stack);
 		}

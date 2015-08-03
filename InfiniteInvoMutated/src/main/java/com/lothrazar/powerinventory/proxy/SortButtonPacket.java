@@ -49,21 +49,22 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
  
 		int sortType = message.tags.getInteger(NBT_SORT);
 		
+		//p.inventoryContainer
 
 		
 		switch(sortType)
 		{
 		case Const.SORT_LEFT:
-			//UtilInventory.shiftLeftOne(p.inventory);
-			System.out.printf("page up");
-			UtilInventory.swapPage(p.inventory,0,1);
-
+	 
 			if(p.inventory instanceof BigInventoryPlayer)
 			{
 				BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
-				int oldPage = big.currentPage;
+				int oldPage = big.getCurrentPage();
 				if(big.incrementPage())
-					UtilInventory.swapPage(p.inventory,oldPage, big.currentPage);
+					UtilInventory.swapPage(p.inventory,oldPage, big.getCurrentPage());
+				
+				
+				System.out.printf("\ncurrentPage",big.getCurrentPage());
 			}
 			
 			break;
@@ -73,9 +74,13 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 			if(p.inventory instanceof BigInventoryPlayer)
 			{
 				BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
-				int oldPage = big.currentPage;
+				int oldPage = big.getCurrentPage();
+
 				if(big.decrementPage())
-					UtilInventory.swapPage(p.inventory,oldPage, big.currentPage);
+					UtilInventory.swapPage(p.inventory,big.getCurrentPage(),oldPage);
+				
+
+				System.out.printf("\ncurrentPage",big.getCurrentPage());
 			}
 			
 			

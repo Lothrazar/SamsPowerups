@@ -407,21 +407,30 @@ public class UtilInventory
 	
 	public static void swapPage(InventoryPlayer inventory, int pageFrom, int pageTo) 
 	{
+		System.out.printf("\n_____swap page %d   %d",pageFrom,pageTo);
+		System.out.printf(" ALL_SLOTS   %d",Const.ALL_SLOTS);
 		//int full = Const.PAGESIZE*2;//should be [18,216+18]
 		
 		//if(inventory instanceof BigInventoryPlayer)
 		//{
 		//	BigInventoryPlayer inv = (BigInventoryPlayer)inventory;
+		int smallerPage = Math.min(pageFrom, pageTo);
+		int largerPage = Math.max(pageFrom, pageTo);
 			
 			//System.out.printf("+"+inv.currentPage);
 		//and then like [234,238]
 		
-		int startOne = pageFrom*Const.PAGESIZE+Const.HOTBAR_SIZE;//start
+		//_pg1 from 18 to 234  pg2 234 to 450
+		int startOne = smallerPage*Const.PAGESIZE+Const.HOTBAR_SIZE;//start
 		int pageOneEnd = startOne + Const.PAGESIZE;
-		
-		int startTwo = pageTo*Const.PAGESIZE+Const.HOTBAR_SIZE;
+		int startTwo = largerPage*Const.PAGESIZE+Const.HOTBAR_SIZE;
 		int pageTwoEnd = startTwo + Const.PAGESIZE;
 		
+		
+		//__pg1 from 234 to 450  pg2 450 to 666
+
+		System.out.printf("\n___pg1 from %d to %d",startOne,pageOneEnd);
+		System.out.printf("  pg2 %d to %d",startTwo,pageTwoEnd);
 		ItemStack[] bar = new ItemStack[Const.PAGESIZE];
 		//last index is exactly ALL_SLOTS = PAGES*PAGESIZE + HOTBAR_SIZE
 		//so start page1 = HOTBAR_SIZE
@@ -441,7 +450,7 @@ public class UtilInventory
 			int old = j-diff;
 			inventory.setInventorySlotContents(j, bar[old-startOne]);
 			inventory.setInventorySlotContents(old, s);
-		//}
+ 
 		}
 	}
 }
