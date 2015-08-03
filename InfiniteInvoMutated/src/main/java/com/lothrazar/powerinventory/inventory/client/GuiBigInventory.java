@@ -101,12 +101,12 @@ public class GuiBigInventory extends GuiInventory
 
 				x += x_spacing;
 			 
-				btnpgLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFT,""+(pg-1));
+				btnpgLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_PAGE_UP,"Page Up");
 				this.buttonList.add(btnpgLeft);
 
 				x += x_spacing;
 
-				btnpgRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHT,""+(pg+1));
+				btnpgRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_PAGE_DOWN,"Page Down");
 				this.buttonList.add(btnpgRight);
 				  
 				x += x_spacing;
@@ -207,14 +207,14 @@ public class GuiBigInventory extends GuiInventory
 		if(ModConfig.showText)
 			this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
-		int pg = this.container.invo.getCurrentPage();
-		btnpgLeft.displayString = ""+(pg-1);
-		btnpgRight.displayString = ""+(pg+1);
+		//int pg = this.container.invo.getCurrentPage();
+		//btnpgLeft.displayString = ""+(pg-1);
+		//btnpgRight.displayString = ""+(pg+1);
 
 		  
 
-		System.out.println(pg + " entitydata says "+player.getEntityData().getInteger("page"));
-		
+		//System.out.println(pg + " entitydata says "+player.getEntityData().getInteger("page"));
+		//
 		Slot s;
 		 
 		for(Object o : this.container.inventorySlots)

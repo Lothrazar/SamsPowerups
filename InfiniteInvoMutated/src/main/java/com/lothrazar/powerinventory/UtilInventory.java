@@ -274,7 +274,8 @@ public class UtilInventory
 
 		ItemStack item;
 		
-		for(int i = invo.getSizeInventory() - (Const.ARMOR_SIZE + 1); i >= Const.HOTBAR_SIZE;i--)
+		//invo.getSizeInventory() - (Const.ARMOR_SIZE + 1)
+		for(int i = Const.PAGESIZE + Const.HOTBAR_SIZE-1; i >= Const.HOTBAR_SIZE;i--)
 		{
 			item = invo.getStackInSlot(i);
 			
@@ -301,7 +302,8 @@ public class UtilInventory
 
 		ItemStack item;
 		
-		for(int i = Const.HOTBAR_SIZE; i < invo.getSizeInventory() - Const.ARMOR_SIZE;i++)
+		//was invo.getSizeInventory() - Const.ARMOR_SIZE
+		for(int i = Const.HOTBAR_SIZE; i < Const.PAGESIZE + Const.HOTBAR_SIZE;i++)
 		{
 			item = invo.getStackInSlot(i);
 			

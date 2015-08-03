@@ -55,7 +55,7 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 		
 		switch(sortType)
 		{
-		case Const.SORT_LEFT:
+		case Const.SORT_PAGE_DOWN:
 	 
 			if(p.inventory instanceof BigInventoryPlayer)
 			{
@@ -82,7 +82,7 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 			}
 			
 			break;
-		case Const.SORT_RIGHT:
+		case Const.SORT_PAGE_UP:
 
 
 			if(p.inventory instanceof BigInventoryPlayer)
