@@ -27,7 +27,8 @@ public class BigInventoryPlayer extends InventoryPlayer
     private ItemStack currentItemStack;
  
     public ItemStack[] bonusInventory;// = new ItemStack[Const.BONUS_SIZE];
-   
+    public int currentPage = 0;
+    
 	public BigInventoryPlayer(EntityPlayer player)
 	{
 		super(player);
@@ -35,6 +36,21 @@ public class BigInventoryPlayer extends InventoryPlayer
 		bonusInventory = new ItemStack[Const.BONUS_SIZE];
  
 	}
+	
+	public void incrementPage()
+	{
+		if(currentPage==Const.PAGES){return;}
+		currentPage++;
+	}
+	public void decrementPage()
+	{
+		if(currentPage==0){return;}
+		currentPage--;
+		
+		
+		
+	}
+	
 	
 	@Override
 	public ItemStack getStackInSlot(int index)

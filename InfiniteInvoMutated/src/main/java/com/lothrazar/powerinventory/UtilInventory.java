@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.Queue;
 
+import com.lothrazar.powerinventory.inventory.BigInventoryPlayer;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -403,12 +405,22 @@ public class UtilInventory
 		//} 
 	}
 	
-	public static void swapPage(InventoryPlayer inventory) 
+	public static void swapPage(InventoryPlayer inventory, int pageFrom, int pageTo) 
 	{
 		//int full = Const.PAGESIZE*2;//should be [18,216+18]
+		
+		//if(inventory instanceof BigInventoryPlayer)
+		//{
+		//	BigInventoryPlayer inv = (BigInventoryPlayer)inventory;
+			
+			//System.out.printf("+"+inv.currentPage);
 		//and then like [234,238]
 		
-		int st = Const.HOTBAR_SIZE;//start
+		int startOne = pageFrom*Const.PAGESIZE+Const.HOTBAR_SIZE;//start
+		int pageOneEnd = startOne + Const.PAGESIZE;
+		
+		int startTwo = pageTo*Const.PAGESIZE+Const.HOTBAR_SIZE;
+		int pageTwoEnd = startTwo + Const.PAGESIZE;
 		
 		ItemStack[] bar = new ItemStack[Const.PAGESIZE];
 		//last index is exactly ALL_SLOTS = PAGES*PAGESIZE + HOTBAR_SIZE
@@ -416,18 +428,20 @@ public class UtilInventory
 		//start page2 = HOTBAR_SIZE+PAGESIZE
 		//PAGESIZE is 12*18    216+18=234
 		
-		for(int i = st; i < Const.PAGESIZE+st; i++)
+		for(int i = startOne; i < pageOneEnd; i++)
 		{
-			bar[i-st] = inventory.getStackInSlot(i);//not sure if copy needed
+			bar[i-startOne] = inventory.getStackInSlot(i);//not sure if copy needed
 		}
 		ItemStack s;
-		for(int j = Const.PAGESIZE+st; j < 2*Const.PAGESIZE+st; j++)
+		int diff = startTwo - startOne;
+		for(int j = startTwo; j < pageTwoEnd; j++)
 		{
 			s = inventory.getStackInSlot(j);
 			
-			int old = j-Const.PAGESIZE;
-			inventory.setInventorySlotContents(j, bar[old-st]);
+			int old = j-diff;
+			inventory.setInventorySlotContents(j, bar[old-startOne]);
 			inventory.setInventorySlotContents(old, s);
+		//}
 		}
 	}
 }

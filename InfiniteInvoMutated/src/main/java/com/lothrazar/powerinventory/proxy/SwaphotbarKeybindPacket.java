@@ -41,6 +41,11 @@ public class SwaphotbarKeybindPacket implements IMessage , IMessageHandler<Swaph
 	{
 		EntityPlayer p = ctx.getServerHandler().playerEntity;
 		 
+		
+		//so we have to get&set current page, and swap page numbers
+		//
+		
+		
 		UtilInventory.swapHotbar(p.inventory);
  	
 		return null;

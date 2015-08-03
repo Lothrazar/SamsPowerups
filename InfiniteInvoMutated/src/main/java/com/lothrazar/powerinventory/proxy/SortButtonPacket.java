@@ -51,12 +51,12 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 		case Const.SORT_LEFT:
 			//UtilInventory.shiftLeftOne(p.inventory);
 			System.out.printf("page up");
-			UtilInventory.swapPage(p.inventory);
+			UtilInventory.swapPage(p.inventory,0,1);
 			break;
 		case Const.SORT_RIGHT:
 			System.out.printf("page DOWN");
 			//UtilInventory.shiftRightOne(p.inventory);
-			UtilInventory.swapPage(p.inventory);
+			UtilInventory.swapPage(p.inventory,0,1);
 			break;
 		case Const.SORT_LEFTALL:
 			UtilInventory.shiftLeftAll(p.inventory);
