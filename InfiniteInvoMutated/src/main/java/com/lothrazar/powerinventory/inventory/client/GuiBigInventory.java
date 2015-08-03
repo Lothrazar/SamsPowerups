@@ -209,8 +209,27 @@ public class GuiBigInventory extends GuiInventory
 			this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
 		int pg = this.container.invo.getCurrentPage();
-		btnpgLeft.displayString = ""+(pg-1);
-		btnpgRight.displayString = ""+(pg+1);
+		
+		if(pg <= 0)
+		{
+			btnpgLeft.displayString = "";
+			btnpgLeft.enabled=false;
+		}
+		else
+		{
+			btnpgLeft.displayString = ""+(pg-1);
+			btnpgLeft.enabled=true;
+		}
+		if(pg >= Const.PAGES-1)
+		{
+			btnpgRight.displayString = "";
+			btnpgRight.enabled=false;
+		}
+		else
+		{
+			btnpgRight.displayString = ""+(pg+1);
+			btnpgRight.enabled=true;
+		} 
 
 		  
 
