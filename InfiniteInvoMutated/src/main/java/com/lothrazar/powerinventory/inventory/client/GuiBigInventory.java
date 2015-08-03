@@ -24,6 +24,7 @@ import org.lwjgl.opengl.GL11;
 public class GuiBigInventory extends GuiInventory
 {
 	private BigContainerPlayer container;
+	private EntityPlayer player;
 
 	//these for 12x18. TODO link these
 	public static final int texture_width = 336;
@@ -34,10 +35,15 @@ public class GuiBigInventory extends GuiInventory
 */
 	GuiButton btnEnder;
 	GuiButton btnExp;
-	public GuiBigInventory(EntityPlayer player)
+	GuiButton btnpgRight;
+	GuiButton btnpgLeft;
+	GuiButton btnMoveLeft;
+	GuiButton btnMoveRight;
+	public GuiBigInventory(EntityPlayer p)
 	{
-		super(player);
-		container = player.inventoryContainer instanceof BigContainerPlayer? (BigContainerPlayer)player.inventoryContainer : null;
+		super(p);
+		container = p.inventoryContainer instanceof BigContainerPlayer? (BigContainerPlayer)p.inventoryContainer : null;
+		player=p;
 		this.xSize = texture_width;
 		this.ySize = texture_height;
 	}
@@ -88,26 +94,25 @@ public class GuiBigInventory extends GuiInventory
 				int x_spacing = width + padding/2;
 				int x = guiLeft + texture_width -  4*x_spacing - padding+1;
 				int y = guiTop + texture_height - height - padding          +12;
-				 
-				GuiButton btn;
-
-				btn = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
-				this.buttonList.add(btn);
+				int pg = container.invo.getCurrentPage();
+		 
+				btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
+				this.buttonList.add(btnMoveLeft);
 
 				x += x_spacing;
 			 
-				btn = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFT,"<");
-				this.buttonList.add(btn);
+				btnpgLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFT,""+(pg-1));
+				this.buttonList.add(btnpgLeft);
 
 				x += x_spacing;
 
-				btn = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHT,">");
-				this.buttonList.add(btn);
+				btnpgRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHT,""+(pg+1));
+				this.buttonList.add(btnpgRight);
 				  
 				x += x_spacing;
 				
-				btn = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHTALL,">>");
-				this.buttonList.add(btn);
+				btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHTALL,">>");
+				this.buttonList.add(btnMoveRight);
 				
 			}
 		}
@@ -116,7 +121,7 @@ public class GuiBigInventory extends GuiInventory
 	private void checkSlotsEmpty()
 	{
 		final int s = 16;
-		String st;
+ 
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_echest) == null)
 		{
 			btnEnder.enabled = false;
@@ -202,24 +207,13 @@ public class GuiBigInventory extends GuiInventory
 		if(ModConfig.showText)
 			this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
-		
-		/*
-		Slot s;
-		int show;
-		for(Object o : this.container.inventorySlots)
-		{
-			//vanilla code does not declare ArrayList<Slot>, even though every object in there really is one
-			s = (Slot)o;
-	 
-			//each slot has two different numbers. the slotNumber is UNIQUE, the index is not
-			show = s.getSlotIndex();
-			//show = s.slotNumber;
-			if(show <= 8)
-			this.drawString(this.fontRendererObj, "" + (show+1), s.xDisplayPosition+1, s.yDisplayPosition +  4, 1210752);
-		}
-*/
-		
-		
+		int pg = this.container.invo.getCurrentPage();
+		btnpgLeft.displayString = ""+(pg-1);
+		btnpgRight.displayString = ""+(pg+1);
+
+		  
+
+		System.out.println(pg + " entitydata says "+player.getEntityData().getInteger("page"));
 		
 		Slot s;
 		 

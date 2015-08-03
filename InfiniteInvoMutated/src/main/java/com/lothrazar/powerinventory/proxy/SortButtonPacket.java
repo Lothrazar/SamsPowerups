@@ -51,6 +51,7 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 		
 		//p.inventoryContainer
 
+		 
 		
 		switch(sortType)
 		{
@@ -72,9 +73,12 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 					
 					//so if going 0 to 1, do only this
 					UtilInventory.swapPage(p.inventory,0, big.getCurrentPage());
+					
 				}
 				
 				System.out.printf("\ncurrentPage %d",big.getCurrentPage());
+
+				p.getEntityData().setInteger("page", big.getCurrentPage());
 			}
 			
 			break;
@@ -92,10 +96,22 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 					
 					//so could go 4 to 3, etc 2 to 1, 1 to 0.
 					
-					UtilInventory.swapPage(p.inventory,big.getCurrentPage(),oldPage);
+					//really, we should swap 0 with old, and old with new.
+					//so if going from page 4 to page 3
+					//this means that 0(visible 3) goes to hiding
+					
+					if(0 != oldPage)
+						UtilInventory.swapPage(p.inventory,0, oldPage);
+					
+					
+					//so if going 0 to 1, do only this
+					UtilInventory.swapPage(p.inventory,0, big.getCurrentPage());
+					
+					//UtilInventory.swapPage(p.inventory,big.getCurrentPage(),oldPage);
 				}
 
 				System.out.printf("\ncurrentPage %d",big.getCurrentPage());
+				p.getEntityData().setInteger("page", big.getCurrentPage());
 			}
 			
 			

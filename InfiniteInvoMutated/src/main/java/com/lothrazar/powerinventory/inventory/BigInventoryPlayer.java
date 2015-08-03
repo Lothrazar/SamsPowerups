@@ -45,6 +45,8 @@ public class BigInventoryPlayer extends InventoryPlayer
 	{
 		if(currentPage==Const.PAGES-1){return false;}
 		currentPage++;
+		
+		
 		return true;
 	}
 	public boolean decrementPage()

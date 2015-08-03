@@ -32,6 +32,9 @@ public class GuiButtonSort extends GuiButton
   
     		tags.setInteger(SortButtonPacket.NBT_SORT, sortType);
     		ModInv.instance.network.sendToServer(new SortButtonPacket(tags));
+    		
+    		
+    
     	}
     	
     	return pressed;
