@@ -61,10 +61,20 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 				BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
 				int oldPage = big.getCurrentPage();
 				if(big.incrementPage())
-					UtilInventory.swapPage(p.inventory,oldPage, big.getCurrentPage());
+				{
+					//really, we should swap 0 with old, and old with new.
+					//so if going from page 3 to page 4
+					//this means that 0(visible 3) goes into pageslot 3 and then that content swaps into 4, and 4 becomes visible
+					
+					if(0 != oldPage)
+						UtilInventory.swapPage(p.inventory,0, oldPage);
+					
+					
+					//so if going 0 to 1, do only this
+					UtilInventory.swapPage(p.inventory,0, big.getCurrentPage());
+				}
 				
-				
-				System.out.printf("\ncurrentPage",big.getCurrentPage());
+				System.out.printf("\ncurrentPage %d",big.getCurrentPage());
 			}
 			
 			break;
@@ -77,10 +87,15 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 				int oldPage = big.getCurrentPage();
 
 				if(big.decrementPage())
+				{
+					
+					
+					//so could go 4 to 3, etc 2 to 1, 1 to 0.
+					
 					UtilInventory.swapPage(p.inventory,big.getCurrentPage(),oldPage);
-				
+				}
 
-				System.out.printf("\ncurrentPage",big.getCurrentPage());
+				System.out.printf("\ncurrentPage %d",big.getCurrentPage());
 			}
 			
 			
