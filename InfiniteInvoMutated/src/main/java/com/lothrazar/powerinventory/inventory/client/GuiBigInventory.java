@@ -119,7 +119,7 @@ public class GuiBigInventory extends GuiInventory
 		}
     }
 	
-	private void checkSlotsEmpty()
+	private void updateButtons()
 	{
 		final int s = 16;
  
@@ -160,6 +160,30 @@ public class GuiBigInventory extends GuiInventory
 		{  
 			drawTextureSimple("textures/items/empty_clock.png",container.clockX, container.clockY,s,s);
 		}
+		
+		int pg = this.container.invo.getCurrentPage();
+		
+		if(pg <= 0)
+		{
+			btnpgLeft.displayString = "";
+			btnpgLeft.enabled=false;
+		}
+		else
+		{
+			btnpgLeft.displayString = ""+(pg-1);
+			btnpgLeft.enabled=true;
+		}
+		if(pg >= Const.PAGES-1)
+		{
+			btnpgRight.displayString = "";
+			btnpgRight.enabled=false;
+		}
+		else
+		{
+			btnpgRight.displayString = ""+(pg+1);
+			btnpgRight.enabled=true;
+		} 
+
 	}
 	 
 	public void drawTextureSimple(String texture,double x, double y, double width, double height)
@@ -203,34 +227,12 @@ public class GuiBigInventory extends GuiInventory
 	@Override
 	public void drawGuiContainerForegroundLayer(int mouseX, int mouseY)
 	{ 
-		this.checkSlotsEmpty();
+		this.updateButtons();
 		
 		if(ModConfig.showText)
 			this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
-		int pg = this.container.invo.getCurrentPage();
 		
-		if(pg <= 0)
-		{
-			btnpgLeft.displayString = "";
-			btnpgLeft.enabled=false;
-		}
-		else
-		{
-			btnpgLeft.displayString = ""+(pg-1);
-			btnpgLeft.enabled=true;
-		}
-		if(pg >= Const.PAGES-1)
-		{
-			btnpgRight.displayString = "";
-			btnpgRight.enabled=false;
-		}
-		else
-		{
-			btnpgRight.displayString = ""+(pg+1);
-			btnpgRight.enabled=true;
-		} 
-
 		  
 
 		//System.out.println(pg + " entitydata says "+player.getEntityData().getInteger("page"));
