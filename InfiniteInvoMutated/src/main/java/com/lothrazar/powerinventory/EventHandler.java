@@ -11,6 +11,7 @@ import java.util.Iterator;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.entity.EntityPlayerSP;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
@@ -42,7 +43,8 @@ import com.lothrazar.powerinventory.inventory.client.GuiBigInventory;
 import com.lothrazar.powerinventory.inventory.client.GuiButtonClose; 
 import com.lothrazar.powerinventory.inventory.client.GuiButtonOpenInventory; 
 import com.lothrazar.powerinventory.proxy.ClientProxy;
-import com.lothrazar.powerinventory.proxy.EnderPearlPacket; 
+import com.lothrazar.powerinventory.proxy.EnderpearyKeybindPacket; 
+import com.lothrazar.powerinventory.proxy.SwaphotbarKeybindPacket;
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -52,7 +54,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
  * @author https://github.com/Funwayguy/InfiniteInvo
  * @author Forked and altered by https://github.com/PrinceOfAmber/InfiniteInvo
  */
-public class EventHandler
+public class EventHandler 
 {
 	public static File worldDir;
 	public static HashMap<String, Integer> unlockCache = new HashMap<String, Integer>();
@@ -63,7 +65,11 @@ public class EventHandler
     {   
         if(ClientProxy.keyEnder.isPressed() )
         { 	     
-        	 ModInv.instance.network.sendToServer( new EnderPearlPacket());   
+        	 ModInv.instance.network.sendToServer( new EnderpearyKeybindPacket());   
+        }  
+        else if(ClientProxy.keySwapbar.isPressed() )
+        { 	     
+        	 ModInv.instance.network.sendToServer( new SwaphotbarKeybindPacket());   
         }  
     }
 	
@@ -251,70 +257,13 @@ public class EventHandler
 	
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
-    public void renderOverlay(RenderGameOverlayEvent event)
+    public void renderOverlay(RenderGameOverlayEvent.Post event)
     {
 		//System.out.println("EH RenderGameOverlayEventRenderGameOverlayEvent");
 		//http://www.minecraftforge.net/wiki/Gui_Overlay
-		onRenderExperienceBar(event);
+ 
     }
-	  private static final int BUFF_ICON_SIZE = 18;
-	  private static final int BUFF_ICON_SPACING = BUFF_ICON_SIZE + 2; // 2 pixels between buff icons
-	  private static final int BUFF_ICON_BASE_U_OFFSET = 0;
-	  private static final int BUFF_ICON_BASE_V_OFFSET = 198;
-	  private static final int BUFF_ICONS_PER_ROW = 8;
-	@SideOnly(Side.CLIENT)
-	 public void onRenderExperienceBar(RenderGameOverlayEvent event)
-	  {
-		//  System.out.println("onRenderExperienceBar "+event.isCancelable());
-	    // 
-	    // We draw after the ExperienceBar has drawn.  The event raised by GuiIngameForge.pre()
-	    // will return true from isCancelable.  If you call event.setCanceled(true) in
-	    // that case, the portion of rendering which this event represents will be canceled.
-	    // We want to draw *after* the experience bar is drawn, so we make sure isCancelable() returns
-	    // false and that the eventType represents the ExperienceBar event.
-	    if(event.isCancelable() || event.type != ElementType.EXPERIENCE){return;}
-
-	    Minecraft mc = Minecraft.getMinecraft();
-	    // Starting position for the buff bar - 2 pixels from the top left corner.
-	    int xPos = 22;
-	    int yPos = 22;
-	    Collection<PotionEffect> collection = ( Collection<PotionEffect> )mc.thePlayer.getActivePotionEffects();
-	    if (!collection.isEmpty())
-	    {
-	      GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-	      GL11.glDisable(GL11.GL_LIGHTING);      
-	    //  this.mc.renderEngine.bindTexture("/gui/inventory.png");      
-
-	      for (Iterator iterator = mc.thePlayer.getActivePotionEffects()
-	          .iterator(); iterator.hasNext(); xPos += BUFF_ICON_SPACING)
-	      {
-	        PotionEffect potioneffect = (PotionEffect) iterator.next();
-	        Potion potion = Potion.potionTypes[potioneffect.getPotionID()];
-
-	  	  System.out.println(potion.getName());
-	        if (potion.hasStatusIcon())
-	        {
-	          int iconIndex = potion.getStatusIconIndex();
-	    
-	        
-	          if(mc.currentScreen != null)
-	          {
-	        	  System.out.println(xPos+" "+yPos );
-		         mc.currentScreen.drawTexturedModalRect(
-		              xPos, yPos, 
-		              BUFF_ICON_BASE_U_OFFSET + iconIndex % BUFF_ICONS_PER_ROW * BUFF_ICON_SIZE, BUFF_ICON_BASE_V_OFFSET + iconIndex / BUFF_ICONS_PER_ROW * BUFF_ICON_SIZE,
-		              BUFF_ICON_SIZE, BUFF_ICON_SIZE);
-		         
-		         
-	          }
-	        /*  else
-	          {
-	        	  System.out.println("null");
-	          }*/
-	        }       
-	      }
-	    }
-	  }
+	  
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)

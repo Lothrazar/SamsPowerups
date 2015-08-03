@@ -13,7 +13,9 @@ import net.minecraftforge.fml.common.FMLCommonHandler;
 public class ClientProxy extends CommonProxy
 {
 	public static KeyBinding keyEnder;  
+	public static KeyBinding keySwapbar;
 	public static final String keyEnderName = "key.ender";
+	public static final String keySwapbarName = "key.swapbar";
 	public static final String keyCategory = "key.categories.inventory";
 
 	@Override
@@ -28,6 +30,10 @@ public class ClientProxy extends CommonProxy
 		super.registerHandlers();
 		
 		keyEnder = new KeyBinding(keyEnderName, Keyboard.KEY_Z, keyCategory); 
-        ClientRegistry.registerKeyBinding(ClientProxy.keyEnder);
+        ClientRegistry.registerKeyBinding(keyEnder);
+
+        keySwapbar = new KeyBinding(keySwapbarName, Keyboard.KEY_B, keyCategory); 
+        ClientRegistry.registerKeyBinding(keySwapbar); 
+        
 	}
 }

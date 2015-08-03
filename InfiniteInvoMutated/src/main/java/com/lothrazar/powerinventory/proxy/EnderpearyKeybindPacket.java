@@ -14,12 +14,12 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 /** 
  * @author Lothrazar at https://github.com/PrinceOfAmber
  */
-public class EnderPearlPacket implements IMessage , IMessageHandler<EnderPearlPacket, IMessage>
+public class EnderpearyKeybindPacket implements IMessage , IMessageHandler<EnderpearyKeybindPacket, IMessage>
 {
-	public EnderPearlPacket() {}
+	public EnderpearyKeybindPacket() {}
 	NBTTagCompound tags = new NBTTagCompound(); 
 	
-	public EnderPearlPacket(NBTTagCompound ptags)
+	public EnderpearyKeybindPacket(NBTTagCompound ptags)
 	{
 		tags = ptags;
 	}
@@ -37,7 +37,7 @@ public class EnderPearlPacket implements IMessage , IMessageHandler<EnderPearlPa
 	}
  
 	@Override
-	public IMessage onMessage(EnderPearlPacket message, MessageContext ctx)
+	public IMessage onMessage(EnderpearyKeybindPacket message, MessageContext ctx)
 	{
 		EntityPlayer p = ctx.getServerHandler().playerEntity;
 		 

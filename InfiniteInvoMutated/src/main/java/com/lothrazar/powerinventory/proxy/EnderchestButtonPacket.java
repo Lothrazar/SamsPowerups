@@ -1,12 +1,9 @@
 package com.lothrazar.powerinventory.proxy;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import com.lothrazar.powerinventory.*;
+import com.lothrazar.powerinventory.Const;
+
 import io.netty.buffer.ByteBuf;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -15,12 +12,12 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 /** 
  * @author Lothrazar at https://github.com/PrinceOfAmber
  */
-public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPacket, IMessage>
+public class EnderchestButtonPacket implements IMessage , IMessageHandler<EnderchestButtonPacket, IMessage>
 {
-	public SortButtonPacket() {}
+	public EnderchestButtonPacket() {}
 	NBTTagCompound tags = new NBTTagCompound(); 
 	
-	public SortButtonPacket(NBTTagCompound ptags)
+	public EnderchestButtonPacket(NBTTagCompound ptags)
 	{
 		tags = ptags;
 	}
@@ -37,32 +34,24 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 		ByteBufUtils.writeTag(buf, this.tags);
 	}
 
-	public static final String NBT_SORT = "sort";
-
 	@Override
-	public IMessage onMessage(SortButtonPacket message, MessageContext ctx)
+	public IMessage onMessage(EnderchestButtonPacket message, MessageContext ctx)
 	{
 		EntityPlayer p = ctx.getServerHandler().playerEntity;
- 
-		int sortType = message.tags.getInteger(NBT_SORT);
 		
-		switch(sortType)
+		int invType = message.tags.getInteger("i");
+
+		switch(invType)
 		{
-		case Const.SORT_LEFT:
-			UtilInventory.shiftLeftOne(p.inventory);
-			break;
-		case Const.SORT_RIGHT:
-			UtilInventory.shiftRightOne(p.inventory);
-			break;
-		case Const.SORT_LEFTALL:
-			UtilInventory.shiftLeftAll(p.inventory);
-			break;
-		case Const.SORT_RIGHTALL:
-			UtilInventory.shiftRightAll(p.inventory);
+		case Const.INV_ENDER:
+			p.displayGUIChest(p.getInventoryEnderChest());
+		break;
+		case Const.INV_PLAYER:
+
+			//this packet should not have been sent. but keep empty branch so i remember it
 			break;
 		}
-	  
+
 		return null;
 	}
-	
 }

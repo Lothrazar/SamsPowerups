@@ -1,9 +1,11 @@
 package com.lothrazar.powerinventory.proxy;
 
-import com.lothrazar.powerinventory.Const;
+import com.lothrazar.powerinventory.*;
 
 import io.netty.buffer.ByteBuf;
+import net.minecraft.entity.item.EntityEnderPearl;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fml.common.network.ByteBufUtils;
 import net.minecraftforge.fml.common.network.simpleimpl.IMessage;
@@ -12,12 +14,12 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 /** 
  * @author Lothrazar at https://github.com/PrinceOfAmber
  */
-public class EnderChestPacket implements IMessage , IMessageHandler<EnderChestPacket, IMessage>
+public class SwaphotbarKeybindPacket implements IMessage , IMessageHandler<SwaphotbarKeybindPacket, IMessage>
 {
-	public EnderChestPacket() {}
+	public SwaphotbarKeybindPacket() {}
 	NBTTagCompound tags = new NBTTagCompound(); 
 	
-	public EnderChestPacket(NBTTagCompound ptags)
+	public SwaphotbarKeybindPacket(NBTTagCompound ptags)
 	{
 		tags = ptags;
 	}
@@ -33,25 +35,14 @@ public class EnderChestPacket implements IMessage , IMessageHandler<EnderChestPa
 	{
 		ByteBufUtils.writeTag(buf, this.tags);
 	}
-
+ 
 	@Override
-	public IMessage onMessage(EnderChestPacket message, MessageContext ctx)
+	public IMessage onMessage(SwaphotbarKeybindPacket message, MessageContext ctx)
 	{
 		EntityPlayer p = ctx.getServerHandler().playerEntity;
-		
-		int invType = message.tags.getInteger("i");
-
-		switch(invType)
-		{
-		case Const.INV_ENDER:
-			p.displayGUIChest(p.getInventoryEnderChest());
-		break;
-		case Const.INV_PLAYER:
-
-			//this packet should not have been sent. but keep empty branch so i remember it
-			break;
-		}
-
+		 
+		UtilInventory.swapHotbar(p.inventory);
+ 	
 		return null;
 	}
 }
