@@ -76,7 +76,7 @@ public class BigContainerPlayer extends ContainerPlayer
         int i,j,cx,cy,slotIndex;//rows and cols of vanilla, not extra
    
         S_RESULT = this.inventorySlots.size();
-        slotIndex = 0;
+        slotIndex = 0;//was 0
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, slotIndex, 
         		200,  
         		40));
@@ -99,7 +99,7 @@ public class BigContainerPlayer extends ContainerPlayer
     	cy = 16 + Const.sq * (Const.ALL_ROWS + 4);//so 12, since allrows=15
         for (i = 0; i < Const.HOTBAR_SIZE; ++i)
         { 
-        	cx = 8 + i * Const.sq; 
+        	cx = 7 + i * Const.sq; 
         	slotIndex = i;
             this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
         }
@@ -108,7 +108,7 @@ public class BigContainerPlayer extends ContainerPlayer
         S_ARMOR_START = this.inventorySlots.size(); 
         for (i = 0; i < Const.ARMOR_SIZE; ++i)
         {
-        	cx = 8;
+        	cx = 7;
         	cy = 8 + i * Const.sq;
             final int k = i;
             //getSizeInventory==this.mainInventory.length + 4;
@@ -160,7 +160,7 @@ public class BigContainerPlayer extends ContainerPlayer
 		{
             for ( j = 0; j < Const.ALL_COLS; ++j)
             { 
-            	cx = 8 + j * Const.sq;
+            	cx = 7 + j * Const.sq;
             	cy = 84 + i * Const.sq;
                 this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
             	slotIndex++;

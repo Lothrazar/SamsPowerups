@@ -32,8 +32,8 @@ public class Const
 
 	public static int ALL_ROWS = 12;//3 + 12;//3+12=15
 	public static int ALL_COLS = 18;//9 + 16;//9+16=25
-	//public static final int PAGES = 1;
-	public static final int ALL_SLOTS = ALL_ROWS*ALL_COLS + HOTBAR_SIZE;//was 384+9
+	public static final int PAGES = 2;
+	public static final int ALL_SLOTS = PAGES*ALL_ROWS*ALL_COLS + HOTBAR_SIZE;//was 384+9
  
 	//these are slot indices. different than slot numbers (important) comes right after armor
 	public static final int ARMOR_START = Integer.MAX_VALUE - 100;// HOTBAR_SIZE+ALL_ROWS * ALL_COLS;

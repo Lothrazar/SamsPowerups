@@ -87,7 +87,7 @@ public class GuiBigInventory extends GuiInventory
 			{  
 				int x_spacing = width + padding/2;
 				int x = guiLeft + texture_width -  4*x_spacing - padding+1;
-				int y = guiTop + texture_height - height - padding;
+				int y = guiTop + texture_height - height - padding          +12;
 				 
 				GuiButton btn;
 
@@ -202,6 +202,8 @@ public class GuiBigInventory extends GuiInventory
 		if(ModConfig.showText)
 			this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
+		
+		/*
 		Slot s;
 		int show;
 		for(Object o : this.container.inventorySlots)
@@ -212,8 +214,26 @@ public class GuiBigInventory extends GuiInventory
 			//each slot has two different numbers. the slotNumber is UNIQUE, the index is not
 			show = s.getSlotIndex();
 			//show = s.slotNumber;
-			this.drawString(this.fontRendererObj, "" + show, s.xDisplayPosition, s.yDisplayPosition +  4, 16777120);
+			if(show <= 8)
+			this.drawString(this.fontRendererObj, "" + (show+1), s.xDisplayPosition+1, s.yDisplayPosition +  4, 1210752);
 		}
-
+*/
+		
+		
+		
+		Slot s;
+		 
+		for(Object o : this.container.inventorySlots)
+		{
+			//vanilla code does not declare ArrayList<Slot>, even though every object in there really is one
+			s = (Slot)o;
+	 
+			//each slot has two different numbers. the slotNumber is UNIQUE, the index is not
+	 
+			if(s.slotNumber >= 10 && s.slotNumber < 10 +Const.HOTBAR_SIZE/2)
+				this.drawString(this.fontRendererObj, "" + (s.getSlotIndex()+1), s.xDisplayPosition+1, s.yDisplayPosition +  4, 1210752);
+			else//this is debug mode now
+				this.drawString(this.fontRendererObj, "" + s.getSlotIndex(), s.xDisplayPosition, s.yDisplayPosition +  4, 16777120);
+		} 
 	}
 }
