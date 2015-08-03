@@ -1,6 +1,7 @@
 package com.lothrazar.powerinventory.inventory;
 
 import com.lothrazar.powerinventory.Const; 
+import com.lothrazar.powerinventory.PlayerExtended;
 
 import java.util.concurrent.Callable;
 
@@ -27,35 +28,36 @@ public class BigInventoryPlayer extends InventoryPlayer
     private ItemStack currentItemStack;
  
     public ItemStack[] bonusInventory;// = new ItemStack[Const.BONUS_SIZE];
-    private int currentPage = 0;
-    public int getCurrentPage()
-    {
-    	return currentPage;
-    }
-    
-	public BigInventoryPlayer(EntityPlayer player)
+ 
+	public BigInventoryPlayer(EntityPlayer p)
 	{
-		super(player);
+		super(p);
 		this.mainInventory = new ItemStack[Const.ALL_SLOTS];
 		bonusInventory = new ItemStack[Const.BONUS_SIZE];
+		player=p;
  
 	}
-	
+ 
+    public int getCurrentPage()
+    {
+    	return PlayerExtended.get(player).getPageCurrent();
+    }
 	public boolean incrementPage()
 	{
+		int currentPage = getCurrentPage();
 		if(currentPage==Const.PAGES-1){return false;}
 		currentPage++;
-		
+		PlayerExtended.get(player).setPageCurrent(currentPage);
 		
 		return true;
 	}
 	public boolean decrementPage()
 	{
+		int currentPage = getCurrentPage();
 		if(currentPage==0){return false;}
 		currentPage--;
+		PlayerExtended.get(player).setPageCurrent(currentPage);
 		return true;
-		
-		
 	}
 	
 	

@@ -33,6 +33,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.event.entity.EntityEvent.EntityConstructing;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.event.world.WorldEvent;
 
 import org.apache.logging.log4j.Level;
@@ -44,7 +45,7 @@ import com.lothrazar.powerinventory.inventory.client.GuiButtonClose;
 import com.lothrazar.powerinventory.inventory.client.GuiButtonOpenInventory; 
 import com.lothrazar.powerinventory.proxy.ClientProxy;
 import com.lothrazar.powerinventory.proxy.EnderpearyKeybindPacket; 
-import com.lothrazar.powerinventory.proxy.SwaphotbarKeybindPacket;
+import com.lothrazar.powerinventory.proxy.SwaphotbarKeybindPacket; 
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.gameevent.InputEvent;
@@ -72,7 +73,20 @@ public class EventHandler
         	 ModInv.instance.network.sendToServer( new SwaphotbarKeybindPacket());   
         }  
     }
+	@SubscribeEvent
+	public void onClonePlayer(PlayerEvent.Clone event) 
+	{ 
+		PlayerExtended.get(event.entityPlayer).copy(PlayerExtended.get(event.original));
+	}
 	
+	@SubscribeEvent
+ 	public void onEntityConstructing(EntityConstructing event)
+ 	{ 
+ 		if (event.entity instanceof EntityPlayer && PlayerExtended.get((EntityPlayer) event.entity) == null)
+ 		{ 
+ 			PlayerExtended.register((EntityPlayer) event.entity);
+ 		} 
+ 	}
 	@SubscribeEvent
 	public void onEntityConstruct(EntityConstructing event) // More reliable than on entity join
 	{

@@ -56,7 +56,7 @@ public class GuiBigInventory extends GuiInventory
 		
 		if(this.container != null && this.mc.playerController.isInCreativeMode() == false)
 		{
-			final int height = 20;
+			int height = 20;
 			final int width = 26;
 			final int widthlrg = 58;
 			final int padding = 6;
@@ -95,6 +95,7 @@ public class GuiBigInventory extends GuiInventory
 				int x = guiLeft + texture_width -  4*x_spacing - padding+1;
 				int y = guiTop + texture_height - height - padding          +12;
 				int pg = container.invo.getCurrentPage();
+				height = 8;
 		 
 				btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
 				this.buttonList.add(btnMoveLeft);
@@ -207,9 +208,9 @@ public class GuiBigInventory extends GuiInventory
 		if(ModConfig.showText)
 			this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
-		//int pg = this.container.invo.getCurrentPage();
-		//btnpgLeft.displayString = ""+(pg-1);
-		//btnpgRight.displayString = ""+(pg+1);
+		int pg = this.container.invo.getCurrentPage();
+		btnpgLeft.displayString = ""+(pg-1);
+		btnpgRight.displayString = ""+(pg+1);
 
 		  
 
