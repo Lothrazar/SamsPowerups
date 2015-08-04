@@ -65,7 +65,7 @@ public class Const
 
 	public static int ALL_ROWS = 6;//3 + 12;//3+12=15//or 12
 	public static int ALL_COLS = 18;//9 + 16;//9+16=25
-	public static final int PAGES = 10;
+	public static final int PAGES = 15;
 	public static final int PAGESIZE = ALL_ROWS*ALL_COLS;
 	public static final int ALL_SLOTS = PAGES*PAGESIZE + HOTBAR_SIZE;//was 384+9
  
@@ -81,8 +81,8 @@ public class Const
 	public final static int INV_ENDER = 1;
 	public final static int INV_PLAYER = 2;
 	
-	public final static int SORT_PAGE_DOWN = 1;
-	public final static int SORT_PAGE_UP = 2;
+	public final static int SORT_LEFT = 1;
+	public final static int SORT_RIGHT = 2;
 	public final static int SORT_LEFTALL = -1;
 	public final static int SORT_RIGHTALL = -2;
 }

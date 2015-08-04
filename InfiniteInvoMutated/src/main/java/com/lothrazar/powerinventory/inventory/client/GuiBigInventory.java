@@ -27,7 +27,7 @@ public class GuiBigInventory extends GuiInventory
 	private EntityPlayer player;
 
 
-	GuiButton btnEnder;
+	//GuiButton btnEnder;
 	GuiButton btnExp;
 	GuiButton[] btnPages = new GuiButton[Const.PAGES];
 	GuiButton btnMoveLeft;
@@ -50,8 +50,8 @@ public class GuiBigInventory extends GuiInventory
 		if(this.container != null && this.mc.playerController.isInCreativeMode() == false)
 		{
 			final int height = 20;
-			final int width = 26;
-			final int widthlrg = 58;
+			final int width = 18;
+			final int widthlrg = 50;
 			final int padding = 6;
 			//final int tiny = 12;
 			int button_id = 99;
@@ -65,7 +65,7 @@ public class GuiBigInventory extends GuiInventory
 					this.guiLeft + this.xSize - widthlrg - 2*padding - widthlrg, 
 					this.guiTop + padding,
 					widthlrg,height));
-
+/*
 			btnEnder = new GuiButtonOpenInventory(button_id++, 
 					this.guiLeft + container.echestX + 19, 
 					this.guiTop + container.echestY-1,
@@ -74,7 +74,7 @@ public class GuiBigInventory extends GuiInventory
 			
 			this.buttonList.add(btnEnder); 
 			btnEnder.enabled = false;// turn it on based on ender chest present or not
-
+*/
 			btnExp = new GuiButtonExp(button_id++, 
 					this.guiLeft + container.bottleX - width - padding+1, 
 					this.guiTop + container.bottleY-2,
@@ -84,18 +84,27 @@ public class GuiBigInventory extends GuiInventory
 			
 			int x_spacing = width + padding/2;
 			int x = guiLeft + this.xSize -  4*x_spacing - padding+1;
-			int y = guiTop + this.ySize - height - padding        -22;
+			int y = guiTop + + height + padding        +5;
 		
 	 
 			btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
 			this.buttonList.add(btnMoveLeft); 
 			x += x_spacing;
+			btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFT,"<");
+			this.buttonList.add(btnMoveRight);
+			x += x_spacing;
+			btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHT,">");
+			this.buttonList.add(btnMoveRight);
+			x += x_spacing;
 			btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHTALL,">>");
 			this.buttonList.add(btnMoveRight);
+			
+			
+			
 
 			x_spacing = width + padding/2;
 			x = guiLeft + padding;
-			y = this.guiTop + this.ySize - 27 - height;//guiTop + this.ySize - height - padding        -22;
+			y = this.guiTop + this.ySize - 28 - height;//guiTop + this.ySize - height - padding        -22;
 			
 			for(int pg = 0; pg < Const.PAGES;pg++)
 			{
@@ -110,7 +119,7 @@ public class GuiBigInventory extends GuiInventory
 	private void updateButtons()
 	{
 		final int s = 16;
- 
+ /*
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_echest) == null)
 		{
 			btnEnder.enabled = false;
@@ -120,7 +129,7 @@ public class GuiBigInventory extends GuiInventory
 		else 
 		{ 
 			btnEnder.enabled = true; 
-		}
+		}*/
 		
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_bottle) == null || 
 		   container.invo.getStackInSlot(Const.BONUS_START+Const.type_bottle).getItem() == Items.experience_bottle	)

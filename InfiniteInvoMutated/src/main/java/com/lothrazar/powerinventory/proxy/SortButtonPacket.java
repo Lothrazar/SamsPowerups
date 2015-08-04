@@ -48,73 +48,14 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 		EntityPlayer p = ctx.getServerHandler().playerEntity;
  
 		int sortType = message.tags.getInteger(NBT_SORT);
-		
-		//p.inventoryContainer
 
-		 
-		
 		switch(sortType)
 		{
-		case Const.SORT_PAGE_DOWN:
-	 
-			if(p.inventory instanceof BigInventoryPlayer)
-			{
-				BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
-				int oldPage = big.getCurrentPage();
-				if(big.incrementPage())
-				{
-					//really, we should swap 0 with old, and old with new.
-					//so if going from page 3 to page 4
-					//this means that 0(visible 3) goes into pageslot 3 and then that content swaps into 4, and 4 becomes visible
-					
-					if(0 != oldPage)
-						UtilInventory.swapPage(p.inventory,0, oldPage);
-					
-					
-					//so if going 0 to 1, do only this
-					UtilInventory.swapPage(p.inventory,0, big.getCurrentPage());
-					
-				}
-				
-				System.out.printf("\ncurrentPage %d",big.getCurrentPage());
-
-				p.getEntityData().setInteger("page", big.getCurrentPage());
-			}
-			
+		case Const.SORT_LEFT:
+			UtilInventory.shiftLeftOne(p.inventory);
 			break;
-		case Const.SORT_PAGE_UP:
-
-
-			if(p.inventory instanceof BigInventoryPlayer)
-			{
-				BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
-				int oldPage = big.getCurrentPage();
-
-				if(big.decrementPage())
-				{
-					
-					
-					//so could go 4 to 3, etc 2 to 1, 1 to 0.
-					
-					//really, we should swap 0 with old, and old with new.
-					//so if going from page 4 to page 3
-					//this means that 0(visible 3) goes to hiding
-					
-					if(0 != oldPage)
-						UtilInventory.swapPage(p.inventory,0, oldPage);
-					
-					
-					//so if going 0 to 1, do only this
-					UtilInventory.swapPage(p.inventory,0, big.getCurrentPage());
-					
-					//UtilInventory.swapPage(p.inventory,big.getCurrentPage(),oldPage);
-				}
-
-				System.out.printf("\ncurrentPage %d",big.getCurrentPage());
-				p.getEntityData().setInteger("page", big.getCurrentPage());
-			}
-			
-			
+		case Const.SORT_RIGHT:
+			UtilInventory.shiftRightOne(p.inventory);
 			break;
 		case Const.SORT_LEFTALL:
 			UtilInventory.shiftLeftAll(p.inventory);
@@ -126,5 +67,4 @@ public class SortButtonPacket implements IMessage , IMessageHandler<SortButtonPa
 	  
 		return null;
 	}
-	
 }
