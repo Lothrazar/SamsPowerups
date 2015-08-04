@@ -27,7 +27,7 @@ public class GuiBigInventory extends GuiInventory
 	private EntityPlayer player;
 
 
-	//GuiButton btnEnder;
+	GuiButton btnEnder;
 	GuiButton btnExp;
 	GuiButton[] btnPages = new GuiButton[Const.PAGES];
 	GuiButton btnMoveLeft;
@@ -65,22 +65,23 @@ public class GuiBigInventory extends GuiInventory
 					this.guiLeft + this.xSize - widthlrg - 2*padding - widthlrg, 
 					this.guiTop + padding,
 					widthlrg,height));
-/*
+
 			btnEnder = new GuiButtonOpenInventory(button_id++, 
 					this.guiLeft + container.echestX + 19, 
-					this.guiTop + container.echestY-1,
-					12,height
-					, "",Const.INV_ENDER);
+					this.guiTop + container.echestY - 1,
+					12,height, "I",Const.INV_ENDER);
 			
 			this.buttonList.add(btnEnder); 
 			btnEnder.enabled = false;// turn it on based on ender chest present or not
-*/
+			btnEnder.visible = btnEnder.enabled;
+			
 			btnExp = new GuiButtonExp(button_id++, 
 					this.guiLeft + container.bottleX - width - padding+1, 
 					this.guiTop + container.bottleY-2,
 					width,height,StatCollector.translateToLocal("button.exp"));
 			this.buttonList.add(btnExp);
 			btnExp.enabled = false;
+			btnExp.visible = btnExp.enabled;
 			
 			int x_spacing = width + padding/2;
 			int x = guiLeft + this.xSize -  4*x_spacing - padding+1;
@@ -122,25 +123,30 @@ public class GuiBigInventory extends GuiInventory
  
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_echest) == null)
 		{
-			//btnEnder.enabled = false;
+			btnEnder.enabled = false;
+			btnEnder.visible = btnEnder.enabled;
  
 			drawTextureSimple("textures/items/empty_enderchest.png",container.echestX, container.echestY,s,s); 
-		}/*
+		}
 		else 
 		{ 
 			btnEnder.enabled = true; 
-		}*/
+			btnEnder.visible = btnEnder.enabled;
+		}
 		
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_bottle) == null || 
 		   container.invo.getStackInSlot(Const.BONUS_START+Const.type_bottle).getItem() == Items.experience_bottle	)
 		{
-			btnExp.enabled = false;
-  
+			btnExp.enabled = false; 
+			btnExp.visible = btnExp.enabled;
+			
 			drawTextureSimple("textures/items/empty_bottle.png",container.bottleX, container.bottleY,s,s); 
 		}
 		else 
 		{ 
 			btnExp.enabled = true; 
+			btnExp.visible = btnExp.enabled;
+			//no texture drawn, the item is here
 		}
 
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_epearl) == null)
@@ -164,6 +170,8 @@ public class GuiBigInventory extends GuiInventory
 		{
 			btnPages[p].enabled = (p != pg);
 		}
+		
+		//TODO: button buy more
 	}
 	 
 	public void drawTextureSimple(String texture,double x, double y, double width, double height)
