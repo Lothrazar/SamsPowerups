@@ -29,8 +29,7 @@ public class GuiBigInventory extends GuiInventory
 
 	GuiButton btnEnder;
 	GuiButton btnExp;
-	GuiButton btnpgRight;
-	GuiButton btnpgLeft;
+	GuiButton[] btnPages = new GuiButton[Const.PAGES];
 	GuiButton btnMoveLeft;
 	GuiButton btnMoveRight;
 	public GuiBigInventory(EntityPlayer p)
@@ -82,38 +81,29 @@ public class GuiBigInventory extends GuiInventory
 					width,height,StatCollector.translateToLocal("button.exp"));
 			this.buttonList.add(btnExp);
 			btnExp.enabled = false;
-		 
-			if(ModConfig.showSortButtons)
-			{  
-				int x_spacing = width + padding/2;
-				int x = guiLeft + this.xSize -  4*x_spacing - padding+1;
-				int y = guiTop + this.ySize - height - padding        -22;
 			
-				//height = 10;
-		 
-				btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
-				this.buttonList.add(btnMoveLeft);
+			int x_spacing = width + padding/2;
+			int x = guiLeft + this.xSize -  4*x_spacing - padding+1;
+			int y = guiTop + this.ySize - height - padding        -22;
+		
+	 
+			btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
+			this.buttonList.add(btnMoveLeft); 
+			x += x_spacing;
+			btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHTALL,">>");
+			this.buttonList.add(btnMoveRight);
+
+			x_spacing = width + padding/2;
+			x = guiLeft + this.xSize -  4*x_spacing - padding+1;
+			y = this.guiTop + container.bottleY-2;//guiTop + this.ySize - height - padding        -22;
+			
+			for(int pg = 0; pg < Const.PAGES;pg++)
+			{
+				btnPages[pg] = new GuiButtonPage(button_id++, x, y,width,height, pg,""+pg);
+				this.buttonList.add(btnPages[pg]);
 
 				x += x_spacing;
-			 
-				btnpgLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_PAGE_UP,"Page Up");
-				this.buttonList.add(btnpgLeft);
-
-				x += x_spacing;
-
-				
-				
-				x += x_spacing;
-				
-				btnpgRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_PAGE_DOWN,"Page Down");
-				this.buttonList.add(btnpgRight);
-				  
-				x += x_spacing;
-				
-				btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHTALL,">>");
-				this.buttonList.add(btnMoveRight);
-				
-			}
+			} 
 		}
     }
 
@@ -160,7 +150,8 @@ public class GuiBigInventory extends GuiInventory
 		}
 		
 		int pg = this.container.invo.getCurrentPage();
-		
+		btnPages[pg].enabled = false;
+		/*
 		if(pg <= 0)
 		{
 			btnpgLeft.displayString = "";
@@ -180,7 +171,7 @@ public class GuiBigInventory extends GuiInventory
 		{
 			btnpgRight.displayString = ""+(pg+1);
 			btnpgRight.enabled=true;
-		}
+		}*/
 	}
 	 
 	public void drawTextureSimple(String texture,double x, double y, double width, double height)

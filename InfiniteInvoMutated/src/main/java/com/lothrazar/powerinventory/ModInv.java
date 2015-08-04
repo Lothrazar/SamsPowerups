@@ -13,6 +13,7 @@ import com.lothrazar.powerinventory.proxy.EnderchestButtonPacket;
 import com.lothrazar.powerinventory.proxy.ExpButtonPacket;
 import com.lothrazar.powerinventory.proxy.FilterButtonPacket;
 import com.lothrazar.powerinventory.proxy.EnderpearyKeybindPacket;
+import com.lothrazar.powerinventory.proxy.PageButtonPacket;
 import com.lothrazar.powerinventory.proxy.SortButtonPacket; 
 import com.lothrazar.powerinventory.proxy.SwaphotbarKeybindPacket;
 
@@ -70,6 +71,7 @@ public class ModInv
     	network.registerMessage(FilterButtonPacket.class,FilterButtonPacket.class,packetID++, Side.SERVER);
     	network.registerMessage(ExpButtonPacket.class,   ExpButtonPacket.class,   packetID++, Side.SERVER);
     	network.registerMessage(DumpButtonPacket.class,  DumpButtonPacket.class,  packetID++, Side.SERVER);
+    	network.registerMessage(PageButtonPacket.class,  PageButtonPacket.class,  packetID++, Side.SERVER);
     	
     	//these two are keybindings
     	network.registerMessage(EnderpearyKeybindPacket.class,  EnderpearyKeybindPacket.class,  packetID++, Side.SERVER);

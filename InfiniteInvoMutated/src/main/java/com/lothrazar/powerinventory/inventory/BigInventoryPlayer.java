@@ -51,6 +51,11 @@ public class BigInventoryPlayer extends InventoryPlayer
 		
 		return true;
 	}
+	public boolean setPage(int page) 
+	{
+		PlayerExtended.get(player).setPageCurrent(page);
+		return true;
+	}
 	public boolean decrementPage()
 	{
 		int currentPage = getCurrentPage();
@@ -522,4 +527,5 @@ public class BigInventoryPlayer extends InventoryPlayer
             }
         }
     }
+
 }
