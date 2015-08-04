@@ -94,8 +94,8 @@ public class GuiBigInventory extends GuiInventory
 			this.buttonList.add(btnMoveRight);
 
 			x_spacing = width + padding/2;
-			x = guiLeft + this.xSize -  4*x_spacing - padding+1;
-			y = this.guiTop + container.bottleY-2;//guiTop + this.ySize - height - padding        -22;
+			x = guiLeft + padding;
+			y = this.guiTop + this.ySize - 27 - height;//guiTop + this.ySize - height - padding        -22;
 			
 			for(int pg = 0; pg < Const.PAGES;pg++)
 			{

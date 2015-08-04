@@ -41,17 +41,13 @@ public class PageButtonPacket implements IMessage , IMessageHandler<PageButtonPa
 		ByteBufUtils.writeTag(buf, this.tags);
 	}
  
-
 	@Override
 	public IMessage onMessage(PageButtonPacket message, MessageContext ctx)
 	{
 		EntityPlayer p = ctx.getServerHandler().playerEntity;
  
 		int page = message.tags.getInteger(NBT_PAGE);
-		
-		//p.inventoryContainer
-
-		  
+	
 		if(p.inventory instanceof BigInventoryPlayer)
 		{
 			BigInventoryPlayer big = (BigInventoryPlayer)p.inventory;
@@ -64,8 +60,7 @@ public class PageButtonPacket implements IMessage , IMessageHandler<PageButtonPa
 				
 				if(0 != oldPage)
 					UtilInventory.swapPage(p.inventory,0, oldPage);
-				
-				
+		
 				//so if going 0 to 1, do only this
 				UtilInventory.swapPage(p.inventory,0, big.getCurrentPage());
 				
@@ -76,8 +71,6 @@ public class PageButtonPacket implements IMessage , IMessageHandler<PageButtonPa
 			p.getEntityData().setInteger("page", big.getCurrentPage());
 		}
 		
-	 
-	  
 		return null;
 	}
 	
