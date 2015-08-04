@@ -150,28 +150,11 @@ public class GuiBigInventory extends GuiInventory
 		}
 		
 		int pg = this.container.invo.getCurrentPage();
-		btnPages[pg].enabled = false;
-		/*
-		if(pg <= 0)
+
+		for(int p = 0; p < Const.PAGES;p++)
 		{
-			btnpgLeft.displayString = "";
-			btnpgLeft.enabled=false;
+			btnPages[p].enabled = (p != pg);
 		}
-		else
-		{
-			btnpgLeft.displayString = ""+(pg-1);
-			btnpgLeft.enabled=true;
-		}
-		if(pg >= Const.PAGES-1)
-		{
-			btnpgRight.displayString = "";
-			btnpgRight.enabled=false;
-		}
-		else
-		{
-			btnpgRight.displayString = ""+(pg+1);
-			btnpgRight.enabled=true;
-		}*/
 	}
 	 
 	public void drawTextureSimple(String texture,double x, double y, double width, double height)
