@@ -12,12 +12,12 @@ import net.minecraftforge.fml.common.network.simpleimpl.MessageContext;
 /** 
  * @author Lothrazar at https://github.com/PrinceOfAmber
  */
-public class EnderchestButtonPacket implements IMessage , IMessageHandler<EnderchestButtonPacket, IMessage>
+public class OpenInventoryPacket implements IMessage , IMessageHandler<OpenInventoryPacket, IMessage>
 {
-	public EnderchestButtonPacket() {}
+	public OpenInventoryPacket() {}
 	NBTTagCompound tags = new NBTTagCompound(); 
 	
-	public EnderchestButtonPacket(NBTTagCompound ptags)
+	public OpenInventoryPacket(NBTTagCompound ptags)
 	{
 		tags = ptags;
 	}
@@ -35,22 +35,23 @@ public class EnderchestButtonPacket implements IMessage , IMessageHandler<Enderc
 	}
 
 	@Override
-	public IMessage onMessage(EnderchestButtonPacket message, MessageContext ctx)
+	public IMessage onMessage(OpenInventoryPacket message, MessageContext ctx)
 	{
 		EntityPlayer p = ctx.getServerHandler().playerEntity;
-		
-		int invType = message.tags.getInteger("i");
+	//	System.out.println("open inv packet");
+		//int invType = message.tags.getInteger("i");
 
-		switch(invType)
-		{
-		case Const.INV_ENDER:
+		//switch(invType)
+		//{
+		//case Const.INV_ENDER:
+		if(p.inventory.getStackInSlot(Const.BONUS_START+Const.type_echest) != null)
 			p.displayGUIChest(p.getInventoryEnderChest());
-		break;
-		case Const.INV_PLAYER:
+		//break;
+		//case Const.INV_PLAYER:
 
 			//this packet should not have been sent. but keep empty branch so i remember it
-			break;
-		}
+		//	break;
+		//}
 
 		return null;
 	}

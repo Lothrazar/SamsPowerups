@@ -119,13 +119,13 @@ public class GuiBigInventory extends GuiInventory
 	private void updateButtons()
 	{
 		final int s = 16;
- /*
+ 
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_echest) == null)
 		{
-			btnEnder.enabled = false;
+			//btnEnder.enabled = false;
  
 			drawTextureSimple("textures/items/empty_enderchest.png",container.echestX, container.echestY,s,s); 
-		}
+		}/*
 		else 
 		{ 
 			btnEnder.enabled = true; 

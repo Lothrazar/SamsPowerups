@@ -7,7 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.lothrazar.powerinventory.proxy.CommonProxy; 
 import com.lothrazar.powerinventory.proxy.DumpButtonPacket;
-import com.lothrazar.powerinventory.proxy.EnderchestButtonPacket;
+import com.lothrazar.powerinventory.proxy.OpenInventoryPacket;
 import com.lothrazar.powerinventory.proxy.ExpButtonPacket;
 import com.lothrazar.powerinventory.proxy.FilterButtonPacket;
 import com.lothrazar.powerinventory.proxy.EnderpearyKeybindPacket;
@@ -63,7 +63,7 @@ public class ModInv
     	
     	int packetID = 0;
     	//some packets are for buttons; one for each button
-    	network.registerMessage(EnderchestButtonPacket.class,  EnderchestButtonPacket.class,  packetID++, Side.SERVER);
+    	network.registerMessage(OpenInventoryPacket.class,  OpenInventoryPacket.class,  packetID++, Side.SERVER);
     	network.registerMessage(SortButtonPacket.class,  SortButtonPacket.class,  packetID++, Side.SERVER);
     	network.registerMessage(FilterButtonPacket.class,FilterButtonPacket.class,packetID++, Side.SERVER);
     	network.registerMessage(ExpButtonPacket.class,   ExpButtonPacket.class,   packetID++, Side.SERVER);

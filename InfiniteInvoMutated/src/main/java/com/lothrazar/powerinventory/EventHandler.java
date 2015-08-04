@@ -44,6 +44,7 @@ import com.lothrazar.powerinventory.inventory.client.GuiBigInventory;
 import com.lothrazar.powerinventory.inventory.client.GuiButtonClose; 
 import com.lothrazar.powerinventory.inventory.client.GuiButtonOpenInventory; 
 import com.lothrazar.powerinventory.proxy.ClientProxy;
+import com.lothrazar.powerinventory.proxy.OpenInventoryPacket;
 import com.lothrazar.powerinventory.proxy.EnderpearyKeybindPacket; 
 import com.lothrazar.powerinventory.proxy.SwaphotbarKeybindPacket; 
 
@@ -64,7 +65,7 @@ public class EventHandler
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
     {   
-        if(ClientProxy.keyEnder.isPressed() )
+        if(ClientProxy.keyEnderPearl.isPressed() )
         { 	     
         	 ModInv.instance.network.sendToServer( new EnderpearyKeybindPacket());   
         }  
@@ -72,6 +73,10 @@ public class EventHandler
         { 	     
         	 ModInv.instance.network.sendToServer( new SwaphotbarKeybindPacket());   
         }  
+        else if(ClientProxy.keyEnderChest.isPressed() )
+        { 	     
+        	 ModInv.instance.network.sendToServer( new OpenInventoryPacket());   
+        } 
     }
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 
