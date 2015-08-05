@@ -60,11 +60,11 @@ public class BigContainerPlayer extends ContainerPlayer
 	static int S_BAR_END;
 	static int S_MAIN_START;
 	static int S_MAIN_END;
-	static int S_ECHEST;
-	static int S_PEARL;
-	static int S_CLOCK;
-	static int S_COMPASS;
-	static int S_BOTTLE;
+//	static int S_ECHEST;
+	//static int S_PEARL;
+	//static int S_CLOCK;
+	//static int S_COMPASS;
+	//static int S_BOTTLE;
 	public BigContainerPlayer(BigInventoryPlayer playerInventory, boolean isLocal, EntityPlayer player)
 	{
 		super(playerInventory, isLocal, player);
@@ -133,7 +133,7 @@ public class BigContainerPlayer extends ContainerPlayer
         }
         S_ARMOR_END = this.inventorySlots.size() - 1;
         
-        
+        /*
         S_PEARL =  this.inventorySlots.size() ;
         this.addSlotToContainer(new SlotEnderPearl(playerInventory, Const.BONUS_START+Const.type_epearl, pearlX, pearlY));
 
@@ -149,7 +149,7 @@ public class BigContainerPlayer extends ContainerPlayer
         S_BOTTLE =  this.inventorySlots.size() ;
         this.addSlotToContainer(new SlotBottle(playerInventory, Const.BONUS_START+Const.type_bottle, bottleX, bottleY)); 
         
-        
+        */
          
         
 
@@ -263,7 +263,7 @@ public class BigContainerPlayer extends ContainerPlayer
             else if (slotNumber >= S_MAIN_START && slotNumber <= S_MAIN_END) // main inv grid
             { 
             	//only from here are we doing the special items
-            	
+            	/*
             	if(stackCopy.getItem() == Items.ender_pearl && 
             		(
         			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_epearl) == null || 
@@ -315,8 +315,9 @@ public class BigContainerPlayer extends ContainerPlayer
                 	{ 
                         return null;
                     }  
-        		}
-            	else if (!this.mergeItemStack(stackOrig, S_BAR_START, S_BAR_END+1, false)            			)
+        		}*/
+            	//else 
+            	if (!this.mergeItemStack(stackOrig, S_BAR_START, S_BAR_END+1, false)            			)
             	{
             		
                     return null;
@@ -329,13 +330,13 @@ public class BigContainerPlayer extends ContainerPlayer
                     return null;
                 }
             }
-            else if(slotNumber == S_PEARL || slotNumber == S_ECHEST  || slotNumber == S_COMPASS  || slotNumber == S_CLOCK || slotNumber == S_BOTTLE)
+           /* else if(slotNumber == S_PEARL || slotNumber == S_ECHEST  || slotNumber == S_COMPASS  || slotNumber == S_CLOCK || slotNumber == S_BOTTLE)
             { 
             	if (!this.mergeItemStack(stackOrig, S_MAIN_START, S_MAIN_END, false))
             	{
                     return null;
                 }
-            }
+            }*/
             else if (!this.mergeItemStack(stackOrig, Const.HOTBAR_SIZE, invo.getSizeInventory() - Const.ARMOR_SIZE + Const.HOTBAR_SIZE, false)) // ?Full range
             {
                 return null;

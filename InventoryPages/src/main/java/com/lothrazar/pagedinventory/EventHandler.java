@@ -64,19 +64,12 @@ public class EventHandler
 	
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
-    {   
-        if(ClientProxy.keyEnderPearl.isPressed() )
-        { 	     
-        	 ModInv.instance.network.sendToServer( new EnderpearyKeybindPacket());   
-        }  
-        else if(ClientProxy.keySwapbar.isPressed() )
+    { 
+		if(ClientProxy.keySwapbar.isPressed() )
         { 	     
         	 ModInv.instance.network.sendToServer( new SwaphotbarKeybindPacket());   
         }  
-        else if(ClientProxy.keyEnderChest.isPressed() )
-        { 	     
-        	 ModInv.instance.network.sendToServer( new OpenInventoryPacket());   
-        } 
+  
     }
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 

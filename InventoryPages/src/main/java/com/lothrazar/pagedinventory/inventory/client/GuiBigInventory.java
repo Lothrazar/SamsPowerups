@@ -27,7 +27,7 @@ public class GuiBigInventory extends GuiInventory
 	private EntityPlayer player;
 
 
-	GuiButton btnEnder;
+	//GuiButton btnEnder;
 	GuiButton btnExp;
 	GuiButton[] btnPages = new GuiButton[Const.PAGES];
 	GuiButton btnMoveLeft;
@@ -67,7 +67,7 @@ public class GuiBigInventory extends GuiInventory
 						xp - widthlrg - padding + 2, 
 						this.guiTop + padding,
 						widthlrg,height));
-			}
+			}/*
 			btnEnder = new GuiButtonOpenInventory(button_id++, 
 					this.guiLeft + container.echestX + 19, 
 					this.guiTop + container.echestY - 1,
@@ -76,7 +76,7 @@ public class GuiBigInventory extends GuiInventory
 			this.buttonList.add(btnEnder); 
 			btnEnder.enabled = false;// turn it on based on ender chest present or not
 			btnEnder.visible = btnEnder.enabled;
-			
+			*/
 			btnExp = new GuiButtonExp(button_id++, 
 					this.guiLeft + container.bottleX - width - padding+1, 
 					this.guiTop + container.bottleY-2,
@@ -89,7 +89,7 @@ public class GuiBigInventory extends GuiInventory
 			int x = guiLeft + this.xSize -  4*x_spacing - padding+3;
 			int y = guiTop + + height + padding        +5;
 		
-	 
+	 /*
 			btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
 			this.buttonList.add(btnMoveLeft); 
 			x += x_spacing;
@@ -102,7 +102,7 @@ public class GuiBigInventory extends GuiInventory
 			btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHTALL,">>");
 			this.buttonList.add(btnMoveRight);
 			
-			
+			*/
 			
 
 			x_spacing = width + padding/2;
@@ -122,7 +122,7 @@ public class GuiBigInventory extends GuiInventory
 	private void updateButtons()
 	{
 		final int s = 16;
- 
+ /*
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_echest) == null)
 		{
 			btnEnder.enabled = false;
@@ -165,7 +165,7 @@ public class GuiBigInventory extends GuiInventory
 		{  
 			drawTextureSimple("textures/items/empty_clock.png",container.clockX, container.clockY,s,s);
 		}
-		
+		*/
 		int pg = this.container.invo.getCurrentPage();
 
 		for(int p = 0; p < Const.PAGES;p++)
