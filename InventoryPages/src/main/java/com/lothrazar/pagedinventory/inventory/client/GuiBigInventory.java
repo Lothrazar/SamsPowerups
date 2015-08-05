@@ -27,11 +27,11 @@ public class GuiBigInventory extends GuiInventory
 	private EntityPlayer player;
 
 
-	GuiButton btnEnder;
-	GuiButton btnExp;
+	//GuiButton btnEnder;
+	//GuiButton btnExp;
 	GuiButton[] btnPages = new GuiButton[Const.PAGES];
-	GuiButton btnMoveLeft;
-	GuiButton btnMoveRight;
+	//GuiButton btnMoveLeft;
+	//GuiButton btnMoveRight;
 	public GuiBigInventory(EntityPlayer p)
 	{
 		super(p);
@@ -54,7 +54,7 @@ public class GuiBigInventory extends GuiInventory
 			final int widthlrg = 50;
 			final int padding = 6;
 			//final int tiny = 12;
-			int button_id = 99;
+			int button_id = 99;/*
 			if(ModConfig.showMergeDeposit)
 			{
 				int xp = 	this.guiLeft + this.xSize - widthlrg - padding;
@@ -84,12 +84,12 @@ public class GuiBigInventory extends GuiInventory
 			this.buttonList.add(btnExp);
 			btnExp.enabled = false;
 			btnExp.visible = btnExp.enabled;
-			
+			*/
 			int x_spacing = width + padding/2;
 			int x = guiLeft + this.xSize -  4*x_spacing - padding+3;
 			int y = guiTop + + height + padding        +5;
 		
-	 
+	 /*
 			btnMoveLeft = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_LEFTALL,"<<");
 			this.buttonList.add(btnMoveLeft); 
 			x += x_spacing;
@@ -102,12 +102,12 @@ public class GuiBigInventory extends GuiInventory
 			btnMoveRight = new GuiButtonSort(button_id++, x, y ,width,height, Const.SORT_RIGHTALL,">>");
 			this.buttonList.add(btnMoveRight);
 			
-			
+		*/	
 			
 
 			x_spacing = width + padding/2;
-			x = guiLeft + padding+7;
-			y = this.guiTop + this.ySize - 28 - height;//guiTop + this.ySize - height - padding        -22;
+			x = guiLeft + padding;
+			y = this.guiTop + this.ySize - 26 - height;//guiTop + this.ySize - height - padding        -22;
 			
 			for(int pg = 0; pg < Const.PAGES;pg++)
 			{
@@ -120,7 +120,7 @@ public class GuiBigInventory extends GuiInventory
     }
 
 	private void updateButtons()
-	{
+	{/*
 		final int s = 16;
  
 		if(container.invo.getStackInSlot(Const.BONUS_START+Const.type_echest) == null)
@@ -165,7 +165,7 @@ public class GuiBigInventory extends GuiInventory
 		{  
 			drawTextureSimple("textures/items/empty_clock.png",container.clockX, container.clockY,s,s);
 		}
-		
+		*/
 		int pg = this.container.invo.getCurrentPage();
 
 		for(int p = 0; p < Const.PAGES;p++)

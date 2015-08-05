@@ -40,12 +40,10 @@ import org.apache.logging.log4j.Level;
 import org.lwjgl.opengl.GL11;
 
 import com.lothrazar.pagedinventory.inventory.InventoryPersistProperty;
-import com.lothrazar.pagedinventory.inventory.client.GuiBigInventory;
-import com.lothrazar.pagedinventory.inventory.client.GuiButtonClose; 
+import com.lothrazar.pagedinventory.inventory.client.GuiBigInventory; 
 import com.lothrazar.pagedinventory.inventory.client.GuiButtonOpenInventory; 
 import com.lothrazar.pagedinventory.proxy.ClientProxy;
-import com.lothrazar.pagedinventory.proxy.OpenInventoryPacket;
-import com.lothrazar.pagedinventory.proxy.EnderpearyKeybindPacket; 
+import com.lothrazar.pagedinventory.proxy.OpenInventoryPacket; 
 import com.lothrazar.pagedinventory.proxy.SwaphotbarKeybindPacket; 
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -65,18 +63,10 @@ public class EventHandler
 	@SubscribeEvent
     public void onKeyInput(InputEvent.KeyInputEvent event) 
     {   
-        if(ClientProxy.keyEnderPearl.isPressed() )
-        { 	     
-        	 ModInv.instance.network.sendToServer( new EnderpearyKeybindPacket());   
-        }  
-        else if(ClientProxy.keySwapbar.isPressed() )
+        if(ClientProxy.keySwapbar.isPressed() )
         { 	     
         	 ModInv.instance.network.sendToServer( new SwaphotbarKeybindPacket());   
         }  
-        else if(ClientProxy.keyEnderChest.isPressed() )
-        { 	     
-        	 ModInv.instance.network.sendToServer( new OpenInventoryPacket());   
-        } 
     }
 	@SubscribeEvent
 	public void onClonePlayer(PlayerEvent.Clone event) 
@@ -143,7 +133,7 @@ public class EventHandler
 	}
 
 
-	
+	/*
 	@SuppressWarnings("unchecked")
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
@@ -174,7 +164,7 @@ public class EventHandler
 			x = x - padding - w;
 			event.buttonList.add(new GuiButtonOpenInventory(256, x,y,w,h,"E",Const.INV_PLAYER));
 		}
-	}
+	}*/
 	
 	@SubscribeEvent
 	public void onWorldLoad(WorldEvent.Load event)

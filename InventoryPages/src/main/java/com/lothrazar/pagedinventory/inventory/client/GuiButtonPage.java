@@ -1,7 +1,7 @@
 package com.lothrazar.pagedinventory.inventory.client;
 
 import com.lothrazar.pagedinventory.proxy.PageButtonPacket;
-import com.lothrazar.pagedinventory.proxy.SortButtonPacket;
+
 import com.lothrazar.pagedinventory.ModInv;
 
 import net.minecraft.client.Minecraft;

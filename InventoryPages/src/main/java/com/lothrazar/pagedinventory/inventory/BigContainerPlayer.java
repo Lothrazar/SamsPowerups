@@ -60,11 +60,11 @@ public class BigContainerPlayer extends ContainerPlayer
 	static int S_BAR_END;
 	static int S_MAIN_START;
 	static int S_MAIN_END;
-	static int S_ECHEST;
-	static int S_PEARL;
-	static int S_CLOCK;
-	static int S_COMPASS;
-	static int S_BOTTLE;
+	//static int S_ECHEST;
+	//static int S_PEARL;
+	//static int S_CLOCK;
+	//static int S_COMPASS;
+	//static int S_BOTTLE;
 	public BigContainerPlayer(BigInventoryPlayer playerInventory, boolean isLocal, EntityPlayer player)
 	{
 		super(playerInventory, isLocal, player);
@@ -73,21 +73,21 @@ public class BigContainerPlayer extends ContainerPlayer
 		inventorySlots = Lists.newArrayList();//undo everything done by super()
 		craftMatrix = new InventoryCrafting(this, craftSize, craftSize);
  
-        int i,j,cx,cy,slotIndex;//rows and cols of vanilla, not extra
+        int i,j,cx,cy,slotIndex,padding=8;//rows and cols of vanilla, not extra
    
         S_RESULT = this.inventorySlots.size();
         slotIndex = 0;//was 0
         this.addSlotToContainer(new SlotCrafting(playerInventory.player, this.craftMatrix, this.craftResult, slotIndex, 
-        		199,  
-        		40));
+        		padding + 145,  
+        		padding+34));
 
         S_CRAFT_START = this.inventorySlots.size();
         for (i = 0; i < craftSize; ++i)
         { 
             for (j = 0; j < craftSize; ++j)
             {  
-    			cx = 113 + j * Const.sq ; 
-    			cy = 20 + i * Const.sq ;
+    			cx = padding + 74 + j * Const.sq ; 
+    			cy = padding + 18 + i * Const.sq ;
     			slotIndex = j + i * this.craftSize;
         		this.addSlotToContainer(new Slot(this.craftMatrix, slotIndex, cx , cy)); 
             }
@@ -96,10 +96,10 @@ public class BigContainerPlayer extends ContainerPlayer
        
         S_BAR_START = this.inventorySlots.size();
         
-    	cy = 19 + Const.sq * (Const.ALL_ROWS + 5);//so 12, since allrows=15
+    	cy = 19 +padding + Const.sq * (Const.ALL_ROWS + 5);//so 12, since allrows=15
         for (i = 0; i < Const.HOTBAR_SIZE; ++i)
         { 
-        	cx = 7 + i * Const.sq; 
+        	cx = padding + i * Const.sq; 
         	slotIndex = i;
             this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
         }
@@ -108,8 +108,8 @@ public class BigContainerPlayer extends ContainerPlayer
         S_ARMOR_START = this.inventorySlots.size(); 
         for (i = 0; i < Const.ARMOR_SIZE; ++i)
         {
-        	cx = 7;
-        	cy = 8 + i * Const.sq;
+        	cx = padding;
+        	cy = padding + i * Const.sq;
             final int k = i;
             //getSizeInventory==this.mainInventory.length + 4;
             slotIndex = Const.ARMOR_START + i;//playerInventory.getSizeInventory() - 1 - i;
@@ -133,7 +133,7 @@ public class BigContainerPlayer extends ContainerPlayer
         }
         S_ARMOR_END = this.inventorySlots.size() - 1;
         
-        
+        /*
         S_PEARL =  this.inventorySlots.size() ;
         this.addSlotToContainer(new SlotEnderPearl(playerInventory, Const.BONUS_START+Const.type_epearl, pearlX, pearlY));
 
@@ -148,7 +148,7 @@ public class BigContainerPlayer extends ContainerPlayer
         
         S_BOTTLE =  this.inventorySlots.size() ;
         this.addSlotToContainer(new SlotBottle(playerInventory, Const.BONUS_START+Const.type_bottle, bottleX, bottleY)); 
-        
+        */
         
          
         
@@ -160,8 +160,8 @@ public class BigContainerPlayer extends ContainerPlayer
 		{
             for ( j = 0; j < Const.ALL_COLS; ++j)
             { 
-            	cx = 7 + j * Const.sq;
-            	cy = 84 + i * Const.sq;
+            	cx = padding + j * Const.sq;
+            	cy = 76+padding + i * Const.sq;
                 this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
             	slotIndex++;
             }
@@ -263,7 +263,7 @@ public class BigContainerPlayer extends ContainerPlayer
             else if (slotNumber >= S_MAIN_START && slotNumber <= S_MAIN_END) // main inv grid
             { 
             	//only from here are we doing the special items
-            	
+            	/*
             	if(stackCopy.getItem() == Items.ender_pearl && 
             		(
         			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_epearl) == null || 
@@ -316,7 +316,7 @@ public class BigContainerPlayer extends ContainerPlayer
                         return null;
                     }  
         		}
-            	else if (!this.mergeItemStack(stackOrig, S_BAR_START, S_BAR_END+1, false)            			)
+            	else */if (!this.mergeItemStack(stackOrig, S_BAR_START, S_BAR_END+1, false)            			)
             	{
             		
                     return null;
@@ -328,14 +328,14 @@ public class BigContainerPlayer extends ContainerPlayer
             	{
                     return null;
                 }
-            }
+            }/*
             else if(slotNumber == S_PEARL || slotNumber == S_ECHEST  || slotNumber == S_COMPASS  || slotNumber == S_CLOCK || slotNumber == S_BOTTLE)
             { 
             	if (!this.mergeItemStack(stackOrig, S_MAIN_START, S_MAIN_END, false))
             	{
                     return null;
                 }
-            }
+            }*/
             else if (!this.mergeItemStack(stackOrig, Const.HOTBAR_SIZE, invo.getSizeInventory() - Const.ARMOR_SIZE + Const.HOTBAR_SIZE, false)) // ?Full range
             {
                 return null;

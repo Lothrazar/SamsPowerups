@@ -56,14 +56,14 @@ public class ModInv
     	int packetID = 0;
     	//some packets are for buttons; one for each button
     	network.registerMessage(OpenInventoryPacket.class,  OpenInventoryPacket.class,  packetID++, Side.SERVER);
-    	network.registerMessage(SortButtonPacket.class,  SortButtonPacket.class,  packetID++, Side.SERVER);
-    	network.registerMessage(FilterButtonPacket.class,FilterButtonPacket.class,packetID++, Side.SERVER);
-    	network.registerMessage(ExpButtonPacket.class,   ExpButtonPacket.class,   packetID++, Side.SERVER);
-    	network.registerMessage(DumpButtonPacket.class,  DumpButtonPacket.class,  packetID++, Side.SERVER);
+    	//network.registerMessage(SortButtonPacket.class,  SortButtonPacket.class,  packetID++, Side.SERVER);
+    	//network.registerMessage(FilterButtonPacket.class,FilterButtonPacket.class,packetID++, Side.SERVER);
+    	//network.registerMessage(ExpButtonPacket.class,   ExpButtonPacket.class,   packetID++, Side.SERVER);
+    	//network.registerMessage(DumpButtonPacket.class,  DumpButtonPacket.class,  packetID++, Side.SERVER);
     	network.registerMessage(PageButtonPacket.class,  PageButtonPacket.class,  packetID++, Side.SERVER);
     	
     	//these two are keybindings
-    	network.registerMessage(EnderpearyKeybindPacket.class,  EnderpearyKeybindPacket.class,  packetID++, Side.SERVER);
+    	//network.registerMessage(EnderpearyKeybindPacket.class,  EnderpearyKeybindPacket.class,  packetID++, Side.SERVER);
     	network.registerMessage(SwaphotbarKeybindPacket.class,  SwaphotbarKeybindPacket.class,  packetID++, Side.SERVER);
     	 
 		config = new Configuration(event.getSuggestedConfigurationFile(), true);
