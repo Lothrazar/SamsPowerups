@@ -104,6 +104,27 @@ public class BigContainerPlayer extends ContainerPlayer
             this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
         }
         S_BAR_END = this.inventorySlots.size() - 1;
+        
+        
+
+        S_MAIN_START = this.inventorySlots.size();
+        slotIndex = Const.HOTBAR_SIZE;
+        
+        for( i = 0; i < Const.ALL_ROWS; i++)
+		{
+            for ( j = 0; j < Const.ALL_COLS; ++j)
+            { 
+            	cx = padding + j * Const.sq;
+            	cy = 76+padding + i * Const.sq;
+                this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
+            	slotIndex++;
+            }
+        }
+        
+        S_MAIN_END = this.inventorySlots.size() - 1;
+        
+        
+        
       //384 85 86 87 is what it gets, when INV_SIZE = 375, meaning 375+9=384
         S_ARMOR_START = this.inventorySlots.size(); 
         for (i = 0; i < Const.ARMOR_SIZE; ++i)
@@ -132,42 +153,8 @@ public class BigContainerPlayer extends ContainerPlayer
             }); 
         }
         S_ARMOR_END = this.inventorySlots.size() - 1;
-        
-        /*
-        S_PEARL =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotEnderPearl(playerInventory, Const.BONUS_START+Const.type_epearl, pearlX, pearlY));
+ 
 
-        S_ECHEST =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotEnderChest(playerInventory, Const.BONUS_START+Const.type_echest, echestX, echestY)); 
-
-        S_CLOCK =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotClock(playerInventory, Const.BONUS_START+Const.type_clock, clockX, clockY)); 
-
-        S_COMPASS =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotCompass(playerInventory, Const.BONUS_START+Const.type_compass, compassX, compassY)); 
-        
-        S_BOTTLE =  this.inventorySlots.size() ;
-        this.addSlotToContainer(new SlotBottle(playerInventory, Const.BONUS_START+Const.type_bottle, bottleX, bottleY)); 
-        */
-        
-         
-        
-
-        S_MAIN_START = this.inventorySlots.size();
-        slotIndex = Const.HOTBAR_SIZE;
-        
-        for( i = 0; i < Const.ALL_ROWS; i++)
-		{
-            for ( j = 0; j < Const.ALL_COLS; ++j)
-            { 
-            	cx = padding + j * Const.sq;
-            	cy = 76+padding + i * Const.sq;
-                this.addSlotToContainer(new Slot(playerInventory, slotIndex, cx, cy));
-            	slotIndex++;
-            }
-        }
-        
-        S_MAIN_END = this.inventorySlots.size() - 1;
         
         this.onCraftMatrixChanged(this.craftMatrix);
 		this.invo = playerInventory; 
@@ -262,61 +249,7 @@ public class BigContainerPlayer extends ContainerPlayer
             }
             else if (slotNumber >= S_MAIN_START && slotNumber <= S_MAIN_END) // main inv grid
             { 
-            	//only from here are we doing the special items
-            	/*
-            	if(stackCopy.getItem() == Items.ender_pearl && 
-            		(
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_epearl) == null || 
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_epearl).stackSize < Items.ender_pearl.getItemStackLimit(stackCopy))
-        			)
-        		{
-            		 
-            		if (!this.mergeItemStack(stackOrig, S_PEARL, S_PEARL+1, false))
-                	{ 
-                        return null;
-                    }  
-        		}
-            	else if(stackCopy.getItem() == Item.getItemFromBlock(Blocks.ender_chest) && 
-            		(
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_echest) == null || 
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_echest).stackSize < 1)
-        			)
-        		{ 
-            		if (!this.mergeItemStack(stackOrig, S_ECHEST, S_ECHEST+1, false))
-                	{ 
-                        return null;
-                    }  
-        		}
-            	else if(stackCopy.getItem() == Items.compass && 
-            		(
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_compass) == null || 
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_compass).stackSize < 1)
-        			)
-        		{ 
-            		if (!this.mergeItemStack(stackOrig, S_COMPASS, S_COMPASS+1, false))
-                	{ 
-                        return null;
-                    }  
-        		}
-            	else if(stackCopy.getItem() == Items.clock && 
-            		(
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_clock) == null || 
-        			p.inventory.getStackInSlot(Const.BONUS_START+Const.type_clock).stackSize < 1)
-        			)
-        		{ 
-            		if (!this.mergeItemStack(stackOrig, S_CLOCK, S_CLOCK+1, false))
-                	{ 
-                        return null;
-                    }  
-        		}
-            	else if(stackCopy.getItem() == Items.glass_bottle )
-        		{ 
-            		if (!this.mergeItemStack(stackOrig, S_BOTTLE, S_BOTTLE+1, false))
-                	{ 
-                        return null;
-                    }  
-        		}
-            	else */if (!this.mergeItemStack(stackOrig, S_BAR_START, S_BAR_END+1, false)            			)
+            	if (!this.mergeItemStack(stackOrig, S_BAR_START, S_BAR_END+1, false)            			)
             	{
             		
                     return null;
@@ -328,14 +261,7 @@ public class BigContainerPlayer extends ContainerPlayer
             	{
                     return null;
                 }
-            }/*
-            else if(slotNumber == S_PEARL || slotNumber == S_ECHEST  || slotNumber == S_COMPASS  || slotNumber == S_CLOCK || slotNumber == S_BOTTLE)
-            { 
-            	if (!this.mergeItemStack(stackOrig, S_MAIN_START, S_MAIN_END, false))
-            	{
-                    return null;
-                }
-            }*/
+            }
             else if (!this.mergeItemStack(stackOrig, Const.HOTBAR_SIZE, invo.getSizeInventory() - Const.ARMOR_SIZE + Const.HOTBAR_SIZE, false)) // ?Full range
             {
                 return null;

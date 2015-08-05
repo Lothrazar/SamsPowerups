@@ -27,13 +27,13 @@ public class BigInventoryPlayer extends InventoryPlayer
     @SideOnly(Side.CLIENT)
     private ItemStack currentItemStack;
  
-    public ItemStack[] bonusInventory;// = new ItemStack[Const.BONUS_SIZE];
+    //public ItemStack[] bonusInventory;// = new ItemStack[Const.BONUS_SIZE];
  
 	public BigInventoryPlayer(EntityPlayer p)
 	{
 		super(p);
 		this.mainInventory = new ItemStack[Const.ALL_SLOTS];
-		bonusInventory = new ItemStack[Const.BONUS_SIZE];
+		//bonusInventory = new ItemStack[Const.BONUS_SIZE];
 		player=p;
  
 	}
@@ -74,10 +74,10 @@ public class BigInventoryPlayer extends InventoryPlayer
         {
             return this.armorInventory[index - Const.ARMOR_START];
         }
-        else if (index >= Const.BONUS_START && index < Const.BONUS_START + Const.BONUS_SIZE)//armor slots depend on being right at the end like 384
+      /*  else if (index >= Const.BONUS_START && index < Const.BONUS_START + Const.BONUS_SIZE)//armor slots depend on being right at the end like 384
         {
 	        return bonusInventory[index - Const.BONUS_START];
-        }
+        }*/
         else if(index >= this.mainInventory.length && index < this.mainInventory.length+this.armorInventory.length)
         { 
         	//should be using armor slots 
@@ -100,7 +100,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 		{
             Minecraft.getMinecraft().playerController.sendSlotPacket(stack, slot);
 		}
-		if(slot == Const.BONUS_START+Const.type_epearl)
+		/*if(slot == Const.BONUS_START+Const.type_epearl)
 		{
 			bonusInventory[Const.type_epearl] = stack;  
 		}
@@ -119,7 +119,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 		else if(slot == Const.BONUS_START+Const.type_bottle)
 		{
 			bonusInventory[Const.type_bottle] = stack;  
-		}
+		}*/
 		else
 		{
 			//if(slot > Const.ALL_SLOTS)
@@ -438,6 +438,7 @@ public class BigInventoryPlayer extends InventoryPlayer
                 tags.appendTag(nbttagcompound);
             }
         }
+        /*
         for (i = 0; i < this.bonusInventory.length; ++i)
         {
             if (this.bonusInventory[i] != null)
@@ -448,7 +449,7 @@ public class BigInventoryPlayer extends InventoryPlayer
                 tags.appendTag(nbttagcompound);
                 
             }
-        }
+        }*/
         for (i = 0; i < this.armorInventory.length; ++i)
         {
             if (this.armorInventory[i] != null)
@@ -463,7 +464,7 @@ public class BigInventoryPlayer extends InventoryPlayer
         
         return tags;
     }
-    
+    /*
     @Override
     public ItemStack decrStackSize(int index, int count)
     {
@@ -493,7 +494,7 @@ public class BigInventoryPlayer extends InventoryPlayer
     	}
     	else 
     		return super.decrStackSize(index, count);
-    }
+    }*/
 
     /**
      * Modified from the original to allow for more than 255 inventory slots
@@ -503,7 +504,7 @@ public class BigInventoryPlayer extends InventoryPlayer
     {
         this.mainInventory = new ItemStack[Const.ALL_SLOTS];//was Const.ALL_ROWS * Const.ALL_COLS + Const.HOTBAR_SIZE
         this.armorInventory = new ItemStack[Const.ARMOR_SIZE]; 
-        this.bonusInventory = new ItemStack[Const.BONUS_SIZE]; 
+     //   this.bonusInventory = new ItemStack[Const.BONUS_SIZE]; 
         for (int i = 0; i < tags.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound = tags.getCompoundTagAt(i);
@@ -520,10 +521,10 @@ public class BigInventoryPlayer extends InventoryPlayer
                 {
                 	this.armorInventory[j - Const.ARMOR_START] = itemstack;
                 }
-                if (j >= Const.BONUS_START && j < Const.BONUS_START  + Const.BONUS_SIZE)
+               /* if (j >= Const.BONUS_START && j < Const.BONUS_START  + Const.BONUS_SIZE)
                 {
                 	this.bonusInventory[j - Const.BONUS_START] = itemstack;
-                }
+                }*/
             }
         }
     }

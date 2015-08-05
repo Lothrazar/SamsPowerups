@@ -223,7 +223,7 @@ public class GuiBigInventory extends GuiInventory
 			//this.fontRendererObj.drawString(I18n.format("container.crafting", new Object[0]), 87, 32, 4210752);
 
 		
-		 /*
+		 
 
 	 
 		Slot s;
@@ -235,10 +235,10 @@ public class GuiBigInventory extends GuiInventory
 	 
 			//each slot has two different numbers. the slotNumber is UNIQUE, the index is not
 	 
-		if(s.slotNumber >= 10 && s.slotNumber < 10 +Const.HOTBAR_SIZE/2)
+		//if(s.slotNumber >= 10 && s.slotNumber < 10 +Const.HOTBAR_SIZE/2)
 				this.drawString(this.fontRendererObj, "" + (s.getSlotIndex()+1), s.xDisplayPosition+1, s.yDisplayPosition +  4, 1210752);
 		//	else//this is debug mode now
 			//	this.drawString(this.fontRendererObj, "" + s.getSlotIndex(), s.xDisplayPosition, s.yDisplayPosition +  4, 16777120);
-		}*/ 
+		} 
 	}
 }

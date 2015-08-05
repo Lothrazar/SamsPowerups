@@ -41,9 +41,9 @@ import org.lwjgl.opengl.GL11;
 
 import com.lothrazar.pagedinventory.inventory.InventoryPersistProperty;
 import com.lothrazar.pagedinventory.inventory.client.GuiBigInventory; 
-import com.lothrazar.pagedinventory.inventory.client.GuiButtonOpenInventory; 
+//import com.lothrazar.pagedinventory.inventory.client.GuiButtonOpenInventory; 
 import com.lothrazar.pagedinventory.proxy.ClientProxy;
-import com.lothrazar.pagedinventory.proxy.OpenInventoryPacket; 
+//import com.lothrazar.pagedinventory.proxy.OpenInventoryPacket; 
 import com.lothrazar.pagedinventory.proxy.SwaphotbarKeybindPacket; 
 
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
@@ -272,7 +272,7 @@ public class EventHandler
 		//http://www.minecraftforge.net/wiki/Gui_Overlay
  
     }
-	  
+	  /*
 	@SideOnly(Side.CLIENT)
 	@SubscribeEvent
 	public void onRenderTextOverlay(RenderGameOverlayEvent.Text event)
@@ -295,7 +295,7 @@ public class EventHandler
 				renderItemAt(new ItemStack(Items.compass),xRight,yBottom,size);
  
 		}
-	}
+	}*/
 	
 	@SideOnly(Side.CLIENT)
 	private static void renderItemAt(ItemStack stack, int x, int y, int dim)

@@ -76,13 +76,13 @@ public class Const
 	public static final int ALL_SLOTS = PAGES*PAGESIZE + HOTBAR_SIZE;//was 384+9
  
 	//these are slot indices. different than slot numbers (important) comes right after armor
-	public static final int ARMOR_START = Integer.MAX_VALUE - 100;// HOTBAR_SIZE+ALL_ROWS * ALL_COLS;
-    public static final int BONUS_START = ARMOR_START + Const.ARMOR_SIZE; 
-    public static final int type_epearl = 0;
+	public static final int ARMOR_START = ALL_SLOTS;// HOTBAR_SIZE+ALL_ROWS * ALL_COLS;
+   // public static final int BONUS_START = ARMOR_START + Const.ARMOR_SIZE; 
+   /* public static final int type_epearl = 0;
     public static final int type_echest = 1;
     public static final int type_clock=2;
     public static final int type_compass=3;
-    public static final int type_bottle=4;
+    public static final int type_bottle=4;*/
  
 	public final static int INV_ENDER = 1;
 	public final static int INV_PLAYER = 2;
