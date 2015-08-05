@@ -67,7 +67,7 @@ public class Const
 	public static final int sq = 18;
 	public final static int HOTBAR_SIZE = 9 ;
 	public final static int ARMOR_SIZE = 4; 
-	public final static int BONUS_SIZE = 5;
+//	public final static int BONUS_SIZE = 5;
 
 	public static int ALL_ROWS = 3;//3 + 12;//3+12=15//or 12
 	public static int ALL_COLS = 9;//9 + 16;//9+16=25
@@ -77,12 +77,7 @@ public class Const
  
 	//these are slot indices. different than slot numbers (important) comes right after armor
 	public static final int ARMOR_START = ALL_SLOTS;// HOTBAR_SIZE+ALL_ROWS * ALL_COLS;
-   // public static final int BONUS_START = ARMOR_START + Const.ARMOR_SIZE; 
-   /* public static final int type_epearl = 0;
-    public static final int type_echest = 1;
-    public static final int type_clock=2;
-    public static final int type_compass=3;
-    public static final int type_bottle=4;*/
+ 
  
 	public final static int INV_ENDER = 1;
 	public final static int INV_PLAYER = 2;

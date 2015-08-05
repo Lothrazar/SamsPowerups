@@ -133,6 +133,7 @@ public class BigContainerPlayer extends ContainerPlayer
         	cy = padding + i * Const.sq;
             final int k = i;
             //getSizeInventory==this.mainInventory.length + 4;
+            //;//
             slotIndex = Const.ARMOR_START + i;//playerInventory.getSizeInventory() - 1 - i;
             this.addSlotToContainer(new Slot(playerInventory,  slotIndex, cx, cy)
             { 
@@ -193,9 +194,7 @@ public class BigContainerPlayer extends ContainerPlayer
         this.craftResult.setInventorySlotContents(0, (ItemStack)null);
     }
 
-    /**
-     * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
-     */
+/*
 	@Override
     public ItemStack transferStackInSlot(EntityPlayer p, int slotNumber)
     {  
@@ -286,5 +285,5 @@ public class BigContainerPlayer extends ContainerPlayer
         }
 
         return stackCopy;
-    }
+    }*/
 }

@@ -65,7 +65,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 		return true;
 	}
 	
-	
+	/*
 	@Override
 	public ItemStack getStackInSlot(int index)
     {
@@ -74,10 +74,7 @@ public class BigInventoryPlayer extends InventoryPlayer
         {
             return this.armorInventory[index - Const.ARMOR_START];
         }
-      /*  else if (index >= Const.BONUS_START && index < Const.BONUS_START + Const.BONUS_SIZE)//armor slots depend on being right at the end like 384
-        {
-	        return bonusInventory[index - Const.BONUS_START];
-        }*/
+   
         else if(index >= this.mainInventory.length && index < this.mainInventory.length+this.armorInventory.length)
         { 
         	//should be using armor slots 
@@ -86,13 +83,13 @@ public class BigInventoryPlayer extends InventoryPlayer
         }
         return this.mainInventory[index];//exception at 384?454?
     }
-	
+	*/
 	@Override
 	public void dropAllItems()
 	{
 		super.dropAllItems();
 	}
-	
+	/*
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack)
     {
@@ -100,26 +97,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 		{
             Minecraft.getMinecraft().playerController.sendSlotPacket(stack, slot);
 		}
-		/*if(slot == Const.BONUS_START+Const.type_epearl)
-		{
-			bonusInventory[Const.type_epearl] = stack;  
-		}
-		else if(slot == Const.BONUS_START+Const.type_echest)
-		{
-			bonusInventory[Const.type_echest] = stack;  
-		}
-		else if(slot == Const.BONUS_START+Const.type_clock)
-		{
-			bonusInventory[Const.type_clock] = stack;  
-		}
-		else if(slot == Const.BONUS_START+Const.type_compass)
-		{
-			bonusInventory[Const.type_compass] = stack;  
-		}
-		else if(slot == Const.BONUS_START+Const.type_bottle)
-		{
-			bonusInventory[Const.type_bottle] = stack;  
-		}*/
+		
 		else
 		{
 			//if(slot > Const.ALL_SLOTS)
@@ -144,7 +122,7 @@ public class BigInventoryPlayer extends InventoryPlayer
 		        this.mainInventory[slot] = stack;
 			//super.setInventorySlotContents(slot, stack);
 		}
-    }
+    }*/
 	 
     private int func_146029_c(Item stack)
     {
@@ -438,24 +416,13 @@ public class BigInventoryPlayer extends InventoryPlayer
                 tags.appendTag(nbttagcompound);
             }
         }
-        /*
-        for (i = 0; i < this.bonusInventory.length; ++i)
-        {
-            if (this.bonusInventory[i] != null)
-            {
-                nbttagcompound = new NBTTagCompound();
-                nbttagcompound.setInteger(Const.NBT_SLOT, i + Const.BONUS_START); // Give armor slots the last 100 integer spaces
-                this.bonusInventory[i].writeToNBT(nbttagcompound);
-                tags.appendTag(nbttagcompound);
-                
-            }
-        }*/
+
         for (i = 0; i < this.armorInventory.length; ++i)
         {
             if (this.armorInventory[i] != null)
             {
                 nbttagcompound = new NBTTagCompound();
-                nbttagcompound.setInteger(Const.NBT_SLOT, i + (Integer.MAX_VALUE - 100)); // Give armor slots the last 100 integer spaces
+                nbttagcompound.setInteger(Const.NBT_SLOT, i +Const.ARMOR_START); // Give armor slots the last 100 integer spaces
                 this.armorInventory[i].writeToNBT(nbttagcompound);
                 tags.appendTag(nbttagcompound);
                 
@@ -521,10 +488,7 @@ public class BigInventoryPlayer extends InventoryPlayer
                 {
                 	this.armorInventory[j - Const.ARMOR_START] = itemstack;
                 }
-               /* if (j >= Const.BONUS_START && j < Const.BONUS_START  + Const.BONUS_SIZE)
-                {
-                	this.bonusInventory[j - Const.BONUS_START] = itemstack;
-                }*/
+         
             }
         }
     }
