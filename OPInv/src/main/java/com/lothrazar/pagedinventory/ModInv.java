@@ -42,7 +42,7 @@ public class ModInv
 	@Instance(Const.MODID)
 	public static ModInv instance;
 	
-	@SidedProxy(clientSide = "com.lothrazar.powerinventory.proxy.ClientProxy", serverSide = "com.lothrazar.powerinventory.proxy.CommonProxy")
+	@SidedProxy(clientSide = "com.lothrazar.pagedinventory.proxy.ClientProxy", serverSide = "com.lothrazar.pagedinventory.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	public SimpleNetworkWrapper network ;
 	public static Logger logger;
