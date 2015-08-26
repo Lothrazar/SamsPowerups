@@ -74,6 +74,48 @@ TreasureBuff - TODO is this interesting/fleshed out enough to release? Do we wan
 NEW MOD IDEAS
 ***********
 
+OMG LAST THING IN 1.7.10 was
+//https://github.com/PrinceOfAmber/SamsPowerups/commit/00a32f4a16739c307cf3c6149d2417dfff7ea3f3
+
+release /place commands standalone
+
+//sams flying? https://github.com/PrinceOfAmber/SamsPowerups/tree/dc8401fb615ade60e98f1a940ef61c4f619da53d/src/main/java/com/lothrazar
+//also checkout how the Galkis flying table works
+//i know how to fix flying level drain now
+//https://github.com/PrinceOfAmber/SamsPowerups/commit/23313a4608e9e10c5f495c10faae20206988de1f
+//also try it as potion effect
+//also put in ghost mode into this or at least a /ghost command
+
+
+and/or - put /place commands back in a wand, just like my ol builders wand
+
+//release standalone reinterpretation of TradingTable from ExtraUtilities
+
+//runestones ? 
+//https://github.com/PrinceOfAmber/SamsPowerups/commit/3d51c6c33e5d031cc3005b736beadb0393be6edd
+
+master wand module
+https://github.com/PrinceOfAmber/SamsPowerups/commit/d487986f38f9957e41c2b6ff3244c1c7082f12a8
+https://github.com/PrinceOfAmber/SamsPowerups/tree/dc8401fb615ade60e98f1a940ef61c4f619da53d/src/main/java/com/lothrazar
+
+//wand building
+https://github.com/PrinceOfAmber/SamsPowerups/commit/c4b22b54ecc0d23d2e6e20279922c45c075ce31e
+
+
+command block craftables
+use new versions for sure but 1.7 vs exist 
+https://github.com/PrinceOfAmber/SamsPowerups/commit/0fe45e17244f820772ec99c1703fc510970b9332
+
+release difficulty module 
+https://github.com/PrinceOfAmber/SamsPowerups/commit/caa5816cd0a610e3fb12e27dbde8674e215e120b
+
+
+
+
+--bring back Screentext overhaul from 
+https://github.com/PrinceOfAmber/SamsPowerups/blob/67196bb9eef092bb468a1af8ec07ba4f9d5e064d/src/main/java/com/lothrazar/samscontent/event/DebugScreenText.java
+
+
 NetHandlerplayserver at processPlayerBlockPlacement
 //could have a setblock event?
 

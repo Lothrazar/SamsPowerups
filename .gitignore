@@ -14,8 +14,12 @@ gradlew.bat
 server.properties 
 gradle/
 *.properties 
+Apples/
+SearchCommands/
+SurvivalCommands/
 .gradle/
 screenshots/
+EXAMPLES/
 .metadata/
 .settings/
 PowerApples/

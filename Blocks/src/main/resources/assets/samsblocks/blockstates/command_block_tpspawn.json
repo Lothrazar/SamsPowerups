@@ -1,7 +1,0 @@
-{
-    "variants": {
-        "normal": { "model": "samsblocks:command_block_tpspawn" },
-        "triggered=true": { "model": "samsblocks:command_block_tpspawn" },
-        "triggered=false": { "model": "samsblocks:command_block_tpspawn" } 
-    }
-}
